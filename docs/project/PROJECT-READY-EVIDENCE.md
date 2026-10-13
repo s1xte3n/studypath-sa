@@ -1,9 +1,9 @@
 # StudyPath SA — PROJECT READY Evidence Pack
 
-**Status:** Draft for owner review  
+**Status:** Baseline Phase 0 evidence pack; superseded for gate status by the completed manual and online evidence records  
 **Prepared:** 2026-10-13  
-**Gate:** PROJECT READY — BLOCKED / NOT PASSED  
-**Purpose:** Collect the evidence and decisions required by Phase 0. This document does not authorise cloud provisioning or feature implementation.
+**Gate:** PROJECT READY — PASSED for Phase 1 PRD/planning only  
+**Purpose:** Preserve the original readiness evidence inventory. For current disposition, see `PHASE0-MANUAL-EVIDENCE-PACK.md` and `PHASE0-ONLINE-EVIDENCE.md`. This document does not authorise cloud provisioning or feature implementation.
 
 ## Evidence convention
 
@@ -196,12 +196,11 @@ The owner has accepted these roles provisionally for the pre-hackathon build and
 
 ## Gate decision
 
-**PROJECT READY remains BLOCKED / NOT PASSED.** This evidence pack advances source discovery and documents a preliminary cost/privacy/hackathon assessment, but it does not resolve the following hard blockers:
+The Phase 0 exit decision was recorded on 2026-10-13 in `PHASE0-MANUAL-EVIDENCE-PACK.md` and `PHASE0-ONLINE-EVIDENCE.md`.
 
-1. Explicit approval of catalogue scope/source-use policy/cadence and verified admission records; the owner is assigned as curator but no backup is appointed.
-2. Direct confirmation of Azure tenant/subscription details, effective permissions and billing visibility; subscription ownership is owner-confirmed but not independently verified.
-3. A dated all-in pricing estimate and evidence the R100/month cap can be met. PostgreSQL pricing is a material risk.
-4. Privacy/security review of the learner-data inventory, applicable consent questions, notice, retention/deletion and incident handling.
-5. Independently verify the Sonke profile and confirm the exact deadline/upload procedure.
+**PROJECT READY — PASSED for Phase 1 PRD and requirements planning only.**
 
-Do not start detailed PRD design or provision cloud services until the project owner records an explicit gate decision. If the budget requires a deviation from the documented stack, document and approve that change first.
+The owner attests that account-specific Azure access, permissions, billing and budget checks are complete. Official UJ programme pages and Microsoft hosting/quota pages were checked online. The owner confirms the Sonke team profile is complete and the project is a new app; the portal itself was not independently accessed.
+
+This gate does not establish implementation, testing, deployment, legal compliance or release readiness. It does not authorize a billable resource without a resource-specific cost check and approval. Real learner data remains prohibited until applicable privacy/legal review and implementation safeguards are complete.
+
