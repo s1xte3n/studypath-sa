@@ -25,11 +25,11 @@ Help South African Grade 11–12 learners and recent matric graduates explore st
 - Do not provision Azure resources until subscription/tenant access, permissions, cost controls and deployment responsibility are confirmed.
 - Name accountable owners for product decisions, catalogue verification, cloud, security/privacy and release/demo readiness.
 
-These are accepted directions, not evidence that catalogue data, cost feasibility, privacy review, team ownership or Azure access have been verified.
+The owner approved these directions and attests that account-specific checks are complete. Public-source checks and the gate decision are recorded in `PHASE0-ONLINE-EVIDENCE.md`. Account-specific Azure records were not independently inspected by the assistant. Implementation, testing, provisioning and release remain unverified.
 
 ## Users and constraints
 - Primary audience includes minors; privacy-by-design and data minimisation are required.
-- Hackathon MVP target: 26 October 2026, based on the supplied programme; confirm all current organiser requirements and deliverables.
+- Hackathon submission deadline: Monday 26 October 2026 at 23:59 per the supplied programme and calendar inference; confirm timezone and upload limits in Sonke.
 - Maximum total project spend: R100/month. Prefer free tiers. Verify prices, quotas and overage risk before provisioning.
 
 ## Technology baseline
@@ -46,4 +46,4 @@ This is a baseline, not evidence that these services have been provisioned or th
 - Application code, tests, CI/CD, infrastructure and deployment are not yet evidenced by the initial inspection.
 
 ## Current gate
-PROJECT READY remains blocked by outstanding source catalogue evidence, Azure ownership/access, service-by-service cost validation, operational privacy/data-handling review, named team owners, and hackathon requirement verification. See `PROJECT-STATUS.md` and `OPEN-QUESTIONS.md`.
+PROJECT READY passed on 2026-10-13 for PRD/requirements planning only. The owner attests account-specific Azure and hackathon checks are complete; public UJ/Microsoft source checks are logged in `PHASE0-ONLINE-EVIDENCE.md`. The gate does not mean the app is implemented, tested, deployed or ready for public learner use. See `PROJECT-STATUS.md` and `OPEN-QUESTIONS.md`.
