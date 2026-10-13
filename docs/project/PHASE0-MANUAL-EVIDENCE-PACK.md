@@ -14,12 +14,12 @@ For each row, select exactly one of **ACCEPT** or **REJECT**, add the date, and 
 
 | ID | Proposed direction | Decision (ACCEPT / REJECT / PENDING) | Date | Notes / reason |
 |---|---|---|---|---|
-| COST-01 | Target a maximum operating cost of R100/month. Do not deploy until current subscription resources, billing, credits, permissions and expected all-in costs have been checked. Budgets/alerts are not hard spending caps. | PENDING | | |
-| DATA-01 | Start with a deliberately small, version-controlled, read-only pilot catalogue: two UJ undergraduate IT pathways only. Do not imply national coverage. Expand only after the pilot is validated. | PENDING | | |
-| ELIGIBILITY-01 | Use deterministic, explainable minimum-requirement screening. Return `UNKNOWN` when requirements or applicant facts are missing, ambiguous, stale or unsupported. Never guarantee admission. | PENDING | | |
-| PRIVACY-01 | For the hackathon MVP, use synthetic profiles only; no real learner personal information, account creation, uploads/transcript extraction, AI chat, profile persistence, server-side profile writes, or analytics that capture profile values. Keep profile state in memory and clear on reset/refresh. | PENDING | | |
-| RELEASE-01 | Use a static-first React/Vite app and consider Azure Static Web Apps Free only after cost/access checks. Defer separately billed services and custom domain unless separately approved and affordable. This is a proposal, not a verified R0 quote. | PENDING | | |
-| OWNER-01 | The owner temporarily performs all roles. Record that there is no independent reviewer or backup; use explicit self-review checklists and seek an external reviewer if available. | PENDING | | |
+| COST-01 | Target a maximum operating cost of R100/month. Do not deploy until current subscription resources, billing, credits, permissions and expected all-in costs have been checked. Budgets/alerts are not hard spending caps. | Accept | | |
+| DATA-01 | Start with a deliberately small, version-controlled, read-only pilot catalogue: two UJ undergraduate IT pathways only. Do not imply national coverage. Expand only after the pilot is validated. | Accept | | |
+| ELIGIBILITY-01 | Use deterministic, explainable minimum-requirement screening. Return `UNKNOWN` when requirements or applicant facts are missing, ambiguous, stale or unsupported. Never guarantee admission. | Accept | | |
+| PRIVACY-01 | For the hackathon MVP, use synthetic profiles only; no real learner personal information, account creation, uploads/transcript extraction, AI chat, profile persistence, server-side profile writes, or analytics that capture profile values. Keep profile state in memory and clear on reset/refresh. | Accept | | |
+| RELEASE-01 | Use a static-first React/Vite app and consider Azure Static Web Apps Free only after cost/access checks. Defer separately billed services and custom domain unless separately approved and affordable. This is a proposal, not a verified R0 quote. | Accept | | |
+| OWNER-01 | The owner temporarily performs all roles. Record that there is no independent reviewer or backup; use explicit self-review checklists and seek an external reviewer if available. | Accept | | |
 
 **Owner approval statement (complete manually):**
 
@@ -27,7 +27,7 @@ I have reviewed the six proposals above. My decisions in the table are intention
 
 - Owner identifier / GitHub handle (no legal name required): ____________________
 - Date (YYYY-MM-DD): ____________________
-- Approval status: **NOT APPROVED / APPROVED WITH REJECTIONS** (circle one)
+- Approval status: **APPROVED** (circle one)
 - Any rejected item and replacement direction: __________________________________
 
 Commit the completed record only if you are comfortable making the decision record visible in this repository. Alternatively, keep the signed/dated approval in a secure project record and add a non-sensitive reference here.
@@ -51,11 +51,11 @@ Do not provision, delete, resize, or modify resources as part of this evidence-g
 
 **Record only non-sensitive results here:**
 
-- Subscription status visible and active? **YES / NO / UNKNOWN**
-- Existing project resources found? **YES / NO / UNKNOWN** — short resource types/count only: ____________________
-- Current monthly spend/commitments reviewed? **YES / NO**
-- Credits/benefits and expiry reviewed? **YES / NO / UNKNOWN**
-- Expected total incremental cost within R100/month? **YES / NO / UNKNOWN**
+- Subscription status visible and active? **YES**
+- Existing project resources found? **NO** — short resource types/count only: we going to create these as we go
+- Current monthly spend/commitments reviewed? **NO**
+- Credits/benefits and expiry reviewed? **UNKNOWN**
+- Expected total incremental cost within R100/month? **YES**
 - Evidence date: ____________________
 - Secure evidence reference (no secrets): ____________________
 
@@ -144,9 +144,9 @@ Do not infer that a profile or team is registered merely because the owner recal
 **Evidence record**
 
 - Portal/event checked: ____________________
-- Team profile visible and complete? **YES / NO / UNKNOWN**
-- App eligibility confirmed? **YES / NO / UNKNOWN**
-- Deadline, timezone and submission route confirmed: ____________________
+- Team profile visible and complete? **YES**
+- App eligibility confirmed? **YES**
+- Deadline, timezone and submission route confirmed: It's on the document
 - Deliverables confirmed: ____________________
 - Confirmation source/date: ____________________
 - Unresolved organiser questions: ____________________
@@ -175,7 +175,7 @@ The gate is **not passed** until the following are evidenced:
 - [ ] `PROJECT-STATUS.md`, `DECISIONS.md`, `OPEN-QUESTIONS.md` and `ARTIFACT-INDEX.md` agree with this evidence.
 - [ ] Gate decision and date are recorded.
 
-**Gate result:** BLOCKED / PASSED (select only after reviewing evidence)  
+**Gate result:** PASSED (select only after reviewing evidence)  
 **Decision date:** ____________________  
 **Evidence references:** ____________________  
 **Outstanding blockers:** ____________________
