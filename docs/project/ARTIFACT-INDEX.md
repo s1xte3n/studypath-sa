@@ -16,12 +16,12 @@ These references were supplied in the project conversation; they are not yet sto
 ## Phase 0 artifacts
 | Artifact | Path | Status |
 |---|---|---|
-| Project overview | `docs/project/PROJECT-OVERVIEW.md` | Updated on decision branch; merge pending |
-| Project status | `docs/project/PROJECT-STATUS.md` | Updated on decision branch; merge pending |
-| Decisions and assumptions | `docs/project/DECISIONS.md` | Updated on decision branch; merge pending |
-| Open questions | `docs/project/OPEN-QUESTIONS.md` | Updated on decision branch; merge pending |
-| Project charter | `docs/project/PROJECT-CHARTER.md` | Updated on decision branch; merge pending |
-| Artifact index | `docs/project/ARTIFACT-INDEX.md` | Updated on decision branch; merge pending |
+| Project overview | `docs/project/PROJECT-OVERVIEW.md` | Merged to `main` in PR #2 |
+| Project status | `docs/project/PROJECT-STATUS.md` | Corrected on this branch to reflect PR #2 merge; merge of this correction pending |
+| Decisions and assumptions | `docs/project/DECISIONS.md` | Merged to `main` in PR #2 |
+| Open questions | `docs/project/OPEN-QUESTIONS.md` | Merged to `main` in PR #2 |
+| Project charter | `docs/project/PROJECT-CHARTER.md` | Merged to `main` in PR #2 |
+| Artifact index | `docs/project/ARTIFACT-INDEX.md` | Corrected on this branch; merge of this correction pending |
 
 ## Accepted Phase 0 decisions
 - Primary MVP journey is anonymous-first: learner enters subjects/marks and interests, sees explainable pathway matches and eligibility/uncertainty, and follows official-source next steps.
@@ -36,7 +36,8 @@ These references were supplied in the project conversation; they are not yet sto
 - Private repository: https://github.com/s1xte3n/studypath-sa
 - Default branch: `main`
 - Initial root listing: `README.md` only.
-- Phase 0 baseline docs merged in PR #1; these decision updates are pending review.
+- Phase 0 baseline docs merged in PR #1.
+- Accepted Phase 0 decision updates merged in PR #2 (merge commit `9c5aaa8c3b6743f48308fc77d1ac1c0366844423`).
 - No application code, tests, CI/CD, infrastructure or deployment have been verified by the initial inspection.
 
 ## Planned artifacts / status
