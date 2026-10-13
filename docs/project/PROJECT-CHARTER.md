@@ -1,6 +1,6 @@
 # StudyPath SA — Project Charter
 
-**Status:** Draft for owner/team approval  
+**Status:** Draft; accepted Phase 0 direction, formal gate approval pending  
 **Last updated:** 2026-10-13
 
 ## Mission
@@ -9,10 +9,14 @@ Help South African Grade 11–12 learners and recent matric graduates discover p
 ## Target users
 South African learners in Grades 11–12 and recent matric graduates. The audience includes minors, so privacy and data minimisation are foundational constraints.
 
-## Candidate MVP outcome
-A mobile-first journey in which a learner can enter relevant marks/subjects and interests, explore explainable qualification/institution matches, understand eligibility and uncertainty, and follow official-source links for next steps. Saved pathways and manual application tracking are candidates but depend on an approved authentication and privacy boundary.
+## Accepted MVP direction
+A mobile-first journey in which a learner enters relevant subjects/marks and interests, explores explainable qualification/institution matches, understands eligibility and uncertainty, and follows official-source links for next steps.
 
-This is a candidate scope, not an approved implementation requirement. Q-001 and related P0 questions must be resolved before the PRD.
+Initial exclusions: document uploads, AI chat and application submission. Saved pathways and manual application tracking are deferred until the authentication, persistence and privacy boundary is approved.
+
+Start with a small, manually curated catalogue from official sources. Record source URLs, verification dates and catalogue version where practical. The catalogue owner, exact sources, permitted use and verification cadence remain to be confirmed.
+
+This records the owner's accepted Phase 0 direction on 2026-10-13. Detailed requirements and measurable acceptance criteria must be defined in the PRD only after PROJECT READY is passed.
 
 ## Guardrails
 - Eligibility values are `ELIGIBLE`, `NOT_ELIGIBLE`, `UNKNOWN`.
@@ -22,15 +26,16 @@ This is a candidate scope, not an approved implementation requirement. Q-001 and
 - Never fabricate institutions, requirements, fees, deadlines or funding.
 - Label estimates and demo data.
 - AI may assist with explanations/extraction but must not be the eligibility authority.
+- Use synthetic development data and minimise personal data; anonymous exploration should not request names, ID numbers or contact details.
 
 ## Delivery and constraints
-- Hackathon MVP target date: 26 October 2026, according to the supplied programme.
+- Hackathon MVP target date: 26 October 2026, according to the supplied programme; current rules and deliverables must still be verified.
 - Budget ceiling: R100/month total; prefer free tiers.
 - Owner-confirmed baseline: React/Vite and documented Azure services, with API prefix `/api/v1`.
-- Use synthetic development data; do not commit secrets or real learner records.
-- No cloud provisioning until cost, subscription ownership and access are verified.
+- No cloud provisioning until subscription/tenant access, permissions, cost controls and deployment responsibility are verified.
+- Record named product, data/catalogue, cloud, security/privacy and release/demo owners before passing the readiness gate.
 
-## Candidate success criteria (pending approval)
+## Candidate success criteria (pending PRD)
 1. A learner can complete the agreed primary journey on a mobile viewport.
 2. Each displayed eligibility state is supported by deterministic rules and traceable requirement data; missing facts yield `UNKNOWN`.
 3. Each pathway provides a clear explanation and official-source next step.
@@ -42,4 +47,4 @@ This is a candidate scope, not an approved implementation requirement. Q-001 and
 Project owner/team must approve scope, requirements, architecture changes, privacy/data decisions, spending and release. Maintain traceability: Requirement ID → UI/API contract → Test ID → implementation → CI result → release evidence.
 
 ## Approval required
-This charter is not approved until the owner/team confirms the MVP journey, exclusions, success criteria, named owners and P0 risk decisions.
+The MVP direction has been accepted, but this charter and PROJECT READY gate remain pending until remaining P0 evidence is completed, named owners are recorded, and the owner/team explicitly approves the Phase 0 exit.
