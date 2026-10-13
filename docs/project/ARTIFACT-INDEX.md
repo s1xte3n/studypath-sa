@@ -17,7 +17,8 @@ These references were supplied in the project conversation; they are not yet sto
 | Artifact | Path | Status |
 |---|---|---|
 | Project overview | `docs/project/PROJECT-OVERVIEW.md` | Present in repository |
-| Project status | `docs/project/PROJECT-STATUS.md` | Updated on main; Phase 1 planning authorized |\n| Master project checklist | `docs/project/MASTER-PROJECT-CHECKLIST.md` | Added on 2026-10-13; Phase 0 explicitly recorded as passed for Phase 1 planning only |
+| Project status | `docs/project/PROJECT-STATUS.md` | Updated on main; Phase 1 planning authorized |
+| Master project checklist | `docs/project/MASTER-PROJECT-CHECKLIST.md` | Added on 2026-10-13; Phase 0 explicitly recorded as passed for Phase 1 planning only |
 | Decisions and assumptions | `docs/project/DECISIONS.md` | Present in repository |
 | Open questions | `docs/project/OPEN-QUESTIONS.md` | Updated on main; downstream work tracked |
 | Project charter | `docs/project/PROJECT-CHARTER.md` | Present in repository |
