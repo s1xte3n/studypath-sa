@@ -1,6 +1,6 @@
 # StudyPath SA — Project Charter
 
-**Status:** Draft; accepted Phase 0 direction, formal gate approval pending  
+**Status:** Approved for Phase 1 planning; PROJECT READY passed for PRD/requirements only  
 **Last updated:** 2026-10-13
 
 ## Mission
@@ -47,5 +47,5 @@ This records the owner's accepted Phase 0 direction and the PROJECT READY gate d
 ## Governance
 Project owner/team must approve scope, requirements, architecture changes, privacy/data decisions, spending and release. Maintain traceability: Requirement ID → UI/API contract → Test ID → implementation → CI result → release evidence.
 
-## Approval required
-The MVP direction and provisional single-person role assignments are owner-confirmed. The owner also reports an existing owned Azure subscription, a completed Sonke team profile and new-app status; these statements are not all independently verified. The charter and PROJECT READY gate remain pending until catalogue records are approved and verified, cost feasibility is evidenced, privacy/security review is recorded, Azure access/billing is inspected, hackathon details are confirmed, and the owner explicitly approves the Phase 0 exit.
+## Approval and gate record
+The owner approved the MVP direction and provisional single-person role assignments. On 2026-10-13 the owner confirmed the remaining checks are complete and approved the Phase 0 exit. Public UJ/Microsoft sources and the supplied hackathon programme are recorded in `PHASE0-ONLINE-EVIDENCE.md`. Account-specific Azure and Sonke records are owner-attested rather than independently inspected by the assistant. PROJECT READY passed for PRD/requirements planning only; this is not implementation, deployment or release approval.
