@@ -69,7 +69,7 @@ For the MVP:
 - Do not claim admission, selection, fees or funding outcomes.
 - Recheck programme pages and the prospectus before release and refresh the catalogue at least every 30 days during active development.
 
-## 3. Hosting and cost-source check
+## 4. Hosting and cost-source check
 
 Official Microsoft sources:
 - Static Web Apps pricing: https://azure.microsoft.com/en-us/pricing/details/app-service/static/
@@ -91,7 +91,7 @@ On 2026-10-13, the project owner stated: **“Everything is verified.”** For P
 
 **Evidence limitation:** No sensitive subscription identifiers, billing records, screenshots or saved Pricing Calculator estimate were added to the repository. The attestation is recorded as owner-supplied, not as independently inspected billing evidence. Before any resource is created, retain a private/redacted cost record and confirm that the intended deployment contains no paid or metered add-ons. Do not add PostgreSQL, APIM, separately billed Functions, AI, document extraction, paid monitoring or other billable services without a new cost review and explicit approval.
 
-## 4. Hackathon programme and owner confirmation
+## 5. Hackathon programme and owner confirmation
 
 Source: supplied FNB AOTY Hackathon 2026 - Programme.pdf (event briefing exported from Sonke on 11 October 2026).
 
@@ -105,7 +105,7 @@ The programme states:
 
 The project owner confirms that the Sonke team profile is complete and StudyPath SA is a new app being developed before the hackathon. This is an owner attestation; the Sonke portal itself was not accessed in this review. The programme gives a submission deadline of Monday 23:59 but does not specify a timezone in the extracted text. Confirm the displayed portal deadline/timezone when preparing final submission.
 
-## 5. Readiness decision and boundaries
+## 6. Readiness decision and boundaries
 
 ### Decision
 
@@ -132,6 +132,6 @@ Basis:
 - It does not automatically authorize Azure provisioning. Before provisioning, the actual planned resources must be rechecked against the R100/month cap and the private owner cost record; obtain explicit approval for any billable service.
 - It does not permit final admission predictions. Full eligibility outcomes must remain UNKNOWN wherever rules are incomplete or ambiguous.
 
-## 6. Next gate
+## 7. Next gate
 
 **Phase 1 — PRD approval.** Define measurable acceptance criteria and scope, map requirements to tests, and keep the initial MVP real-time interactive (not a static landing page). Subsequent gates must verify implementation, privacy behaviour, tests, CI/CD, cost, deployment and release evidence before public learner-facing use.
