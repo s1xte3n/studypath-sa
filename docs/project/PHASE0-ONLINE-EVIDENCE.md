@@ -1,6 +1,6 @@
 # StudyPath SA — Phase 0 Online Evidence and Owner Attestation
 
-**Evidence date:** 2026-10-13  
+**Evidence date:** 2026-10-14 (repository/deployment update; public-source checks below were performed on 2026-10-13)  
 **Repository:** https://github.com/s1xte3n/studypath-sa  
 **Gate decision:** PROJECT READY — **PASSED for PRD/planning only**, based on the project owner's explicit confirmation that the remaining access, cost, operational and team checks have been completed, plus the public-source checks recorded below.  
 **Important boundary:** This decision authorizes Phase 1 PRD work. It does not assert that application code, privacy controls, tests, CI/CD, Azure resources or a deployment exist. Cloud provisioning and learner-facing release remain subject to their own implementation, cost and release gates.
@@ -10,8 +10,23 @@
 - **Online-verified:** Facts visible in official public sources linked below as checked on 2026-10-13.
 - **Owner-attested:** The project owner stated on 2026-10-13 that all previously listed checks are verified and confirmed the hackathon details. The owner has not uploaded redacted portal screenshots or a saved cost estimate to this repository; therefore, the assistant cannot independently inspect those account-specific records.
 - **Not implemented / downstream gate:** Technical controls that can only be tested against an actual build remain implementation and release requirements.
+- **Owner-supplied command output (2026-10-14):** Local Git state and tracked-file inventory are recorded below; the assistant did not directly access the local filesystem.
+- **Owner-confirmed deployment state (2026-10-14):** The project has not been deployed. This is not a deployment failure; there is no live deployment to test.
 
-## 2. University of Johannesburg pilot catalogue — public-source checks
+## 2. Local repository and deployment state (owner-supplied evidence, 2026-10-14)
+
+The project owner supplied command output for local path `Sixteen/Desktop/Projects/studypath-sa` showing:
+
+- Branch: `main`.
+- HEAD: `3a8f17e44c9c2f079b8ce71e14eebd56519cb52e` (`docs: fix checklist index formatting`).
+- `git status`: clean; branch up to date with `origin/main`.
+- `git rev-list --left-right --count main...origin/main`: `0 0`, indicating no local/remote commit divergence in that comparison.
+- The supplied `git ls-files` listing contains `.gitignore`, `CONTRIBUTING.md`, `README.md`, `SECURITY.md`, and project documentation under `docs/project/`; it does not list app source, a package manifest, tests, CI workflow or infrastructure files.
+- Deployment: the project owner confirmed StudyPath SA has not been deployed. No live URL, hosting resource, deployment history or smoke-test result is claimed.
+
+**Evidence boundary:** These are owner-supplied command output and confirmation, not an independent local filesystem or Azure portal inspection. The Git result resolves the local working-tree/synchronisation caveat based on the supplied output. Deployment is now a known **not deployed** state, not an unresolved question about whether a deployment exists. Azure subscription/billing/cost evidence and the Sonke portal remain owner-attested or unverified as described below.
+
+## 3. University of Johannesburg pilot catalogue — public-source checks
 
 ### UJ-BSC-IT — BSc in Information Technology
 
