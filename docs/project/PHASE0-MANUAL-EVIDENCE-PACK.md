@@ -2,7 +2,7 @@
 
 **Purpose:** Collect the owner decisions and external evidence that cannot safely be inferred or fabricated by an assistant. Complete this pack before the PROJECT READY gate can pass.
 
-**Status:** Template; not yet completed or approved.  
+**Status:** Incomplete; owner decision selections are recorded, but the approval metadata and required evidence are incomplete. Phase 0 remains blocked.  
 **Prepared:** 2026-10-13  
 **Repository:** `s1xte3n/studypath-sa`
 
@@ -175,7 +175,7 @@ The gate is **not passed** until the following are evidenced:
 - [ ] `PROJECT-STATUS.md`, `DECISIONS.md`, `OPEN-QUESTIONS.md` and `ARTIFACT-INDEX.md` agree with this evidence.
 - [ ] Gate decision and date are recorded.
 
-**Gate result:** PASSED (select only after reviewing evidence)  
+**Gate result:** BLOCKED / NOT PASSED (do not mark PASSED until all required evidence is reviewed)  
 **Decision date:** ____________________  
 **Evidence references:** ____________________  
 **Outstanding blockers:** ____________________
