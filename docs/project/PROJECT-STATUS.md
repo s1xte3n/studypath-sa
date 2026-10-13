@@ -1,7 +1,7 @@
 # StudyPath SA — Project Status
 
-**Status:** Phase 0 — Discovery in progress  
-**Gate:** `PROJECT READY` — **BLOCKED / NOT PASSED**  
+**Status:** Phase 1 — PRD and requirements planning  
+**Gate:** `PROJECT READY` — **PASSED for Phase 1 planning only**  
 **Last updated:** 2026-10-13
 
 ## Verified repository state
