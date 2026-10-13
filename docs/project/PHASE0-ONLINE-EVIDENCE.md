@@ -143,3 +143,20 @@ Basis:
 Created [`AZURE-COST-ESTIMATE.md`](AZURE-COST-ESTIMATE.md) as a preliminary estimate worksheet. The selected baseline is one Azure Static Web Apps Free app, with an estimated Azure recurring cost of **R0/month** for that service only. The estimate excludes Functions/APIs, PostgreSQL, API Management, Azure OpenAI, Document Intelligence, Front Door, paid monitoring, domain registration, and potential third-party/GitHub usage charges. The public Microsoft pricing page and quota documentation support the Free-plan baseline and its quota limitations.
 
 **Evidence boundary:** the worksheet is not a saved Azure Pricing Calculator quote and does not verify account-specific prices, currency/tax treatment, billing scope, or Cost Analysis. The owner must save/review the signed-in calculator result and privately inspect current Cost Analysis before provisioning. No resources were created as part of this estimate; the R100/month cap and explicit no-provisioning boundary remain in force.
+
+
+## 9. Owner-supplied Azure Pricing Calculator output — 2026-10-14
+
+The project owner pasted the following calculator values into the project conversation:
+
+- Service: Static Web Apps
+- Tier: Free
+- Region: Central US
+- Estimated monthly cost: **$0.00**
+- Estimated upfront cost: **$0.00**
+- Support line: **$0.00**
+- Licensing program shown: Microsoft Customer Agreement (MCA)
+- Billing account and billing profile fields: blank in the pasted table
+- Total shown: **$0.00 monthly**
+
+The estimate details are recorded in [`AZURE-COST-ESTIMATE.md`](AZURE-COST-ESTIMATE.md). This is **owner-supplied calculator output**, not an independently inspected signed-in calculator session. It supports the listed Static Web Apps Free estimate only; it does not certify that all project, GitHub, domain or third-party costs are zero. Subscription billing scope, Cost Analysis period and any account-specific charges remain unverified. Before provisioning, review the private Cost Analysis and exact planned resource list against the R100/month cap. No resources were created by this cost review.
