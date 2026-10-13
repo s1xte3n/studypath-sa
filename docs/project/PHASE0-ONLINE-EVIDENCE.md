@@ -12,6 +12,7 @@
 - **Not implemented / downstream gate:** Technical controls that can only be tested against an actual build remain implementation and release requirements.
 - **Owner-supplied command output (2026-10-14):** Local Git state and tracked-file inventory are recorded below; the assistant did not directly access the local filesystem.
 - **Owner-confirmed deployment state (2026-10-14):** The project has not been deployed. This is not a deployment failure; there is no live deployment to test.
+- **Owner-supplied Azure portal details (2026-10-14):** The owner reports that the `StudyPath SA` subscription is `Active`, the owner role is `Owner`, and the plan is `Azure Plan`. The owner reports that no costs exist. The subscription ID and directory identifiers were intentionally not recorded in this repository. The billing scope, cost-analysis date range, and supporting screenshots were not independently inspected; this remains owner-attested evidence pending independent review.
 
 ## 2. Local repository and deployment state (owner-supplied evidence, 2026-10-14)
 
@@ -89,7 +90,7 @@ On 2026-10-13, the project owner stated: **“Everything is verified.”** For P
 - Azure Static Web Apps Free is the selected hosting direction.
 - The project-wide hard cap remains **R100/month**.
 
-**Evidence limitation:** No sensitive subscription identifiers, billing records, screenshots or saved Pricing Calculator estimate were added to the repository. The attestation is recorded as owner-supplied, not as independently inspected billing evidence. Before any resource is created, retain a private/redacted cost record and confirm that the intended deployment contains no paid or metered add-ons. Do not add PostgreSQL, APIM, separately billed Functions, AI, document extraction, paid monitoring or other billable services without a new cost review and explicit approval.
+**Evidence limitation (updated 2026-10-14):** The owner supplied the subscription status/role/plan details above and reports no costs exist. No sensitive subscription identifiers, billing records, screenshots or saved Pricing Calculator estimate were added to the repository. The cost statement is recorded as owner-supplied, not as independently inspected billing evidence; the exact billing scope and date range are not documented here. Before any resource is created, retain a private/redacted cost record, have a second reviewer inspect the portal evidence if available, and confirm that the intended deployment contains no paid or metered add-ons. Do not add PostgreSQL, APIM, separately billed Functions, AI, document extraction, paid monitoring or other billable services without a new cost review and explicit approval.
 
 ## 5. Hackathon programme and owner confirmation
 
