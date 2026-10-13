@@ -2,7 +2,7 @@
 
 **Purpose:** Collect the owner decisions and external evidence that cannot safely be inferred or fabricated by an assistant. Complete this pack before the PROJECT READY gate can pass.
 
-**Status:** Incomplete; owner decision selections are recorded, but the approval metadata and required evidence are incomplete. Phase 0 remains blocked.  
+**Status:** Incomplete; owner decisions and approval metadata are recorded. Subscription/billing, catalogue, privacy, hackathon and consistency evidence remain incomplete. Phase 0 remains blocked.  
 **Prepared:** 2026-10-13  
 **Repository:** `s1xte3n/studypath-sa`
 
@@ -14,11 +14,11 @@ For each row, select exactly one of **ACCEPT** or **REJECT**, add the date, and 
 
 | ID | Proposed direction | Decision (ACCEPT / REJECT / PENDING) | Date | Notes / reason |
 |---|---|---|---|---|
-| COST-01 | Target a maximum operating cost of R100/month. Do not deploy until current subscription resources, billing, credits, permissions and expected all-in costs have been checked. Budgets/alerts are not hard spending caps. | Accept | | |
+| COST-01 | Target a maximum operating cost of R100/month. Do not deploy until current subscription resources, billing, commitments, permissions and expected all-in costs have been checked. Do not rely on the expired 12-month Azure free-account offer; no credits will be used. Budgets/alerts are not hard spending caps. | Accept | 2026-10-13 | Owner reports no StudyPath resources provisioned (current project spend R0), no existing project resource costs, and no credits will be used. Static Web Apps Free remains acceptable as the hosting plan on the existing subscription. |
 | DATA-01 | Start with a deliberately small, version-controlled, read-only pilot catalogue: two UJ undergraduate IT pathways only. Do not imply national coverage. Expand only after the pilot is validated. | Accept | | |
 | ELIGIBILITY-01 | Use deterministic, explainable minimum-requirement screening. Return `UNKNOWN` when requirements or applicant facts are missing, ambiguous, stale or unsupported. Never guarantee admission. | Accept | | |
 | PRIVACY-01 | For the hackathon MVP, use synthetic profiles only; no real learner personal information, account creation, uploads/transcript extraction, AI chat, profile persistence, server-side profile writes, or analytics that capture profile values. Keep profile state in memory and clear on reset/refresh. | Accept | | |
-| RELEASE-01 | Use a static-first React/Vite app and consider Azure Static Web Apps Free only after cost/access checks. Defer separately billed services and custom domain unless separately approved and affordable. This is a proposal, not a verified R0 quote. | Accept | | |
+| RELEASE-01 | Use a static-first React/Vite app and Azure Static Web Apps Free on the existing subscription, subject to cost/access checks. Do not rely on the expired 12-month Azure free-account offer. Defer separately billed services and custom domain unless separately approved and affordable. This is a direction, not a verified all-in R0 quote. | Accept | 2026-10-13 | Owner explicitly confirmed Static Web Apps Free is acceptable while the expired account offer will not be relied on. |
 | OWNER-01 | The owner temporarily performs all roles. Record that there is no independent reviewer or backup; use explicit self-review checklists and seek an external reviewer if available. | Accept | | |
 
 **Owner approval statement (complete manually):**
@@ -45,21 +45,22 @@ Do not provision, delete, resize, or modify resources as part of this evidence-g
 - [ ] Open **Cost Management + Billing** and inspect current month-to-date spend, prior spend, credits and any existing budgets.
 - [ ] Check whether any resources already incur recurring charges, including resources outside this repository/project.
 - [ ] Confirm the intended deployment region and whether any required service is unavailable or chargeable there.
-- [ ] If considering Static Web Apps Free, verify the actual plan, quotas, storage/bandwidth constraints and suitability for the intended app. Free tier does not establish an all-in R0 cost.
+- [ ] If using Azure Static Web Apps Free, verify plan availability, quotas, storage/bandwidth constraints and suitability for the intended app on the existing subscription. The expired Azure free-account offer will not be relied on. Free hosting plan does not establish an all-in R0 subscription cost.
 - [ ] Do not treat a budget or alert as a hard spending stop.
 - [ ] Capture redacted screenshots or export evidence to a secure location. Never commit subscription IDs, tenant IDs, billing identifiers or sensitive account details.
 
 **Record only non-sensitive results here:**
 
 - Subscription status visible and active? **YES**
-- Existing project resources found? **NO** — short resource types/count only: we going to create these as we go
-- Current monthly spend/commitments reviewed? **NO**
-- Credits/benefits and expiry reviewed? **UNKNOWN**
-- Expected total incremental cost within R100/month? **YES**
+- Existing StudyPath SA resources found? **NO (owner-reported)** — owner says none have been provisioned; resources will be created only after readiness checks.
+- Current StudyPath project spend? **R0 (owner-reported)**; no project resource costs reported.
+- Current subscription-wide monthly spend and commitments reviewed? **NO**
+- Credits/benefits: **will not be used** (owner decision); expiry/balance review is not required for the proposed plan but subscription billing/offer terms still need verification.
+- Expected total incremental cost within R100/month? **NOT YET VERIFIED**; R0 is the current project spend, not a forecast.
 - Evidence date: ____________________
 - Secure evidence reference (no secrets): ____________________
 
-**Stop condition:** If access, billing, existing resources, recurring costs or all-in cost cannot be verified, deployment remains blocked.
+**Stop condition:** If subscription status, effective permissions, billing visibility, unrelated commitments or all-in cost cannot be verified, deployment remains blocked.
 
 ## 3. Catalogue validation — official-source evidence required
 
