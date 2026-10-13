@@ -3,6 +3,8 @@
 **Status:** Phase 0 decisions recorded; PROJECT READY evidence gate still pending  
 **Last updated:** 2026-10-13
 
+Owner explicitly approved Q-002, Q-003, Q-004, Q-005, Q-010, Q-015 and Q-016 on 2026-10-13. These approvals accept the proposed direction/role assignments; they do not substitute for external evidence, implementation, or cost verification.
+
 ## Confirmed decisions
 
 | ID | Decision | Source / consequence |
@@ -28,7 +30,10 @@
 | D-018 | Provisional single-person ownership for the initial build: the project owner will hold all project roles for now | Owner confirmation on 2026-10-13. Owner also reports an existing owned Azure subscription, a completed Sonke team profile, and that StudyPath SA is a new app being developed before the hackathon. These reports are not independently verified. Risk: no backup or independent reviewer; Azure permissions, billing visibility and cost feasibility remain outstanding. |
 | D-019 | Static-first hackathon architecture: Azure Static Web Apps Free, static catalogue JSON, client-side deterministic matching; no paid/metered backend or custom domain. Do not rely on the expired 12-month Azure free-account offer. | Owner accepted on 2026-10-13. Static Web Apps Free is a hosting-plan choice on the existing subscription, distinct from the expired account offer. Deployment still requires subscription, permission, billing and cost verification; no all-in cost guarantee. |
 | D-020 | Initial catalogue proposed as two UJ undergraduate IT pathways with official source links and provenance | Proposal in `PHASE0-RESOLUTION-PROPOSAL.md`; pages checked 2026-10-13. Owner acceptance and complete-rule validation required before eligibility classification. |
-| D-021 | Proposed hackathon privacy boundary: synthetic profiles only, no real learner data, accounts, uploads, persistence, analytics or learner-profile telemetry | Proposal in `PHASE0-RESOLUTION-PROPOSAL.md`; implement and verify before demo. Real-learner-data use remains blocked pending appropriate privacy/legal review. |
+| D-021 | Hackathon privacy boundary: synthetic profiles only, no real learner data, accounts, uploads, persistence, analytics or learner-profile telemetry | Owner approved on 2026-10-13 (Q-005). Implement and verify before demo. Real-learner-data use remains blocked pending appropriate privacy/legal review. |
+| D-022 | Initial catalogue scope: two UJ undergraduate IT pilot pathways; project owner is initial curator | Owner approved on 2026-10-13 (Q-002). Complete-rule validation, source-use review and provenance checks remain required before final eligibility output. |
+| D-023 | The project owner accepts responsibility for cloud/budget decisions and for privacy incident contact and final release approval for the initial MVP | Owner approved on 2026-10-13 (Q-003, Q-004, Q-015, Q-016). Private incident contact route, escalation process, subscription permissions and all-in cost evidence remain outstanding. |
+| D-024 | Current hackathon readiness assumption retained: owner reports the team is profiled on Sonke and the app is new for the event | Owner approval recorded on 2026-10-13 (Q-010); profile visibility, eligibility, deadline and submission procedure still require external verification. |
 
 ## Product guardrails from the supplied specification
 - Eligibility states: `ELIGIBLE`, `NOT_ELIGIBLE`, `UNKNOWN`.
@@ -55,7 +60,7 @@
 - These are owner reports/decisions, not independent billing or subscription verification. They do not establish that the full subscription has no unrelated costs or that future all-in cost is R0.
 
 ## Still unresolved
-- Exact official sources, catalogue inventory, permitted use, curator, verification cadence and provenance fields.
+- Exact official sources, permitted use, verification cadence and provenance fields for the approved two-programme pilot; complete eligibility rules and current-cycle validation.
 - Azure subscription/tenant availability, accountable cloud owner, access and documented service-by-service cost/quotas/overage checks.
 - Learner data inventory and purpose, privacy notice/consent review where applicable, retention/deletion and incident handling.
 - Names and availability of team members and named product, data, security/privacy and release owners.
