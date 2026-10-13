@@ -78,3 +78,8 @@ Phase 1 — create and approve the PRD, user stories, measurable acceptance crit
 ## Azure cost estimate update — 2026-10-14
 
 Created [`docs/project/AZURE-COST-ESTIMATE.md`](AZURE-COST-ESTIMATE.md). The preliminary baseline estimates **R0/month for Azure Static Web Apps Free only**, with the static React/Vite app and browser-side matching; no backend, database, AI, API Management, or paid monitoring is included. Microsoft public pricing/quota sources were checked on 2026-10-14. This is not a saved, authenticated Azure Pricing Calculator quote and does not independently verify subscription billing. The owner must save/review the calculator result and private billing evidence before provisioning. The R100/month cap and no-provisioning boundary remain unchanged.
+
+
+## Azure Pricing Calculator output supplied — 2026-10-14
+
+The project owner supplied a calculator table showing Azure Static Web Apps, Free tier, **Central US**, **$0.00 estimated monthly cost**, **$0.00 estimated upfront cost**, and a **$0.00 Support** line. Licensing program is shown as Microsoft Customer Agreement (MCA); billing account/profile fields in the pasted table are blank. This evidence is recorded in [`AZURE-COST-ESTIMATE.md`](AZURE-COST-ESTIMATE.md). The calculator output is owner-supplied and has not been independently inspected in a signed-in session. It applies to the listed items only, not necessarily all project or third-party costs. Private Cost Analysis/billing scope verification and review of the exact planned resource list remain required before provisioning. The R100/month hard cap and no-provisioning boundary remain in force.
