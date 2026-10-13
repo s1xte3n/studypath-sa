@@ -10,7 +10,8 @@
 - Connected GitHub integration reports admin, read and write permissions.
 - Initial root listing contained `README.md` only; README content is a project title and one-line description.
 - Phase 0 baseline documentation and accepted direction decisions are present in the project documentation.
-- The PROJECT READY evidence pack was merged via PR #4. A follow-up owner-confirmation update is in review.
+- The PROJECT READY evidence pack and owner-confirmation update were merged through PRs #4 and #5.
+- Added `docs/project/PHASE0-RESOLUTION-PROPOSAL.md` with a static-first cost strategy, two official UJ pilot records, and a synthetic-data-only privacy boundary. This is a proposal; owner decisions and verification remain outstanding.
 - This is remote repository inspection. Local working-tree state has not been inspected.
 
 ## State by area
@@ -22,9 +23,9 @@
 | Application source and dependencies | Not found in initial root listing; no implementation verified |
 | Tests, CI workflows, infrastructure, database, deployment | Not yet verified; no execution evidence available |
 | MVP journey | Direction accepted: anonymous learner journey from subject/mark/interest inputs to explainable pathways, eligibility/uncertainty and official next steps |
-| Catalogue | Candidate official sources, provenance fields and a proposed cadence documented in the draft evidence pack; curator, permitted-use approval and verified catalogue records outstanding |
-| Budget | R100/month hard cap accepted; preliminary service screen identifies Azure PostgreSQL as a material risk; all-in regional estimate and cost approval outstanding |
-| Privacy and identity | Proposed data inventory, browser-only handling, retention and incident process documented for review; privacy/consent review and named owner outstanding |
+| Catalogue | Two source-backed UJ pilot records and explicit UNKNOWN/eligibility boundaries documented in `PHASE0-RESOLUTION-PROPOSAL.md`; owner approval and complete-rule verification remain outstanding |
+| Budget | Proposed static-first Azure Static Web Apps Free design, no paid backend; actual subscription resources, billing/credits and all-in cost not independently verified |
+| Privacy and identity | Synthetic-only, no-persistence/no-analytics boundary proposed; implementation, hosting metadata review and legal/privacy assessment remain outstanding; real learner inputs are not approved |
 | Azure subscription and accountable owners | Owner confirms a subscription exists and is theirs; permissions/billing visibility are not independently verified. Owner will hold all roles for now; no backup/independent reviewer. |
 | Hackathon | Owner confirms Sonke team profile is complete and this is a new app being developed before the event; profile not independently inspected and exact deadline remains unconfirmed |
 
@@ -39,10 +40,10 @@
 - Recorded owner confirmations: one person holds all roles for now; Azure subscription exists and is owned by the project owner; team is profiled on Sonke; this is a new app being developed before the hackathon.
 
 ## Remaining P0 blockers
-1. Approve catalogue scope/source-use policy/cadence and create verified admission records; the owner is curator but no backup is appointed.
-2. Inspect Azure tenant/subscription details, effective permissions and billing visibility; ownership is owner-confirmed, not independently verified.
-3. Produce an all-in estimate including credit expiry, overages and non-Azure costs, and record cost approval. PostgreSQL is a material risk against R100/month.
-4. Complete privacy/security review of the learner-data inventory, applicable consent questions, notice, retention/deletion and incident handling. Owner is assigned, but review evidence and private incident contact route remain outstanding.
+1. Owner must accept/reject the cost, catalogue, eligibility and privacy decisions in `docs/project/PHASE0-RESOLUTION-PROPOSAL.md`.
+2. Inspect Azure tenant/subscription, current resources, permissions, billing visibility, currency/credits and confirm the no-paid-services design stays within R100/month.
+3. Verify the two programme records and admission cycle again before use; complete the rule set before returning final eligibility states.
+4. Implement the synthetic-only privacy boundary, verify no profile values are transmitted/stored/logged, and review hosting metadata, notice and incident process. Real learner inputs remain blocked pending appropriate privacy/legal review.
 5. Assess the concentration risk of one person holding every role; arrange independent review if feasible before learner-facing release.
 6. Independently verify Sonke profile visibility and confirm exact submission deadline/upload procedure.
 

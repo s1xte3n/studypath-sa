@@ -67,3 +67,5 @@ These references were supplied in the project conversation; they are not yet sto
 
 ## Gate
 Complete P0 evidence and named ownership, obtain owner/team approval, and explicitly record PROJECT READY as passed before PRD refinement.
+
+| Phase 0 blocker resolution proposal | `docs/project/PHASE0-RESOLUTION-PROPOSAL.md` | Draft proposal: static-first cost strategy, two source-backed UJ pilot pathways, and synthetic-only privacy boundary; owner acceptance and verification required before gate passage |
