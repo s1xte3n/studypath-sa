@@ -23,6 +23,7 @@ These references were supplied in the project conversation; they are not yet sto
 | Project charter | `docs/project/PROJECT-CHARTER.md` | Present in repository |
 | Artifact index | `docs/project/ARTIFACT-INDEX.md` | Updated on main |
 | PROJECT READY evidence pack | `docs/project/PROJECT-READY-EVIDENCE.md` | Baseline pack retained; see completed `PHASE0-MANUAL-EVIDENCE-PACK.md` and `PHASE0-ONLINE-EVIDENCE.md` for gate decision and evidence distinctions |
+| Phase 0 online evidence | `docs/project/PHASE0-ONLINE-EVIDENCE.md` | Official UJ/Microsoft source checks, hackathon programme summary, owner attestations, and Phase 0 gate decision |
 
 ## Accepted Phase 0 decisions
 - Primary MVP journey is anonymous-first: learner enters subjects/marks and interests, sees explainable pathway matches and eligibility/uncertainty, and follows official-source next steps.
