@@ -136,3 +136,10 @@ Basis:
 ## 7. Next gate
 
 **Phase 1 — PRD approval.** Define measurable acceptance criteria and scope, map requirements to tests, and keep the initial MVP real-time interactive (not a static landing page). Subsequent gates must verify implementation, privacy behaviour, tests, CI/CD, cost, deployment and release evidence before public learner-facing use.
+
+
+## 8. Azure cost estimate follow-up — 2026-10-14
+
+Created [`AZURE-COST-ESTIMATE.md`](AZURE-COST-ESTIMATE.md) as a preliminary estimate worksheet. The selected baseline is one Azure Static Web Apps Free app, with an estimated Azure recurring cost of **R0/month** for that service only. The estimate excludes Functions/APIs, PostgreSQL, API Management, Azure OpenAI, Document Intelligence, Front Door, paid monitoring, domain registration, and potential third-party/GitHub usage charges. The public Microsoft pricing page and quota documentation support the Free-plan baseline and its quota limitations.
+
+**Evidence boundary:** the worksheet is not a saved Azure Pricing Calculator quote and does not verify account-specific prices, currency/tax treatment, billing scope, or Cost Analysis. The owner must save/review the signed-in calculator result and privately inspect current Cost Analysis before provisioning. No resources were created as part of this estimate; the R100/month cap and explicit no-provisioning boundary remain in force.
