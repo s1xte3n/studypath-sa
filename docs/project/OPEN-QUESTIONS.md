@@ -1,10 +1,10 @@
 # StudyPath SA — Open Questions
 
 **Status:** Phase 0 gate passed for Phase 1 PRD/planning on 2026-10-13; owner approvals and attestations recorded; downstream implementation/release work remains open  
-**Last updated:** 2026-10-13  
+**Last updated:** 2026-10-14  
 **Priority:** P0 blocks readiness/safety/budget; P1 must resolve before dependent phase; P2/P3 later.
 
-The owner approved the seven proposed Q decisions on 2026-10-13 and has since confirmed that all remaining checks are verified. The owner states they will hold all roles, own an Azure subscription, have a completed Sonke team profile, and are developing a new app. Account-specific facts are owner-attested, not independently inspected by the assistant. Public UJ and Microsoft sources are recorded in `PHASE0-ONLINE-EVIDENCE.md`.
+The owner approved the seven proposed Q decisions on 2026-10-13 and previously attested that account-specific checks were complete. On 2026-10-14, the owner supplied local Git command output showing a clean `main` branch with no local/remote divergence and confirmed that StudyPath SA has not been deployed. Azure account-specific facts and the Sonke portal remain owner-attested or unverified, not independently inspected by the assistant. Evidence is recorded in `PHASE0-ONLINE-EVIDENCE.md`.
 
 | ID | Priority | Question / remaining work | Owner | Required evidence / gate impact |
 |---|---|---|---|---|
@@ -16,7 +16,7 @@ The owner approved the seven proposed Q decisions on 2026-10-13 and has since co
 | Q-006 | Resolved in principle | Anonymous exploration versus saved pathways/tracking | Product/security owner — names outstanding | Anonymous exploration first; defer cross-session saves and manual application tracking until account, persistence and privacy boundaries are approved. |
 | Q-007 | Resolved in principle | Curated catalogue versus mandatory live integrations | Product/data owner — name outstanding | Begin with a small manually curated official-source catalogue. Source-use approval and verified records remain under Q-002. |
 | Q-008 | Resolved in principle | Who is the accountable approver and who owns each workstream? | Project owner (name not provided in conversation) | Owner confirms they hold all roles for now. Record single-person assignment, availability and no-backup risk; independent review remains advisable. |
-| Q-009 | P1 | Which deployment region, domain and environments are intended? | Cloud owner — name outstanding | Decide only after access and cost checks. No provisioning before the budget/access gate. |
+| Q-009 | P1 | Which deployment region, domain and environments are intended? | Cloud owner — name outstanding | **Current state:** not deployed (owner-confirmed 2026-10-14). Decide the target region/domain/environments only after the architecture and exact resource list are approved and cost/access checks are revalidated. No provisioning before explicit budget/access approval. |
 | Q-010 | Owner-attested profile; submission checklist active | Has the team met the hackathon's team-profile and submission requirements? | Project owner (release/demo) | Owner confirms Sonke profile complete and app is new. Programme facts and Monday 26 October 2026 23:59 derived deadline recorded in `PHASE0-ONLINE-EVIDENCE.md`; verify portal timezone/upload limits at submission. |
 | Q-011 | Resolved in principle | Is AI/document extraction required for the MVP? | Product owner — name outstanding | Current accepted direction defers uploads and AI chat; no Azure OpenAI or Document Intelligence deployment in the initial MVP unless scope, privacy and budget are explicitly reconsidered. |
 | Q-012 | P1 | What measurable success and demo acceptance criteria define completion? | Product owner/team — names outstanding | Define in PRD after PROJECT READY; include functional real-time input processing because static-only sites are not eligible under the supplied programme. |
@@ -26,4 +26,4 @@ The owner approved the seven proposed Q decisions on 2026-10-13 and has since co
 | Q-016 | Owner role accepted; keep contact route private | Which people will serve as privacy incident contact and final release approver? | Project owner | Owner is the incident contact and final release approver for now and states checks are complete. Keep the private contact route out of GitHub; document the incident response process before public demo. Independent reviewer/backup remains unavailable. |
 
 ## Gate policy
-PROJECT READY was passed on 2026-10-13 for Phase 1 PRD/requirements planning only. Owner-attested account checks are not independently verified by the assistant. Recheck the exact resource list and cost evidence before provisioning; do not add paid/metered services without renewed approval. Do not use real learner data until appropriate privacy/legal review and implementation controls are verified.
+PROJECT READY was passed on 2026-10-13 for Phase 1 PRD/requirements planning only. Local Git state is supported by owner-supplied command output dated 2026-10-14, and the owner confirms the app is not deployed. Owner-attested Azure account checks and Sonke portal details are not independently verified by the assistant. Recheck the exact resource list and cost evidence before provisioning; do not add paid/metered services without renewed approval. Do not use real learner data until appropriate privacy/legal review and implementation controls are verified.
