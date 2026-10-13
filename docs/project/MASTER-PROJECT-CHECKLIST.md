@@ -1,6 +1,6 @@
 # StudyPath SA — Master Project Checklist
 
-**Last updated:** 2026-10-13  
+**Last updated:** 2026-10-14  
 **Repository:** https://github.com/s1xte3n/studypath-sa  
 **Current phase:** Phase 1 — PRD and requirements planning  
 **Current gate:** `PROJECT READY` — **PASSED for Phase 1 planning only**
@@ -9,7 +9,7 @@
 
 | Phase | Exit gate | Evidence-based status | Checklist disposition |
 |---|---|---|---|
-| 0 — Project State | `PROJECT READY` | **PASSED on 2026-10-13 for Phase 1 planning only.** Scope, constraints, key decisions and high-impact risks are documented. Repository root/README were inspected remotely; the local working tree and deployment state are not verified. Azure account-specific checks are owner-attested, not independently inspected. | **Complete for the Phase 1 planning gate. Do not label Phase 0 “in progress.”** Retain the evidence limitations as caveats; they do not reverse the recorded gate decision. |
+| 0 — Project State | `PROJECT READY` | **PASSED on 2026-10-13 for Phase 1 planning only.** Scope, constraints, key decisions and high-impact risks are documented. Owner-supplied command output dated 2026-10-14 shows a clean local `main` branch matching `origin/main` (`0 0` divergence). Owner confirms the app has not been deployed. Azure account-specific checks remain owner-attested, not independently inspected. | **Complete for the Phase 1 planning gate. Do not label Phase 0 “in progress.”** Keep Azure/Sonke evidence limitations visible; deployment is a known not-deployed state and must be addressed at later delivery/release gates. |
 | 1 — PRD | `PRD READY` | Not verified; PRD and measurable acceptance criteria have not been approved. | Not complete |
 | 2 — Requirements | `REQUIREMENTS READY` | Not verified; requirements matrix and traceability are not yet approved. | Not complete |
 | 3 — Architecture | `ARCHITECTURE READY` | Proposed baseline exists; architecture approval and implementation are not verified. | Not complete |
@@ -34,11 +34,12 @@
 - [x] Phase 0 decision records and public-source evidence reviewed and recorded.
 - [x] Project owner approved the six recorded decision directions.
 - [x] Gate decision recorded: **PROJECT READY — PASSED for Phase 1 PRD/requirements planning only.**
-- [ ] Local working tree independently inspected.
+- [x] Local working-tree status and local/remote commit comparison checked using owner-supplied command output (2026-10-14); assistant did not directly inspect the local filesystem.
 - [ ] Azure account-specific evidence independently inspected by the assistant or another reviewer.
-- [ ] Application code, tests, CI/CD, infrastructure and deployment verified.
+- [ ] Application code, tests, CI/CD and infrastructure verified.
+- [x] Deployment state established from owner confirmation: not deployed; no live deployment to verify.
 
-The unchecked items above are **evidence limitations or downstream implementation/release work**, not a reason to rewrite the recorded Phase 0 gate as “in progress.” They must remain visible and be closed at the appropriate later gate. Do not infer that a missing verification means an external artifact definitely does not exist.
+The unchecked items above are **evidence limitations or downstream implementation/release work**, not a reason to rewrite the recorded Phase 0 gate as “in progress.” The local Git caveat is closed based on owner-supplied command output; Azure/Sonke evidence limitations remain. Deployment is confirmed not to exist yet, so implementation, delivery and release work remains ahead. Do not infer that missing evidence proves an external artifact does not exist.
 
 ## Phase 1 — PRD gate checklist
 
