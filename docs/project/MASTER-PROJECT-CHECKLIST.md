@@ -9,7 +9,7 @@
 
 | Phase | Exit gate | Evidence-based status | Checklist disposition |
 |---|---|---|---|
-| 0 — Project State | `PROJECT READY` | **PASSED on 2026-10-13 for Phase 1 planning only.** Scope, constraints, key decisions and high-impact risks are documented. Owner-supplied command output dated 2026-10-14 shows a clean local `main` branch matching `origin/main` (`0 0` divergence). Owner confirms the app has not been deployed. Azure account-specific checks remain owner-attested, not independently inspected. | **Complete for the Phase 1 planning gate. Do not label Phase 0 “in progress.”** Keep Azure/Sonke evidence limitations visible; deployment is a known not-deployed state and must be addressed at later delivery/release gates. |
+| 0 — Project State | `PROJECT READY` | **PASSED on 2026-10-13 for Phase 1 planning only.** Scope, constraints, key decisions and high-impact risks are documented. Owner-supplied command output dated 2026-10-14 shows a clean local `main` branch matching `origin/main` (`0 0` divergence). Owner confirms the app has not been deployed. Owner reports the Azure subscription is Active, their role is Owner, plan is Azure Plan, and no costs exist; account-specific evidence remains owner-attested, not independently inspected. | **Complete for the Phase 1 planning gate. Do not label Phase 0 “in progress.”** Keep Azure/Sonke evidence limitations visible; deployment is a known not-deployed state and must be addressed at later delivery/release gates. |
 | 1 — PRD | `PRD READY` | Not verified; PRD and measurable acceptance criteria have not been approved. | Not complete |
 | 2 — Requirements | `REQUIREMENTS READY` | Not verified; requirements matrix and traceability are not yet approved. | Not complete |
 | 3 — Architecture | `ARCHITECTURE READY` | Proposed baseline exists; architecture approval and implementation are not verified. | Not complete |
@@ -35,7 +35,7 @@
 - [x] Project owner approved the six recorded decision directions.
 - [x] Gate decision recorded: **PROJECT READY — PASSED for Phase 1 PRD/requirements planning only.**
 - [x] Local working-tree status and local/remote commit comparison checked using owner-supplied command output (2026-10-14); assistant did not directly inspect the local filesystem.
-- [ ] Azure account-specific evidence independently inspected by the assistant or another reviewer.
+- [ ] Azure account-specific evidence independently inspected by the assistant or another reviewer. Owner supplied Active subscription / Owner role / Azure Plan details and reports no costs on 2026-10-14; billing scope/date range and redacted evidence remain unreviewed.
 - [ ] Application code, tests, CI/CD and infrastructure verified.
 - [x] Deployment state established from owner confirmation: not deployed; no live deployment to verify.
 
