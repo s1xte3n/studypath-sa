@@ -2,7 +2,7 @@
 
 **Status:** Phase 1 — PRD and requirements planning  
 **Gate:** `PROJECT READY` — **PASSED for Phase 1 planning only**  
-**Last updated:** 2026-10-13
+**Last updated:** 2026-10-14
 
 ## Verified repository state
 - Repository: https://github.com/s1xte3n/studypath-sa
@@ -12,7 +12,7 @@
 - Phase 0 baseline documentation and accepted direction decisions are present in the project documentation.
 - The PROJECT READY evidence pack and owner-confirmation update were merged through PRs #4 and #5.
 - Added `docs/project/PHASE0-RESOLUTION-PROPOSAL.md` and `docs/project/PHASE0-ONLINE-EVIDENCE.md`. Official UJ programme pages and Microsoft Static Web Apps pricing/quota sources were checked online. The owner approved all six decision records and attests the account-specific checks are complete. PROJECT READY is passed for Phase 1 PRD/planning only; account-specific evidence remains owner-attested rather than independently inspected.
-- This is remote repository inspection. Local working-tree state has not been inspected.
+- Local repository verification was supplied by the project owner on 2026-10-14: path `Sixteen/Desktop/Projects/studypath-sa`, branch `main`, HEAD `3a8f17e44c9c2f079b8ce71e14eebd56519cb52e`, `git status` clean, local branch up to date with `origin/main`, and `git rev-list --left-right --count main...origin/main` returned `0 0`. The tracked-file listing supplied for this check contains repository guidance and `docs/project/` files; it does not list application source, a package manifest, tests or CI workflow. This is owner-supplied command output, not a direct inspection of the local filesystem by the assistant.
 
 ## State by area
 
@@ -21,7 +21,8 @@
 | Product specification, hackathon programme, development SOP | Supplied project references; hackathon programme reviewed and online evidence logged |
 | Documented React/Vite + Azure stack | Owner-confirmed baseline; not provisioned/validated |
 | Application source and dependencies | Not found in initial root listing; no implementation verified |
-| Tests, CI workflows, infrastructure, database, deployment | Not yet verified; no execution evidence available |
+| Tests, CI workflows, infrastructure, database | Not verified; no execution evidence available | 
+| Deployment | Confirmed by project owner on 2026-10-14: StudyPath SA has not been deployed. No live application URL or deployment has been verified. |
 | MVP journey | Direction accepted: anonymous learner journey from subject/mark/interest inputs to explainable pathways, eligibility/uncertainty and official next steps |
 | Catalogue | Two UJ programme pages checked online; minimum thresholds and 2026 application dates recorded in `PHASE0-ONLINE-EVIDENCE.md`; full admission prediction remains out of scope and ambiguity maps to UNKNOWN |
 | Budget | Owner attests subscription/access/billing and R100/month checks are complete. Public Microsoft pricing/quota sources were checked. Account-specific billing records and a saved quote were not uploaded; attestation is not independent verification. Free static hosting only; no paid add-ons without renewed approval. |
@@ -62,12 +63,12 @@ The following are downstream implementation/release controls, not blockers to be
 Owner approval of the Phase 0 direction/materials is recorded. These approvals do not by themselves provide the external and implementation evidence required to pass the gate.
 
 ## Evidence limitations
-- No application tests, build, security scan, cloud resource, deployment or CI run has been performed or verified. Phase 0 passage does not imply these exist.
+- No application tests, build, security scan, cloud resource, or CI run has been performed or verified. The project owner confirmed on 2026-10-14 that StudyPath SA has not been deployed; therefore there is no live deployment to smoke-test yet. Phase 0 passage does not imply these exist.
 - The owner attests that Azure access, billing, commitments and cost checks are complete. Account-specific details were not independently inspected by the assistant and no billing screenshot or saved quote was committed; see `PHASE0-ONLINE-EVIDENCE.md`.
 - Pricing review is a preliminary screen of official pricing pages, not a saved Pricing Calculator quote; final regional prices, currency conversion, tax, usage assumptions and credits remain unverified.
 - Official UJ programme pages and Microsoft pricing/quota pages were checked online on 2026-10-13. The catalogue is a bounded two-programme pilot; full admission predictions remain unsupported and must return UNKNOWN where rules are incomplete.
 - Hackathon deliverables and date are extracted from the supplied programme. The owner confirms Sonke profiling and new-app status; the portal itself was not accessed. Confirm the portal timezone/upload details before submission.
-- The absence of files in the initial root listing is not a complete audit of every branch or historical commit.
+- The supplied local tracked-file listing and remote repository inspection do not constitute a complete audit of every branch or historical commit.
 
 ## Next gate
 Phase 1 — create and approve the PRD, user stories, measurable acceptance criteria and requirements traceability matrix. PROJECT READY passage authorizes planning only; it is not a deployment approval. No application implementation, Azure provisioning or deployment was performed by this documentation update.
