@@ -10,6 +10,7 @@
 - Connected GitHub integration reports admin, read and write permissions.
 - Initial root listing contained `README.md` only; README content is a project title and one-line description.
 - Phase 0 baseline documentation was merged to `main` in PR #1.
+- Accepted Phase 0 decision updates were merged to `main` in PR #2 (merge commit `9c5aaa8c3b6743f48308fc77d1ac1c0366844423`).
 - This is a remote repository inspection. Local working-tree state has not been inspected.
 
 ## State by area
@@ -30,8 +31,8 @@
 - Confirmed repository identity, private visibility, default branch and integration permissions.
 - Inspected the root listing and README.
 - Created and merged Phase 0 baseline documentation in PR #1.
-- Recorded owner decisions for MVP direction, curated data strategy, hard budget cap, privacy/data minimisation, anonymous-first exploration, no provisioning before ownership/cost checks, and need for named team responsibilities.
-- Updated Phase 0 source-of-truth documents on branch `docs/phase-0-decisions`; changes are not yet merged or independently verified on `main`.
+- Recorded and merged owner decisions for MVP direction, curated data strategy, hard budget cap, privacy/data minimisation, anonymous-first exploration, no provisioning before ownership/cost checks, and need for named team responsibilities in PR #2.
+- Re-fetched the updated Phase 0 documents from `main` after PR #2 merged.
 
 ## Remaining P0 blockers
 1. Produce the initial official-source catalogue plan: source URLs, permitted use, initial catalogue scope, curator, verification cadence and provenance.
