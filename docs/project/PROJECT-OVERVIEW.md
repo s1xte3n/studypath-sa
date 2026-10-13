@@ -1,8 +1,8 @@
 # StudyPath SA — Project Overview
 
-**Status:** Phase 0 — Discovery in progress  
+**Status:** Phase 1 — PRD and requirements planning  
 **Last updated:** 2026-10-13  
-**Readiness gate:** PROJECT READY — NOT PASSED
+**Readiness gate:** PROJECT READY — PASSED for Phase 1 planning only
 
 ## Purpose
 Help South African Grade 11–12 learners and recent matric graduates explore study pathways using school marks, subjects, interests, preferences and admission requirements.
