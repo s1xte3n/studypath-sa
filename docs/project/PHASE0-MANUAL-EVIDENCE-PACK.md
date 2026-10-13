@@ -91,18 +91,18 @@ For each programme, verify and record:
 
 | Field | BSc Information Technology | Diploma in Business Information Technology |
 |---|---|---|
-| Academic year / catalogue version | | |
-| Official source(s) checked | | |
-| Date checked (YYYY-MM-DD) | | |
-| APS calculation verified? | | |
-| Full subject rules verified? | | |
-| Applicant categories and equivalencies verified? | | |
-| Additional selection rules checked? | | |
-| Fees/cost information verified or clearly unavailable? | | |
-| Funding/deadline sources verified? | | |
-| Reviewer / second check | | |
-| Validation outcome (PASS / FAIL / UNKNOWN) | | |
-| Open gaps and follow-up owner | | |
+| Academic year / catalogue version | 2026 / pilot-2026-10-13-v1 | 2026 / pilot-2026-10-13-v1 |
+| Official source(s) checked | UJ programme page; UJ undergraduate application page | UJ programme page; UJ undergraduate application page |
+| Date checked (YYYY-MM-DD) | 2026-10-13 | 2026-10-13 |
+| APS calculation verified? | No — do not calculate eligibility from APS until method is verified | No — do not calculate eligibility from APS until method is verified |
+| Full subject rules verified? | Published minimum thresholds verified; complete rule set not established | Published minimum thresholds verified; complete rule set not established |
+| Applicant categories and equivalencies verified? | No — unsupported categories must return UNKNOWN | No — unsupported categories must return UNKNOWN |
+| Additional selection rules checked? | Not fully established from the programme page | UJ page states selection is based on academic credit; full conditions still require confirmation |
+| Fees/cost information verified or clearly unavailable? | Fee link is present; no amount transcribed; show “not verified” until checked | Fee link is present; no amount transcribed; show “not verified” until checked |
+| Funding/deadline sources verified? | Application dates checked; no funding outcome verified | Application dates checked; no funding outcome verified |
+| Reviewer / second check | Project owner; no independent reviewer confirmed | Project owner; no independent reviewer confirmed |
+| Validation outcome (PASS / FAIL / UNKNOWN) | PASS for sourced minimum-requirement display only; UNKNOWN for complete eligibility automation | PASS for sourced minimum-requirement display only; UNKNOWN for complete eligibility automation |
+| Open gaps and follow-up owner | APS method, applicant categories and full selection rules — project owner | APS method, applicant categories and full selection rules — project owner |
 
 **Stop condition:** Do not implement a confident eligibility decision for a programme while material admission rules are incomplete. Keep the status `UNKNOWN` where necessary.
 
@@ -135,24 +135,24 @@ This is a project risk-control proposal, not a legal opinion or POPIA certificat
 
 The supplied programme was reviewed and the owner confirms the team profile is complete and this is a new app. The Sonke portal was not independently accessed; retain this distinction and verify displayed timezone/file limits when submitting. The programme requirements and derived date are documented in `PHASE0-ONLINE-EVIDENCE.md`.
 
-- [ ] Confirm the correct event and team profile are visible and complete.
-- [ ] Confirm the event permits an application that is being built before the event and clarify any “app-only” / static-site restrictions.
-- [ ] Confirm the final submission deadline, timezone and required submission method directly with the organiser.
-- [ ] Confirm the required presentation deck format/slide limit and content.
-- [ ] Confirm demo video duration limit and how the video must be linked/submitted.
-- [ ] Confirm SSDLC and Lean Business Canvas requirements and accepted formats.
-- [ ] Confirm whether a public demo URL, repository link, team member details or other deliverables are required.
-- [ ] Store screenshots/emails in a secure project location and record the date/source here.
+- [x] Owner confirms the correct event/team profile is complete; portal visibility is owner-attested, not independently inspected.
+- [x] Programme confirms real-time interactive web apps are eligible; static websites/CMS-only sites are not. The built app must meet this condition.
+- [x] Programme deadline wording is Monday 23:59; event dates imply Monday 26 October 2026. The extracted programme does not specify a timezone; verify the portal display before upload.
+- [x] PDF deck preferred, maximum 10 slides, with features, screenshots, demo details, security, user journey and technical architecture.
+- [x] Demo video maximum 90 seconds and link included on the deck.
+- [x] SSDLC and Lean Business Canvas are required.
+- [ ] Confirm portal file-size limits, exact timezone and upload workflow when the submission portal is available.
+- [ ] Keep non-sensitive portal proof in a secure project location if available.
 
 **Evidence record**
 
-- Portal/event checked: ____________________
-- Team profile visible and complete? **YES**
-- App eligibility confirmed? **YES**
-- Deadline, timezone and submission route confirmed: It's on the document
-- Deliverables confirmed: ____________________
-- Confirmation source/date: ____________________
-- Unresolved organiser questions: ____________________
+- Portal/event checked: Supplied FNB AOTY Hackathon 2026 programme; Sonke portal not independently accessed
+- Team profile visible and complete? **YES — owner-attested**
+- App eligibility confirmed? **Conditional on the implemented app processing input/data in real time; implementation not yet verified**
+- Deadline and submission route: Programme states Monday 23:59 via Sonke; date derived as 2026-10-26; timezone not stated in extracted programme
+- Deliverables confirmed: PDF-preferred deck ≤10 slides, demo video ≤90 seconds, SSDLC and Lean Business Canvas
+- Confirmation source/date: Supplied programme exported 2026-10-11; owner confirmation 2026-10-13
+- Unresolved organiser questions: Portal timezone, upload/file limits and final submission screen
 
 ## 6. Accountability and review
 
