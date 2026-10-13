@@ -7,10 +7,11 @@
 ## P0 — Resolve before PRD READY
 
 ### OR-001 — MVP scope conflict: funding and application tracking
-- **Conflict:** The supplied `SPEC-1-StudyPath-SA.txt` labels funding matching (M4) and manual application tracking (M5) Must Have. The same specification's hackathon cut line says stop after M6, while the approved Phase 0 state explicitly defers manual application tracking and the initial MVP direction is anonymous-first with a small curated catalogue. The current PRD/SCOPE excludes funding matching and tracking from the initial MVP.
-- **Decision required:** Confirm the Phase 0 MVP cut line as authoritative for this release, or restore M4/M5 and define how accounts/privacy/data persistence fit the MVP.
-- **Impact:** Scope, user journey, authentication, data model, acceptance criteria, hackathon demo.
-- **Status:** Open; no silent resolution.
+- **Conflict:** The supplied `SPEC-1-StudyPath-SA.txt` labels funding matching (M4) and manual application tracking (M5) Must Have, while the earlier Phase 0 decision deferred tracking from the initial MVP.
+- **Decision:** **Resolved by owner on 2026-10-14.** Include M4 funding matching and M5 manual application tracking in the intended MVP at P1 / medium priority, behind the P0 core pathway-discovery journey.
+- **Boundary:** This resolves scope inclusion only. It does not approve account creation, cross-session persistence, financial-data collection, tracker storage, or detailed eligibility/status rules.
+- **Impact:** PRD, stories, acceptance criteria and scope updated on branch `docs/phase-1-prd-scope-b`.
+- **Status:** Resolved — scope decision recorded; downstream design questions remain open.
 
 ### OR-002 — Anonymous input contract
 - **Ambiguity:** M1 lists grade/year, subjects/marks, interests, location, study modes and funding requirements. Phase 0 journey mentions subjects/marks and interests, but does not freeze which other fields are mandatory.
@@ -85,13 +86,13 @@
 - **Decision required:** Confirm whether single-person review is accepted for the hackathon MVP and define how source records are reviewed before publishing.
 - **Impact:** Governance, data quality and risk acceptance.
 
-## P2 — Resolve before any relevant later feature
+## P1 — Resolve before requirements baseline / architecture
 
 ### OR-015 — Funding data and matching
-Funding provider coverage, applicant criteria, document list, deadline timezone, funding amount/coverage and expiry policy are not defined. Resolve only if funding matching is brought into scope.
+Funding matching is in the intended MVP at medium priority. Provider coverage, applicant criteria, permitted learner inputs, required documents, deadline timezone, funding amount/coverage, source freshness and expiry policy are not defined. Resolve before the funding feature is specified for implementation.
 
-### OR-016 — Application tracking lifecycle
-The broad specification lists statuses DRAFT, READY_TO_SUBMIT, SUBMITTED, AWAITING_DOCUMENTS, UNDER_REVIEW, ACCEPTED, REJECTED and WITHDRAWN, but transition rules, who may set statuses and whether `submitted_at` is user-entered are not defined. Resolve before tracker scope is approved.
+### OR-016 — Application tracking lifecycle and data handling
+Manual application tracking is in the intended MVP at medium priority. The broad specification lists statuses DRAFT, READY_TO_SUBMIT, SUBMITTED, AWAITING_DOCUMENTS, UNDER_REVIEW, ACCEPTED, REJECTED and WITHDRAWN, but transition rules, who may set statuses, whether `submitted_at` is user-entered, permitted fields, reset/deletion behavior and persistence are not defined. Resolve before tracker implementation. Do not assume accounts or cross-session persistence.
 
 ### OR-017 — Cost planner semantics
 Estimate source/freshness, annual versus once-off costs, currency, missing categories, confirmed versus potential funding, and negative funding-gap handling are not defined. Resolve before cost planner approval.
@@ -108,4 +109,4 @@ Supported file types/size, consent, retention/deletion, extraction confidence, h
 
 ## Gate disposition
 
-**PRD READY: BLOCKED.** The PRD, stories, scope and candidate acceptance criteria have been drafted. OR-001 through OR-007 are material to product scope, correctness and privacy and remain open. Obtain explicit decisions and update the artifacts before marking the PRD approved. No implementation tasks are created here.
+**PRD READY: BLOCKED.** OR-001 scope inclusion is resolved by owner decision, but OR-002 through OR-007 remain material P0 blockers. OR-015 and OR-016 have been promoted to P1 because the medium-priority funding and tracker features are in the intended MVP; resolve their data, lifecycle and privacy contracts before implementation. No implementation tasks are created here.

@@ -30,6 +30,10 @@
 | US-UX-001 | REQ-UX-001 | As a mobile user, I want to complete the journey on a small screen. | Responsive content and controls |
 | US-UX-002 | REQ-UX-001 | As a keyboard or assistive-technology user, I want controls, errors and statuses to be understandable. | Keyboard-operable and semantically labelled flow |
 | US-UX-003 | REQ-UX-001 | As a learner, I want understandable loading, empty and failure states. | No silent failures or fabricated results |
+| US-FUND-001 | REQ-FUND-001 | As a learner, I want to discover funding opportunities that may fit my circumstances. | Source-backed matches, reasons, unknowns and official next steps; no award guarantee |
+| US-FUND-002 | REQ-FUND-001 | As a learner, I want to understand why a funding opportunity may or may not fit. | Funding criteria are evaluated separately from admission eligibility |
+| US-APP-001 | REQ-APP-001 | As a learner, I want to manually record and review an application status. | Learner-reported status and next steps within the approved data-handling model |
+| US-APP-002 | REQ-APP-001 | As a learner, I want to know when a status or save action fails. | Clear validation/failure state; no false success claim |
 
 ## Use cases
 
@@ -66,12 +70,11 @@
 - **Postcondition:** No fabricated result; no sensitive input appears in error telemetry.
 
 ## Excluded stories (not MVP)
-- Create account and save a pathway across sessions.
-- Create, update or track a university/bursary application.
-- Match a funding opportunity and add it to a tracker.
+- Create an account or save a pathway across sessions unless separately approved.
 - Upload a document or use AI to extract requirements.
 - Calculate total cost/funding gap.
 - Receive deadline notifications.
 - Submit an application through an external provider.
+- Synchronise application status with an institution or funding provider.
 
-These exclusions are subject to resolution of the scope conflict documented in `OPEN-REQUIREMENTS.md`.
+Funding matching and manual application tracking are included as P1 / medium-priority intended MVP capabilities. Their acceptance is conditional on resolving the relevant data, privacy, lifecycle and persistence questions in `OPEN-REQUIREMENTS.md`.

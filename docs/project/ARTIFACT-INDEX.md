@@ -31,7 +31,8 @@ These references were supplied in the project conversation; they are not yet sto
 ## Accepted Phase 0 decisions
 
 - Primary MVP journey is anonymous-first: learner enters subjects/marks and interests, sees explainable pathway matches and eligibility/uncertainty, and follows official-source next steps.
-- Defer document uploads, AI chat, application submission, cross-session saved pathways and manual application tracking from the initial MVP.
+- Defer document uploads, AI chat, direct application submission, cross-session saved pathways and authenticated profiles.
+- Include funding matching (M4) and manual application tracking (M5) in the intended MVP at P1 / medium priority, behind the P0 core pathway-discovery journey. Their detailed data rules, tracker lifecycle and persistence/privacy constraints remain open.
 - Start with a small, manually curated official-source catalogue.
 - Enforce R100/month maximum total spend; prefer free tiers and validate costs, quotas and overages before provisioning.
 - Use synthetic development data and minimise personal data.
@@ -66,7 +67,7 @@ The owner approved the Phase 0 decision records and attests that account-specifi
 | Product requirements document | `docs/product/PRD.md` | Draft — owner review required | Feature specifications include actors, preconditions, triggers, inputs, rules, success/failure, permissions, edge cases, dependencies, acceptance links, NFRs and exclusions |
 | User stories/use cases | `docs/product/USER-STORIES.md` | Draft | Stories and core use cases mapped to requirement IDs |
 | Acceptance criteria | `docs/product/ACCEPTANCE-CRITERIA.md` | Draft | Candidate testable criteria for every MVP requirement; no test execution implied |
-| Scope | `docs/product/SCOPE.md` | Draft | MVP, P1/P2/P3, exclusions and unresolved scope conflict |
+| Scope | `docs/product/SCOPE.md` | Draft | P0 core journey plus P1 medium-priority funding matching and manual tracking; implementation boundaries remain open |
 | Open requirements | `docs/product/OPEN-REQUIREMENTS.md` | Open — decisions required | P0 ambiguities and later-feature questions explicitly recorded |
 
 ## Planned downstream artifacts
@@ -88,6 +89,6 @@ The owner approved the Phase 0 decision records and attests that account-specifi
 
 ## Gate assessment
 
-**PRD READY: BLOCKED.** The five requested product artifacts are drafted on branch `docs/phase-1-prd`. High-impact decisions remain open, especially the conflict between funding/tracking Must Have scope in the broad specification and the narrower Phase 0 MVP cut line, the input contract, eligibility precedence, admission-cycle/source freshness, and the exact privacy/telemetry boundary. Resolve the P0 items in `docs/product/OPEN-REQUIREMENTS.md` and revise the artifacts before approving the PRD.
+**PRD READY: BLOCKED.** The product artifacts have been updated on branch `docs/phase-1-prd-scope-b`. The owner resolved OR-001 by including M4 funding matching and M5 manual application tracking at P1 / medium priority in the intended MVP. OR-002 through OR-007 remain P0 blockers; OR-015 and OR-016 are P1 requirements to resolve before implementing the added features. No implementation, test execution, provisioning or deployment is claimed.
 
 PROJECT READY passed for Phase 1 planning only. No application implementation, test execution, Azure provisioning or deployment is claimed.

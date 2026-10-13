@@ -28,20 +28,20 @@ Where the broader specification conflicts with the accepted Phase 0 MVP boundary
 6. Deliver a mobile-first, accessible, reliable interactive application suitable for a hackathon demo. (C)
 
 ### Non-goals for the initial MVP
-- Creating an account, authentication, cross-session profile persistence or saved pathways.
-- Manual application tracking, direct application submission or application-system integration.
-- Funding matching as a separate catalogue/workflow, cost planning, notifications, progress tracking, institution comparison, AI chat, document upload/extraction, skill-gap analysis or graduation tracking.
+- Creating an account, authentication, cross-session profile persistence or saved pathways; these remain excluded unless separately approved.
+- Direct application submission or application-system integration.
+- Cost planning, notifications, institution comparison, AI chat, document upload/extraction, skill-gap analysis or graduation tracking.
 - Guaranteeing admission, funding, application outcomes or completeness of national coverage.
 - Full national catalogue coverage or automated crawling.
 - Using real learner personal data in development/demo flows. Synthetic-only boundary applies.
 
-These exclusions reflect the accepted Phase 0 MVP direction. They conflict with some MUST/SHOULD items in the supplied broad specification; see `OPEN-REQUIREMENTS.md`.
+Funding matching (M4) and manual application tracking (M5) are included in the intended MVP at **P1 / medium priority**, behind the P0 core pathway-discovery journey. This is a scope decision only: funding data rules and tracker lifecycle/data handling remain unresolved, and no account, persistent storage, or financial-data collection approach is approved. See `OPEN-REQUIREMENTS.md`.
 
 ## 3. Actors and permissions
 
 | Actor | Permissions | Restrictions |
 |---|---|---|
-| Anonymous learner (primary) | Enter temporary academic/preferences inputs; request recommendations; view pathway details, reasons, eligibility state and source links | No account; no cross-session save; no application tracking; no expectation that inputs persist |
+| Anonymous learner (primary) | Enter temporary academic/preferences inputs; request recommendations; view pathway details, reasons, eligibility state and source links; explore supported funding matches and manually manage tracker entries under the approved tracker data boundary | No account or cross-session persistence is approved; funding and tracker inputs must not be collected or persisted until the data/privacy rules are approved |
 | Recent matric graduate (secondary) | Same anonymous exploration capabilities | Same restrictions; qualification/cycle fit may remain UNKNOWN if data does not cover them |
 | Catalogue curator (operational role; not a learner-facing MVP feature) | Review official sources and maintain the small curated catalogue outside the learner workflow | Publication workflow/tooling is not confirmed as MVP; only verified published data may drive claims |
 | Product owner/reviewer | Approve requirements, data boundaries and release decisions | Does not acquire learner-data access beyond what is explicitly approved |
@@ -201,6 +201,42 @@ These exclusions reflect the accepted Phase 0 MVP direction. They conflict with 
 - **Non-functional requirements:** WCAG 2.2 AA is proposed as a target, not yet approved; supported browsers, load-time and low-bandwidth thresholds require owner confirmation.
 - **Out of scope:** Native mobile apps, full offline operation, multilingual content unless separately prioritised.
 
+### REQ-FUND-001 — Curated funding opportunities and deterministic matching
+
+- **Priority:** P1 (medium; intended MVP scope after the P0 core journey).
+- **Status:** Scope approved; funding criteria, data coverage and freshness rules remain open (OR-015).
+- **Problem / user story:** As a learner, I want to discover funding opportunities that may fit my circumstances so that I can verify them with the provider.
+- **Actors:** Learner; catalogue curator.
+- **Preconditions:** At least one funding record has been reviewed and published with an authoritative source and verification metadata.
+- **Trigger:** Learner opens funding options or requests funding matches.
+- **Inputs:** Only funding-related learner inputs explicitly approved in the input/privacy contract; do not assume household income, identity or other sensitive financial data may be collected.
+- **Business rules:** Match only against structured, source-backed criteria; evaluate funding eligibility separately from admission eligibility; use `ELIGIBLE`, `NOT_ELIGIBLE` or `UNKNOWN` only where the approved rules support that conclusion. Missing criteria, incomplete inputs, expired deadlines or uncertain applicability must not produce a positive certainty claim. Link to the official provider source. Never guarantee an award.
+- **Success state:** The learner sees a bounded set of source-backed opportunities, matching reasons, missing information and official next steps.
+- **Failure states:** No supported matches, incomplete funding criteria, stale/expired record or unavailable catalogue produces an honest empty/uncertain/error state; no opportunity or deadline is invented.
+- **Permissions:** Learners can view published opportunities and submit only the approved inputs; catalogue publication is a controlled curator responsibility.
+- **Dependencies:** OR-002 input contract; OR-006 privacy/telemetry boundary; OR-015 funding criteria, provenance, deadline and expiry rules; curated funding records.
+- **Acceptance criteria:** See AC-FUND-001 through AC-FUND-005 in `ACCEPTANCE-CRITERIA.md`.
+- **Non-functional requirements:** Deterministic, explainable, accessible and testable; no funding-profile telemetry; catalogue freshness and official-source links are visible.
+- **Out of scope:** Guaranteeing funding, automatic applications, unverified national coverage or AI making eligibility decisions.
+
+### REQ-APP-001 — Manual application tracker
+
+- **Priority:** P1 (medium; intended MVP scope after the P0 core journey).
+- **Status:** Scope approved; lifecycle, status transitions, and data/persistence boundary remain open (OR-006, OR-016).
+- **Problem / user story:** As a learner, I want to record and review my own university or funding application progress so that I can organise my next steps.
+- **Actors:** Learner.
+- **Preconditions:** The tracker data-handling model and allowed lifecycle have been approved; no tracker implementation may bypass this gate.
+- **Trigger:** Learner adds an application to the tracker or updates a tracked application.
+- **Inputs:** A selected pathway/funding opportunity, an approved status, relevant dates and document checklist fields only where those fields have been approved.
+- **Business rules:** Tracking is manual and learner-reported; never claim that StudyPath submitted, verified or received an application. Use only approved statuses and transitions. No account, cross-session persistence, sensitive notes or personal document storage is implied by this requirement; OR-006/OR-016 must define what data is permitted and for how long before implementation.
+- **Success state:** The learner can review the status and next steps of a manually tracked application within the approved data-handling boundary.
+- **Failure states:** Invalid status transition, missing required field, unavailable storage or unsupported persistence produces a clear error without falsely reporting a successful save.
+- **Permissions:** A learner may access only tracker entries permitted by the approved session/ownership model; if persistence is later approved, ownership and cross-user isolation must be tested.
+- **Dependencies:** OR-006 privacy/telemetry boundary; OR-016 lifecycle, transition rules, dates, status authority and persistence decision; funding catalogue for funding-related entries.
+- **Acceptance criteria:** See AC-APP-001 through AC-APP-006 in `ACCEPTANCE-CRITERIA.md`.
+- **Non-functional requirements:** Accessible status controls, clear learner-reported labeling, safe reset/deletion behavior and no sensitive tracker data in telemetry.
+- **Out of scope:** Direct submission, external application-system integration, institution-verified status unless an integration is separately approved, notifications and document uploads.
+
 ## 6. Cross-cutting non-functional requirements
 
 | ID | Requirement | Status / verification intent |
@@ -238,8 +274,8 @@ Exact thresholds, test set size, and measurement ownership are open; do not repo
 
 ## 9. Explicitly unresolved / not approved
 
-See `docs/product/OPEN-REQUIREMENTS.md`. In particular: conflict between the broad specification's M4/M5 Must Have requirements and the Phase 0 cut line; exact input contract; eligibility semantics for composite requirements; source freshness; supported qualification/admission cycles; privacy/telemetry details; measurable accessibility/performance targets; and MVP success thresholds.
+See `docs/product/OPEN-REQUIREMENTS.md`. The owner resolved the M4/M5 scope conflict by including funding matching and manual application tracking at P1 / medium priority; their detailed data rules and tracker persistence/lifecycle remain open. Other open items include the input contract, eligibility semantics for composite requirements, source freshness, supported admission cycles, privacy/telemetry details, measurable accessibility/performance targets and MVP success thresholds.
 
 ## 10. PRD gate assessment
 
-**Gate status: BLOCKED — draft is comprehensive enough for review, but PRD READY is not claimed.** The MVP features have candidate testable acceptance criteria in `ACCEPTANCE-CRITERIA.md`; high-impact scope and eligibility ambiguities remain explicitly visible and require decisions. No implementation tasks are created by this document.
+**Gate status: BLOCKED — draft is comprehensive enough for review, but PRD READY is not claimed.** OR-001 scope has been resolved by owner decision: M4 funding matching and M5 manual application tracking are P1 / medium-priority intended MVP features. Their detailed data, lifecycle, and privacy constraints remain open alongside other high-impact requirements. Candidate acceptance criteria are recorded in `ACCEPTANCE-CRITERIA.md`. No implementation tasks are created by this document.
