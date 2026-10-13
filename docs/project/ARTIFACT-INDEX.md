@@ -17,7 +17,7 @@ These references were supplied in the project conversation; they are not yet sto
 | Artifact | Path | Status |
 |---|---|---|
 | Project overview | `docs/project/PROJECT-OVERVIEW.md` | Present in repository |
-| Project status | `docs/project/PROJECT-STATUS.md` | Updated on main; Phase 1 planning authorized |
+| Project status | `docs/project/PROJECT-STATUS.md` | Updated on main; Phase 1 planning authorized |\n| Master project checklist | `docs/project/MASTER-PROJECT-CHECKLIST.md` | Added on 2026-10-13; Phase 0 explicitly recorded as passed for Phase 1 planning only |
 | Decisions and assumptions | `docs/project/DECISIONS.md` | Present in repository |
 | Open questions | `docs/project/OPEN-QUESTIONS.md` | Updated on main; downstream work tracked |
 | Project charter | `docs/project/PROJECT-CHARTER.md` | Present in repository |
@@ -71,4 +71,4 @@ The owner approved the six decision records and attests that account-specific ch
 ## Gate
 PROJECT READY passed on 2026-10-13 for Phase 1 PRD and requirements planning only. This does not establish implementation, tests, cloud provisioning or deployment. Next deliverables: approved PRD, requirements matrix and traceability.
 
-| Phase 0 blocker resolution proposal | `docs/project/PHASE0-RESOLUTION-PROPOSAL.md` | Draft proposal: static-first cost strategy, two source-backed UJ pilot pathways, and synthetic-only privacy boundary; owner acceptance and verification required before gate passage |
+| Phase 0 resolution proposal | `docs/project/PHASE0-RESOLUTION-PROPOSAL.md` | Retained as historical proposal; subsequent owner approvals and Phase 0 gate disposition are recorded in `PHASE0-MANUAL-EVIDENCE-PACK.md`, `PHASE0-ONLINE-EVIDENCE.md`, and `PROJECT-STATUS.md` |
