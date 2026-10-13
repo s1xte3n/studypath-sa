@@ -73,3 +73,8 @@ Owner approval of the Phase 0 direction/materials is recorded. These approvals d
 
 ## Next gate
 Phase 1 — create and approve the PRD, user stories, measurable acceptance criteria and requirements traceability matrix. PROJECT READY passage authorizes planning only; it is not a deployment approval. No application implementation, Azure provisioning or deployment was performed by this documentation update.
+
+
+## Azure cost estimate update — 2026-10-14
+
+Created [`docs/project/AZURE-COST-ESTIMATE.md`](AZURE-COST-ESTIMATE.md). The preliminary baseline estimates **R0/month for Azure Static Web Apps Free only**, with the static React/Vite app and browser-side matching; no backend, database, AI, API Management, or paid monitoring is included. Microsoft public pricing/quota sources were checked on 2026-10-14. This is not a saved, authenticated Azure Pricing Calculator quote and does not independently verify subscription billing. The owner must save/review the calculator result and private billing evidence before provisioning. The R100/month cap and no-provisioning boundary remain unchanged.
