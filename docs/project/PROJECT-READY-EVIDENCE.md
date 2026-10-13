@@ -61,14 +61,7 @@ Every qualification, requirement and funding record must capture, as applicable:
 
 **Verified:** the repository is private and the connected GitHub integration reports repository write/admin access. This is not evidence of Azure access.
 
-**Outstanding — do not provision:** confirm all of the following in a secure, live review with the proposed cloud owner:
-
-- Azure subscription exists and is available for this project.
-- Tenant/directory ID and subscription ID are known to the owner (record only non-secret identifiers in the approved internal inventory if needed; never record credentials or tokens).
-- Subscription billing currency, offer type, region availability and any student/hackathon credits are confirmed.
-- Named cloud owner has least-privilege permissions required for the approved deployment and billing review.
-- Resource group, environment separation, deletion authority, billing visibility and emergency contacts are agreed.
-- Owner confirms who can approve spending and who is authorised to remove resources.
+**Owner-confirmed:** the project owner reports that an Azure subscription exists and that they own it. This is not an independent inspection of the tenant or subscription. **Outstanding — do not provision:** confirm tenant/directory and subscription identifiers, billing currency, offer type, region availability, credits, effective permissions, billing visibility, resource ownership, deletion authority and emergency contacts. Record only non-secret identifiers in an approved inventory; never record credentials or tokens. The owner currently holds all roles, so independent review and backup coverage are absent.
 
 Do not paste secrets, access tokens, connection strings, payment details or identity documents into GitHub issues, pull requests or project documents. If no subscription is available, report that plainly; do not create one or attach billing without explicit approval.
 
@@ -147,24 +140,24 @@ This inventory is a proposal, not an implemented behaviour. Any future change th
 5. Assess scope, affected people, processor/provider obligations and any required regulator/data-subject notifications with the privacy owner and qualified adviser; do not make unsupported legal claims or delay escalation.
 6. Fix the cause, verify containment, record corrective actions and lessons learned, and approve reopening only after checks pass.
 
-**Outstanding:** name the privacy/security owner and incident contact; approve the retention periods and privacy notice; document the applicable consent review; verify hosting/telemetry behaviour; and confirm whether the proposed browser-only approach is acceptable for the MVP.
+**Owner-confirmed:** the project owner will hold the security/privacy role and act as incident contact for now. **Outstanding:** approve retention periods and the privacy notice; document applicable consent review with qualified advice where needed; verify hosting/telemetry behaviour; confirm the browser-only approach; and establish a private incident contact route.
 
 ## 5. Accountability and approvals
 
-Names have not been provided, so the roles below are intentionally unassigned. The same person may hold multiple roles only if the team explicitly accepts the workload and conflict of interest.
+The project owner confirms they will hold all roles below for now. Their name was not provided in this conversation, so this document uses **Project owner (name not provided)** rather than inventing an identity. This single-person arrangement is accepted provisionally; it concentrates approval, implementation, privacy, billing and release responsibilities and provides no independent reviewer.
 
 | Role | Named person | Minimum responsibility / approval |
 |---|---|---|
-| Accountable project/product approver | **Outstanding** | Approves scope, acceptance criteria, budget trade-offs and PROJECT READY gate |
-| Product owner | **Outstanding** | Owns student journey, prioritisation, claims and demo acceptance |
-| Catalogue/data curator + backup | **Outstanding** | Verifies official sources, requirements, provenance, cycle/version and stale-data handling |
-| Cloud/subscription owner | **Outstanding** | Confirms tenant/subscription, permissions, regions, resource ownership, cost visibility and teardown |
-| Budget approver | **Outstanding** | Approves dated all-in estimate and confirms the R100/month cap |
-| Security/privacy owner | **Outstanding** | Reviews learner-data inventory, POPIA/consent questions, retention, logging, incident process and release risks |
-| Release/demo owner | **Outstanding** | Owns working demo, smoke-test evidence, deck, video, SSDLC and Lean Business Canvas submission |
-| Engineering/QA owner | **Outstanding** | Owns implementation traceability, tests, CI evidence and technical readiness |
+| Accountable project/product approver | Project owner (owner-confirmed; name not provided) | Approves scope, acceptance criteria, budget trade-offs and PROJECT READY gate |
+| Product owner | Project owner (owner-confirmed; name not provided) | Owns student journey, prioritisation, claims and demo acceptance |
+| Catalogue/data curator + backup | Project owner (no backup appointed) | Verifies official sources, requirements, provenance, cycle/version and stale-data handling |
+| Cloud/subscription owner | Project owner (subscription ownership owner-confirmed; access not independently verified) | Confirms tenant/subscription, permissions, regions, resource ownership, cost visibility and teardown |
+| Budget approver | Project owner (owner-confirmed; name not provided) | Approves dated all-in estimate and confirms the R100/month cap |
+| Security/privacy owner | Project owner (owner-confirmed; name not provided) | Reviews learner-data inventory, POPIA/consent questions, retention, logging, incident process and release risks |
+| Release/demo owner | Project owner (owner-confirmed; name not provided) | Owns working demo, smoke-test evidence, deck, video, SSDLC and Lean Business Canvas submission |
+| Engineering/QA owner | Project owner (owner-confirmed; name not provided) | Owns implementation traceability, tests, CI evidence and technical readiness |
 
-Each person must explicitly accept their role and availability for the 23–26 October hackathon window. The project approver must record approval/rejection of the readiness pack; silence is not approval.
+The owner has accepted these roles provisionally for the pre-hackathon build and 23–26 October event window. Capacity, backup coverage and conflicts remain a risk. This assignment is not PROJECT READY approval; the owner must still explicitly approve/reject the readiness pack.
 
 ## 6. Hackathon programme verification
 
@@ -180,11 +173,11 @@ Each person must explicitly accept their role and availability for the 23–26 O
 
 ### Eligibility status for this team
 
-**Partially verified, not fully cleared.** The product concept aligns with the programme's “Access to higher education” challenge. A browser-based application is an allowed app category only if it is functional and processes inputs/data; a static marketing page is not enough. The programme permits solo participation, but the team-profile requirement is mandatory for judging.
+**Owner-confirmed, partly verified.** The owner reports the team is profiled on Sonke and StudyPath SA is a new app being started before the hackathon; the Sonke profile has not been independently inspected. The concept aligns with “Access to higher education.” The app must be functional and process inputs/data, not be a static marketing page. Based on the reported new-app status, the existing-app feature requirement is not currently applicable, subject to event rules.
 
 **Outstanding team-specific checks:**
-- Confirm the participant account/invitation is valid and the team has been profiled on Sonke.
-- Confirm whether the entry is a new app or an existing app; if existing, identify the feature to be built during the event and plan attendance at all sessions.
+- Independently verify Sonke profile visibility and participant registration.
+- Treat this as a new app being developed before the event; reconfirm event/session rules and any platform-specific conditions.
 - Confirm all team members are eligible/registered under the participant invitation and accept the IP rules. The supplied programme does not define a separate age/nationality/residency eligibility test, so do not invent one; ask organisers if unsure.
 - Confirm exact Sonke deadline, file formats/size limits, how demo access is provided, and any updates to the supplied programme.
 
@@ -192,9 +185,9 @@ Each person must explicitly accept their role and availability for the 23–26 O
 
 | Deliverable | Acceptance check | Owner | Status |
 |---|---|---|---|
-| Sonke team profile | Team is visible/profiled; solo team if working alone | Team lead — outstanding | Not verified |
+| Sonke team profile | Team is visible/profiled; solo team if working alone | Project owner (owner-confirmed) | Reported complete; not independently inspected |
 | Working app | Real student journey processes inputs and produces a result; not static-only | Engineering/release — outstanding | Not started/verified |
-| Feature developed during event (if existing app) | One feature identified and evidenced in the hackathon work | Product/engineering — outstanding | Applicability outstanding |
+| Feature developed during event (if existing app) | One feature identified and evidenced in the hackathon work | Project owner | Not applicable based on owner-confirmed new-app status; reconfirm against event rules |
 | Deck, PDF preferred, maximum 10 slides | Features, screenshots, demo details, security, user journey, architecture; video included/linked | Release/demo owner — outstanding | Not started |
 | Demo video | Duration at or below 90 seconds; accessible link on deck | Release/demo owner — outstanding | Not started |
 | SSDLC in Sonke | Completed and reviewed before submission | Security/engineering owner — outstanding | Not started |
@@ -205,10 +198,10 @@ Each person must explicitly accept their role and availability for the 23–26 O
 
 **PROJECT READY remains BLOCKED / NOT PASSED.** This evidence pack advances source discovery and documents a preliminary cost/privacy/hackathon assessment, but it does not resolve the following hard blockers:
 
-1. Named owners and explicit approval of the proposed catalogue scope, source-use policy and verification cadence.
-2. Confirmed Azure tenant/subscription, access permissions and cloud owner.
-3. A dated all-in pricing estimate, budget approver sign-off and cost controls proving the R100/month cap can be met. The current PostgreSQL pricing signal is a material risk.
-4. Privacy/security owner review of the learner-data inventory, applicable consent questions, privacy notice, retention/deletion and incident handling.
-5. Team-specific Sonke profile/eligibility confirmation and exact deadline confirmation.
+1. Explicit approval of catalogue scope/source-use policy/cadence and verified admission records; the owner is assigned as curator but no backup is appointed.
+2. Direct confirmation of Azure tenant/subscription details, effective permissions and billing visibility; subscription ownership is owner-confirmed but not independently verified.
+3. A dated all-in pricing estimate and evidence the R100/month cap can be met. PostgreSQL pricing is a material risk.
+4. Privacy/security review of the learner-data inventory, applicable consent questions, notice, retention/deletion and incident handling.
+5. Independently verify the Sonke profile and confirm the exact deadline/upload procedure.
 
 Do not start detailed PRD design or provision cloud services until the project owner records an explicit gate decision. If the budget requires a deviation from the documented stack, document and approve that change first.

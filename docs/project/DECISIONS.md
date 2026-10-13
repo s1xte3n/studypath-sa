@@ -25,7 +25,7 @@
 | D-016 | Do not provision Azure resources until subscription/tenant access, permissions, cost controls and deployment responsibility are confirmed | Owner accepted Phase 0 proposal on 2026-10-13; actual subscription/access evidence remains outstanding |
 | D-017 | Record accountable owners for product decisions, catalogue verification, security/privacy and release/demo readiness | Owner accepted Phase 0 proposal on 2026-10-13; names and responsibilities are not yet supplied |
 
-## Product guardrails from the supplied specification
+| D-018 | Provisional single-person ownership for the initial build: the project owner will hold all project roles for now | Owner confirmation on 2026-10-13. Owner also reports an existing owned Azure subscription, a completed Sonke team profile, and that StudyPath SA is a new app being developed before the hackathon. These reports are not independently verified. Risk: no backup or independent reviewer; Azure permissions, billing visibility and cost feasibility remain outstanding. |\n\n## Product guardrails from the supplied specification
 - Eligibility states: `ELIGIBLE`, `NOT_ELIGIBLE`, `UNKNOWN`.
 - Eligibility must be deterministic, explainable, testable and grounded in verified requirements.
 - Missing data must not produce fabricated certainty.
