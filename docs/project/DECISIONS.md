@@ -1,9 +1,9 @@
 # StudyPath SA — Decisions and Assumptions
 
-**Status:** Phase 0 decisions and owner approval of the Phase 0 materials recorded; PROJECT READY evidence gate still pending  
+**Status:** Phase 0 decisions recorded; PROJECT READY passed for Phase 1 PRD/requirements planning only  
 **Last updated:** 2026-10-13
 
-Owner explicitly approved COST-01, DATA-01, ELIGIBILITY-01, PRIVACY-01, RELEASE-01 and OWNER-01, and approved the directions recorded for Q-002, Q-003, Q-004, Q-005, Q-010, Q-015 and Q-016 on 2026-10-13. The owner reconfirmed approval of the Phase 0 materials in the project conversation. These approvals accept project direction; they do not substitute for external evidence, implementation, or cost verification.
+Owner explicitly approved COST-01, DATA-01, ELIGIBILITY-01, PRIVACY-01, RELEASE-01 and OWNER-01, and approved the directions recorded for Q-002, Q-003, Q-004, Q-005, Q-010, Q-015 and Q-016 on 2026-10-13. The owner subsequently attested that all remaining account-specific checks are complete. Official UJ and Microsoft public sources and the supplied hackathon programme are documented in `PHASE0-ONLINE-EVIDENCE.md`. Account-specific portal/billing records were not independently inspected by the assistant. PROJECT READY passed for Phase 1 planning only.
 
 ## Confirmed decisions
 
@@ -59,14 +59,13 @@ Owner explicitly approved COST-01, DATA-01, ELIGIBILITY-01, PRIVACY-01, RELEASE-
 - Azure Static Web Apps Free is acceptable on the existing subscription; the project must not rely on the expired 12-month Azure free-account offer.
 - These are owner reports/decisions, not independent billing or subscription verification. They do not establish that the full subscription has no unrelated costs or that future all-in cost is R0.
 
-## Still unresolved
-- Exact official sources, permitted use, verification cadence and provenance fields for the approved two-programme pilot; complete eligibility rules and current-cycle validation.
-- Azure subscription/tenant availability, accountable cloud owner, access and documented service-by-service cost/quotas/overage checks.
-- Learner data inventory and purpose, privacy notice/consent review where applicable, retention/deletion and incident handling.
-- Names and availability of team members and named product, data, security/privacy and release owners.
-- Hackathon team eligibility and deliverable obligations against the supplied programme.
-- Deployment region/domain/environment and whether AI/document extraction is in or out of the MVP (proposal: defer unless separately justified and approved).
-- Measurable acceptance criteria and demo success conditions.
+## Downstream controls and open work
+- Validate the full rule set before implementing any eligibility classification beyond minimum-requirement screening; return UNKNOWN for ambiguity.
+- Implement and test the synthetic-only privacy boundary, reset behaviour, and absence of profile persistence/transmission/logging; complete applicable privacy/legal review before real learner data is considered.
+- Keep account-specific cost evidence private and recheck the exact intended resources against the R100/month cap before provisioning; no billable add-ons without renewed approval.
+- Confirm the Sonke portal's displayed timezone, file limits and upload workflow before submission; owner confirms the profile is complete.
+- Seek independent review if feasible; no backup/reviewer is currently confirmed.
+- Define measurable acceptance criteria and demo success conditions in the PRD.
 
 ## Change control
 Record approved changes to scope, stack, budget, audience, data use or deadlines here with rationale, alternatives, consequences and affected artifacts. Assumptions are not approvals.
