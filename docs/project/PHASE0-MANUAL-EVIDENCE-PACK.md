@@ -40,16 +40,16 @@ Do not provision, delete, resize, or modify resources as part of this evidence-g
 
 ### In Azure Portal
 
-- [ ] Sign in to the correct Azure account and subscription.
-- [ ] Confirm the account can view the subscription and its resource list.
-- [ ] Open **Subscriptions** and confirm the subscription status is active.
-- [ ] Open **All resources** and record existing resources relevant to StudyPath SA.
-- [ ] Open **Cost Management + Billing** and inspect current month-to-date spend, prior spend, credits and any existing budgets.
-- [ ] Check whether any resources already incur recurring charges, including resources outside this repository/project.
-- [ ] Confirm the intended deployment region and whether any required service is unavailable or chargeable there.
-- [ ] If using Azure Static Web Apps Free, verify plan availability, quotas, storage/bandwidth constraints and suitability for the intended app on the existing subscription. The expired Azure free-account offer will not be relied on. Free hosting plan does not establish an all-in R0 subscription cost.
-- [ ] Do not treat a budget or alert as a hard spending stop.
-- [ ] Capture redacted screenshots or export evidence to a secure location. Never commit subscription IDs, tenant IDs, billing identifiers or sensitive account details.
+- [x] Sign in to the correct Azure account and subscription.
+- [x] Confirm the account can view the subscription and its resource list.
+- [x] Open **Subscriptions** and confirm the subscription status is active.
+- [x] Open **All resources** and record existing resources relevant to StudyPath SA.
+- [x] Open **Cost Management + Billing** and inspect current month-to-date spend, prior spend, credits and any existing budgets.
+- [x] Check whether any resources already incur recurring charges, including resources outside this repository/project.
+- [x] Confirm the intended deployment region and whether any required service is unavailable or chargeable there.
+- [x] If using Azure Static Web Apps Free, verify plan availability, quotas, storage/bandwidth constraints and suitability for the intended app on the existing subscription. The expired Azure free-account offer will not be relied on. Free hosting plan does not establish an all-in R0 subscription cost.
+- [x] Do not treat a budget or alert as a hard spending stop.
+- [ ] Capture/retain redacted screenshots or export evidence in the owner's private secure location if not already retained. Never commit subscription IDs, tenant IDs, billing identifiers or sensitive account details.
 
 **Record only non-sensitive results here. Owner confirms the checks below are complete; account-specific results are owner-attested and no private billing evidence is stored in GitHub:**
 
