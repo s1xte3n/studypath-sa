@@ -25,9 +25,9 @@ For each row, select exactly one of **ACCEPT** or **REJECT**, add the date, and 
 
 I have reviewed the six proposals above. My decisions in the table are intentional and represent the current project direction. I understand that accepting a proposal does not prove implementation, compliance, cost feasibility, catalogue correctness, or deployment readiness.
 
-- Owner identifier / GitHub handle (no legal name required): ____________________
-- Date (YYYY-MM-DD): ____________________
-- Approval status: **APPROVED** (circle one)
+- Owner identifier / GitHub handle (no legal name required): `s1xte3n`
+- Date (YYYY-MM-DD): `2026-10-13` (approval given in the project conversation on this date)
+- Approval status: **APPROVED**
 - Any rejected item and replacement direction: __________________________________
 
 Commit the completed record only if you are comfortable making the decision record visible in this repository. Alternatively, keep the signed/dated approval in a secure project record and add a non-sensitive reference here.
