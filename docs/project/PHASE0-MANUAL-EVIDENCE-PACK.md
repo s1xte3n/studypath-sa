@@ -2,7 +2,7 @@
 
 **Purpose:** Collect the owner decisions and external evidence that cannot safely be inferred or fabricated by an assistant. Complete this pack before the PROJECT READY gate can pass.
 
-**Status:** Incomplete; owner decisions and approval metadata are recorded. Subscription/billing, catalogue, privacy, hackathon and consistency evidence remain incomplete. Phase 0 remains blocked.  
+**Status:** Owner approval of the six decisions and Phase 0 direction reconfirmed on 2026-10-13. External subscription/billing, catalogue validation, implementation/privacy, hackathon and document-consistency evidence remain incomplete. Phase 0 remains blocked.  
 **Prepared:** 2026-10-13  
 **Repository:** `s1xte3n/studypath-sa`
 
@@ -15,19 +15,19 @@ For each row, select exactly one of **ACCEPT** or **REJECT**, add the date, and 
 | ID | Proposed direction | Decision (ACCEPT / REJECT / PENDING) | Date | Notes / reason |
 |---|---|---|---|---|
 | COST-01 | Target a maximum operating cost of R100/month. Do not deploy until current subscription resources, billing, commitments, permissions and expected all-in costs have been checked. Do not rely on the expired 12-month Azure free-account offer; no credits will be used. Budgets/alerts are not hard spending caps. | Accept | 2026-10-13 | Owner reports no StudyPath resources provisioned (current project spend R0), no existing project resource costs, and no credits will be used. Static Web Apps Free remains acceptable as the hosting plan on the existing subscription. |
-| DATA-01 | Start with a deliberately small, version-controlled, read-only pilot catalogue: two UJ undergraduate IT pathways only. Do not imply national coverage. Expand only after the pilot is validated. | Accept | | |
-| ELIGIBILITY-01 | Use deterministic, explainable minimum-requirement screening. Return `UNKNOWN` when requirements or applicant facts are missing, ambiguous, stale or unsupported. Never guarantee admission. | Accept | | |
-| PRIVACY-01 | For the hackathon MVP, use synthetic profiles only; no real learner personal information, account creation, uploads/transcript extraction, AI chat, profile persistence, server-side profile writes, or analytics that capture profile values. Keep profile state in memory and clear on reset/refresh. | Accept | | |
+| DATA-01 | Start with a deliberately small, version-controlled, read-only pilot catalogue: two UJ undergraduate IT pathways only. Do not imply national coverage. Expand only after the pilot is validated. | Accept | 2026-10-13 | Owner approval reconfirmed in project conversation. |
+| ELIGIBILITY-01 | Use deterministic, explainable minimum-requirement screening. Return `UNKNOWN` when requirements or applicant facts are missing, ambiguous, stale or unsupported. Never guarantee admission. | Accept | 2026-10-13 | Owner approval reconfirmed in project conversation. |
+| PRIVACY-01 | For the hackathon MVP, use synthetic profiles only; no real learner personal information, account creation, uploads/transcript extraction, AI chat, profile persistence, server-side profile writes, or analytics that capture profile values. Keep profile state in memory and clear on reset/refresh. | Accept | 2026-10-13 | Owner approval reconfirmed in project conversation. |
 | RELEASE-01 | Use a static-first React/Vite app and Azure Static Web Apps Free on the existing subscription, subject to cost/access checks. Do not rely on the expired 12-month Azure free-account offer. Defer separately billed services and custom domain unless separately approved and affordable. This is a direction, not a verified all-in R0 quote. | Accept | 2026-10-13 | Owner explicitly confirmed Static Web Apps Free is acceptable while the expired account offer will not be relied on. |
-| OWNER-01 | The owner temporarily performs all roles. Record that there is no independent reviewer or backup; use explicit self-review checklists and seek an external reviewer if available. | Accept | | |
+| OWNER-01 | The owner temporarily performs all roles. Record that there is no independent reviewer or backup; use explicit self-review checklists and seek an external reviewer if available. | Accept | 2026-10-13 | Owner approval reconfirmed in project conversation. |
 
 **Owner approval statement (complete manually):**
 
-I have reviewed the six proposals above. My decisions in the table are intentional and represent the current project direction. I understand that accepting a proposal does not prove implementation, compliance, cost feasibility, catalogue correctness, or deployment readiness.
+I have reviewed the six proposals and the Phase 0 materials. My decisions are intentional and represent the current project direction. I understand that approval does not prove implementation, compliance, cost feasibility, catalogue correctness, or deployment readiness.
 
 - Owner identifier / GitHub handle (no legal name required): `s1xte3n`
 - Date (YYYY-MM-DD): `2026-10-13` (approval given in the project conversation on this date)
-- Approval status: **APPROVED**
+- Approval status: **APPROVED — reconfirmed in the project conversation on 2026-10-13**
 - Any rejected item and replacement direction: __________________________________
 
 Commit the completed record only if you are comfortable making the decision record visible in this repository. Alternatively, keep the signed/dated approval in a secure project record and add a non-sensitive reference here.
