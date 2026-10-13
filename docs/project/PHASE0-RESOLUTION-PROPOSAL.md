@@ -72,7 +72,7 @@ Do not translate the table above into a claim of guaranteed eligibility. The cur
 
 SAQA's register states that registered qualifications are public property, that reproduction/quotation should acknowledge SAQA, and that the material must not be sold for profit: https://regqs.saqa.org.za/search.php. The pilot above uses institution programme pages as the source of entry thresholds and does not require reproducing SAQA register content. If SAQA fields are later added, preserve attribution and review the applicable terms. DHET's private-institution register asks published institution lists to include explanatory information and registered qualifications: https://www.dhet.gov.za/Registers_DocLib/Register%20of%20Private%20Higher%20education%20Institutions%2011%20September%202025.pdf. Check for a newer register before relying on it.
 
-**Catalogue gate status:** A narrow, source-linked pilot scope and two initial source-backed records are documented. Owner approval of the scope and the explicit “minimum-requirement screen only / UNKNOWN on ambiguity” boundary is still required. Full eligibility automation remains out of scope until complete rules have been verified.
+**Catalogue gate status:** The owner approved the narrow, source-linked pilot scope and the “minimum-requirement screen only / UNKNOWN on ambiguity” boundary on 2026-10-13. Full eligibility automation remains out of scope until complete rules have been verified.
 
 ## 3. Privacy and security resolution
 
@@ -105,11 +105,11 @@ Browser-only handling reduces exposure but does not automatically mean that no p
 
 For the synthetic-only demo, the privacy notice should still identify the project, explain that the demo is not collecting or storing real learner profiles, warn users not to enter real personal information, state the role of the hosting provider and link to a contact route. Do not claim that the notice itself establishes legal compliance.
 
-**Privacy gate status:** A restrictive synthetic-data-only MVP boundary is proposed and materially reduces risk. It must be accepted and implemented before the demo; the privacy/security review is not a legal certification. No public processing of real learner data is approved by this proposal.
+**Privacy gate status:** The owner approved the synthetic-data-only MVP boundary on 2026-10-13. It must still be implemented and verified before the demo; the privacy/security review is not a legal certification. No public processing of real learner data is approved by this proposal.
 
-## 4. Decisions requested from the project owner
+## 4. Owner decision record
 
-Before the PROJECT READY gate can be approved, the owner must explicitly accept or reject these decisions:
+The owner explicitly approved COST-01, DATA-01, ELIGIBILITY-01, PRIVACY-01, RELEASE-01 and OWNER-01 on 2026-10-13, and reconfirmed approval of the Phase 0 materials in the project conversation. These decisions establish direction; they do not satisfy the external evidence, implementation or verification gates below.
 
 - **COST-01:** Static Web Apps Free only for the first demo; no paid or metered backend services; no custom domain; do not deploy until actual subscription/resource/billing review confirms the cap can be maintained.
 - **DATA-01:** Accept the two-programme UJ pilot as the initial bounded catalogue, with official links and provenance.
@@ -118,4 +118,4 @@ Before the PROJECT READY gate can be approved, the owner must explicitly accept 
 - **RELEASE-01:** No public learner-facing use of real learner data until privacy/legal review is documented. No Azure provisioning until actual subscription permissions and billing/resource review are complete.
 - **OWNER-01:** Accept that one person currently holds all roles and that no independent reviewer/backup is available; arrange an independent review before a real learner-data release if feasible.
 
-Even if these decisions are accepted, do not describe Azure access, cost, privacy compliance or deployment as independently verified until evidence is captured. The owner must then explicitly record PROJECT READY approval. If any decision is rejected or any required check fails, keep the gate blocked and revise the plan.
+**Remaining gate condition:** Do not describe Azure access, cost, privacy compliance or deployment as independently verified until evidence is captured. Owner approval of the Phase 0 direction is recorded, but PROJECT READY must remain blocked until the manual evidence pack's required checks are completed and reviewed. If any required check fails, keep the gate blocked and revise the plan.
