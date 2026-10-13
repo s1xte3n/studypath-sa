@@ -1,8 +1,8 @@
 # StudyPath SA — Phase 0 Blocker Resolution Proposal
 
 **Prepared:** 2026-10-13  
-**Status:** Evidence-informed proposal for project-owner approval  
-**Gate:** PROJECT READY remains **BLOCKED / NOT APPROVED** until the owner accepts these controls and the remaining evidence is verified.  
+**Status:** Owner-approved Phase 0 direction; online evidence recorded  
+**Gate:** PROJECT READY is **PASSED for Phase 1 PRD/planning only**. Account-specific checks are owner-attested; implementation, provisioning and release remain separately gated.  
 **Scope:** Cost, initial catalogue and privacy/security controls only. No application code or cloud resources are changed by this document.
 
 ## 1. Cost resolution
