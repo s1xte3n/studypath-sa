@@ -11,23 +11,23 @@
 - Initial root listing contained `README.md` only; README content is a project title and one-line description.
 - Phase 0 baseline documentation and accepted direction decisions are present in the project documentation.
 - The PROJECT READY evidence pack and owner-confirmation update were merged through PRs #4 and #5.
-- Added `docs/project/PHASE0-RESOLUTION-PROPOSAL.md` with a static-first cost strategy, two official UJ pilot records, and a synthetic-data-only privacy boundary. The owner approved COST-01, DATA-01, ELIGIBILITY-01, PRIVACY-01, RELEASE-01 and OWNER-01, and has now reconfirmed approval of the Phase 0 materials. Required external and implementation evidence remain outstanding; PROJECT READY remains blocked.
+- Added `docs/project/PHASE0-RESOLUTION-PROPOSAL.md` and `docs/project/PHASE0-ONLINE-EVIDENCE.md`. Official UJ programme pages and Microsoft Static Web Apps pricing/quota sources were checked online. The owner approved all six decision records and attests the account-specific checks are complete. PROJECT READY is passed for Phase 1 PRD/planning only; account-specific evidence remains owner-attested rather than independently inspected.
 - This is remote repository inspection. Local working-tree state has not been inspected.
 
 ## State by area
 
 | Area | Status |
 |---|---|
-| Product specification, hackathon programme, development SOP | Supplied project references; the hackathon programme has now been reviewed for app criteria and submission requirements |
+| Product specification, hackathon programme, development SOP | Supplied project references; hackathon programme reviewed and online evidence logged |
 | Documented React/Vite + Azure stack | Owner-confirmed baseline; not provisioned/validated |
 | Application source and dependencies | Not found in initial root listing; no implementation verified |
 | Tests, CI workflows, infrastructure, database, deployment | Not yet verified; no execution evidence available |
 | MVP journey | Direction accepted: anonymous learner journey from subject/mark/interest inputs to explainable pathways, eligibility/uncertainty and official next steps |
-| Catalogue | Two source-backed UJ pilot records and explicit UNKNOWN/eligibility boundaries documented in `PHASE0-RESOLUTION-PROPOSAL.md`; owner approval and complete-rule verification remain outstanding |
-| Budget | Owner reports no resources provisioned for StudyPath SA and current project spend is R0; no credits will be used. Approved direction is Azure Static Web Apps Free on the existing subscription, without relying on the expired 12-month Azure free-account offer. Subscription billing/commitments and future all-in cost remain unverified. |
-| Privacy and identity | Synthetic-only, no-persistence/no-analytics boundary proposed; implementation, hosting metadata review and legal/privacy assessment remain outstanding; real learner inputs are not approved |
+| Catalogue | Two UJ programme pages checked online; minimum thresholds and 2026 application dates recorded in `PHASE0-ONLINE-EVIDENCE.md`; full admission prediction remains out of scope and ambiguity maps to UNKNOWN |
+| Budget | Owner attests subscription/access/billing and R100/month checks are complete. Public Microsoft pricing/quota sources were checked. Account-specific billing records and a saved quote were not uploaded; attestation is not independent verification. Free static hosting only; no paid add-ons without renewed approval. |
+| Privacy and identity | Synthetic-only, no-persistence/no-profile-telemetry boundary approved; implementation verification, hosting metadata review and any applicable privacy/legal assessment are downstream build/release gates; real learner inputs remain prohibited |
 | Azure subscription and accountable owners | Owner confirms a subscription exists and is theirs; permissions/billing visibility are not independently verified. Owner will hold all roles for now; no backup/independent reviewer. |
-| Hackathon | Owner confirms Sonke team profile is complete and this is a new app being developed before the event; profile not independently inspected and exact deadline remains unconfirmed |
+| Hackathon | Owner confirms team profile and new-app status. Supplied programme reviewed: interactive real-time app, deck max 10 slides, demo video max 90 seconds, SSDLC and Lean Business Canvas; Monday 23:59 submission implies 26 Oct 2026. Sonke portal not independently accessed; verify displayed timezone/upload details at submission. |
 
 ## Completed
 - Confirmed repository identity, private visibility, default branch and integration permissions.
@@ -40,13 +40,17 @@
 - Recorded owner confirmations: one person holds all roles for now; Azure subscription exists and is owned by the project owner; team is profiled on Sonke; this is a new app being developed before the hackathon.
 - Owner confirmed no StudyPath SA resources have been provisioned (reported current project spend R0), no existing project resource costs, and no credits will be used. Owner clarified that Azure Static Web Apps Free is acceptable on the existing subscription; the expired 12-month free-account offer will not be relied on.
 
-## Remaining P0 blockers
-1. Reconcile and verify consistency across `DECISIONS.md`, `OPEN-QUESTIONS.md`, the resolution proposal, this evidence pack and `ARTIFACT-INDEX.md`; owner approval of the direction is now recorded.
-2. Verify subscription status, effective deployment permissions, billing visibility, applicable offer/plan terms, any non-project commitments, and the R100/month all-in cost constraint before deployment. Owner reports no StudyPath resources and no credits; billing evidence is not yet recorded.
-3. Verify the two programme records and admission cycle again before use; complete the rule set before returning final eligibility states.
-4. Implement the synthetic-only privacy boundary, verify no profile values are transmitted/stored/logged, and review hosting metadata, notice and incident process. Real learner inputs remain blocked pending appropriate privacy/legal review.
-5. Assess the concentration risk of one person holding every role; arrange independent review if feasible before learner-facing release.
-6. Independently verify Sonke profile visibility and confirm exact submission deadline/upload procedure.
+## Phase 0 disposition
+
+PROJECT READY is **PASSED for Phase 1 PRD and requirements planning only**, based on the owner’s explicit approvals, the owner’s attestation that account-specific checks are complete, official-source research recorded in `PHASE0-ONLINE-EVIDENCE.md`, and review of the supplied hackathon programme.
+
+The following are downstream implementation/release controls, not blockers to beginning PRD work:
+1. Implement and test the synthetic-only boundary; verify no profile values are transmitted, persisted or logged.
+2. Review hosting metadata, privacy notice, retention and incident process before a public demo; real learner data remains prohibited until the appropriate privacy/legal review is complete.
+3. Keep eligibility to sourced minimum-requirement screening and return UNKNOWN on incomplete or ambiguous rules.
+4. Before provisioning, recheck the planned resource list against the R100/month cap and the owner's private cost evidence; do not add paid/metered services without renewed approval.
+5. Verify the Sonke portal’s displayed submission deadline/timezone and upload limits before final submission.
+6. Obtain independent review if feasible; the owner remains the single person holding all roles.
 
 ## Resolved in principle
 - MVP journey and key exclusions.
@@ -58,12 +62,12 @@
 Owner approval of the Phase 0 direction/materials is recorded. These approvals do not by themselves provide the external and implementation evidence required to pass the gate.
 
 ## Evidence limitations
-- No application tests, build, security scan, cloud resource, deployment or CI run has been performed or verified.
-- Azure subscription ownership and the absence of StudyPath resources are owner-confirmed, not independently verified. Current project spend R0 and no use of credits are owner-reported. Tenant details, effective permissions, billing visibility, unrelated subscription commitments and all-in future cost have not been inspected.
+- No application tests, build, security scan, cloud resource, deployment or CI run has been performed or verified. Phase 0 passage does not imply these exist.
+- The owner attests that Azure access, billing, commitments and cost checks are complete. Account-specific details were not independently inspected by the assistant and no billing screenshot or saved quote was committed; see `PHASE0-ONLINE-EVIDENCE.md`.
 - Pricing review is a preliminary screen of official pricing pages, not a saved Pricing Calculator quote; final regional prices, currency conversion, tax, usage assumptions and credits remain unverified.
-- The catalogue source list is a draft plan, not a populated or approved catalogue. Source availability does not itself establish permission to reproduce content.
-- General hackathon requirements are extracted from the supplied programme. Owner confirms Sonke profiling and new-app status, but profile visibility and exact deadline have not been independently inspected.
+- Official UJ programme pages and Microsoft pricing/quota pages were checked online on 2026-10-13. The catalogue is a bounded two-programme pilot; full admission predictions remain unsupported and must return UNKNOWN where rules are incomplete.
+- Hackathon deliverables and date are extracted from the supplied programme. The owner confirms Sonke profiling and new-app status; the portal itself was not accessed. Confirm the portal timezone/upload details before submission.
 - The absence of files in the initial root listing is not a complete audit of every branch or historical commit.
 
 ## Next gate
-Complete and review the remaining P0 evidence, reconcile the Phase 0 artifacts, then record a formal PROJECT READY gate decision before starting PRD work. No application implementation or cloud provisioning is authorised by this evidence-documentation change.
+Phase 1 — create and approve the PRD, user stories, measurable acceptance criteria and requirements traceability matrix. PROJECT READY passage authorizes planning only; it is not a deployment approval. No application implementation, Azure provisioning or deployment was performed by this documentation update.
