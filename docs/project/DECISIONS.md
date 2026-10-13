@@ -1,9 +1,9 @@
 # StudyPath SA — Decisions and Assumptions
 
-**Status:** Phase 0 decisions recorded; PROJECT READY evidence gate still pending  
+**Status:** Phase 0 decisions and owner approval of the Phase 0 materials recorded; PROJECT READY evidence gate still pending  
 **Last updated:** 2026-10-13
 
-Owner explicitly approved Q-002, Q-003, Q-004, Q-005, Q-010, Q-015 and Q-016 on 2026-10-13. These approvals accept the proposed direction/role assignments; they do not substitute for external evidence, implementation, or cost verification.
+Owner explicitly approved COST-01, DATA-01, ELIGIBILITY-01, PRIVACY-01, RELEASE-01 and OWNER-01, and approved the directions recorded for Q-002, Q-003, Q-004, Q-005, Q-010, Q-015 and Q-016 on 2026-10-13. The owner reconfirmed approval of the Phase 0 materials in the project conversation. These approvals accept project direction; they do not substitute for external evidence, implementation, or cost verification.
 
 ## Confirmed decisions
 
