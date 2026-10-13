@@ -16,15 +16,16 @@ The MVP is the anonymous-first, source-grounded pathway explorer:
 
 **Pilot limitation:** Phase 0 records two official University of Johannesburg programme pages checked. The actual published catalogue size and release freshness policy are not frozen here. The MVP must not claim national catalogue completeness.
 
-## P1 — Next after core MVP, subject to approval
+## P1 — Medium-priority capabilities in the intended MVP
 
-- Funding catalogue and funding matching, with eligibility requirements, verified deadlines and document lists.
-- Manual application tracker for university/funding opportunities, with status, deadlines, required documents and notes.
-- Saved pathways and authenticated learner profile.
+Funding matching and manual application tracking are in the intended MVP scope at medium priority. They follow the P0 core pathway-discovery journey and must not displace core eligibility correctness, privacy safeguards, test coverage or demo reliability.
+
+- **REQ-FUND-001 — Funding catalogue and matching:** a bounded, curated set of funding opportunities with source-backed criteria, provenance, verification dates, deadline/expiry handling, explainable matches and explicit uncertainty.
+- **REQ-APP-001 — Manual application tracker:** learner-reported tracking of supported university/funding applications, with approved statuses and next steps. Tracker lifecycle and data/persistence model must be approved before implementation.
 - A more complete curated catalogue covering additional institutions, provinces, qualification types and TVET options.
 - Institution/qualification comparison.
 
-These items appear in the broader specification, but are not part of the accepted initial MVP cut line. Priorities must be explicitly reconciled before implementation.
+Saved pathways and authenticated learner profiles remain outside the intended MVP and require separate approval. P1 means medium priority within the intended MVP, not permission to skip acceptance criteria or privacy/security gates.
 
 ## P2 — Later product capabilities
 
@@ -52,15 +53,15 @@ These future ideas are not approved implementation commitments.
 - Automated nationwide web crawling or unsupported institutional coverage claims.
 - AI as the authority for eligibility, requirements or deadlines.
 - Document upload or extraction in the initial MVP.
-- Accounts, authentication, cross-session saving, manual tracking and notifications in the initial MVP.
+- Accounts, authentication, cross-session saving and notifications in the initial MVP.
+- Direct application submission and external application-system status synchronisation.
+- Persistent tracker records or collection of sensitive funding inputs until their data-handling rules are approved.
 - Real learner personal data in development/demo testing.
 - Paid Azure services or provisioning without renewed cost approval; R100/month total cap and no-provisioning boundary remain in force.
 
 ## Scope conflict requiring decision
 
-The supplied specification labels student profile (M1), pathway matching (M2), institution information (M3), funding matching (M4), application tracker (M5), official-source authority (M6) and national architecture (M7) as Must Have. Approved Phase 0 decisions explicitly defer cross-session saves and manual application tracking, and the accepted MVP journey is anonymous-first with a small curated catalogue. The hackathon cut line in the specification also says stop after M6, which conflicts with the narrower Phase 0 direction.
-
-This scope document follows the later explicit Phase 0 direction for the initial MVP, but this is **not** a silent deletion of M4/M5. Product owner approval of the reconciliation is required before PRD READY.
+The supplied specification labels M4 funding matching and M5 application tracking as Must Have. The owner has now resolved the scope conflict by including both in the intended MVP at P1 / medium priority, behind the P0 core pathway-discovery journey. The anonymous-first preference remains, but the tracker data/persistence model and the inputs permitted for funding matching are not approved. These are tracked in OR-006, OR-015 and OR-016. The decision does not authorise accounts, cross-session persistence or collection of sensitive financial data.
 
 ## Dependencies and constraints
 
