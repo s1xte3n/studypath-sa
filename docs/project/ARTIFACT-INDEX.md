@@ -17,12 +17,12 @@ These references were supplied in the project conversation; they are not yet sto
 | Artifact | Path | Status |
 |---|---|---|
 | Project overview | `docs/project/PROJECT-OVERVIEW.md` | Present in repository |
-| Project status | `docs/project/PROJECT-STATUS.md` | Updated in readiness evidence branch; merge pending |
+| Project status | `docs/project/PROJECT-STATUS.md` | Updated on main; Phase 1 planning authorized |
 | Decisions and assumptions | `docs/project/DECISIONS.md` | Present in repository |
-| Open questions | `docs/project/OPEN-QUESTIONS.md` | Updated in readiness evidence branch; merge pending |
+| Open questions | `docs/project/OPEN-QUESTIONS.md` | Updated on main; downstream work tracked |
 | Project charter | `docs/project/PROJECT-CHARTER.md` | Present in repository |
-| Artifact index | `docs/project/ARTIFACT-INDEX.md` | Updated in readiness evidence branch; merge pending |
-| PROJECT READY evidence pack | `docs/project/PROJECT-READY-EVIDENCE.md` | Draft in readiness evidence branch; owner review and evidence still required |
+| Artifact index | `docs/project/ARTIFACT-INDEX.md` | Updated on main |
+| PROJECT READY evidence pack | `docs/project/PROJECT-READY-EVIDENCE.md` | Baseline pack retained; see completed `PHASE0-MANUAL-EVIDENCE-PACK.md` and `PHASE0-ONLINE-EVIDENCE.md` for gate decision and evidence distinctions |
 
 ## Accepted Phase 0 decisions
 - Primary MVP journey is anonymous-first: learner enters subjects/marks and interests, sees explainable pathway matches and eligibility/uncertainty, and follows official-source next steps.
@@ -34,14 +34,16 @@ These references were supplied in the project conversation; they are not yet sto
 - Record named accountable owners for product, catalogue/data, cloud, security/privacy and release/demo readiness.
 
 ## Readiness evidence status
+
+The owner approved the six decision records and attests that account-specific checks are complete. Official UJ and Microsoft public sources and the supplied hackathon programme are recorded in `docs/project/PHASE0-ONLINE-EVIDENCE.md`. PROJECT READY passed on 2026-10-13 for PRD/planning only. Owner attestations are not represented as independently inspected Azure portal evidence.
 | Requirement | Current evidence | Remaining blocker |
 |---|---|---|
-| Catalogue | Candidate official sources, permitted-use cautions, provenance fields and proposed cadence drafted | Approval, curator/backup and verified records |
-| Cloud | No Azure subscription/access evidence | Confirm subscription/tenant, permissions and named owner |
-| Budget | Preliminary official pricing screen and cost controls drafted | Saved all-in regional estimate, expiry/overage review and budget approval |
-| Privacy | Proposed data inventory, minimisation, retention and incident process drafted | Named owner, applicable consent/privacy review and explicit approval |
+| Catalogue | Two official UJ programme pages checked; source/provenance and UNKNOWN boundary recorded | Full admission prediction remains out of scope; validate/refresh before releases; no backup curator |
+| Cloud | Owner attests subscription/access and permission checks complete; no sensitive account evidence stored in repo | Recheck planned resource permissions before provisioning; assistant did not access Azure portal |
+| Budget | Official Microsoft plan/quota pages checked; owner attests budget and billing checks complete | Keep private cost evidence; recheck every intended paid/metered resource before provisioning |
+| Privacy | Synthetic-only boundary approved and owner assigned | Verify actual implementation, telemetry/logging, notice and applicable privacy/legal review before public learner-facing use |
 | Accountability | Role matrix created with placeholders | Actual names, role acceptance and availability |
-| Hackathon | General app criteria and deliverables extracted from supplied programme | Verify Sonke profile/team registration and exact deadline |
+| Hackathon | Supplied programme reviewed; owner confirms Sonke profile and new-app status | Verify displayed portal timezone/file limits at submission; build all required deliverables |
 
 ## Repository evidence
 - Private repository: https://github.com/s1xte3n/studypath-sa
@@ -66,6 +68,6 @@ These references were supplied in the project conversation; they are not yet sto
 “Draft” is not approval. “Not verified” does not prove an external artifact does not exist. Never claim implementation, tests, builds, provisioning or deployment without direct evidence. Update this index when artifacts are created, reviewed, approved or superseded.
 
 ## Gate
-Complete P0 evidence and named ownership, obtain owner/team approval, and explicitly record PROJECT READY as passed before PRD refinement.
+PROJECT READY passed on 2026-10-13 for Phase 1 PRD and requirements planning only. This does not establish implementation, tests, cloud provisioning or deployment. Next deliverables: approved PRD, requirements matrix and traceability.
 
 | Phase 0 blocker resolution proposal | `docs/project/PHASE0-RESOLUTION-PROPOSAL.md` | Draft proposal: static-first cost strategy, two source-backed UJ pilot pathways, and synthetic-only privacy boundary; owner acceptance and verification required before gate passage |
