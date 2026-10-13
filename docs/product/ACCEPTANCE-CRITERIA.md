@@ -81,11 +81,29 @@
 - **AC-NFR-003:** No implementation is accepted based solely on HTTP 2xx or a visually plausible screen; assertions cover displayed state, reasons, source references, privacy behavior and failure states.
 - **AC-NFR-004:** No criterion is marked passed until an actual test or review has been executed and its evidence recorded.
 
+## REQ-FUND-001 — Funding opportunities and matching (P1 / medium priority)
+
+- **AC-FUND-001:** Given a published funding opportunity is shown, when the learner opens it, then an authoritative provider source and verification metadata are available.
+- **AC-FUND-002:** Given the learner requests funding matches, when criteria are evaluated, then funding eligibility is calculated separately from admission eligibility using only approved structured rules.
+- **AC-FUND-003:** Given required criteria or learner inputs are missing or ambiguous, when a match is displayed, then the relevant uncertainty is shown and the system does not claim confirmed eligibility.
+- **AC-FUND-004:** Given a deadline is expired, unverified or not applicable to the supported cycle, then the opportunity is not presented with a definitive current deadline or eligibility claim.
+- **AC-FUND-005:** Given no published opportunity meets the supported criteria, then the system displays an honest empty state and does not fabricate opportunities.
+
+## REQ-APP-001 — Manual application tracker (P1 / medium priority)
+
+- **AC-APP-001:** Given the approved tracker data-handling model is available, when a learner adds an application, then the entry references a supported pathway or funding opportunity and uses only approved fields.
+- **AC-APP-002:** Given a learner updates an application, when a status transition is requested, then only an approved transition is accepted; invalid transitions produce an understandable error.
+- **AC-APP-003:** Given a tracker status is displayed, then it is clearly labelled as learner-reported unless a separately approved and implemented source verifies it.
+- **AC-APP-004:** Given a save/update fails or persistence is unavailable, then the UI reports failure and does not claim the change was saved.
+- **AC-APP-005:** Given tracker data is reset or deleted under the approved lifecycle, then the data is removed according to that policy and is not exposed in telemetry.
+- **AC-APP-006:** Given persistence is approved, when a learner requests a tracker entry, then only the authorised owner/session can access it; cross-user isolation tests pass before release.
+
 ## Criteria requiring owner decisions before baseline approval
 
 - Mark range, precision, missing/optional fields and supported subject vocabulary.
 - Eligibility precedence when one rule fails while another is unknown.
 - Definition of stale source and applicable admission cycle.
+- Funding provider coverage, supported criteria, required learner inputs, deadline timezone, freshness and expiry policy (OR-015).
+- Tracker statuses/transitions, authority of `submitted_at`, allowed fields, reset/deletion behavior and whether any persistence is permitted (OR-016).
 - Supported browsers/viewports, accessibility conformance level and performance thresholds.
 - Reset/temporary-data lifecycle and exact hosting telemetry review.
-- Whether funding matching and manual application tracking belong in this MVP despite the approved Phase 0 cut line.
