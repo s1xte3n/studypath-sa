@@ -32,8 +32,9 @@ This records the owner's accepted Phase 0 direction on 2026-10-13. Detailed requ
 - Hackathon MVP target date: 26 October 2026, according to the supplied programme; current rules and deliverables must still be verified.
 - Budget ceiling: R100/month total; prefer free tiers.
 - Owner-confirmed baseline: React/Vite and documented Azure services, with API prefix `/api/v1`.
-- No cloud provisioning until subscription/tenant access, permissions, cost controls and deployment responsibility are verified.
-- Record named product, data/catalogue, cloud, security/privacy and release/demo owners before passing the readiness gate.
+- The project owner reports an existing Azure subscription and owns all project roles for now; verify tenant details, effective permissions and billing visibility before provisioning.
+- The project owner temporarily holds product, catalogue/data, cloud/budget, security/privacy, engineering/QA and release/demo responsibilities. No backup or independent reviewer is appointed.
+- No cloud provisioning until access and cost controls are evidenced and the R100/month cap is shown feasible.
 
 ## Candidate success criteria (pending PRD)
 1. A learner can complete the agreed primary journey on a mobile viewport.
@@ -47,4 +48,4 @@ This records the owner's accepted Phase 0 direction on 2026-10-13. Detailed requ
 Project owner/team must approve scope, requirements, architecture changes, privacy/data decisions, spending and release. Maintain traceability: Requirement ID → UI/API contract → Test ID → implementation → CI result → release evidence.
 
 ## Approval required
-The MVP direction has been accepted, but this charter and PROJECT READY gate remain pending until remaining P0 evidence is completed, named owners are recorded, and the owner/team explicitly approves the Phase 0 exit.
+The MVP direction and provisional single-person role assignments are owner-confirmed. The owner also reports an existing owned Azure subscription, a completed Sonke team profile and new-app status; these statements are not all independently verified. The charter and PROJECT READY gate remain pending until catalogue records are approved and verified, cost feasibility is evidenced, privacy/security review is recorded, Azure access/billing is inspected, hackathon details are confirmed, and the owner explicitly approves the Phase 0 exit.
