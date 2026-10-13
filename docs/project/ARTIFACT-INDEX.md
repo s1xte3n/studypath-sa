@@ -1,8 +1,8 @@
 # StudyPath SA — Artifact Index
 
 **Last updated:** 2026-10-13  
-**Phase:** 0 — Discovery  
-**Gate:** PROJECT READY — NOT PASSED
+**Phase:** 1 — PRD and requirements planning  
+**Gate:** PROJECT READY — PASSED for Phase 1 planning only
 
 ## Source-of-truth references
 | Artifact | Supplied filename | Purpose |
