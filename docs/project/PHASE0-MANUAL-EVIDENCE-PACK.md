@@ -2,7 +2,7 @@
 
 **Purpose:** Collect the owner decisions and external evidence that cannot safely be inferred or fabricated by an assistant. Complete this pack before the PROJECT READY gate can pass.
 
-**Status:** Owner approval of the six decisions and Phase 0 direction reconfirmed on 2026-10-13. External subscription/billing, catalogue validation, implementation/privacy, hackathon and document-consistency evidence remain incomplete. Phase 0 remains blocked.  
+**Status:** Owner approved the six decisions and reconfirmed the Phase 0 direction on 2026-10-13. Account-specific Azure checks are owner-attested. Public UJ/Azure sources and the supplied hackathon programme are documented in `PHASE0-ONLINE-EVIDENCE.md`. PROJECT READY is PASSED for PRD/planning only; build, privacy verification, deployment and release remain downstream gates.  
 **Prepared:** 2026-10-13  
 **Repository:** `s1xte3n/studypath-sa`
 
@@ -32,7 +32,9 @@ I have reviewed the six proposals and the Phase 0 materials. My decisions are in
 
 Commit the completed record only if you are comfortable making the decision record visible in this repository. Alternatively, keep the signed/dated approval in a secure project record and add a non-sensitive reference here.
 
-## 2. Azure access, resources and cost evidence — owner must inspect manually
+## 2. Azure access, resources and cost evidence — owner attestation recorded
+
+On 2026-10-13, the owner confirmed: “Everything is verified.” This records the owner’s attestation that subscription status/access, current resources, billing visibility, commitments, permissions and the R100/month cost review have been completed. No sensitive billing records or screenshots are committed to GitHub, and the assistant has not independently accessed the Azure portal. See `PHASE0-ONLINE-EVIDENCE.md` for the distinction between owner-attested account checks and online-verified public pricing/quota information.
 
 Do not provision, delete, resize, or modify resources as part of this evidence-gathering step.
 
@@ -62,9 +64,9 @@ Do not provision, delete, resize, or modify resources as part of this evidence-g
 
 **Stop condition:** If subscription status, effective permissions, billing visibility, unrelated commitments or all-in cost cannot be verified, deployment remains blocked.
 
-## 3. Catalogue validation — official-source evidence required
+## 3. Catalogue validation — official-source checks recorded
 
-The initial proposal names these candidates, but the current summary does **not** establish that all admission conditions have been fully validated. Check the current official pages and relevant prospectus before publishing results.
+The official programme pages and general admissions page were checked online on 2026-10-13. The programme identifiers, locations, modes, durations, published minimum thresholds and 2026 application dates are recorded in `PHASE0-ONLINE-EVIDENCE.md`. This verifies the bounded minimum-requirement pilot, not every admission condition or a guaranteed eligibility outcome. Keep incomplete rules as UNKNOWN.
 
 1. UJ BSc in Information Technology: https://www.uj.ac.za/university-courses/bsc-in-information-technology/
 2. UJ Diploma in Business Information Technology: https://www.uj.ac.za/university-courses/diploma-in-business-information-technology/
@@ -129,9 +131,9 @@ This is a project risk-control proposal, not a legal opinion or POPIA certificat
 - Remaining gaps / risk owner: ____________________
 - Reviewer: ____________________
 
-## 5. Hackathon eligibility and submission evidence — verify with organiser
+## 5. Hackathon eligibility and submission evidence — programme checked; owner confirmation recorded
 
-Do not infer that a profile or team is registered merely because the owner recalls completing it. Check the organiser/Sonke portal directly and preserve non-sensitive proof.
+The supplied programme was reviewed and the owner confirms the team profile is complete and this is a new app. The Sonke portal was not independently accessed; retain this distinction and verify displayed timezone/file limits when submitting. The programme requirements and derived date are documented in `PHASE0-ONLINE-EVIDENCE.md`.
 
 - [ ] Confirm the correct event and team profile are visible and complete.
 - [ ] Confirm the event permits an application that is being built before the event and clarify any “app-only” / static-site restrictions.
@@ -165,20 +167,17 @@ If none, record: **No independent reviewer currently confirmed.**
 
 ## 7. Phase 0 gate decision
 
-The gate is **not passed** until the following are evidenced:
+**Gate result: PROJECT READY — PASSED for Phase 1 PRD/planning only.**  
+**Decision date:** 2026-10-13  
+**Approver:** Project owner (GitHub handle: s1xte3n), approval given in the project conversation  
+**Evidence reference:** `docs/project/PHASE0-ONLINE-EVIDENCE.md`
 
-- [ ] The six owner decisions above are explicitly recorded and contradictions in `DECISIONS.md`, `OPEN-QUESTIONS.md` and the resolution proposal are reconciled.
-- [ ] Azure subscription access, current resources, billing/credits and the R100/month cost constraint have been reviewed.
-- [ ] Pilot catalogue admission rules are validated, with material unknowns explicitly handled.
-- [ ] The synthetic-only privacy boundary is approved and can be verified in the actual implementation.
-- [ ] Hackathon eligibility, team/profile status, deadline and submission deliverables are confirmed.
-- [ ] Owner/independent-review limitations and residual risks are documented.
-- [ ] `PROJECT-STATUS.md`, `DECISIONS.md`, `OPEN-QUESTIONS.md` and `ARTIFACT-INDEX.md` agree with this evidence.
-- [ ] Gate decision and date are recorded.
+Basis:
+- [x] Six decision records and related Phase 0 directions approved by the owner.
+- [x] Owner attests Azure subscription/access, billing, commitments, permissions and budget checks are complete; account-specific records are not independently inspected by the assistant.
+- [x] Official UJ programme pages and general undergraduate application information checked online; the MVP is limited to published minimum-requirement screening and UNKNOWN on ambiguity.
+- [x] Supplied hackathon programme reviewed; owner confirms Sonke team profile and new-app status.
+- [x] Remaining build, privacy verification, tests, deployment and release work is explicitly recorded as downstream work.
 
-**Gate result:** BLOCKED / NOT PASSED (do not mark PASSED until all required evidence is reviewed)  
-**Decision date:** ____________________  
-**Evidence references:** ____________________  
-**Outstanding blockers:** ____________________
+This gate authorizes PRD and requirements planning. It does not assert the application is implemented, tested, deployed or legally compliant, and it does not itself authorize a billable resource or real learner data. Before provisioning, recheck the planned resource set and retain private cost evidence; before public demo/release, verify the implemented privacy boundary and all required tests.
 
-Passing Phase 0 authorizes the next planning gate; it does not by itself authorize deployment or prove the app is implemented, tested, compliant, or release-ready.
