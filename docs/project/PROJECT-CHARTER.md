@@ -16,7 +16,7 @@ Initial exclusions: document uploads, AI chat and application submission. Saved 
 
 Start with a small, manually curated catalogue from official sources. Record source URLs, verification dates and catalogue version where practical. The catalogue owner, exact sources, permitted use and verification cadence remain to be confirmed.
 
-This records the owner's accepted Phase 0 direction on 2026-10-13. Detailed requirements and measurable acceptance criteria must be defined in the PRD only after PROJECT READY is passed.
+This records the owner's accepted Phase 0 direction and the PROJECT READY gate decision on 2026-10-13. Detailed requirements and measurable acceptance criteria are the next Phase 1 deliverables.
 
 ## Guardrails
 - Eligibility values are `ELIGIBLE`, `NOT_ELIGIBLE`, `UNKNOWN`.
@@ -34,7 +34,7 @@ This records the owner's accepted Phase 0 direction on 2026-10-13. Detailed requ
 - Owner-confirmed baseline: React/Vite and documented Azure services, with API prefix `/api/v1`.
 - The project owner reports an existing Azure subscription and owns all project roles for now; verify tenant details, effective permissions and billing visibility before provisioning.
 - The project owner temporarily holds product, catalogue/data, cloud/budget, security/privacy, engineering/QA and release/demo responsibilities. No backup or independent reviewer is appointed.
-- No cloud provisioning until access and cost controls are evidenced and the R100/month cap is shown feasible.
+- The owner attests that access and cost checks are complete; public pricing/quota sources are logged in `PHASE0-ONLINE-EVIDENCE.md`. Before provisioning, recheck the exact resource list and private cost evidence against the R100/month cap. No billable add-ons without renewed approval.
 
 ## Candidate success criteria (pending PRD)
 1. A learner can complete the agreed primary journey on a mobile viewport.
