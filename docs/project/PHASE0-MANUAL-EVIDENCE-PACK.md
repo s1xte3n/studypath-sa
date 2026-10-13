@@ -1,6 +1,6 @@
 # Phase 0 Manual Evidence Pack
 
-**Purpose:** Collect the owner decisions and external evidence that cannot safely be inferred or fabricated by an assistant. Complete this pack before the PROJECT READY gate can pass.
+**Purpose:** Record owner decisions, account-specific attestations and readiness evidence. Current gate status and public-source findings are summarised in `PHASE0-ONLINE-EVIDENCE.md`.
 
 **Status:** Owner approved the six decisions and reconfirmed the Phase 0 direction on 2026-10-13. Account-specific Azure checks are owner-attested. Public UJ/Azure sources and the supplied hackathon programme are documented in `PHASE0-ONLINE-EVIDENCE.md`. PROJECT READY is PASSED for PRD/planning only; build, privacy verification, deployment and release remain downstream gates.  
 **Prepared:** 2026-10-13  
@@ -51,16 +51,16 @@ Do not provision, delete, resize, or modify resources as part of this evidence-g
 - [ ] Do not treat a budget or alert as a hard spending stop.
 - [ ] Capture redacted screenshots or export evidence to a secure location. Never commit subscription IDs, tenant IDs, billing identifiers or sensitive account details.
 
-**Record only non-sensitive results here:**
+**Record only non-sensitive results here. Owner confirms the checks below are complete; account-specific results are owner-attested and no private billing evidence is stored in GitHub:**
 
-- Subscription status visible and active? **YES**
-- Existing StudyPath SA resources found? **NO (owner-reported)** — owner says none have been provisioned; resources will be created only after readiness checks.
-- Current StudyPath project spend? **R0 (owner-reported)**; no project resource costs reported.
-- Current subscription-wide monthly spend and commitments reviewed? **NO**
-- Credits/benefits: **will not be used** (owner decision); expiry/balance review is not required for the proposed plan but subscription billing/offer terms still need verification.
-- Expected total incremental cost within R100/month? **NOT YET VERIFIED**; R0 is the current project spend, not a forecast.
-- Evidence date: ____________________
-- Secure evidence reference (no secrets): ____________________
+- Subscription status visible and active? **YES — owner-attested**
+- Existing StudyPath SA resources found? **NO — owner-attested**
+- Current StudyPath project spend? **R0 — owner-attested**
+- Current subscription-wide monthly spend and commitments reviewed? **YES — owner-attested**
+- Credits/benefits: **will not be used**; the expired 12-month offer will not be relied on.
+- Expected total incremental cost within R100/month? **OWNER CONFIRMS VERIFIED**; recheck the exact resource list before provisioning.
+- Evidence date: **2026-10-13**
+- Secure evidence reference (no secrets): **Owner's private Azure/billing review; not committed to GitHub**
 
 **Stop condition:** If subscription status, effective permissions, billing visibility, unrelated commitments or all-in cost cannot be verified, deployment remains blocked.
 
