@@ -26,7 +26,7 @@
 | Tests, CI workflows, infrastructure, database | Not verified; no execution evidence available | 
 | Deployment | Confirmed by project owner on 2026-10-14: StudyPath SA has not been deployed. No live application URL or deployment has been verified. |
 | MVP journey | Direction accepted: anonymous learner journey from subject/mark/interest inputs to explainable pathways, eligibility/uncertainty and official next steps |
-| Catalogue | Two UJ programme pages checked online; OR-008 now sets a 6–8 curated programme-record target prioritising Gauteng. Actual publication-ready records and relationship evidence are not yet verified; eligibility remains minimum-requirement screening and ambiguity maps to UNKNOWN |
+| Catalogue | UJ 2027 prospectus selected as starting source; four programme candidates listed in `docs/product/PROGRAMME-CATALOGUE-REGISTER.md`. These are research leads, not publication-ready records. The 6–8 record target, complete source/rule verification and relationship evidence remain outstanding; ambiguity maps to UNKNOWN |
 | Budget | Owner reports an Active `StudyPath SA` Azure Plan subscription, Owner access, and no costs as of 2026-10-14. This is owner-supplied portal information; billing scope/date range and supporting evidence are not independently reviewed. Public Microsoft pricing/quota sources were checked. No saved quote was uploaded. Free static hosting only; no paid add-ons without renewed approval. |
 | Privacy and identity | Synthetic-only, no-persistence/no-profile-telemetry boundary approved; implementation verification, hosting metadata review and any applicable privacy/legal assessment are downstream build/release gates; real learner inputs remain prohibited |
 | Azure subscription and accountable owners | Owner confirms a subscription exists and is theirs; permissions/billing visibility are not independently verified. Under OR-014, temporary single-owner review is accepted with documented self-review/release checks; seek independent review before public learner use and record the limitation if unavailable. |
@@ -93,3 +93,14 @@ The project owner supplied a calculator table showing Azure Static Web Apps, Fre
 - **Meaning:** Requirements baseline approved for Phase 2 planning. Acceptance criteria are targets/test oracles, not test results.
 - **Still outstanding:** Requirements matrix and traceability, curated programme/funding records, relationship provenance, implementation, automated tests, accessibility/performance measurements, privacy/hosting review, CI/CD, infrastructure validation, deployment and release evidence.
 - **Verification:** Documentation state updated only. No application tests were run; no cloud resources were provisioned and no deployment was performed.
+
+
+## Phase 2 GAP-001–GAP-008 update — 2026-10-14
+
+The project owner selected API-first MVP architecture, UJ 2027 as the starting programme-catalogue source, and the policy of keeping sensitive funding criteria unknown and directing learners to official checks. D-044 records the architecture decision and supersedes D-019's static-first choice only.
+
+Draft architecture and API contract documents are recorded under `docs/architecture/`. The safe interim boundary is catalogue-only API responses; learner marks, subjects, interests, match results and tracker entries remain client-side and must not be transmitted. Owner confirmation is still required under OR-019/Q-018 before the final API contract is frozen.
+
+The UJ catalogue register identifies four candidate programme leads from official UJ sources, but none is marked as a verified publication-ready record. GAP-001, GAP-002, GAP-003, GAP-004 and GAP-005 remain evidence blockers. GAP-006 and GAP-007 remain resolved by prior source inspection. GAP-008's architecture direction is resolved, but runtime composition, final API schema, network behavior, provider retention/logging and cost feasibility remain open.
+
+No application code, executable tests, CI workflow, Azure resource, deployment, privacy clearance or release evidence was created or verified by this documentation update. The R100/month cap and no-provisioning gate remain in force.
