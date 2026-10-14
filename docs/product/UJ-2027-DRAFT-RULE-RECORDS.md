@@ -117,3 +117,10 @@ For each of the seven candidates, the curator must verify and record:
 - [ ] Catalogue version updated after approval.
 
 **Gate disposition:** GAP-001 remains **OPEN**. Seven draft records do not satisfy the requirement for 6–8 complete, approved records. No draft in this file may be used to claim admission or produce definitive learner-facing eligibility until all required fields, evidence, tests and curator approval are complete.
+
+
+## Joint GAP-001/GAP-002 follow-up — 2026-10-14
+
+The linked rule-semantics ledger is now documented in [UJ-2027-ROUTE-MODEL.md](./UJ-2027-ROUTE-MODEL.md), using the proposed canonical identities in [SUBJECT-CATALOGUE-V1.md](./SUBJECT-CATALOGUE-V1.md). The ledger deliberately leaves unresolved APS formulas, English HL/FAL interpretation and uncertain table-column/branch semantics as blockers rather than guessing.
+
+The seven records in this file remain drafts. GAP-001 is not closed until complete source rules, source-cycle/provenance metadata, boundary tests and record-by-record curator sign-off are recorded.
