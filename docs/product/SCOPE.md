@@ -1,6 +1,6 @@
 # StudyPath SA — Scope
 
-**Status:** Draft; reflects owner-approved Phase 0 and OR-008–OR-014 decisions. Explicit PRD approval and OR-015/016 detail remain outstanding.
+**Status:** Draft; reflects owner-approved Phase 0 and OR-008–OR-018 decisions. Explicit PRD approval and the OR-006-compatible tracker-persistence gate remain outstanding.
 
 ## MVP (P0 candidate)
 
@@ -20,8 +20,8 @@ The MVP is the anonymous-first, source-grounded pathway explorer:
 
 Funding matching and manual application tracking are in the intended MVP scope at medium priority. They follow the P0 core pathway-discovery journey and must not displace core eligibility correctness, privacy safeguards, test coverage or demo reliability.
 
-- **REQ-FUND-001 — Funding catalogue and matching:** a bounded, curated set of funding opportunities with source-backed criteria, provenance, verification dates, deadline/expiry handling, explainable matches and explicit uncertainty.
-- **REQ-APP-001 — Manual application tracker:** learner-reported tracking of supported university/funding applications, with approved statuses and next steps. Tracker lifecycle and data/persistence model must be approved before implementation.
+- **REQ-FUND-001 — Funding catalogue and matching:** a 3–5-opportunity official-source pilot with limited non-sensitive inputs, source-backed criteria, provenance, verification dates, deadline/timezone and expiry handling, explainable matches and explicit uncertainty.
+- **REQ-APP-001 — Manual application tracker:** learner-reported tracking of supported university/funding applications, with defined status transitions and minimal approved fields. Implement session-memory-only until any tracker-only browser-local persistence receives explicit OR-006-compatible change-control and privacy/security approval.
 - Catalogue expansion beyond the initial 6–8 record pilot, including additional institutions, provinces, qualification types and TVET options only when the corresponding official records can be verified.
 - Institution/qualification comparison.
 
@@ -55,13 +55,20 @@ These future ideas are not approved implementation commitments.
 - Document upload or extraction in the initial MVP.
 - Accounts, authentication, cross-session saving and notifications in the initial MVP.
 - Direct application submission and external application-system status synchronisation.
-- Persistent tracker records or collection of sensitive funding inputs until their data-handling rules are approved.
+- Persistent tracker records until the OR-006-compatible change-control and privacy/security gate explicitly approves tracker-only persistence; collection of sensitive funding inputs remains excluded.
 - Real learner personal data in development/demo testing.
 - Paid Azure services or provisioning without renewed cost approval; R100/month total cap and no-provisioning boundary remain in force.
 
-## Funding and tracker boundaries still open
+## Funding and tracker boundaries
 
-The supplied specification labels M4 funding matching and M5 application tracking as Must Have. OR-001 resolves the scope conflict by including both in the intended MVP at P1 / medium priority, behind the P0 core pathway-discovery journey. Funding criteria/data rules (OR-015) and tracker lifecycle/data handling (OR-016) remain open. The approved OR-006 privacy boundary applies: this scope decision does not authorise accounts, cross-session persistence, persistent tracker records or collection of sensitive financial data.
+The supplied specification labels M4 funding matching and M5 application tracking as Must Have. OR-001 includes both in the intended MVP at P1 / medium priority, behind the P0 core pathway-discovery journey.
+
+- **Funding (OR-015):** Target 3–5 curated official-provider/government opportunities. Use limited non-sensitive inputs (study stage, intended field/interest and location). Record official source, criteria, required-document checklist metadata, published amount/coverage, deadline/timezone as stated, cycle, verification date, catalogue version, curator sign-off and expiry/currentness. Re-verify at least every 30 days and sooner after material changes. Do not collect sensitive financial data, upload documents or guarantee awards.
+- **Tracker (OR-016):** Use the approved status lifecycle and permitted tracker fields. Status is learner-reported; submitted_at is optional and manually entered. The owner selected browser-local persistence for tracker entries as a future direction only. It is not authorized until change control and privacy/security review resolve compatibility with OR-006. Until then, the tracker must be session-memory-only. Academic/profile inputs and results must remain memory-only; saved pathways, accounts and server persistence remain excluded.
+- **Cost planner (OR-017):** Deferred from the initial MVP. Future semantics are ZAR, once-off versus annual recurring costs, source/date and estimate labeling, unknown values rather than zero, confirmed funding deducted only, potential funding shown separately, and no definitive gap when essential costs are missing. A negative calculated need is represented as zero remaining gap plus a separately shown surplus.
+- **AI/document assistant (OR-018):** Deferred entirely from the initial MVP. No uploads, extraction or AI document chat. Future consideration requires explicit consent, file/size and upload safeguards, retention/deletion, access control, confidence handling, human verification, prompt-injection defenses and official-source verification. AI never becomes the eligibility authority.
+
+These decisions define requirements only; they do not establish implementation or test evidence.
 
 ## Dependencies and constraints
 

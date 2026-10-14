@@ -35,13 +35,13 @@ Where the broader specification conflicts with the accepted Phase 0 MVP boundary
 - Full national catalogue coverage or automated crawling.
 - Using real learner personal data in development/demo flows. Synthetic-only boundary applies.
 
-Funding matching (M4) and manual application tracking (M5) are included in the intended MVP at **P1 / medium priority**, behind the P0 core pathway-discovery journey. This is a scope decision only: funding data rules and tracker lifecycle/data handling remain unresolved, and no account, persistent storage, or financial-data collection approach is approved. See `OPEN-REQUIREMENTS.md`.
+Funding matching (M4) and manual application tracking (M5) are included in the intended MVP at **P1 / medium priority**, behind the P0 core pathway-discovery journey. OR-015 defines a 3–5-opportunity official-source funding pilot and limited non-sensitive matching inputs. OR-016 defines tracker statuses, transitions and permitted fields. Browser-local persistence is only a future tracker-only direction: it is **not approved for implementation** until change control and privacy/security review resolve its compatibility with OR-006. Profile inputs/results remain memory-only; sensitive financial data, accounts and document uploads are not approved. See `OPEN-REQUIREMENTS.md`.
 
 ## 3. Actors and permissions
 
 | Actor | Permissions | Restrictions |
 |---|---|---|
-| Anonymous learner (primary) | Enter temporary academic/preferences inputs; request recommendations; view pathway details, reasons, eligibility state and source links; explore supported funding matches and manually manage tracker entries under the approved tracker data boundary | No account or cross-session persistence is approved; funding and tracker inputs must not be collected or persisted until the data/privacy rules are approved |
+| Anonymous learner (primary) | Enter temporary academic/preferences inputs; request recommendations; view pathway details, reasons, eligibility state and source links; explore supported funding matches using the limited approved inputs; manually manage learner-reported tracker entries | No account or cross-session profile persistence. Profile inputs/results remain memory-only. Tracker entries remain memory-only until a separate OR-006-compatible change-control and privacy/security gate explicitly approves tracker-only persistence. No sensitive financial data or document uploads. |
 | Recent matric graduate (secondary) | Same anonymous exploration capabilities | Same restrictions; qualification/cycle fit may remain UNKNOWN if data does not cover them |
 | Catalogue curator (operational role; not a learner-facing MVP feature) | Review official sources and maintain the small curated catalogue outside the learner workflow | Publication workflow/tooling is not confirmed as MVP; only verified published data may drive claims |
 | Product owner/reviewer | Approve requirements, data boundaries and release decisions | Does not acquire learner-data access beyond what is explicitly approved |
@@ -216,39 +216,40 @@ Funding matching (M4) and manual application tracking (M5) are included in the i
 ### REQ-FUND-001 — Curated funding opportunities and deterministic matching
 
 - **Priority:** P1 (medium; intended MVP scope after the P0 core journey).
-- **Status:** Scope approved; funding criteria, data coverage and freshness rules remain open (OR-015).
-- **Problem / user story:** As a learner, I want to discover funding opportunities that may fit my circumstances so that I can verify them with the provider.
-- **Actors:** Learner; catalogue curator.
-- **Preconditions:** At least one funding record has been reviewed and published with an authoritative source and verification metadata.
+- **Status:** Owner-approved rules under OR-015; source-verified records and implementation remain outstanding.
+- **Problem / user story:** As a learner, I want to discover funding opportunities that may fit my study plans so I can verify details with the provider.
+- **Actors:** Anonymous learner; catalogue curator.
+- **Preconditions:** A funding record has an authoritative official source, applicable criteria, verification metadata and curator sign-off.
 - **Trigger:** Learner opens funding options or requests funding matches.
-- **Inputs:** Only funding-related learner inputs explicitly approved in the input/privacy contract; do not assume household income, identity or other sensitive financial data may be collected.
-- **Business rules:** Match only against structured, source-backed criteria; evaluate funding eligibility separately from admission eligibility; use `ELIGIBLE`, `NOT_ELIGIBLE` or `UNKNOWN` only where the approved rules support that conclusion. Missing criteria, incomplete inputs, expired deadlines or uncertain applicability must not produce a positive certainty claim. Link to the official provider source. Never guarantee an award.
-- **Success state:** The learner sees a bounded set of source-backed opportunities, matching reasons, missing information and official next steps.
-- **Failure states:** No supported matches, incomplete funding criteria, stale/expired record or unavailable catalogue produces an honest empty/uncertain/error state; no opportunity or deadline is invented.
-- **Permissions:** Learners can view published opportunities and submit only the approved inputs; catalogue publication is a controlled curator responsibility.
-- **Dependencies:** OR-002 input contract; OR-006 privacy/telemetry boundary; OR-015 funding criteria, provenance, deadline and expiry rules; curated funding records.
-- **Acceptance criteria:** See AC-FUND-001 through AC-FUND-005 in `ACCEPTANCE-CRITERIA.md`.
-- **Non-functional requirements:** Deterministic, explainable, accessible and testable; no funding-profile telemetry; catalogue freshness and official-source links are visible.
-- **Out of scope:** Guaranteeing funding, automatic applications, unverified national coverage or AI making eligibility decisions.
+- **Inputs:** Study stage, intended field/interest, and province or intended location. Do not collect national ID, household income, bank details, family/financial documents or other sensitive financial data in the pilot. Required provider documents are shown as an informational checklist only; uploads are out of scope.
+- **Funding catalogue:** The pilot targets 3–5 curated opportunities from official funding-provider or government sources. Each record identifies provider/opportunity, criteria and conditions, required documents (metadata only), amount/coverage as published, deadline/timezone as stated, applicable cycle, official source title/URL, verification date, catalogue version, curator sign-off and expiry/currentness state. Re-verify at least every 30 days and sooner when the provider changes rules, a deadline passes or applicability/cycle changes. Do not infer a missing amount or timezone.
+- **Business rules:** Match deterministically against structured, source-backed criteria; calculate funding eligibility separately from admission eligibility. Apply ELIGIBLE, NOT_ELIGIBLE and UNKNOWN only when the approved evidence supports them. If a material criterion is unknown, unsupported, stale, expired or requires disallowed sensitive information, explain the limitation and do not claim confirmed eligibility. Link to the official provider source. Never guarantee an award or claim to submit an application.
+- **Success state:** The learner sees a bounded set of source-backed opportunities, match reasons, missing information and official next steps.
+- **Failure states:** No supported match, missing/expired source data or unavailable catalogue yields an honest empty/uncertain/error state; no opportunity, criterion or deadline is invented.
+- **Permissions:** Learners view published opportunities and supply only approved inputs; publication is a controlled curator responsibility.
+- **Dependencies:** OR-002, OR-004, OR-005, OR-006, OR-007, OR-015 and curated funding records.
+- **Acceptance criteria:** AC-FUND-001 through AC-FUND-009 in `ACCEPTANCE-CRITERIA.md`.
+- **Non-functional requirements:** Deterministic, explainable, accessible and testable; no funding-profile telemetry; source provenance, verification date and uncertainty are visible.
+- **Out of scope:** Guaranteeing funding, automatic applications, unverified national coverage, sensitive financial-data collection, document uploads and AI making eligibility decisions.
 
 ### REQ-APP-001 — Manual application tracker
 
 - **Priority:** P1 (medium; intended MVP scope after the P0 core journey).
-- **Status:** Scope approved; lifecycle, status transitions, and data/persistence boundary remain open (OR-006, OR-016).
-- **Problem / user story:** As a learner, I want to record and review my own university or funding application progress so that I can organise my next steps.
-- **Actors:** Learner.
-- **Preconditions:** The tracker data-handling model and allowed lifecycle have been approved; no tracker implementation may bypass this gate.
-- **Trigger:** Learner adds an application to the tracker or updates a tracked application.
-- **Inputs:** A selected pathway/funding opportunity, an approved status, relevant dates and document checklist fields only where those fields have been approved.
-- **Business rules:** Tracking is manual and learner-reported; never claim that StudyPath submitted, verified or received an application. Use only approved statuses and transitions. No account, cross-session persistence, sensitive notes or personal document storage is implied by this requirement; OR-006/OR-016 must define what data is permitted and for how long before implementation.
-- **Success state:** The learner can review the status and next steps of a manually tracked application within the approved data-handling boundary.
-- **Failure states:** Invalid status transition, missing required field, unavailable storage or unsupported persistence produces a clear error without falsely reporting a successful save.
-- **Permissions:** A learner may access only tracker entries permitted by the approved session/ownership model; if persistence is later approved, ownership and cross-user isolation must be tested.
-- **Dependencies:** OR-006 privacy/telemetry boundary; OR-016 lifecycle, transition rules, dates, status authority and persistence decision; funding catalogue for funding-related entries.
-- **Acceptance criteria:** See AC-APP-001 through AC-APP-006 in `ACCEPTANCE-CRITERIA.md`.
-- **Non-functional requirements:** Accessible status controls, clear learner-reported labeling, safe reset/deletion behavior and no sensitive tracker data in telemetry.
-- **Out of scope:** Direct submission, external application-system integration, institution-verified status unless an integration is separately approved, notifications and document uploads.
-
+- **Status:** Lifecycle and field minimisation approved under OR-016. Browser-local persistence is a selected future direction but remains blocked by OR-006 compatibility, change control and privacy/security review.
+- **Problem / user story:** As a learner, I want to record and review my own university or funding application progress so I can organise next steps.
+- **Actors:** Anonymous learner.
+- **Preconditions:** The current session-memory-only tracker contract is implemented. No persistent storage may be implemented until the separate OR-006-compatible approval gate passes.
+- **Permitted fields:** Supported pathway/funding-opportunity catalogue ID, learner-reported status, optional learner-entered submission date, and system-created/updated timestamps. Do not store profile inputs/results, copied pathway snapshots, identity/contact details, sensitive notes, financial documents or uploads.
+- **Status lifecycle:** DRAFT → READY_TO_SUBMIT; READY_TO_SUBMIT → DRAFT or SUBMITTED; SUBMITTED → AWAITING_DOCUMENTS, UNDER_REVIEW, ACCEPTED, REJECTED or WITHDRAWN; AWAITING_DOCUMENTS → SUBMITTED, UNDER_REVIEW or WITHDRAWN; UNDER_REVIEW → AWAITING_DOCUMENTS, ACCEPTED, REJECTED or WITHDRAWN. WITHDRAWN may also be selected from DRAFT or READY_TO_SUBMIT. ACCEPTED, REJECTED and WITHDRAWN are terminal; use a new tracker entry for a new application/attempt. Reject all other transitions with a clear explanation.
+- **Status authority:** Every status is learner-reported. submitted_at is optional and manually entered; it is not independently verified. Never claim that StudyPath SA submitted, received or verified an application.
+- **Persistence and privacy:** In the current implementable baseline, entries remain in memory and are not restored after reload. The owner-selected future browser-local persistence direction applies only to tracker entries, not profile inputs/results or saved pathway snapshots. It is not authorization to implement storage. Before any persistent tracker storage, document a change-control decision and complete privacy/security review covering the exact fields, browser mechanism, shared-device risk/disclosure, retention, deletion, and acceptance tests. OR-006 remains controlling until that gate is explicitly resolved. No account, server persistence or cross-session saved pathways are approved.
+- **Reset and deletion:** Core exploration Reset clears academic/profile inputs and results. A separate tracker-clear action clears all active tracker entries. If persistent storage is approved later, deletion must also remove the corresponding stored entries; do not claim this until verified.
+- **Success state:** The learner can review manually recorded status and next steps within the approved data boundary.
+- **Failure states:** Invalid transition, unsupported ID or unavailable state produces a clear error and never falsely reports a successful save.
+- **Permissions:** Current session-only access; if tracker persistence is separately approved, shared-device access and any ownership/isolation limitations must be disclosed and tested before release.
+- **Dependencies:** OR-006, OR-016, funding catalogue and supported pathway catalogue.
+- **Acceptance criteria:** AC-APP-001 through AC-APP-009 in `ACCEPTANCE-CRITERIA.md`.
+- **Out of scope:** Direct submission, external application-system integration, institution-verified status, notifications, sensitive notes, document storage and uploads.
 ## 6. Cross-cutting non-functional requirements
 
 | ID | Requirement | Status / verification intent |
@@ -270,7 +271,7 @@ Funding matching (M4) and manual application tracking (M5) are included in the i
 4. The matching engine needs explicit rules for multiple missing/failed requirements, APS/points and subject equivalence/substitution before it can be fully testable; OR-003 defines mark validation and the alias lookup policy.
 5. A client-only/static deployment is the current cost-constrained proposal; confirm in architecture phase. This PRD does not mandate implementation architecture.
 6. Browser storage, network traffic, application/error telemetry dependencies and hosting/provider metadata and retention must be inspected to substantiate the approved OR-006 privacy boundary.
-7. The scope conflict is resolved: funding matching and manual application tracking are intended MVP P1 capabilities behind the P0 core journey. Their funding data contract (OR-015) and tracker lifecycle/data boundary (OR-016) remain open and must be resolved before those features are implemented.
+7. The scope conflict is resolved: funding matching and manual application tracking are intended MVP P1 capabilities behind the P0 core journey. OR-015 funding rules and OR-016 tracker lifecycle/field rules are defined. Tracker-only browser-local persistence remains unauthorized until OR-006-compatible change control and privacy/security review explicitly approve it; until then, implement session-memory-only tracking.
 8. The FNB hackathon requires an interactive application and submission deliverables (deck max 10 slides, demo video max 90 seconds, SSDLC and Lean Business Canvas); the PRD does not itself satisfy these submission deliverables.
 
 ## 8. Success measures
@@ -287,8 +288,8 @@ These are approved targets, not measured results. Do not report success until th
 
 ## 9. Explicitly unresolved / not approved
 
-See `docs/product/OPEN-REQUIREMENTS.md`. OR-001 through OR-014 have owner-approved policy decisions, including the 6–8 record pilot target, relationship evidence, deterministic eligibility grouping, WCAG/browser targets, matching performance and success measures. These are requirements, not proof of implementation or passing tests. OR-006 privacy implementation/hosting review remain release gates. OR-015 funding criteria/data and OR-016 tracker lifecycle/data handling remain open for the intended P1 features; OR-017/018 remain later-scope decisions.
+See `docs/product/OPEN-REQUIREMENTS.md`. OR-001–OR-015 and OR-017–OR-018 have owner-approved policy decisions, including the 6–8 programme pilot, 3–5 funding-opportunity pilot, relationship evidence, deterministic eligibility grouping, WCAG/browser targets, matching performance, success measures and future cost/AI safeguards. These are requirements, not proof of implementation or passing tests. OR-006 privacy implementation/hosting review remain release gates. OR-016 lifecycle and field rules are defined; tracker-only browser-local persistence remains a future direction blocked by the OR-006 compatibility/change-control gate. OR-017/018 features remain outside the initial MVP.
 
 ## 10. PRD gate assessment
 
-**Gate status: BLOCKED — PRD READY is not claimed.** OR-001 through OR-014 are owner-approved, but the PRD still needs explicit owner approval and OR-015/016 remain open before the P1 funding/tracker features can be implemented or the requirements baseline treated as complete. The initial catalogue's actual 6–8 verified records, relationship records, accessibility/performance conformance, golden-set results, privacy review and release evidence remain outstanding. Candidate acceptance criteria are recorded in `ACCEPTANCE-CRITERIA.md`. No implementation, test passage, privacy clearance or release readiness is claimed.
+**Gate status: BLOCKED — PRD READY is not claimed.** OR-001–OR-015 and OR-017–OR-018 have owner-approved decisions. OR-016 lifecycle rules are defined, but browser-local tracker persistence remains blocked pending explicit OR-006-compatible change control and privacy/security approval; until then, the implementable tracker baseline is session-memory-only. The PRD still needs explicit owner approval. The 6–8 programme catalogue and 3–5 funding records, relationship records, accessibility/performance conformance, golden-set results, privacy review, traceability and release evidence remain outstanding. No implementation, test passage, privacy clearance or release readiness is claimed.
