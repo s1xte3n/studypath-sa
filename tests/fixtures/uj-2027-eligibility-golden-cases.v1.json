@@ -999,8 +999,7 @@
       "precondition": "Deterministic evaluator available; evaluate the identical fixture twice",
       "expectedState": "SAME_AS_FIRST_EVALUATION",
       "expectedReasonCodes": [
-        "DETERMINISTIC_RESULT (test assertion",
-        "not learner-facing reason)"
+        "DETERMINISTIC_RESULT"
       ],
       "status": "DRAFT_ORACLE_NOT_EXECUTED",
       "programmeId": "UJ-2027-BSC-IT",
