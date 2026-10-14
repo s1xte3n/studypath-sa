@@ -12,8 +12,8 @@
 | REQ-DET-001 | PRD §5; AC-DET-001–006 | Detail/source links/not-found state | T-DET-001–002 | Detail view and source-link handling | Not available | Not available |
 | REQ-PRV-001 | PRD §5; AC-PRV-001–013 | Privacy notice, reset, no profile in URL/storage/network/logs | T-PRV-001–004 | Memory state, telemetry/dependency controls, hosting review | Not available | Privacy verification not available |
 | REQ-UX-001 | PRD §5; AC-UX-001–011 | Responsive journey, loading/empty/error states | T-UX-001–003 | UI patterns, semantic controls, recoverable errors | Not available | Accessibility evidence not available |
-| REQ-FUND-001 | PRD §5; AC-FUND range to verify | Funding matching/source/deadline UI; interface not frozen | T-FUND-001–003 | Funding records and matching | Not available | 3–5 reviewed records not available |
-| REQ-APP-001 | PRD §5; OR-016; AC-APP range to verify | Tracker fields/status lifecycle; memory-only | T-APP-001–004 | In-memory tracker and transition validation | Not available | Lifecycle/AC cross-check outstanding |
+| REQ-FUND-001 | PRD §5; AC-FUND-001–009 | Funding matching/source/deadline UI; interface not frozen | T-FUND-001–003 | Funding records and matching | Not available | 3–5 reviewed records not available |
+| REQ-APP-001 | PRD §5; OR-016; AC-APP-001–009 | Tracker fields/status lifecycle; memory-only | T-APP-001–004 | In-memory tracker and transition validation | Not available | Lifecycle/AC cross-check outstanding |
 | NFR-SEC-001 | PRD §6 | Build/hosting/network boundary | T-SEC-001 | Build configuration and any network boundary | Not available | Not available |
 | NFR-PRV-001 | PRD §6; OR-006 | Storage/network/log/telemetry inspection | T-PRV-001–004 | Storage, network, logging, hosting review | Not available | Release blocker until evidenced |
 | NFR-DATA-001 | PRD §6; OR-005/008 | Requirement/source metadata | T-CAT-001, T-MAT-003 | Catalogue validation/evaluator | Not available | Not available |
