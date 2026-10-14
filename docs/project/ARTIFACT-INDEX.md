@@ -92,3 +92,17 @@ The owner approved the Phase 0 decision records and attests that account-specifi
 **PRD READY: BLOCKED.** OR-001–OR-015 and OR-017–OR-018 have owner-approved decisions; OR-016 lifecycle and field rules are approved, but tracker-only browser-local persistence remains gated by OR-006-compatible change control and privacy/security review. The OR-008–OR-014 decision package was merged to `main` through PR #19; this OR-015–OR-018 package is being proposed separately for review. Actual programme/funding catalogue curation, relationship evidence, test execution, privacy review, provisioning and deployment remain outstanding and are not claimed.
 
 PROJECT READY passed for Phase 1 planning only. No application implementation, test execution, Azure provisioning or deployment is claimed.
+
+
+## Phase 1–6 planning artifacts — 2026-10-14
+
+| Artifact | Status | Notes |
+|---|---|---|
+| [Phase 1 PRD gate review](../product/PHASE-1-PRD-GATE-REVIEW.md) | Draft; gate blocked | PRD approval, next-action decision, telemetry review, subject vocabulary and catalogue evidence remain open |
+| [Phase 2 requirements matrix](../product/REQUIREMENTS-MATRIX.md) | Draft | Maps PRD requirements to existing acceptance criteria and verification methods |
+| [Phase 3 system architecture](../architecture/SYSTEM-ARCHITECTURE.md) | Draft; decision blocked | Static-first and API-first options recorded; owner decision required |
+| [Phase 4 API/interface contracts](../api/API-CONTRACTS.md) | Draft; contract freeze blocked | In-process contracts proposed; HTTP contracts conditional on architecture choice |
+| [Phase 5 environment configuration](ENVIRONMENT-CONFIGURATION.md) | Draft | Configuration policy only; no deployment configuration or provisioning |
+| [Phase 6 test strategy](../testing/TEST-STRATEGY.md) | Draft | Test levels and golden-set scope defined; no tests run |
+
+These documents were created on branch `docs/phases-1-6-planning`. They are proposals, not approved gates. No implementation, test execution, provisioning or deployment is claimed.
