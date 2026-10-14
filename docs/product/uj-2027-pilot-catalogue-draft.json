@@ -1,0 +1,224 @@
+{
+  "catalogueVersion": "uj-2027-pilot-v0.1-draft",
+  "institution": "University of Johannesburg",
+  "admissionCycle": "2027",
+  "applicantRoute": "NSC",
+  "status": "DRAFT_NOT_FOR_DEFINITIVE_SCREENING",
+  "sourcePolicy": {
+    "primarySource": "Applicable UJ 2027 Undergraduate Prospectus",
+    "additionalSourceForCbeProgrammes": "UJ College of Business and Economics Undergraduate 2027 Intake Brochure",
+    "currentProgrammePagesAreCorroborativeOnly": true,
+    "prospectusContentMayChange": true,
+    "eligibilityRule": "A record may only support ELIGIBLE after source completeness, applicable cycle, currentness, interpretation and curator sign-off are verified.",
+    "aps": {
+      "sourceText": "APS is the sum of the achievement ratings of six school subjects; Life Orientation is not counted.",
+      "source": "UJ 2027 Undergraduate Prospectus, printed page 16",
+      "markToLevel": [
+        { "minPercent": 0, "maxPercent": 29, "level": 1 },
+        { "minPercent": 30, "maxPercent": 39, "level": 2 },
+        { "minPercent": 40, "maxPercent": 49, "level": 3 },
+        { "minPercent": 50, "maxPercent": 59, "level": 4 },
+        { "minPercent": 60, "maxPercent": 69, "level": 5 },
+        { "minPercent": 70, "maxPercent": 79, "level": 6 },
+        { "minPercent": 80, "maxPercent": 100, "level": 7 }
+      ],
+      "moreThanSixSubjectSelection": "UNRESOLVED; return UNKNOWN until approved selection policy is source-supported",
+      "missingOrDuplicateSubjects": "UNRESOLVED; never fabricate marks or double-count; return UNKNOWN unless a verified mandatory failure independently determines NOT_ELIGIBLE"
+    },
+    "englishMapping": {
+      "requirementColumnLabel": "English",
+      "homeLanguageVsFirstAdditionalLanguage": "UNRESOLVED",
+      "policy": "Do not infer which English subject stream satisfies the programme requirement. If learner result cannot be mapped by an approved official rule, return UNKNOWN."
+    },
+    "facultyOfScienceRestriction": {
+      "sourceText": "Technical Mathematics and Technical Science are not accepted for degree programmes in the Faculty of Science.",
+      "sourcePages": [86, 91],
+      "status": "DRAFT_INTERPRETATION_REQUIRES_FINAL_SCOPE_CONFIRMATION"
+    }
+  },
+  "sources": [
+    {
+      "id": "SRC-UJ-2027-PROS",
+      "title": "UJ 2027 Undergraduate Prospectus",
+      "url": "https://www.uj.ac.za/wp-content/uploads/2026/07/uj_undergrad_prospectus2027_online_25jun2026.pdf",
+      "sourceVersion": "Online 25 June 2026 version (path includes July 2026 upload)",
+      "verificationDate": "2026-10-14",
+      "limitation": "Existing project documents also reference other official 2027 prospectus URLs. Exact governing PDF version and checksum must be reconciled before sign-off."
+    },
+    {
+      "id": "SRC-UJ-CBE-2027",
+      "title": "UJ College of Business and Economics Undergraduate 2027 Intake Brochure",
+      "url": "https://www.uj.ac.za/wp-content/uploads/2026/04/brochure-cbe_undergraduate_2027-intake.pdf",
+      "sourceVersion": "2027 intake brochure",
+      "verificationDate": "2026-10-14",
+      "limitation": "Use for CBE cycle-specific rows; confirm page references and exact applicable conditions during final curation."
+    }
+  ],
+  "programmes": [
+    {
+      "id": "UJ-2027-BSC-IT",
+      "name": "BSc in Information Technology",
+      "code": "B2I01Q",
+      "faculty": "Faculty of Science",
+      "campus": "Auckland Park Kingsway",
+      "durationYears": 3,
+      "requirements": {
+        "aps": { "min": 30 },
+        "english": { "minLevel": 5, "minPercent": 60, "mappingStatus": "UNRESOLVED" },
+        "subjectRules": [
+          { "subject": "MATHEMATICS", "minLevel": 6, "minPercent": 70, "mandatory": true },
+          { "subject": "TECHNICAL_MATHEMATICS", "acceptedAsMathematics": false },
+          { "subject": "TECHNICAL_SCIENCES", "accepted": false }
+        ]
+      },
+      "sourceEvidence": [
+        { "sourceId": "SRC-UJ-2027-PROS", "location": "printed p. 86" },
+        { "title": "BSc in Information Technology", "url": "https://www.uj.ac.za/university-courses/bsc-in-information-technology/", "role": "corroborative current page" }
+      ],
+      "unresolved": ["English stream mapping", "complete conditions/selection exceptions", "exact governing prospectus version"],
+      "curatorSignoff": null,
+      "status": "DRAFT"
+    },
+    {
+      "id": "UJ-2027-BSC-CSI",
+      "name": "BSc in Computer Science and Informatics",
+      "code": "B2I02Q",
+      "faculty": "Faculty of Science",
+      "campus": "Auckland Park Kingsway",
+      "durationYears": 3,
+      "requirements": {
+        "aps": { "min": 30 },
+        "english": { "minLevel": 5, "minPercent": 60, "mappingStatus": "UNRESOLVED" },
+        "subjectRules": [
+          { "subject": "MATHEMATICS", "minLevel": 6, "minPercent": 70, "mandatory": true },
+          { "subject": "TECHNICAL_MATHEMATICS", "acceptedAsMathematics": false },
+          { "subject": "TECHNICAL_SCIENCES", "accepted": false }
+        ]
+      },
+      "sourceEvidence": [
+        { "sourceId": "SRC-UJ-2027-PROS", "location": "printed p. 86" },
+        { "title": "BSc in Computer Science and Informatics", "url": "https://www.uj.ac.za/university-courses/bsc-in-computer-science-and-informatics", "role": "corroborative current page" }
+      ],
+      "unresolved": ["English stream mapping", "complete conditions/selection exceptions", "exact governing prospectus version"],
+      "curatorSignoff": null,
+      "status": "DRAFT"
+    },
+    {
+      "id": "UJ-2027-BSC-CSI-EXT",
+      "name": "BSc in Computer Science and Informatics Extended",
+      "code": "B2E02Q",
+      "faculty": "Faculty of Science",
+      "campus": "Auckland Park Kingsway",
+      "durationYears": 4,
+      "requirements": {
+        "aps": { "min": 26 },
+        "english": { "minLevel": 4, "minPercent": 50, "mappingStatus": "UNRESOLVED" },
+        "subjectRules": [
+          { "subject": "MATHEMATICS", "minLevel": 5, "minPercent": 60, "mandatory": true },
+          { "subject": "TECHNICAL_MATHEMATICS", "acceptedAsMathematics": false },
+          { "subject": "TECHNICAL_SCIENCES", "accepted": false }
+        ]
+      },
+      "sourceEvidence": [
+        { "sourceId": "SRC-UJ-2027-PROS", "location": "printed p. 91" },
+        { "title": "BSc in Computer Science and Informatics Extended", "url": "https://www.uj.ac.za/university-courses/bsc-in-computer-science-and-informatics-extended/", "role": "corroborative current page" }
+      ],
+      "unresolved": ["English stream mapping", "complete conditions/selection exceptions", "exact scope of Science faculty restriction", "exact governing prospectus version"],
+      "curatorSignoff": null,
+      "status": "DRAFT"
+    },
+    {
+      "id": "UJ-2027-BSC-CSI-AI",
+      "name": "BSc in Computer Science and Informatics Specialising in AI (Artificial Intelligence)",
+      "code": "B2I04Q",
+      "faculty": "Faculty of Science",
+      "campus": "Auckland Park Kingsway",
+      "durationYears": 3,
+      "requirements": {
+        "aps": { "min": 34 },
+        "english": { "minLevel": 5, "minPercent": 60, "mappingStatus": "UNRESOLVED" },
+        "subjectRules": [
+          { "subject": "MATHEMATICS", "minLevel": 7, "minPercent": 80, "mandatory": true },
+          { "subject": "TECHNICAL_MATHEMATICS", "acceptedAsMathematics": false },
+          { "subject": "TECHNICAL_SCIENCES", "accepted": false }
+        ]
+      },
+      "sourceEvidence": [
+        { "sourceId": "SRC-UJ-2027-PROS", "location": "printed p. 86" },
+        { "title": "BSc in Computer Science and Informatics Specialising in AI", "url": "https://www.uj.ac.za/university-courses/bsc-in-computer-science-and-informatics-specialising-in-ai-artificial-intelligence/", "role": "corroborative current page" }
+      ],
+      "unresolved": ["English stream mapping", "complete conditions/selection exceptions", "exact scope of Science faculty restriction", "exact governing prospectus version"],
+      "curatorSignoff": null,
+      "status": "DRAFT"
+    },
+    {
+      "id": "UJ-2027-BCOM-IS",
+      "name": "BCom in Information Systems",
+      "code": "B1CISQ",
+      "faculty": "College of Business and Economics",
+      "campus": "Auckland Park Bunting Road",
+      "durationYears": 3,
+      "requirements": {
+        "aps": { "min": 26 },
+        "english": { "minLevel": 4, "minPercent": 50, "mappingStatus": "UNRESOLVED" },
+        "subjectRules": [
+          { "subject": "MATHEMATICS", "minLevel": 4, "minPercent": 50, "mandatory": true, "branch": "MATHS_OR_TECH_MATHS" },
+          { "subject": "TECHNICAL_MATHEMATICS", "minLevel": 4, "minPercent": 50, "mandatory": true, "branch": "MATHS_OR_TECH_MATHS" },
+          { "subject": "MATHEMATICAL_LITERACY", "accepted": false }
+        ]
+      },
+      "sourceEvidence": [
+        { "sourceId": "SRC-UJ-CBE-2027", "location": "printed p. 10" },
+        { "title": "BCom in Information Systems", "url": "https://www.uj.ac.za/university-courses/bcom-in-information-systems/", "role": "corroborative current page" }
+      ],
+      "unresolved": ["English stream mapping", "full conditions/selection exceptions", "exact governing prospectus version"],
+      "curatorSignoff": null,
+      "status": "DRAFT"
+    },
+    {
+      "id": "UJ-2027-DIP-BIT",
+      "name": "Diploma in Business Information Technology",
+      "code": "DI1401",
+      "faculty": "College of Business and Economics",
+      "campus": "Auckland Park Bunting Road",
+      "durationYears": 3,
+      "requirements": {
+        "apsBranches": [
+          { "id": "MATHEMATICS_ROUTE", "min": 22, "subjects": [{ "subject": "MATHEMATICS", "minLevel": 3 }, { "subject": "TECHNICAL_MATHEMATICS", "minLevel": 3 }] },
+          { "id": "MATHEMATICAL_LITERACY_ROUTE", "min": 24, "subjects": [{ "subject": "MATHEMATICAL_LITERACY", "minLevel": 6 }] }
+        ],
+        "english": { "minLevel": 4, "minPercent": 50, "mappingStatus": "UNRESOLVED" }
+      },
+      "sourceEvidence": [
+        { "sourceId": "SRC-UJ-2027-PROS", "location": "printed p. 44" },
+        { "sourceId": "SRC-UJ-CBE-2027", "location": "printed p. 12" },
+        { "title": "Diploma in Business Information Technology", "url": "https://www.uj.ac.za/university-courses/diploma-in-business-information-technology/", "role": "corroborative current page" }
+      ],
+      "unresolved": ["English stream mapping", "exact AND/OR branch interpretation", "complete conditions/selection exceptions", "exact governing prospectus version"],
+      "curatorSignoff": null,
+      "status": "DRAFT"
+    },
+    {
+      "id": "UJ-2027-BCOM-IM",
+      "name": "BCom in Information Management",
+      "code": "B34IMQ",
+      "faculty": "College of Business and Economics",
+      "campus": "Auckland Park Kingsway",
+      "durationYears": 3,
+      "requirements": {
+        "apsBranches": [
+          { "id": "MATHEMATICS_ROUTE", "min": 26, "subjects": [{ "subject": "MATHEMATICS", "minLevel": 4 }, { "subject": "TECHNICAL_MATHEMATICS", "minLevel": 4 }] },
+          { "id": "MATHEMATICAL_LITERACY_ROUTE", "min": 28, "subjects": [{ "subject": "MATHEMATICAL_LITERACY", "minLevel": 6 }] }
+        ],
+        "english": { "minLevel": 4, "minPercent": 50, "mappingStatus": "UNRESOLVED" }
+      },
+      "sourceEvidence": [
+        { "sourceId": "SRC-UJ-CBE-2027", "location": "printed p. 10" },
+        { "title": "BCom in Information Management", "url": "https://www.uj.ac.za/university-courses/bcom-in-information-management/", "role": "current page; less-specific APS wording than 2027 CBE brochure" }
+      ],
+      "unresolved": ["English stream mapping", "conflicting level of specificity between current page and 2027 CBE brochure", "complete conditions/selection exceptions", "exact governing prospectus version"],
+      "curatorSignoff": null,
+      "status": "DRAFT"
+    }
+  ]
+}
