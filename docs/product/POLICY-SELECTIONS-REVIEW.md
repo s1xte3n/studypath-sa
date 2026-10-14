@@ -1,6 +1,6 @@
 # Funding and Tracker Policy Selections — Review Record
 
-- **Status:** Policy decisions approved; this review is updated on the Phase 1 alignment branch. PRD alignment is proposed here; owner approval of the revised PRD remains pending
+- **Status:** Policy decisions and PRD alignment approved by the product owner on 2026-10-14; PR #22 merged the documentation alignment to `main`. `PRD READY` passed for the requirements baseline only.
 - **Date:** 2026-10-14
 - **Related policy:** [Funding, Application Tracking and Privacy Policy](FUNDING-TRACKER-PRIVACY-POLICY.md)
 - **Related PR:** [PR #10](https://github.com/s1xte3n/studypath-sa/pull/10) added the policy baseline and is already merged. This review record is separate; it does not approve implementation or change that merge.
@@ -14,7 +14,7 @@
 | Tracker persistence | Page memory only. No server/database, localStorage, sessionStorage, cookies, account, or cloud sync. Reload/close may discard entries. | Approved by product owner |
 | Tracker transitions | Use the transition table in `FUNDING-TRACKER-PRIVACY-POLICY.md`, including terminal WITHDRAWN and explicit correction/removal behaviour. | Approved by product owner |
 
-The product owner approved these three policy decisions. The PRD and acceptance criteria are being aligned to page-memory-only tracker behavior. This is not proof of implementation, test completion, deployment, or release readiness.
+The product owner approved these three policy decisions and subsequently approved the revised PRD and measurable acceptance criteria on 2026-10-14. The PRD and acceptance criteria now align to page-memory-only tracker behavior. This is not proof of implementation, test completion, deployment, or release readiness.
 
 ## 2. Impact assessment
 
@@ -68,13 +68,12 @@ No tests were run as part of this review record. These are proposed acceptance t
 
 ## 3. PRD gate assessment
 
-**PRD gate remains BLOCKED pending documentation alignment and resolution of remaining items.** The three selections below are approved, but the PRD, requirements matrix, acceptance criteria and test strategy must now reflect them before the gate can be reconsidered.
+**PRD READY: PASSED on 2026-10-14** after owner approval of the revised PRD and measurable acceptance criteria. This approves the requirements baseline only, not implementation or release.
 
-Remaining review items before `PRD READY` can be considered:
-1. Obtain explicit product-owner approval of the revised PRD and measurable success criteria.
-2. Review hosting/provider telemetry defaults before public demo and ensure no learner-specific values are emitted; this remains a downstream privacy/release control, not a reason to collect or persist learner data in the PRD.
-3. During Phase 2, create/approve the requirements traceability matrix and map each requirement to acceptance criteria, UI/API contract, test ID, implementation, CI result and release evidence.
-4. During Phase 6 and release planning, align the test strategy and record actual test results; no tests are claimed as run by this documentation update.
+Remaining work after `PRD READY`:
+1. During Phase 2, create/approve the requirements traceability matrix and map each requirement to acceptance criteria, UI/API contract, test ID, implementation, CI result and release evidence.
+2. Review hosting/provider telemetry defaults before public demo and ensure no learner-specific values are emitted; this remains a downstream privacy/release control.
+3. During Phase 6 and release planning, align the test strategy and record actual test results; no tests are claimed as run by this documentation update.
 
 ## 4. Traceability to carry forward
 
