@@ -175,21 +175,20 @@ Funding matching (M4) and manual application tracking (M5) are included in the i
 ### REQ-PRV-001 — Anonymous and privacy-minimising exploration
 
 - **Priority:** P0
-- **Status:** Confirmed Phase 0 boundary; exact hosting/provider metadata and notice wording are downstream release checks.
-- **Problem / user story:** As a learner, I want to explore without creating an account or leaving a persistent academic profile.
-- **Actors:** Anonymous learner; product owner/operator.
-- **Preconditions:** Learner can load the application.
-- **Trigger:** Learner uses any exploration workflow.
-- **Inputs:** Academic marks, subjects, interests and preferences supplied in the current session.
-- **Business rules:** Do not require identifying information. Do not persist profile values, place them in URL/query parameters, analytics events, client error reports or application logs. Do not use real learner data in development/demo testing. Clear temporary form/result state when the session is ended or reset according to the approved session policy (exact reset semantics open). Hosting/security telemetry may contain technical metadata; its exact fields, retention and privacy notice must be reviewed before public use.
-- **Success state:** Learner can complete anonymous exploration while the product does not store a reusable profile.
-- **Failure states:** If a component requires persistence or external transmission of profile values, the workflow must not proceed until approved; technical failure must not expose entered values.
-- **Permissions:** No account or cross-user profile access. Operators must not receive learner marks through routine logs.
-- **Edge cases:** Browser refresh/back, shared device, multiple tabs, browser crash, analytics SDK enabled by default, third-party error reporting, browser autofill.
-- **Dependencies:** Frontend/session design, hosting configuration, telemetry configuration, privacy notice and review.
-- **Acceptance criteria:** See AC-PRV-001 through AC-PRV-007.
-- **Non-functional requirements:** Minimise data, secure transport, safe errors, no secrets/client-side credentials, accessible privacy notice before public demo.
-- **Out of scope:** Authentication, cross-session saved profile, consent-based data storage, learner account export/deletion workflows until accounts exist.
+- **Status:** Privacy/data-boundary decision approved by owner on 2026-10-14 (OR-006); implementation and release verification outstanding.
+- **Problem / user story:** As a learner, I want to explore study pathways without identifying myself or having my academic profile retained or used for unrelated tracking.
+- **Actors:** Anonymous learner.
+- **Preconditions:** The privacy notice is visible before learner input; only synthetic data is used in development/demo.
+- **Trigger:** Learner begins or resets pathway exploration.
+- **Inputs:** Current exploration inputs and results held in memory only.
+- **Business rules:** Do not require identifying information. Do not persist profile values in localStorage, sessionStorage, IndexedDB, profile cookies or URLs/query parameters. Do not send profile values to analytics, advertising, unrelated third-party endpoints, application logs, client error reports or telemetry. Do not add analytics SDKs, advertising trackers or third-party error reporters to the MVP. Reset clears inputs, results and temporary profile state. Leaving/reloading ends the exploration and prior values must not be restored by application-controlled navigation behavior. Hosting/access/security providers may collect technical metadata; inspect the actual configuration and provider retention policy and describe verified practices in the privacy notice. The application retains no profile after exploration ends. Use synthetic data only; real learner data is prohibited until applicable privacy/legal review is complete.
+- **Success state:** The anonymous flow functions without identifying details, profile values remain in memory for the active exploration, reset clears them, and the privacy notice matches verified behavior.
+- **Failure states:** If privacy notice or hosting metadata review is incomplete, the public-demo gate remains blocked. Any profile value found in persistent storage, URLs, application logs, client error reports or prohibited network destinations fails the relevant acceptance criteria.
+- **Permissions:** Anonymous learner uses only the current in-memory exploration; no account or cross-session profile access is available.
+- **Edge cases:** Browser refresh/back, shared device, multiple tabs, browser crash, browser autofill, browser history, accidental telemetry SDK inclusion, provider-generated access/security metadata and unknown provider retention.
+- **Dependencies:** Frontend/session design, hosting configuration, telemetry dependency review, privacy notice, browser storage/network inspection and owner release review.
+- **Acceptance criteria:** See AC-PRV-001 through AC-PRV-013 in ACCEPTANCE-CRITERIA.md.
+- **Non-functional requirements:** Minimise data, secure transport, safe errors, no client-side secrets, no profile persistence/telemetry, and an accessible privacy notice before learner input.
 
 ### REQ-UX-001 — Accessible, mobile-first interactive experience
 
@@ -266,7 +265,7 @@ Funding matching (M4) and manual application tracking (M5) are included in the i
 3. Official programme requirements can be incomplete, cycle-specific or internally inconsistent; UNKNOWN handling is essential.
 4. The matching engine needs explicit rules for multiple missing/failed requirements, APS/points and subject equivalence/substitution before it can be fully testable; OR-003 defines mark validation and the alias lookup policy.
 5. A client-only/static deployment is the current cost-constrained proposal; confirm in architecture phase. This PRD does not mandate implementation architecture.
-6. Browser storage, analytics, error reporting and hosting telemetry must be inspected to substantiate the privacy boundary.
+6. Browser storage, network traffic, application/error telemetry dependencies and hosting/provider metadata and retention must be inspected to substantiate the approved OR-006 privacy boundary.
 7. The source specification describes funding matching and application tracking as Must Have, while approved Phase 0 decisions defer them. Product owner must confirm this prioritisation conflict before PRD READY.
 8. The FNB hackathon requires an interactive application and submission deliverables (deck max 10 slides, demo video max 90 seconds, SSDLC and Lean Business Canvas); the PRD does not itself satisfy these submission deliverables.
 
@@ -283,8 +282,8 @@ Exact thresholds, test set size, and measurement ownership are open; do not repo
 
 ## 9. Explicitly unresolved / not approved
 
-See `docs/product/OPEN-REQUIREMENTS.md`. OR-001 through OR-005 have owner-approved decisions recorded, including the M4/M5 scope, anonymous inputs, mark/subject validation, eligibility precedence/composite rules, and admission-cycle/source-freshness contract. Implementation and verification evidence for these requirements remain outstanding. OR-006 privacy/telemetry and OR-007 the exact learner-facing meaning/scope of ELIGIBLE remain P0 blockers; measurable accessibility/performance targets, catalogue coverage and MVP success thresholds also remain open.
+See `docs/product/OPEN-REQUIREMENTS.md`. OR-001 through OR-005 have owner-approved decisions recorded, including the M4/M5 scope, anonymous inputs, mark/subject validation, eligibility precedence/composite rules, and admission-cycle/source-freshness contract. Implementation and verification evidence for these requirements remain outstanding. OR-007, the exact learner-facing meaning/scope of ELIGIBLE, remains a P0 requirements blocker; OR-006 is decision-resolved but implementation, hosting-provider review and privacy verification remain release gates; measurable accessibility/performance targets, catalogue coverage and MVP success thresholds also remain open.
 
 ## 10. PRD gate assessment
 
-**Gate status: BLOCKED — draft is comprehensive enough for review, but PRD READY is not claimed.** OR-001 scope has been resolved by owner decision: M4 funding matching and M5 manual application tracking are P1 / medium-priority intended MVP features. Their detailed data, lifecycle, and privacy constraints remain open alongside other high-impact requirements. Candidate acceptance criteria are recorded in `ACCEPTANCE-CRITERIA.md`. No implementation tasks are created by this document.
+**Gate status: BLOCKED — draft is comprehensive enough for review, but PRD READY is not claimed.** OR-001 scope has been resolved by owner decision: M4 funding matching and M5 manual application tracking are P1 / medium-priority intended MVP features. Their detailed data and lifecycle constraints remain open alongside other high-impact requirements; OR-006 now defines the cross-cutting privacy boundary. Candidate acceptance criteria are recorded in `ACCEPTANCE-CRITERIA.md`. No implementation tasks are created by this document.
