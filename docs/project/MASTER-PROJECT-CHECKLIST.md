@@ -10,7 +10,7 @@
 | Phase | Exit gate | Evidence-based status | Checklist disposition |
 |---|---|---|---|
 | 0 — Project State | `PROJECT READY` | **PASSED on 2026-10-13 for Phase 1 planning only.** Scope, constraints, key decisions and high-impact risks are documented. Owner-supplied command output dated 2026-10-14 shows a clean local `main` branch matching `origin/main` (`0 0` divergence). Owner confirms the app has not been deployed. Owner reports the Azure subscription is Active, their role is Owner, plan is Azure Plan, and no costs exist; account-specific evidence remains owner-attested, not independently inspected. | **Complete for the Phase 1 planning gate. Do not label Phase 0 “in progress.”** Keep Azure/Sonke evidence limitations visible; deployment is a known not-deployed state and must be addressed at later delivery/release gates. |
-| 1 — PRD | `PRD READY` | Draft alignment proposed on branch `docs/phase-1-prd-alignment`; explicit product-owner approval is still pending. | Not complete |
+| 1 — PRD | `PRD READY` | **PASSED on 2026-10-14.** Product owner explicitly approved the revised PRD and measurable acceptance criteria; approval is recorded in `docs/project/DECISIONS.md` and `docs/product/PRD.md`. This approves the requirements baseline only, not implementation or release. | Complete for the PRD approval gate only |
 | 2 — Requirements | `REQUIREMENTS READY` | Not verified; requirements matrix and traceability are not yet approved. | Not complete |
 | 3 — Architecture | `ARCHITECTURE READY` | Proposed baseline exists; architecture approval and implementation are not verified. | Not complete |
 | 4 — API / Interface Contract | `CONTRACT READY` | Initial endpoint inventory exists; complete, approved contract is not verified. | Not complete |
@@ -51,7 +51,7 @@ The unchecked items above are **evidence limitations or downstream implementatio
 - [x] State official-source/provenance requirements and catalogue limitations.
 - [x] Specify accessibility, privacy, error, empty and loading states.
 - [x] Record risks, assumptions and unresolved product decisions; next actions are bounded to official links and neutral source-backed guidance.
-- [ ] Obtain explicit PRD approval before treating Phase 1 as complete.
+- [x] Obtain explicit product-owner approval of the revised PRD and measurable acceptance criteria; approval recorded on 2026-10-14. This passes the PRD gate only; requirements-matrix/traceability work remains Phase 2.
 
 ## Remaining phase gates
 
@@ -79,4 +79,4 @@ Do not mark a phase complete just because a document exists. Confirm that its re
 
 ## Next action
 
-Proceed to **Phase 1 — PRD and measurable acceptance criteria**. Keep Phase 0 recorded as **PASSED for Phase 1 planning only**, with its evidence caveats retained.
+Proceed to **Phase 2 — Requirements matrix and traceability**. Phase 0 remains **PASSED for Phase 1 planning only**; Phase 1 `PRD READY` is **PASSED for the approved PRD/acceptance-criteria baseline only**. Do not infer implementation, testing, privacy clearance or release readiness.
