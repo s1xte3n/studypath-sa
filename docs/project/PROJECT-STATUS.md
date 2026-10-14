@@ -182,3 +182,10 @@ Updated the requirements matrix, requirement-gap register and project status sum
 - The requirement-gap register no longer treats publication-ready catalogue data, runtime privacy checks, final API details, executable app paths, test execution, CI or release evidence as automatic requirements-completeness blockers. These remain open in their respective data, architecture, implementation, security/privacy, test and release gates unless they expose unresolved product behavior.
 
 **Gate disposition:** Phase 2 remains **OPEN**. PH2-001 corrects status contradictions only; it does not approve the requirements baseline, close other gaps, or claim code/test/CI/deployment work. No application tests were run, no CI was triggered by this documentation update, and no cloud resources or deployment were changed.
+
+
+## Phase 2 PH2-002 — subject contract/test traceability reconciliation (2026-10-15)
+
+Prepared on branch `docs/phase-2-ph2-002-subject-traceability` for review. The owner-approved `subject-catalogue-v1` policy remains exact canonical labels after trim/whitespace-collapse/case-insensitive matching, with no aliases. The change aligns the traceability registry and subject contract's T-SUB-001–012 descriptions with the checked-in reference-normalizer tests, corrects the reference normalizer to return canonical display labels rather than lower-case lookup keys, and makes the test/runtime evidence boundary explicit.
+
+**Not claimed:** this reference suite is not production application code; it does not verify programme-level eligibility `UNKNOWN`, UI duplicate rejection, actual dictionary refresh, network/URL/log/telemetry privacy, deployment or release readiness. Current PR CI must complete before recording updated test execution evidence. GAP-002 and `REQUIREMENTS READY` remain open.
