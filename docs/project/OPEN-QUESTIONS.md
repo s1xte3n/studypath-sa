@@ -41,4 +41,8 @@ The owner approved the seven proposed Q decisions on 2026-10-13 and previously a
 ## Catalogue evidence update — 2026-10-14
 
 Preliminary official-source evidence is recorded for four UJ 2027 candidate programmes. This narrows the research task but does not close Q-019: full APS computation rules and exceptions have not been reconciled, the extended-programme code conflict remains open, and no record has curator sign-off. The official programme pages' displayed 2026 application window is not by itself sufficient proof of the complete 2027 eligibility rules.
-\n\n## Catalogue research update — 2026-10-14\n\nThe UJ starting set has expanded from four to seven preliminary candidates using official 2027 prospectus search-indexed text and current official programme pages. Added BCom in Information Systems (B1CISQ), Diploma in Business Information Technology (D1I40J vs DI1401 conflict), and BCom in Information Management (APS wording conflict). This increases candidate breadth but does not resolve Q-019: the full applicable 2027 rule tables/yearbooks, APS calculations and inclusions, conflicting code/threshold details, and curator sign-off are still outstanding. No eligibility rules may be treated as definitive from these preliminary leads.\n
+
+
+## Catalogue research update — 2026-10-14
+
+The UJ starting set has expanded from four to seven preliminary candidates using official 2027 prospectus search-indexed text and current official programme pages. Added BCom in Information Systems (B1CISQ), Diploma in Business Information Technology (D1I40J vs DI1401 conflict), and BCom in Information Management (APS wording conflict). This increases candidate breadth but does not resolve Q-019: the full applicable 2027 rule tables/yearbooks, APS calculations and inclusions, conflicting code/threshold details, and curator sign-off are still outstanding. No eligibility rules may be treated as definitive from these preliminary leads.
