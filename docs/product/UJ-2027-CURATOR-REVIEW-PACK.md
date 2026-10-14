@@ -1,8 +1,8 @@
 # UJ 2027 — GAP-001 Curator Review Pack
 
-**Status:** Draft for curator review; no programme is approved for definitive eligibility screening.  
+**Status:** Curator approved on 2026-10-14 as the bounded UJ 2027 NSC pilot rule baseline, subject to the explicit UNKNOWN safeguards and evidence/test limitations below. This approval does not certify unresolved rules or permit definitive ELIGIBLE outcomes where material evidence is missing.  
 **Prepared:** 2026-10-14  
-**Curator / final approver:** Project owner (confirmed 2026-10-14)  
+**Curator / final approver:** Project owner; explicit approval recorded in the project conversation on 2026-10-14  
 **Requirement / blocker:** REQ-CAT-001, REQ-MAT-001, REQ-DET-001; GAP-001 / Q-019  
 **Catalogue version proposed:** `uj-2027-pilot-v0.1-draft` (not approved for publication)
 
@@ -37,7 +37,7 @@ For each programme, the curator must approve the exact rule expression and the e
 
 ## 3. Shared APS and subject-level interpretation checklist
 
-The following shared interpretation is **proposed, not yet approved**:
+The project owner approved the proposed shared interpretation checklist on 2026-10-14. Approval records the intended policy; it does not create missing source evidence. Where the exact subject-selection method, English stream mapping, or selection conditions remain unverified, keep the affected result `UNKNOWN` rather than infer eligibility.
 
 - [ ] APS is the sum of the six applicable school-subject achievement ratings.
 - [ ] Life Orientation is excluded from APS, per the prospectus note.
@@ -78,7 +78,7 @@ Every record below is a **draft proposal**. Curator decision and signature field
 
 **Proposed test oracle after resolution:** APS 29 vs 30; English one level below vs level 5; Mathematics level 5 vs 6; Technical Mathematics presented instead of Mathematics; missing English or Mathematics. Expected results are **not approved yet**.
 
-**Curator decision:** ☐ Approve ☐ Reject ☐ Needs more evidence  
+**Curator decision:** Approved by project owner on 2026-10-14, with the pack's explicit UNKNOWN safeguards.  
 **Conditions / source note:** ____________________________________  
 **Curator / date / catalogue version:** ___________________________
 
@@ -277,17 +277,17 @@ The eventual project-wide golden set must contain at least 20 synthetic cases wi
 
 ## 7. Curator approval register
 
-No approval has been entered in this pack.
+The project owner explicitly approved all seven candidate records and the shared interpretation proposals on 2026-10-14 after reviewing this pack. This is a recorded product-owner/curator decision, not independent review or proof that every source ambiguity is resolved. Catalogue records remain bounded to the 2027 NSC pilot; unsupported applicant categories and material missing conditions must return `UNKNOWN`. The test-oracle column remains pending because no expected-outcome matrix or executable evaluator has yet been verified.
 
 | Record | Curator decision | Curator initials/name | Date | Catalogue version | Test-oracle sign-off |
 |---|---|---|---|---|---|
-| R1 — B2I01Q | Pending |  |  |  | Pending |
-| R2 — B2I02Q | Pending |  |  |  | Pending |
-| R3 — B2I04Q | Pending |  |  |  | Pending |
-| R4 — B2E02Q | Pending |  |  |  | Pending |
-| R5 — B1CISQ | Pending |  |  |  | Pending |
-| R6 — DI1401 | Pending |  |  |  | Pending |
-| R7 — B34IMQ | Pending |  |  |  | Pending |
+| R1 — B2I01Q | Approved as bounded NSC pilot draft; UNKNOWN safeguards apply | Project owner (explicit approval in conversation) | 2026-10-14 | `uj-2027-pilot-v0.1-draft` | Pending executable test-oracle verification |
+| R2 — B2I02Q | Approved as bounded NSC pilot draft; UNKNOWN safeguards apply | Project owner (explicit approval in conversation) | 2026-10-14 | `uj-2027-pilot-v0.1-draft` | Pending executable test-oracle verification |
+| R3 — B2I04Q | Approved as bounded NSC pilot draft; UNKNOWN safeguards apply | Project owner (explicit approval in conversation) | 2026-10-14 | `uj-2027-pilot-v0.1-draft` | Pending executable test-oracle verification |
+| R4 — B2E02Q | Approved as bounded NSC pilot draft; UNKNOWN safeguards apply | Project owner (explicit approval in conversation) | 2026-10-14 | `uj-2027-pilot-v0.1-draft` | Pending executable test-oracle verification |
+| R5 — B1CISQ | Approved as bounded NSC pilot draft; UNKNOWN safeguards apply | Project owner (explicit approval in conversation) | 2026-10-14 | `uj-2027-pilot-v0.1-draft` | Pending executable test-oracle verification |
+| R6 — DI1401 | Approved as bounded NSC pilot draft; UNKNOWN safeguards apply | Project owner (explicit approval in conversation) | 2026-10-14 | `uj-2027-pilot-v0.1-draft` | Pending executable test-oracle verification |
+| R7 — B34IMQ | Approved as bounded NSC pilot draft; UNKNOWN safeguards apply | Project owner (explicit approval in conversation) | 2026-10-14 | `uj-2027-pilot-v0.1-draft` | Pending executable test-oracle verification |
 
 **GAP-001 exit criteria (all required):**
 
@@ -298,4 +298,4 @@ No approval has been entered in this pack.
 - [ ] Deterministic tests implement the approved rules; the project-wide synthetic golden set contains at least 20 cases with zero false-positive `ELIGIBLE` results.
 - [ ] Requirements matrix, catalogue register, project status and traceability references updated with evidence.
 
-**Current disposition:** GAP-001 remains **OPEN**. This pack prepares review; it does not provide curator approval or close the Phase 2 `REQUIREMENTS READY` gate.
+**Current disposition:** Curator approval is recorded for the seven bounded NSC pilot draft records and the shared interpretation proposals. GAP-001 remains **OPEN** because the record set still needs complete source/rule-field verification, approved test oracles, deterministic implementation, and a project-wide 20+ case golden set with zero false-positive `ELIGIBLE` results. Approval does not override the requirement to return `UNKNOWN` when a material rule or input is unresolved. `REQUIREMENTS READY` remains **NOT PASSED**.
