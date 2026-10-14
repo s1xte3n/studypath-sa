@@ -1,6 +1,6 @@
 # StudyPath SA — Product Requirements Document
 
-**Status:** Draft for owner review; not approved  
+**Status:** Approved by product owner on 2026-10-14; `PRD READY` passed for the PRD/acceptance-criteria gate only  
 **Phase:** 1 — Product requirements  
 **Baseline date:** 2026-10-14  
 **Product:** StudyPath SA  
@@ -292,4 +292,4 @@ See `docs/product/OPEN-REQUIREMENTS.md`. OR-001–OR-015 and OR-017–OR-018 hav
 
 ## 10. PRD gate assessment
 
-**Gate status: BLOCKED — PRD READY is not claimed.** The approved requirements and policy decisions have been reconciled in this draft: P1 funding matching and manual tracking are included; tracker entries are page-memory-only; predefined next-action options are excluded; and cost planning/AI-document features remain deferred. Explicit owner approval of this revised PRD and its measurable success criteria is still required. The 6–8 programme catalogue and 3–5 funding records, relationship records, accessibility/performance conformance, golden-set results, privacy review, traceability and release evidence remain outstanding. No implementation, test passage, privacy clearance or release readiness is claimed.
+**Gate status: PASSED — `PRD READY` on 2026-10-14.** The product owner explicitly approved this revised PRD and its measurable acceptance criteria in the project conversation, including P1 funding matching and manual application tracking, page-memory-only tracker entries, exclusion of predefined next-action options/personalised task planning, and deferral of cost planning and AI/document assistance. This gate confirms approval of the requirements baseline only. The 6–8 programme catalogue and 3–5 funding records, relationship records, accessibility/performance conformance, golden-set results, privacy review, end-to-end traceability and release evidence remain outstanding. No implementation, test passage, privacy clearance or release readiness is claimed.
