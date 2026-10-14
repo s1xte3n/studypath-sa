@@ -125,3 +125,10 @@ These tests are planned, not executed. Before implementation, QA must add them t
 The more focused v1 controlled-vocabulary proposal is now documented in [SUBJECT-CATALOGUE-V1.md](./SUBJECT-CATALOGUE-V1.md). It proposes a bounded canonical ID set, no aliases in v1, and separate English HL/FAL/Second Additional Language IDs. The UJ rule dependency and unresolved source semantics are captured in [UJ-2027-ROUTE-MODEL.md](./UJ-2027-ROUTE-MODEL.md).
 
 This original document remains a proposal; the new document does not imply approval or implementation. GAP-002 stays open pending owner/curator approval and executed tests.
+
+
+## Approved v1 contract addendum — 2026-10-14
+
+The project owner approved the bounded subject contract recorded in [SUBJECT-CATALOGUE-V1-APPROVAL.md](./SUBJECT-CATALOGUE-V1-APPROVAL.md). The approved dictionary version is `subject-catalogue-v1`; the canonical IDs, exact-label-only policy, no-alias rule, English HL/FAL/Second Additional Language distinction, page-memory-only raw input rule and UNKNOWN safety invariant above are the controlling v1 contract.
+
+Executable contract tests are in [tests/contracts/subject-catalogue-v1.test.mjs](../../tests/contracts/subject-catalogue-v1.test.mjs). Test specifications and owner approval do not imply tests passed or that production code implements the contract. GAP-002 remains open until test execution evidence is recorded and the runtime/privacy behavior is verified.
