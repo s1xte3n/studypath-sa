@@ -317,15 +317,13 @@
             "subject": "MATHEMATICS",
             "minLevel": 4,
             "minPercent": 50,
-            "mandatory": true,
-            "branch": "MATHS_OR_TECH_MATHS"
+            "mandatory": "UNRESOLVED_ALTERNATIVE_SEMANTICS"
           },
           {
             "subject": "TECHNICAL_MATHEMATICS",
             "minLevel": 4,
             "minPercent": 50,
-            "mandatory": true,
-            "branch": "MATHS_OR_TECH_MATHS"
+            "mandatory": "UNRESOLVED_ALTERNATIVE_SEMANTICS"
           },
           {
             "subject": "MATHEMATICAL_LITERACY",
@@ -347,7 +345,8 @@
       "unresolved": [
         "English stream mapping",
         "full conditions/selection exceptions",
-        "exact governing prospectus version"
+        "exact governing prospectus version",
+        "Whether Mathematics and Technical Mathematics are alternatives or both independently required is not explicit in the extracted table; do not encode an OR branch until the original table/official rule confirms it."
       ],
       "curatorSignoff": null,
       "status": "DRAFT"
