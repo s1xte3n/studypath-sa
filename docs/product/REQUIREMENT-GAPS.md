@@ -12,8 +12,8 @@
 | GAP-003 | P0 | REQ-ALT-001 | Verified pathway relationship set not evidenced | Record type, rationale, provenance, verification date and approval; explicit official articulation evidence | Product owner/curator | No verified alternative claim until records exist |
 | GAP-004 | P0 | REQ-PRV-001, NFR-PRV-001 | Hosting metadata/retention and actual storage/network/telemetry behavior not independently inspected | Inspect host, provider retention, browser storage/network and dependencies; align privacy notice | Security/privacy + owner | Public learner-input demo blocked until verified; synthetic-only remains |
 | GAP-005 | P0 | REQ-FUND-001 | Required 3–5 current official-source funding records not verified | Curate criteria, document checklist metadata, published coverage/amount, deadline/timezone, cycle, verification/version/sign-off | Product owner/curator | P1 funding blocked on records |
-| GAP-006 | P0 | REQ-APP-001 | Exact normalized status-transition table must be cross-checked against PRD and OR-016 | Publish allowed/denied transitions and map each to cases before tracker implementation | Product owner/QA | Do not implement transitions yet |
-| GAP-007 | P0 | REQ-FUND-001, REQ-APP-001 | Exact AC-FUND and AC-APP ID ranges/content are not verified in this matrix pass | Check full acceptance-criteria file and correct references in all artifacts | QA/documentation owner | Traceability provisional until confirmed |
+| GAP-006 | P0 | REQ-APP-001 | Tracker transition table needed cross-check | **Resolved by Phase 2 source inspection:** PRD and OR-016 agree on the allowed transitions and terminal states. Preserve these rules in test cases. | QA/documentation owner | Resolved; no longer a gate blocker |
+| GAP-007 | P0 | REQ-FUND-001, REQ-APP-001 | Exact funding/tracker acceptance-criteria ranges were initially unverified | **Resolved by Phase 2 source inspection:** AC-FUND-001–009 and AC-APP-001–009 were confirmed in ACCEPTANCE-CRITERIA.md and linked in the matrix. | QA/documentation owner | Resolved; no longer a gate blocker |
 | GAP-008 | P0 | All requirements | No API/interface contract or frozen component boundary exists; PRD does not require an API architecture | Decide client-only/static vs networked boundary in architecture; freeze interfaces/contracts before dependent implementation | Architect/product owner | Do not invent endpoints or assume backend |
 
 ## High-priority verification gaps
@@ -40,8 +40,8 @@
 
 - [x] Unique IDs/priorities assigned to nine functional requirements and eight NFRs.
 - [x] Planned verification IDs assigned to each requirement.
-- [ ] Confirm funding/tracker acceptance-criteria references and status transitions.
-- [ ] Resolve P0 data, privacy, and interface-boundary gaps.
+- [x] Confirmed AC-FUND-001–009, AC-APP-001–009 and the OR-016 status lifecycle against the approved source documents.
+- [ ] Resolve remaining P0 data, privacy, and interface-boundary gaps.
 - [ ] Add actual contract/UI paths, executable test paths and CI/release evidence.
 - [ ] Execute required tests and retain results.
 
