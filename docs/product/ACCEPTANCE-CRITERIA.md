@@ -6,13 +6,17 @@
 ## REQ-EXP-001 — Anonymous pathway input
 
 - **AC-EXP-001:** Given the explorer is available, when a learner opens it, then they can begin entering pathway inputs without creating an account or supplying a name, email, phone number or national ID.
-- **AC-EXP-002:** Given a mark outside the approved range or in an invalid format, when submitted, then the input is rejected with a field-specific explanation and no recommendation is generated from the invalid value.
+- **AC-EXP-002:** Given a mark is not a whole-number percentage from 0 through 100 inclusive, is decimal, negative, above 100, malformed, or missing for an entered subject, when submitted, then the field is rejected with a field-specific explanation and no recommendation is generated from that invalid value. Values 0 and 100 are valid; no rounding or coercion is performed.
 - **AC-EXP-003:** Given study stage, a subject entry, or a mark for an entered subject is missing, when the learner submits, then the missing required field is identified and the system does not silently substitute zero or another default. Career/study interests, province/intended location, and preferred study mode may be blank without blocking submission.
-- **AC-EXP-004:** Given a subject is not in the supported vocabulary, when submitted, then the learner is told the subject cannot currently be matched; the system does not infer a different subject silently.
-- **AC-EXP-005:** Given duplicate subject entries, when submitted, then the learner is asked to resolve the duplicate or the approved deterministic duplicate policy is applied; results must not double-count a subject.
+- **AC-EXP-004:** Given a subject identifier or alias is not explicitly supported by the subject catalogue, when submitted, then the learner is told which subject cannot currently be matched; the system does not silently rename it, use fuzzy matching, or infer an equivalent subject.
+- **AC-EXP-005:** Given duplicate entries resolve to the same canonical subject, including through different approved aliases or case/whitespace variants, when submitted, then the duplicate is rejected for learner resolution; the system never double-counts the subject.
 - **AC-EXP-006:** Given valid inputs with study stage and at least one subject/mark pair, when submitted, then the current exploration can request matching and render the result or a defined recoverable error; funding need is not requested in this first form.
 - **AC-EXP-009:** Given a Grade 11 or Grade 12 learner, then entered marks are treated as current results and are not assumed to be final matric results.
 - **AC-EXP-010:** Given a recent matric graduate with incomplete or unavailable final results, then missing information is not inferred or replaced with zero and affected pathway screening returns UNKNOWN where the missing information prevents a reliable conclusion.
+- **AC-EXP-011:** Given marks of 0, 1, 99 or 100, when validated, then the values are accepted as valid whole-number percentages.
+- **AC-EXP-012:** Given a decimal, negative, above-100 or malformed mark, when validated, then the value is rejected and is never rounded or coerced into a valid mark.
+- **AC-EXP-013:** Given a supported subject alias is entered with different letter case or surrounding/repeated whitespace, when normalized, then it resolves only if the normalized alias is explicitly present in the catalogue.
+- **AC-EXP-014:** Given an unsupported subject is present alongside valid supported subjects, when matching proceeds, then valid subjects may still be used; any pathway whose reliable eligibility decision is blocked by that unsupported subject is UNKNOWN.
 - **AC-EXP-007:** Given a request fails, when the error is shown, then the learner's academic inputs are not included in the visible technical error message.
 - **AC-EXP-008:** Given the user resets/leaves the exploration according to the approved reset policy, then temporary inputs/results are cleared according to that policy.
 
@@ -102,7 +106,7 @@
 
 ## Criteria requiring owner decisions before baseline approval
 
-- Mark range, precision, missing/optional fields and supported subject vocabulary.
+- The approved mark range/precision, subject normalization, alias-only lookup, duplicate policy and unsupported-subject behavior are recorded under OR-003; the concrete supported subject vocabulary and aliases must be maintained explicitly in the catalogue.
 - Eligibility precedence when one rule fails while another is unknown.
 - Definition of stale source and applicable admission cycle.
 - Funding provider coverage, supported criteria, required learner inputs, deadline timezone, freshness and expiry policy (OR-015).
