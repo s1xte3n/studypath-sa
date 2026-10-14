@@ -1,3 +1,10 @@
+# Gate classification update — 2026-10-14
+
+The matrix below remains a traceability plan, not proof of implementation. For gate purposes, distinguish requirements completeness from data publication, architecture/API approval, implementation, CI and release. Open catalogue conflicts (GAP-001) and the absence of a verified relationship pair (GAP-003) do not make the requirements ambiguous: the safe contract is to withhold unsupported records/relationships and report uncertainty/no verified alternative. GAP-002's owner-approved subject-v1 decision and executable reference test file have been found in the repository; test execution and production implementation remain unverified. GAP-005 is P1 and does not block P0 requirements readiness. GAP-004 and GAP-008 remain downstream architecture/implementation/release blockers as classified in REQUIREMENT-GAPS.md.
+
+**Evidence placeholders:** implementation paths/symbols, executed test results, CI run IDs/URLs, tested commit, deployment URL, smoke tests and release approval remain Not verified / Not available. Do not fill them with planned IDs or owner approval.
+
+---
 # StudyPath SA — Traceability Matrix
 
 **Status:** Planned traceability baseline. D-044 selects API-first; draft contract exists, but no implementation, CI run or release has been verified.  
