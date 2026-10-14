@@ -51,3 +51,8 @@ The UJ starting set has expanded from four to seven preliminary candidates using
 ## GAP-001 reconciliation update — 2026-10-14
 
 The rule reconciliation note `docs/product/UJ-2027-RULE-RECONCILIATION-UPDATE.md` supersedes earlier wording that described the three previously highlighted code/APS issues as unresolved. Those issues are reconciled for draft transcription only. The programme records remain unapproved; GAP-001 and `REQUIREMENTS READY` remain open/not passed pending full-rule extraction, deterministic test-oracle review and curator sign-off. No application code or executable tests were changed or run.
+
+
+## Q-019 curator decision update — 2026-10-14
+
+The project owner explicitly approved all seven UJ 2027 candidate records and shared interpretation proposals in `docs/product/UJ-2027-CURATOR-REVIEW-PACK.md`. Q-019 is therefore resolved for the **owner/curator decision** on the bounded NSC pilot baseline, but remains open for evidence completeness and implementation readiness: exact APS subject-selection semantics, English-stream mapping, programme-specific footnotes/selection conditions, approved executable test oracles, deterministic implementation, and the 20+ case golden set remain outstanding. Apply `UNKNOWN` whenever unresolved details could change eligibility; do not claim definitive `ELIGIBLE` outcomes from incomplete rules. GAP-001 and `REQUIREMENTS READY` remain open/not passed.
