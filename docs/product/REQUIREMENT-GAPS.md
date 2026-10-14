@@ -60,3 +60,8 @@ The catalogue register now records preliminary values from official UJ search-in
 ## Additional UJ catalogue source conflicts — 2026-10-14
 
 Seven candidates are now documented as preliminary research leads. Two additional conflicts have been identified alongside the existing extended-CSI code conflict: (1) Diploma in Business Information Technology is labelled D1I40J in indexed 2027 prospectus text and DI1401 on the current programme page; (2) BCom in Information Management has different APS wording in the 2027 prospectus and current programme page. The current programme pages expose a 2026 application window, so their general metadata must not be assumed to fully establish 2027 requirements. GAP-001 remains open; no preliminary value is approved for definitive eligibility screening.
+
+
+## Catalogue reconciliation matrix — 2026-10-14
+
+Added [`UJ-2027-SOURCE-RECONCILIATION-MATRIX.md`](./UJ-2027-SOURCE-RECONCILIATION-MATRIX.md) to track official sources, candidate-level requirements, evidence gaps, source conflicts, curator checks and traceability. This improves evidence management but does not close GAP-001: original 2027 PDF tables still need visual/page-level verification, complete admission rules and APS calculations remain to be reviewed, and no candidate has curator sign-off. The Diploma Business IT code difference may be a search-extraction/OCR issue because the official 2027 CBE brochure and current programme page show DI1401; inspect the central prospectus table before concluding. The Information Management APS appears conditional in prospectus table text and requires original-table confirmation. GAP-001 remains P0/open.
