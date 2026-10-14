@@ -28,7 +28,7 @@ Owner explicitly approved COST-01, DATA-01, ELIGIBILITY-01, PRIVACY-01, RELEASE-
 | D-017 | Record accountable owners for product decisions, catalogue verification, security/privacy and release/demo readiness | Owner accepted Phase 0 proposal on 2026-10-13; role assignments are documented separately, but there is no backup or independent reviewer |
 
 | D-018 | Provisional single-person ownership for the initial build: the project owner will hold all project roles for now | Owner confirmation on 2026-10-13. Owner also reports an existing owned Azure subscription, a completed Sonke team profile, and that StudyPath SA is a new app being developed before the hackathon. These reports are not independently verified. Risk: no backup or independent reviewer; Azure permissions, billing visibility and cost feasibility remain outstanding. |
-| D-019 | Static-first hackathon architecture: Azure Static Web Apps Free, static catalogue JSON, client-side deterministic matching; no paid/metered backend or custom domain. Do not rely on the expired 12-month Azure free-account offer. | Owner accepted on 2026-10-13. Static Web Apps Free is a hosting-plan choice on the existing subscription, distinct from the expired account offer. Owner attests subscription, permission, billing and cost checks are complete; retain private cost evidence and recheck the exact resource list before provisioning. |
+| D-019 | **Superseded for architecture selection by D-044.** Earlier static-first proposal: Azure Static Web Apps Free, static catalogue JSON, client-side deterministic matching; no paid/metered backend or custom domain. | Historical decision retained for traceability. D-044 selects API-first. Cost cap, privacy boundary, no-persistence policy and no-provisioning gate remain in force. |
 | D-020 | Phase 0 evidence review checked two UJ undergraduate IT programme pages | Official programme pages checked 2026-10-13 and recorded in `PHASE0-ONLINE-EVIDENCE.md`; this evidence is not the final pilot scope. OR-008 supersedes the two-pathway proposal with a target of 6–8 curated programme records. Eligibility remains minimum-requirement screening and incomplete rules yield UNKNOWN. |
 | D-021 | Hackathon privacy boundary: synthetic profiles only, no real learner data, accounts, uploads, persistence, analytics or learner-profile telemetry | Owner approved on 2026-10-13 (Q-005). Implement and verify before demo. Real-learner-data use remains blocked pending appropriate privacy/legal review. |
 | D-022 | Phase 0 proposed two UJ undergraduate IT pathways as initial catalogue candidates; project owner is temporary curator/reviewer | Owner approved the Phase 0 candidate set on 2026-10-13 (Q-002). OR-008 later sets a 6–8 programme-record pilot target. Complete-rule validation, source-use review, provenance and curator sign-off remain required before publication. |
@@ -97,3 +97,14 @@ Record approved changes to scope, stack, budget, audience, data use or deadlines
 
 
 
+
+
+## D-044 — API-first MVP and UJ 2027 starting catalogue (owner decision, 2026-10-14)
+
+- Use an API-first architecture; define and review the versioned `/api/v1` interface before implementing dependent UI/backend components.
+- Begin programme curation from the official UJ 2027 undergraduate prospectus and expand the pilot only after each record is verified. Candidate leads are listed in `docs/product/PROGRAMME-CATALOGUE-REGISTER.md`; they are not publication-ready records.
+- Do not collect sensitive financial criteria. If a material funding criterion is sensitive or unsupported, show uncertainty and direct the learner to the official provider's checks.
+- **Safe interim privacy boundary:** APIs may serve public curated programme/funding data only. Learner marks, subjects, interests, results and tracker entries stay in page memory and must not be sent to an API, URLs, analytics, application logs or error telemetry. Matching remains client-side pending OR-019/Q-018 confirmation.
+- The exact route/schema, API Management necessity, runtime composition, provider logs/retention, cache/error semantics and total cost remain open. The R100/month cap remains; no provisioning is authorised.
+- This supersedes D-019 only for the static-first versus API-first architecture choice. It does not approve profile transmission, server-side matching, persistence, accounts, AI, uploads or application submission.
+- Affected artifacts: `docs/architecture/ARCHITECTURE.md`, `docs/architecture/API-CONTRACT.md`, requirements/traceability/dependency/backlog matrices, `docs/product/REQUIREMENT-GAPS.md`, and project status.

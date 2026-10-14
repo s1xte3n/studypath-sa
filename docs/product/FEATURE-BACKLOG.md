@@ -1,6 +1,15 @@
 # StudyPath SA — Feature Backlog
 
-**Status:** Planning only. Items are implementation-ready only to the extent that their acceptance criteria are specified; blocked items are explicitly labelled. Ambiguous behavior is not converted into a task.
+**Status:** Planning only. D-044 selects API-first, but runtime, final contract, privacy boundary and cost remain open. Items are implementation-ready only to the extent that their acceptance criteria are specified; blocked items are explicitly labelled. Ambiguous behavior is not converted into a task.
+
+## P0 — Architecture and data-contract gate
+
+### P0-00 — Freeze the API-first data boundary and prove budget feasibility
+- **Requirements:** REQ-CAT-001, REQ-FUND-001, REQ-PRV-001, NFR-SEC-001, NFR-REL-001.
+- **Decision:** API-first selected by D-044. Safe interim design exposes only public curated programme/funding data; matching stays client-side and learner inputs/results/tracker state must not cross the network.
+- **Deliverable:** Review `docs/architecture/ARCHITECTURE.md` and `docs/architecture/API-CONTRACT.md`; approve routes/schema, cache/error semantics, provider logging/retention controls, hosting/runtime services and service-by-service costs under R100/month.
+- **Verification:** T-API-001–004, T-PRV-001–004, T-SEC-001; actual runtime and cost evidence required.
+- **Blocked:** Final endpoint schema, API Management necessity, provider retention/logging, network behavior and monthly cost. No provisioning before explicit review; do not transmit learner profile data.
 
 ## P0 — Core pathway journey
 
@@ -83,6 +92,6 @@
 - These are deferred or future ideas, not approved commitments.
 
 ## Sequencing
-P0-01 → P0-02 → P0-03 → P0-04 → P0-05 → P0-06 → P0-07 → P0-08 → P1-01 → P1-02.
+P0-00 → P0-01 → P0-02 → P0-03 → P0-04 → P0-05 → P0-06 → P0-07 → P0-08 → P1-01 → P1-02.
 
 Do not move a blocked item into implementation until its gap is resolved. Requirements documentation does not establish implementation or test completion.

@@ -118,3 +118,15 @@ The approval does not claim implementation, catalogue curation, test passage, pr
 ### Phase 2 evidence and limits
 
 The five requirement artifacts were committed on branch `docs/phase-2-requirements-matrix`. This update does not claim a pull request was opened, the branch was merged, tests were executed, or implementation/deployment changed. Test IDs are planned verification identifiers only. Exact AC-FUND/AC-APP references and tracker transitions require verification before those tests are implemented. See `docs/product/REQUIREMENT-GAPS.md`.
+
+
+## Phase 2 GAP resolution — 2026-10-14
+
+| Artifact | Path | Status | Notes |
+|---|---|---|---|
+| Architecture decision and constraints | `docs/architecture/ARCHITECTURE.md` | Draft based on approved API-first direction | Runtime composition, privacy-boundary confirmation, provider retention and cost review remain open. |
+| API interface contract | `docs/architecture/API-CONTRACT.md` | Draft — not implementation-ready | Candidate GET routes serve only public curated data. Exact schemas, cache/error semantics and runtime are pending review. |
+| UJ 2027 programme catalogue register | `docs/product/PROGRAMME-CATALOGUE-REGISTER.md` | Candidate register — not publication-ready | Four UJ candidates listed; none is verified eligibility data until full rule/provenance review and curator sign-off. |
+| Requirement gaps | `docs/product/REQUIREMENT-GAPS.md` | Updated — P0 evidence blockers remain | GAP-001 starting source and GAP-008 architecture direction resolved at decision level; catalogue, privacy, funding and contract evidence remain open. |
+
+D-044 supersedes D-019's static-first selection only. Sensitive financial criteria remain excluded; unknown or unsupported criteria lead to uncertainty and official-provider direction. No implementation, tests, provisioning or deployment are claimed.
