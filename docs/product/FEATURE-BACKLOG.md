@@ -75,7 +75,7 @@
 - **Deliverable:** Create/list/edit learner-reported entries, allowed status transitions, optional manually entered submitted date, deadline, notes and approved checklist metadata.
 - **Verification:** T-APP-001–004.
 - **Constraint:** Page-memory-only. No localStorage, sessionStorage, IndexedDB, cookies, database, server persistence, cloud sync, uploads or external submission.
-- **Blocked:** Exact acceptance-criteria range and normalized transition table must be verified first.
+- **Resolved during Phase 2 review:** AC-APP-001–009 and the OR-016 transition table were verified in the approved PRD/acceptance criteria. Preserve those exact rules; implementation still awaits the other listed dependencies.
 
 ## P2 / P3 — Not initial-MVP implementation work
 - **P2:** Cost planner (OR-017); AI/document assistant (OR-018); notifications; skill-gap analysis.
