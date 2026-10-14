@@ -523,15 +523,15 @@
           },
           {
             "subjectId": "ACCOUNTING",
-            "percent": 45
+            "percent": 55
           },
           {
             "subjectId": "HISTORY",
-            "percent": 45
+            "percent": 55
           },
           {
             "subjectId": "GEOGRAPHY",
-            "percent": 45
+            "percent": 55
           },
           {
             "subjectId": "LIFE_SCIENCES",
@@ -567,19 +567,19 @@
           },
           {
             "subjectId": "ACCOUNTING",
-            "percent": 45
+            "percent": 55
           },
           {
             "subjectId": "HISTORY",
-            "percent": 45
+            "percent": 55
           },
           {
             "subjectId": "GEOGRAPHY",
-            "percent": 35
+            "percent": 45
           },
           {
             "subjectId": "LIFE_SCIENCES",
-            "percent": 35
+            "percent": 45
           }
         ]
       },
@@ -611,19 +611,19 @@
           },
           {
             "subjectId": "ACCOUNTING",
-            "percent": 45
+            "percent": 55
           },
           {
             "subjectId": "HISTORY",
-            "percent": 45
+            "percent": 55
           },
           {
             "subjectId": "GEOGRAPHY",
-            "percent": 35
+            "percent": 45
           },
           {
             "subjectId": "LIFE_SCIENCES",
-            "percent": 35
+            "percent": 45
           }
         ]
       },
@@ -975,7 +975,7 @@
           },
           {
             "subjectId": "ACCOUNTING",
-            "percent": 65
+            "percent": 65.5
           },
           {
             "subjectId": "HISTORY",
@@ -988,10 +988,6 @@
           {
             "subjectId": "LIFE_SCIENCES",
             "percent": 55
-          },
-          {
-            "subjectId": "ECONOMICS",
-            "percent": 65
           }
         ]
       },
