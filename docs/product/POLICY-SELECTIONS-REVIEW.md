@@ -1,20 +1,20 @@
 # Funding and Tracker Policy Selections — Review Record
 
-- **Status:** Proposed selections for review — NOT final approval
+- **Status:** Three policy selections approved by product owner; implementation and PRD alignment pending
 - **Date:** 2026-10-14
 - **Related policy:** [Funding, Application Tracking and Privacy Policy](FUNDING-TRACKER-PRIVACY-POLICY.md)
 - **Related PR:** [PR #10](https://github.com/s1xte3n/studypath-sa/pull/10) added the policy baseline and is already merged. This review record is separate; it does not approve implementation or change that merge.
-- **Decision authority:** Product owner approval remains outstanding.
+- **Decision authority:** Product owner explicitly approved all three selections in the project conversation on 2026-10-14. This record captures that approval; it does not claim implementation, testing, or deployment.
 
 ## 1. Selections submitted for review
 
-| Topic | Proposed selection | Review status |
+| Topic | Approved policy decision | Status |
 |---|---|---|
-| Funding catalogue freshness | Re-verify active opportunities against the official provider source at least every 30 days; mark records UNVERIFIED when overdue or when the official source cannot be checked. | Proposed; not approved |
-| Tracker persistence | Page memory only. No server/database, localStorage, sessionStorage, cookies, account, or cloud sync. Reload/close may discard entries. | Proposed; not approved |
-| Tracker transitions | Use the transition table in `FUNDING-TRACKER-PRIVACY-POLICY.md`, including terminal WITHDRAWN and explicit correction/removal behaviour. | Proposed; not approved |
+| Funding catalogue freshness | Re-verify active opportunities against the official provider source at least every 30 days; mark records UNVERIFIED when overdue or when the official source cannot be checked. | Approved by product owner |
+| Tracker persistence | Page memory only. No server/database, localStorage, sessionStorage, cookies, account, or cloud sync. Reload/close may discard entries. | Approved by product owner |
+| Tracker transitions | Use the transition table in `FUNDING-TRACKER-PRIVACY-POLICY.md`, including terminal WITHDRAWN and explicit correction/removal behaviour. | Approved by product owner |
 
-These selections express the preferred direction for product-owner review only. They are not authorisation to implement, do not change the source-of-truth status to approved, and do not unblock the PRD gate.
+The product owner has approved these three policy decisions. They may now be incorporated into the PRD and requirements matrix. This is not proof of implementation, test completion, deployment, or release readiness.
 
 ## 2. Impact assessment
 
@@ -52,7 +52,7 @@ Before these rules can be considered implemented, tests should cover:
 - Missing or unsupported mandatory criteria produce `UNKNOWN` unless a verified mandatory failure already establishes `NOT_ELIGIBLE`.
 
 **Tracker transitions**
-- Every transition in the proposed table is accepted, and every unlisted transition is rejected with an understandable message.
+- Every transition in the approved table is accepted, and every unlisted transition is rejected with an understandable message.
 - `WITHDRAWN` is terminal; corrections follow the explicit correction flow or remove-and-recreate fallback.
 - `SUBMITTED`-only submission date constraints and learner-reported status labels are enforced.
 - Clear/reset removes all tracker and associated transient funding state.
@@ -68,14 +68,13 @@ No tests were run as part of this review record. These are proposed acceptance t
 
 ## 3. PRD gate assessment
 
-**PRD gate remains BLOCKED.** Recording these preferences is not equivalent to approving them. Before the PRD can be marked READY, the product owner must explicitly confirm or amend these selections, resolve the remaining policy questions, and align the PRD, requirements matrix, acceptance criteria, and test strategy.
+**PRD gate remains BLOCKED pending documentation alignment and resolution of remaining items.** The three selections below are approved, but the PRD, requirements matrix, acceptance criteria and test strategy must now reflect them before the gate can be reconsidered.
 
 Remaining review items include:
-1. Approve or change the 30-day threshold and the display treatment for `UNVERIFIED` opportunities.
-2. Approve the status vocabulary, transition table, correction behaviour, and session-only retention.
-3. Decide whether any predefined next-action options are included.
-4. Review hosting/provider telemetry defaults and ensure no learner-specific values are emitted.
-5. Reconcile the resulting requirements with the supplied StudyPath SA specification and official hackathon programme.
+1. Decide whether any predefined next-action options are included.
+2. Review hosting/provider telemetry defaults and ensure no learner-specific values are emitted.
+3. Reconcile the approved rules with the supplied StudyPath SA specification and official hackathon programme.
+4. Update the PRD, requirements matrix, acceptance criteria and test strategy with the approved decisions.
 
 ## 4. Traceability to carry forward
 
@@ -85,4 +84,4 @@ Remaining review items include:
 | Tracker transitions | Exact states, allowed transitions, correction/removal and reset | Positive/negative transition tests and reset/reload tests | Reviewed client implementation and CI results |
 | Anonymous-first/privacy | Permitted inputs, no persistence, no sensitive telemetry, disclosure | Storage inspection, telemetry/log review, accessibility and synthetic-data checks | Security/privacy review and release smoke-test evidence |
 
-**Current state:** documented for review; not approved, not implemented, not tested, and not deployed.
+**Current state:** the three policy decisions are owner-approved and recorded; PRD/requirements alignment is pending; not implemented, not tested, and not deployed.
