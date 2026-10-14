@@ -60,3 +60,8 @@ Three additional UJ undergraduate candidates broaden the research set to seven: 
 Official-source search-indexed text for the 2027 prospectus gives the BCom Information Systems and Information Management table entries; current UJ programme pages provide programme metadata but may show a different application cycle or APS wording. The Diploma in Business Information Technology code conflict and the Information Management APS wording conflict are unresolved. Do not silently prefer a source or treat the current page's 2026 application window as confirmation of a complete 2027 rule. Resolve with the full 2027 prospectus, applicable faculty yearbook and official admissions/programme-owner confirmation.
 
 The seven candidates are not seven verified records. No record is publication-ready; all require complete source/rule review and curator sign-off. GAP-001 remains open and definitive eligibility screening must return UNKNOWN when a material rule is incomplete or conflicting.
+
+
+## Reconciliation matrix
+
+The programme-by-programme evidence checklist, source register, conflict disposition, required actions and traceability are maintained in [`UJ-2027-SOURCE-RECONCILIATION-MATRIX.md`](./UJ-2027-SOURCE-RECONCILIATION-MATRIX.md). It is a working matrix, not curator sign-off. All seven candidates remain unapproved for definitive eligibility screening.
