@@ -62,7 +62,7 @@ The test harness must eventually assert **both state and exact reason code(s)**.
 | UJ-GOLD-017 | Mathematical Literacy offered for BCom Information Systems | Signed-off BCom IS record; Mathematical Literacy is the only mathematics-like subject supplied; no accepted Mathematics/Technical Mathematics result | NOT_ELIGIBLE | `MATHEMATICAL_LITERACY_NOT_ACCEPTED` |
 | UJ-GOLD-018 | Science-degree subject restriction applies | Signed-off Science degree record; a required Mathematics result is absent and only a subject explicitly excluded by the verified rule is supplied | NOT_ELIGIBLE | `REQUIRED_SUBJECT_NOT_ACCEPTED` |
 | UJ-GOLD-019 | Life Orientation incorrectly inflates APS | The six eligible school subjects produce APS 29; adding Life Orientation would falsely raise it to 30 | NOT_ELIGIBLE | `APS_BELOW_MINIMUM` |
-| UJ-GOLD-020 | More than six school subjects, no approved selection rule | Learner supplies seven or more subjects and the approved policy does not specify which six are used | UNKNOWN | `APS_SUBJECT_SELECTION_UNRESOLVED` |
+| UJ-GOLD-020 | More than six school subjects | Learner supplies seven or more subjects; use the six best eligible subjects excluding Life Orientation, while including required programme subjects as UJ's official FAQ states | Deterministic result based on the selected subjects and mandatory requirements; UNKNOWN only if the required-subject-constrained selection cannot be resolved from valid inputs | `APS_SUBJECT_SELECTION_UNRESOLVED` only when genuinely unresolved |
 | UJ-GOLD-021 | Duplicate canonical subject | Two entries resolve to the same canonical subject and would otherwise be double-counted | UNKNOWN | `DUPLICATE_SUBJECT_INPUT` |
 | UJ-GOLD-022 | Invalid mark | A mark is decimal, malformed, below 0 or above 100 | UNKNOWN | `INVALID_MARK_INPUT` |
 | UJ-GOLD-023 | Same normalized inputs, rules and catalogue version evaluated twice | Deterministic evaluator available | Same state and byte-for-byte same ordered reason codes | `DETERMINISTIC_RESULT` (test assertion, not learner-facing reason) |
@@ -74,8 +74,8 @@ The test harness must eventually assert **both state and exact reason code(s)**.
 
 This document is a test oracle draft, not test execution evidence. Before the eligibility blocker can be closed:
 
-1. Reconcile all seven candidate records against the complete applicable 2027 sources and record exact pages, source versions, verification dates and conditions.
-2. Resolve all material APS, subject-selection, language mapping, alternative-branch and faculty-restriction interpretations or keep those rules explicitly unsupported.
+1. Reconcile all seven candidate records against the complete applicable 2027 sources and record exact pages, source versions, verification dates and conditions. Compare the two prospectus URLs already identified in `UJ-2027-APS-AND-SOURCE-RECONCILIATION.md` and record the governing version.
+2. Apply the official six-best-subject APS rule, excluding Life Orientation and including required programme subjects. Resolve all material language mapping, alternative-branch and faculty-restriction interpretations or keep those rules explicitly unsupported.
 3. Obtain curator sign-off on each normalized programme rule and its case expectations.
 4. Turn these cases into versioned fixtures and execute them against the actual evaluator once implementation is authorised by the earlier project gates.
 5. Assert 100% of expected states and exact reason codes; zero false-positive `ELIGIBLE`; deterministic repeatability; and correct unknown handling.
