@@ -135,3 +135,10 @@ Added `docs/product/SUBJECT-NORMALIZATION-CONTRACT.md` as a draft proposal for G
 ## Pathway relationship evidence proposal — 2026-10-14
 
 Added `docs/product/PATHWAY-RELATIONSHIP-EVIDENCE-CONTRACT.md` on branch `docs/phase-2-pathway-relationships` as a draft proposal for GAP-003. It defines relationship types and required provenance, distinguishes general qualification progression from named-programme articulation, and records candidate questions without approving any pair. Official UJ sources were researched, but programme-specific relationship evidence and curator sign-off remain outstanding. No application code or executable tests were changed or run; no CI, privacy clearance, Azure provisioning or deployment is implied. GAP-003 remains open and `REQUIREMENTS READY` remains not passed.
+
+
+## Traceability alignment after PR #31 — 2026-10-14
+
+PR #31 was merged into `main` (merge commit `a191416f27c917e0767841856517dccdabbf2861`). The pathway relationship evidence contract remains a proposal: no programme pair is approved and GAP-003 remains open. The subject normalization contract from PR #30 also remains a proposal pending owner/curator decisions; GAP-002 remains open.
+
+This update aligns the traceability registry with T-SUB-001–010 and T-REL-001–008 and corrects the funding/tracker acceptance-criteria cross-check status. These test IDs are plans only. No application code or executable tests were created/run; no CI result, privacy clearance, Azure provisioning or deployment is claimed. `REQUIREMENTS READY` remains not passed.
