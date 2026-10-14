@@ -11,7 +11,10 @@
 3. **UJ BSc in Computer Science and Informatics:** https://www.uj.ac.za/university-courses/bsc-in-computer-science-and-informatics
 4. **UJ BSc in Computer Science and Informatics Extended:** https://www.uj.ac.za/university-courses/bsc-in-computer-science-and-informatics-extended/
 5. **UJ BSc in Computer Science and Informatics Specialising in AI:** https://www.uj.ac.za/university-courses/bsc-in-computer-science-and-informatics-specialising-in-ai-artificial-intelligence/
-6. **UJ Academy undergraduate courses:** https://www.uj.ac.za/faculties/science/departments-2/academy-of-computer-science-and-software-engineering/courses-and-programmes/undergraduate-courses/
+6. **UJ Academy undergraduate courses (older code comparison only):** https://www.uj.ac.za/faculties/science/departments-2/academy-of-computer-science-and-software-engineering/courses-and-programmes/undergraduate-courses/
+7. **UJ BCom in Information Systems:** https://www.uj.ac.za/university-courses/bcom-in-information-systems/
+8. **UJ Diploma in Business Information Technology:** https://www.uj.ac.za/university-courses/diploma-in-business-information-technology/
+9. **UJ BCom in Information Management:** https://www.uj.ac.za/university-courses/bcom-in-information-management/
 
 The 2027 prospectus search-indexed text and official programme pages expose some programme codes and minimum thresholds. This is enough to record preliminary leads, but not enough to certify a complete eligibility rule: the full 2027 rule tables, APS calculation/inclusions, exclusions and exceptions, and relevant faculty-yearbook rules have not yet been reconciled and curator-signed. The programme pages display an application window from 1 April 2026 to 31 October 2026; do not treat that page text alone as proof that every detail is the definitive 2027 rule.
 
@@ -23,6 +26,9 @@ The 2027 prospectus search-indexed text and official programme pages expose some
 | UJ-2027-BSC-CSI | BSc in Computer Science and Informatics — B2I02Q | APS 30; English level 5 (60%+); Mathematics level 6 (70%+); Auckland Park Kingsway; 3 years | Prospectus/page lead only. Verify the complete 2027 rule, APS formula and included subjects, exclusions, exceptions, cycle and curator sign-off. |
 | UJ-2027-BSC-CSI-EXT | BSc in Computer Science and Informatics Extended — B2E02Q | APS 26; English level 4 (50%+); Mathematics level 5 (60%+); Auckland Park Kingsway; 4 years | 2027 prospectus text and current programme page show B2E02Q. An older Academy undergraduate-courses page says B2E01Q; treat that as a source conflict and use neither code in published data until the current 2027 source/yearbook and programme owner are reconciled. |
 | UJ-2027-BSC-CSI-AI | BSc in Computer Science and Informatics Specialising in AI (Artificial Intelligence) — B2I04Q | APS 34; English level 5 (60%+); Mathematics level 7 (80%+); Auckland Park Kingsway; 3 years | Prospectus/page lead only. Verify the complete 2027 rule, APS formula and included subjects, exclusions, exceptions, cycle and curator sign-off. |
+| UJ-2027-BCOM-IS | BCom in Information Systems — B1CISQ | 2027 prospectus lead: APS 26; English level 4 (50%+); Mathematics level 4 (50%+); Mathematical Literacy not accepted; Technical Mathematics level 4 (50%+); Auckland Park Bunting Road; 3 years | 2027 prospectus and current programme page broadly align. Verify full programme/yearbook rules, APS calculation/inclusions, conditions, cycle and curator sign-off. |
+| UJ-2027-DIP-BIT | Diploma in Business Information Technology — code conflict: 2027 prospectus text shows D1I40J; current programme page shows DI1401 | 2027 prospectus lead: APS 22 with Mathematics/Technical Mathematics OR 24 with Mathematical Literacy; English level 4 (50%+); Mathematics level 3 (40%+); Mathematical Literacy level 6 (70%+); Technical Mathematics level 3 (40%+); Auckland Park Bunting Road; 3 years | Material code conflict between 2027 prospectus text and current programme page. Do not publish until official 2027 code and complete rule are reconciled with UJ. |
+| UJ-2027-BCOM-IM | BCom in Information Management — B34IMQ | 2027 prospectus lead: APS 26 with Mathematics/Technical Mathematics OR 28 with Mathematical Literacy; English level 4 (50%+); Mathematics level 4 (50%+); Mathematical Literacy level 6 (70%+); Technical Mathematics level 4 (50%+); Auckland Park Kingsway; 3 years | 2027 prospectus and current programme page differ in APS wording (page gives APS 28). Confirm applicable 2027 rule and full APS/subject rules with official faculty guidance; do not encode until reconciled and curator-signed. |
 
 ### Cross-cutting source note
 
@@ -45,3 +51,12 @@ Do not copy a threshold or APS value from a search excerpt into a publication-re
 7. Re-verify at least every 30 days, and sooner after source changes, deadline expiry or cycle changes.
 
 **GAP-001: SOURCE CHOSEN / PRELIMINARY VALUES CAPTURED / FULL RULE VERIFICATION AND SIGN-OFF OPEN.**
+
+
+## Additional source-reconciliation findings — 2026-10-14
+
+Three additional UJ undergraduate candidates broaden the research set to seven: BCom in Information Systems (B1CISQ), Diploma in Business Information Technology (code conflict: D1I40J in indexed 2027 prospectus text versus DI1401 on current programme page), and BCom in Information Management (B34IMQ). Their preliminary values are captured above strictly as research leads.
+
+Official-source search-indexed text for the 2027 prospectus gives the BCom Information Systems and Information Management table entries; current UJ programme pages provide programme metadata but may show a different application cycle or APS wording. The Diploma in Business Information Technology code conflict and the Information Management APS wording conflict are unresolved. Do not silently prefer a source or treat the current page's 2026 application window as confirmation of a complete 2027 rule. Resolve with the full 2027 prospectus, applicable faculty yearbook and official admissions/programme-owner confirmation.
+
+The seven candidates are not seven verified records. No record is publication-ready; all require complete source/rule review and curator sign-off. GAP-001 remains open and definitive eligibility screening must return UNKNOWN when a material rule is incomplete or conflicting.
