@@ -5,15 +5,15 @@
 
 | Requirement | PRD / acceptance source | Contract or UI | Test IDs | Expected implementation area (unverified) | CI evidence | Release evidence |
 |---|---|---|---|---|---|---|
-| REQ-EXP-001 | PRD §5; AC-EXP-001–014 | Anonymous explorer form; validation; matching invocation (not frozen) | T-EXP-001–004 | Form, subject aliases, validation, memory state | Not available | Not available |
+| REQ-EXP-001 | PRD §5; AC-EXP-001–014; draft subject contract | Anonymous explorer form; approved subject dictionary and unresolved handling remain proposals | T-EXP-001–004, T-SUB-001–010 | Form, subject dictionary, validation, memory state | Not available | Subject dictionary/aliases not approved; no implementation evidence |
 | REQ-CAT-001 | PRD §5; AC-CAT-001–012; draft API contract | API catalogue response/source fields; client adapter; empty/stale state | T-CAT-001–003, T-API-001–002, T-API-004 | Curated source data, API adapter, catalogue validator | Not available | 6–8 reviewed records not evidenced; API contract/cost/privacy review open |
 | REQ-MAT-001 | PRD §5; AC-MAT-001–021 | Eligibility result/reason model; no API frozen | T-MAT-001–004 | Deterministic evaluator, composite rules, reasons, stable ordering | Not available | Golden set not executed |
-| REQ-ALT-001 | PRD §5; AC-ALT-001–007 | Relationship type, rationale, source | T-ALT-001–002 | Reviewed relationship data and alternatives UI | Not available | Relationship evidence not available |
+| REQ-ALT-001 | PRD §5; AC-ALT-001–007; draft pathway relationship contract | Relationship type, rationale, official source, cycle, freshness and curator sign-off | T-ALT-001–002, T-REL-001–008 | Reviewed relationship data and alternatives UI | Not available | No specific relationship approved; exact pair evidence/sign-off outstanding |
 | REQ-DET-001 | PRD §5; AC-DET-001–006 | Detail/source links/not-found state | T-DET-001–002 | Detail view and source-link handling | Not available | Not available |
 | REQ-PRV-001 | PRD §5; AC-PRV-001–013; D-044/Q-018 | Privacy notice, reset, catalogue-only API requests; no profile in URL/storage/network/logs | T-PRV-001–004, T-API-003 | Memory state, API request inspection, telemetry/dependency controls, hosting review | Not available | Privacy verification not available |
 | REQ-UX-001 | PRD §5; AC-UX-001–011 | Responsive journey, loading/empty/error states | T-UX-001–003 | UI patterns, semantic controls, recoverable errors | Not available | Accessibility evidence not available |
 | REQ-FUND-001 | PRD §5; AC-FUND-001–009; draft API contract | Public funding catalogue data; matching uses only approved limited client inputs | T-FUND-001–003, T-API-001–002, T-API-004 | Funding records, API adapter and client-side matching | Not available | 3–5 reviewed records not available; API boundary open |
-| REQ-APP-001 | PRD §5; OR-016; AC-APP-001–009 | Tracker fields/status lifecycle; memory-only | T-APP-001–004 | In-memory tracker and transition validation | Not available | Lifecycle/AC cross-check outstanding |
+| REQ-APP-001 | PRD §5; OR-016; AC-APP-001–009 | Tracker fields/status lifecycle; memory-only | T-APP-001–004 | In-memory tracker and transition validation | Not available | Lifecycle/AC mapping cross-checked in planning; implementation and tests unavailable |
 | NFR-SEC-001 | PRD §6 | Build/hosting/network boundary | T-SEC-001 | Build configuration and any network boundary | Not available | Not available |
 | NFR-PRV-001 | PRD §6; OR-006 | Storage/network/log/telemetry inspection | T-PRV-001–004 | Storage, network, logging, hosting review | Not available | Release blocker until evidenced |
 | NFR-DATA-001 | PRD §6; OR-005/008 | Requirement/source metadata | T-CAT-001, T-MAT-003 | Catalogue validation/evaluator | Not available | Not available |
@@ -31,6 +31,16 @@
 | T-EXP-002 | REQ-EXP-001 | Mark boundaries 0/100; reject decimal, negative, >100, malformed/missing without coercion | P0 |
 | T-EXP-003 | REQ-EXP-001 | Approved alias normalization, duplicate canonical subject, unsupported subject | P0 |
 | T-EXP-004 | REQ-EXP-001, REQ-PRV-001 | Optional fields blank and no identity requirement | P0 |
+| T-SUB-001 | REQ-EXP-001 | Exact canonical subject label resolves only through approved dictionary | P0 |
+| T-SUB-002 | REQ-EXP-001 | Case/whitespace normalization follows approved exact-match policy | P0 |
+| T-SUB-003 | REQ-EXP-001 | Explicitly approved alias resolves to recorded canonical ID | P0 |
+| T-SUB-004 | REQ-EXP-001 | Unapproved abbreviation/near-match remains unresolved | P0 |
+| T-SUB-005 | REQ-EXP-001, REQ-MAT-001 | Mathematics, Mathematical Literacy and Technical Mathematics never cross-map | P0 |
+| T-SUB-006 | REQ-EXP-001 | Alias collision remains unresolved and raises catalogue validation defect | P0 |
+| T-SUB-007 | REQ-MAT-001 | Missing achievement level does not imply pass/fail | P0 |
+| T-SUB-008 | REQ-MAT-001 | Unsupported language category or subject equivalence produces UNKNOWN | P0 |
+| T-SUB-009 | REQ-PRV-001, NFR-PRV-001 | Learner subjects/marks absent from API requests, URLs and telemetry | P0 |
+| T-SUB-010 | REQ-CAT-001, REQ-MAT-001 | Dictionary-version mismatch is handled without trusting stale mapping | P0 |
 | T-CAT-001 | REQ-CAT-001, NFR-DATA-001 | Source/cycle/freshness/version/sign-off completeness | P0 |
 | T-CAT-002 | REQ-CAT-001, NFR-REL-001 | Missing, stale, conflicting or wrong-cycle rule cannot create certainty | P0 |
 | T-CAT-003 | REQ-CAT-001, NFR-SCOPE-001 | Empty state and no national-completeness claim | P0 |
@@ -40,6 +50,14 @@
 | T-MAT-004 | REQ-MAT-001 | Determinism, stable order, no weighted numeric score | P0 |
 | T-ALT-001 | REQ-ALT-001 | Verified relationship type/rationale/source required | P0 |
 | T-ALT-002 | REQ-ALT-001 | No invented alternative/articulation without evidence | P0 |
+| T-REL-001 | REQ-ALT-001 | Reject relationship with missing source or unresolved programme IDs | P0 |
+| T-REL-002 | REQ-ALT-001 | ARTICULATION requires explicit evidence naming both qualifications and conditions | P0 |
+| T-REL-003 | REQ-ALT-001 | Generic NQF progression language alone cannot approve a named programme pair | P0 |
+| T-REL-004 | REQ-ALT-001, REQ-MAT-001 | Relationship never changes independent eligibility state | P0 |
+| T-REL-005 | REQ-ALT-001, NFR-DATA-001 | Expired/conflicting/unreviewed evidence is not shown as verified | P0 |
+| T-REL-006 | REQ-ALT-001, NFR-COMP-001 | Learner-facing copy distinguishes exploration from formal progression/articulation | P0 |
+| T-REL-007 | REQ-ALT-001, NFR-DATA-001 | Relationship requires provenance, review date and curator sign-off before publication | P0 |
+| T-REL-008 | REQ-ALT-001, REQ-PRV-001 | Relationship/catalogue API contains no learner profile values | P0 |
 | T-DET-001 | REQ-DET-001 | Detail fields, unknown values and official links | P0 |
 | T-DET-002 | REQ-DET-001 | Unknown ID and stale/moved/wrong-cycle source | P0 |
 | T-PRV-001 | REQ-PRV-001, NFR-PRV-001 | Storage/reload/reset inspection | P0 |
@@ -73,3 +91,15 @@ Test IDs are design identifiers only. Add executable test paths, commands, CI ru
 | T-API-004 | NFR-SEC-001, NFR-DATA-001 | Confirm HTTPS, no client secrets, approved public catalogue fields and preserved provenance | P0 |
 
 These IDs are proposed verification targets, not executed tests. Confirm against the final contract before implementation.
+
+
+## Contract-proposal test traceability — 2026-10-14
+
+The merged subject and pathway documents define additional **planned** tests. These IDs extend the verification registry; they do not mean implementation exists or tests have run.
+
+| Test family | Contract | Requirements/gap | Gate condition |
+|---|---|---|---|
+| T-SUB-001–010 | [Subject normalization contract](SUBJECT-NORMALIZATION-CONTRACT.md) | REQ-EXP-001, REQ-MAT-001, REQ-CAT-001, REQ-PRV-001; GAP-002 | Approve canonical IDs, input behavior, alias policy, language distinctions and versioning; then add executable tests. |
+| T-REL-001–008 | [Pathway relationship evidence contract](PATHWAY-RELATIONSHIP-EVIDENCE-CONTRACT.md) | REQ-ALT-001, REQ-MAT-001, REQ-PRV-001; GAP-003 | Approve evidence threshold and curator workflow; verify each named pair before publication; then add executable tests. |
+
+**Verification state:** all test IDs in this document remain design identifiers. No application test results, CI run evidence or release evidence have been verified. Privacy/network tests remain release blockers.
