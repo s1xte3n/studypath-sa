@@ -65,7 +65,13 @@
         91
       ],
       "status": "DRAFT_INTERPRETATION_REQUIRES_FINAL_SCOPE_CONFIRMATION"
-    }
+    },
+    "governingSourceVersionStatus": "UNRESOLVED_THREE_PROSPECTUS_URLS",
+    "sourceVersionCandidates": [
+      "https://www.uj.ac.za/wp-content/uploads/2026/03/uj_prospectus2027_24-march-2027-final.pdf",
+      "https://www.uj.ac.za/wp-content/uploads/2026/06/uj_undergrad_prospectus2027.pdf",
+      "https://www.uj.ac.za/wp-content/uploads/2026/07/uj_undergrad_prospectus2027_online_25jun2026.pdf"
+    ]
   },
   "sources": [
     {
@@ -83,6 +89,14 @@
       "sourceVersion": "2027 intake brochure",
       "verificationDate": "2026-10-14",
       "limitation": "Use for CBE cycle-specific rows; confirm page references and exact applicable conditions during final curation."
+    },
+    {
+      "id": "SRC-UJ-2027-PROS-MARCH-CANDIDATE",
+      "title": "UJ 2027 Undergraduate Prospectus — March-named PDF",
+      "url": "https://www.uj.ac.za/wp-content/uploads/2026/03/uj_prospectus2027_24-march-2027-final.pdf",
+      "sourceVersion": "Candidate source version discovered in official UJ search indexing; governing status unconfirmed",
+      "verificationDate": "2026-10-14",
+      "limitation": "Search-indexed excerpts only. Direct PDF retrieval and byte-level comparison were not completed. Do not treat this as governing source until compared with June- and July-named versions."
     }
   ],
   "programmes": [
