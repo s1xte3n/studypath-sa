@@ -1,7 +1,8 @@
 # StudyPath SA — Project Status
 
-**Status:** Phase 1 — PRD and requirements planning  
-**Gate:** `PROJECT READY` — **PASSED for Phase 1 planning only**  
+**Status:** Phase 2 — Requirements matrix and traceability  
+**Phase 0 gate:** `PROJECT READY` — **PASSED for Phase 1 planning only**  
+**Current gate:** `PRD READY` — **PASSED on 2026-10-14 for the approved PRD/acceptance-criteria baseline only**  
 **Last updated:** 2026-10-14
 
 ## Verified repository state
@@ -37,7 +38,7 @@
 - Established Phase 0 documentation and recorded the accepted MVP, budget, privacy, anonymous-first and no-provisioning directions.
 - Reviewed the supplied product specification for the catalogue/provenance and deterministic eligibility guardrails.
 - Reviewed the supplied hackathon programme: team profiling, app eligibility, deck/video, SSDLC, Lean Business Canvas and submission timing.
-- Owner approved OR-008–OR-014 on 2026-10-14; the documentation was merged into `main` via PR #19 (merge commit `e07b7a29388c671713cda54f37f20ae4a0b00ba8`). OR-015–OR-018 decisions are now documented on the current change branch; OR-016 tracker persistence remains blocked by the OR-006 compatibility/privacy gate. The PRD remains draft, and no implementation, test execution or release evidence is implied.
+- Owner approved OR-008–OR-018 on 2026-10-14; the aligned PRD/policy documentation was merged into `main` via PR #22 (merge commit `520abc6a033b73502f9a30f922b032809615d235`). The product owner explicitly approved the revised PRD and measurable acceptance criteria on 2026-10-14; `PRD READY` is passed for the requirements baseline only. Tracker entries are page-memory-only under the approved policy; no persistence is in scope. No implementation, test execution, privacy clearance or release evidence is implied.
 - Researched official Azure pricing/documentation pages for the preliminary budget screen.
 - Merged `docs/project/PROJECT-READY-EVIDENCE.md` via PR #4; the pack does not constitute approval or gate passage.
 - Recorded owner confirmations: one person holds all roles for now; Azure subscription exists and is owned by the project owner; team is profiled on Sonke; this is a new app being developed before the hackathon.
@@ -84,3 +85,11 @@ Created [`docs/project/AZURE-COST-ESTIMATE.md`](AZURE-COST-ESTIMATE.md). The pre
 ## Azure Pricing Calculator output supplied — 2026-10-14
 
 The project owner supplied a calculator table showing Azure Static Web Apps, Free tier, **Central US**, **$0.00 estimated monthly cost**, **$0.00 estimated upfront cost**, and a **$0.00 Support** line. Licensing program is shown as Microsoft Customer Agreement (MCA); billing account/profile fields in the pasted table are blank. This evidence is recorded in [`AZURE-COST-ESTIMATE.md`](AZURE-COST-ESTIMATE.md). The calculator output is owner-supplied and has not been independently inspected in a signed-in session. It applies to the listed items only, not necessarily all project or third-party costs. Private Cost Analysis/billing scope verification and review of the exact planned resource list remain required before provisioning. The R100/month hard cap and no-provisioning boundary remain in force.
+
+## Phase 1 PRD gate disposition
+
+- **Gate:** `PRD READY` — **PASSED on 2026-10-14** after explicit product-owner approval of `docs/product/PRD.md` and `docs/product/ACCEPTANCE-CRITERIA.md`.
+- **Approved scope boundary:** P1 funding matching and manual application tracking; tracker entries page-memory-only; next steps limited to official links and neutral source-backed guidance; cost planning and AI/document assistance deferred.
+- **Meaning:** Requirements baseline approved for Phase 2 planning. Acceptance criteria are targets/test oracles, not test results.
+- **Still outstanding:** Requirements matrix and traceability, curated programme/funding records, relationship provenance, implementation, automated tests, accessibility/performance measurements, privacy/hosting review, CI/CD, infrastructure validation, deployment and release evidence.
+- **Verification:** Documentation state updated only. No application tests were run; no cloud resources were provisioned and no deployment was performed.
