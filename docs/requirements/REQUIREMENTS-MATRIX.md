@@ -2,7 +2,7 @@
 
 **Status:** Phase 2 working draft; not a gate-passage record.  
 **Baseline:** Approved PRD and acceptance criteria dated 2026-10-14.  
-**Last updated:** 2026-10-14.  
+**Last updated:** 2026-10-14 (subject-contract test evidence update).  
 **Scope:** Trace approved requirements to acceptance criteria, planned test evidence, implementation location and release evidence. This matrix records planned traceability, not implementation or test completion.
 
 ## Status vocabulary
@@ -15,7 +15,7 @@
 
 | Requirement ID | Requirement / scope | Acceptance criteria | Planned verification / test IDs | Implementation location | Current evidence / gap | Status |
 |---|---|---|---|---|---|---|
-| REQ-EXP-001 | Anonymous pathway input, stage-aware marks, validation and subject normalization | AC-EXP-001–014 | T-EXP-001 required fields; T-EXP-002 mark boundaries/decimals/malformed input; T-EXP-003 duplicate canonical subjects; T-EXP-004 unsupported subjects; T-EXP-005 stage-specific interpretation; T-EXP-006 reset and failure messages | Not verified; UI/runtime location not established | OR-002/003 approved; GAP-002 subject dictionary remains open; no application source or executed tests verified | Planned; blocked on implementation and subject catalogue |
+| REQ-EXP-001 | Anonymous pathway input, stage-aware marks, validation and subject normalization | AC-EXP-001–014 | T-EXP-001 required fields; T-EXP-002 mark boundaries/decimals/malformed input; T-EXP-003 duplicate canonical subjects; T-EXP-004 unsupported subjects; T-EXP-005 stage-specific interpretation; T-EXP-006 reset and failure messages; T-SUB-001–012 subject contract | Not verified; UI/runtime location not established; contract reference tests at tests/contracts/subject-catalogue-v1.test.mjs | Owner-approved subject-catalogue-v1 contract; owner supplied output for exact repository command reports 12/12 passed, 0 failed. Application integration/runtime privacy not verified. | Contract tests passed per supplied output; app implementation not verified |
 | REQ-CAT-001 | Curated official-source programme catalogue, applicable cycle, freshness and sign-off | AC-CAT-001–012 | T-CAT-001 provenance completeness; T-CAT-002 cycle mismatch; T-CAT-003 conflicting sources; T-CAT-004 stale/unavailable source; T-CAT-005 6–8 record pilot audit | Proposed catalogue/API contract under docs/architecture; executable location not verified | Seven UJ candidate leads and visual reconciliation documented; not publication-ready; GAP-001 open; curator sign-off and 6–8 complete records outstanding | Open evidence |
 | REQ-MAT-001 | Deterministic eligibility states and explainable rule evaluation; ranking kept separate | AC-MAT-001–021 | T-MAT-001 all mandatory rules pass; T-MAT-002 mandatory failure; T-MAT-003 unknown rule/input; T-MAT-004 AND/OR/conditional boundaries; T-MAT-005 APS/source conflict; T-MAT-006 deterministic repeatability; T-MAT-007 ranking cannot override eligibility; T-MAT-008 reasons/source traceability | Not verified; API/runtime composition remains open under GAP-008 | OR-004/005 decisions recorded; official UJ source review preliminary/incomplete; no executable evaluator or tests verified | Planned; blocked on verified rules and implementation |
 | REQ-ALT-001 | Alternatives and pathway relationships, distinct from eligibility and formal articulation | AC-ALT-001–007 | T-REL-001 invalid/missing evidence; T-REL-002 articulation evidence; T-REL-003 generic NQF text is insufficient; T-REL-004 eligibility independence; T-REL-005 expired/conflicting evidence; T-REL-006 truthful learner wording; T-REL-007 curator sign-off | docs/product/PATHWAY-RELATIONSHIP-EVIDENCE-CONTRACT.md (draft only); runtime location not verified | Candidate questions documented; no relationship pair approved; GAP-003 open | Planned; curator/source evidence required |
@@ -33,7 +33,7 @@
 | Gap / decision | Affected requirements | Closure evidence required | Current state |
 |---|---|---|---|
 | GAP-001 — complete programme rules and source reconciliation | REQ-CAT-001, REQ-MAT-001, REQ-DET-001 | 6–8 distinct records with complete programme/cycle-specific rules, official sources, verification dates, conflict dispositions and curator sign-off | Open; visual PDF inspection is documented but does not complete rule extraction or sign-off |
-| GAP-002 — subject dictionary and approved aliases | REQ-EXP-001, REQ-MAT-001 | Approved canonical subjects, language distinctions, aliases, versioning policy and normalization tests | Open; contract is a proposal only |
+| GAP-002 — subject dictionary and approved aliases | REQ-EXP-001, REQ-MAT-001 | Approved canonical subjects, language distinctions, aliases, versioning policy, normalization tests and runtime/privacy verification | Owner-approved bounded subject-catalogue-v1 contract; owner supplied repository test output reports 12/12 passing. Contract decision and test execution are evidenced by owner report; production implementation, runtime/privacy verification remain open |
 | GAP-003 — pathway relationship evidence | REQ-ALT-001 | Exact official evidence for each pair, accurate relationship type/rationale, review metadata and curator approval | Open; no relationship pair approved |
 | GAP-004 — privacy/runtime | REQ-PRV-001 and release readiness | Verified browser storage, network, URL, logs/telemetry, reset, privacy notice and hosting-provider retention review | Open; policy exists but implementation/review evidence is absent |
 | GAP-005 — funding catalogue | REQ-FUND-001 | 3–5 current official opportunities with supported criteria, deadlines, source verification, 30-day freshness and curator sign-off | Open |
@@ -48,7 +48,7 @@
 | Approved acceptance criteria | ../product/ACCEPTANCE-CRITERIA.md | Acceptance targets and test oracles | Test execution/pass |
 | Programme candidate register | ../product/PROGRAMME-CATALOGUE-REGISTER.md | Candidate leads and recorded research state | Publication-ready catalogue |
 | UJ source reconciliation | ../product/UJ-2027-SOURCE-RECONCILIATION-MATRIX.md | Visual inspection/source discrepancy notes | Curator sign-off or complete rules |
-| Subject normalization contract | ../product/SUBJECT-NORMALIZATION-CONTRACT.md | Proposed normalization rules and planned tests | Approved subject dictionary or execution |
+| Subject normalization contract | ../product/SUBJECT-NORMALIZATION-CONTRACT.md; ../product/SUBJECT-CATALOGUE-V1-APPROVAL.md | Owner-approved bounded subject contract; owner supplied output for `node --test tests/contracts/subject-catalogue-v1.test.mjs` reports 12 passed / 0 failed | Does not prove application integration, privacy/runtime behavior, or programme eligibility correctness |
 | Relationship evidence contract | ../product/PATHWAY-RELATIONSHIP-EVIDENCE-CONTRACT.md | Proposed evidence threshold and candidate questions | Approved relationships |
 | Open product requirements | ../product/OPEN-REQUIREMENTS.md | Recorded owner decisions and outstanding policy details | Runtime compliance |
 | Project status | ../project/PROJECT-STATUS.md | Recorded project state and known evidence limits | Independent local workspace/build/deployment verification |
@@ -57,13 +57,13 @@
 
 **REQUIREMENTS READY: NOT PASSED.**
 
-This matrix is the initial traceability artifact. The phase cannot pass while the catalogue and subject dictionary are unapproved, pathway relationships and funding records are unsupported, privacy/runtime controls lack verification, and the API/runtime contract is unresolved. Requirements and tests are mapped at a planning level; implementation paths, executable test results, CI evidence and release evidence remain absent.
+This matrix is the initial traceability artifact. The phase cannot pass while programme rules remain incomplete, pathway relationships and funding records are unsupported, privacy/runtime controls lack verification, and the API/runtime contract is unresolved. The bounded subject-catalogue-v1 decision is owner-approved and its 12 contract tests are reported passing, but runtime/privacy evidence remains open. Requirements and tests are mapped at a planning level; implementation paths, executable test results, CI evidence and release evidence remain absent.
 
 ## Next actions
 
 1. Review and approve this matrix's requirement IDs and cross-links; align the NFR identifiers with the PRD before gate sign-off.
 2. Complete GAP-001 by turning the seven UJ candidates into full rule records and obtaining curator sign-off; reach the 6–8 verified-record target.
-3. Obtain product-owner/curator decisions on GAP-002 subject IDs, aliases and language distinctions.
+3. Close the remaining GAP-002 runtime/privacy evidence and verify the committed contract test command in CI; do not reopen approved subject IDs/alias policy without change control.
 4. Resolve GAP-003 with evidence-backed relationship pairs or leave the relationship catalogue empty.
 5. Build and verify GAP-004 privacy/runtime evidence and GAP-008 API/runtime feasibility before learner-facing implementation is release-ready.
 6. Curate 3–5 funding records for GAP-005.
@@ -79,3 +79,8 @@ New draft contracts on this branch:
 This is a traceability improvement, **not gap closure**. The seven UJ records still lack a complete approved APS method/included-subject set, confirmed interpretation of the source's “English” column, fully resolved subject-column/branch semantics where applicable, and curator sign-off. The subject catalogue and alias policy are proposed but not approved; no executable tests have been run. Keep GAP-001 and GAP-002 open and do not promote draft rules to the learner-facing evaluator.
 
 Next gate evidence: owner/curator decision on the subject catalogue; source-level review of every 2027 table and footnote; complete APS/English/route rules; signed record-by-record review; executable boundary tests and recorded results.
+
+
+## Subject contract test evidence update — 2026-10-14
+
+The project owner supplied terminal output for `node --test tests/contracts/subject-catalogue-v1.test.mjs`: **12 tests passed, 0 failed** (T-SUB-001–T-SUB-012). Record this as owner-supplied execution evidence. It confirms the contract test file's reported behavior only; it does not establish production application integration, CI execution, privacy/runtime compliance, or eligibility-rule correctness. The owner-approved bounded subject contract is recorded in `docs/product/SUBJECT-CATALOGUE-V1-APPROVAL.md`. GAP-002 remains open for runtime/privacy verification; GAP-001 and the overall `REQUIREMENTS READY` gate remain open/not passed.
