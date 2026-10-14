@@ -1,6 +1,6 @@
 # StudyPath SA — MVP Acceptance Criteria
 
-**Status:** Draft; criteria are candidate test oracles. OR-002's field contract is approved; mark/subject validation and other criteria remain subject to open decisions in `OPEN-REQUIREMENTS.md`.  
+**Status:** Draft; criteria are candidate test oracles, not evidence that implementation or tests exist. OR-002/003 input contracts and OR-004/005/006/007 policy contracts are owner-approved; the catalogue, implementation and verification evidence remain outstanding.  
 **Convention:** Each AC has a unique ID and maps to one PRD requirement. These are product acceptance criteria, not evidence that implementation or tests exist.
 
 ## REQ-EXP-001 — Anonymous pathway input
@@ -51,6 +51,11 @@
 - **AC-MAT-013:** Every displayed reason is traceable to a learner input and/or a structured catalogue rule; generic unsupported claims are prohibited.
 - **AC-MAT-014:** If the recommendation dependency fails, the UI reports failure and does not display stale or invented results as current.
 - **AC-MAT-015:** No UI text describes ELIGIBLE as admission confirmation, guaranteed admission or a probability of acceptance.
+- **AC-MAT-016:** Given a pathway is classified `ELIGIBLE`, when its decision evidence is inspected, then every applicable mandatory minimum requirement needed for the supported screening is present in a complete rule set, verified for the explicit admission cycle, current under the source-freshness policy, curator-signed-off, and met by the learner; no partial or unverified rule set can produce `ELIGIBLE`.
+- **AC-MAT-017:** Given a programme's minimum criteria are incomplete, unsupported or materially unresolved, when the programme is shown for discovery, then its eligibility is `UNKNOWN` and the UI explains the material limitation; the programme is not silently excluded solely because confident screening is unavailable.
+- **AC-MAT-018:** Given eligibility is `ELIGIBLE`, when the result is presented, then the learner-facing explanation states that the learner meets only the verified minimum requirements assessed for the programme and admission cycle, and explicitly says this is not an admission decision or guarantee and the institution makes the final decision.
+- **AC-MAT-019:** Given a programme has `UNKNOWN` eligibility because a material criterion is incomplete or unsupported, when interest, location, study mode or any ranking preference is changed, then the eligibility remains `UNKNOWN` unless the underlying verified requirements/input facts change; ranking never upgrades eligibility.
+- **AC-MAT-020:** Given an applicable verified mandatory requirement fails and no applicable alternative satisfies it, when other material requirements remain unknown, then the result follows OR-004 precedence and is `NOT_ELIGIBLE`; the completeness gate must not incorrectly override a confirmed mandatory failure.
 
 ## REQ-ALT-001 — Alternatives
 
@@ -123,7 +128,7 @@
 ## Criteria requiring owner decisions before baseline approval
 
 - The approved mark range/precision, subject normalization, alias-only lookup, duplicate policy and unsupported-subject behavior are recorded under OR-003; the concrete supported subject vocabulary and aliases must be maintained explicitly in the catalogue.
-- OR-005 admission-cycle and source-freshness contract is approved; catalogue records and release checks still require implementation and evidence. OR-004 eligibility precedence and supported composite rules are approved.
+- OR-004 eligibility precedence, OR-005 admission-cycle/source-freshness, OR-006 privacy/telemetry and OR-007 eligibility meaning/discovery contracts are approved; catalogue records, completeness gates, UI explanations and release checks still require implementation and evidence.
 - Funding provider coverage, supported criteria, required learner inputs, deadline timezone, freshness and expiry policy (OR-015).
 - Tracker statuses/transitions, authority of `submitted_at`, allowed fields, reset/deletion behavior and whether any persistence is permitted (OR-016).
 - Supported browsers/viewports, accessibility conformance level and performance thresholds.
