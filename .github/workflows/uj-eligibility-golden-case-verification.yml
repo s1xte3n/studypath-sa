@@ -1,0 +1,26 @@
+name: UJ eligibility golden-case verification
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    paths:
+      - "src/domain/eligibility/**"
+      - "tests/**"
+      - "docs/product/uj-2027-pilot-catalogue-draft.json"
+      - ".github/workflows/uj-eligibility-golden-case-verification.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Run deterministic eligibility golden cases
+        run: node --test tests/uj-2027-eligibility-ci-final.test.mjs tests/uj-2027-eligibility-golden-cases.test.mjs
