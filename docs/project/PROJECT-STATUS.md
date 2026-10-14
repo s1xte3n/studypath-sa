@@ -2,8 +2,9 @@
 
 **Status:** Phase 2 — Requirements matrix and traceability  
 **Phase 0 gate:** `PROJECT READY` — **PASSED for Phase 1 planning only**  
-**Current gate:** `PRD READY` — **PASSED on 2026-10-14 for the approved PRD/acceptance-criteria baseline only**  
-**Last updated:** 2026-10-14
+**Last completed gate:** `PRD READY` — **PASSED on 2026-10-14 for the approved PRD/acceptance-criteria baseline only**  
+**Current gate:** `REQUIREMENTS READY` — **OPEN; Phase 2 remains in progress**  
+**Last updated:** 2026-10-15
 
 ## Verified repository state
 - Repository: https://github.com/s1xte3n/studypath-sa
@@ -168,3 +169,16 @@ The owner supplied local Git output for the current checkout. The reported worki
 ## GAP-002 implementation baseline follow-up — 2026-10-14
 
 Created `docs/requirements/GAP-002-PRIVACY-VERIFICATION-PLAN.md` on a dedicated branch. It defines the minimum runnable browser-only slice and 12 evidence-backed privacy tests covering network egress, third-party destinations, storage/cookies, URLs/history, console/telemetry, API/provider logs, reset, reload, error paths, CI/dependencies, source-sink inventory and hosting retention. This is a plan only. The supplied tracked-tree inventory has no verified runnable app or browser harness, so learner-data non-transmission/non-persistence/non-logging/non-telemetry cannot yet be tested. No app code, dependency, test harness, CI, cloud resource or deployment was added or changed. GAP-002 remains OPEN; no runtime privacy claim is made.
+
+
+## Phase 2 PH2-001 status reconciliation — 2026-10-15
+
+Updated the requirements matrix, requirement-gap register and project status summary to use one consistent disposition for the funding/tracker documentation cross-check:
+
+- GAP-006 is **resolved as a documentation cross-check**: PRD and OR-016 agree on tracker status transitions and terminal states. This does not mean tracker implementation or transition tests are complete.
+- GAP-007 is **resolved as a documentation cross-check**: AC-FUND-001–009 and AC-APP-001–009 are present in `docs/product/ACCEPTANCE-CRITERIA.md` and linked from the requirements matrix. This does not mean funding/tracker features or their tests are implemented.
+- REQ-FUND-001 remains P1; current official-source funding records are still outstanding. Its scope/acceptance-criteria mapping is no longer marked outstanding.
+- REQ-APP-001 remains P1; its lifecycle/acceptance-criteria mapping is no longer marked outstanding. Implementation and test evidence remain unavailable.
+- The requirement-gap register no longer treats publication-ready catalogue data, runtime privacy checks, final API details, executable app paths, test execution, CI or release evidence as automatic requirements-completeness blockers. These remain open in their respective data, architecture, implementation, security/privacy, test and release gates unless they expose unresolved product behavior.
+
+**Gate disposition:** Phase 2 remains **OPEN**. PH2-001 corrects status contradictions only; it does not approve the requirements baseline, close other gaps, or claim code/test/CI/deployment work. No application tests were run, no CI was triggered by this documentation update, and no cloud resources or deployment were changed.
