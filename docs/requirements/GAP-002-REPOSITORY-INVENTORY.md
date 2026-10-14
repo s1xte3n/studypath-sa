@@ -9,11 +9,11 @@
 
 ## 1. Executive finding
 
-The connected repository evidence supports a documentation-led project state. The current root `README.md` contains only the project title and one-line description. The repository metadata reports private visibility, default branch `main`, and repository size 417 KB. Known tracked project artifacts are predominantly under `docs/project/`, `docs/product/`, and `docs/architecture/`.
+The connected repository evidence and the owner's subsequent local `git ls-files` output support a documentation-led project state. The root `README.md` contains only the project title and one-line description. Repository metadata reports private visibility, default branch `main`, and repository size 417 KB. The owner-supplied tracked-file list contains project artifacts predominantly under `docs/project/`, `docs/product/`, `docs/architecture/`, and `docs/requirements/`, plus repository guidance and one contract test.
 
 No application entry point, package manifest, frontend source, API implementation, test runner configuration, CI workflow, deployment configuration, Terraform, database migration, or Azure Function implementation was verified through the available repository file lookups. This must be stated as **not found/not verified**, not as proof those files do not exist. The GitHub connection could fetch known files but did not expose a recursive private-repository tree in this review; GitHub code search returned no indexed matches. A local `git ls-files` inventory and tree/branch inspection are therefore still required to call this inventory exhaustive.
 
-The project status document records owner-supplied local output from 2026-10-14 saying the local `main` working tree was clean and synchronized with `origin/main`; it also says the supplied tracked-file listing did not list application source, a package manifest, tests, or CI workflow. That is owner-supplied evidence, not a locally reproduced command result in this review.
+The owner has now supplied additional local command output (not independently reproduced by this assistant): `git status` reports `## main...origin/main` with no listed working-tree changes; local `main` and `origin/main` both point to `9271da47bb93aee5e2f0dbdfc6b8fea41feae5c1`; the latest commit shown is dated `2026-10-14T16:00:30+02:00` and is a merge of PR #42. The listed refs include `main`, `origin/main`, `origin/HEAD`, and remote branch `origin/docs/phase-0-project-state` at `bab0a2127f71bf4415e376c4a646bcabe5a5e9b7`. `git tag --list` returned no tag names. The supplied tracked-file list contains `tests/contracts/subject-catalogue-v1.test.mjs` and no listed app source, package manifest, lockfile, API/function implementation, CI workflow, or infrastructure/deployment file. This materially completes the tracked-file inventory for the reported local clone, but remains owner-supplied evidence.
 
 ## 2. Approved privacy and runtime boundary
 
@@ -79,7 +79,21 @@ The following files were directly fetched from `main` in this review unless othe
 
 The supplied files `SPEC-1-StudyPath-SA.txt`, `FNB AOTY Hackathon 2026 - Programme.pdf`, and `Standard_Project_Operating_Procedure_Software_Development_Final.docx` are project conversation attachments and are recorded as **not yet stored in the repository** by `ARTIFACT-INDEX.md`.
 
-### 3.3 Tests and test evidence
+### 3.3 Local tracked-tree, refs and non-documentation history (owner-supplied)
+
+The owner supplied the requested command output. It is recorded as owner-supplied evidence rather than an independently reproduced checkout:
+
+- Working tree/status: `## main...origin/main`; no changed-file entries were shown.
+- Local `main` and `origin/main`: `9271da47bb93aee5e2f0dbdfc6b8fea41feae5c1`.
+- Latest commit: `2026-10-14T16:00:30+02:00`, `Merge pull request #42 from s1xte3n/phase2/approved-subject-contract-and-uj-evidence`.
+- Listed remote refs: `origin/HEAD -> origin/main`, `origin/main`, and `origin/docs/phase-0-project-state` at `bab0a2127f71bf4415e376c4a646bcabe5a5e9b7`.
+- Tags: no tag names were printed.
+- Tracked paths: the output enumerates 43 tracked paths, comprising `.gitignore`, `CONTRIBUTING.md`, `SECURITY.md`, `README.md`, the listed documentation, and `tests/contracts/subject-catalogue-v1.test.mjs`. No `package.json`, lockfile, application source tree, API/function implementation, `.github/workflows` entry, infrastructure file, or deployment configuration appears in that supplied list.
+- Non-documentation history: the supplied `git log --all --name-status ... -- . ':!docs'` shows additions for `tests/contracts/subject-catalogue-v1.test.mjs`, `SECURITY.md`, `CONTRIBUTING.md`, `.gitignore`, and `README.md`; it does not show application source/configuration in the displayed history.
+
+**Inventory conclusion:** the supplied tracked-file inventory is complete for the owner's reported local checkout at the stated commit, subject to the normal limits of a command transcript and the branches/history actually fetched locally. The evidence supports that this checkout is documentation-led and has one contract test, not a verified runnable application. It does not rule out untracked local files, other remote branches not fetched, external copies, or resources outside Git.
+
+### 3.4 Tests and test evidence
 
 | Item | Evidence | Interpretation |
 |---|---|---|
@@ -134,8 +148,13 @@ After that tree is available, enumerate every source/config file that can:
 
 ## 6. Gate disposition
 
-**GAP-002: OPEN — inventory baseline only; full inventory and runtime verification not complete.**
+**GAP-002: OPEN — owner-supplied tracked-file inventory recorded; runtime/privacy verification remains blocked.**
 
-Reason: the current evidence is sufficient to identify the approved privacy boundary and the absence of verified application/runtime evidence in the connected inspection, but not sufficient to prove the complete tracked tree, runtime data flow, browser storage behaviour, provider telemetry, deployment configuration, or CI controls.
+Reason: the supplied tree materially completes the tracked-file inventory for the reported local checkout and indicates no tracked runnable application, package manifest, CI workflow, or infrastructure/deployment configuration. Consequently, runtime data flow, browser storage behaviour, provider telemetry, deployed configuration, and CI controls cannot currently be verified from the listed tracked files. The repository baseline SHA supplied by the owner (`9271da47bb93aee5e2f0dbdfc6b8fea41feae5c1`) differs from the earlier PR #46 base SHA; reconcile this against current `main` before merging this documentation update.
 
-No application code, test, configuration, cloud resource or deployment was changed or executed by this inventory preparation. The next action is to attach the owner-supplied read-only local inventory outputs, reconcile them with `main`, then inspect each implementation surface before drafting or claiming a fix.
+No application code, tests, configuration, cloud resource, or deployment was changed or executed by this inventory preparation. Next actions: update the inventory with this supplied evidence; independently reconcile repository state when access permits; then decide whether GAP-002 can be closed as an inventory-only finding while retaining a separate runtime/privacy implementation blocker. Do not mark privacy verified without implementation and execution evidence.
+
+
+## 7. Owner-supplied local inventory follow-up
+
+The command transcript supplied in the project conversation has been incorporated above. It is a useful inventory artifact, but it is not a signed CI run, an independently reproduced checkout, or proof of deployed state. Keep the distinction between (a) tracked repository inventory, now supported by the supplied `git ls-files` list, and (b) runtime privacy assurance, which remains unverified.
