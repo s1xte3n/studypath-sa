@@ -130,3 +130,15 @@ The five requirement artifacts were committed on branch `docs/phase-2-requiremen
 | Requirement gaps | `docs/product/REQUIREMENT-GAPS.md` | Updated — P0 evidence blockers remain | GAP-001 starting source and GAP-008 architecture direction resolved at decision level; catalogue, privacy, funding and contract evidence remain open. |
 
 D-044 supersedes D-019's static-first selection only. Sensitive financial criteria remain excluded; unknown or unsupported criteria lead to uncertainty and official-provider direction. No implementation, tests, provisioning or deployment are claimed.
+
+
+## Phase 2 evidence proposals — 2026-10-14
+
+| Artifact | Path | Status | Notes |
+|---|---|---|---|
+| Subject normalization contract | `docs/product/SUBJECT-NORMALIZATION-CONTRACT.md` | Draft proposal in PR #30 (merged) | Candidate canonical IDs and normalization behavior; subject vocabulary and alias policy still need explicit owner/curator approval. GAP-002 remains open. |
+| UJ 2027 source reconciliation matrix | `docs/product/UJ-2027-SOURCE-RECONCILIATION-MATRIX.md` | Research matrix; records not publication-ready | Candidate-level source reconciliation; original 2027 PDF tables and curator sign-off remain outstanding. GAP-001 remains open. |
+| Pathway relationship evidence contract | `docs/product/PATHWAY-RELATIONSHIP-EVIDENCE-CONTRACT.md` | Draft proposal in PR #31 | Relationship types and evidence/sign-off thresholds; no programme pair approved. GAP-003 remains open. |
+| Funding opportunity source register | `docs/product/FUNDING-OPPORTUNITY-SOURCE-REGISTER.md` | Draft proposal on `docs/phase-2-funding-catalogue` | Five research rows across four provider/programme groupings; deadline conflicts and full eligibility/coverage checks remain. Zero publication-ready records. GAP-005 remains open. |
+
+The source registers are evidence-management artifacts, not approved public catalogue data. No application code or executable tests are included or claimed. PR #31 and the funding-catalogue branch do not pass the requirements gate.
