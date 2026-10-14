@@ -37,7 +37,7 @@
 - Established Phase 0 documentation and recorded the accepted MVP, budget, privacy, anonymous-first and no-provisioning directions.
 - Reviewed the supplied product specification for the catalogue/provenance and deterministic eligibility guardrails.
 - Reviewed the supplied hackathon programme: team profiling, app eligibility, deck/video, SSDLC, Lean Business Canvas and submission timing.
-- Owner approved OR-008–OR-014 on 2026-10-14. The decision documentation is being prepared on `docs/resolve-or-008-014-decisions`; the PRD remains draft, and no implementation, test execution or release evidence is implied.
+- Owner approved OR-008–OR-014 on 2026-10-14. The documentation is committed on `docs/resolve-or-008-014-decisions` and awaits draft-PR review; the PRD remains draft, and no implementation, test execution or release evidence is implied.
 - Researched official Azure pricing/documentation pages for the preliminary budget screen.
 - Merged `docs/project/PROJECT-READY-EVIDENCE.md` via PR #4; the pack does not constitute approval or gate passage.
 - Recorded owner confirmations: one person holds all roles for now; Azure subscription exists and is owned by the project owner; team is profiled on Sonke; this is a new app being developed before the hackathon.
@@ -55,7 +55,7 @@ The following are downstream implementation/release controls, not blockers to be
 5. Verify the Sonke portal’s displayed submission deadline/timezone and upload limits before final submission.
 6. Under OR-014, retain source/relationship self-review records, run available automated checks and complete a release checklist; seek independent review before public learner use, and document the limitation if no reviewer is available.
 
-## Resolved in principle
+## Owner-approved direction and remaining boundaries
 - MVP journey and key exclusions.
 - Anonymous exploration first; cross-session saved pathways remain excluded. Funding matching and manual application tracking are intended P1 MVP capabilities under OR-001, but their detailed funding/tracker contracts remain open under OR-015/016.
 - Start with a 6–8 record manually curated official-source pilot, prioritising Gauteng, under OR-008; actual records and review evidence remain outstanding.

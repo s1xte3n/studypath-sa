@@ -96,7 +96,7 @@ Funding matching (M4) and manual application tracking (M5) are included in the i
 - **Permissions:** Anonymous learner may submit only their current form data; no cross-user data access exists.
 - **Edge cases:** No subjects entered; missing mark for an entered subject; mark at minimum/maximum; decimal mark; duplicate subject; unknown subject alias; Grade 11 versus Grade 12; recent matric graduate with incomplete/unavailable final results; no interest selected; optional province/study mode omitted or unsupported.
 - **Dependencies:** Approved input schema; subject vocabulary/normalisation; deterministic matching; privacy-safe frontend and telemetry configuration.
-- **Acceptance criteria:** See AC-EXP-001 through AC-EXP-008 in `ACCEPTANCE-CRITERIA.md`.
+- **Acceptance criteria:** See AC-EXP-001 through AC-EXP-014 in `ACCEPTANCE-CRITERIA.md`.
 - **Non-functional requirements:** Mobile-first responsive layout; WCAG 2.2 AA target at viewports down to 320 CSS pixels; keyboard operation, visible focus, labelled controls and screen-reader-accessible errors; no secrets in client; no PII collection; no persistence/telemetry of profile values; in-browser matching p95 target ≤1 second for up to 100 catalogue records on an agreed test device/browser.
 - **Out of scope:** Account creation, profile storage, anonymous-to-account migration, document upload, importing marks from files.
 
@@ -115,7 +115,7 @@ Funding matching (M4) and manual application tracking (M5) are included in the i
 - **Permissions:** Learners read published data only. Catalogue editing/publishing is not exposed in the MVP unless separately approved.
 - **Edge cases:** No records for selected province/mode; expired cycle; conflicting official pages; missing subject threshold; source unavailable; programme page moved; duplicate programme names; records from different admission years.
 - **Dependencies:** Curator, official-source access, source metadata and review policy.
-- **Acceptance criteria:** See AC-CAT-001 through AC-CAT-006.
+- **Acceptance criteria:** See AC-CAT-001 through AC-CAT-012.
 - **Non-functional requirements:** Source links are usable on mobile and accessible; catalogue changes are reviewable; no unsupported claims of national completeness.
 - **Out of scope:** Automated nationwide crawling, public institution self-service, full admin catalogue UI, unreviewed user-submitted requirements.
 
@@ -134,7 +134,7 @@ Funding matching (M4) and manual application tracking (M5) are included in the i
 - **Permissions:** Available to anonymous learners; no account required.
 - **Edge cases:** Missing required subject; one known failed threshold plus another missing rule; mark exactly equal to threshold; APS/points calculation unsupported; source conflict; requirement cycle mismatch; no results; multiple equal-ranked results.
 - **Dependencies:** REQ-EXP-001, REQ-CAT-001, verified rules and an approved policy for unknown values and scoring.
-- **Acceptance criteria:** See AC-MAT-001 through AC-MAT-010.
+- **Acceptance criteria:** See AC-MAT-001 through AC-MAT-021.
 - **Non-functional requirements:** Same inputs and catalogue version produce the same eligibility states and reasons; no frontend-only authoritative eligibility logic; deterministic eligibility grouping and stable within-group order; no weighted numeric preference score; in-browser matching p95 ≤1 second for up to 100 records on the agreed test device/browser.
 - **Out of scope:** Automated admissions decisions, admission probability prediction, AI as eligibility authority, unsupported APS/points inference.
 
@@ -153,7 +153,7 @@ Funding matching (M4) and manual application tracking (M5) are included in the i
 - **Permissions:** Anonymous read-only exploration.
 - **Edge cases:** No alternative records; alternative is also NOT_ELIGIBLE/UNKNOWN; relationship is stale; different province/mode; pathway is a progression rather than direct equivalent.
 - **Dependencies:** REQ-CAT-001, REQ-MAT-001 and reviewed pathway relationships.
-- **Acceptance criteria:** See AC-ALT-001 through AC-ALT-005.
+- **Acceptance criteria:** See AC-ALT-001 through AC-ALT-007.
 - **Non-functional requirements:** Clearly distinguish alternatives, progression and related-field suggestions; explain why each is shown.
 - **Out of scope:** Guaranteeing articulation/credit transfer, creating unsupported pathways, personalized human counselling.
 
@@ -209,7 +209,7 @@ Funding matching (M4) and manual application tracking (M5) are included in the i
 - **Permissions:** Same anonymous permissions as REQ-EXP-001.
 - **Edge cases:** Narrow screen; zoom; long institution/programme names; no results; delayed response; keyboard-only use; reduced motion; external link opens/fails.
 - **Dependencies:** All MVP journey features and chosen UI design.
-- **Acceptance criteria:** See AC-UX-001 through AC-UX-008.
+- **Acceptance criteria:** See AC-UX-001 through AC-UX-011.
 - **Non-functional requirements:** Target WCAG 2.2 AA at 320 CSS pixels minimum; test current stable Chrome, Edge, Firefox and Safari where available and record versions/untested browsers. Include keyboard, visible focus, programmatic labels, associated errors, contrast, non-colour-only states and responsive/loading/empty/error states. In-browser matching target is p95 ≤1 second for up to 100 records on an agreed test device/browser. Network-dependent timeout/retry/availability/low-bandwidth targets must be approved before any network-dependent service is introduced.
 - **Out of scope:** Native mobile apps, full offline operation, multilingual content unless separately prioritised.
 

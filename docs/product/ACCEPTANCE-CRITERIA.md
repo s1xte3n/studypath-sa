@@ -96,7 +96,7 @@
 
 ## REQ-UX-001 — Accessible mobile-first experience
 
-- **AC-UX-001:** At the approved minimum viewport, all core controls and result content remain usable without unintended horizontal scrolling.
+- **AC-UX-001:** At 320 CSS pixels wide, all core controls and result content remain usable without unintended horizontal scrolling.
 - **AC-UX-002:** Every form input has a programmatic label and applicable constraints/instructions.
 - **AC-UX-003:** The core flow can be completed using keyboard alone, with visible focus and a logical focus order.
 - **AC-UX-004:** Validation errors are associated with their inputs and communicated without relying on colour alone.
