@@ -1,6 +1,6 @@
 # StudyPath SA — Open Product Requirements
 
-**Status:** Open decision register for PRD review. No issue below is silently resolved.  
+**Status:** Open decision register for PRD review. OR-001–OR-014 are resolved by owner decision; OR-015–OR-018 remain open.  
 **Owner:** Product owner (currently one person holds all project roles, per Phase 0 status).  
 **Priority:** P0 blocks PRD READY; P1 affects important behavior/scope; P2 can be decided before relevant later feature.
 
@@ -72,41 +72,41 @@
 ## P1 — Resolve before requirements baseline / architecture
 
 ### OR-008 — Catalogue scope and minimum coverage
-- **Ambiguity:** Two UJ programme pages were checked during Phase 0, but minimum number of programme records, qualification mix and supported provinces are not frozen.
-- **Decision required:** Approve a named bounded pilot catalogue and acceptance threshold; no national coverage claim.
-- **Impact:** Demonstration usefulness and alternative pathways.
+- **Decision:** **Resolved by owner on 2026-10-14.** The initial pilot targets **6–8 curated programme records**, prioritising Gauteng and official sources that can be maintained and verified reliably. Include degrees, diplomas, higher certificates or TVET options only where relevant official evidence supports the record; do not force qualification-type or province coverage for appearance's sake.
+- **Boundary:** The 6–8 figure is a pilot catalogue target, not a national coverage claim. The two UJ pages checked in Phase 0 do not by themselves establish that 6–8 complete, publication-ready records exist. Each published record remains subject to OR-005 source/cycle/freshness/sign-off controls and OR-007 eligibility completeness.
+- **Status:** Resolved — scope target approved; record selection, curation and verification evidence remain outstanding.
 
 ### OR-009 — Alternative relationship model
-- **Ambiguity:** ALTERNATIVE, RELATED_FIELD, PROGRESSION and ARTICULATION are listed in the specification, but no curator criteria or evidence standard is approved.
-- **Decision required:** Define relationship provenance and who may publish relationships; articulation claims need explicit official evidence.
-- **Impact:** Alternative recommendation accuracy.
+- **Decision:** **Resolved by owner on 2026-10-14.** Supported relationship types are `ALTERNATIVE`, `RELATED_FIELD`, `PROGRESSION` and `ARTICULATION`. Every published relationship must have a documented type, rationale/explanation, provenance, verification date and curator approval. Record an official evidence source/URL where applicable. An `ARTICULATION` relationship requires explicit official evidence; do not infer articulation, credit transfer or progression from similarity of names or subjects.
+- **Boundary:** Relationship publication does not guarantee admission, credit transfer, articulation or progression. If evidence is missing, stale, conflicting or insufficient for the claimed type, do not publish the relationship as verified; show no relationship or disclose the uncertainty.
+- **Status:** Resolved — evidence policy approved; curated relationship records and verification evidence remain outstanding.
 
 ### OR-010 — Preference ranking
-- **Ambiguity:** The specification proposes weighted scoring for career, mode, location, affordability and academic fit, but Phase 0 has not approved weights or whether ranking is necessary for the pilot.
-- **Decision required:** Approve ranking fields/weights and missing-data behavior, or use transparent deterministic grouping without a numeric score.
-- **Impact:** Ordering, explainability and testing.
+- **Decision:** **Resolved by owner on 2026-10-14.** Do not calculate or display a weighted numeric preference score. Group results deterministically by eligibility state; within each group use a stable catalogue order. Show separate, plain-language preference-fit labels only for supported interests, location and study mode.
+- **Missing preferences:** A blank or unsupported preference is labelled “not assessed” or “not available”; it is not treated as a mismatch or a positive fit. Eligibility is calculated independently and must never be upgraded by preference fit. The groups and fit labels must not imply admission probability or certainty.
+- **Status:** Resolved — grouping policy approved; presentation and deterministic behavior still require implementation and tests.
 
 ### OR-011 — Accessibility and browser support
-- **Ambiguity:** Mobile-first/accessibility is required, but WCAG target, browser matrix, minimum viewport and quantitative performance thresholds are not approved.
-- **Decision required:** Approve conformance target and measurable test environment.
-- **Impact:** Verifiable quality gate.
+- **Decision:** **Resolved by owner on 2026-10-14.** Target **WCAG 2.2 Level AA** and a minimum supported viewport of **320 CSS pixels**. Test the current stable versions of Chrome, Edge, Firefox and Safari where available; record tested versions and report unavailable/untested browsers honestly.
+- **Required checks:** Include keyboard-only operation, visible focus, programmatic labels, input-associated errors, contrast, status not conveyed by colour alone, responsive layout and accessible loading/empty/error states.
+- **Status:** Resolved — target and test matrix approved; conformance and browser-test evidence remain outstanding.
 
 ### OR-012 — Failure behavior and performance targets
-- **Ambiguity:** Loading/error states are required but timeout, retry, p95 latency, availability and low-bandwidth targets are absent.
-- **Decision required:** Set thresholds suitable for a static/cost-constrained pilot; distinguish measured targets from aspirations.
-- **Impact:** Acceptance criteria and release tests.
+- **Decision:** **Resolved by owner on 2026-10-14.** For in-browser matching, target **p95 completion at or below 1 second for up to 100 catalogue records** on an agreed, recorded test device/browser using synthetic fixtures.
+- **Failure behavior:** Do not leave the interface loading indefinitely. Show a recoverable, understandable error and a retry/return path where appropriate; never include academic/profile values in technical error text. This matching target is a requirement, not a measured result.
+- **Network boundary:** If network-dependent services are introduced, define and approve their timeout, retry, availability and low-bandwidth targets before implementation or release; the local matching target does not establish network performance.
+- **Status:** Resolved — target approved; agreed test environment and measurement evidence remain outstanding.
 
 ### OR-013 — Success metric thresholds
-- **Ambiguity:** Specification suggests pathway generation, saving, funding, application creation, conversion and matching-quality metrics. Saving/funding/tracking are excluded from current MVP and numeric thresholds are absent.
-- **Decision required:** Approve synthetic test-set size, zero false-eligibility target, usability measure and evidence method.
-- **Impact:** Demo evaluation and product validation.
+- **Decision:** **Resolved by owner on 2026-10-14.** Maintain a versioned golden set of at least **20 synthetic cases** spanning positive eligibility, mandatory failure, UNKNOWN/missing data, composite AND/OR/conditional rules, stale or conflicting sources and unsupported calculations.
+- **Acceptance target:** All expected classifications must match, with **zero false-positive `ELIGIBLE` results**. Any mismatch blocks acceptance of the matching rules until investigated and corrected. This is a target for future verification, not evidence that the set or tests already exist.
+- **Usability evidence:** If five representative users are available, run a moderated usability check and record task completion and observed issues. If five users are unavailable, record the limitation and the evidence actually obtained; do not claim statistical validation from a small convenience sample.
+- **Status:** Resolved — measures approved; golden-set creation, test execution and usability evidence remain outstanding.
 
 ### OR-014 — Ownership and review
-- **Ambiguity:** Phase 0 records one person currently holding all roles, no backup catalogue curator and no independent reviewer.
-- **Decision required:** Confirm whether single-person review is accepted for the hackathon MVP and define how source records are reviewed before publishing.
-- **Impact:** Governance, data quality and risk acceptance.
-
-## P1 — Resolve before requirements baseline / architecture
+- **Decision:** **Resolved by owner on 2026-10-14.** Accept temporary single-owner review for the hackathon MVP. The owner is responsible for curating and signing off source/relationship records, retaining review evidence, running available automated checks and completing a release checklist.
+- **Risk control:** Seek independent review before public learner use. If an independent reviewer is unavailable, document that limitation and do not claim independent assurance. This temporary arrangement does not waive OR-005 source verification, OR-007 completeness requirements, privacy/legal review, or the ban on real learner data before the required review.
+- **Status:** Resolved — temporary governance arrangement approved; actual review records and release evidence remain outstanding.
 
 ### OR-015 — Funding data and matching
 Funding matching is in the intended MVP at medium priority. Provider coverage, applicant criteria, permitted learner inputs, required documents, deadline timezone, funding amount/coverage, source freshness and expiry policy are not defined. Resolve before the funding feature is specified for implementation.
@@ -129,4 +129,4 @@ Supported file types/size, consent, retention/deletion, extraction confidence, h
 
 ## Gate disposition
 
-**PRD READY: BLOCKED.** OR-001 through OR-007 are resolved by owner decision, including admission-cycle/source freshness, privacy/telemetry, and the meaning/discovery boundary of `ELIGIBLE`. OR-006 implementation, hosting-provider review and privacy acceptance evidence remain downstream release gates. Catalogue completeness, implementation and test evidence for eligibility remain outstanding. The resolved contracts still require implementation, catalogue evidence, tests and release verification; decisions alone do not pass those gates. OR-015 and OR-016 remain P1 because the medium-priority funding and tracker features are in the intended MVP; resolve their data, lifecycle and privacy contracts before implementation. No implementation tasks are created here.
+**PRD READY: BLOCKED.** OR-001 through OR-014 now have owner-approved decisions, but decision approval is not implementation or verification evidence. OR-015 funding data/matching rules and OR-016 tracker lifecycle/data handling remain open for intended P1 MVP features and must be resolved before those features are implemented and before the requirements baseline/architecture is treated as complete. OR-017 and OR-018 remain later-scope decisions. The PRD still requires explicit owner approval; catalogue records, relationship curation, accessibility/performance tests, golden-set results, privacy review and release evidence remain outstanding. No implementation or test passage is claimed.

@@ -21,7 +21,7 @@ Where the broader specification conflicts with the accepted Phase 0 MVP boundary
 
 ### Goals
 1. Let a learner explore without creating an account or providing identifying information. (C)
-2. Accept academic subjects and marks, interests, province/location, study-mode preferences and funding need where those fields are in the approved MVP input contract. (C; exact minimum set O)
+2. Accept the owner-approved anonymous first-form fields (study stage, at least one subject and mark per entered subject; optional interests, intended location and study mode). Funding need is excluded from the first form and requires a separate approved P1 flow. (C; OR-002/003)
 3. Show a small, curated set of South African study options and explain why each is or is not a plausible match. (C)
 4. Show explicit eligibility states: `ELIGIBLE`, `NOT_ELIGIBLE`, `UNKNOWN`; missing/ambiguous catalogue rules must not be presented as certainty. (C)
 5. Trace displayed requirements and next steps to source records, preferring official institution/government/provider information. (C)
@@ -57,7 +57,7 @@ Funding matching (M4) and manual application tracking (M5) are included in the i
 - **Supported admission cycle:** Only a cycle explicitly identified for the programme requirement is supported. Do not silently carry requirements forward from a prior cycle.
 - **Source freshness:** Re-verify admission sources at least every 30 days, and sooner when a source announces a change, a relevant deadline passes, or the applicable cycle changes. Stale, inaccessible or otherwise unverifiable requirements cannot support confident eligibility.
 - **Source conflicts and sign-off:** Prefer official sources explicitly applicable to the programme and cycle. A programme-specific source takes precedence over a general institutional page only when applicability is clear. Unresolved authoritative conflicts block confident screening and yield `UNKNOWN` where material. A curator verifies each extracted requirement against its source before publication; a release/public-demo check reviews cycle, catalogue version, verification dates and unresolved conflicts. These are requirements, not claims of implemented controls.
-- **Catalogue pilot:** a deliberately bounded catalogue. Phase 0 records two official University of Johannesburg programme pages checked; this is not evidence of broad national coverage.
+- **Catalogue pilot:** target 6–8 curated programme records, prioritising Gauteng and official sources that can be verified and maintained. Include degree, diploma, higher-certificate or TVET records only where supported by official evidence. The two UJ pages checked in Phase 0 do not establish that the full target is already met; this is a bounded pilot, not national coverage.
 - **Temporary inputs:** values used to generate results during the current anonymous exploration; no profile persistence is allowed in the MVP.
 
 ### Eligibility rules
@@ -77,6 +77,7 @@ Funding matching (M4) and manual application tracking (M5) are included in the i
 14. `ELIGIBLE` is permitted only when the full set of applicable mandatory minimum requirements needed for the supported screening is complete, verified for the explicit admission cycle, current under the source-freshness policy, and curator-signed-off, and every applicable requirement is met under OR-004. A partial rule set must never produce `ELIGIBLE`.
 15. A programme with incomplete, unsupported or unresolved minimum criteria may remain visible for discovery, but must show `UNKNOWN` eligibility and explain the material limitation. Discovery, preference fit and ranking must never upgrade eligibility or imply that requirements are met.
 16. Use this learner-facing `ELIGIBLE` explanation: “You meet the verified minimum requirements we assessed. Based on the official requirements verified for this programme and admission cycle, you meet all applicable minimum requirements covered by our supported screening. This is not an admission decision or a guarantee of acceptance. The institution makes the final admission decision.” Keep the explanation tied to the requirements actually assessed; do not imply a complete institutional admission assessment.
+17. Do not calculate or display a weighted numeric preference score. Group results deterministically by eligibility state, then use stable catalogue order within each group. Show separate plain-language preference-fit labels only for supported interests, location and study mode. Missing/unsupported preferences are “not assessed” or “not available”. Preference fit never upgrades eligibility and does not imply admission probability.
 
 ## 5. MVP feature requirements
 
@@ -95,26 +96,26 @@ Funding matching (M4) and manual application tracking (M5) are included in the i
 - **Permissions:** Anonymous learner may submit only their current form data; no cross-user data access exists.
 - **Edge cases:** No subjects entered; missing mark for an entered subject; mark at minimum/maximum; decimal mark; duplicate subject; unknown subject alias; Grade 11 versus Grade 12; recent matric graduate with incomplete/unavailable final results; no interest selected; optional province/study mode omitted or unsupported.
 - **Dependencies:** Approved input schema; subject vocabulary/normalisation; deterministic matching; privacy-safe frontend and telemetry configuration.
-- **Acceptance criteria:** See AC-EXP-001 through AC-EXP-008 in `ACCEPTANCE-CRITERIA.md`.
-- **Non-functional requirements:** Mobile-first responsive layout; labelled controls; keyboard operation; screen-reader accessible errors; no secrets in client; no PII collection; no persistence/telemetry of profile values; target performance threshold remains open.
+- **Acceptance criteria:** See AC-EXP-001 through AC-EXP-014 in `ACCEPTANCE-CRITERIA.md`.
+- **Non-functional requirements:** Mobile-first responsive layout; WCAG 2.2 AA target at viewports down to 320 CSS pixels; keyboard operation, visible focus, labelled controls and screen-reader-accessible errors; no secrets in client; no PII collection; no persistence/telemetry of profile values; in-browser matching p95 target ≤1 second for up to 100 catalogue records on an agreed test device/browser.
 - **Out of scope:** Account creation, profile storage, anonymous-to-account migration, document upload, importing marks from files.
 
 ### REQ-CAT-001 — Curated institution and qualification catalogue
 
 - **Priority:** P0
-- **Status:** Confirmed small curated catalogue; exact minimum record count and release freshness policy open.
+- **Status:** Owner-approved bounded pilot target of 6–8 curated programme records, prioritising Gauteng and verifiable official sources (OR-008). Actual record selection, source verification and release evidence remain outstanding.
 - **Problem / user story:** As a learner, I want to explore real study options with credible requirements rather than generic or invented examples.
 - **Actors:** Anonymous learner; catalogue curator.
 - **Preconditions:** Catalogue contains approved published records.
 - **Trigger:** Learner views recommendations or opens pathway details.
 - **Inputs:** Curated institution, qualification/programme, institution type, province/location, study mode, qualification type, requirements, application information and source records where verified.
-- **Business rules:** Catalogue records must be grounded in official sources; a record without a usable authoritative source cannot support a positive eligibility claim. The MVP is a bounded pilot, not national coverage. No fake/example institution may be represented as real. Every supported requirement must identify its source and verification date; cycle/version should be recorded where available.
+- **Business rules:** The pilot targets 6–8 curated programme records, prioritising Gauteng and verifiable official sources. Include qualification types only when supported by actual official evidence; do not force coverage across provinces/types or imply national completeness. No fake/example institution may be represented as real. Every eligibility requirement must meet the complete OR-005 source/cycle/freshness/sign-off contract; each record must pass curator review before publication. The two UJ pages checked during Phase 0 do not prove the pilot target has been met.
 - **Success state:** Learner sees only published catalogue records and can distinguish verified information from missing/unknown information.
 - **Failure states:** No matching catalogue data yields a clear empty state; invalid/stale/unverifiable records are suppressed from definitive claims and cause UNKNOWN where material.
 - **Permissions:** Learners read published data only. Catalogue editing/publishing is not exposed in the MVP unless separately approved.
 - **Edge cases:** No records for selected province/mode; expired cycle; conflicting official pages; missing subject threshold; source unavailable; programme page moved; duplicate programme names; records from different admission years.
 - **Dependencies:** Curator, official-source access, source metadata and review policy.
-- **Acceptance criteria:** See AC-CAT-001 through AC-CAT-006.
+- **Acceptance criteria:** See AC-CAT-001 through AC-CAT-012.
 - **Non-functional requirements:** Source links are usable on mobile and accessible; catalogue changes are reviewable; no unsupported claims of national completeness.
 - **Out of scope:** Automated nationwide crawling, public institution self-service, full admin catalogue UI, unreviewed user-submitted requirements.
 
@@ -133,26 +134,26 @@ Funding matching (M4) and manual application tracking (M5) are included in the i
 - **Permissions:** Available to anonymous learners; no account required.
 - **Edge cases:** Missing required subject; one known failed threshold plus another missing rule; mark exactly equal to threshold; APS/points calculation unsupported; source conflict; requirement cycle mismatch; no results; multiple equal-ranked results.
 - **Dependencies:** REQ-EXP-001, REQ-CAT-001, verified rules and an approved policy for unknown values and scoring.
-- **Acceptance criteria:** See AC-MAT-001 through AC-MAT-010.
-- **Non-functional requirements:** Same inputs and same catalogue version produce the same eligibility states; explanations must be consistent with the rules; no frontend-only authoritative eligibility logic; performance target open.
+- **Acceptance criteria:** See AC-MAT-001 through AC-MAT-021.
+- **Non-functional requirements:** Same inputs and catalogue version produce the same eligibility states and reasons; no frontend-only authoritative eligibility logic; deterministic eligibility grouping and stable within-group order; no weighted numeric preference score; in-browser matching p95 ≤1 second for up to 100 records on the agreed test device/browser.
 - **Out of scope:** Automated admissions decisions, admission probability prediction, AI as eligibility authority, unsupported APS/points inference.
 
 ### REQ-ALT-001 — Relevant alternatives and next steps
 
 - **Priority:** P0
-- **Status:** Confirmed as part of the core journey; relationship coverage and alternative-selection rules open.
+- **Status:** Core journey confirmed; OR-009 relationship types and evidence policy are owner-approved. Curated relationships and their evidence still require verification.
 - **Problem / user story:** As a learner whose preferred option is not supported by the current results, I want relevant alternatives or an honest explanation that none can be established.
 - **Actors:** Anonymous learner.
 - **Preconditions:** A preferred pathway or result set exists; curated relationship data may exist.
 - **Trigger:** A preferred pathway is ineligible/unknown, or the learner asks to explore related options.
 - **Inputs:** Preferred pathway, eligibility outcomes and curated alternative/progression relationships where available.
-- **Business rules:** Alternatives must be related through reviewed catalogue relationships or a clearly stated matching basis. Do not imply that an alternative is guaranteed or that it leads to a specific qualification unless verified. Diploma, higher-certificate, TVET and progression routes appear only where supported by actual data.
+- **Business rules:** Supported relationship types are `ALTERNATIVE`, `RELATED_FIELD`, `PROGRESSION` and `ARTICULATION`. Each published relationship must include its type, explanation/rationale, documented provenance, verification date and curator approval, with official evidence/URL where applicable. `ARTICULATION` requires explicit official evidence; never infer it from similarity. If evidence is missing or insufficient, do not publish the relationship as verified. Do not imply guaranteed admission, credit transfer or progression. Diploma, higher-certificate and TVET routes appear only where actual official evidence supports them.
 - **Success state:** Learner sees relevant sourced alternatives and a practical next step, or a clear explanation that no verified alternative is available in the pilot.
 - **Failure states:** Missing relationship data produces no invented alternative; source failure leaves the uncertainty visible.
 - **Permissions:** Anonymous read-only exploration.
 - **Edge cases:** No alternative records; alternative is also NOT_ELIGIBLE/UNKNOWN; relationship is stale; different province/mode; pathway is a progression rather than direct equivalent.
 - **Dependencies:** REQ-CAT-001, REQ-MAT-001 and reviewed pathway relationships.
-- **Acceptance criteria:** See AC-ALT-001 through AC-ALT-005.
+- **Acceptance criteria:** See AC-ALT-001 through AC-ALT-007.
 - **Non-functional requirements:** Clearly distinguish alternatives, progression and related-field suggestions; explain why each is shown.
 - **Out of scope:** Guaranteeing articulation/credit transfer, creating unsupported pathways, personalized human counselling.
 
@@ -196,7 +197,7 @@ Funding matching (M4) and manual application tracking (M5) are included in the i
 ### REQ-UX-001 — Accessible, mobile-first interactive experience
 
 - **Priority:** P0
-- **Status:** Confirmed product quality intent; formal supported-browser/device matrix and quantitative accessibility/performance thresholds open.
+- **Status:** Owner-approved target: WCAG 2.2 AA, minimum 320 CSS-pixel viewport, current stable Chrome/Edge/Firefox/Safari where available, and in-browser matching p95 ≤1 second for up to 100 records on an agreed test device/browser (OR-011/012). Test evidence remains outstanding.
 - **Problem / user story:** As a learner using a phone, keyboard or assistive technology, I want to complete the pathway journey and understand the next action.
 - **Actors:** Anonymous learner, including users of assistive technology and users with limited connectivity.
 - **Preconditions:** Application is loaded in a supported browser.
@@ -208,8 +209,8 @@ Funding matching (M4) and manual application tracking (M5) are included in the i
 - **Permissions:** Same anonymous permissions as REQ-EXP-001.
 - **Edge cases:** Narrow screen; zoom; long institution/programme names; no results; delayed response; keyboard-only use; reduced motion; external link opens/fails.
 - **Dependencies:** All MVP journey features and chosen UI design.
-- **Acceptance criteria:** See AC-UX-001 through AC-UX-008.
-- **Non-functional requirements:** WCAG 2.2 AA is proposed as a target, not yet approved; supported browsers, load-time and low-bandwidth thresholds require owner confirmation.
+- **Acceptance criteria:** See AC-UX-001 through AC-UX-011.
+- **Non-functional requirements:** Target WCAG 2.2 AA at 320 CSS pixels minimum; test current stable Chrome, Edge, Firefox and Safari where available and record versions/untested browsers. Include keyboard, visible focus, programmatic labels, associated errors, contrast, non-colour-only states and responsive/loading/empty/error states. In-browser matching target is p95 ≤1 second for up to 100 records on an agreed test device/browser. Network-dependent timeout/retry/availability/low-bandwidth targets must be approved before any network-dependent service is introduced.
 - **Out of scope:** Native mobile apps, full offline operation, multilingual content unless separately prioritised.
 
 ### REQ-FUND-001 — Curated funding opportunities and deterministic matching
@@ -255,38 +256,39 @@ Funding matching (M4) and manual application tracking (M5) are included in the i
 | NFR-SEC-001 | No secrets in client code; use HTTPS for network requests; validate inputs at the trusted boundary | Confirmed direction; verify through static review and network/security tests |
 | NFR-PRV-001 | No learner profile persistence, analytics capture or application-log capture in MVP | Confirmed; verify using network inspection, storage inspection and synthetic test runs |
 | NFR-DATA-001 | Eligibility claims and displayed requirements trace to official source records and verification metadata | Confirmed; catalogue audit and automated completeness checks |
-| NFR-REL-001 | Dependency failures, no-results and stale/missing data produce honest recoverable/uncertain states | Confirmed intent; exact retry/timeout thresholds open |
-| NFR-ACC-001 | Accessible forms, keyboard support, focus states, non-colour-only status and clear errors | Confirmed intent; WCAG target level requires approval |
-| NFR-PERF-001 | Core flow should feel responsive on typical mobile connections | Confirmed intent; measurable p95/load-time and test environment thresholds are open |
+| NFR-REL-001 | Dependency failures, no-results and stale/missing data produce honest recoverable/uncertain states; no indefinite loading | Confirmed; any network-dependent timeout/retry/availability/low-bandwidth thresholds must be approved before those services are introduced |
+| NFR-ACC-001 | WCAG 2.2 AA target; 320 CSS-pixel minimum viewport; current stable Chrome, Edge, Firefox and Safari where available; keyboard, focus, labels, associated errors, contrast and non-colour-only states | Owner-approved target (OR-011); browser/conformance evidence outstanding |
+| NFR-PERF-001 | In-browser matching p95 ≤1 second for up to 100 catalogue records on an agreed test device/browser; no indefinite loading and recoverable errors | Owner-approved target (OR-012); measurement environment/results outstanding; network targets are separate if network services are introduced |
 | NFR-COMP-001 | Do not represent results as official admission/funding decisions or guarantee outcomes | Confirmed |
 | NFR-SCOPE-001 | Initial catalogue is bounded; do not claim nationwide coverage | Confirmed Phase 0 direction |
 
 ## 7. Dependencies and hidden assumptions
 
-1. The owner-approved first-form field contract is recorded under OR-002; mark range/precision, subject vocabulary and duplicate handling remain open under OR-003.
-2. A curator must maintain and verify source-backed catalogue records; no backup curator is currently confirmed.
+1. The owner-approved first-form contract and whole-number percentage/subject-normalisation rules are recorded under OR-002/003; the concrete supported subject vocabulary and aliases still need to be explicitly maintained in the catalogue.
+2. The owner temporarily holds all curator/reviewer roles under OR-014. No independent reviewer or backup is confirmed; seek independent review before public learner use and document the limitation if unavailable.
 3. Official programme requirements can be incomplete, cycle-specific or internally inconsistent; UNKNOWN handling is essential.
 4. The matching engine needs explicit rules for multiple missing/failed requirements, APS/points and subject equivalence/substitution before it can be fully testable; OR-003 defines mark validation and the alias lookup policy.
 5. A client-only/static deployment is the current cost-constrained proposal; confirm in architecture phase. This PRD does not mandate implementation architecture.
 6. Browser storage, network traffic, application/error telemetry dependencies and hosting/provider metadata and retention must be inspected to substantiate the approved OR-006 privacy boundary.
-7. The source specification describes funding matching and application tracking as Must Have, while approved Phase 0 decisions defer them. Product owner must confirm this prioritisation conflict before PRD READY.
+7. The scope conflict is resolved: funding matching and manual application tracking are intended MVP P1 capabilities behind the P0 core journey. Their funding data contract (OR-015) and tracker lifecycle/data boundary (OR-016) remain open and must be resolved before those features are implemented.
 8. The FNB hackathon requires an interactive application and submission deliverables (deck max 10 slides, demo video max 90 seconds, SSDLC and Lean Business Canvas); the PRD does not itself satisfy these submission deliverables.
 
 ## 8. Success measures
 
 For the MVP demo, measure with synthetic test journeys only:
-- Percentage of representative test profiles that receive a valid, schema-conforming result or an honest no-results/UNKNOWN state.
-- Zero false-positive ELIGIBLE results in the manually reviewed golden test set (target; test set must be approved).
-- Percentage of displayed requirements with official source and verification metadata.
-- Successful completion rate for the anonymous marks-to-pathway-details journey in moderated usability tests.
-- Number of privacy boundary violations observed in network/storage/log inspection: target zero.
+- A versioned golden set of at least 20 cases covering positive eligibility, mandatory failure, UNKNOWN/missing data, composite AND/OR/conditional rules, stale/conflicting sources and unsupported calculations.
+- 100% agreement with expected classifications across that golden set and zero false-positive `ELIGIBLE` results; any mismatch blocks acceptance of the matching rules until investigated and corrected.
+- 100% of eligibility requirements displayed with the required official-source, cycle, verification, catalogue-version and curator-sign-off metadata; missing/incomplete rules must not produce `ELIGIBLE`.
+- In-browser matching p95 ≤1 second for up to 100 catalogue records on the agreed test device/browser, measured and recorded rather than assumed.
+- Zero privacy-boundary violations in storage/network/log inspection.
+- If five representative users are available, a moderated usability check records task completion and observed issues. If fewer are available, record the limitation and actual evidence; do not claim statistical validation from a small convenience sample.
 
-Exact thresholds, test set size, and measurement ownership are open; do not report success metrics until measured.
+These are approved targets, not measured results. Do not report success until the test set, device/browser details, run results and any usability evidence are recorded.
 
 ## 9. Explicitly unresolved / not approved
 
-See `docs/product/OPEN-REQUIREMENTS.md`. OR-001 through OR-007 have owner-approved decisions recorded, including MVP scope, anonymous inputs, mark/subject validation, eligibility precedence, admission-cycle/source freshness, privacy/telemetry, and the exact meaning and discovery boundary of `ELIGIBLE`. These are policy decisions only; implementation, source catalogue completeness and verification evidence remain outstanding. OR-006 implementation, hosting-provider review and privacy verification remain release gates. OR-008 through OR-018, including catalogue coverage, ranking, accessibility/performance, success thresholds, funding and tracker detail, remain open at their stated priorities.
+See `docs/product/OPEN-REQUIREMENTS.md`. OR-001 through OR-014 have owner-approved policy decisions, including the 6–8 record pilot target, relationship evidence, deterministic eligibility grouping, WCAG/browser targets, matching performance and success measures. These are requirements, not proof of implementation or passing tests. OR-006 privacy implementation/hosting review remain release gates. OR-015 funding criteria/data and OR-016 tracker lifecycle/data handling remain open for the intended P1 features; OR-017/018 remain later-scope decisions.
 
 ## 10. PRD gate assessment
 
-**Gate status: BLOCKED — draft is comprehensive enough for review, but PRD READY is not claimed.** OR-001 through OR-007 have owner-approved policy decisions, including the rule that incomplete criteria can be discoverable only with `UNKNOWN` eligibility and a clear limitation. M4 funding matching and M5 manual application tracking remain P1 / medium-priority intended MVP features; their detailed data and lifecycle constraints remain open. Candidate acceptance criteria are recorded in `ACCEPTANCE-CRITERIA.md`. Requirements approval does not establish catalogue completeness, implementation, test passage, privacy clearance or release readiness. No implementation tasks are created by this document.
+**Gate status: BLOCKED — PRD READY is not claimed.** OR-001 through OR-014 are owner-approved, but the PRD still needs explicit owner approval and OR-015/016 remain open before the P1 funding/tracker features can be implemented or the requirements baseline treated as complete. The initial catalogue's actual 6–8 verified records, relationship records, accessibility/performance conformance, golden-set results, privacy review and release evidence remain outstanding. Candidate acceptance criteria are recorded in `ACCEPTANCE-CRITERIA.md`. No implementation, test passage, privacy clearance or release readiness is claimed.

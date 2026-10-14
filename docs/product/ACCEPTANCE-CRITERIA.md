@@ -1,6 +1,6 @@
 # StudyPath SA — MVP Acceptance Criteria
 
-**Status:** Draft; criteria are candidate test oracles, not evidence that implementation or tests exist. OR-002/003 input contracts and OR-004/005/006/007 policy contracts are owner-approved; the catalogue, implementation and verification evidence remain outstanding.  
+**Status:** Draft; criteria are candidate test oracles, not evidence that implementation or tests exist. OR-002–OR-014 decisions are owner-approved; actual catalogue/relationship records, implementation, test execution and verification evidence remain outstanding.  
 **Convention:** Each AC has a unique ID and maps to one PRD requirement. These are product acceptance criteria, not evidence that implementation or tests exist.
 
 ## REQ-EXP-001 — Anonymous pathway input
@@ -33,6 +33,7 @@
 - **AC-CAT-009:** Admission sources are re-verified at least every 30 days and sooner after a source-announced change, a relevant deadline passes, or the cycle changes. A stale, inaccessible or otherwise unverifiable material requirement cannot support ELIGIBLE.
 - **AC-CAT-010:** When official sources conflict, the governing source is selected only when programme/cycle applicability is clear. An unresolved authoritative conflict is recorded and yields UNKNOWN when it could change the result, subject to the approved OR-004 precedence rules.
 - **AC-CAT-011:** Before publication, a curator verifies extracted requirements against their sources. Before release/public demo, the catalogue version, cycle applicability, verification dates and unresolved conflicts are reviewed; evidence of the review is retained.
+- **AC-CAT-012:** Before pilot acceptance, the published catalogue contains 6–8 distinct, curated programme records with complete applicable source/cycle/freshness/sign-off metadata. Prioritise Gauteng; include degree, diploma, higher-certificate or TVET options only where official evidence supports them. The UI does not claim national coverage, and Phase 0 source checks do not count as complete catalogue records unless they meet the same publication criteria.
 
 ## REQ-MAT-001 — Deterministic eligibility and explanations
 
@@ -56,6 +57,7 @@
 - **AC-MAT-018:** Given eligibility is `ELIGIBLE`, when the result is presented, then the learner-facing explanation states that the learner meets only the verified minimum requirements assessed for the programme and admission cycle, and explicitly says this is not an admission decision or guarantee and the institution makes the final decision.
 - **AC-MAT-019:** Given a programme has `UNKNOWN` eligibility because a material criterion is incomplete or unsupported, when interest, location, study mode or any ranking preference is changed, then the eligibility remains `UNKNOWN` unless the underlying verified requirements/input facts change; ranking never upgrades eligibility.
 - **AC-MAT-020:** Given an applicable verified mandatory requirement fails and no applicable alternative satisfies it, when other material requirements remain unknown, then the result follows OR-004 precedence and is `NOT_ELIGIBLE`; the completeness gate must not incorrectly override a confirmed mandatory failure.
+- **AC-MAT-021:** Results are grouped deterministically by eligibility state, with stable catalogue order within each group; no weighted numeric preference score is calculated or displayed. Supported interest, location and study-mode fit appears only as separate plain-language labels. A missing/unsupported preference is “not assessed” or “not available”, and preference fit never changes eligibility.
 
 ## REQ-ALT-001 — Alternatives
 
@@ -64,6 +66,8 @@
 - **AC-ALT-003:** An alternative's eligibility state is calculated independently using its own requirements; it is not inherited from the preferred pathway.
 - **AC-ALT-004:** When no verified alternatives exist, the product explains that the current pilot has no verified alternative to show.
 - **AC-ALT-005:** The product does not claim guaranteed credit transfer, articulation or admission through an alternative pathway.
+- **AC-ALT-006:** Every published relationship records its type (`ALTERNATIVE`, `RELATED_FIELD`, `PROGRESSION` or `ARTICULATION`), explanation/rationale, documented provenance, verification date and curator approval, plus an official evidence source/URL where applicable. A relationship missing required metadata is not presented as verified.
+- **AC-ALT-007:** An `ARTICULATION` relationship is published only with explicit official evidence supporting that articulation claim. Similar names, subjects or apparent similarity are not sufficient; uncertain relationships are withheld or explicitly described as unverified rather than asserted as fact.
 
 ## REQ-DET-001 — Details and official next steps
 
@@ -92,21 +96,25 @@
 
 ## REQ-UX-001 — Accessible mobile-first experience
 
-- **AC-UX-001:** At the approved minimum viewport, all core controls and result content remain usable without unintended horizontal scrolling.
+- **AC-UX-001:** At 320 CSS pixels wide, all core controls and result content remain usable without unintended horizontal scrolling.
 - **AC-UX-002:** Every form input has a programmatic label and applicable constraints/instructions.
 - **AC-UX-003:** The core flow can be completed using keyboard alone, with visible focus and a logical focus order.
 - **AC-UX-004:** Validation errors are associated with their inputs and communicated without relying on colour alone.
 - **AC-UX-005:** ELIGIBLE, NOT_ELIGIBLE and UNKNOWN are distinguishable by text and semantics, not colour alone.
 - **AC-UX-006:** Loading, no-results, dependency failure and not-found states are understandable and provide an appropriate next action.
 - **AC-UX-007:** External source links have descriptive accessible names and do not unexpectedly discard entered state.
-- **AC-UX-008:** Accessibility and performance tests run against the approved browser/device matrix and quantitative thresholds; until these are approved, this criterion is not fully measurable.
+- **AC-UX-008:** Accessibility and performance checks are executed against the recorded test environment and browser matrix; test reports identify versions and any browser not tested.
+- **AC-UX-009:** The experience targets WCAG 2.2 AA and remains usable at a minimum viewport width of 320 CSS pixels; keyboard operation, visible focus, programmatic labels, associated validation errors, contrast and non-colour-only states are checked. The target is not reported as achieved until evidence is recorded.
+- **AC-UX-010:** The current stable Chrome, Edge, Firefox and Safari versions are tested where available; tested versions and unavailable/untested browsers are documented without implying unsupported coverage.
+- **AC-UX-011:** Using synthetic fixtures and up to 100 catalogue records on an agreed, recorded test device/browser, in-browser matching completes within 1 second at p95. Record the measurement method and result; a target alone is not a pass. Network-service targets require separate approval if network-dependent services are introduced.
 
 ## Cross-cutting verification criteria
 
 - **AC-NFR-001:** A catalogue audit shows 100% of requirements used for eligibility have an authoritative source and verification metadata; exceptions force UNKNOWN rather than unsupported certainty.
-- **AC-NFR-002:** Synthetic golden cases cover positive eligibility, known failure, missing inputs, missing rules, exact thresholds, conflicting sources, no results and unsupported calculations.
+- **AC-NFR-002:** A versioned synthetic golden set contains at least 20 cases covering positive eligibility, mandatory failure, UNKNOWN/missing data, composite AND/OR/conditional rules, stale/conflicting sources and unsupported calculations. Every expected classification matches and there are zero false-positive `ELIGIBLE` results before matching-rule acceptance.
 - **AC-NFR-003:** No implementation is accepted based solely on HTTP 2xx or a visually plausible screen; assertions cover displayed state, reasons, source references, privacy behavior and failure states.
 - **AC-NFR-004:** No criterion is marked passed until an actual test or review has been executed and its evidence recorded.
+- **AC-NFR-005:** If five representative users are available, conduct a moderated usability check and record tasks, completion and observed issues. If five users are unavailable, document the limitation and the evidence actually obtained; do not describe a small convenience sample as statistically representative.
 
 ## REQ-FUND-001 — Funding opportunities and matching (P1 / medium priority)
 
@@ -125,11 +133,11 @@
 - **AC-APP-005:** Given tracker data is reset or deleted under the approved lifecycle, then the data is removed according to that policy and is not exposed in telemetry.
 - **AC-APP-006:** Given persistence is approved, when a learner requests a tracker entry, then only the authorised owner/session can access it; cross-user isolation tests pass before release.
 
-## Criteria requiring owner decisions before baseline approval
+## Remaining decisions and verification evidence
 
 - The approved mark range/precision, subject normalization, alias-only lookup, duplicate policy and unsupported-subject behavior are recorded under OR-003; the concrete supported subject vocabulary and aliases must be maintained explicitly in the catalogue.
 - OR-004 eligibility precedence, OR-005 admission-cycle/source-freshness, OR-006 privacy/telemetry and OR-007 eligibility meaning/discovery contracts are approved; catalogue records, completeness gates, UI explanations and release checks still require implementation and evidence.
 - Funding provider coverage, supported criteria, required learner inputs, deadline timezone, freshness and expiry policy (OR-015).
 - Tracker statuses/transitions, authority of `submitted_at`, allowed fields, reset/deletion behavior and whether any persistence is permitted (OR-016).
-- Supported browsers/viewports, accessibility conformance level and performance thresholds.
+- OR-008–OR-014 decisions are owner-approved; actual catalogue completeness, relationship evidence, accessibility conformance, performance measurements, golden-set results and usability evidence remain to be verified.
 - OR-006 policy is approved; implementation evidence for reset/temporary-data lifecycle, storage/network inspection and exact hosting telemetry/retention review is required before public demo.
