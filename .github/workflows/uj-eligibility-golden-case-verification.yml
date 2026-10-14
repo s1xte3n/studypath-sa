@@ -2,7 +2,14 @@ name: UJ eligibility golden-case verification
 
 on:
   push:
-    branches: [feat/uj-2027-eligibility-evaluator]
+    branches:
+      - main
+      - feat/uj-2027-eligibility-evaluator
+    paths:
+      - "src/domain/eligibility/**"
+      - "tests/**"
+      - "docs/product/uj-2027-pilot-catalogue-draft.json"
+      - ".github/workflows/uj-eligibility-golden-case-verification.yml"
   pull_request:
     paths:
       - "src/domain/eligibility/**"
