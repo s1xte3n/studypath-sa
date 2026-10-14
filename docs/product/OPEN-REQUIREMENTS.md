@@ -20,10 +20,12 @@
 - **Impact:** UX, validation, matching, privacy review and test fixtures.
 - **Status:** Resolved — owner approved the field contract; OR-003 and OR-006 remain separate blockers.
 ### OR-003 — Mark validation and subject vocabulary
-- **Ambiguity:** No mark scale, decimal precision, accepted subject identifiers/aliases, duplicate policy or unsupported-subject behavior is approved.
-- **Decision required:** Confirm scale (likely 0–100 only if explicitly approved), precision, required subjects, alias policy and duplicate handling.
-- **Impact:** Input validation and deterministic matching tests.
-- **Status:** Open.
+- **Decision:** **Resolved by owner on 2026-10-14.** Marks use whole-number percentages from 0 through 100 inclusive. Decimal values are rejected rather than rounded; negative values, values above 100, malformed text and missing marks for entered subjects are rejected with field-specific validation. Missing results are never substituted with zero.
+- **Subject identity:** Each supported subject must have a stable canonical identifier and display name. Only explicitly approved catalogue aliases are accepted. Normalise case and surrounding/repeated whitespace before alias lookup; do not use fuzzy matching or silently guess a subject. Reject duplicate canonical subjects, including duplicates entered through aliases, so a subject cannot be counted twice.
+- **Unsupported subjects:** Identify the unsupported subject to the learner and explain that it cannot currently be matched. Do not silently rename it or infer equivalence/substitution. Matching may continue using other valid supported subjects, but a pathway returns UNKNOWN when the unsupported subject prevents a reliable eligibility conclusion.
+- **Boundary:** The supported subject vocabulary and its aliases must be explicitly maintained in the catalogue; this decision does not itself establish that any particular subject or alias is supported. Subject equivalence/substitution remains subject to OR-004.
+- **Impact:** Input validation, subject catalogue design and deterministic matching tests.
+- **Status:** Resolved — owner approved the validation and normalization contract; implementation and test evidence remain outstanding.
 
 ### OR-004 — Eligibility precedence and composite rules
 - **Ambiguity:** The supplied pseudocode says missing required subject => UNKNOWN, and known below-threshold requirement => NOT_ELIGIBLE, but does not specify precedence when a learner fails one known rule while another rule is missing. APS/points calculation, life-orientation exclusions, subject substitutions, and conditional/alternative requirements are not defined.
@@ -109,4 +111,4 @@ Supported file types/size, consent, retention/deletion, extraction confidence, h
 
 ## Gate disposition
 
-**PRD READY: BLOCKED.** OR-001 scope inclusion and OR-002 anonymous input contract are resolved by owner decision, but OR-003 through OR-007 remain material P0 blockers. OR-015 and OR-016 have been promoted to P1 because the medium-priority funding and tracker features are in the intended MVP; resolve their data, lifecycle and privacy contracts before implementation. No implementation tasks are created here.
+**PRD READY: BLOCKED.** OR-001 scope inclusion, OR-002 anonymous input contract and OR-003 mark/subject validation contract are resolved by owner decision. OR-004 through OR-007 remain material P0 blockers. OR-015 and OR-016 have been promoted to P1 because the medium-priority funding and tracker features are in the intended MVP; resolve their data, lifecycle and privacy contracts before implementation. No implementation tasks are created here.
