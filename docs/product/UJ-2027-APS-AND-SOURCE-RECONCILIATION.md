@@ -120,3 +120,32 @@ The search index also exposes a Faculty of Science table from the June-named PDF
 | Selection/capacity and exceptions | Prospectus states minimum entrance requirements can change; captured records do not establish every possible selection condition | Do not present minimum eligibility as guaranteed admission; unresolved material conditions block `ELIGIBLE` |
 | Programme source provenance | Search snippets and current programme pages corroborate some minimums but are not full 2027 source review | Keep all seven catalogue records `DRAFT` until official source version, complete conditions, and curator sign-off are recorded |
 
+
+
+## 9. Local uploaded evidence inspected (2026-10-14)
+
+The user-provided workspace includes the complete PDF `/mnt/data/uj_undergrad_prospectus2027_online_25jun2026.pdf`. It was available locally and text extraction was performed with `pdftotext -layout`; this supersedes the earlier statement that the prospectus could not be accessed for review.
+
+**Local file metadata (verified):**
+- File: `uj_undergrad_prospectus2027_online_25jun2026.pdf`
+- PDF metadata creation: 2026-06-25 10:31:02 UTC; modification: 2026-06-25 10:31:52 UTC
+- 100 pages; PDF 1.7; 8,313,488 bytes
+- SHA-256: `998901c32c614f00a5b8f9fe22b6f4e3c06772c2bf00bf07fd6bef1304ea499c`
+- The file's internal title/header identifies it as the 2027 Undergraduate Prospectus.
+
+The user-provided CBE brochure is also present locally:
+- File: `brochure-cbe_undergraduate_2027-intake.pdf`
+- SHA-256: `37a22d52403b1dfd09d830f0e1a284b9df4bb3864d51d4efb97d4a4d48b78598`
+
+**Directly verified in the uploaded prospectus text:**
+- Printed p. 15: NSC/IEB APS is the sum of achievement ratings of six school subjects; Life Orientation is excluded.
+- Printed pp. 41–42: BCom Information Management (B34IMQ) is shown with APS 28 with Mathematical Literacy; English level 4; Mathematics level 4; Mathematical Literacy level 6; Technical Mathematics level 4. BCom Information Systems (B1CISQ) shows APS 26; English level 4; Mathematics level 4; Mathematical Literacy not accepted; Technical Mathematics level 4; APB.
+- Printed p. 44: Diploma Business Information Technology (DI1401) shows APS 22 with Mathematics/Technical Mathematics OR 24 with Mathematical Literacy; English 4; Mathematics 3; Mathematical Literacy 6; Technical Mathematics 3; APB.
+- Printed p. 86: BSc Information Technology (B2I01Q) and BSc Computer Science and Informatics (B2I02Q) each show APS 30, English 5 (60%+), Mathematics 6 (70%+), Technical Mathematics not applicable, Mathematical Literacy not accepted, APK.
+- Printed p. 86: BSc Computer Science and Informatics Specialising in AI (B2I04Q) appears in the same Faculty of Science programme table; its row requires separate full inspection before final encoding.
+- Printed p. 91: BSc Computer Science and Informatics Extended (B2E02Q) shows APS 26, English 4 (50%+), Mathematics 5 (60%+), Technical Mathematics not applicable, Mathematical Literacy not accepted, APK.
+- Printed p. 30: the prospectus explicitly warns that meeting minimum admission requirements does not guarantee acceptance into a programme.
+
+**Important APS interpretation correction:** the uploaded prospectus itself establishes the six-subject sum and exclusion of Life Orientation. The separate UJ FAQ evidence previously recorded says the six best subjects must include required programme subjects. Keep the FAQ citation attached to that constrained-selection detail; do not attribute that extra sentence to printed p. 15 unless the exact prospectus text supports it.
+
+**What remains unresolved:** this upload makes full text/page inspection possible for this version, but does not by itself compare it with the March- and June-named prospectus PDFs. The governing-source decision remains open pending comparison or curator confirmation. The complete conditions/footnotes, English stream mapping, B1CISQ Mathematics-versus-Technical-Mathematics interpretation, B34IMQ branch reconciliation with the CBE brochure, and curator sign-off remain open. Text extraction supports page-level review but is not a substitute for visual inspection of complex multi-column tables and footnotes.
