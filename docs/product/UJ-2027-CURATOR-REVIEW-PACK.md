@@ -10,7 +10,7 @@
 
 This pack turns the seven documented UJ 2027 candidate leads into a structured review checklist. It records source-backed visible requirements separately from unresolved interpretation. It is **not** an approved catalogue, a guarantee of admission, or permission to show definitive eligibility results.
 
-For each programme, the curator must approve the exact rule expression and the expected test outcomes. If a material rule remains missing, conflicting, or ambiguous, the implementation must return `UNKNOWN` unless a different, independently verified mandatory requirement already proves `NOT_ELIGIBLE`. Do not convert a draft or incomplete record into `ELIGIBLE`.
+The curator has approved the bounded pilot baseline recorded below. The exact expected test outcomes remain pending because executable rule-oracle verification has not yet been completed. If a material rule remains missing, conflicting, or ambiguous, the implementation must return `UNKNOWN` unless a different, independently verified mandatory requirement already proves `NOT_ELIGIBLE`. Do not convert a draft or incomplete record into `ELIGIBLE`.
 
 ### Approval rules
 
@@ -247,12 +247,12 @@ Record each decision here once, then link it from all affected records.
 |---|---|---|---|
 | CUR-001 | What exact APS subject-selection method is used when a learner supplies more than six subjects? | All seven | Pending |
 | CUR-002 | How does the catalogue map an NSC percentage/achievement level to the prospectus's stated level and percentage, including boundary values? | All seven | Pending |
-| CUR-003 | How is the table's “English” requirement applied to Home Language vs First Additional Language? | All seven | Pending |
-| CUR-004 | What is the precise consequence of the Faculty of Science Technical Mathematics / Technical Science note? | R1–R4 | Pending |
-| CUR-005 | Is Mathematics OR Technical Mathematics accepted for BCom Information Systems, and how is Mathematical Literacy excluded? | R5 | Pending |
-| CUR-006 | What exact AND/OR branches apply to the Diploma in Business Information Technology? | R6 | Pending |
-| CUR-007 | What exact AND/OR branches apply to BCom Information Management, and how is the current generic APS wording recorded against the CBE 2027 table? | R7 | Pending |
-| CUR-008 | Which selection conditions, footnotes and applicant categories must be represented for this MVP's NSC minimum-screening scope? | All seven | Pending |
+| CUR-003 | How is the table's “English” requirement applied to Home Language vs First Additional Language? | All seven | Approved policy: no inferred HL/FAL mapping; UNKNOWN if material |
+| CUR-004 | What is the precise consequence of the Faculty of Science Technical Mathematics / Technical Science note? | R1–R4 | Approved conservative handling: do not broaden beyond source; UNKNOWN if consequence is material and unresolved |
+| CUR-005 | Is Mathematics OR Technical Mathematics accepted for BCom Information Systems, and how is Mathematical Literacy excluded? | R5 | Approved as draft interpretation; require source-grounded branch semantics and UNKNOWN if unresolved |
+| CUR-006 | What exact AND/OR branches apply to the Diploma in Business Information Technology? | R6 | Approved as draft interpretation; do not return ELIGIBLE until branch oracle is verified |
+| CUR-007 | What exact AND/OR branches apply to BCom Information Management, and how is the current generic APS wording recorded against the CBE 2027 table? | R7 | Approved as draft interpretation; retain source discrepancy note and verify branch oracle |
+| CUR-008 | Which selection conditions, footnotes and applicant categories must be represented for this MVP's NSC minimum-screening scope? | All seven | Approved scope: 2027 NSC minimum-screening only; unresolved material conditions remain UNKNOWN |
 
 ## 6. Boundary-test sign-off worksheet
 
