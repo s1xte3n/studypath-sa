@@ -156,3 +156,14 @@ The project owner uploaded the two original PDFs into this review. The following
 - [ ] Build the traceability matrix and deterministic eligibility tests; implementation and tests have not been verified.
 - [ ] Reach 6–8 complete approved records. The current seven are candidates only; they are not yet complete approved records.
 - [ ] Keep GAP-002, GAP-003, GAP-004 and GAP-005 open until independently evidenced.
+
+
+## Superseding reconciliation decision — 2026-10-14
+
+For current draft transcription, use `docs/product/UJ-2027-RULE-RECONCILIATION-UPDATE.md` as the latest consolidated decision record. It supersedes older passages in this matrix that describe the three highlighted discrepancies as unresolved:
+
+- **CSI Extended:** use B2E02Q for the 2027 candidate; B2E01Q is retained only as a historical older-page discrepancy.
+- **Diploma Business Information Technology:** use DI1401; original 2027 prospectus printed p. 44 and CBE 2027 brochure printed p. 12 / PDF p. 15 visibly corroborate this. D1I40J is an extraction/transcription variation.
+- **BCom Information Management:** retain the 2027 table route: APS 26 with Mathematics/Technical Mathematics OR APS 28 with Mathematical Literacy. The current programme page's general APS 28 wording is less specific than the 2027 prospectus and CBE intake tables.
+
+These are draft reconciliation decisions, not curator approval. All seven records remain **NOT APPROVED** until full footnotes, exact APS inclusion/route semantics, selection conditions, exceptions and provenance are completed and signed off. GAP-001 and the requirements gate remain open. No executable evaluator or tests are claimed.
