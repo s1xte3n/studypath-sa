@@ -104,3 +104,10 @@ Draft architecture and API contract documents are recorded under `docs/architect
 The UJ catalogue register identifies four candidate programme leads from official UJ sources, but none is marked as a verified publication-ready record. GAP-001, GAP-002, GAP-003, GAP-004 and GAP-005 remain evidence blockers. GAP-006 and GAP-007 remain resolved by prior source inspection. GAP-008's architecture direction is resolved, but runtime composition, final API schema, network behavior, provider retention/logging and cost feasibility remain open.
 
 No application code, executable tests, CI workflow, Azure resource, deployment, privacy clearance or release evidence was created or verified by this documentation update. The R100/month cap and no-provisioning gate remain in force.
+
+
+## UJ 2027 catalogue evidence review — 2026-10-14
+
+Official-source research has captured preliminary programme code and minimum-threshold leads for four UJ programmes in `docs/product/PROGRAMME-CATALOGUE-REGISTER.md`. The current official programme pages list B2I01Q (APS 30, English 5, Mathematics 6), B2I02Q (APS 30, English 5, Mathematics 6), B2E02Q (APS 26, English 4, Mathematics 5) and B2I04Q (APS 34, English 5, Mathematics 7). The indexed 2027 prospectus also shows B2E02Q and an exclusion note for Technical Mathematics and Technical Science for Faculty of Science degree programmes.
+
+**Evidence limitation:** these are preliminary source leads, not complete eligibility rules or curator-approved catalogue records. The full programme-specific APS calculation/inclusions, exceptions and source/cycle reconciliation remain outstanding. The Academy undergraduate-courses page contains an older B2E01Q label for the extended CSI programme, while the 2027 prospectus and current programme page show B2E02Q; this conflict is explicitly open. No eligibility evaluator may consume these candidate values as definitive data. GAP-001 remains open, the 6–8 verified-record target is unmet, and `REQUIREMENTS READY` remains not passed. No application code or tests were changed or run.
