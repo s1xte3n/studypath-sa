@@ -39,7 +39,7 @@ These are source leads, not approved machine rules. The cycle-specific source is
 
 ## Golden cases
 
-The test harness must eventually assert **both state and exact reason code(s)**. The following are normative expectations for a future evaluator contract, conditional on the stated record preconditions. Synthetic data only.
+The test harness must eventually assert **both state and exact reason code(s)**. Invalid marks and duplicate canonical subjects are input-validation rejections (`INPUT_REJECTED`), not eligibility `UNKNOWN` outcomes; no recommendation should be produced for those inputs. The following are normative expectations for a future evaluator contract, conditional on the stated record preconditions. Synthetic data only.
 
 | Test ID | Scenario | Record/input precondition | Expected state | Required reason code(s) |
 |---|---|---|---|---|
@@ -63,8 +63,8 @@ The test harness must eventually assert **both state and exact reason code(s)**.
 | UJ-GOLD-018 | Science-degree subject restriction applies | Signed-off Science degree record; a required Mathematics result is absent and only a subject explicitly excluded by the verified rule is supplied | NOT_ELIGIBLE | `REQUIRED_SUBJECT_NOT_ACCEPTED` |
 | UJ-GOLD-019 | Life Orientation incorrectly inflates APS | The six eligible school subjects produce APS 29; adding Life Orientation would falsely raise it to 30 | NOT_ELIGIBLE | `APS_BELOW_MINIMUM` |
 | UJ-GOLD-020 | More than six school subjects with a resolvable required-subject-constrained selection | Signed-off BSc IT record; learner has seven valid subjects including required English and Mathematics; the six best eligible subjects including required programme subjects sum to APS 30; English 5 and Mathematics 6 | ELIGIBLE | `ALL_VERIFIED_REQUIREMENTS_MET` |
-| UJ-GOLD-021 | Duplicate canonical subject | Two entries resolve to the same canonical subject and would otherwise be double-counted | UNKNOWN | `DUPLICATE_SUBJECT_INPUT` |
-| UJ-GOLD-022 | Invalid mark | A mark is decimal, malformed, below 0 or above 100 | UNKNOWN | `INVALID_MARK_INPUT` |
+| UJ-GOLD-021 | Duplicate canonical subject | Two entries resolve to the same canonical subject and would otherwise be double-counted | INPUT_REJECTED | `DUPLICATE_SUBJECT_INPUT` |
+| UJ-GOLD-022 | Invalid mark | A mark is decimal, malformed, below 0 or above 100 | INPUT_REJECTED | `INVALID_MARK_INPUT` |
 | UJ-GOLD-023 | Same normalized inputs, rules and catalogue version evaluated twice | Deterministic evaluator available; evaluate the identical fixture twice | SAME_AS_FIRST_EVALUATION | `DETERMINISTIC_RESULT` (test assertion, not learner-facing reason) |
 | UJ-GOLD-024 | High APS cannot compensate for failed mandatory subject | Signed-off record; APS 40 but Mathematics is below the mandatory threshold | NOT_ELIGIBLE | `MATHEMATICS_BELOW_MINIMUM` |
 | UJ-GOLD-025 | One verified mandatory failure plus another unknown input | Signed-off record; Mathematics definitely below threshold; another unrelated optional/context field missing | NOT_ELIGIBLE | `MATHEMATICS_BELOW_MINIMUM` |
@@ -72,7 +72,7 @@ The test harness must eventually assert **both state and exact reason code(s)**.
 
 ## Execution and acceptance requirements
 
-This document is a test oracle draft, not test execution evidence. Before the eligibility blocker can be closed:
+This document is a test oracle draft, not test execution evidence. The companion JSON fixture now includes synthetic subject/mark vectors for each scenario. APS boundary calculations were checked structurally against the published NSC rating bands, but the fixtures have not been executed against an eligibility engine. Before the eligibility blocker can be closed:
 
 1. Reconcile all seven candidate records against the complete applicable 2027 sources and record exact pages, source versions, verification dates and conditions. Compare the two prospectus URLs already identified in `UJ-2027-APS-AND-SOURCE-RECONCILIATION.md` and record the governing version.
 2. Apply the official six-best-subject APS rule, excluding Life Orientation and including required programme subjects. Resolve all material language mapping, alternative-branch and faculty-restriction interpretations or keep those rules explicitly unsupported.
