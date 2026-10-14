@@ -90,7 +90,7 @@ Owner explicitly approved COST-01, DATA-01, ELIGIBILITY-01, PRIVACY-01, RELEASE-
 - Define measurable acceptance criteria and demo success conditions in the PRD.
 
 ## Change control
-Record approved changes to scope, stack, budget, audience, data use or deadlines here with rationale, alternatives, consequences and affected artifacts. Assumptions are not approvals. In particular, the selected future direction for tracker-only browser-local persistence does not amend D-030/OR-006 and cannot be implemented until the compatibility gate is explicitly resolved.
+Record approved changes to scope, stack, budget, audience, data use or deadlines here with rationale, alternatives, consequences and affected artifacts. Assumptions are not approvals. Tracker persistence is not an approved future direction for this MVP: D-040 and D-043 specify page-memory-only entries. Any later persistence proposal requires a separate scope/change-control decision and privacy/security review.
 
 
 
