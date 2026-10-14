@@ -70,3 +70,27 @@ Added [`UJ-2027-SOURCE-RECONCILIATION-MATRIX.md`](./UJ-2027-SOURCE-RECONCILIATIO
 ## Pathway relationship evidence proposal — 2026-10-14
 
 Added [`PATHWAY-RELATIONSHIP-EVIDENCE-CONTRACT.md`](./PATHWAY-RELATIONSHIP-EVIDENCE-CONTRACT.md) as a draft for GAP-003. It separates alternatives, related-field suggestions, progression and formal articulation; requires exact official-source provenance and curator sign-off; and prohibits inferring a relationship from similar titles or generic NQF rules alone. Official UJ admissions/regulations sources provide general context but do not approve a specific pair in the seven-programme pilot. No pair is approved, no learner-facing relationship should be published from this proposal, and planned tests T-REL-001–008 have not been implemented or run. GAP-003 remains open.
+
+## Requirements-gate reconciliation — 2026-10-14
+
+This section supersedes the earlier blanket statement that all open P0/P1 gaps block the requirements gate. Priority describes product/release criticality; it does not mean every data, implementation, infrastructure or release evidence item must be complete before architecture can be designed.
+
+| Gap | Requirements gate | Blocking gate / safe current disposition |
+|---|---|---|
+| GAP-001 (P0 catalogue records/source conflicts) | Requirement and acceptance threshold are explicit; conflicts are recorded, not resolved by assumption. Does not block architecture planning. | Blocks publication of affected records and confident eligibility. Keep conflicting rules out of the verified catalogue; material uncertainty yields UNKNOWN. |
+| GAP-002 (P0 subject contract) | Owner-approved v1 contract and executable reference tests exist at SUBJECT-CATALOGUE-V1-APPROVAL.md and tests/contracts/subject-catalogue-v1.test.mjs. | Test execution is not verified; production behavior and privacy boundary remain unverified. |
+| GAP-003 (P0 relationships) | Requirement explicitly allows no verified alternative; the evidence contract states the threshold. No pair is required to define the requirement. | Keep relationship data empty until exact evidence and curator sign-off exist. |
+| GAP-004 (P0 privacy) | Privacy invariant and prohibited data flows are explicit. | Release blocker until requests, URLs, browser storage, logs, telemetry, dependencies and provider retention are inspected. Contract design must preserve catalogue-only requests. |
+| GAP-005 (P1 funding) | Scope, priority and AC-FUND-001–009 are defined. | Funding feature remains blocked until 3–5 current official-source records are curated; does not block P0 requirements readiness. |
+| GAP-008 (P0 API/runtime) | API-first direction is decided; unresolved route/schema/runtime/cache/error/cost decisions are explicitly downstream architecture and API-contract work. | Blocks implementation/provisioning until architecture, contract, environment and cost review are approved. No provisioning is authorized here. |
+| GAP-009–012 (P1 quality/resilience) | Quality targets and safe behavior are stated; missing protocols are explicit. | Resolve protocol details before dependent implementation/verification; retain test evidence placeholders. |
+
+**Proposed requirements-gate outcome:** no open finding identified here requires silently changing an approved requirement or inventing data to define it. The matrix can move to owner gate acceptance and Phase 3 architecture. This does not close the gaps or declare catalogue, runtime, test, CI or release evidence complete.
+
+### Evidence placeholders (intentionally not completed)
+
+- Implementation paths/symbols: Not verified
+- Test execution commands/results: Not run / not verified in this review
+- CI workflow/run URL and tested commit: Not available
+- Runtime privacy inspection: Not performed
+- Deployment/smoke test/release approval: Not available
