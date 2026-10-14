@@ -21,8 +21,8 @@
       "id": "UJ-GOLD-001",
       "scenario": "All mandatory rules met exactly at every threshold",
       "precondition": "Complete, current, signed-off BSc IT record; six valid APS subjects; APS 30; English 5; Mathematics 6",
-      "expected": "ELIGIBLE",
-      "reasonCodes": [
+      "expectedState": "ELIGIBLE",
+      "expectedReasonCodes": [
         "ALL_VERIFIED_REQUIREMENTS_MET"
       ],
       "status": "DRAFT_ORACLE_NOT_EXECUTED"
@@ -31,8 +31,8 @@
       "id": "UJ-GOLD-002",
       "scenario": "APS one point below minimum",
       "precondition": "Same record; APS 29; other rules met",
-      "expected": "NOT_ELIGIBLE",
-      "reasonCodes": [
+      "expectedState": "NOT_ELIGIBLE",
+      "expectedReasonCodes": [
         "APS_BELOW_MINIMUM"
       ],
       "status": "DRAFT_ORACLE_NOT_EXECUTED"
@@ -41,8 +41,8 @@
       "id": "UJ-GOLD-003",
       "scenario": "APS exactly at minimum",
       "precondition": "Same record; APS 30; subject rules met",
-      "expected": "ELIGIBLE",
-      "reasonCodes": [
+      "expectedState": "ELIGIBLE",
+      "expectedReasonCodes": [
         "ALL_VERIFIED_REQUIREMENTS_MET"
       ],
       "status": "DRAFT_ORACLE_NOT_EXECUTED"
@@ -51,8 +51,8 @@
       "id": "UJ-GOLD-004",
       "scenario": "English level one below minimum",
       "precondition": "Same record; APS 35; English 4; Mathematics 7",
-      "expected": "NOT_ELIGIBLE",
-      "reasonCodes": [
+      "expectedState": "NOT_ELIGIBLE",
+      "expectedReasonCodes": [
         "ENGLISH_BELOW_MINIMUM"
       ],
       "status": "DRAFT_ORACLE_NOT_EXECUTED"
@@ -61,8 +61,8 @@
       "id": "UJ-GOLD-005",
       "scenario": "Mathematics level one below minimum",
       "precondition": "Same record; APS 35; English 6; Mathematics 5",
-      "expected": "NOT_ELIGIBLE",
-      "reasonCodes": [
+      "expectedState": "NOT_ELIGIBLE",
+      "expectedReasonCodes": [
         "MATHEMATICS_BELOW_MINIMUM"
       ],
       "status": "DRAFT_ORACLE_NOT_EXECUTED"
@@ -71,8 +71,8 @@
       "id": "UJ-GOLD-006",
       "scenario": "Missing English result",
       "precondition": "Signed-off record; APS and Mathematics meet thresholds; English absent",
-      "expected": "UNKNOWN",
-      "reasonCodes": [
+      "expectedState": "UNKNOWN",
+      "expectedReasonCodes": [
         "REQUIRED_INPUT_MISSING"
       ],
       "status": "DRAFT_ORACLE_NOT_EXECUTED"
@@ -81,8 +81,8 @@
       "id": "UJ-GOLD-007",
       "scenario": "Unsupported English-stream mapping",
       "precondition": "English is entered but its stream cannot be mapped under the approved input contract",
-      "expected": "UNKNOWN",
-      "reasonCodes": [
+      "expectedState": "UNKNOWN",
+      "expectedReasonCodes": [
         "SUBJECT_MAPPING_UNRESOLVED"
       ],
       "status": "DRAFT_ORACLE_NOT_EXECUTED"
@@ -91,8 +91,8 @@
       "id": "UJ-GOLD-008",
       "scenario": "Candidate programme record not curator-approved",
       "precondition": "Learner appears to meet visible BSc IT minimums; record status remains DRAFT",
-      "expected": "UNKNOWN",
-      "reasonCodes": [
+      "expectedState": "UNKNOWN",
+      "expectedReasonCodes": [
         "CATALOGUE_RECORD_NOT_APPROVED"
       ],
       "status": "DRAFT_ORACLE_NOT_EXECUTED"
@@ -101,8 +101,8 @@
       "id": "UJ-GOLD-009",
       "scenario": "Admission-cycle mismatch",
       "precondition": "Learner meets a record whose applicable cycle is not established as 2027",
-      "expected": "UNKNOWN",
-      "reasonCodes": [
+      "expectedState": "UNKNOWN",
+      "expectedReasonCodes": [
         "ADMISSION_CYCLE_UNVERIFIED"
       ],
       "status": "DRAFT_ORACLE_NOT_EXECUTED"
@@ -111,8 +111,8 @@
       "id": "UJ-GOLD-010",
       "scenario": "Material source conflict could change result",
       "precondition": "Two official-source interpretations disagree on a mandatory rule and no precedence decision exists",
-      "expected": "UNKNOWN",
-      "reasonCodes": [
+      "expectedState": "UNKNOWN",
+      "expectedReasonCodes": [
         "MATERIAL_SOURCE_CONFLICT"
       ],
       "status": "DRAFT_ORACLE_NOT_EXECUTED"
@@ -121,8 +121,8 @@
       "id": "UJ-GOLD-011",
       "scenario": "Stale/unavailable material source",
       "precondition": "Record freshness is outside approved policy or the source cannot be reverified",
-      "expected": "UNKNOWN",
-      "reasonCodes": [
+      "expectedState": "UNKNOWN",
+      "expectedReasonCodes": [
         "SOURCE_NOT_CURRENTLY_VERIFIED"
       ],
       "status": "DRAFT_ORACLE_NOT_EXECUTED"
@@ -131,8 +131,8 @@
       "id": "UJ-GOLD-012",
       "scenario": "Diploma BIT Mathematics route exactly meets minimum",
       "precondition": "Signed-off record; APS 22; English 4; Mathematics 3; valid six-subject APS",
-      "expected": "ELIGIBLE",
-      "reasonCodes": [
+      "expectedState": "ELIGIBLE",
+      "expectedReasonCodes": [
         "ALL_VERIFIED_REQUIREMENTS_MET"
       ],
       "status": "DRAFT_ORACLE_NOT_EXECUTED"
@@ -141,8 +141,8 @@
       "id": "UJ-GOLD-013",
       "scenario": "Diploma BIT Mathematics route APS below minimum",
       "precondition": "Signed-off record; APS 21; Mathematics 3; English 4",
-      "expected": "NOT_ELIGIBLE",
-      "reasonCodes": [
+      "expectedState": "NOT_ELIGIBLE",
+      "expectedReasonCodes": [
         "APS_BELOW_MINIMUM"
       ],
       "status": "DRAFT_ORACLE_NOT_EXECUTED"
@@ -151,8 +151,8 @@
       "id": "UJ-GOLD-014",
       "scenario": "Diploma BIT Mathematical Literacy route exactly meets minimum",
       "precondition": "Signed-off record; APS 24; English 4; Mathematical Literacy 6; no conflicting branch",
-      "expected": "ELIGIBLE",
-      "reasonCodes": [
+      "expectedState": "ELIGIBLE",
+      "expectedReasonCodes": [
         "ALL_VERIFIED_REQUIREMENTS_MET"
       ],
       "status": "DRAFT_ORACLE_NOT_EXECUTED"
@@ -161,8 +161,8 @@
       "id": "UJ-GOLD-015",
       "scenario": "Diploma BIT Mathematical Literacy route below subject minimum",
       "precondition": "Signed-off record; APS 30; English 5; Mathematical Literacy 5",
-      "expected": "NOT_ELIGIBLE",
-      "reasonCodes": [
+      "expectedState": "NOT_ELIGIBLE",
+      "expectedReasonCodes": [
         "MATHEMATICAL_LITERACY_BELOW_MINIMUM"
       ],
       "status": "DRAFT_ORACLE_NOT_EXECUTED"
@@ -171,8 +171,8 @@
       "id": "UJ-GOLD-016",
       "scenario": "Diploma BIT branch is ambiguous",
       "precondition": "Rule data does not identify whether the learner satisfies the Mathematics or Mathematical Literacy branch",
-      "expected": "UNKNOWN",
-      "reasonCodes": [
+      "expectedState": "UNKNOWN",
+      "expectedReasonCodes": [
         "ALTERNATIVE_RULE_UNRESOLVED"
       ],
       "status": "DRAFT_ORACLE_NOT_EXECUTED"
@@ -181,8 +181,8 @@
       "id": "UJ-GOLD-017",
       "scenario": "Mathematical Literacy offered for BCom Information Systems",
       "precondition": "Signed-off BCom IS record; Mathematical Literacy is the only mathematics-like subject supplied; no accepted Mathematics/Technical Mathematics result",
-      "expected": "NOT_ELIGIBLE",
-      "reasonCodes": [
+      "expectedState": "NOT_ELIGIBLE",
+      "expectedReasonCodes": [
         "MATHEMATICAL_LITERACY_NOT_ACCEPTED"
       ],
       "status": "DRAFT_ORACLE_NOT_EXECUTED"
@@ -191,8 +191,8 @@
       "id": "UJ-GOLD-018",
       "scenario": "Science-degree subject restriction applies",
       "precondition": "Signed-off Science degree record; a required Mathematics result is absent and only a subject explicitly excluded by the verified rule is supplied",
-      "expected": "NOT_ELIGIBLE",
-      "reasonCodes": [
+      "expectedState": "NOT_ELIGIBLE",
+      "expectedReasonCodes": [
         "REQUIRED_SUBJECT_NOT_ACCEPTED"
       ],
       "status": "DRAFT_ORACLE_NOT_EXECUTED"
@@ -201,19 +201,19 @@
       "id": "UJ-GOLD-019",
       "scenario": "Life Orientation incorrectly inflates APS",
       "precondition": "The six eligible school subjects produce APS 29; adding Life Orientation would falsely raise it to 30",
-      "expected": "NOT_ELIGIBLE",
-      "reasonCodes": [
+      "expectedState": "NOT_ELIGIBLE",
+      "expectedReasonCodes": [
         "APS_BELOW_MINIMUM"
       ],
       "status": "DRAFT_ORACLE_NOT_EXECUTED"
     },
     {
       "id": "UJ-GOLD-020",
-      "scenario": "More than six school subjects",
-      "precondition": "Learner supplies seven or more subjects; use the six best eligible subjects excluding Life Orientation, while including required programme subjects as UJ's official FAQ states",
-      "expected": "Deterministic result based on the selected subjects and mandatory requirements; UNKNOWN only if the required-subject-constrained selection cannot be resolved from valid inputs",
-      "reasonCodes": [
-        "APS_SUBJECT_SELECTION_UNRESOLVED only when genuinely unresolved"
+      "scenario": "More than six school subjects with a resolvable required-subject-constrained selection",
+      "precondition": "Signed-off BSc IT record; learner has seven valid subjects including required English and Mathematics; the six best eligible subjects including required programme subjects sum to APS 30; English 5 and Mathematics 6",
+      "expectedState": "ELIGIBLE",
+      "expectedReasonCodes": [
+        "ALL_VERIFIED_REQUIREMENTS_MET"
       ],
       "status": "DRAFT_ORACLE_NOT_EXECUTED"
     },
@@ -221,8 +221,8 @@
       "id": "UJ-GOLD-021",
       "scenario": "Duplicate canonical subject",
       "precondition": "Two entries resolve to the same canonical subject and would otherwise be double-counted",
-      "expected": "UNKNOWN",
-      "reasonCodes": [
+      "expectedState": "UNKNOWN",
+      "expectedReasonCodes": [
         "DUPLICATE_SUBJECT_INPUT"
       ],
       "status": "DRAFT_ORACLE_NOT_EXECUTED"
@@ -231,8 +231,8 @@
       "id": "UJ-GOLD-022",
       "scenario": "Invalid mark",
       "precondition": "A mark is decimal, malformed, below 0 or above 100",
-      "expected": "UNKNOWN",
-      "reasonCodes": [
+      "expectedState": "UNKNOWN",
+      "expectedReasonCodes": [
         "INVALID_MARK_INPUT"
       ],
       "status": "DRAFT_ORACLE_NOT_EXECUTED"
@@ -240,9 +240,9 @@
     {
       "id": "UJ-GOLD-023",
       "scenario": "Same normalized inputs, rules and catalogue version evaluated twice",
-      "precondition": "Deterministic evaluator available",
-      "expected": "Same state and byte-for-byte same ordered reason codes",
-      "reasonCodes": [
+      "precondition": "Deterministic evaluator available; evaluate the identical fixture twice",
+      "expectedState": "SAME_AS_FIRST_EVALUATION",
+      "expectedReasonCodes": [
         "DETERMINISTIC_RESULT (test assertion",
         "not learner-facing reason)"
       ],
@@ -252,8 +252,8 @@
       "id": "UJ-GOLD-024",
       "scenario": "High APS cannot compensate for failed mandatory subject",
       "precondition": "Signed-off record; APS 40 but Mathematics is below the mandatory threshold",
-      "expected": "NOT_ELIGIBLE",
-      "reasonCodes": [
+      "expectedState": "NOT_ELIGIBLE",
+      "expectedReasonCodes": [
         "MATHEMATICS_BELOW_MINIMUM"
       ],
       "status": "DRAFT_ORACLE_NOT_EXECUTED"
@@ -262,8 +262,8 @@
       "id": "UJ-GOLD-025",
       "scenario": "One verified mandatory failure plus another unknown input",
       "precondition": "Signed-off record; Mathematics definitely below threshold; another unrelated optional/context field missing",
-      "expected": "NOT_ELIGIBLE",
-      "reasonCodes": [
+      "expectedState": "NOT_ELIGIBLE",
+      "expectedReasonCodes": [
         "MATHEMATICS_BELOW_MINIMUM"
       ],
       "status": "DRAFT_ORACLE_NOT_EXECUTED"
@@ -272,8 +272,8 @@
       "id": "UJ-GOLD-026",
       "scenario": "No verified failure, but a material rule is missing",
       "precondition": "Candidate record has no signed-off interpretation for a mandatory condition",
-      "expected": "UNKNOWN",
-      "reasonCodes": [
+      "expectedState": "UNKNOWN",
+      "expectedReasonCodes": [
         "MANDATORY_RULE_UNRESOLVED"
       ],
       "status": "DRAFT_ORACLE_NOT_EXECUTED"
