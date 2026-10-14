@@ -1,6 +1,6 @@
 # Funding, Application Tracking and Privacy Policy
 
-- **Status:** Proposed requirements baseline — owner review required
+- **Status:** Three policy decisions approved by product owner; PRD and implementation alignment pending
 - **Scope:** StudyPath SA MVP; funding matching (P1) and manual application tracking (P1)
 - **Date:** 2026-10-14
 - **Authority:** Product decisions must be reconciled with the supplied StudyPath SA specification, Phase 0 decisions and hackathon rules before PRD approval.
@@ -61,7 +61,7 @@ Each result must show the reason(s), criteria checked, missing/unknown criteria,
 
 ### 2.4 Deadlines and freshness
 
-Proposed operational defaults, subject to product-owner approval:
+Approved operational policy decisions:
 - Recheck active funding records against the official provider source at least every 30 days.
 - Recheck deadline changes before continuing to present a deadline as confirmed when a change is reported or suspected.
 - Store the published deadline faithfully; retain timezone where provided and distinguish date-only deadlines from exact times.
@@ -69,7 +69,7 @@ Proposed operational defaults, subject to product-owner approval:
 - Mark a record UNVERIFIED when the freshness threshold is exceeded or the official source cannot be checked.
 - Do not present EXPIRED or UNVERIFIED records as confirmed current opportunities. If displayed for context, label them clearly and do not assert current eligibility/deadline certainty.
 
-The 30-day threshold is a proposed catalogue policy, not a provider requirement. Catalogue publication and verification are curator responsibilities.
+The 30-day threshold is an approved StudyPath SA catalogue policy, not a provider requirement. Catalogue publication and verification are curator responsibilities. Re-verify sooner when a deadline change is reported or suspected.
 
 ## 3. Manual application tracker (REQ-APP-001)
 
@@ -92,7 +92,7 @@ Do not collect free-text notes, identity numbers, account credentials, bank/hous
 
 ### 3.3 Statuses and transitions
 
-Proposed MVP status vocabulary:
+Approved MVP status vocabulary:
 - DRAFT — learner intends to prepare an application.
 - READY_TO_SUBMIT — learner reports that they have prepared it and intend to submit it.
 - SUBMITTED — learner reports submitting it.
@@ -114,11 +114,11 @@ Allowed transitions:
 
 For correction of an incorrectly entered status, permit an explicit “correct status” action with confirmation and an audit-free in-session replacement, clearly indicating the status is learner-reported. Do not silently permit arbitrary transitions. If this correction rule is not implemented, the learner must be able to remove the entry and create a corrected one.
 
-The broad specification's statuses are preserved here as candidate vocabulary; the product owner must approve this transition model before implementation.
+The product owner approved this status vocabulary and transition model on 2026-10-14. Implementation must preserve these transitions and the stated correction/removal behaviour.
 
 ### 3.4 Persistence, reset and deletion
 
-Proposed initial MVP boundary:
+Approved initial MVP boundary:
 - Tracker entries exist in client memory for the current page session only.
 - No server/database persistence, localStorage, sessionStorage, browser cookies, cross-session save, account or cloud sync.
 - A page reload, tab close or session reset may discard tracker entries; explain this before the learner starts tracking.
@@ -127,7 +127,7 @@ Proposed initial MVP boundary:
 - If a save/persistence operation does not exist, do not show a “saved” claim. Use “tracked in this session” wording.
 - If persistence is proposed later, stop and require a new decision covering identity/session ownership, authentication, access control, retention, deletion, backups, cross-user isolation and security testing.
 
-This is an intentionally limited tracker. If session-only tracking is not useful enough for the hackathon demonstration, that trade-off must be raised for an explicit scope/privacy decision rather than silently adding browser or server persistence.
+This is an intentionally limited tracker. Page-memory-only persistence was explicitly approved by the product owner on 2026-10-14. If session-only tracking proves insufficient, raise a new scope/privacy decision rather than silently adding browser or server persistence.
 
 ## 4. Privacy and anonymous-first boundary (REQ-PRIV-001)
 
@@ -185,10 +185,10 @@ Before tracker use, state that entries are held only in the current page session
 
 ## 6. Decisions still required
 
-1. Product owner approval of the proposed 30-day catalogue freshness threshold and the rule for showing UNVERIFIED opportunities.
-2. Product owner approval of tracker statuses, transitions and session-only retention.
-3. Confirmation of which predefined “next action” options, if any, are included.
-4. Review of hosting/provider telemetry defaults before release.
-5. Reconciliation with the official hackathon programme and supplied project specification before the PRD is marked READY.
+The following items remain open before the PRD can be marked READY:
+1. Confirm which predefined “next action” options, if any, are included.
+2. Review hosting/provider telemetry defaults before release.
+3. Reconcile the approved policy with the official hackathon programme and supplied project specification.
+4. Align the PRD, requirements matrix, acceptance criteria and test strategy with the approved decisions.
 
-Until these decisions are confirmed and the corresponding PRD, requirements matrix and acceptance criteria are aligned, this document is a proposed baseline, not an implementation authorisation.
+The 30-day freshness threshold, page-memory-only tracker persistence, and status-transition model are approved policy decisions. This does not authorise a claim that features are implemented or tested. Implementation should begin only through the normal SSDLC gate after the PRD, requirements matrix, acceptance criteria and test strategy are aligned and reviewed.
