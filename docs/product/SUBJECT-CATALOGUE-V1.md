@@ -71,23 +71,23 @@ A table listing separate Mathematics and Technical Mathematics columns is not au
 
 | Test ID | Case | Expected |
 |---|---|---|
-| T-SUB-001 | Exact canonical label with whitespace cleanup | One canonical ID |
-| T-SUB-002 | Case variation of exact canonical label | Same ID |
-| T-SUB-003 | Alias not present in approved register | UNRESOLVED |
+| T-SUB-001 | Trim/collapse whitespace for exact canonical label; return canonical display label | One canonical ID and its approved display label |
+| T-SUB-002 | Case variation of exact canonical label | Same canonical ID |
+| T-SUB-003 | Unapproved abbreviations and aliases | UNRESOLVED |
 | T-SUB-004 | Mathematics vs Mathematical Literacy vs Technical Mathematics | Three different IDs |
 | T-SUB-005 | Physical Sciences vs Technical Sciences | Two different IDs |
-| T-SUB-006 | English HL vs English FAL | Different IDs; no cross-mapping |
-| T-SUB-007 | Duplicate entries resolve to same canonical ID | Reject duplicate |
-| T-SUB-008 | Ambiguous dictionary collision | UNRESOLVED and catalogue defect |
-| T-SUB-009 | Unsupported subject affects a programme requirement | UNKNOWN unless another verified mandatory failure settles it |
-| T-SUB-010 | Stale dictionary version | Refresh/recoverable unknown; never trust stale mapping |
-| T-SUB-011 | Raw learner label inspected in requests/URLs/logs/telemetry | No raw label leaves page memory |
-| T-SUB-012 | Rule uses unresolved English level or unsupported substitution | Affected eligibility UNKNOWN |
+| T-SUB-006 | English Home Language, First Additional Language and Second Additional Language | Three different IDs; no cross-mapping |
+| T-SUB-007 | Duplicate entries resolve to same canonical ID | Duplicate detectable by subject-set helper; UI rejection requires integration test |
+| T-SUB-008 | Unsupported input | UNRESOLVED; no arbitrary mapping |
+| T-SUB-009 | Non-string subject input | UNRESOLVED |
+| T-SUB-010 | Stale dictionary version | UNRESOLVED; refresh behavior requires integration test |
+| T-SUB-011 | Reference normalizer result | Raw input label is not returned in result object; this does not prove runtime egress privacy |
+| T-SUB-012 | Generic/unsupported English label | UNRESOLVED; programme-level UNKNOWN requires evaluator test |
 
-These are test specifications, not evidence of executed tests.
+These IDs describe the checked-in reference-normalizer suite, not a production implementation. They do not prove duplicate rejection in the UI, dictionary refresh, programme-level eligibility UNKNOWN, or absence of learner data from actual requests, URLs, logs or telemetry; those remain separate integration/runtime checks.
 
 ## 7. Approval and change control
 
-GAP-002 closes only after the owner/curator approves this bounded scope, exact-label-only/no-alias policy, English-level representation, versioning/stale-client behaviour, and test contract. Any alias or canonical ID change requires a version update and regression tests.
+The bounded scope, exact-label-only/no-alias policy, English-level representation and contract test plan are owner-approved. GAP-002 does not close until the reference tests pass on the current revision and separate implementation/evaluator/runtime privacy evidence is recorded. Any alias or canonical ID change requires a version update and regression tests.
 
 **Current gate state:** Owner contract decision approved. Executed tests and production implementation remain unverified; GAP-002 stays open until test results and runtime evidence are recorded.
