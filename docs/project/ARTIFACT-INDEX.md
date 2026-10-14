@@ -2,7 +2,7 @@
 
 **Last updated:** 2026-10-14  
 **Phase:** 1 — PRD and requirements planning  
-**Gate:** PROJECT READY passed for Phase 1 planning only; **PRD READY remains blocked pending explicit PRD approval and resolution of the OR-016 tracker-persistence compatibility gate**.
+**Gate:** PROJECT READY passed for Phase 1 planning only; **PRD READY remains blocked pending explicit PRD approval of the revised draft and measurable success criteria**.
 
 ## Source-of-truth references
 
@@ -32,7 +32,7 @@ These references were supplied in the project conversation; they are not yet sto
 
 - Primary MVP journey is anonymous-first: learner enters subjects/marks and interests, sees explainable pathway matches and eligibility/uncertainty, and follows official-source next steps.
 - Defer document uploads, AI chat, direct application submission, cross-session saved pathways and authenticated profiles.
-- Include funding matching (M4) and manual application tracking (M5) in the intended MVP at P1 / medium priority, behind the P0 core pathway-discovery journey. OR-015 funding rules and OR-016 tracker lifecycle/field rules are approved; tracker-only browser-local persistence remains blocked by OR-006 compatibility and privacy/security review.
+- Include funding matching (M4) and manual application tracking (M5) in the intended MVP at P1 / medium priority, behind the P0 core pathway-discovery journey. OR-015 funding rules and OR-016 tracker lifecycle/field rules are approved; tracker entries are page-memory-only and no persistence mechanism is in scope.
 - Start with a 6–8 record manually curated official-source pilot, prioritising Gauteng; qualification types are included only where supported by official evidence. No national coverage claim.
 - Enforce R100/month maximum total spend; prefer free tiers and validate costs, quotas and overages before provisioning.
 - Use synthetic development data and minimise personal data.
@@ -68,7 +68,7 @@ The owner approved the Phase 0 decision records and attests that account-specifi
 | User stories/use cases | `docs/product/USER-STORIES.md` | Draft | Stories and core use cases mapped to requirement IDs |
 | Acceptance criteria | `docs/product/ACCEPTANCE-CRITERIA.md` | Draft | Candidate testable criteria for every MVP requirement; no test execution implied |
 | Scope | `docs/product/SCOPE.md` | Draft | P0 core journey plus P1 medium-priority funding matching and manual tracking; implementation boundaries remain open |
-| Open requirements | `docs/product/OPEN-REQUIREMENTS.md` | OR-001–OR-015 and OR-017–OR-018 resolved; OR-016 lifecycle resolved with persistence gate open | Funding records and tracker implementation evidence remain outstanding; tracker-only persistence requires OR-006-compatible change control and privacy/security approval |
+| Open requirements | `docs/product/OPEN-REQUIREMENTS.md` | OR-001–OR-018 policy decisions recorded; OR-016 lifecycle and page-memory-only persistence aligned | Funding records and tracker implementation evidence remain outstanding; any future persistence would require separate change control |
 
 ## Planned downstream artifacts
 
@@ -89,6 +89,6 @@ The owner approved the Phase 0 decision records and attests that account-specifi
 
 ## Gate assessment
 
-**PRD READY: BLOCKED.** OR-001–OR-015 and OR-017–OR-018 have owner-approved decisions; OR-016 lifecycle and field rules are approved, but tracker-only browser-local persistence remains gated by OR-006-compatible change control and privacy/security review. The OR-008–OR-014 decision package was merged to `main` through PR #19; this OR-015–OR-018 package is being proposed separately for review. Actual programme/funding catalogue curation, relationship evidence, test execution, privacy review, provisioning and deployment remain outstanding and are not claimed.
+**PRD READY: BLOCKED.** The Phase 1 alignment draft reconciles the approved P1 funding/tracker scope, page-memory-only tracker policy, and bounded official next steps. Explicit owner approval of the revised PRD and measurable success criteria remains outstanding. The OR-008–OR-014 decision package was merged to `main` through PR #19; this branch proposes documentation alignment. Actual programme/funding catalogue curation, relationship evidence, test execution, privacy review, provisioning and deployment remain outstanding and are not claimed.
 
 PROJECT READY passed for Phase 1 planning only. No application implementation, test execution, Azure provisioning or deployment is claimed.
