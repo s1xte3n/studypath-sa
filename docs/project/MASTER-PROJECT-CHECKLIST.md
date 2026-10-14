@@ -2,8 +2,9 @@
 
 **Last updated:** 2026-10-14  
 **Repository:** https://github.com/s1xte3n/studypath-sa  
-**Current phase:** Phase 1 — PRD and requirements planning  
-**Current gate:** `PROJECT READY` — **PASSED for Phase 1 planning only**
+**Current phase:** Phase 2 — Requirements matrix and traceability  
+**Latest passed gate:** `PRD READY` — **PASSED on 2026-10-14 for the approved PRD/acceptance-criteria baseline only**  
+**Next gate:** `REQUIREMENTS READY` — not yet passed
 
 ## Gate status at a glance
 
