@@ -63,7 +63,7 @@ The earlier checklist incorrectly coupled REQUIREMENTS READY to final API/runtim
 
 ## Historical contract notes — 2026-10-14 (superseded where inconsistent with the reconciliation above)
 
-- `SUBJECT-NORMALIZATION-CONTRACT.md` is a proposal linked to REQ-EXP-001 and GAP-002. T-SUB-001–010 are planned only; canonical subject IDs, input behavior, aliases, language distinctions and versioning are not yet approved.
-- `PATHWAY-RELATIONSHIP-EVIDENCE-CONTRACT.md` is a proposal linked to REQ-ALT-001 and GAP-003. T-REL-001–008 are planned only; no programme pair has been approved.
+- The older SUBJECT-NORMALIZATION-CONTRACT.md remains a proposal; the controlling bounded decision is SUBJECT-CATALOGUE-V1-APPROVAL.md and SUBJECT-CATALOGUE-V1.md. Reference tests exist but execution and runtime implementation are unverified.
+- PATHWAY-RELATIONSHIP-EVIDENCE-CONTRACT.md defines the evidence threshold; no programme pair is approved, and an empty verified-relationship set is permitted by the requirement.
 - AC-FUND-001–009 and AC-APP-001–009 references and tracker transition rules have been cross-checked in planning documents. This closes the documentation cross-check only, not implementation/test work.
-- `REQUIREMENTS READY` remains **NOT PASSED**. Application code, executable tests, CI results, privacy clearance and release evidence remain unavailable.
+- The requirements-gate disposition above supersedes the historical NOT PASSED statement where it conflates requirement completeness with later evidence gates. Product-owner acceptance is still required; implementation, test execution, CI, privacy verification and release remain unverified.
