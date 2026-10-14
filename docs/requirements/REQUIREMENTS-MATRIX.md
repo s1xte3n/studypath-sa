@@ -68,3 +68,14 @@ This matrix is the initial traceability artifact. The phase cannot pass while th
 5. Build and verify GAP-004 privacy/runtime evidence and GAP-008 API/runtime feasibility before learner-facing implementation is release-ready.
 6. Curate 3–5 funding records for GAP-005.
 7. After evidence decisions, freeze API/interface contracts and test strategy, then implement and run tests. Do not mark criteria passed without recorded execution evidence.
+
+
+## GAP-001 / GAP-002 joint review update — 2026-10-14
+
+New draft contracts on this branch:
+- [Canonical Subject Catalogue v1](../product/SUBJECT-CATALOGUE-V1.md) proposes stable IDs, exact-label-only normalization, no aliases in v1, and explicit English HL/FAL/Second Additional Language distinctions.
+- [UJ 2027 Subject Routes and Rule Semantics](../product/UJ-2027-ROUTE-MODEL.md) captures the seven existing candidate leads, formal AND/OR/conditional semantics, required evidence fields and publication checklist.
+
+This is a traceability improvement, **not gap closure**. The seven UJ records still lack a complete approved APS method/included-subject set, confirmed interpretation of the source's “English” column, fully resolved subject-column/branch semantics where applicable, and curator sign-off. The subject catalogue and alias policy are proposed but not approved; no executable tests have been run. Keep GAP-001 and GAP-002 open and do not promote draft rules to the learner-facing evaluator.
+
+Next gate evidence: owner/curator decision on the subject catalogue; source-level review of every 2027 table and footnote; complete APS/English/route rules; signed record-by-record review; executable boundary tests and recorded results.

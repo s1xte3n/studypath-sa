@@ -118,3 +118,10 @@ These tests are planned, not executed. Before implementation, QA must add them t
 7. Add final contract and test IDs to the requirements/traceability matrix after approval.
 
 **Gate effect:** This proposal provides a reviewable candidate contract only. GAP-002 remains open until the product owner/curator approves the subject dictionary, alias policy, language distinction, and test contract. `REQUIREMENTS READY` remains blocked by GAP-001, GAP-003, GAP-004, GAP-005 and GAP-008 as well.
+
+
+## Joint GAP-001/GAP-002 follow-up — 2026-10-14
+
+The more focused v1 controlled-vocabulary proposal is now documented in [SUBJECT-CATALOGUE-V1.md](./SUBJECT-CATALOGUE-V1.md). It proposes a bounded canonical ID set, no aliases in v1, and separate English HL/FAL/Second Additional Language IDs. The UJ rule dependency and unresolved source semantics are captured in [UJ-2027-ROUTE-MODEL.md](./UJ-2027-ROUTE-MODEL.md).
+
+This original document remains a proposal; the new document does not imply approval or implementation. GAP-002 stays open pending owner/curator approval and executed tests.
