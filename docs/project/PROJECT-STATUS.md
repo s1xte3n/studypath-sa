@@ -57,7 +57,7 @@ The following are downstream implementation/release controls, not blockers to be
 
 ## Owner-approved direction and remaining boundaries
 - MVP journey and key exclusions.
-- Anonymous exploration first; cross-session saved pathways and accounts remain excluded. Funding matching and manual application tracking are intended P1 MVP capabilities. OR-015 funding rules and OR-016 lifecycle/field rules are documented; tracker-only browser-local persistence is a future direction blocked pending OR-006-compatible change control and privacy/security approval. Cost planning and the AI/document assistant remain deferred under OR-017/018.
+- Anonymous exploration first; cross-session saved pathways and accounts remain excluded. Funding matching and manual application tracking are intended P1 MVP capabilities. OR-015 funding rules and OR-016 lifecycle/field rules are documented; tracker entries are page-memory-only under the approved policy; no persistence is in scope. Cost planning and the AI/document assistant remain deferred under OR-017/018.
 - Start with a 6–8 record manually curated official-source pilot, prioritising Gauteng, under OR-008; actual records and review evidence remain outstanding.
 - Hard R100/month total spend cap; no provisioning before cost/access approval.
 - Azure Static Web Apps Free is an acceptable hosting plan on the existing subscription; the project will not rely on the expired 12-month Azure free-account offer. Owner reports no project resources currently provisioned and no credits will be used.
@@ -73,7 +73,7 @@ Owner approval of the Phase 0 direction/materials is recorded. These approvals d
 - The supplied local tracked-file listing and remote repository inspection do not constitute a complete audit of every branch or historical commit.
 
 ## Next gate
-Next: resolve the OR-016 tracker-persistence compatibility gate (or explicitly retain memory-only tracking), complete the requirements traceability matrix, then obtain explicit PRD approval. PROJECT READY passage authorizes planning only; it is not a deployment approval. No application implementation, Azure provisioning or deployment was performed by this documentation update.
+Next: review the Phase 1 PRD/policy-alignment draft and obtain explicit owner approval of the PRD and measurable success criteria. Then proceed to Phase 2 traceability. Tracker persistence is page-memory-only and is not an open Phase 1 decision. PROJECT READY passage authorizes planning only; it is not a deployment approval. No application implementation, Azure provisioning or deployment was performed by this documentation update.
 
 
 ## Azure cost estimate update — 2026-10-14
