@@ -162,3 +162,12 @@ The following items are retained as downstream delivery controls. They must not 
 
 Outstanding source-verified catalogue records, relationship curation, requirements traceability, implementation, accessibility/performance tests, golden-set results, privacy/hosting review, CI/CD, infrastructure validation, deployment and release evidence belong to later gates. They do not reverse PRD approval by themselves; if implementation planning reveals a genuine requirements ambiguity, record it and use change control before silently changing the baseline. No implementation, test passage, privacy clearance or release readiness is claimed here. Tracker persistence remains excluded from the initial MVP.
 
+
+
+### OR-019 — API-first learner-data boundary and runtime composition
+- **Status:** Open. D-044 approves API-first as direction, not server-side matching or learner-profile transmission.
+- **Safe interim boundary:** APIs may serve public curated programme/funding records and provenance only. Learner marks, subjects, interests, profile inputs, eligibility results and tracker entries remain page-memory-only and must not be sent to APIs, URLs, analytics, application logs or error telemetry. Matching remains client-side unless this decision changes through formal review.
+- **Open choices:** Confirm whether catalogue-only APIs with client-side matching satisfy the intended API-first MVP. If server-side matching is requested, stop and raise privacy/security change control before changing request contracts. Decide whether Azure API Management is necessary after cost review.
+- **Cost/reliability gate:** Compare hosting, API runtime/gateway, monitoring and egress costs/quotas against the R100/month hard cap. Define timeout, retry, cache freshness, stale-data disclosure and recoverable failure behavior before implementation. No provisioning until exact runtime and cost are approved.
+- **Verification:** Inspect provider logging/retention, API logs, request payloads, browser storage/history, dependencies, telemetry and privacy notice. Record evidence rather than inferring compliance.
+- **Status:** Open — cost review, provider-policy review, boundary confirmation and contract approval outstanding.
