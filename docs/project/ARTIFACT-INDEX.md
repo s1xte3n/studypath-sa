@@ -142,3 +142,11 @@ D-044 supersedes D-019's static-first selection only. Sensitive financial criter
 | Canonical requirements matrix | `docs/product/REQUIREMENTS.md` | Proposed update | Links the two contract proposals and records AC-FUND/AC-APP cross-check as planning-complete only. |
 
 The `REQUIREMENTS READY` gate remains **NOT PASSED**. No application implementation, executable test run, CI result, privacy clearance, Azure provisioning or deployment is claimed.
+## GAP-001 source follow-up — 2026-10-14
+
+| Artifact | Path | Status / purpose |
+|---|---|---|
+| UJ 2027 catalogue source reconciliation matrix | `docs/product/UJ-2027-SOURCE-RECONCILIATION-MATRIX.md` | Updated with official CBE 2027 brochure cross-check for Business Information Technology and Information Management; search-text evidence only, no record approved. |
+| UJ 2027 programme catalogue register | `docs/product/PROGRAMME-CATALOGUE-REGISTER.md` | Updated to record the stronger CBE brochure evidence and the remaining original-table/curator checks. |
+
+The source follow-up is documentation-only. GAP-001 and the REQUIREMENTS READY gate remain open/not passed; no application tests or release evidence are implied.
