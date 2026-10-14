@@ -1,0 +1,1173 @@
+{
+  "schemaVersion": "studypath-eligibility-golden-cases-v1",
+  "catalogueVersion": "uj-2027-pilot-v0.1-draft",
+  "scope": {
+    "institution": "University of Johannesburg",
+    "admissionCycle": "2027",
+    "applicantRoute": "NSC",
+    "syntheticOnly": true
+  },
+  "status": "DRAFT_NOT_EXECUTED",
+  "assertionPolicy": {
+    "assertExpectedState": true,
+    "assertExactOrderedReasonCodes": true,
+    "minimumCaseCount": 20,
+    "expectedStateAndReasonAssertionsMustPass": 1,
+    "zeroFalsePositiveEligible": true,
+    "determinismRequired": true
+  },
+  "cases": [
+    {
+      "id": "UJ-GOLD-001",
+      "scenario": "All mandatory rules met exactly at every threshold",
+      "precondition": "Complete, current, signed-off BSc IT record; six valid APS subjects; APS 30; English 5; Mathematics 6",
+      "expectedState": "ELIGIBLE",
+      "expectedReasonCodes": [
+        "ALL_VERIFIED_REQUIREMENTS_MET"
+      ],
+      "status": "DRAFT_ORACLE_NOT_EXECUTED",
+      "programmeId": "UJ-2027-BSC-IT",
+      "catalogueStatus": "ASSUMED_SIGNED_OFF_FOR_TEST_ONLY",
+      "admissionCycle": "2027",
+      "learnerInput": {
+        "studyStage": "MATRIC_FINAL",
+        "transcriptComplete": true,
+        "subjects": [
+          {
+            "subjectId": "ENGLISH_FIRST_ADDITIONAL_LANGUAGE",
+            "percent": 65
+          },
+          {
+            "subjectId": "MATHEMATICS",
+            "percent": 75
+          },
+          {
+            "subjectId": "ACCOUNTING",
+            "percent": 65
+          },
+          {
+            "subjectId": "HISTORY",
+            "percent": 65
+          },
+          {
+            "subjectId": "GEOGRAPHY",
+            "percent": 65
+          },
+          {
+            "subjectId": "LIFE_SCIENCES",
+            "percent": 55
+          }
+        ]
+      },
+      "inputIsSynthetic": true
+    },
+    {
+      "id": "UJ-GOLD-002",
+      "scenario": "APS one point below minimum",
+      "precondition": "Same record; APS 29; other rules met",
+      "expectedState": "NOT_ELIGIBLE",
+      "expectedReasonCodes": [
+        "APS_BELOW_MINIMUM"
+      ],
+      "status": "DRAFT_ORACLE_NOT_EXECUTED",
+      "programmeId": "UJ-2027-BSC-IT",
+      "catalogueStatus": "ASSUMED_SIGNED_OFF_FOR_TEST_ONLY",
+      "admissionCycle": "2027",
+      "learnerInput": {
+        "studyStage": "MATRIC_FINAL",
+        "transcriptComplete": true,
+        "subjects": [
+          {
+            "subjectId": "ENGLISH_FIRST_ADDITIONAL_LANGUAGE",
+            "percent": 65
+          },
+          {
+            "subjectId": "MATHEMATICS",
+            "percent": 75
+          },
+          {
+            "subjectId": "ACCOUNTING",
+            "percent": 65
+          },
+          {
+            "subjectId": "HISTORY",
+            "percent": 65
+          },
+          {
+            "subjectId": "GEOGRAPHY",
+            "percent": 55
+          },
+          {
+            "subjectId": "LIFE_SCIENCES",
+            "percent": 55
+          }
+        ]
+      },
+      "inputIsSynthetic": true
+    },
+    {
+      "id": "UJ-GOLD-003",
+      "scenario": "APS exactly at minimum",
+      "precondition": "Same record; APS 30; subject rules met",
+      "expectedState": "ELIGIBLE",
+      "expectedReasonCodes": [
+        "ALL_VERIFIED_REQUIREMENTS_MET"
+      ],
+      "status": "DRAFT_ORACLE_NOT_EXECUTED",
+      "programmeId": "UJ-2027-BSC-IT",
+      "catalogueStatus": "ASSUMED_SIGNED_OFF_FOR_TEST_ONLY",
+      "admissionCycle": "2027",
+      "learnerInput": {
+        "studyStage": "MATRIC_FINAL",
+        "transcriptComplete": true,
+        "subjects": [
+          {
+            "subjectId": "ENGLISH_FIRST_ADDITIONAL_LANGUAGE",
+            "percent": 65
+          },
+          {
+            "subjectId": "MATHEMATICS",
+            "percent": 75
+          },
+          {
+            "subjectId": "ACCOUNTING",
+            "percent": 65
+          },
+          {
+            "subjectId": "HISTORY",
+            "percent": 65
+          },
+          {
+            "subjectId": "GEOGRAPHY",
+            "percent": 65
+          },
+          {
+            "subjectId": "LIFE_SCIENCES",
+            "percent": 55
+          }
+        ]
+      },
+      "inputIsSynthetic": true
+    },
+    {
+      "id": "UJ-GOLD-004",
+      "scenario": "English level one below minimum",
+      "precondition": "Same record; APS 35; English 4; Mathematics 7",
+      "expectedState": "NOT_ELIGIBLE",
+      "expectedReasonCodes": [
+        "ENGLISH_BELOW_MINIMUM"
+      ],
+      "status": "DRAFT_ORACLE_NOT_EXECUTED",
+      "programmeId": "UJ-2027-BSC-IT",
+      "catalogueStatus": "ASSUMED_SIGNED_OFF_FOR_TEST_ONLY",
+      "admissionCycle": "2027",
+      "learnerInput": {
+        "studyStage": "MATRIC_FINAL",
+        "transcriptComplete": true,
+        "subjects": [
+          {
+            "subjectId": "ENGLISH_FIRST_ADDITIONAL_LANGUAGE",
+            "percent": 55
+          },
+          {
+            "subjectId": "MATHEMATICS",
+            "percent": 85
+          },
+          {
+            "subjectId": "ACCOUNTING",
+            "percent": 75
+          },
+          {
+            "subjectId": "HISTORY",
+            "percent": 75
+          },
+          {
+            "subjectId": "GEOGRAPHY",
+            "percent": 75
+          },
+          {
+            "subjectId": "LIFE_SCIENCES",
+            "percent": 75
+          }
+        ]
+      },
+      "inputIsSynthetic": true
+    },
+    {
+      "id": "UJ-GOLD-005",
+      "scenario": "Mathematics level one below minimum",
+      "precondition": "Same record; APS 35; English 6; Mathematics 5",
+      "expectedState": "NOT_ELIGIBLE",
+      "expectedReasonCodes": [
+        "MATHEMATICS_BELOW_MINIMUM"
+      ],
+      "status": "DRAFT_ORACLE_NOT_EXECUTED",
+      "programmeId": "UJ-2027-BSC-IT",
+      "catalogueStatus": "ASSUMED_SIGNED_OFF_FOR_TEST_ONLY",
+      "admissionCycle": "2027",
+      "learnerInput": {
+        "studyStage": "MATRIC_FINAL",
+        "transcriptComplete": true,
+        "subjects": [
+          {
+            "subjectId": "ENGLISH_FIRST_ADDITIONAL_LANGUAGE",
+            "percent": 75
+          },
+          {
+            "subjectId": "MATHEMATICS",
+            "percent": 65
+          },
+          {
+            "subjectId": "ACCOUNTING",
+            "percent": 75
+          },
+          {
+            "subjectId": "HISTORY",
+            "percent": 75
+          },
+          {
+            "subjectId": "GEOGRAPHY",
+            "percent": 75
+          },
+          {
+            "subjectId": "LIFE_SCIENCES",
+            "percent": 75
+          }
+        ]
+      },
+      "inputIsSynthetic": true
+    },
+    {
+      "id": "UJ-GOLD-006",
+      "scenario": "Missing English result",
+      "precondition": "Signed-off record; APS and Mathematics meet thresholds; English absent",
+      "expectedState": "UNKNOWN",
+      "expectedReasonCodes": [
+        "REQUIRED_INPUT_MISSING"
+      ],
+      "status": "DRAFT_ORACLE_NOT_EXECUTED",
+      "programmeId": "UJ-2027-BSC-IT",
+      "catalogueStatus": "ASSUMED_SIGNED_OFF_FOR_TEST_ONLY",
+      "admissionCycle": "2027",
+      "learnerInput": {
+        "studyStage": "MATRIC_FINAL",
+        "transcriptComplete": false,
+        "subjects": [
+          {
+            "subjectId": "MATHEMATICS",
+            "percent": 75
+          },
+          {
+            "subjectId": "ACCOUNTING",
+            "percent": 65
+          },
+          {
+            "subjectId": "HISTORY",
+            "percent": 65
+          },
+          {
+            "subjectId": "GEOGRAPHY",
+            "percent": 65
+          },
+          {
+            "subjectId": "LIFE_SCIENCES",
+            "percent": 55
+          }
+        ]
+      },
+      "inputIsSynthetic": true
+    },
+    {
+      "id": "UJ-GOLD-007",
+      "scenario": "Unsupported English-stream mapping",
+      "precondition": "English is entered but its stream cannot be mapped under the approved input contract",
+      "expectedState": "UNKNOWN",
+      "expectedReasonCodes": [
+        "SUBJECT_MAPPING_UNRESOLVED"
+      ],
+      "status": "DRAFT_ORACLE_NOT_EXECUTED",
+      "programmeId": "UJ-2027-BSC-IT",
+      "catalogueStatus": "ASSUMED_SIGNED_OFF_FOR_TEST_ONLY",
+      "admissionCycle": "2027",
+      "learnerInput": {
+        "studyStage": "MATRIC_FINAL",
+        "transcriptComplete": true,
+        "subjects": [
+          {
+            "subjectId": "ENGLISH_UNMAPPED_STREAM",
+            "percent": 65
+          },
+          {
+            "subjectId": "MATHEMATICS",
+            "percent": 75
+          },
+          {
+            "subjectId": "ACCOUNTING",
+            "percent": 65
+          },
+          {
+            "subjectId": "HISTORY",
+            "percent": 65
+          },
+          {
+            "subjectId": "GEOGRAPHY",
+            "percent": 65
+          },
+          {
+            "subjectId": "LIFE_SCIENCES",
+            "percent": 55
+          }
+        ]
+      },
+      "inputIsSynthetic": true
+    },
+    {
+      "id": "UJ-GOLD-008",
+      "scenario": "Candidate programme record not curator-approved",
+      "precondition": "Learner appears to meet visible BSc IT minimums; record status remains DRAFT",
+      "expectedState": "UNKNOWN",
+      "expectedReasonCodes": [
+        "CATALOGUE_RECORD_NOT_APPROVED"
+      ],
+      "status": "DRAFT_ORACLE_NOT_EXECUTED",
+      "programmeId": "UJ-2027-BSC-IT",
+      "catalogueStatus": "DRAFT",
+      "admissionCycle": "2027",
+      "learnerInput": {
+        "studyStage": "MATRIC_FINAL",
+        "transcriptComplete": true,
+        "subjects": [
+          {
+            "subjectId": "ENGLISH_FIRST_ADDITIONAL_LANGUAGE",
+            "percent": 65
+          },
+          {
+            "subjectId": "MATHEMATICS",
+            "percent": 75
+          },
+          {
+            "subjectId": "ACCOUNTING",
+            "percent": 65
+          },
+          {
+            "subjectId": "HISTORY",
+            "percent": 65
+          },
+          {
+            "subjectId": "GEOGRAPHY",
+            "percent": 65
+          },
+          {
+            "subjectId": "LIFE_SCIENCES",
+            "percent": 55
+          }
+        ]
+      },
+      "inputIsSynthetic": true
+    },
+    {
+      "id": "UJ-GOLD-009",
+      "scenario": "Admission-cycle mismatch",
+      "precondition": "Learner meets a record whose applicable cycle is not established as 2027",
+      "expectedState": "UNKNOWN",
+      "expectedReasonCodes": [
+        "ADMISSION_CYCLE_UNVERIFIED"
+      ],
+      "status": "DRAFT_ORACLE_NOT_EXECUTED",
+      "programmeId": "UJ-2027-BSC-IT",
+      "catalogueStatus": "DRAFT",
+      "admissionCycle": "UNVERIFIED",
+      "learnerInput": {
+        "studyStage": "MATRIC_FINAL",
+        "transcriptComplete": true,
+        "subjects": [
+          {
+            "subjectId": "ENGLISH_FIRST_ADDITIONAL_LANGUAGE",
+            "percent": 65
+          },
+          {
+            "subjectId": "MATHEMATICS",
+            "percent": 75
+          },
+          {
+            "subjectId": "ACCOUNTING",
+            "percent": 65
+          },
+          {
+            "subjectId": "HISTORY",
+            "percent": 65
+          },
+          {
+            "subjectId": "GEOGRAPHY",
+            "percent": 65
+          },
+          {
+            "subjectId": "LIFE_SCIENCES",
+            "percent": 55
+          }
+        ]
+      },
+      "inputIsSynthetic": true
+    },
+    {
+      "id": "UJ-GOLD-010",
+      "scenario": "Material source conflict could change result",
+      "precondition": "Two official-source interpretations disagree on a mandatory rule and no precedence decision exists",
+      "expectedState": "UNKNOWN",
+      "expectedReasonCodes": [
+        "MATERIAL_SOURCE_CONFLICT"
+      ],
+      "status": "DRAFT_ORACLE_NOT_EXECUTED",
+      "programmeId": "UJ-2027-BSC-IT",
+      "catalogueStatus": "SOURCE_CONFLICT",
+      "admissionCycle": "2027",
+      "learnerInput": {
+        "studyStage": "MATRIC_FINAL",
+        "transcriptComplete": true,
+        "subjects": [
+          {
+            "subjectId": "ENGLISH_FIRST_ADDITIONAL_LANGUAGE",
+            "percent": 65
+          },
+          {
+            "subjectId": "MATHEMATICS",
+            "percent": 75
+          },
+          {
+            "subjectId": "ACCOUNTING",
+            "percent": 65
+          },
+          {
+            "subjectId": "HISTORY",
+            "percent": 65
+          },
+          {
+            "subjectId": "GEOGRAPHY",
+            "percent": 65
+          },
+          {
+            "subjectId": "LIFE_SCIENCES",
+            "percent": 55
+          }
+        ]
+      },
+      "inputIsSynthetic": true
+    },
+    {
+      "id": "UJ-GOLD-011",
+      "scenario": "Stale/unavailable material source",
+      "precondition": "Record freshness is outside approved policy or the source cannot be reverified",
+      "expectedState": "UNKNOWN",
+      "expectedReasonCodes": [
+        "SOURCE_NOT_CURRENTLY_VERIFIED"
+      ],
+      "status": "DRAFT_ORACLE_NOT_EXECUTED",
+      "programmeId": "UJ-2027-BSC-IT",
+      "catalogueStatus": "SOURCE_STALE",
+      "admissionCycle": "2027",
+      "learnerInput": {
+        "studyStage": "MATRIC_FINAL",
+        "transcriptComplete": true,
+        "subjects": [
+          {
+            "subjectId": "ENGLISH_FIRST_ADDITIONAL_LANGUAGE",
+            "percent": 65
+          },
+          {
+            "subjectId": "MATHEMATICS",
+            "percent": 75
+          },
+          {
+            "subjectId": "ACCOUNTING",
+            "percent": 65
+          },
+          {
+            "subjectId": "HISTORY",
+            "percent": 65
+          },
+          {
+            "subjectId": "GEOGRAPHY",
+            "percent": 65
+          },
+          {
+            "subjectId": "LIFE_SCIENCES",
+            "percent": 55
+          }
+        ]
+      },
+      "inputIsSynthetic": true
+    },
+    {
+      "id": "UJ-GOLD-012",
+      "scenario": "Diploma BIT Mathematics route exactly meets minimum",
+      "precondition": "Signed-off record; APS 22; English 4; Mathematics 3; valid six-subject APS",
+      "expectedState": "ELIGIBLE",
+      "expectedReasonCodes": [
+        "ALL_VERIFIED_REQUIREMENTS_MET"
+      ],
+      "status": "DRAFT_ORACLE_NOT_EXECUTED",
+      "programmeId": "UJ-2027-DIP-BIT",
+      "catalogueStatus": "ASSUMED_SIGNED_OFF_FOR_TEST_ONLY",
+      "admissionCycle": "2027",
+      "learnerInput": {
+        "studyStage": "MATRIC_FINAL",
+        "transcriptComplete": true,
+        "subjects": [
+          {
+            "subjectId": "ENGLISH_FIRST_ADDITIONAL_LANGUAGE",
+            "percent": 55
+          },
+          {
+            "subjectId": "MATHEMATICS",
+            "percent": 45
+          },
+          {
+            "subjectId": "ACCOUNTING",
+            "percent": 55
+          },
+          {
+            "subjectId": "HISTORY",
+            "percent": 55
+          },
+          {
+            "subjectId": "GEOGRAPHY",
+            "percent": 55
+          },
+          {
+            "subjectId": "LIFE_SCIENCES",
+            "percent": 45
+          }
+        ]
+      },
+      "inputIsSynthetic": true
+    },
+    {
+      "id": "UJ-GOLD-013",
+      "scenario": "Diploma BIT Mathematics route APS below minimum",
+      "precondition": "Signed-off record; APS 21; Mathematics 3; English 4",
+      "expectedState": "NOT_ELIGIBLE",
+      "expectedReasonCodes": [
+        "APS_BELOW_MINIMUM"
+      ],
+      "status": "DRAFT_ORACLE_NOT_EXECUTED",
+      "programmeId": "UJ-2027-DIP-BIT",
+      "catalogueStatus": "ASSUMED_SIGNED_OFF_FOR_TEST_ONLY",
+      "admissionCycle": "2027",
+      "learnerInput": {
+        "studyStage": "MATRIC_FINAL",
+        "transcriptComplete": true,
+        "subjects": [
+          {
+            "subjectId": "ENGLISH_FIRST_ADDITIONAL_LANGUAGE",
+            "percent": 55
+          },
+          {
+            "subjectId": "MATHEMATICS",
+            "percent": 45
+          },
+          {
+            "subjectId": "ACCOUNTING",
+            "percent": 55
+          },
+          {
+            "subjectId": "HISTORY",
+            "percent": 55
+          },
+          {
+            "subjectId": "GEOGRAPHY",
+            "percent": 45
+          },
+          {
+            "subjectId": "LIFE_SCIENCES",
+            "percent": 45
+          }
+        ]
+      },
+      "inputIsSynthetic": true
+    },
+    {
+      "id": "UJ-GOLD-014",
+      "scenario": "Diploma BIT Mathematical Literacy route exactly meets minimum",
+      "precondition": "Signed-off record; APS 24; English 4; Mathematical Literacy 6; no conflicting branch",
+      "expectedState": "ELIGIBLE",
+      "expectedReasonCodes": [
+        "ALL_VERIFIED_REQUIREMENTS_MET"
+      ],
+      "status": "DRAFT_ORACLE_NOT_EXECUTED",
+      "programmeId": "UJ-2027-DIP-BIT",
+      "catalogueStatus": "ASSUMED_SIGNED_OFF_FOR_TEST_ONLY",
+      "admissionCycle": "2027",
+      "learnerInput": {
+        "studyStage": "MATRIC_FINAL",
+        "transcriptComplete": true,
+        "subjects": [
+          {
+            "subjectId": "ENGLISH_FIRST_ADDITIONAL_LANGUAGE",
+            "percent": 55
+          },
+          {
+            "subjectId": "MATHEMATICAL_LITERACY",
+            "percent": 75
+          },
+          {
+            "subjectId": "ACCOUNTING",
+            "percent": 55
+          },
+          {
+            "subjectId": "HISTORY",
+            "percent": 55
+          },
+          {
+            "subjectId": "GEOGRAPHY",
+            "percent": 45
+          },
+          {
+            "subjectId": "LIFE_SCIENCES",
+            "percent": 45
+          }
+        ]
+      },
+      "inputIsSynthetic": true
+    },
+    {
+      "id": "UJ-GOLD-015",
+      "scenario": "Diploma BIT Mathematical Literacy route below subject minimum",
+      "precondition": "Signed-off record; APS 30; English 5; Mathematical Literacy 5",
+      "expectedState": "NOT_ELIGIBLE",
+      "expectedReasonCodes": [
+        "MATHEMATICAL_LITERACY_BELOW_MINIMUM"
+      ],
+      "status": "DRAFT_ORACLE_NOT_EXECUTED",
+      "programmeId": "UJ-2027-DIP-BIT",
+      "catalogueStatus": "ASSUMED_SIGNED_OFF_FOR_TEST_ONLY",
+      "admissionCycle": "2027",
+      "learnerInput": {
+        "studyStage": "MATRIC_FINAL",
+        "transcriptComplete": true,
+        "subjects": [
+          {
+            "subjectId": "ENGLISH_FIRST_ADDITIONAL_LANGUAGE",
+            "percent": 65
+          },
+          {
+            "subjectId": "MATHEMATICAL_LITERACY",
+            "percent": 65
+          },
+          {
+            "subjectId": "ACCOUNTING",
+            "percent": 65
+          },
+          {
+            "subjectId": "HISTORY",
+            "percent": 65
+          },
+          {
+            "subjectId": "GEOGRAPHY",
+            "percent": 65
+          },
+          {
+            "subjectId": "LIFE_SCIENCES",
+            "percent": 65
+          }
+        ]
+      },
+      "inputIsSynthetic": true
+    },
+    {
+      "id": "UJ-GOLD-016",
+      "scenario": "Diploma BIT branch is ambiguous",
+      "precondition": "Rule data does not identify whether the learner satisfies the Mathematics or Mathematical Literacy branch",
+      "expectedState": "UNKNOWN",
+      "expectedReasonCodes": [
+        "ALTERNATIVE_RULE_UNRESOLVED"
+      ],
+      "status": "DRAFT_ORACLE_NOT_EXECUTED",
+      "programmeId": "UJ-2027-DIP-BIT",
+      "catalogueStatus": "DRAFT_ALTERNATIVE_RULE_UNRESOLVED",
+      "admissionCycle": "2027",
+      "learnerInput": {
+        "studyStage": "MATRIC_FINAL",
+        "transcriptComplete": true,
+        "subjects": [
+          {
+            "subjectId": "ENGLISH_FIRST_ADDITIONAL_LANGUAGE",
+            "percent": 65
+          },
+          {
+            "subjectId": "MATHEMATICS",
+            "percent": 65
+          },
+          {
+            "subjectId": "MATHEMATICAL_LITERACY",
+            "percent": 75
+          },
+          {
+            "subjectId": "ACCOUNTING",
+            "percent": 65
+          },
+          {
+            "subjectId": "HISTORY",
+            "percent": 65
+          },
+          {
+            "subjectId": "GEOGRAPHY",
+            "percent": 65
+          }
+        ]
+      },
+      "inputIsSynthetic": true
+    },
+    {
+      "id": "UJ-GOLD-017",
+      "scenario": "Mathematical Literacy offered for BCom Information Systems",
+      "precondition": "Signed-off BCom IS record; Mathematical Literacy is the only mathematics-like subject supplied; no accepted Mathematics/Technical Mathematics result",
+      "expectedState": "NOT_ELIGIBLE",
+      "expectedReasonCodes": [
+        "MATHEMATICAL_LITERACY_NOT_ACCEPTED"
+      ],
+      "status": "DRAFT_ORACLE_NOT_EXECUTED",
+      "programmeId": "UJ-2027-BCOM-IS",
+      "catalogueStatus": "ASSUMED_SIGNED_OFF_FOR_TEST_ONLY",
+      "admissionCycle": "2027",
+      "learnerInput": {
+        "studyStage": "MATRIC_FINAL",
+        "transcriptComplete": true,
+        "subjects": [
+          {
+            "subjectId": "ENGLISH_FIRST_ADDITIONAL_LANGUAGE",
+            "percent": 55
+          },
+          {
+            "subjectId": "MATHEMATICAL_LITERACY",
+            "percent": 75
+          },
+          {
+            "subjectId": "ACCOUNTING",
+            "percent": 65
+          },
+          {
+            "subjectId": "HISTORY",
+            "percent": 65
+          },
+          {
+            "subjectId": "GEOGRAPHY",
+            "percent": 65
+          },
+          {
+            "subjectId": "LIFE_SCIENCES",
+            "percent": 65
+          }
+        ]
+      },
+      "inputIsSynthetic": true
+    },
+    {
+      "id": "UJ-GOLD-018",
+      "scenario": "Science-degree subject restriction applies",
+      "precondition": "Signed-off Science degree record; a required Mathematics result is absent and only a subject explicitly excluded by the verified rule is supplied",
+      "expectedState": "NOT_ELIGIBLE",
+      "expectedReasonCodes": [
+        "REQUIRED_SUBJECT_NOT_ACCEPTED"
+      ],
+      "status": "DRAFT_ORACLE_NOT_EXECUTED",
+      "programmeId": "UJ-2027-BSC-IT",
+      "catalogueStatus": "ASSUMED_SIGNED_OFF_FOR_TEST_ONLY",
+      "admissionCycle": "2027",
+      "learnerInput": {
+        "studyStage": "MATRIC_FINAL",
+        "transcriptComplete": true,
+        "subjects": [
+          {
+            "subjectId": "ENGLISH_FIRST_ADDITIONAL_LANGUAGE",
+            "percent": 65
+          },
+          {
+            "subjectId": "TECHNICAL_MATHEMATICS",
+            "percent": 75
+          },
+          {
+            "subjectId": "ACCOUNTING",
+            "percent": 85
+          },
+          {
+            "subjectId": "HISTORY",
+            "percent": 85
+          },
+          {
+            "subjectId": "GEOGRAPHY",
+            "percent": 85
+          },
+          {
+            "subjectId": "LIFE_SCIENCES",
+            "percent": 85
+          }
+        ]
+      },
+      "inputIsSynthetic": true
+    },
+    {
+      "id": "UJ-GOLD-019",
+      "scenario": "Life Orientation incorrectly inflates APS",
+      "precondition": "The six eligible school subjects produce APS 29; adding Life Orientation would falsely raise it to 30",
+      "expectedState": "NOT_ELIGIBLE",
+      "expectedReasonCodes": [
+        "APS_BELOW_MINIMUM"
+      ],
+      "status": "DRAFT_ORACLE_NOT_EXECUTED",
+      "programmeId": "UJ-2027-BSC-IT",
+      "catalogueStatus": "ASSUMED_SIGNED_OFF_FOR_TEST_ONLY",
+      "admissionCycle": "2027",
+      "learnerInput": {
+        "studyStage": "MATRIC_FINAL",
+        "transcriptComplete": true,
+        "subjects": [
+          {
+            "subjectId": "ENGLISH_FIRST_ADDITIONAL_LANGUAGE",
+            "percent": 65
+          },
+          {
+            "subjectId": "MATHEMATICS",
+            "percent": 75
+          },
+          {
+            "subjectId": "ACCOUNTING",
+            "percent": 65
+          },
+          {
+            "subjectId": "HISTORY",
+            "percent": 65
+          },
+          {
+            "subjectId": "GEOGRAPHY",
+            "percent": 55
+          },
+          {
+            "subjectId": "LIFE_SCIENCES",
+            "percent": 55
+          },
+          {
+            "subjectId": "LIFE_ORIENTATION",
+            "percent": 95
+          }
+        ]
+      },
+      "inputIsSynthetic": true
+    },
+    {
+      "id": "UJ-GOLD-020",
+      "scenario": "More than six school subjects with a resolvable required-subject-constrained selection",
+      "precondition": "Signed-off BSc IT record; learner has seven valid subjects including required English and Mathematics; the six best eligible subjects including required programme subjects sum to APS 30; English 5 and Mathematics 6",
+      "expectedState": "ELIGIBLE",
+      "expectedReasonCodes": [
+        "ALL_VERIFIED_REQUIREMENTS_MET"
+      ],
+      "status": "DRAFT_ORACLE_NOT_EXECUTED",
+      "programmeId": "UJ-2027-BSC-IT",
+      "catalogueStatus": "ASSUMED_SIGNED_OFF_FOR_TEST_ONLY",
+      "admissionCycle": "2027",
+      "learnerInput": {
+        "studyStage": "MATRIC_FINAL",
+        "transcriptComplete": true,
+        "subjects": [
+          {
+            "subjectId": "ENGLISH_FIRST_ADDITIONAL_LANGUAGE",
+            "percent": 65
+          },
+          {
+            "subjectId": "MATHEMATICS",
+            "percent": 75
+          },
+          {
+            "subjectId": "ACCOUNTING",
+            "percent": 65
+          },
+          {
+            "subjectId": "HISTORY",
+            "percent": 65
+          },
+          {
+            "subjectId": "GEOGRAPHY",
+            "percent": 65
+          },
+          {
+            "subjectId": "LIFE_SCIENCES",
+            "percent": 55
+          },
+          {
+            "subjectId": "ECONOMICS",
+            "percent": 25
+          }
+        ]
+      },
+      "inputIsSynthetic": true
+    },
+    {
+      "id": "UJ-GOLD-021",
+      "scenario": "Duplicate canonical subject",
+      "precondition": "Two entries resolve to the same canonical subject and would otherwise be double-counted",
+      "expectedState": "INPUT_REJECTED",
+      "expectedReasonCodes": [
+        "DUPLICATE_SUBJECT_INPUT"
+      ],
+      "status": "DRAFT_ORACLE_NOT_EXECUTED",
+      "programmeId": "UJ-2027-BSC-IT",
+      "catalogueStatus": "ASSUMED_SIGNED_OFF_FOR_TEST_ONLY",
+      "admissionCycle": "2027",
+      "learnerInput": {
+        "studyStage": "MATRIC_FINAL",
+        "transcriptComplete": true,
+        "subjects": [
+          {
+            "subjectId": "ENGLISH_FIRST_ADDITIONAL_LANGUAGE",
+            "percent": 65
+          },
+          {
+            "subjectId": "MATHEMATICS",
+            "percent": 75
+          },
+          {
+            "subjectId": "ACCOUNTING",
+            "percent": 65
+          },
+          {
+            "subjectId": "HISTORY",
+            "percent": 65
+          },
+          {
+            "subjectId": "GEOGRAPHY",
+            "percent": 65
+          },
+          {
+            "subjectId": "LIFE_SCIENCES",
+            "percent": 55
+          },
+          {
+            "subjectId": " MATHEMATICS ",
+            "percent": 75
+          }
+        ]
+      },
+      "inputIsSynthetic": true
+    },
+    {
+      "id": "UJ-GOLD-022",
+      "scenario": "Invalid mark",
+      "precondition": "A mark is decimal, malformed, below 0 or above 100",
+      "expectedState": "INPUT_REJECTED",
+      "expectedReasonCodes": [
+        "INVALID_MARK_INPUT"
+      ],
+      "status": "DRAFT_ORACLE_NOT_EXECUTED",
+      "programmeId": "UJ-2027-BSC-IT",
+      "catalogueStatus": "ASSUMED_SIGNED_OFF_FOR_TEST_ONLY",
+      "admissionCycle": "2027",
+      "learnerInput": {
+        "studyStage": "MATRIC_FINAL",
+        "transcriptComplete": true,
+        "subjects": [
+          {
+            "subjectId": "ENGLISH_FIRST_ADDITIONAL_LANGUAGE",
+            "percent": 65
+          },
+          {
+            "subjectId": "MATHEMATICS",
+            "percent": 75
+          },
+          {
+            "subjectId": "ACCOUNTING",
+            "percent": 65.5
+          },
+          {
+            "subjectId": "HISTORY",
+            "percent": 65
+          },
+          {
+            "subjectId": "GEOGRAPHY",
+            "percent": 65
+          },
+          {
+            "subjectId": "LIFE_SCIENCES",
+            "percent": 55
+          }
+        ]
+      },
+      "inputIsSynthetic": true
+    },
+    {
+      "id": "UJ-GOLD-023",
+      "scenario": "Same normalized inputs, rules and catalogue version evaluated twice",
+      "precondition": "Deterministic evaluator available; evaluate the identical fixture twice",
+      "expectedState": "SAME_AS_FIRST_EVALUATION",
+      "expectedReasonCodes": [
+        "DETERMINISTIC_RESULT"
+      ],
+      "status": "DRAFT_ORACLE_NOT_EXECUTED",
+      "programmeId": "UJ-2027-BSC-IT",
+      "catalogueStatus": "ASSUMED_SIGNED_OFF_FOR_TEST_ONLY",
+      "admissionCycle": "2027",
+      "learnerInput": {
+        "studyStage": "MATRIC_FINAL",
+        "transcriptComplete": true,
+        "subjects": [
+          {
+            "subjectId": "ENGLISH_FIRST_ADDITIONAL_LANGUAGE",
+            "percent": 65
+          },
+          {
+            "subjectId": "MATHEMATICS",
+            "percent": 75
+          },
+          {
+            "subjectId": "ACCOUNTING",
+            "percent": 65
+          },
+          {
+            "subjectId": "HISTORY",
+            "percent": 65
+          },
+          {
+            "subjectId": "GEOGRAPHY",
+            "percent": 65
+          },
+          {
+            "subjectId": "LIFE_SCIENCES",
+            "percent": 55
+          }
+        ]
+      },
+      "inputIsSynthetic": true
+    },
+    {
+      "id": "UJ-GOLD-024",
+      "scenario": "High APS cannot compensate for failed mandatory subject",
+      "precondition": "Signed-off record; APS 40 but Mathematics is below the mandatory threshold",
+      "expectedState": "NOT_ELIGIBLE",
+      "expectedReasonCodes": [
+        "MATHEMATICS_BELOW_MINIMUM"
+      ],
+      "status": "DRAFT_ORACLE_NOT_EXECUTED",
+      "programmeId": "UJ-2027-BSC-IT",
+      "catalogueStatus": "ASSUMED_SIGNED_OFF_FOR_TEST_ONLY",
+      "admissionCycle": "2027",
+      "learnerInput": {
+        "studyStage": "MATRIC_FINAL",
+        "transcriptComplete": true,
+        "subjects": [
+          {
+            "subjectId": "ENGLISH_FIRST_ADDITIONAL_LANGUAGE",
+            "percent": 85
+          },
+          {
+            "subjectId": "MATHEMATICS",
+            "percent": 65
+          },
+          {
+            "subjectId": "ACCOUNTING",
+            "percent": 85
+          },
+          {
+            "subjectId": "HISTORY",
+            "percent": 85
+          },
+          {
+            "subjectId": "GEOGRAPHY",
+            "percent": 85
+          },
+          {
+            "subjectId": "LIFE_SCIENCES",
+            "percent": 85
+          }
+        ]
+      },
+      "inputIsSynthetic": true
+    },
+    {
+      "id": "UJ-GOLD-025",
+      "scenario": "One verified mandatory failure plus another unknown input",
+      "precondition": "Signed-off record; Mathematics definitely below threshold; another unrelated optional/context field missing",
+      "expectedState": "NOT_ELIGIBLE",
+      "expectedReasonCodes": [
+        "MATHEMATICS_BELOW_MINIMUM"
+      ],
+      "status": "DRAFT_ORACLE_NOT_EXECUTED",
+      "programmeId": "UJ-2027-BSC-IT",
+      "catalogueStatus": "ASSUMED_SIGNED_OFF_FOR_TEST_ONLY",
+      "admissionCycle": "2027",
+      "learnerInput": {
+        "studyStage": "MATRIC_FINAL",
+        "transcriptComplete": false,
+        "subjects": [
+          {
+            "subjectId": "ENGLISH_FIRST_ADDITIONAL_LANGUAGE",
+            "percent": 85
+          },
+          {
+            "subjectId": "MATHEMATICS",
+            "percent": 65
+          },
+          {
+            "subjectId": "ACCOUNTING",
+            "percent": 85
+          },
+          {
+            "subjectId": "HISTORY",
+            "percent": 85
+          },
+          {
+            "subjectId": "GEOGRAPHY",
+            "percent": 85
+          },
+          {
+            "subjectId": "LIFE_SCIENCES",
+            "percent": 85
+          }
+        ]
+      },
+      "inputIsSynthetic": true
+    },
+    {
+      "id": "UJ-GOLD-026",
+      "scenario": "No verified failure, but a material rule is missing",
+      "precondition": "Candidate record has no signed-off interpretation for a mandatory condition",
+      "expectedState": "UNKNOWN",
+      "expectedReasonCodes": [
+        "MANDATORY_RULE_UNRESOLVED"
+      ],
+      "status": "DRAFT_ORACLE_NOT_EXECUTED",
+      "programmeId": "UJ-2027-BSC-IT",
+      "catalogueStatus": "DRAFT_MANDATORY_RULE_MISSING",
+      "admissionCycle": "2027",
+      "learnerInput": {
+        "studyStage": "MATRIC_FINAL",
+        "transcriptComplete": true,
+        "subjects": [
+          {
+            "subjectId": "ENGLISH_FIRST_ADDITIONAL_LANGUAGE",
+            "percent": 65
+          },
+          {
+            "subjectId": "MATHEMATICS",
+            "percent": 75
+          },
+          {
+            "subjectId": "ACCOUNTING",
+            "percent": 65
+          },
+          {
+            "subjectId": "HISTORY",
+            "percent": 65
+          },
+          {
+            "subjectId": "GEOGRAPHY",
+            "percent": 65
+          },
+          {
+            "subjectId": "LIFE_SCIENCES",
+            "percent": 55
+          }
+        ]
+      },
+      "inputIsSynthetic": true
+    }
+  ]
+}

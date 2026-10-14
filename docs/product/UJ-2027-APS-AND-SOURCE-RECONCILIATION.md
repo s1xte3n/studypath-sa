@@ -1,0 +1,151 @@
+# UJ 2027 Pilot — Source and APS Rule Reconciliation Log
+
+**Status:** Working evidence log for GAP-001; not a publication approval.  
+**Prepared:** 2026-10-14  
+**Branch:** `docs/uj-2027-eligibility-oracle`  
+**Scope:** UJ 2027 undergraduate NSC pilot candidates only.
+
+## 1. Source version decision — proposed
+
+The repository's earlier documents refer to more than one official UJ 2027 prospectus URL:
+
+1. [UJ 2027 Undergraduate Prospectus, June 2026 upload](https://www.uj.ac.za/wp-content/uploads/2026/06/uj_undergrad_prospectus2027.pdf)
+2. [UJ 2027 Undergraduate Prospectus, online 25 June 2026, July upload](https://www.uj.ac.za/wp-content/uploads/2026/07/uj_undergrad_prospectus2027_online_25jun2026.pdf)
+
+Both are presented by UJ as 2027 prospectus material. Search-indexed content from the June URL confirms the extended CSI row as code B2E02Q, APS 26, English 4 (50%+), Mathematics 5 (60%+), and APK, printed page 91. The July URL is also listed by UJ's official CBE archives. The current UJ undergraduate page explicitly warns that prospectus content is subject to change.
+
+**Proposed source handling:** retain both URLs in provenance until the repository curator compares the actual PDFs and records checksums/version differences. Use the currently published official 2027 prospectus as the primary cycle-specific source, with the 2027 CBE brochure for CBE-specific rows. Do not claim the PDFs are identical until byte/content comparison is performed.
+
+**Evidence limitation:** direct PDF retrieval through the available web interface was blocked by site access restrictions. Search-indexed excerpts support the facts listed here, but they are not a substitute for saving the source files, comparing them, and recording exact file hashes/page screenshots in the repository.
+
+## 2. APS policy — evidence that resolves one previous open question
+
+Official UJ FAQ pages state:
+- APS is based on the six **best** school subjects, excluding Life Orientation.
+- The subjects used for APS must include the required programme subjects.
+- For applicants currently in Grade 12, UJ says to apply using final Grade 11 results and that Grade 12 mid-term results are not considered. Final selection is later based on final Grade 12 results.
+
+Sources:
+- [UJ FAQ — How to calculate an APS?](https://www.uj.ac.za/faq/can-i-apply-without-a-copy-of-my-id-passport-document/)
+- [UJ Frequently Asked Questions](https://www.uj.ac.za/frequently-asked-questions)
+- [UJ 2027 Undergraduate Prospectus](https://www.uj.ac.za/wp-content/uploads/2026/06/uj_undergrad_prospectus2027.pdf), printed p. 16, for six school subjects and Life Orientation exclusion.
+
+### Adopt as source-backed policy, pending curator sign-off
+
+1. For this NSC pilot, compute achievement levels using the published UJ NSC band mapping, not an invented or rounded mapping.
+2. Calculate APS from the six best eligible school subjects excluding Life Orientation.
+3. The selected six must include the applicable programme-required subjects; the implementation must not simply choose the six highest marks and then separately satisfy a subject rule with a seventh subject unless the official calculation policy supports that exact combination.
+4. Do not infer a missing mark, substitute a different subject, or double-count duplicate canonical subjects.
+5. If a learner provides more than six subjects, the implementation must use the six best eligible subjects while ensuring programme-required subjects are included. If the supplied data is insufficient to determine a valid selection under the rule, return `UNKNOWN`.
+6. Grade 11 marks may support a provisional screening result only if the product clearly identifies the source stage and does not describe it as final Grade 12 eligibility. Final matric applicants are assessed on final Grade 12 results.
+
+### Mark-to-level mapping evidenced in UJ prospectus material
+
+| Percentage | Achievement level |
+|---|---:|
+| 0–29% | 1 |
+| 30–39% | 2 |
+| 40–49% | 3 |
+| 50–59% | 4 |
+| 60–69% | 5 |
+| 70–79% | 6 |
+| 80–100% | 7 |
+
+A mark must be a valid whole-number percentage from 0 through 100 under the current product acceptance criteria. Do not round decimal values into a band.
+
+## 3. Programme evidence snapshot
+
+The following records remain **draft** because complete conditions, cycle-specific interpretation and curator sign-off are not all complete.
+
+| Candidate | Cycle-specific evidence currently located | Confirmed visible minimums | Still unresolved |
+|---|---|---|---|
+| BSc Information Technology — B2I01Q | 2027 prospectus, printed p. 86; [official programme page](https://www.uj.ac.za/university-courses/bsc-in-information-technology/) | APS 30; English 5 (60%+); Mathematics 6 (70%+); APK | Full applicable conditions, English stream interpretation, final source-version comparison, curator sign-off |
+| BSc Computer Science and Informatics — B2I02Q | 2027 prospectus, printed p. 86; [official programme page](https://www.uj.ac.za/university-courses/bsc-in-computer-science-and-informatics) | APS 30; English 5 (60%+); Mathematics 6 (70%+); APK | Full applicable conditions, English stream interpretation, final source-version comparison, curator sign-off |
+| BSc Computer Science and Informatics specialising in AI — B2I04Q | 2027 prospectus, printed p. 86; [official programme page](https://www.uj.ac.za/university-courses/bsc-in-computer-science-and-informatics-specialising-in-ai-artificial-intelligence/) | APS 34; English 5 (60%+); Mathematics 7 (80%+); APK | Full applicable conditions, English stream interpretation, final source-version comparison, curator sign-off |
+| BSc Computer Science and Informatics Extended — B2E02Q | 2027 prospectus, printed p. 91; [official programme page](https://www.uj.ac.za/university-courses/bsc-in-computer-science-and-informatics-extended/) | APS 26; English 4 (50%+); Mathematics 5 (60%+); APK; four years | Full applicable conditions and confirmation of exact scope of Faculty of Science subject restriction; curator sign-off |
+| BCom Information Systems — B1CISQ | 2027 prospectus table and 2027 CBE brochure, printed p. 10; [official programme page](https://www.uj.ac.za/university-courses/bcom-in-information-systems/) | APS 26; English 4; Mathematics 4; Mathematical Literacy not accepted; Technical Mathematics 4 is shown in a separate column | The extracted table does not establish whether Mathematics and Technical Mathematics are alternatives or both mandatory; do not encode either interpretation until the original row/official wording is confirmed; full conditions and curator sign-off remain open |
+| Diploma Business Information Technology — DI1401 | 2027 prospectus, printed p. 44; 2027 CBE brochure, printed p. 12; [official programme page](https://www.uj.ac.za/university-courses/diploma-in-business-information-technology/) | APS 22 with Mathematics or 24 with Mathematical Literacy; English 4; Mathematics/Technical Mathematics 3 or Mathematical Literacy 6; APB; three years | Full conditions and precise route semantics; curator sign-off |
+| BCom Information Management — B34IMQ | 2027 CBE brochure, printed p. 10; [official programme page](https://www.uj.ac.za/university-courses/bcom-in-information-management/) | CBE brochure: APS 26 with Mathematics/Technical Mathematics OR 28 with Mathematical Literacy; English 4 and corresponding subject level 4/6; APK; three years | Resolve difference from current page's general APS 28 wording; full conditions and branch semantics; curator sign-off |
+
+The official programme pages currently show an application window for 2026. They are useful corroboration of identity and visible minimums but are not sufficient by themselves to establish all 2027 rules. UJ warns that prospectus content may change.
+
+## 4. Mandatory interpretation safeguards
+
+- Mathematics, Technical Mathematics and Mathematical Literacy remain separate canonical subjects. For BCom Information Systems, do not assume Mathematics and Technical Mathematics are interchangeable alternatives merely because both columns show level 4; the exact rule semantics remain unresolved.
+- Physical Sciences and Technical Sciences remain separate canonical subjects.
+- English is a source label, not proof of equivalence across Home Language / First Additional Language / Second Additional Language. Until the governing rule is documented, an unsupported stream mapping yields `UNKNOWN`.
+- The prospectus contains a note that Technical Mathematics and Technical Science are not accepted for Faculty of Science degree programmes. Preserve that as a source-backed restriction only within its confirmed scope; do not generalise it to CBE programmes or non-degree programmes.
+- APS minimums and subject minimums are independent mandatory checks. High APS cannot compensate for a failed mandatory subject.
+- Minimum requirements are not a guarantee of admission. Selection/capacity may still apply.
+- If a material condition is unresolved, the record remains draft and cannot support `ELIGIBLE`. A separate verified mandatory failure can still justify `NOT_ELIGIBLE`.
+
+## 5. Gate actions still outstanding
+
+- [ ] Save the two official 2027 prospectus PDFs and the 2027 CBE brochure into a reviewed evidence location (subject to repository policy/licensing).
+- [ ] Record source title, official URL, publication/version evidence, retrieval date, SHA-256 and exact printed/PDF page references.
+- [ ] Compare the two prospectus versions and explicitly select the governing version or document any material differences.
+- [ ] Confirm the English-subject mapping rule from authoritative UJ source or keep it unsupported.
+- [ ] Extract all footnotes, selection conditions, subject restrictions and exceptions from the applicable programme rows.
+- [ ] Verify the APS rule including required subjects in the six best subjects and translate it into exact deterministic fixtures.
+- [ ] Obtain curator sign-off on every complete programme record and each expected test state/reason.
+- [ ] Execute at least 20 golden cases against the actual evaluator once implementation is permitted; assert 100% state/reason outcomes and zero false-positive `ELIGIBLE`.
+- [ ] Update the catalogue register, source reconciliation matrix, curator pack, requirements matrix and acceptance criteria with matching evidence.
+- [ ] Only then propose closing GAP-001 in a focused PR.
+
+## 6. Change log
+
+- 2026-10-14 — Added official UJ FAQ evidence for six best subjects and required programme subjects; recorded source-version discrepancy and seven candidate records. This log is evidence preparation, not curator sign-off or gate passage.
+
+
+## 7. Additional prospectus version discovered during follow-up research
+
+A further official UJ-hosted prospectus candidate is indexed at:
+- [2027 Undergraduate Prospectus — March-named PDF](https://www.uj.ac.za/wp-content/uploads/2026/03/uj_prospectus2027_24-march-2027-final.pdf) (search result ref: `turn295417search7`).
+
+The indexed extract includes a Faculty of Science note that Technical Mathematics and Technical Science are not accepted for Faculty of Science degree programmes, and says Technical Mathematics is accepted for Faculty of Science diploma programmes while Technical Science is not. This is consistent with the June prospectus extract for the restriction, but it does **not** establish that all three prospectus files are identical or that one is the authoritative final version.
+
+The search index also exposes a Faculty of Science table from the June-named PDF ([June prospectus](https://www.uj.ac.za/wp-content/uploads/2026/06/uj_undergrad_prospectus2027.pdf); search result ref: `turn295417search6`). The July-named prospectus URL remains referenced by UJ CBE materials. Direct retrieval of these PDFs through the available web retrieval path was blocked, so no byte-level comparison, SHA-256, full-page visual review, or complete footnote extraction has been performed.
+
+**Decision:** keep the source-version gate open. Do not silently promote the March-, June-, or July-named PDF to the governing version based on URL naming, search indexing, or a matching excerpt. Before sign-off, retrieve the documents through an accessible official channel, record their metadata and hashes, compare the seven candidate programme rows and all applicable footnotes, and obtain a curator decision about the governing source. If retrieval remains unavailable, record that as a blocker and request the relevant original pages from the programme curator.
+
+## 8. Remaining rule-level blockers for the seven-candidate pilot
+
+| Rule area | Current evidence | Safe handling until resolved |
+|---|---|---|
+| English language stream | Prospectus tables label the column “English” with a level/percentage, but the evidence captured so far does not define how Home Language and First/Second Additional Language are treated | Do not map streams by assumption; return `UNKNOWN` where eligibility depends on an unsupported mapping |
+| Six-subject APS selection | UJ FAQ states six best subjects excluding Life Orientation and says the selected subjects must include required programme subjects | Golden fixtures must calculate APS over a valid six-subject selection that includes every mandatory subject; a naïve top-six-only calculation is insufficient |
+| BCom Information Systems subject branch | Current official page/search extract lists Mathematics 4 and Technical Mathematics 4 in separate columns and says Mathematical Literacy is not accepted | Do not encode an OR rule until authoritative wording confirms it |
+| BCom Information Management APS branches | CBE 2027 brochure extract says APS 26 with Mathematics/Technical Mathematics or 28 with Mathematical Literacy; current programme page has general APS 28 wording | Preserve both source statements as a discrepancy; no definitive 2027 branch until prospectus row and footnotes are reviewed |
+| Faculty of Science restriction | Prospectus note excludes Technical Mathematics and Technical Science for Faculty of Science degrees; Technical Mathematics is accepted for Faculty of Science diplomas, Technical Science is not | Apply only to confirmed Faculty of Science programme scope; never generalise to CBE or other faculties |
+| Selection/capacity and exceptions | Prospectus states minimum entrance requirements can change; captured records do not establish every possible selection condition | Do not present minimum eligibility as guaranteed admission; unresolved material conditions block `ELIGIBLE` |
+| Programme source provenance | Search snippets and current programme pages corroborate some minimums but are not full 2027 source review | Keep all seven catalogue records `DRAFT` until official source version, complete conditions, and curator sign-off are recorded |
+
+
+
+## 9. Local uploaded evidence inspected (2026-10-14)
+
+The user-provided workspace includes the complete PDF `/mnt/data/uj_undergrad_prospectus2027_online_25jun2026.pdf`. It was available locally and text extraction was performed with `pdftotext -layout`; this supersedes the earlier statement that the prospectus could not be accessed for review.
+
+**Local file metadata (verified):**
+- File: `uj_undergrad_prospectus2027_online_25jun2026.pdf`
+- PDF metadata creation: 2026-06-25 10:31:02 UTC; modification: 2026-06-25 10:31:52 UTC
+- 100 pages; PDF 1.7; 8,313,488 bytes
+- SHA-256: `998901c32c614f00a5b8f9fe22b6f4e3c06772c2bf00bf07fd6bef1304ea499c`
+- The file's internal title/header identifies it as the 2027 Undergraduate Prospectus.
+
+The user-provided CBE brochure is also present locally:
+- File: `brochure-cbe_undergraduate_2027-intake.pdf`
+- SHA-256: `37a22d52403b1dfd09d830f0e1a284b9df4bb3864d51d4efb97d4a4d48b78598`
+
+**Directly verified in the uploaded prospectus text:**
+- Printed p. 15: NSC/IEB APS is the sum of achievement ratings of six school subjects; Life Orientation is excluded.
+- Printed pp. 41–42: BCom Information Management (B34IMQ) is shown with APS 28 with Mathematical Literacy; English level 4; Mathematics level 4; Mathematical Literacy level 6; Technical Mathematics level 4. BCom Information Systems (B1CISQ) shows APS 26; English level 4; Mathematics level 4; Mathematical Literacy not accepted; Technical Mathematics level 4; APB.
+- Printed p. 44: Diploma Business Information Technology (DI1401) shows APS 22 with Mathematics/Technical Mathematics OR 24 with Mathematical Literacy; English 4; Mathematics 3; Mathematical Literacy 6; Technical Mathematics 3; APB.
+- Printed p. 86: BSc Information Technology (B2I01Q) and BSc Computer Science and Informatics (B2I02Q) each show APS 30, English 5 (60%+), Mathematics 6 (70%+), Technical Mathematics not applicable, Mathematical Literacy not accepted, APK.
+- Printed p. 86: BSc Computer Science and Informatics Specialising in AI (B2I04Q) appears in the same Faculty of Science programme table; its row requires separate full inspection before final encoding.
+- Printed p. 91: BSc Computer Science and Informatics Extended (B2E02Q) shows APS 26, English 4 (50%+), Mathematics 5 (60%+), Technical Mathematics not applicable, Mathematical Literacy not accepted, APK.
+- Printed p. 30: the prospectus explicitly warns that meeting minimum admission requirements does not guarantee acceptance into a programme.
+
+**Important APS interpretation correction:** the uploaded prospectus itself establishes the six-subject sum and exclusion of Life Orientation. The separate UJ FAQ evidence previously recorded says the six best subjects must include required programme subjects. Keep the FAQ citation attached to that constrained-selection detail; do not attribute that extra sentence to printed p. 15 unless the exact prospectus text supports it.
+
+**What remains unresolved:** this upload makes full text/page inspection possible for this version, but does not by itself compare it with the March- and June-named prospectus PDFs. The governing-source decision remains open pending comparison or curator confirmation. The complete conditions/footnotes, English stream mapping, B1CISQ Mathematics-versus-Technical-Mathematics interpretation, B34IMQ branch reconciliation with the CBE brochure, and curator sign-off remain open. Text extraction supports page-level review but is not a substitute for visual inspection of complex multi-column tables and footnotes.
