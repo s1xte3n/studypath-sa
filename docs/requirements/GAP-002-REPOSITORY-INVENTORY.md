@@ -159,3 +159,8 @@ No application code, tests, configuration, cloud resource, or deployment was cha
 ## 7. Owner-supplied local inventory follow-up
 
 The command transcript supplied in the project conversation has been incorporated above. It is a useful inventory artifact, but it is not a signed CI run, an independently reproduced checkout, or proof of deployed state. Keep the distinction between (a) tracked repository inventory, now supported by the supplied `git ls-files` list, and (b) runtime privacy assurance, which remains unverified.
+
+
+## Follow-up — implementation baseline and privacy verification plan (2026-10-14)
+
+See [`GAP-002-PRIVACY-VERIFICATION-PLAN.md`](GAP-002-PRIVACY-VERIFICATION-PLAN.md) for the proposed minimum runnable browser-only baseline, sink inventory, synthetic sentinel strategy, 12 required negative/privacy tests, execution procedure and gate. The key outcome is unchanged: runtime privacy is not verifiable until runnable application code and an observable test harness exist. GAP-002 remains open.
