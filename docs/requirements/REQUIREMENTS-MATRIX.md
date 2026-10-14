@@ -76,9 +76,9 @@ New draft contracts on this branch:
 - [Canonical Subject Catalogue v1](../product/SUBJECT-CATALOGUE-V1.md) proposes stable IDs, exact-label-only normalization, no aliases in v1, and explicit English HL/FAL/Second Additional Language distinctions.
 - [UJ 2027 Subject Routes and Rule Semantics](../product/UJ-2027-ROUTE-MODEL.md) captures the seven existing candidate leads, formal AND/OR/conditional semantics, required evidence fields and publication checklist.
 
-This is a traceability improvement, **not gap closure**. The seven UJ records still lack a complete approved APS method/included-subject set, confirmed interpretation of the source's “English” column, fully resolved subject-column/branch semantics where applicable, and curator sign-off. The subject catalogue and alias policy are proposed but not approved; no executable tests have been run. Keep GAP-001 and GAP-002 open and do not promote draft rules to the learner-facing evaluator.
+This historical update records the state before the owner decision and test evidence documented later in this file. It is superseded for subject-contract approval and reported contract-test execution by the **Subject contract test evidence update** below. The following GAP-001 blockers remain current: complete programme-specific APS method/included-subject sets, confirmed interpretation of the source's “English” column, fully resolved subject-column/branch semantics where applicable, and curator sign-off. GAP-001 remains open. GAP-002 remains open for production integration and runtime/privacy verification; do not promote draft programme rules to the learner-facing evaluator.
 
-Next gate evidence: owner/curator decision on the subject catalogue; source-level review of every 2027 table and footnote; complete APS/English/route rules; signed record-by-record review; executable boundary tests and recorded results.
+Remaining gate evidence: source-level review of every 2027 table and footnote; complete APS/English/route rules; signed record-by-record review; runtime/privacy verification; and CI evidence for the contract tests.
 
 
 ## Subject contract test evidence update — 2026-10-14
