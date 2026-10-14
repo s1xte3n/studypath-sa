@@ -33,14 +33,19 @@
 
 - **AC-MAT-001:** For a fixture whose complete applicable hard requirements are known and all are met, the result is ELIGIBLE and each checked requirement has a corresponding explanation/source.
 - **AC-MAT-002:** For a fixture with a known applicable hard requirement not met, the result is NOT_ELIGIBLE and the failed requirement and observed input are identified.
-- **AC-MAT-003:** For a fixture with a missing required subject result or missing/ambiguous material requirement, the result is UNKNOWN unless a separate known failure already determines NOT_ELIGIBLE under the approved precedence rule.
-- **AC-MAT-004:** A mark exactly equal to a verified minimum threshold is treated according to the published comparison operator; if the operator is not known, result is UNKNOWN.
-- **AC-MAT-005:** Unsupported APS/points calculations, subject equivalence, qualification-specific exceptions or admission-cycle rules do not get inferred by the UI or an AI model.
-- **AC-MAT-006:** The same input and catalogue version produce the same eligibility state and reasons.
-- **AC-MAT-007:** Preference ranking cannot change an eligibility state; an ineligible result cannot be labelled eligible because of interest/location fit.
-- **AC-MAT-008:** Every displayed reason is traceable to a learner input and/or a structured catalogue rule; generic unsupported claims are prohibited.
-- **AC-MAT-009:** If the recommendation dependency fails, the UI reports failure and does not display stale or invented results as current.
-- **AC-MAT-010:** No UI text describes ELIGIBLE as admission confirmation, guaranteed admission or a probability of acceptance.
+- **AC-MAT-003:** For a fixture with a missing required subject result or missing/ambiguous material requirement and no confirmed mandatory failure, the result is UNKNOWN.
+- **AC-MAT-004:** If one verified, applicable mandatory requirement fails and another material requirement is unknown, the result is NOT_ELIGIBLE only when the failed rule is genuinely mandatory and no applicable alternative satisfies it; the failed rule and observed input are identified.
+- **AC-MAT-005:** If no mandatory requirement is confirmed failed but a required fact/rule is unknown, the result is UNKNOWN; ELIGIBLE requires every applicable mandatory requirement for supported screening to be verified and met.
+- **AC-MAT-006:** For an AND/all-required group, any confirmed mandatory failure makes the group fail; otherwise an unknown component makes it unknown; all components must pass for the group to pass.
+- **AC-MAT-007:** For an OR/accepted-alternatives group, any verified passing alternative satisfies the group; the group fails only when all alternatives are known to fail; if none passes and any alternative is unknown, the group is unknown.
+- **AC-MAT-008:** A verified-false condition skips its dependent requirement; a verified-true condition requires evaluation; an unknown condition that could change the outcome yields UNKNOWN.
+- **AC-MAT-009:** APS/points is calculated only from an authoritative, applicable programme/cycle formula that specifies subject inclusion/exclusion, mark conversion and thresholds. Unsupported required calculation details, including unresolved Life Orientation treatment, yield UNKNOWN when outcome-changing; no universal formula is assumed.
+- **AC-MAT-010:** Subject substitutions/equivalence are accepted only when explicitly supported by a verified applicable official requirement or approved catalogue rule with provenance. Similar names alone are insufficient; an uncertain or unsupported substitution is not counted as satisfied and yields UNKNOWN when outcome-changing.
+- **AC-MAT-011:** The same input and catalogue version produce the same eligibility state and reasons.
+- **AC-MAT-012:** Preference ranking cannot change an eligibility state; an ineligible result cannot be labelled eligible because of interest/location fit.
+- **AC-MAT-013:** Every displayed reason is traceable to a learner input and/or a structured catalogue rule; generic unsupported claims are prohibited.
+- **AC-MAT-014:** If the recommendation dependency fails, the UI reports failure and does not display stale or invented results as current.
+- **AC-MAT-015:** No UI text describes ELIGIBLE as admission confirmation, guaranteed admission or a probability of acceptance.
 
 ## REQ-ALT-001 — Alternatives
 
@@ -107,7 +112,7 @@
 ## Criteria requiring owner decisions before baseline approval
 
 - The approved mark range/precision, subject normalization, alias-only lookup, duplicate policy and unsupported-subject behavior are recorded under OR-003; the concrete supported subject vocabulary and aliases must be maintained explicitly in the catalogue.
-- Eligibility precedence when one rule fails while another is unknown.
+- Admission cycle and source freshness (OR-005); eligibility precedence and supported composite rules are approved under OR-004.
 - Definition of stale source and applicable admission cycle.
 - Funding provider coverage, supported criteria, required learner inputs, deadline timezone, freshness and expiry policy (OR-015).
 - Tracker statuses/transitions, authority of `submitted_at`, allowed fields, reset/deletion behavior and whether any persistence is permitted (OR-016).
