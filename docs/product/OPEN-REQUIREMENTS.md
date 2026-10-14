@@ -1,6 +1,6 @@
 # StudyPath SA — Open Product Requirements
 
-**Status:** Open decision register for PRD review. OR-001–OR-014 are resolved by owner decision; OR-015–OR-018 remain open.  
+**Status:** OR-001–OR-015 and OR-017–OR-018 have owner-approved decisions. OR-016 lifecycle rules are approved; tracker-only browser-local persistence remains gated by OR-006 compatibility, privacy/security review and change control.  
 **Owner:** Product owner (currently one person holds all project roles, per Phase 0 status).  
 **Priority:** P0 blocks PRD READY; P1 affects important behavior/scope; P2 can be decided before relevant later feature.
 
@@ -109,16 +109,37 @@
 - **Status:** Resolved — temporary governance arrangement approved; actual review records and release evidence remain outstanding.
 
 ### OR-015 — Funding data and matching
-Funding matching is in the intended MVP at medium priority. Provider coverage, applicant criteria, permitted learner inputs, required documents, deadline timezone, funding amount/coverage, source freshness and expiry policy are not defined. Resolve before the funding feature is specified for implementation.
+
+- **Decision:** **Resolved by owner on 2026-10-14.** The initial P1 funding pilot targets **3–5 curated opportunities** published by official funding providers or government sources. Do not imply national coverage.
+- **Permitted learner inputs:** Limit matching inputs to non-sensitive study stage, intended field/interest, and province or intended location. Do not collect national ID, household income, bank details, family/financial documents or other sensitive financial data for this pilot. If a provider's material criteria require unsupported or sensitive information, show the limitation and return UNKNOWN where appropriate; direct the learner to the official provider rather than guessing.
+- **Required funding record:** Record provider and opportunity identity; official publisher and source title/URL; applicable applicant/study criteria and conditions; required documents as an informational checklist only (no uploads); amount/coverage and whether one-off, annual or otherwise specified; deadline exactly as published, including timezone when stated; applicable cycle; last verification date; catalogue version; curator sign-off; and expiry/currentness state. Do not infer missing award values or deadline timezones.
+- **Freshness and expiry:** Re-verify at least every 30 days, and sooner when the provider announces a change, a deadline passes, or applicability/cycle changes. Expired or unverifiable opportunities must not be presented as currently available. If the source omits a material deadline detail, disclose the gap.
+- **Matching semantics:** Use deterministic, source-backed criteria. Keep funding eligibility separate from admission eligibility. Apply the approved ELIGIBLE, NOT_ELIGIBLE, and UNKNOWN semantics and never guarantee an award, imply funding approval, or claim to submit an application.
+- **Status:** Resolved — rules approved; 3–5 source-verified records, curation evidence, implementation and tests remain outstanding.
 
 ### OR-016 — Application tracking lifecycle and data handling
-Manual application tracking is in the intended MVP at medium priority. The broad specification lists statuses DRAFT, READY_TO_SUBMIT, SUBMITTED, AWAITING_DOCUMENTS, UNDER_REVIEW, ACCEPTED, REJECTED and WITHDRAWN, but transition rules, who may set statuses, whether `submitted_at` is user-entered, permitted fields, reset/deletion behavior and persistence are not defined. Resolve before tracker implementation. Do not assume accounts or cross-session persistence.
+
+- **Decision:** **Owner decision recorded on 2026-10-14.** Define a learner-reported status lifecycle and permitted fields. The owner selected browser-local persistence as a **future tracker-only direction**, not as permission to implement it now.
+- **Status set:** DRAFT, READY_TO_SUBMIT, SUBMITTED, AWAITING_DOCUMENTS, UNDER_REVIEW, ACCEPTED, REJECTED, WITHDRAWN.
+- **Allowed transitions:** DRAFT → READY_TO_SUBMIT; READY_TO_SUBMIT → DRAFT or SUBMITTED; SUBMITTED → AWAITING_DOCUMENTS, UNDER_REVIEW, ACCEPTED, REJECTED or WITHDRAWN; AWAITING_DOCUMENTS → SUBMITTED, UNDER_REVIEW or WITHDRAWN; UNDER_REVIEW → AWAITING_DOCUMENTS, ACCEPTED, REJECTED or WITHDRAWN. WITHDRAWN may also be selected from DRAFT or READY_TO_SUBMIT. ACCEPTED, REJECTED and WITHDRAWN are terminal; create a new tracker entry for a new application or later application attempt.
+- **Status authority and dates:** Every status is learner-reported. submitted_at is optional, entered by the learner, and is not verified by StudyPath SA. Never imply the app submitted, received or verified an application.
+- **Permitted tracker fields:** A supported pathway/funding-opportunity catalogue ID, status, optional learner-entered submission date, and system-created/updated timestamps. Do not store identity/contact details, academic marks, subjects, interests/preferences, a snapshot of profile/results, sensitive notes, financial documents or uploaded files. Link to catalogue records rather than copying pathway/profile content.
+- **Persistence and OR-006 conflict:** The selected future direction is browser-local persistence for tracker entries only. OR-006 remains controlling: profile inputs and results stay in memory and must never be written to localStorage, sessionStorage, IndexedDB, profile cookies or URLs. **Do not implement any persistent tracker storage** until a documented change-control decision resolves the interaction with OR-006 and a privacy/security review explicitly approves the exact tracker-only fields, storage mechanism, shared-device disclosure, retention, clear/delete behavior and acceptance tests. Until that gate is passed, tracker entries must be session-memory-only and must not be restored after reload. No accounts, server persistence or cross-session saved pathways are approved.
+- **Reset and deletion:** Core exploration Reset clears profile inputs/results. A separate tracker-clear/delete action must remove all tracker entries from the active session; if persistent storage is approved in a future change, it must also delete the corresponding stored entries. Do not claim deletion from storage that has not been implemented or verified.
+- **Status:** Lifecycle and data minimisation rules resolved; browser-local tracker persistence remains blocked pending OR-006-compatible change control and privacy/security approval.
 
 ### OR-017 — Cost planner semantics
-Estimate source/freshness, annual versus once-off costs, currency, missing categories, confirmed versus potential funding, and negative funding-gap handling are not defined. Resolve before cost planner approval.
+
+- **Decision:** **Resolved by owner on 2026-10-14 as future-scope rules only.** Cost planning is deferred from the initial MVP and must not displace P0 pathway discovery or P1 funding/tracker correctness.
+- **Future calculation rules:** Display values in South African rand (ZAR); distinguish once-off/first-year costs from recurring annual costs; show source, verification date and whether a value is an estimate. Missing or unverified categories are unknown, never zero. Deduct only funding explicitly recorded as confirmed, and label it learner-reported unless independently verified; show potential funding separately and do not deduct it from the confirmed-only estimate.
+- **Funding gap:** Calculate a definitive gap only when all essential cost categories for the selected estimate are known and current. If essential inputs are missing, show an incomplete estimate without a definitive gap. A negative arithmetic result must not be shown as a negative funding need: show a remaining gap of ZAR 0 and any excess separately as a surplus/over-coverage amount.
+- **Status:** Resolved for future design; feature remains out of the initial MVP and no cost values are approved or populated by this decision.
 
 ### OR-018 — AI/document assistant
-Supported file types/size, consent, retention/deletion, extraction confidence, human verification, prompt-injection handling and source-document access controls are not defined. AI/document processing remains out of initial MVP.
+
+- **Decision:** **Resolved by owner on 2026-10-14.** Defer the AI/document assistant entirely from the initial MVP. Do not implement document uploads, document extraction, AI document chat or AI-based eligibility decisions in the initial MVP.
+- **Future safeguards:** Before any future proposal can be approved, specify explicit informed consent and purpose; permitted file types and size limits; upload validation and malware controls; access controls; retention and verifiable deletion; confidence/low-confidence handling; human review of extracted fields; verification against authoritative official sources; and prompt-injection protections treating uploaded content as untrusted data. Do not expose documents or extracted personal data to unrelated services or logs. AI may support explanations/extraction only; deterministic, verified rules remain authoritative for admission and funding eligibility. Any future implementation requires separate scope, privacy/security, architecture, budget and acceptance approval.
+- **Status:** Resolved as deferred; future AI/document processing remains out of scope until separate change control and safeguards are approved.
 
 ## Unverifiable or underspecified statements requiring measurable definitions
 - “Relevant pathways”, “realistic”, “recently verified”, “low-data”, “responsive”, “fast”, “accessible” and “clear next step” need operational definitions before a test can objectively pass.
@@ -129,4 +150,5 @@ Supported file types/size, consent, retention/deletion, extraction confidence, h
 
 ## Gate disposition
 
-**PRD READY: BLOCKED.** OR-001 through OR-014 now have owner-approved decisions, but decision approval is not implementation or verification evidence. OR-015 funding data/matching rules and OR-016 tracker lifecycle/data handling remain open for intended P1 MVP features and must be resolved before those features are implemented and before the requirements baseline/architecture is treated as complete. OR-017 and OR-018 remain later-scope decisions. The PRD still requires explicit owner approval; catalogue records, relationship curation, accessibility/performance tests, golden-set results, privacy review and release evidence remain outstanding. No implementation or test passage is claimed.
+**PRD READY: BLOCKED.** OR-001–OR-015 and OR-017–OR-018 have owner-approved decisions. OR-016 lifecycle and data-minimisation rules are approved, but its selected future browser-local tracker persistence direction is not authorized for implementation because compatibility with OR-006 remains unresolved. Until change control and privacy/security review explicitly approve tracker-only persistence, the implementable baseline remains session-memory-only. The PRD still requires explicit owner approval; source-verified catalogue records, relationship curation, accessibility/performance tests, golden-set results, privacy review, traceability and release evidence remain outstanding. No implementation or test passage is claimed.
+

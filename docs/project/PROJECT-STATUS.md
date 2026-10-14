@@ -37,7 +37,7 @@
 - Established Phase 0 documentation and recorded the accepted MVP, budget, privacy, anonymous-first and no-provisioning directions.
 - Reviewed the supplied product specification for the catalogue/provenance and deterministic eligibility guardrails.
 - Reviewed the supplied hackathon programme: team profiling, app eligibility, deck/video, SSDLC, Lean Business Canvas and submission timing.
-- Owner approved OR-008–OR-014 on 2026-10-14. The documentation is committed on `docs/resolve-or-008-014-decisions` and awaits draft-PR review; the PRD remains draft, and no implementation, test execution or release evidence is implied.
+- Owner approved OR-008–OR-014 on 2026-10-14; the documentation was merged into `main` via PR #19 (merge commit `e07b7a29388c671713cda54f37f20ae4a0b00ba8`). OR-015–OR-018 decisions are now documented on the current change branch; OR-016 tracker persistence remains blocked by the OR-006 compatibility/privacy gate. The PRD remains draft, and no implementation, test execution or release evidence is implied.
 - Researched official Azure pricing/documentation pages for the preliminary budget screen.
 - Merged `docs/project/PROJECT-READY-EVIDENCE.md` via PR #4; the pack does not constitute approval or gate passage.
 - Recorded owner confirmations: one person holds all roles for now; Azure subscription exists and is owned by the project owner; team is profiled on Sonke; this is a new app being developed before the hackathon.
@@ -57,7 +57,7 @@ The following are downstream implementation/release controls, not blockers to be
 
 ## Owner-approved direction and remaining boundaries
 - MVP journey and key exclusions.
-- Anonymous exploration first; cross-session saved pathways remain excluded. Funding matching and manual application tracking are intended P1 MVP capabilities under OR-001, but their detailed funding/tracker contracts remain open under OR-015/016.
+- Anonymous exploration first; cross-session saved pathways and accounts remain excluded. Funding matching and manual application tracking are intended P1 MVP capabilities. OR-015 funding rules and OR-016 lifecycle/field rules are documented; tracker-only browser-local persistence is a future direction blocked pending OR-006-compatible change control and privacy/security approval. Cost planning and the AI/document assistant remain deferred under OR-017/018.
 - Start with a 6–8 record manually curated official-source pilot, prioritising Gauteng, under OR-008; actual records and review evidence remain outstanding.
 - Hard R100/month total spend cap; no provisioning before cost/access approval.
 - Azure Static Web Apps Free is an acceptable hosting plan on the existing subscription; the project will not rely on the expired 12-month Azure free-account offer. Owner reports no project resources currently provisioned and no credits will be used.
@@ -73,7 +73,7 @@ Owner approval of the Phase 0 direction/materials is recorded. These approvals d
 - The supplied local tracked-file listing and remote repository inspection do not constitute a complete audit of every branch or historical commit.
 
 ## Next gate
-Phase 1 — create and approve the PRD, user stories, measurable acceptance criteria and requirements traceability matrix. PROJECT READY passage authorizes planning only; it is not a deployment approval. No application implementation, Azure provisioning or deployment was performed by this documentation update.
+Next: resolve the OR-016 tracker-persistence compatibility gate (or explicitly retain memory-only tracking), complete the requirements traceability matrix, then obtain explicit PRD approval. PROJECT READY passage authorizes planning only; it is not a deployment approval. No application implementation, Azure provisioning or deployment was performed by this documentation update.
 
 
 ## Azure cost estimate update — 2026-10-14

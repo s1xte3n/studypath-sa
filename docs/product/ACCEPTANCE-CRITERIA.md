@@ -1,6 +1,6 @@
 # StudyPath SA — MVP Acceptance Criteria
 
-**Status:** Draft; criteria are candidate test oracles, not evidence that implementation or tests exist. OR-002–OR-014 decisions are owner-approved; actual catalogue/relationship records, implementation, test execution and verification evidence remain outstanding.  
+**Status:** Draft; criteria are candidate test oracles, not evidence that implementation or tests exist. OR-002–OR-018 decisions are recorded; OR-016 tracker persistence remains blocked by the OR-006 compatibility/privacy gate. Actual catalogue/relationship records, implementation, test execution and verification evidence remain outstanding.  
 **Convention:** Each AC has a unique ID and maps to one PRD requirement. These are product acceptance criteria, not evidence that implementation or tests exist.
 
 ## REQ-EXP-001 — Anonymous pathway input
@@ -118,26 +118,53 @@
 
 ## REQ-FUND-001 — Funding opportunities and matching (P1 / medium priority)
 
-- **AC-FUND-001:** Given a published funding opportunity is shown, when the learner opens it, then an authoritative provider source and verification metadata are available.
-- **AC-FUND-002:** Given the learner requests funding matches, when criteria are evaluated, then funding eligibility is calculated separately from admission eligibility using only approved structured rules.
-- **AC-FUND-003:** Given required criteria or learner inputs are missing or ambiguous, when a match is displayed, then the relevant uncertainty is shown and the system does not claim confirmed eligibility.
-- **AC-FUND-004:** Given a deadline is expired, unverified or not applicable to the supported cycle, then the opportunity is not presented with a definitive current deadline or eligibility claim.
-- **AC-FUND-005:** Given no published opportunity meets the supported criteria, then the system displays an honest empty state and does not fabricate opportunities.
+- **AC-FUND-001:** Every published opportunity links to an authoritative official provider/government source and displays verification metadata.
+- **AC-FUND-002:** Funding matching uses deterministic structured criteria and is evaluated separately from admission eligibility.
+- **AC-FUND-003:** Missing, ambiguous, unsupported or disallowed material criteria are explained; the system does not claim confirmed eligibility and returns UNKNOWN where appropriate.
+- **AC-FUND-004:** Expired, stale, unverified or cycle-inapplicable opportunities are not presented as currently available with a definitive deadline or eligibility claim.
+- **AC-FUND-005:** If no published opportunity meets supported criteria, the system shows an honest empty state and does not fabricate opportunities.
+- **AC-FUND-006:** The pilot contains no more than the approved 3–5 curated opportunities until scope is explicitly changed; each has curator sign-off and official provenance.
+- **AC-FUND-007:** Each funding record includes provider/opportunity identity, criteria/conditions, required-document checklist metadata, amount/coverage as published, deadline/timezone as stated, applicable cycle, source title/URL, verification date, catalogue version, curator sign-off and expiry/currentness state. Missing values are shown as unknown, not invented.
+- **AC-FUND-008:** Funding records are re-verified at least every 30 days and sooner after a provider change, deadline passage or applicability/cycle change; stale or expired records are flagged and excluded from current definitive matches.
+- **AC-FUND-009:** Funding inputs are limited to study stage, intended field/interest and location. No national ID, household income, bank details, family/financial documents or document uploads are requested in this pilot; where a material provider criterion cannot be assessed within this boundary, uncertainty is disclosed.
 
 ## REQ-APP-001 — Manual application tracker (P1 / medium priority)
 
-- **AC-APP-001:** Given the approved tracker data-handling model is available, when a learner adds an application, then the entry references a supported pathway or funding opportunity and uses only approved fields.
-- **AC-APP-002:** Given a learner updates an application, when a status transition is requested, then only an approved transition is accepted; invalid transitions produce an understandable error.
-- **AC-APP-003:** Given a tracker status is displayed, then it is clearly labelled as learner-reported unless a separately approved and implemented source verifies it.
-- **AC-APP-004:** Given a save/update fails or persistence is unavailable, then the UI reports failure and does not claim the change was saved.
-- **AC-APP-005:** Given tracker data is reset or deleted under the approved lifecycle, then the data is removed according to that policy and is not exposed in telemetry.
-- **AC-APP-006:** Given persistence is approved, when a learner requests a tracker entry, then only the authorised owner/session can access it; cross-user isolation tests pass before release.
+- **AC-APP-001:** Every tracker entry references a supported pathway or funding-opportunity catalogue ID and contains only approved tracker fields.
+- **AC-APP-002:** Only transitions in the OR-016 transition table are accepted; all other transitions produce an understandable error and leave the prior state unchanged.
+- **AC-APP-003:** Every displayed status is clearly labelled learner-reported. An optional submitted_at value is manually entered and is not presented as independently verified.
+- **AC-APP-004:** Invalid updates or unavailable state produce an error and never falsely report a successful save.
+- **AC-APP-005:** Reset/delete clears the active tracker entries according to the current approved lifecycle, and tracker values are not exposed in telemetry.
+- **AC-APP-006:** No tracker entry can expose another server-side user's data; if any persistence model is approved later, its access/isolation risks must be tested before release. Browser-local storage must not be represented as account-level ownership or secure isolation.
+- **AC-APP-007:** Until explicit OR-006-compatible change control and privacy/security review authorizes persistent tracker-only storage, entries exist only in memory and are not restored after reload.
+- **AC-APP-008:** If tracker-only persistence is approved in a future change, storage contains only the approved catalogue ID, status, optional learner-entered submission date and timestamps; it contains no academic/profile inputs/results, copied pathway snapshots, identity/contact details, sensitive notes, financial documents or uploads.
+- **AC-APP-009:** ACCEPTED, REJECTED and WITHDRAWN are terminal statuses; an attempt to transition from a terminal status is rejected and requires a new entry for a new application/attempt.
 
+## Deferred feature contract checks — not initial MVP acceptance gates
+
+These criteria record future semantics approved under OR-017 and OR-018. They do not add the features to the initial MVP or imply implementation.
+
+### Future cost planner (OR-017)
+
+- **AC-COST-FUT-001:** All displayed costs and funding amounts use ZAR and show source, verification date and estimate/confirmed labeling.
+- **AC-COST-FUT-002:** Once-off/first-year costs and recurring annual costs are shown separately; missing or unverified categories are unknown, never zero.
+- **AC-COST-FUT-003:** Only confirmed funding is deducted from the confirmed-only estimate; potential funding is displayed separately and never deducted.
+- **AC-COST-FUT-004:** If any essential cost category is missing or stale, the planner does not display a definitive total funding gap.
+- **AC-COST-FUT-005:** A calculated amount below zero is displayed as ZAR 0 remaining gap with any excess shown separately as surplus/over-coverage.
+
+### Future AI/document safeguards (OR-018)
+
+- **AC-AI-FUT-001:** No document upload, extraction or AI document chat is present in the initial MVP.
+- **AC-AI-FUT-002:** Any future AI/document proposal specifies consent and purpose, permitted types/size, upload validation/malware handling, access control, retention and verifiable deletion before implementation.
+- **AC-AI-FUT-003:** Any future extraction flow displays uncertainty/confidence appropriately and requires human verification against authoritative sources before extracted requirements are used.
+- **AC-AI-FUT-004:** Uploaded content is treated as untrusted input; prompt-injection defenses and controls against document/data exfiltration are specified and tested.
+- **AC-AI-FUT-005:** AI never decides admission or funding eligibility; deterministic, verified rules remain authoritative.
 ## Remaining decisions and verification evidence
 
 - The approved mark range/precision, subject normalization, alias-only lookup, duplicate policy and unsupported-subject behavior are recorded under OR-003; the concrete supported subject vocabulary and aliases must be maintained explicitly in the catalogue.
 - OR-004 eligibility precedence, OR-005 admission-cycle/source-freshness, OR-006 privacy/telemetry and OR-007 eligibility meaning/discovery contracts are approved; catalogue records, completeness gates, UI explanations and release checks still require implementation and evidence.
-- Funding provider coverage, supported criteria, required learner inputs, deadline timezone, freshness and expiry policy (OR-015).
-- Tracker statuses/transitions, authority of `submitted_at`, allowed fields, reset/deletion behavior and whether any persistence is permitted (OR-016).
+- OR-015 funding rules are approved; the 3–5 official-source records, curation evidence and implementation remain outstanding.
+- OR-016 lifecycle, transition and field rules are approved; tracker-only browser-local persistence remains blocked pending OR-006-compatible change control and privacy/security review. Until then, implement session-memory-only behavior.
+- OR-017 cost-planner semantics and OR-018 future AI/document safeguards are recorded for later scope; neither feature is part of initial MVP acceptance.
 - OR-008–OR-014 decisions are owner-approved; actual catalogue completeness, relationship evidence, accessibility conformance, performance measurements, golden-set results and usability evidence remain to be verified.
 - OR-006 policy is approved; implementation evidence for reset/temporary-data lifecycle, storage/network inspection and exact hosting telemetry/retention review is required before public demo.
