@@ -65,3 +65,10 @@ The seven candidates are not seven verified records. No record is publication-re
 ## Reconciliation matrix
 
 The programme-by-programme evidence checklist, source register, conflict disposition, required actions and traceability are maintained in [`UJ-2027-SOURCE-RECONCILIATION-MATRIX.md`](./UJ-2027-SOURCE-RECONCILIATION-MATRIX.md). It is a working matrix, not curator sign-off. All seven candidates remain unapproved for definitive eligibility screening.
+## Additional official 2027 CBE brochure cross-check — 2026-10-14
+
+The official [UJ CBE Undergraduate 2027 Intake Brochure](https://www.uj.ac.za/wp-content/uploads/2026/04/brochure-cbe_undergraduate_2027-intake.pdf) search-indexed table lists Diploma in Business Information Technology as **DI1401**, APS 22 with Mathematics/Technical Mathematics or 24 with Mathematical Literacy, English level 4, Mathematics/Technical Mathematics level 3 or Mathematical Literacy level 6. The current official [programme page](https://www.uj.ac.za/university-courses/diploma-in-business-information-technology/) agrees and notes selection based on academic credit. The central 2027 prospectus search extraction had appeared as D1I40J. Record this as **likely extraction/transcription variation, not conclusively resolved** until the original central prospectus table is visually checked.
+
+The same official 2027 CBE brochure states BCom Information Management APS 26 with Mathematics/Technical Mathematics or 28 with Mathematical Literacy. The central 2027 prospectus search result supports the same conditional rule. The current programme page's general APS 28 wording is less specific. This improves the evidence for a conditional APS rule but does not replace original-table review, full-rule extraction or curator sign-off.
+
+**Disposition:** both remain research leads and are not publication-ready. The PDF page numbers, full APS calculation/inclusions, exclusions and special conditions have not been captured in this update. GAP-001 remains open; do not use these values as definitive eligibility rules until the matrix checklist and curator sign-off are complete.
