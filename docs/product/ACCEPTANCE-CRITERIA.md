@@ -1,6 +1,6 @@
 # StudyPath SA — MVP Acceptance Criteria
 
-**Status:** Draft; criteria are candidate test oracles, not evidence that implementation or tests exist. Approved decisions are reflected where applicable, including page-memory-only tracker behavior and bounded official next steps. Actual catalogue/relationship records, implementation, test execution and verification evidence remain outstanding.  
+**Status:** Approved by product owner on 2026-10-14 as the MVP acceptance-criteria baseline; criteria are targets/test oracles, not evidence that implementation or tests exist. Actual catalogue/relationship records, implementation, test execution and verification evidence remain outstanding.  
 **Convention:** Each AC has a unique ID and maps to one PRD requirement. These are product acceptance criteria, not evidence that implementation or tests exist.
 
 ## REQ-EXP-001 — Anonymous pathway input
