@@ -141,14 +141,24 @@
 - **Future safeguards:** Before any future proposal can be approved, specify explicit informed consent and purpose; permitted file types and size limits; upload validation and malware controls; access controls; retention and verifiable deletion; confidence/low-confidence handling; human review of extracted fields; verification against authoritative official sources; and prompt-injection protections treating uploaded content as untrusted data. Do not expose documents or extracted personal data to unrelated services or logs. AI may support explanations/extraction only; deterministic, verified rules remain authoritative for admission and funding eligibility. Any future implementation requires separate scope, privacy/security, architecture, budget and acceptance approval.
 - **Status:** Resolved as deferred; future AI/document processing remains out of scope until separate change control and safeguards are approved.
 
-## Unverifiable or underspecified statements requiring measurable definitions
-- “Relevant pathways”, “realistic”, “recently verified”, “low-data”, “responsive”, “fast”, “accessible” and “clear next step” need operational definitions before a test can objectively pass.
-- “National architecture” is a future extensibility direction, not evidence that MVP catalogue coverage is national.
-- “Every displayed requirement is traceable” needs a defined minimum source record schema and an audit/test procedure.
-- “No profile telemetry” must define which hosting/network/security metadata may be collected and how inspection evidence is captured.
-- “No false eligibility” requires an approved golden test set and explicit supported-rule boundary.
+## Remaining implementation and verification work (not PRD approval blockers)
+
+The following items are retained as downstream delivery controls. They must not be described as completed until implementation or review evidence exists.
+
+- **Pathway relevance and “realistic” matches:** The approved scope is a bounded pilot of 6–8 curated programme records prioritising Gauteng (OR-008). Eligibility is limited to verified minimum-requirement screening under OR-004/OR-007; preference fit is separate from eligibility under OR-010. This is not national coverage or an admission prediction.
+- **Source freshness and traceability:** OR-005 and AC-CAT-007 through AC-CAT-011 define the minimum requirement-source metadata, applicable admission cycle, 30-day re-verification rule, curator sign-off and conflict handling. Implement the record model and retain review evidence; actual records remain outstanding.
+- **Low-data/network behavior:** The approved baseline is browser-side matching. OR-012 defines the local matching performance target. If network-dependent services are introduced, approve their timeout, retry, availability and low-bandwidth targets before implementation or release.
+- **Responsive and accessible behavior:** OR-011 defines WCAG 2.2 Level AA, a 320 CSS-pixel minimum viewport and the browser/accessibility test matrix. Conformance and browser results remain unverified.
+- **Fast matching:** OR-012 defines p95 completion at or below one second for up to 100 catalogue records on an agreed, recorded test device/browser. Measurement remains outstanding.
+- **Clear next step:** The PRD and feature acceptance criteria define source-backed official next steps; UI implementation and usability evidence remain outstanding.
+- **Hosting/network/security metadata:** OR-006 defines the no-profile-telemetry boundary and requires inspection of actual hosting/provider metadata and retention. The observed fields, retention and evidence must be recorded before public demo.
+- **False-positive eligibility:** OR-004/OR-007 define deterministic eligibility and uncertainty rules; OR-013 defines a versioned golden set of at least 20 synthetic cases, full expected-classification agreement and zero false-positive ELIGIBLE results. Golden-set creation and execution remain outstanding.
+- **National architecture:** This is a future extensibility direction, not an initial-MVP coverage promise.
+- **Requirements traceability:** The next Phase 2 deliverable is the requirements matrix linking each requirement to its UI/API contract (where applicable), test ID, implementation and verification/release evidence. That work is not a Phase 1 PRD approval blocker.
 
 ## Gate disposition
 
-**PRD READY: BLOCKED.** OR-001–OR-015 and OR-017–OR-018 have owner-approved decisions. OR-016 lifecycle, data-minimisation and page-memory-only persistence rules are approved and aligned with the policy review. Tracker persistence is not a blocker because persistent storage is excluded from this MVP. The PRD still requires explicit owner approval; source-verified catalogue records, relationship curation, accessibility/performance tests, golden-set results, privacy review, traceability and release evidence remain outstanding. No implementation or test passage is claimed.
+**PRD READY: PASSED on 2026-10-14 for the approved PRD and acceptance-criteria baseline only.** The product owner's explicit approval is recorded in `docs/product/PRD.md`, `docs/product/ACCEPTANCE-CRITERIA.md` and decision D-043. The PRD maps the initial-MVP feature requirements to acceptance-criteria IDs, including funding matching and the page-memory-only manual application tracker. The approved criteria are measurable targets and test oracles, not evidence that implementation or tests exist.
+
+Outstanding source-verified catalogue records, relationship curation, requirements traceability, implementation, accessibility/performance tests, golden-set results, privacy/hosting review, CI/CD, infrastructure validation, deployment and release evidence belong to later gates. They do not reverse PRD approval by themselves; if implementation planning reveals a genuine requirements ambiguity, record it and use change control before silently changing the baseline. No implementation, test passage, privacy clearance or release readiness is claimed here. Tracker persistence remains excluded from the initial MVP.
 
