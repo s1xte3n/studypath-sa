@@ -89,9 +89,9 @@ The owner approved the Phase 0 decision records and attests that account-specifi
 
 ## Gate assessment
 
-**PRD READY: BLOCKED.** The Phase 1 alignment draft reconciles the approved P1 funding/tracker scope, page-memory-only tracker policy, and bounded official next steps. Explicit owner approval of the revised PRD and measurable success criteria remains outstanding. The OR-008–OR-014 decision package was merged to `main` through PR #19; this branch proposes documentation alignment. Actual programme/funding catalogue curation, relationship evidence, test execution, privacy review, provisioning and deployment remain outstanding and are not claimed.
+**PRD READY: PASSED on 2026-10-14** after explicit owner approval of the revised PRD and measurable acceptance criteria. PR #22 merged the documentation alignment to `main`. This gate approves the requirements baseline only. Actual programme/funding catalogue curation, relationship evidence, test execution, privacy review, provisioning and deployment remain outstanding and are not claimed.
 
-PROJECT READY passed for Phase 1 planning only. No application implementation, test execution, Azure provisioning or deployment is claimed.
+Phase 0 `PROJECT READY` passed for Phase 1 planning only. Current work is Phase 2 requirements traceability; `REQUIREMENTS READY` has not passed. No application implementation, test execution, Azure provisioning or deployment is claimed.
 
 ## Phase 1 PRD artifacts and approval
 
