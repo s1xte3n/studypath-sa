@@ -1,7 +1,7 @@
 # StudyPath SA — Canonical Subject Catalogue v1
 
-**Status:** Proposed controlled-vocabulary baseline for owner/curator review; not yet approved for production eligibility decisions.  
-**Version:** subject-catalogue-v1-draft  
+**Status:** Owner-approved contract for the bounded UJ 2027 pilot; production eligibility still blocked on programme evidence, implementation and executed tests. See [owner approval](./SUBJECT-CATALOGUE-V1-APPROVAL.md).  
+**Version:** subject-catalogue-v1  
 **As-of date:** 2026-10-14  
 **Requirements:** REQ-EXP-001, REQ-MAT-001; GAP-002
 
@@ -90,4 +90,4 @@ These are test specifications, not evidence of executed tests.
 
 GAP-002 closes only after the owner/curator approves this bounded scope, exact-label-only/no-alias policy, English-level representation, versioning/stale-client behaviour, and test contract. Any alias or canonical ID change requires a version update and regression tests.
 
-**Current gate state: OPEN — proposed catalogue documented; owner/curator approval and executed tests remain outstanding.**
+**Current gate state:** Owner contract decision approved. Executed tests and production implementation remain unverified; GAP-002 stays open until test results and runtime evidence are recorded.
