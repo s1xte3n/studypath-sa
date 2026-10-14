@@ -10,7 +10,7 @@
 | Phase | Exit gate | Evidence-based status | Checklist disposition |
 |---|---|---|---|
 | 0 — Project State | `PROJECT READY` | **PASSED on 2026-10-13 for Phase 1 planning only.** Scope, constraints, key decisions and high-impact risks are documented. Owner-supplied command output dated 2026-10-14 shows a clean local `main` branch matching `origin/main` (`0 0` divergence). Owner confirms the app has not been deployed. Owner reports the Azure subscription is Active, their role is Owner, plan is Azure Plan, and no costs exist; account-specific evidence remains owner-attested, not independently inspected. | **Complete for the Phase 1 planning gate. Do not label Phase 0 “in progress.”** Keep Azure/Sonke evidence limitations visible; deployment is a known not-deployed state and must be addressed at later delivery/release gates. |
-| 1 — PRD | `PRD READY` | Not verified; PRD and measurable acceptance criteria have not been approved. | Not complete |
+| 1 — PRD | `PRD READY` | Draft alignment proposed on branch `docs/phase-1-prd-alignment`; explicit product-owner approval is still pending. | Not complete |
 | 2 — Requirements | `REQUIREMENTS READY` | Not verified; requirements matrix and traceability are not yet approved. | Not complete |
 | 3 — Architecture | `ARCHITECTURE READY` | Proposed baseline exists; architecture approval and implementation are not verified. | Not complete |
 | 4 — API / Interface Contract | `CONTRACT READY` | Initial endpoint inventory exists; complete, approved contract is not verified. | Not complete |
@@ -43,14 +43,14 @@ The unchecked items above are **evidence limitations or downstream implementatio
 
 ## Phase 1 — PRD gate checklist
 
-- [ ] Define the target user problems and primary student journey.
-- [ ] State MVP scope, non-goals and constraints.
-- [ ] Define measurable acceptance criteria and success measures.
-- [ ] Define supported input fields, validation and reset behaviour.
-- [ ] Specify explainable pathway results and `ELIGIBLE`, `NOT_ELIGIBLE`, `UNKNOWN` semantics.
-- [ ] State official-source/provenance requirements and catalogue limitations.
-- [ ] Specify accessibility, privacy, error, empty and loading states.
-- [ ] Record risks, assumptions and unresolved product decisions.
+- [x] Draft the target user problems and primary student journey in `PRD.md`.
+- [x] Draft MVP scope, non-goals and constraints, including P1 funding/tracker scope and deferred cost/AI features.
+- [x] Define measurable acceptance criteria and success measures in `ACCEPTANCE-CRITERIA.md` (targets are not test results).
+- [x] Define supported input fields, validation and reset behaviour.
+- [x] Specify explainable pathway results and `ELIGIBLE`, `NOT_ELIGIBLE`, `UNKNOWN` semantics.
+- [x] State official-source/provenance requirements and catalogue limitations.
+- [x] Specify accessibility, privacy, error, empty and loading states.
+- [x] Record risks, assumptions and unresolved product decisions; next actions are bounded to official links and neutral source-backed guidance.
 - [ ] Obtain explicit PRD approval before treating Phase 1 as complete.
 
 ## Remaining phase gates

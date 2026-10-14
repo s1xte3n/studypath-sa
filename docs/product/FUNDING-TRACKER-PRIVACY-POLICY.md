@@ -86,7 +86,7 @@ The proposed initial tracker record is limited to:
 - Status from the approved state list.
 - Optional target deadline copied from a verified catalogue record, clearly labelled as a reference date rather than a guarantee.
 - Optional learner-entered submission date, only when status is SUBMITTED; label it learner-reported.
-- Optional next-action choice from a small predefined list, if approved during UX design.
+- No additional next-action choice field in the initial MVP. Next-step guidance is limited to official source links and neutral, source-backed guidance; no predefined action taxonomy or personalised task planner.
 
 Do not collect free-text notes, identity numbers, account credentials, bank/household financial data, sensitive attributes, document contents, file uploads, application passwords or copies of submitted forms in the initial tracker. Do not treat an institution's status as verified unless a separately approved integration provides that evidence.
 
@@ -185,10 +185,9 @@ Before tracker use, state that entries are held only in the current page session
 
 ## 6. Decisions still required
 
-The following items remain open before the PRD can be marked READY:
-1. Confirm which predefined “next action” options, if any, are included.
-2. Review hosting/provider telemetry defaults before release.
-3. Reconcile the approved policy with the official hackathon programme and supplied project specification.
-4. Align the PRD, requirements matrix, acceptance criteria and test strategy with the approved decisions.
+The following items remain before the PRD can be marked READY:
+1. Obtain explicit product-owner approval of the revised PRD and measurable success criteria.
+2. Review hosting/provider telemetry defaults before public demo as a downstream privacy/release control.
+3. In Phase 2, complete the requirements traceability matrix; in Phase 6, approve the test strategy and record actual test evidence.
 
 The 30-day freshness threshold, page-memory-only tracker persistence, and status-transition model are approved policy decisions. This does not authorise a claim that features are implemented or tested. Implementation should begin only through the normal SSDLC gate after the PRD, requirements matrix, acceptance criteria and test strategy are aligned and reviewed.

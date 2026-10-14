@@ -1,6 +1,6 @@
 # Funding and Tracker Policy Selections — Review Record
 
-- **Status:** Three policy selections approved by product owner; implementation and PRD alignment pending
+- **Status:** Policy decisions approved; this review is updated on the Phase 1 alignment branch. PRD alignment is proposed here; owner approval of the revised PRD remains pending
 - **Date:** 2026-10-14
 - **Related policy:** [Funding, Application Tracking and Privacy Policy](FUNDING-TRACKER-PRIVACY-POLICY.md)
 - **Related PR:** [PR #10](https://github.com/s1xte3n/studypath-sa/pull/10) added the policy baseline and is already merged. This review record is separate; it does not approve implementation or change that merge.
@@ -14,7 +14,7 @@
 | Tracker persistence | Page memory only. No server/database, localStorage, sessionStorage, cookies, account, or cloud sync. Reload/close may discard entries. | Approved by product owner |
 | Tracker transitions | Use the transition table in `FUNDING-TRACKER-PRIVACY-POLICY.md`, including terminal WITHDRAWN and explicit correction/removal behaviour. | Approved by product owner |
 
-The product owner has approved these three policy decisions. They may now be incorporated into the PRD and requirements matrix. This is not proof of implementation, test completion, deployment, or release readiness.
+The product owner approved these three policy decisions. The PRD and acceptance criteria are being aligned to page-memory-only tracker behavior. This is not proof of implementation, test completion, deployment, or release readiness.
 
 ## 2. Impact assessment
 
@@ -70,11 +70,11 @@ No tests were run as part of this review record. These are proposed acceptance t
 
 **PRD gate remains BLOCKED pending documentation alignment and resolution of remaining items.** The three selections below are approved, but the PRD, requirements matrix, acceptance criteria and test strategy must now reflect them before the gate can be reconsidered.
 
-Remaining review items include:
-1. Decide whether any predefined next-action options are included.
-2. Review hosting/provider telemetry defaults and ensure no learner-specific values are emitted.
-3. Reconcile the approved rules with the supplied StudyPath SA specification and official hackathon programme.
-4. Update the PRD, requirements matrix, acceptance criteria and test strategy with the approved decisions.
+Remaining review items before `PRD READY` can be considered:
+1. Obtain explicit product-owner approval of the revised PRD and measurable success criteria.
+2. Review hosting/provider telemetry defaults before public demo and ensure no learner-specific values are emitted; this remains a downstream privacy/release control, not a reason to collect or persist learner data in the PRD.
+3. During Phase 2, create/approve the requirements traceability matrix and map each requirement to acceptance criteria, UI/API contract, test ID, implementation, CI result and release evidence.
+4. During Phase 6 and release planning, align the test strategy and record actual test results; no tests are claimed as run by this documentation update.
 
 ## 4. Traceability to carry forward
 
@@ -84,4 +84,4 @@ Remaining review items include:
 | Tracker transitions | Exact states, allowed transitions, correction/removal and reset | Positive/negative transition tests and reset/reload tests | Reviewed client implementation and CI results |
 | Anonymous-first/privacy | Permitted inputs, no persistence, no sensitive telemetry, disclosure | Storage inspection, telemetry/log review, accessibility and synthetic-data checks | Security/privacy review and release smoke-test evidence |
 
-**Current state:** the three policy decisions are owner-approved and recorded; PRD/requirements alignment is pending; not implemented, not tested, and not deployed.
+**Current state:** the three policy decisions are owner-approved and recorded. The PRD/acceptance-criteria alignment is proposed on this branch and still requires owner review. Features are not implemented, tested or deployed.

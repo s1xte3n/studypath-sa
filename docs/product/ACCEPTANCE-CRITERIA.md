@@ -1,6 +1,6 @@
 # StudyPath SA — MVP Acceptance Criteria
 
-**Status:** Draft; criteria are candidate test oracles, not evidence that implementation or tests exist. OR-002–OR-018 decisions are recorded; OR-016 tracker persistence remains blocked by the OR-006 compatibility/privacy gate. Actual catalogue/relationship records, implementation, test execution and verification evidence remain outstanding.  
+**Status:** Draft; criteria are candidate test oracles, not evidence that implementation or tests exist. Approved decisions are reflected where applicable, including page-memory-only tracker behavior and bounded official next steps. Actual catalogue/relationship records, implementation, test execution and verification evidence remain outstanding.  
 **Convention:** Each AC has a unique ID and maps to one PRD requirement. These are product acceptance criteria, not evidence that implementation or tests exist.
 
 ## REQ-EXP-001 — Anonymous pathway input
@@ -77,6 +77,7 @@
 - **AC-DET-004:** Each official next-step link resolves to the URL recorded for the corresponding source record and has a meaningful accessible label.
 - **AC-DET-005:** An unknown pathway identifier produces a clear not-found state and does not expose unrelated catalogue information.
 - **AC-DET-006:** Details and results clearly state that the institution/provider makes the final admission decision.
+- **AC-DET-007:** Next-step content is limited to official source links and neutral, source-backed guidance to verify requirements or continue with the institution/provider; no personalised action planner, predefined next-action taxonomy, application submission or unsupported deadline is implied.
 
 ## REQ-PRV-001 — Privacy-minimising anonymous exploration
 
@@ -164,7 +165,7 @@ These criteria record future semantics approved under OR-017 and OR-018. They do
 - The approved mark range/precision, subject normalization, alias-only lookup, duplicate policy and unsupported-subject behavior are recorded under OR-003; the concrete supported subject vocabulary and aliases must be maintained explicitly in the catalogue.
 - OR-004 eligibility precedence, OR-005 admission-cycle/source-freshness, OR-006 privacy/telemetry and OR-007 eligibility meaning/discovery contracts are approved; catalogue records, completeness gates, UI explanations and release checks still require implementation and evidence.
 - OR-015 funding rules are approved; the 3–5 official-source records, curation evidence and implementation remain outstanding.
-- OR-016 lifecycle, transition and field rules are approved; tracker-only browser-local persistence remains blocked pending OR-006-compatible change control and privacy/security review. Until then, implement session-memory-only behavior.
+- OR-016 lifecycle, transition, field and page-memory-only persistence rules are approved. Persistent tracker storage is excluded from the initial MVP.
 - OR-017 cost-planner semantics and OR-018 future AI/document safeguards are recorded for later scope; neither feature is part of initial MVP acceptance.
 - OR-008–OR-014 decisions are owner-approved; actual catalogue completeness, relationship evidence, accessibility conformance, performance measurements, golden-set results and usability evidence remain to be verified.
 - OR-006 policy is approved; implementation evidence for reset/temporary-data lifecycle, storage/network inspection and exact hosting telemetry/retention review is required before public demo.
