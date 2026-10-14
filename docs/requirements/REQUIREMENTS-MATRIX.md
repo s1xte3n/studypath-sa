@@ -84,3 +84,8 @@ Remaining gate evidence: source-level review of every 2027 table and footnote; c
 ## Subject contract test evidence update — 2026-10-14
 
 The project owner supplied terminal output for `node --test tests/contracts/subject-catalogue-v1.test.mjs`: **12 tests passed, 0 failed** (T-SUB-001–T-SUB-012). Record this as owner-supplied execution evidence. It confirms the contract test file's reported behavior only; it does not establish production application integration, CI execution, privacy/runtime compliance, or eligibility-rule correctness. The owner-approved bounded subject contract is recorded in `docs/product/SUBJECT-CATALOGUE-V1-APPROVAL.md`. GAP-002 remains open for runtime/privacy verification; GAP-001 and the overall `REQUIREMENTS READY` gate remain open/not passed.
+
+
+## UJ 2027 curator approval traceability update — 2026-10-14
+
+The project owner approved all seven bounded UJ 2027 NSC pilot candidate rules and shared interpretation proposals. Evidence: `docs/product/UJ-2027-CURATOR-REVIEW-PACK.md` approval register and `docs/product/PROGRAMME-CATALOGUE-REGISTER.md`. This satisfies the owner/curator-decision portion of GAP-001, but not the full closure criteria. Source-specific unresolved semantics must remain `UNKNOWN`; the 12 worksheet cases are not approved executable oracles, no evaluator implementation has been verified, and the required project-wide 20+ synthetic golden set with zero false-positive `ELIGIBLE` outcomes remains unexecuted. GAP-001 remains open; GAP-002/003/004/005/008 and implementation/CI evidence remain open. `REQUIREMENTS READY` remains NOT PASSED. No application code or tests were changed or run.
