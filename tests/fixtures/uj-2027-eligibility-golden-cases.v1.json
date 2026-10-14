@@ -25,7 +25,41 @@
       "expectedReasonCodes": [
         "ALL_VERIFIED_REQUIREMENTS_MET"
       ],
-      "status": "DRAFT_ORACLE_NOT_EXECUTED"
+      "status": "DRAFT_ORACLE_NOT_EXECUTED",
+      "programmeId": "UJ-2027-BSC-IT",
+      "catalogueStatus": "ASSUMED_SIGNED_OFF_FOR_TEST_ONLY",
+      "admissionCycle": "2027",
+      "learnerInput": {
+        "studyStage": "MATRIC_FINAL",
+        "transcriptComplete": true,
+        "subjects": [
+          {
+            "subjectId": "ENGLISH_FIRST_ADDITIONAL_LANGUAGE",
+            "percent": 65
+          },
+          {
+            "subjectId": "MATHEMATICS",
+            "percent": 75
+          },
+          {
+            "subjectId": "ACCOUNTING",
+            "percent": 65
+          },
+          {
+            "subjectId": "HISTORY",
+            "percent": 65
+          },
+          {
+            "subjectId": "GEOGRAPHY",
+            "percent": 65
+          },
+          {
+            "subjectId": "LIFE_SCIENCES",
+            "percent": 55
+          }
+        ]
+      },
+      "inputIsSynthetic": true
     },
     {
       "id": "UJ-GOLD-002",
@@ -35,7 +69,41 @@
       "expectedReasonCodes": [
         "APS_BELOW_MINIMUM"
       ],
-      "status": "DRAFT_ORACLE_NOT_EXECUTED"
+      "status": "DRAFT_ORACLE_NOT_EXECUTED",
+      "programmeId": "UJ-2027-BSC-IT",
+      "catalogueStatus": "ASSUMED_SIGNED_OFF_FOR_TEST_ONLY",
+      "admissionCycle": "2027",
+      "learnerInput": {
+        "studyStage": "MATRIC_FINAL",
+        "transcriptComplete": true,
+        "subjects": [
+          {
+            "subjectId": "ENGLISH_FIRST_ADDITIONAL_LANGUAGE",
+            "percent": 65
+          },
+          {
+            "subjectId": "MATHEMATICS",
+            "percent": 75
+          },
+          {
+            "subjectId": "ACCOUNTING",
+            "percent": 65
+          },
+          {
+            "subjectId": "HISTORY",
+            "percent": 65
+          },
+          {
+            "subjectId": "GEOGRAPHY",
+            "percent": 55
+          },
+          {
+            "subjectId": "LIFE_SCIENCES",
+            "percent": 55
+          }
+        ]
+      },
+      "inputIsSynthetic": true
     },
     {
       "id": "UJ-GOLD-003",
@@ -45,7 +113,41 @@
       "expectedReasonCodes": [
         "ALL_VERIFIED_REQUIREMENTS_MET"
       ],
-      "status": "DRAFT_ORACLE_NOT_EXECUTED"
+      "status": "DRAFT_ORACLE_NOT_EXECUTED",
+      "programmeId": "UJ-2027-BSC-IT",
+      "catalogueStatus": "ASSUMED_SIGNED_OFF_FOR_TEST_ONLY",
+      "admissionCycle": "2027",
+      "learnerInput": {
+        "studyStage": "MATRIC_FINAL",
+        "transcriptComplete": true,
+        "subjects": [
+          {
+            "subjectId": "ENGLISH_FIRST_ADDITIONAL_LANGUAGE",
+            "percent": 65
+          },
+          {
+            "subjectId": "MATHEMATICS",
+            "percent": 75
+          },
+          {
+            "subjectId": "ACCOUNTING",
+            "percent": 65
+          },
+          {
+            "subjectId": "HISTORY",
+            "percent": 65
+          },
+          {
+            "subjectId": "GEOGRAPHY",
+            "percent": 65
+          },
+          {
+            "subjectId": "LIFE_SCIENCES",
+            "percent": 55
+          }
+        ]
+      },
+      "inputIsSynthetic": true
     },
     {
       "id": "UJ-GOLD-004",
@@ -55,7 +157,41 @@
       "expectedReasonCodes": [
         "ENGLISH_BELOW_MINIMUM"
       ],
-      "status": "DRAFT_ORACLE_NOT_EXECUTED"
+      "status": "DRAFT_ORACLE_NOT_EXECUTED",
+      "programmeId": "UJ-2027-BSC-IT",
+      "catalogueStatus": "ASSUMED_SIGNED_OFF_FOR_TEST_ONLY",
+      "admissionCycle": "2027",
+      "learnerInput": {
+        "studyStage": "MATRIC_FINAL",
+        "transcriptComplete": true,
+        "subjects": [
+          {
+            "subjectId": "ENGLISH_FIRST_ADDITIONAL_LANGUAGE",
+            "percent": 55
+          },
+          {
+            "subjectId": "MATHEMATICS",
+            "percent": 85
+          },
+          {
+            "subjectId": "ACCOUNTING",
+            "percent": 75
+          },
+          {
+            "subjectId": "HISTORY",
+            "percent": 75
+          },
+          {
+            "subjectId": "GEOGRAPHY",
+            "percent": 75
+          },
+          {
+            "subjectId": "LIFE_SCIENCES",
+            "percent": 75
+          }
+        ]
+      },
+      "inputIsSynthetic": true
     },
     {
       "id": "UJ-GOLD-005",
@@ -65,7 +201,41 @@
       "expectedReasonCodes": [
         "MATHEMATICS_BELOW_MINIMUM"
       ],
-      "status": "DRAFT_ORACLE_NOT_EXECUTED"
+      "status": "DRAFT_ORACLE_NOT_EXECUTED",
+      "programmeId": "UJ-2027-BSC-IT",
+      "catalogueStatus": "ASSUMED_SIGNED_OFF_FOR_TEST_ONLY",
+      "admissionCycle": "2027",
+      "learnerInput": {
+        "studyStage": "MATRIC_FINAL",
+        "transcriptComplete": true,
+        "subjects": [
+          {
+            "subjectId": "ENGLISH_FIRST_ADDITIONAL_LANGUAGE",
+            "percent": 75
+          },
+          {
+            "subjectId": "MATHEMATICS",
+            "percent": 65
+          },
+          {
+            "subjectId": "ACCOUNTING",
+            "percent": 75
+          },
+          {
+            "subjectId": "HISTORY",
+            "percent": 75
+          },
+          {
+            "subjectId": "GEOGRAPHY",
+            "percent": 75
+          },
+          {
+            "subjectId": "LIFE_SCIENCES",
+            "percent": 75
+          }
+        ]
+      },
+      "inputIsSynthetic": true
     },
     {
       "id": "UJ-GOLD-006",
@@ -75,7 +245,37 @@
       "expectedReasonCodes": [
         "REQUIRED_INPUT_MISSING"
       ],
-      "status": "DRAFT_ORACLE_NOT_EXECUTED"
+      "status": "DRAFT_ORACLE_NOT_EXECUTED",
+      "programmeId": "UJ-2027-BSC-IT",
+      "catalogueStatus": "ASSUMED_SIGNED_OFF_FOR_TEST_ONLY",
+      "admissionCycle": "2027",
+      "learnerInput": {
+        "studyStage": "MATRIC_FINAL",
+        "transcriptComplete": false,
+        "subjects": [
+          {
+            "subjectId": "MATHEMATICS",
+            "percent": 75
+          },
+          {
+            "subjectId": "ACCOUNTING",
+            "percent": 65
+          },
+          {
+            "subjectId": "HISTORY",
+            "percent": 65
+          },
+          {
+            "subjectId": "GEOGRAPHY",
+            "percent": 65
+          },
+          {
+            "subjectId": "LIFE_SCIENCES",
+            "percent": 55
+          }
+        ]
+      },
+      "inputIsSynthetic": true
     },
     {
       "id": "UJ-GOLD-007",
@@ -85,7 +285,41 @@
       "expectedReasonCodes": [
         "SUBJECT_MAPPING_UNRESOLVED"
       ],
-      "status": "DRAFT_ORACLE_NOT_EXECUTED"
+      "status": "DRAFT_ORACLE_NOT_EXECUTED",
+      "programmeId": "UJ-2027-BSC-IT",
+      "catalogueStatus": "ASSUMED_SIGNED_OFF_FOR_TEST_ONLY",
+      "admissionCycle": "2027",
+      "learnerInput": {
+        "studyStage": "MATRIC_FINAL",
+        "transcriptComplete": true,
+        "subjects": [
+          {
+            "subjectId": "ENGLISH_UNMAPPED_STREAM",
+            "percent": 65
+          },
+          {
+            "subjectId": "MATHEMATICS",
+            "percent": 75
+          },
+          {
+            "subjectId": "ACCOUNTING",
+            "percent": 65
+          },
+          {
+            "subjectId": "HISTORY",
+            "percent": 65
+          },
+          {
+            "subjectId": "GEOGRAPHY",
+            "percent": 65
+          },
+          {
+            "subjectId": "LIFE_SCIENCES",
+            "percent": 55
+          }
+        ]
+      },
+      "inputIsSynthetic": true
     },
     {
       "id": "UJ-GOLD-008",
@@ -95,7 +329,41 @@
       "expectedReasonCodes": [
         "CATALOGUE_RECORD_NOT_APPROVED"
       ],
-      "status": "DRAFT_ORACLE_NOT_EXECUTED"
+      "status": "DRAFT_ORACLE_NOT_EXECUTED",
+      "programmeId": "UJ-2027-BSC-IT",
+      "catalogueStatus": "DRAFT",
+      "admissionCycle": "2027",
+      "learnerInput": {
+        "studyStage": "MATRIC_FINAL",
+        "transcriptComplete": true,
+        "subjects": [
+          {
+            "subjectId": "ENGLISH_FIRST_ADDITIONAL_LANGUAGE",
+            "percent": 65
+          },
+          {
+            "subjectId": "MATHEMATICS",
+            "percent": 75
+          },
+          {
+            "subjectId": "ACCOUNTING",
+            "percent": 65
+          },
+          {
+            "subjectId": "HISTORY",
+            "percent": 65
+          },
+          {
+            "subjectId": "GEOGRAPHY",
+            "percent": 65
+          },
+          {
+            "subjectId": "LIFE_SCIENCES",
+            "percent": 55
+          }
+        ]
+      },
+      "inputIsSynthetic": true
     },
     {
       "id": "UJ-GOLD-009",
@@ -105,7 +373,41 @@
       "expectedReasonCodes": [
         "ADMISSION_CYCLE_UNVERIFIED"
       ],
-      "status": "DRAFT_ORACLE_NOT_EXECUTED"
+      "status": "DRAFT_ORACLE_NOT_EXECUTED",
+      "programmeId": "UJ-2027-BSC-IT",
+      "catalogueStatus": "DRAFT",
+      "admissionCycle": "UNVERIFIED",
+      "learnerInput": {
+        "studyStage": "MATRIC_FINAL",
+        "transcriptComplete": true,
+        "subjects": [
+          {
+            "subjectId": "ENGLISH_FIRST_ADDITIONAL_LANGUAGE",
+            "percent": 65
+          },
+          {
+            "subjectId": "MATHEMATICS",
+            "percent": 75
+          },
+          {
+            "subjectId": "ACCOUNTING",
+            "percent": 65
+          },
+          {
+            "subjectId": "HISTORY",
+            "percent": 65
+          },
+          {
+            "subjectId": "GEOGRAPHY",
+            "percent": 65
+          },
+          {
+            "subjectId": "LIFE_SCIENCES",
+            "percent": 55
+          }
+        ]
+      },
+      "inputIsSynthetic": true
     },
     {
       "id": "UJ-GOLD-010",
@@ -115,7 +417,41 @@
       "expectedReasonCodes": [
         "MATERIAL_SOURCE_CONFLICT"
       ],
-      "status": "DRAFT_ORACLE_NOT_EXECUTED"
+      "status": "DRAFT_ORACLE_NOT_EXECUTED",
+      "programmeId": "UJ-2027-BSC-IT",
+      "catalogueStatus": "SOURCE_CONFLICT",
+      "admissionCycle": "2027",
+      "learnerInput": {
+        "studyStage": "MATRIC_FINAL",
+        "transcriptComplete": true,
+        "subjects": [
+          {
+            "subjectId": "ENGLISH_FIRST_ADDITIONAL_LANGUAGE",
+            "percent": 65
+          },
+          {
+            "subjectId": "MATHEMATICS",
+            "percent": 75
+          },
+          {
+            "subjectId": "ACCOUNTING",
+            "percent": 65
+          },
+          {
+            "subjectId": "HISTORY",
+            "percent": 65
+          },
+          {
+            "subjectId": "GEOGRAPHY",
+            "percent": 65
+          },
+          {
+            "subjectId": "LIFE_SCIENCES",
+            "percent": 55
+          }
+        ]
+      },
+      "inputIsSynthetic": true
     },
     {
       "id": "UJ-GOLD-011",
@@ -125,7 +461,41 @@
       "expectedReasonCodes": [
         "SOURCE_NOT_CURRENTLY_VERIFIED"
       ],
-      "status": "DRAFT_ORACLE_NOT_EXECUTED"
+      "status": "DRAFT_ORACLE_NOT_EXECUTED",
+      "programmeId": "UJ-2027-BSC-IT",
+      "catalogueStatus": "SOURCE_STALE",
+      "admissionCycle": "2027",
+      "learnerInput": {
+        "studyStage": "MATRIC_FINAL",
+        "transcriptComplete": true,
+        "subjects": [
+          {
+            "subjectId": "ENGLISH_FIRST_ADDITIONAL_LANGUAGE",
+            "percent": 65
+          },
+          {
+            "subjectId": "MATHEMATICS",
+            "percent": 75
+          },
+          {
+            "subjectId": "ACCOUNTING",
+            "percent": 65
+          },
+          {
+            "subjectId": "HISTORY",
+            "percent": 65
+          },
+          {
+            "subjectId": "GEOGRAPHY",
+            "percent": 65
+          },
+          {
+            "subjectId": "LIFE_SCIENCES",
+            "percent": 55
+          }
+        ]
+      },
+      "inputIsSynthetic": true
     },
     {
       "id": "UJ-GOLD-012",
@@ -135,7 +505,41 @@
       "expectedReasonCodes": [
         "ALL_VERIFIED_REQUIREMENTS_MET"
       ],
-      "status": "DRAFT_ORACLE_NOT_EXECUTED"
+      "status": "DRAFT_ORACLE_NOT_EXECUTED",
+      "programmeId": "UJ-2027-DIP-BIT",
+      "catalogueStatus": "ASSUMED_SIGNED_OFF_FOR_TEST_ONLY",
+      "admissionCycle": "2027",
+      "learnerInput": {
+        "studyStage": "MATRIC_FINAL",
+        "transcriptComplete": true,
+        "subjects": [
+          {
+            "subjectId": "ENGLISH_FIRST_ADDITIONAL_LANGUAGE",
+            "percent": 55
+          },
+          {
+            "subjectId": "MATHEMATICS",
+            "percent": 45
+          },
+          {
+            "subjectId": "ACCOUNTING",
+            "percent": 45
+          },
+          {
+            "subjectId": "HISTORY",
+            "percent": 45
+          },
+          {
+            "subjectId": "GEOGRAPHY",
+            "percent": 45
+          },
+          {
+            "subjectId": "LIFE_SCIENCES",
+            "percent": 45
+          }
+        ]
+      },
+      "inputIsSynthetic": true
     },
     {
       "id": "UJ-GOLD-013",
@@ -145,7 +549,41 @@
       "expectedReasonCodes": [
         "APS_BELOW_MINIMUM"
       ],
-      "status": "DRAFT_ORACLE_NOT_EXECUTED"
+      "status": "DRAFT_ORACLE_NOT_EXECUTED",
+      "programmeId": "UJ-2027-DIP-BIT",
+      "catalogueStatus": "ASSUMED_SIGNED_OFF_FOR_TEST_ONLY",
+      "admissionCycle": "2027",
+      "learnerInput": {
+        "studyStage": "MATRIC_FINAL",
+        "transcriptComplete": true,
+        "subjects": [
+          {
+            "subjectId": "ENGLISH_FIRST_ADDITIONAL_LANGUAGE",
+            "percent": 55
+          },
+          {
+            "subjectId": "MATHEMATICS",
+            "percent": 45
+          },
+          {
+            "subjectId": "ACCOUNTING",
+            "percent": 45
+          },
+          {
+            "subjectId": "HISTORY",
+            "percent": 45
+          },
+          {
+            "subjectId": "GEOGRAPHY",
+            "percent": 35
+          },
+          {
+            "subjectId": "LIFE_SCIENCES",
+            "percent": 35
+          }
+        ]
+      },
+      "inputIsSynthetic": true
     },
     {
       "id": "UJ-GOLD-014",
@@ -155,7 +593,41 @@
       "expectedReasonCodes": [
         "ALL_VERIFIED_REQUIREMENTS_MET"
       ],
-      "status": "DRAFT_ORACLE_NOT_EXECUTED"
+      "status": "DRAFT_ORACLE_NOT_EXECUTED",
+      "programmeId": "UJ-2027-DIP-BIT",
+      "catalogueStatus": "ASSUMED_SIGNED_OFF_FOR_TEST_ONLY",
+      "admissionCycle": "2027",
+      "learnerInput": {
+        "studyStage": "MATRIC_FINAL",
+        "transcriptComplete": true,
+        "subjects": [
+          {
+            "subjectId": "ENGLISH_FIRST_ADDITIONAL_LANGUAGE",
+            "percent": 55
+          },
+          {
+            "subjectId": "MATHEMATICAL_LITERACY",
+            "percent": 75
+          },
+          {
+            "subjectId": "ACCOUNTING",
+            "percent": 45
+          },
+          {
+            "subjectId": "HISTORY",
+            "percent": 45
+          },
+          {
+            "subjectId": "GEOGRAPHY",
+            "percent": 35
+          },
+          {
+            "subjectId": "LIFE_SCIENCES",
+            "percent": 35
+          }
+        ]
+      },
+      "inputIsSynthetic": true
     },
     {
       "id": "UJ-GOLD-015",
@@ -165,7 +637,41 @@
       "expectedReasonCodes": [
         "MATHEMATICAL_LITERACY_BELOW_MINIMUM"
       ],
-      "status": "DRAFT_ORACLE_NOT_EXECUTED"
+      "status": "DRAFT_ORACLE_NOT_EXECUTED",
+      "programmeId": "UJ-2027-DIP-BIT",
+      "catalogueStatus": "ASSUMED_SIGNED_OFF_FOR_TEST_ONLY",
+      "admissionCycle": "2027",
+      "learnerInput": {
+        "studyStage": "MATRIC_FINAL",
+        "transcriptComplete": true,
+        "subjects": [
+          {
+            "subjectId": "ENGLISH_FIRST_ADDITIONAL_LANGUAGE",
+            "percent": 65
+          },
+          {
+            "subjectId": "MATHEMATICAL_LITERACY",
+            "percent": 65
+          },
+          {
+            "subjectId": "ACCOUNTING",
+            "percent": 65
+          },
+          {
+            "subjectId": "HISTORY",
+            "percent": 65
+          },
+          {
+            "subjectId": "GEOGRAPHY",
+            "percent": 65
+          },
+          {
+            "subjectId": "LIFE_SCIENCES",
+            "percent": 65
+          }
+        ]
+      },
+      "inputIsSynthetic": true
     },
     {
       "id": "UJ-GOLD-016",
@@ -175,7 +681,41 @@
       "expectedReasonCodes": [
         "ALTERNATIVE_RULE_UNRESOLVED"
       ],
-      "status": "DRAFT_ORACLE_NOT_EXECUTED"
+      "status": "DRAFT_ORACLE_NOT_EXECUTED",
+      "programmeId": "UJ-2027-DIP-BIT",
+      "catalogueStatus": "DRAFT_ALTERNATIVE_RULE_UNRESOLVED",
+      "admissionCycle": "2027",
+      "learnerInput": {
+        "studyStage": "MATRIC_FINAL",
+        "transcriptComplete": true,
+        "subjects": [
+          {
+            "subjectId": "ENGLISH_FIRST_ADDITIONAL_LANGUAGE",
+            "percent": 65
+          },
+          {
+            "subjectId": "MATHEMATICS",
+            "percent": 65
+          },
+          {
+            "subjectId": "MATHEMATICAL_LITERACY",
+            "percent": 75
+          },
+          {
+            "subjectId": "ACCOUNTING",
+            "percent": 65
+          },
+          {
+            "subjectId": "HISTORY",
+            "percent": 65
+          },
+          {
+            "subjectId": "GEOGRAPHY",
+            "percent": 65
+          }
+        ]
+      },
+      "inputIsSynthetic": true
     },
     {
       "id": "UJ-GOLD-017",
@@ -185,7 +725,41 @@
       "expectedReasonCodes": [
         "MATHEMATICAL_LITERACY_NOT_ACCEPTED"
       ],
-      "status": "DRAFT_ORACLE_NOT_EXECUTED"
+      "status": "DRAFT_ORACLE_NOT_EXECUTED",
+      "programmeId": "UJ-2027-BCOM-IS",
+      "catalogueStatus": "ASSUMED_SIGNED_OFF_FOR_TEST_ONLY",
+      "admissionCycle": "2027",
+      "learnerInput": {
+        "studyStage": "MATRIC_FINAL",
+        "transcriptComplete": true,
+        "subjects": [
+          {
+            "subjectId": "ENGLISH_FIRST_ADDITIONAL_LANGUAGE",
+            "percent": 55
+          },
+          {
+            "subjectId": "MATHEMATICAL_LITERACY",
+            "percent": 75
+          },
+          {
+            "subjectId": "ACCOUNTING",
+            "percent": 65
+          },
+          {
+            "subjectId": "HISTORY",
+            "percent": 65
+          },
+          {
+            "subjectId": "GEOGRAPHY",
+            "percent": 65
+          },
+          {
+            "subjectId": "LIFE_SCIENCES",
+            "percent": 65
+          }
+        ]
+      },
+      "inputIsSynthetic": true
     },
     {
       "id": "UJ-GOLD-018",
@@ -195,7 +769,41 @@
       "expectedReasonCodes": [
         "REQUIRED_SUBJECT_NOT_ACCEPTED"
       ],
-      "status": "DRAFT_ORACLE_NOT_EXECUTED"
+      "status": "DRAFT_ORACLE_NOT_EXECUTED",
+      "programmeId": "UJ-2027-BSC-IT",
+      "catalogueStatus": "ASSUMED_SIGNED_OFF_FOR_TEST_ONLY",
+      "admissionCycle": "2027",
+      "learnerInput": {
+        "studyStage": "MATRIC_FINAL",
+        "transcriptComplete": true,
+        "subjects": [
+          {
+            "subjectId": "ENGLISH_FIRST_ADDITIONAL_LANGUAGE",
+            "percent": 65
+          },
+          {
+            "subjectId": "TECHNICAL_MATHEMATICS",
+            "percent": 75
+          },
+          {
+            "subjectId": "ACCOUNTING",
+            "percent": 85
+          },
+          {
+            "subjectId": "HISTORY",
+            "percent": 85
+          },
+          {
+            "subjectId": "GEOGRAPHY",
+            "percent": 85
+          },
+          {
+            "subjectId": "LIFE_SCIENCES",
+            "percent": 85
+          }
+        ]
+      },
+      "inputIsSynthetic": true
     },
     {
       "id": "UJ-GOLD-019",
@@ -205,7 +813,45 @@
       "expectedReasonCodes": [
         "APS_BELOW_MINIMUM"
       ],
-      "status": "DRAFT_ORACLE_NOT_EXECUTED"
+      "status": "DRAFT_ORACLE_NOT_EXECUTED",
+      "programmeId": "UJ-2027-BSC-IT",
+      "catalogueStatus": "ASSUMED_SIGNED_OFF_FOR_TEST_ONLY",
+      "admissionCycle": "2027",
+      "learnerInput": {
+        "studyStage": "MATRIC_FINAL",
+        "transcriptComplete": true,
+        "subjects": [
+          {
+            "subjectId": "ENGLISH_FIRST_ADDITIONAL_LANGUAGE",
+            "percent": 65
+          },
+          {
+            "subjectId": "MATHEMATICS",
+            "percent": 75
+          },
+          {
+            "subjectId": "ACCOUNTING",
+            "percent": 65
+          },
+          {
+            "subjectId": "HISTORY",
+            "percent": 65
+          },
+          {
+            "subjectId": "GEOGRAPHY",
+            "percent": 55
+          },
+          {
+            "subjectId": "LIFE_SCIENCES",
+            "percent": 55
+          },
+          {
+            "subjectId": "LIFE_ORIENTATION",
+            "percent": 95
+          }
+        ]
+      },
+      "inputIsSynthetic": true
     },
     {
       "id": "UJ-GOLD-020",
@@ -215,27 +861,141 @@
       "expectedReasonCodes": [
         "ALL_VERIFIED_REQUIREMENTS_MET"
       ],
-      "status": "DRAFT_ORACLE_NOT_EXECUTED"
+      "status": "DRAFT_ORACLE_NOT_EXECUTED",
+      "programmeId": "UJ-2027-BSC-IT",
+      "catalogueStatus": "ASSUMED_SIGNED_OFF_FOR_TEST_ONLY",
+      "admissionCycle": "2027",
+      "learnerInput": {
+        "studyStage": "MATRIC_FINAL",
+        "transcriptComplete": true,
+        "subjects": [
+          {
+            "subjectId": "ENGLISH_FIRST_ADDITIONAL_LANGUAGE",
+            "percent": 65
+          },
+          {
+            "subjectId": "MATHEMATICS",
+            "percent": 75
+          },
+          {
+            "subjectId": "ACCOUNTING",
+            "percent": 65
+          },
+          {
+            "subjectId": "HISTORY",
+            "percent": 65
+          },
+          {
+            "subjectId": "GEOGRAPHY",
+            "percent": 65
+          },
+          {
+            "subjectId": "LIFE_SCIENCES",
+            "percent": 55
+          },
+          {
+            "subjectId": "ECONOMICS",
+            "percent": 25
+          }
+        ]
+      },
+      "inputIsSynthetic": true
     },
     {
       "id": "UJ-GOLD-021",
       "scenario": "Duplicate canonical subject",
       "precondition": "Two entries resolve to the same canonical subject and would otherwise be double-counted",
-      "expectedState": "UNKNOWN",
+      "expectedState": "INPUT_REJECTED",
       "expectedReasonCodes": [
         "DUPLICATE_SUBJECT_INPUT"
       ],
-      "status": "DRAFT_ORACLE_NOT_EXECUTED"
+      "status": "DRAFT_ORACLE_NOT_EXECUTED",
+      "programmeId": "UJ-2027-BSC-IT",
+      "catalogueStatus": "ASSUMED_SIGNED_OFF_FOR_TEST_ONLY",
+      "admissionCycle": "2027",
+      "learnerInput": {
+        "studyStage": "MATRIC_FINAL",
+        "transcriptComplete": true,
+        "subjects": [
+          {
+            "subjectId": "ENGLISH_FIRST_ADDITIONAL_LANGUAGE",
+            "percent": 65
+          },
+          {
+            "subjectId": "MATHEMATICS",
+            "percent": 75
+          },
+          {
+            "subjectId": "ACCOUNTING",
+            "percent": 65
+          },
+          {
+            "subjectId": "HISTORY",
+            "percent": 65
+          },
+          {
+            "subjectId": "GEOGRAPHY",
+            "percent": 65
+          },
+          {
+            "subjectId": "LIFE_SCIENCES",
+            "percent": 55
+          },
+          {
+            "subjectId": " MATHEMATICS ",
+            "percent": 75
+          }
+        ]
+      },
+      "inputIsSynthetic": true
     },
     {
       "id": "UJ-GOLD-022",
       "scenario": "Invalid mark",
       "precondition": "A mark is decimal, malformed, below 0 or above 100",
-      "expectedState": "UNKNOWN",
+      "expectedState": "INPUT_REJECTED",
       "expectedReasonCodes": [
         "INVALID_MARK_INPUT"
       ],
-      "status": "DRAFT_ORACLE_NOT_EXECUTED"
+      "status": "DRAFT_ORACLE_NOT_EXECUTED",
+      "programmeId": "UJ-2027-BSC-IT",
+      "catalogueStatus": "ASSUMED_SIGNED_OFF_FOR_TEST_ONLY",
+      "admissionCycle": "2027",
+      "learnerInput": {
+        "studyStage": "MATRIC_FINAL",
+        "transcriptComplete": true,
+        "subjects": [
+          {
+            "subjectId": "ENGLISH_FIRST_ADDITIONAL_LANGUAGE",
+            "percent": 65
+          },
+          {
+            "subjectId": "MATHEMATICS",
+            "percent": 75
+          },
+          {
+            "subjectId": "ACCOUNTING",
+            "percent": 65
+          },
+          {
+            "subjectId": "HISTORY",
+            "percent": 65
+          },
+          {
+            "subjectId": "GEOGRAPHY",
+            "percent": 65
+          },
+          {
+            "subjectId": "LIFE_SCIENCES",
+            "percent": 55
+          },
+          {
+            "subjectId": "ECONOMICS",
+            "percent": 65
+          }
+        ]
+      },
+      "inputIsSynthetic": true
     },
     {
       "id": "UJ-GOLD-023",
@@ -246,7 +1006,41 @@
         "DETERMINISTIC_RESULT (test assertion",
         "not learner-facing reason)"
       ],
-      "status": "DRAFT_ORACLE_NOT_EXECUTED"
+      "status": "DRAFT_ORACLE_NOT_EXECUTED",
+      "programmeId": "UJ-2027-BSC-IT",
+      "catalogueStatus": "ASSUMED_SIGNED_OFF_FOR_TEST_ONLY",
+      "admissionCycle": "2027",
+      "learnerInput": {
+        "studyStage": "MATRIC_FINAL",
+        "transcriptComplete": true,
+        "subjects": [
+          {
+            "subjectId": "ENGLISH_FIRST_ADDITIONAL_LANGUAGE",
+            "percent": 65
+          },
+          {
+            "subjectId": "MATHEMATICS",
+            "percent": 75
+          },
+          {
+            "subjectId": "ACCOUNTING",
+            "percent": 65
+          },
+          {
+            "subjectId": "HISTORY",
+            "percent": 65
+          },
+          {
+            "subjectId": "GEOGRAPHY",
+            "percent": 65
+          },
+          {
+            "subjectId": "LIFE_SCIENCES",
+            "percent": 55
+          }
+        ]
+      },
+      "inputIsSynthetic": true
     },
     {
       "id": "UJ-GOLD-024",
@@ -256,7 +1050,41 @@
       "expectedReasonCodes": [
         "MATHEMATICS_BELOW_MINIMUM"
       ],
-      "status": "DRAFT_ORACLE_NOT_EXECUTED"
+      "status": "DRAFT_ORACLE_NOT_EXECUTED",
+      "programmeId": "UJ-2027-BSC-IT",
+      "catalogueStatus": "ASSUMED_SIGNED_OFF_FOR_TEST_ONLY",
+      "admissionCycle": "2027",
+      "learnerInput": {
+        "studyStage": "MATRIC_FINAL",
+        "transcriptComplete": true,
+        "subjects": [
+          {
+            "subjectId": "ENGLISH_FIRST_ADDITIONAL_LANGUAGE",
+            "percent": 85
+          },
+          {
+            "subjectId": "MATHEMATICS",
+            "percent": 65
+          },
+          {
+            "subjectId": "ACCOUNTING",
+            "percent": 85
+          },
+          {
+            "subjectId": "HISTORY",
+            "percent": 85
+          },
+          {
+            "subjectId": "GEOGRAPHY",
+            "percent": 85
+          },
+          {
+            "subjectId": "LIFE_SCIENCES",
+            "percent": 85
+          }
+        ]
+      },
+      "inputIsSynthetic": true
     },
     {
       "id": "UJ-GOLD-025",
@@ -266,7 +1094,41 @@
       "expectedReasonCodes": [
         "MATHEMATICS_BELOW_MINIMUM"
       ],
-      "status": "DRAFT_ORACLE_NOT_EXECUTED"
+      "status": "DRAFT_ORACLE_NOT_EXECUTED",
+      "programmeId": "UJ-2027-BSC-IT",
+      "catalogueStatus": "ASSUMED_SIGNED_OFF_FOR_TEST_ONLY",
+      "admissionCycle": "2027",
+      "learnerInput": {
+        "studyStage": "MATRIC_FINAL",
+        "transcriptComplete": false,
+        "subjects": [
+          {
+            "subjectId": "ENGLISH_FIRST_ADDITIONAL_LANGUAGE",
+            "percent": 85
+          },
+          {
+            "subjectId": "MATHEMATICS",
+            "percent": 65
+          },
+          {
+            "subjectId": "ACCOUNTING",
+            "percent": 85
+          },
+          {
+            "subjectId": "HISTORY",
+            "percent": 85
+          },
+          {
+            "subjectId": "GEOGRAPHY",
+            "percent": 85
+          },
+          {
+            "subjectId": "LIFE_SCIENCES",
+            "percent": 85
+          }
+        ]
+      },
+      "inputIsSynthetic": true
     },
     {
       "id": "UJ-GOLD-026",
@@ -276,7 +1138,41 @@
       "expectedReasonCodes": [
         "MANDATORY_RULE_UNRESOLVED"
       ],
-      "status": "DRAFT_ORACLE_NOT_EXECUTED"
+      "status": "DRAFT_ORACLE_NOT_EXECUTED",
+      "programmeId": "UJ-2027-BSC-IT",
+      "catalogueStatus": "DRAFT_MANDATORY_RULE_MISSING",
+      "admissionCycle": "2027",
+      "learnerInput": {
+        "studyStage": "MATRIC_FINAL",
+        "transcriptComplete": true,
+        "subjects": [
+          {
+            "subjectId": "ENGLISH_FIRST_ADDITIONAL_LANGUAGE",
+            "percent": 65
+          },
+          {
+            "subjectId": "MATHEMATICS",
+            "percent": 75
+          },
+          {
+            "subjectId": "ACCOUNTING",
+            "percent": 65
+          },
+          {
+            "subjectId": "HISTORY",
+            "percent": 65
+          },
+          {
+            "subjectId": "GEOGRAPHY",
+            "percent": 65
+          },
+          {
+            "subjectId": "LIFE_SCIENCES",
+            "percent": 55
+          }
+        ]
+      },
+      "inputIsSynthetic": true
     }
   ]
 }
