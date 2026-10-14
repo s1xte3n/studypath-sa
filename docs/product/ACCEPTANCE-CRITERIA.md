@@ -1,16 +1,18 @@
 # StudyPath SA — MVP Acceptance Criteria
 
-**Status:** Draft; criteria are candidate test oracles pending decisions in `OPEN-REQUIREMENTS.md`.  
+**Status:** Draft; criteria are candidate test oracles. OR-002's field contract is approved; mark/subject validation and other criteria remain subject to open decisions in `OPEN-REQUIREMENTS.md`.  
 **Convention:** Each AC has a unique ID and maps to one PRD requirement. These are product acceptance criteria, not evidence that implementation or tests exist.
 
 ## REQ-EXP-001 — Anonymous pathway input
 
 - **AC-EXP-001:** Given the explorer is available, when a learner opens it, then they can begin entering pathway inputs without creating an account or supplying a name, email, phone number or national ID.
 - **AC-EXP-002:** Given a mark outside the approved range or in an invalid format, when submitted, then the input is rejected with a field-specific explanation and no recommendation is generated from the invalid value.
-- **AC-EXP-003:** Given a required field is missing, when the learner submits, then the field is identified and the system does not silently substitute zero or another default.
+- **AC-EXP-003:** Given study stage, a subject entry, or a mark for an entered subject is missing, when the learner submits, then the missing required field is identified and the system does not silently substitute zero or another default. Career/study interests, province/intended location, and preferred study mode may be blank without blocking submission.
 - **AC-EXP-004:** Given a subject is not in the supported vocabulary, when submitted, then the learner is told the subject cannot currently be matched; the system does not infer a different subject silently.
 - **AC-EXP-005:** Given duplicate subject entries, when submitted, then the learner is asked to resolve the duplicate or the approved deterministic duplicate policy is applied; results must not double-count a subject.
-- **AC-EXP-006:** Given valid inputs, when submitted, then the current exploration can request matching and render the result or a defined recoverable error.
+- **AC-EXP-006:** Given valid inputs with study stage and at least one subject/mark pair, when submitted, then the current exploration can request matching and render the result or a defined recoverable error; funding need is not requested in this first form.
+- **AC-EXP-009:** Given a Grade 11 or Grade 12 learner, then entered marks are treated as current results and are not assumed to be final matric results.
+- **AC-EXP-010:** Given a recent matric graduate with incomplete or unavailable final results, then missing information is not inferred or replaced with zero and affected pathway screening returns UNKNOWN where the missing information prevents a reliable conclusion.
 - **AC-EXP-007:** Given a request fails, when the error is shown, then the learner's academic inputs are not included in the visible technical error message.
 - **AC-EXP-008:** Given the user resets/leaves the exploration according to the approved reset policy, then temporary inputs/results are cleared according to that policy.
 

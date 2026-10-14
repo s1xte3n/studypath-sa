@@ -14,11 +14,11 @@
 - **Status:** Resolved — scope decision recorded; downstream design questions remain open.
 
 ### OR-002 — Anonymous input contract
-- **Ambiguity:** M1 lists grade/year, subjects/marks, interests, location, study modes and funding requirements. Phase 0 journey mentions subjects/marks and interests, but does not freeze which other fields are mandatory.
-- **Decision required:** Approve required/optional fields for Grade 11, Grade 12 and recent matric graduates; decide whether province, study mode and funding need are in the first form.
-- **Impact:** UX, validation, matching, test fixtures.
-- **Status:** Open.
-
+- **Decision:** **Resolved by owner on 2026-10-14.** The anonymous first form requires study stage, at least one subject, and a mark for each entered subject. Study stage options are Grade 11, Grade 12, and recent matric graduate. Career/study interests, province/intended location, and preferred study mode are optional. Funding need is excluded from the first form and may be considered in the separate P1 funding flow after its requirements and data boundary are approved.
+- **Stage-specific handling:** Grade 11 and Grade 12 inputs represent current results and must not be treated as final matric results. Recent matric graduates should enter final matric results where available. Incomplete/unavailable results must remain missing, not be inferred or replaced with zero; affected pathway decisions return UNKNOWN where the missing information prevents a reliable conclusion.
+- **Validation and privacy:** No name, email, phone number, national ID or account is required. Every entered subject requires a mark, validated according to OR-003 once the mark scale and precision are approved. Optional fields may be blank without blocking discovery. Inputs are temporary and must not be persisted or sent to analytics, application logs or error telemetry. This is a requirement, not evidence of implemented controls.
+- **Impact:** UX, validation, matching, privacy review and test fixtures.
+- **Status:** Resolved — owner approved the field contract; OR-003 and OR-006 remain separate blockers.
 ### OR-003 — Mark validation and subject vocabulary
 - **Ambiguity:** No mark scale, decimal precision, accepted subject identifiers/aliases, duplicate policy or unsupported-subject behavior is approved.
 - **Decision required:** Confirm scale (likely 0–100 only if explicitly approved), precision, required subjects, alias policy and duplicate handling.
@@ -109,4 +109,4 @@ Supported file types/size, consent, retention/deletion, extraction confidence, h
 
 ## Gate disposition
 
-**PRD READY: BLOCKED.** OR-001 scope inclusion is resolved by owner decision, but OR-002 through OR-007 remain material P0 blockers. OR-015 and OR-016 have been promoted to P1 because the medium-priority funding and tracker features are in the intended MVP; resolve their data, lifecycle and privacy contracts before implementation. No implementation tasks are created here.
+**PRD READY: BLOCKED.** OR-001 scope inclusion and OR-002 anonymous input contract are resolved by owner decision, but OR-003 through OR-007 remain material P0 blockers. OR-015 and OR-016 have been promoted to P1 because the medium-priority funding and tracker features are in the intended MVP; resolve their data, lifecycle and privacy contracts before implementation. No implementation tasks are created here.

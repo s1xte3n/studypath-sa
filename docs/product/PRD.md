@@ -71,17 +71,17 @@ Funding matching (M4) and manual application tracking (M5) are included in the i
 ### REQ-EXP-001 — Anonymous pathway input
 
 - **Priority:** P0
-- **Status:** Confirmed intent; exact field contract partly open.
+- **Status:** Field contract approved by owner on 2026-10-14; mark scale/precision and subject vocabulary remain open under OR-003.
 - **Problem / user story:** As a Grade 11–12 learner, I want to enter my marks and study interests without registering so that I can explore possible pathways with low friction.
 - **Actors:** Anonymous learner; recent matric graduate.
 - **Preconditions:** Interactive application is available; catalogue has at least one published record or the product can show an empty-data state.
 - **Trigger:** Learner starts pathway exploration.
-- **Inputs:** Grade/year; subject names and marks; career interests; province/location; preferred study modes; whether funding is needed, to the extent confirmed in the MVP input contract. Exact required/optional status is open.
-- **Business rules:** No name, email, ID number, phone number or account is required. Validate marks against the approved scale and reject invalid values; the mark scale and allowed precision are open. Missing academic inputs must be preserved as missing rather than defaulted to zero. Inputs are temporary and must not be persisted or sent to analytics/logs.
+- **Inputs:** Required study stage (Grade 11, Grade 12, or recent matric graduate); at least one subject and a mark for every entered subject. Optional career/study interests, province/intended location, and preferred study mode. Funding need is excluded from this first form; any later funding flow is governed by the separate P1 funding requirements.
+- **Business rules:** No name, email, national ID, phone number or account is required. Every entered subject requires a mark; the mark scale, precision and subject vocabulary remain open under OR-003. Grade 11 and Grade 12 marks are current results, not presumed final matric results. Recent matric graduates should use final matric results where available. Incomplete/unavailable results remain missing and are not defaulted to zero; affected screening returns UNKNOWN where missing data prevents a reliable conclusion. Optional fields may be blank without blocking discovery. Inputs are temporary and must not be persisted or sent to analytics, application logs or error telemetry; this is a requirement to verify, not a claim that implementation controls exist.
 - **Success state:** Valid inputs are accepted for the current exploration and can be used to request matching.
 - **Failure states:** Invalid mark, missing required field, unsupported subject, malformed value or unavailable recommendation service produces an understandable, field-specific or recoverable error; inputs must not be silently changed.
 - **Permissions:** Anonymous learner may submit only their current form data; no cross-user data access exists.
-- **Edge cases:** No subjects entered; mark at minimum/maximum; decimal mark; duplicate subject; unknown subject alias; Grade 11 versus Grade 12; recent matric graduate; no interest selected; unsupported province/study mode.
+- **Edge cases:** No subjects entered; missing mark for an entered subject; mark at minimum/maximum; decimal mark; duplicate subject; unknown subject alias; Grade 11 versus Grade 12; recent matric graduate with incomplete/unavailable final results; no interest selected; optional province/study mode omitted or unsupported.
 - **Dependencies:** Approved input schema; subject vocabulary/normalisation; deterministic matching; privacy-safe frontend and telemetry configuration.
 - **Acceptance criteria:** See AC-EXP-001 through AC-EXP-008 in `ACCEPTANCE-CRITERIA.md`.
 - **Non-functional requirements:** Mobile-first responsive layout; labelled controls; keyboard operation; screen-reader accessible errors; no secrets in client; no PII collection; no persistence/telemetry of profile values; target performance threshold remains open.
@@ -252,7 +252,7 @@ Funding matching (M4) and manual application tracking (M5) are included in the i
 
 ## 7. Dependencies and hidden assumptions
 
-1. The owner must approve the exact MVP input fields and validation ranges.
+1. The owner-approved first-form field contract is recorded under OR-002; mark range/precision, subject vocabulary and duplicate handling remain open under OR-003.
 2. A curator must maintain and verify source-backed catalogue records; no backup curator is currently confirmed.
 3. Official programme requirements can be incomplete, cycle-specific or internally inconsistent; UNKNOWN handling is essential.
 4. The matching engine needs explicit rules for multiple missing/failed requirements, APS/points and subject aliases before it can be fully testable.
@@ -274,7 +274,7 @@ Exact thresholds, test set size, and measurement ownership are open; do not repo
 
 ## 9. Explicitly unresolved / not approved
 
-See `docs/product/OPEN-REQUIREMENTS.md`. The owner resolved the M4/M5 scope conflict by including funding matching and manual application tracking at P1 / medium priority; their detailed data rules and tracker persistence/lifecycle remain open. Other open items include the input contract, eligibility semantics for composite requirements, source freshness, supported admission cycles, privacy/telemetry details, measurable accessibility/performance targets and MVP success thresholds.
+See `docs/product/OPEN-REQUIREMENTS.md`. The owner resolved the M4/M5 scope conflict by including funding matching and manual application tracking at P1 / medium priority; their detailed data rules and tracker persistence/lifecycle remain open. Other open items include mark/subject validation, eligibility semantics for composite requirements, source freshness, supported admission cycles, privacy/telemetry details, measurable accessibility/performance targets and MVP success thresholds.
 
 ## 10. PRD gate assessment
 
