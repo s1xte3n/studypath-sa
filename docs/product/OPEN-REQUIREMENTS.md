@@ -62,10 +62,12 @@
 - **Status:** Resolved by owner decision; implementation and release verification remain a blocker. Do not represent the app as cleared for real learner data.
 
 ### OR-007 — What does ELIGIBLE mean in the MVP?
-- **Ambiguity:** Could mean only all represented minimum requirements are met, but institutional admissions may include selection, subject combinations, quotas, documents and cycle conditions not captured by the pilot.
-- **Decision required:** Approve exact wording: ELIGIBLE means the learner meets all supported, verified minimum requirements in the pilot catalogue; it is not a prediction/guarantee of admission. Decide whether any programme should be screened if full minimum criteria are unavailable.
-- **Impact:** Core trust/safety and UI copy.
-- **Status:** Open.
+- **Decision:** **Resolved by owner on 2026-10-14.** `ELIGIBLE` means the learner meets every applicable mandatory minimum requirement covered by the supported screening, where the full applicable rule set is complete, verified for the programme's admission cycle, current under OR-005, and curator-signed-off. It is not an admission decision, prediction or guarantee. The institution makes the final admission decision.
+- **Classification boundary:** Apply OR-004 precedence. Return `NOT_ELIGIBLE` when a verified, applicable genuinely mandatory requirement fails and no applicable alternative satisfies it. Return `UNKNOWN` when no confirmed mandatory failure determines the result but a material input, requirement, source, cycle applicability, calculation or rule remains missing, stale, unsupported or unresolved. Never return `ELIGIBLE` from a partial or unverified rule set.
+- **Discovery boundary:** A programme may remain discoverable when its full minimum criteria are unavailable, but its eligibility must be `UNKNOWN` with a clear explanation of what is unavailable or unsupported. Discovery, interest/location fit or ranking must not upgrade eligibility or imply the learner meets requirements.
+- **Learner-facing wording:** “You meet the verified minimum requirements we assessed. Based on the official requirements verified for this programme and admission cycle, you meet all applicable minimum requirements covered by our supported screening. This is not an admission decision or a guarantee of acceptance. The institution makes the final admission decision.”
+- **Impact:** Core trust/safety, eligibility explanations and UI copy.
+- **Status:** Resolved — owner-approved policy; catalogue completeness checks, UI implementation and test evidence remain outstanding.
 
 ## P1 — Resolve before requirements baseline / architecture
 
@@ -127,4 +129,4 @@ Supported file types/size, consent, retention/deletion, extraction confidence, h
 
 ## Gate disposition
 
-**PRD READY: BLOCKED.** OR-001 through OR-006 are resolved by owner decision, including the admission-cycle/source-freshness and privacy/telemetry contracts. OR-007, the exact learner-facing meaning/scope of ELIGIBLE, remains a material P0 blocker. OR-006 implementation, hosting-provider review and privacy acceptance evidence remain downstream release gates. The resolved contracts still require implementation, catalogue evidence, tests and release verification; decisions alone do not pass those gates. OR-015 and OR-016 remain P1 because the medium-priority funding and tracker features are in the intended MVP; resolve their data, lifecycle and privacy contracts before implementation. No implementation tasks are created here.
+**PRD READY: BLOCKED.** OR-001 through OR-007 are resolved by owner decision, including admission-cycle/source freshness, privacy/telemetry, and the meaning/discovery boundary of `ELIGIBLE`. OR-006 implementation, hosting-provider review and privacy acceptance evidence remain downstream release gates. Catalogue completeness, implementation and test evidence for eligibility remain outstanding. The resolved contracts still require implementation, catalogue evidence, tests and release verification; decisions alone do not pass those gates. OR-015 and OR-016 remain P1 because the medium-priority funding and tracker features are in the intended MVP; resolve their data, lifecycle and privacy contracts before implementation. No implementation tasks are created here.
