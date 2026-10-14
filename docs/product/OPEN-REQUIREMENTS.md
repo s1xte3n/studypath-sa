@@ -48,10 +48,18 @@
 - **Status:** Resolved — owner-approved contract; source records, curation controls, implementation and verification evidence remain outstanding.
 
 ### OR-006 — Privacy and browser telemetry boundary
-- **Ambiguity:** Phase 0 prohibits persistence/telemetry of profile values, but static hosting, browser storage, hosting access logs, Application Insights/analytics and third-party error reporting have not been implementation-verified.
-- **Decision required:** Approve permitted telemetry fields, storage/session reset behavior, privacy notice, retention and pre-public-demo review owner.
-- **Impact:** Privacy acceptance tests and release readiness. Until resolved, use synthetic-only data and do not represent the app as cleared for real learner data.
-- **Status:** Open as downstream gate; telemetry implementation must not be assumed safe.
+- **Decision:** **Resolved by owner on 2026-10-14.** Apply the privacy and telemetry contract below to the MVP:
+  1. **Data minimisation:** Development/demo flows use synthetic data only. Do not require or collect learner names, contact details, national IDs or accounts. Real learner data remains prohibited until the required privacy/legal review is complete.
+  2. **Browser storage:** Academic/profile inputs and results remain in memory for the active exploration only. Do not write them to localStorage, sessionStorage, IndexedDB, profile cookies or URLs/query parameters.
+  3. **Reset and exit:** An explicit Reset clears inputs, results and temporary profile state. Leaving or reloading ends the exploration; do not restore prior profile values through browser navigation where app behavior can control this. Browser-managed history/autofill behavior must be inspected and addressed where controllable.
+  4. **Application telemetry:** Do not include profile values in application logs, client error reports or telemetry. Do not add analytics SDKs, advertising trackers or third-party error reporters to the MVP. No academic inputs/preferences may be sent to analytics, advertising or unrelated third-party endpoints.
+  5. **Hosting/security metadata:** Provider-generated hosting/access/security logs may contain technical metadata, potentially including IP address and browser/device information. Do not assume collection is disabled, anonymised or short-lived. Inspect actual hosting configuration and provider policies, then record the fields and retention that can be verified before public demo.
+  6. **Privacy notice:** Before learner input, present a plain-language notice describing in-memory processing, the absence of app profile storage/transmission, and any hosting/provider metadata collection that the review verifies. The notice must describe observed behavior, not intended behavior alone.
+  7. **Retention:** The application retains no learner profile after the temporary exploration ends. Provider-generated metadata follows the provider's documented policy; record verified details rather than inventing a retention period.
+  8. **Review/release accountability:** The project owner records the privacy notice review, actual hosting/provider metadata and retention review, and inspection evidence before public demo. Real learner data remains prohibited until applicable privacy/legal review is complete.
+- **Acceptance criteria:** AC-PRV-001 through AC-PRV-013 in ACCEPTANCE-CRITERIA.md.
+- **Impact:** Privacy acceptance tests and release readiness. Approval resolves the policy decision only; actual implementation, provider configuration review and test evidence remain outstanding.
+- **Status:** Resolved by owner decision; implementation and release verification remain a blocker. Do not represent the app as cleared for real learner data.
 
 ### OR-007 — What does ELIGIBLE mean in the MVP?
 - **Ambiguity:** Could mean only all represented minimum requirements are met, but institutional admissions may include selection, subject combinations, quotas, documents and cycle conditions not captured by the pilot.
@@ -119,4 +127,4 @@ Supported file types/size, consent, retention/deletion, extraction confidence, h
 
 ## Gate disposition
 
-**PRD READY: BLOCKED.** OR-001 through OR-005 are resolved by owner decision, including the admission-cycle/source-freshness contract. OR-006 privacy/telemetry and OR-007 the exact learner-facing meaning/scope of ELIGIBLE remain material P0 blockers. The resolved contracts still require implementation, catalogue evidence, tests and release verification; decisions alone do not pass those gates. OR-015 and OR-016 remain P1 because the medium-priority funding and tracker features are in the intended MVP; resolve their data, lifecycle and privacy contracts before implementation. No implementation tasks are created here.
+**PRD READY: BLOCKED.** OR-001 through OR-006 are resolved by owner decision, including the admission-cycle/source-freshness and privacy/telemetry contracts. OR-007, the exact learner-facing meaning/scope of ELIGIBLE, remains a material P0 blocker. OR-006 implementation, hosting-provider review and privacy acceptance evidence remain downstream release gates. The resolved contracts still require implementation, catalogue evidence, tests and release verification; decisions alone do not pass those gates. OR-015 and OR-016 remain P1 because the medium-priority funding and tracker features are in the intended MVP; resolve their data, lifecycle and privacy contracts before implementation. No implementation tasks are created here.
