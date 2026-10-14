@@ -130,3 +130,8 @@ Reviewed additional official UJ programme-page search results and the official d
 ## Subject normalization proposal — 2026-10-14
 
 Added `docs/product/SUBJECT-NORMALIZATION-CONTRACT.md` as a draft proposal for GAP-002. It proposes stable identifiers while keeping Mathematics, Mathematical Literacy and Technical Mathematics distinct; prohibits unapproved aliases and fuzzy eligibility matching; defines unresolved/ambiguous behavior as non-matching; calls out Home Language vs First Additional Language distinctions; and defines planned test scenarios and the catalogue-only API privacy boundary. Linked the proposal from `docs/product/REQUIREMENT-GAPS.md`. This is not an approved subject dictionary or implementation. GAP-002 remains open pending product-owner/curator decisions. No application code or executable tests were changed or run; no CI result, privacy clearance, Azure provisioning or deployment is implied.
+
+
+## Pathway relationship evidence proposal — 2026-10-14
+
+Added `docs/product/PATHWAY-RELATIONSHIP-EVIDENCE-CONTRACT.md` on branch `docs/phase-2-pathway-relationships` as a draft proposal for GAP-003. It defines relationship types and required provenance, distinguishes general qualification progression from named-programme articulation, and records candidate questions without approving any pair. Official UJ sources were researched, but programme-specific relationship evidence and curator sign-off remain outstanding. No application code or executable tests were changed or run; no CI, privacy clearance, Azure provisioning or deployment is implied. GAP-003 remains open and `REQUIREMENTS READY` remains not passed.
