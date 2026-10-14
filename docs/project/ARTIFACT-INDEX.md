@@ -102,3 +102,19 @@ Phase 0 `PROJECT READY` passed for Phase 1 planning only. Current work is Phase 
 | Policy reconciliation and review | `docs/product/POLICY-SELECTIONS-REVIEW.md` | Reconciled in PR #22, merged to `main`; see recorded owner approval in `docs/project/DECISIONS.md` |
 
 The approval does not claim implementation, catalogue curation, test passage, privacy clearance, deployment or release readiness. Next gate: Phase 2 requirements matrix and end-to-end traceability.
+
+
+## Phase 2 — Requirements matrix and traceability (updated 2026-10-14)
+
+| Artifact | Path | Status | Notes |
+|---|---|---|---|
+| Canonical requirements matrix | `docs/product/REQUIREMENTS.md` | Created — planning baseline | Nine functional requirements and eight cross-cutting NFRs mapped to priority, dependencies, logical components, acceptance criteria and planned verification IDs. |
+| Traceability matrix | `docs/product/TRACEABILITY-MATRIX.md` | Created — evidence pending | Requirement → PRD/AC → contract/UI → test ID → expected implementation area → CI/release evidence. Contract, implementation, CI and release evidence remain unavailable. |
+| Feature backlog | `docs/product/FEATURE-BACKLOG.md` | Created — blocked items labelled | P0 core journey sequenced before P1 funding and tracker. Ambiguous behavior is not treated as an implementation task. |
+| Dependency matrix | `docs/product/DEPENDENCY-MATRIX.md` | Created — planning baseline | Functional, data, privacy and verification dependencies recorded; architecture and API boundaries are not assumed. |
+| Requirement gaps | `docs/product/REQUIREMENT-GAPS.md` | Created — open; gate blocked | Records catalogue, subject vocabulary, relationship, privacy, funding, tracker AC/status and interface-boundary gaps. |
+| Requirements gate | — | **NOT PASSED** | Requirement IDs and planned test IDs are present, but P0 gaps and traceability evidence remain. No implementation or tests are claimed. |
+
+### Phase 2 evidence and limits
+
+The five requirement artifacts were committed on branch `docs/phase-2-requirements-matrix`. This update does not claim a pull request was opened, the branch was merged, tests were executed, or implementation/deployment changed. Test IDs are planned verification identifiers only. Exact AC-FUND/AC-APP references and tracker transitions require verification before those tests are implemented. See `docs/product/REQUIREMENT-GAPS.md`.
