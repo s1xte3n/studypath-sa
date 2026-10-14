@@ -95,3 +95,28 @@ The official programme pages currently show an application window for 2026. They
 ## 6. Change log
 
 - 2026-10-14 — Added official UJ FAQ evidence for six best subjects and required programme subjects; recorded source-version discrepancy and seven candidate records. This log is evidence preparation, not curator sign-off or gate passage.
+
+
+## 7. Additional prospectus version discovered during follow-up research
+
+A further official UJ-hosted prospectus candidate is indexed at:
+- [2027 Undergraduate Prospectus — March-named PDF](https://www.uj.ac.za/wp-content/uploads/2026/03/uj_prospectus2027_24-march-2027-final.pdf) (search result ref: `turn295417search7`).
+
+The indexed extract includes a Faculty of Science note that Technical Mathematics and Technical Science are not accepted for Faculty of Science degree programmes, and says Technical Mathematics is accepted for Faculty of Science diploma programmes while Technical Science is not. This is consistent with the June prospectus extract for the restriction, but it does **not** establish that all three prospectus files are identical or that one is the authoritative final version.
+
+The search index also exposes a Faculty of Science table from the June-named PDF ([June prospectus](https://www.uj.ac.za/wp-content/uploads/2026/06/uj_undergrad_prospectus2027.pdf); search result ref: `turn295417search6`). The July-named prospectus URL remains referenced by UJ CBE materials. Direct retrieval of these PDFs through the available web retrieval path was blocked, so no byte-level comparison, SHA-256, full-page visual review, or complete footnote extraction has been performed.
+
+**Decision:** keep the source-version gate open. Do not silently promote the March-, June-, or July-named PDF to the governing version based on URL naming, search indexing, or a matching excerpt. Before sign-off, retrieve the documents through an accessible official channel, record their metadata and hashes, compare the seven candidate programme rows and all applicable footnotes, and obtain a curator decision about the governing source. If retrieval remains unavailable, record that as a blocker and request the relevant original pages from the programme curator.
+
+## 8. Remaining rule-level blockers for the seven-candidate pilot
+
+| Rule area | Current evidence | Safe handling until resolved |
+|---|---|---|
+| English language stream | Prospectus tables label the column “English” with a level/percentage, but the evidence captured so far does not define how Home Language and First/Second Additional Language are treated | Do not map streams by assumption; return `UNKNOWN` where eligibility depends on an unsupported mapping |
+| Six-subject APS selection | UJ FAQ states six best subjects excluding Life Orientation and says the selected subjects must include required programme subjects | Golden fixtures must calculate APS over a valid six-subject selection that includes every mandatory subject; a naïve top-six-only calculation is insufficient |
+| BCom Information Systems subject branch | Current official page/search extract lists Mathematics 4 and Technical Mathematics 4 in separate columns and says Mathematical Literacy is not accepted | Do not encode an OR rule until authoritative wording confirms it |
+| BCom Information Management APS branches | CBE 2027 brochure extract says APS 26 with Mathematics/Technical Mathematics or 28 with Mathematical Literacy; current programme page has general APS 28 wording | Preserve both source statements as a discrepancy; no definitive 2027 branch until prospectus row and footnotes are reviewed |
+| Faculty of Science restriction | Prospectus note excludes Technical Mathematics and Technical Science for Faculty of Science degrees; Technical Mathematics is accepted for Faculty of Science diplomas, Technical Science is not | Apply only to confirmed Faculty of Science programme scope; never generalise to CBE or other faculties |
+| Selection/capacity and exceptions | Prospectus states minimum entrance requirements can change; captured records do not establish every possible selection condition | Do not present minimum eligibility as guaranteed admission; unresolved material conditions block `ELIGIBLE` |
+| Programme source provenance | Search snippets and current programme pages corroborate some minimums but are not full 2027 source review | Keep all seven catalogue records `DRAFT` until official source version, complete conditions, and curator sign-off are recorded |
+
