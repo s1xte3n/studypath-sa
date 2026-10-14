@@ -1,7 +1,7 @@
 # StudyPath SA — Artifact Index
 
 **Last updated:** 2026-10-14  
-**Phase:** 1 — PRD and requirements planning  
+**Phase:** 2 — Requirements matrix and traceability  
 **Gate:** Phase 0 `PROJECT READY` passed for Phase 1 planning only; Phase 1 `PRD READY` **passed on 2026-10-14** after explicit owner approval of the revised PRD and measurable acceptance criteria. Phase 2 requirements traceability remains outstanding.
 
 ## Source-of-truth references
