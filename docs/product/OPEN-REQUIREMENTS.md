@@ -28,10 +28,16 @@
 - **Status:** Resolved — owner approved the validation and normalization contract; implementation and test evidence remain outstanding.
 
 ### OR-004 — Eligibility precedence and composite rules
-- **Ambiguity:** The supplied pseudocode says missing required subject => UNKNOWN, and known below-threshold requirement => NOT_ELIGIBLE, but does not specify precedence when a learner fails one known rule while another rule is missing. APS/points calculation, life-orientation exclusions, subject substitutions, and conditional/alternative requirements are not defined.
-- **Decision required:** Approve precedence and supported requirement operators; list unsupported rules that force UNKNOWN.
-- **Impact:** Core correctness and false-eligibility risk.
-- **Status:** Open.
+- **Decision:** **Resolved by owner on 2026-10-14.** Apply the precedence and operators below to deterministic minimum-requirement screening:
+  1. **Precedence:** Return `NOT_ELIGIBLE` when at least one verified, applicable mandatory requirement is confirmed to fail, even if another requirement is unknown, provided the failed rule is genuinely mandatory and no applicable alternative satisfies it. If no confirmed mandatory failure exists but a material required fact or rule is unknown, return `UNKNOWN`. Return `ELIGIBLE` only when every applicable mandatory requirement required for supported screening is verified and met.
+  2. **AND / all required:** Any confirmed mandatory failure makes the combination fail; absent a confirmed failure, any unknown component makes the combination unknown; all components must pass for the combination to pass.
+  3. **OR / accepted alternatives:** Any verified passing alternative satisfies the combination. Return failure only when every alternative is known to fail. If none passes and at least one alternative is unknown, return unknown.
+  4. **Conditional requirements:** If a condition is verified false, skip its dependent requirement; if verified true, evaluate the dependent requirement. If the condition is unknown and could change the result, return unknown.
+  5. **APS/points and Life Orientation:** Calculate points only when an authoritative, applicable source defines the programme/cycle-specific method, included/excluded subjects, mark-to-points conversion and thresholds. Do not assume a universal APS formula or include/exclude Life Orientation by default. If required calculation details are unsupported or unverified and could change the outcome, return unknown.
+  6. **Subject substitutions/equivalence:** Accept only substitutions explicitly supported by a verified applicable official requirement or an approved catalogue rule with provenance. Do not infer equivalence from similar names. If a potentially outcome-changing substitution is unsupported or uncertain, return unknown; do not count it as satisfied.
+- **Boundary:** These rules classify only supported minimum requirements; they do not predict or guarantee admission. Preference ranking remains separate. This decision does not establish any institution's actual formula, thresholds, subject substitutions or programme requirements; those must be verified per applicable source.
+- **Impact:** Deterministic matching, explainability, source governance and false-eligibility prevention.
+- **Status:** Resolved — owner approved the contract; implementation and automated test evidence remain outstanding.
 
 ### OR-005 — Admission cycle and source freshness
 - **Ambiguity:** Catalogue versioning is described, and Phase 0 checked two UJ programme pages, but no current admission cycle, stale-source threshold, re-verification cadence, conflict resolution process or release-time source check is frozen.
@@ -111,4 +117,4 @@ Supported file types/size, consent, retention/deletion, extraction confidence, h
 
 ## Gate disposition
 
-**PRD READY: BLOCKED.** OR-001 scope inclusion, OR-002 anonymous input contract and OR-003 mark/subject validation contract are resolved by owner decision. OR-004 through OR-007 remain material P0 blockers. OR-015 and OR-016 have been promoted to P1 because the medium-priority funding and tracker features are in the intended MVP; resolve their data, lifecycle and privacy contracts before implementation. No implementation tasks are created here.
+**PRD READY: BLOCKED.** OR-001 scope inclusion, OR-002 anonymous input contract, OR-003 mark/subject validation contract and OR-004 eligibility precedence/composite rules are resolved by owner decision. OR-005 through OR-007 remain material P0 blockers. OR-015 and OR-016 have been promoted to P1 because the medium-priority funding and tracker features are in the intended MVP; resolve their data, lifecycle and privacy contracts before implementation. No implementation tasks are created here.

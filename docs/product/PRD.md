@@ -58,13 +58,16 @@ Funding matching (M4) and manual application tracking (M5) are included in the i
 - **Temporary inputs:** values used to generate results during the current anonymous exploration; no profile persistence is allowed in the MVP.
 
 ### Eligibility rules
-1. Eligibility must be deterministic, explainable and testable from structured, source-backed rules.
-2. A verified, applicable hard requirement that the learner does not meet yields `NOT_ELIGIBLE`.
-3. `ELIGIBLE` is allowed only when every applicable hard requirement required for the supported screening is known and met.
-4. Missing subject results, missing/ambiguous rules, uncertain programme/cycle applicability, unsupported calculation methods or stale/unverified requirements yield `UNKNOWN` where they prevent a reliable conclusion.
-5. Preference ranking is distinct from eligibility and must never be presented as an admission probability or decision.
-6. No AI-generated result may override structured authoritative requirements. AI is not required for the initial MVP.
-7. Every displayed requirement and actionable deadline (if displayed) must be traceable to an active source record. No deadline should be shown unless verified for the relevant cycle.
+1. Eligibility must be deterministic, explainable and testable from structured, source-backed rules. Evaluate eligibility separately from preference ranking.
+2. **Precedence:** A verified, applicable mandatory requirement confirmed to fail yields `NOT_ELIGIBLE`, even when another requirement is unknown, only if the failed rule is genuinely mandatory and no applicable alternative satisfies it. If there is no confirmed mandatory failure but a material required fact or rule is unknown, return `UNKNOWN`. Return `ELIGIBLE` only when every applicable mandatory requirement required for supported screening is verified and met.
+3. **AND / all required:** Any confirmed mandatory failure makes the combination fail; otherwise an unknown component makes it unknown; all components must pass for the combination to pass.
+4. **OR / accepted alternatives:** Any verified passing alternative satisfies the combination. The combination fails only when every alternative is known to fail. If no alternative passes and at least one is unknown, the combination is unknown.
+5. **Conditional requirements:** A verified-false condition means its dependent requirement is not applicable and is skipped. A verified-true condition requires evaluation of the dependent requirement. If the condition is unknown and could change the outcome, return `UNKNOWN`.
+6. **APS/points and Life Orientation:** Calculate points only when an authoritative source applicable to the specific programme and admission cycle defines the method, included/excluded subjects, mark-to-points conversion and thresholds. Do not assume a universal APS formula or include/exclude Life Orientation by default. If required details are unsupported or unverified and could change the outcome, return `UNKNOWN`.
+7. **Subject substitutions/equivalence:** Accept a substitution only when explicitly supported by a verified, applicable official requirement or an approved catalogue rule with provenance. Do not infer equivalence from similar names. An unsupported or uncertain substitution that could change the outcome is not counted as satisfied and yields `UNKNOWN` where it affects the result.
+8. Missing subject results, missing/ambiguous rules, uncertain programme/cycle applicability, unsupported calculation methods or stale/unverified requirements yield `UNKNOWN` where they prevent a reliable conclusion and no confirmed mandatory failure already determines `NOT_ELIGIBLE`.
+9. `ELIGIBLE` means only that all represented, supported and verified minimum requirements in the pilot screening are met. It is not an admission decision, prediction or guarantee; final decisions remain with the institution. No AI-generated result may override structured authoritative requirements. AI is not required for the initial MVP.
+10. Every displayed requirement and actionable deadline (if displayed) must be traceable to an active source record. No deadline should be shown unless verified for the relevant cycle.
 
 ## 5. MVP feature requirements
 
