@@ -42,14 +42,14 @@
 
 - [x] Unique IDs/priorities assigned to nine functional requirements and eight NFRs.
 - [x] Planned verification IDs assigned to each requirement.
-- [x] Confirmed AC-FUND-001–009, AC-APP-001–009 and the OR-016 status lifecycle against the approved source documents.
-- [ ] Complete 6–8 fully verified UJ-starting programme records and approve the subject vocabulary.
-- [ ] Verify relationship evidence and 3–5 official funding records (funding is P1 and remains blocked until verified records exist).
-- [ ] Resolve API/profile privacy boundary, runtime/cost, provider retention/logging and network failure semantics.
-- [ ] Add actual contract/UI paths, executable test paths and CI/release evidence.
-- [ ] Execute required tests and retain results.
+- [x] Funding/tracker acceptance-criteria ranges and the OR-016 lifecycle cross-checked against the approved source documents (GAP-006/007 resolved as documentation checks).
+- [x] Requirements and acceptance criteria explicitly identify unresolved programme-data, relationship, privacy, architecture and quality constraints without treating missing implementation evidence as completed work.
+- [ ] Resolve any remaining product-behavior ambiguity that changes requirement scope or acceptance criteria.
+- [ ] Complete the Phase 2 cross-document consistency review and obtain explicit product-owner gate acceptance.
 
-**Decision:** REQUIREMENTS READY NOT PASSED. GAP-001's starting-source choice and GAP-008's high-level architecture direction are resolved; catalogue evidence, subject vocabulary, relationships, funding records, privacy/runtime verification and final API contract remain open. No implementation code is included; no task is created for ambiguous behavior.
+The following are tracked as later data-curation, architecture, implementation, test, security/privacy or release evidence—not automatic Phase 2 requirements-completeness blockers: completing the 6–8 publication-ready programme records; obtaining 3–5 verified funding records (P1); approving any relationship pairs (an empty set is allowed); runtime privacy inspection; final API/runtime/cost decisions; executable app/UI paths; test execution; CI and release evidence.
+
+**Decision:** REQUIREMENTS READY remains OPEN pending the remaining Phase 2 consistency work and explicit product-owner acceptance. GAP-001 catalogue publication, GAP-003 relationship publication, GAP-004 privacy assurance, GAP-005 funding records, and GAP-008 detailed architecture/contract decisions remain open for their applicable later gates. This status does not claim implementation, tests, CI, privacy verification or release readiness.
 
 
 ## UJ 2027 source reconciliation note — 2026-10-14
