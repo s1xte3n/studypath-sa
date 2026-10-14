@@ -7,7 +7,7 @@
 
 | Gap ID | Priority | Requirement(s) | Gap | Evidence / decision required | Owner | Disposition |
 |---|---:|---|---|---|---|---|
-| GAP-001 | P0 | REQ-CAT-001, NFR-DATA-001 | UJ 2027 is selected as the starting source and four programme candidates are listed, but the 6–8 publication-ready record target is unmet | Verify exact 2027 applicability, code, campus, subject grades, APS formula/inclusions, conditions/exceptions, official next steps, source freshness/version and curator sign-off per record | Product owner/curator | Starting-source decision resolved; definitive catalogue acceptance remains blocked |
+| GAP-001 | P0 | REQ-CAT-001, NFR-DATA-001 | Four UJ candidates now have preliminary official-source code/threshold leads, but none is a publication-ready record and the 6–8 target is unmet | Verify full 2027 applicability, code, campus, subject grades, programme-specific APS formula/inclusions, conditions/exceptions, official next steps, source freshness/version and curator sign-off. Resolve B2E01Q (older Academy page) versus B2E02Q (2027 prospectus/current programme page) before publication. | Product owner/curator | Starting-source decision resolved; preliminary evidence captured; definitive catalogue acceptance remains blocked |
 | GAP-002 | P0 | REQ-EXP-001 | Actual supported subject IDs and aliases are not defined in the reviewed baseline | Approve canonical names/IDs and explicit aliases; retain unsupported-subject behavior | Product owner/curator | Block P0-02; do not infer subjects |
 | GAP-003 | P0 | REQ-ALT-001 | Verified pathway relationship set not evidenced | Record type, rationale, provenance, verification date and approval; explicit official articulation evidence | Product owner/curator | No verified alternative claim until records exist |
 | GAP-004 | P0 | REQ-PRV-001, NFR-PRV-001 | API-first adds a network boundary, but host/provider retention, API logs, browser storage, dependencies and actual request payloads have not been inspected | Verify provider/runtime configuration, logs/retention, request payloads, browser storage/history, dependencies/telemetry and privacy notice; catalogue API requests must contain no learner profile values | Security/privacy + owner | Open release blocker; synthetic-only remains; no public learner-input demo until evidenced |
@@ -50,3 +50,8 @@
 - [ ] Execute required tests and retain results.
 
 **Decision:** REQUIREMENTS READY NOT PASSED. GAP-001's starting-source choice and GAP-008's high-level architecture direction are resolved; catalogue evidence, subject vocabulary, relationships, funding records, privacy/runtime verification and final API contract remain open. No implementation code is included; no task is created for ambiguous behavior.
+
+
+## UJ 2027 source reconciliation note — 2026-10-14
+
+The catalogue register now records preliminary values from official UJ search-indexed prospectus text and current programme pages. They remain research leads only: do not load them into an eligibility evaluator as verified requirements. The older Academy undergraduate-courses page labels the extended CSI programme B2E01Q, whereas the indexed 2027 prospectus and current programme page label it B2E02Q. Treat the conflict as unresolved until the full applicable 2027 source/yearbook and official programme guidance are reconciled. GAP-001 remains open.
