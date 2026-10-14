@@ -9,10 +9,10 @@ Priority meanings follow the SOP: P0 core/release blocker/security; P1 intended-
 
 | Requirement ID | Requirement | Priority | Dependencies | Affected components / UI contract | Acceptance criteria | Verification IDs | Status |
 |---|---|---:|---|---|---|---|---|
-| REQ-EXP-001 | Anonymous pathway inputs; required stage and subject/mark pairs; optional interests/location/mode; strict whole-number mark and subject validation; no identity requirement | P0 | REQ-CAT-001, REQ-PRV-001, explicit subject vocabulary | Explorer form, subject catalogue, validation, memory-only state, API catalogue client plus client-side matching (interim privacy-preserving boundary; final API contract open) | AC-EXP-001–014 | T-EXP-001–004 | Specified |
+| REQ-EXP-001 | Anonymous pathway inputs; required stage and subject/mark pairs; optional interests/location/mode; strict whole-number mark and subject validation; no identity requirement | P0 | REQ-CAT-001, REQ-PRV-001, explicit subject vocabulary | Explorer form, subject catalogue, validation, memory-only state, API catalogue client plus client-side matching (interim privacy-preserving boundary; final API contract open); draft subject contract linked | AC-EXP-001–014 | T-EXP-001–004, T-SUB-001–010 | Subject contract proposal merged; dictionary/aliases not approved |
 | REQ-CAT-001 | Bounded 6–8 programme catalogue, official-source provenance, applicable cycle, freshness, version and curator sign-off; no national-completeness claim | P0 | Official sources, source-record contract, curator review | API-served curated catalogue contract (draft), source provenance, publication/review process, results/details | AC-CAT-001–012 | T-CAT-001–003 | Catalogue records outstanding |
 | REQ-MAT-001 | Deterministic ELIGIBLE / NOT_ELIGIBLE / UNKNOWN screening, sourced reasons, approved composite rules, stable eligibility grouping, no numeric weighted score or admission guarantee | P0 | REQ-EXP-001, REQ-CAT-001, composite-rule policy | Eligibility evaluator, reason builder, results UI | AC-MAT-001–021 | T-MAT-001–004 | Specified; golden set outstanding |
-| REQ-ALT-001 | Show only verified alternative, related-field, progression or articulation relationships; otherwise disclose no verified alternative | P0 | REQ-CAT-001, REQ-MAT-001, relationship evidence | Relationship catalogue, alternatives UI | AC-ALT-001–007 | T-ALT-001–002 | Relationship evidence outstanding |
+| REQ-ALT-001 | Show only verified alternative, related-field, progression or articulation relationships; otherwise disclose no verified alternative | P0 | REQ-CAT-001, REQ-MAT-001, relationship evidence | Relationship catalogue, alternatives UI; draft relationship contract linked | AC-ALT-001–007 | T-ALT-001–002, T-REL-001–008 | Evidence contract proposal merged; no pair approved |
 | REQ-DET-001 | Show sourced pathway details, available location/mode, known requirements and official next steps; unknown fields remain explicit | P0 | REQ-CAT-001, REQ-MAT-001 | Detail view, official links, source metadata | AC-DET-001–006 | T-DET-001–002 | Specified |
 | REQ-PRV-001 | Anonymous, privacy-minimising flow; no profile persistence or profile telemetry/logging; reset clears state; synthetic-only development/demo | P0 | API request boundary, hosting/telemetry review, privacy notice, REQ-EXP-001 | Memory state, storage/network/logging, privacy notice | AC-PRV-001–013 | T-PRV-001–004 | Release verification outstanding |
 | REQ-UX-001 | Accessible mobile-first flow with validation, loading, empty and recoverable failure states; WCAG 2.2 AA target at 320 CSS px | P0 | Core journey, agreed test browsers/device | All learner-facing UI | AC-UX-001–011 | T-UX-001–003 | Evidence outstanding |
@@ -35,10 +35,18 @@ Priority meanings follow the SOP: P0 core/release blocker/security; P1 intended-
 ## Gate checklist
 
 - [x] Unique IDs, priorities, dependencies, affected areas, acceptance criteria and verification IDs assigned.
-- [ ] Confirm exact funding/tracker acceptance-criteria IDs.
+- [x] Confirm exact funding/tracker acceptance-criteria IDs: AC-FUND-001–009 and AC-APP-001–009 are present and linked; lifecycle cross-check recorded in GAP-006/007.
 - [x] Record API-first direction in D-044 and draft contract in `docs/architecture/API-CONTRACT.md`.
 - [ ] Approve final routes/schema, request privacy boundary, runtime services, cache/error semantics and cost feasibility.
 - [ ] Author executable test cases and attach CI/release evidence.
-- [ ] Resolve or explicitly block P0 gaps in REQUIREMENT-GAPS.md.
+- [ ] Resolve or explicitly block P0 gaps in REQUIREMENT-GAPS.md. GAP-001–005 and GAP-008 remain open; see the gap register.
 
 Do not mark requirements implemented or tested from this matrix alone. REQUIREMENTS READY remains NOT PASSED.
+
+
+## Contract proposals merged — 2026-10-14
+
+- `SUBJECT-NORMALIZATION-CONTRACT.md` is a proposal linked to REQ-EXP-001 and GAP-002. T-SUB-001–010 are planned only; canonical subject IDs, input behavior, aliases, language distinctions and versioning are not yet approved.
+- `PATHWAY-RELATIONSHIP-EVIDENCE-CONTRACT.md` is a proposal linked to REQ-ALT-001 and GAP-003. T-REL-001–008 are planned only; no programme pair has been approved.
+- AC-FUND-001–009 and AC-APP-001–009 references and tracker transition rules have been cross-checked in planning documents. This closes the documentation cross-check only, not implementation/test work.
+- `REQUIREMENTS READY` remains **NOT PASSED**. Application code, executable tests, CI results, privacy clearance and release evidence remain unavailable.
