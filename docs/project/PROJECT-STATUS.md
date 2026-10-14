@@ -69,12 +69,12 @@ Owner approval of the Phase 0 direction/materials is recorded. These approvals d
 - No application tests, build, security scan, cloud resource, or CI run has been performed or verified. The project owner confirmed on 2026-10-14 that StudyPath SA has not been deployed; therefore there is no live deployment to smoke-test yet. Phase 0 passage does not imply these exist.
 - The owner reports that the `StudyPath SA` subscription is Active, their role is Owner, the plan is Azure Plan, and no costs exist (2026-10-14). Account-specific details, billing scope/date range and redacted evidence were not independently inspected by the assistant; no billing screenshot or saved quote was committed. See `PHASE0-ONLINE-EVIDENCE.md`.
 - Pricing review is a preliminary screen of official pricing pages, not a saved Pricing Calculator quote; final regional prices, currency conversion, tax, usage assumptions and credits remain unverified.
-- Official UJ programme pages and Microsoft pricing/quota pages were checked online on 2026-10-13. The catalogue is a bounded two-programme pilot; full admission predictions remain unsupported and must return UNKNOWN where rules are incomplete.
+- Official UJ programme pages and Microsoft pricing/quota pages were checked online on 2026-10-13. OR-008 supersedes the earlier two-programme proposal with a target of 6–8 curated programme records prioritising Gauteng; the actual publication-ready catalogue remains outstanding. Full admission predictions remain unsupported and incomplete rules must return UNKNOWN.
 - Hackathon deliverables and date are extracted from the supplied programme. The owner confirms Sonke profiling and new-app status; the portal itself was not accessed. Confirm the portal timezone/upload details before submission.
 - The supplied local tracked-file listing and remote repository inspection do not constitute a complete audit of every branch or historical commit.
 
 ## Next gate
-Next: review the Phase 1 PRD/policy-alignment draft and obtain explicit owner approval of the PRD and measurable success criteria. Then proceed to Phase 2 traceability. Tracker persistence is page-memory-only and is not an open Phase 1 decision. PROJECT READY passage authorizes planning only; it is not a deployment approval. No application implementation, Azure provisioning or deployment was performed by this documentation update.
+Phase 1 `PRD READY` passed on 2026-10-14 after explicit owner approval of the revised PRD and measurable acceptance criteria. Current work is **Phase 2 — Requirements matrix and traceability**; `REQUIREMENTS READY` has not passed. Tracker entries are page-memory-only and persistent storage is out of scope. These planning gates do not approve implementation, Azure provisioning or deployment. No application tests were run and no cloud resources or deployment were changed by the documentation updates.
 
 
 ## Azure cost estimate update — 2026-10-14
