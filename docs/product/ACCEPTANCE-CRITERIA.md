@@ -28,6 +28,11 @@
 - **AC-CAT-004:** Where a record lacks location, study mode or another field, the UI identifies that field as unavailable/unknown rather than inventing a value.
 - **AC-CAT-005:** When records conflict or refer to a different admission cycle, the system does not silently select a favorable threshold; the affected eligibility is UNKNOWN until reviewed.
 - **AC-CAT-006:** The UI does not claim comprehensive coverage of South African institutions; the pilot scope/limitations are discoverable by the learner.
+- **AC-CAT-007:** Every requirement used for screening records the institution, qualification/programme and requirement ID; official publisher; source title and URL; last verification date; applicable admission cycle; extracted rule including conditions/exceptions; catalogue version; and curator sign-off status.
+- **AC-CAT-008:** A requirement without an explicitly identified applicable admission cycle is not used to produce a confident eligibility result; prior-cycle rules are not silently carried forward.
+- **AC-CAT-009:** Admission sources are re-verified at least every 30 days and sooner after a source-announced change, a relevant deadline passes, or the cycle changes. A stale, inaccessible or otherwise unverifiable material requirement cannot support ELIGIBLE.
+- **AC-CAT-010:** When official sources conflict, the governing source is selected only when programme/cycle applicability is clear. An unresolved authoritative conflict is recorded and yields UNKNOWN when it could change the result, subject to the approved OR-004 precedence rules.
+- **AC-CAT-011:** Before publication, a curator verifies extracted requirements against their sources. Before release/public demo, the catalogue version, cycle applicability, verification dates and unresolved conflicts are reviewed; evidence of the review is retained.
 
 ## REQ-MAT-001 — Deterministic eligibility and explanations
 
@@ -112,8 +117,7 @@
 ## Criteria requiring owner decisions before baseline approval
 
 - The approved mark range/precision, subject normalization, alias-only lookup, duplicate policy and unsupported-subject behavior are recorded under OR-003; the concrete supported subject vocabulary and aliases must be maintained explicitly in the catalogue.
-- Admission cycle and source freshness (OR-005); eligibility precedence and supported composite rules are approved under OR-004.
-- Definition of stale source and applicable admission cycle.
+- OR-005 admission-cycle and source-freshness contract is approved; catalogue records and release checks still require implementation and evidence. OR-004 eligibility precedence and supported composite rules are approved.
 - Funding provider coverage, supported criteria, required learner inputs, deadline timezone, freshness and expiry policy (OR-015).
 - Tracker statuses/transitions, authority of `submitted_at`, allowed fields, reset/deletion behavior and whether any persistence is permitted (OR-016).
 - Supported browsers/viewports, accessibility conformance level and performance thresholds.
