@@ -53,7 +53,10 @@ Funding matching (M4) and manual application tracking (M5) are included in the i
 - **Pathway:** an institution-specific qualification/programme and its available verified admission information.
 - **Eligibility state:** `ELIGIBLE`, `NOT_ELIGIBLE`, or `UNKNOWN`; not an admission decision.
 - **Official source:** institution, government or funding-provider source authoritative for the relevant requirement.
-- **Source record:** source name, URL, verification date and associated catalogue record/version where available.
+- **Source record:** For each requirement used in eligibility screening, record the institution, qualification/programme and requirement ID; official publisher; source page/document title and URL; last verification date; applicable admission cycle; extracted requirement including conditions and exceptions; catalogue version; and curator sign-off status.
+- **Supported admission cycle:** Only a cycle explicitly identified for the programme requirement is supported. Do not silently carry requirements forward from a prior cycle.
+- **Source freshness:** Re-verify admission sources at least every 30 days, and sooner when a source announces a change, a relevant deadline passes, or the applicable cycle changes. Stale, inaccessible or otherwise unverifiable requirements cannot support confident eligibility.
+- **Source conflicts and sign-off:** Prefer official sources explicitly applicable to the programme and cycle. A programme-specific source takes precedence over a general institutional page only when applicability is clear. Unresolved authoritative conflicts block confident screening and yield `UNKNOWN` where material. A curator verifies each extracted requirement against its source before publication; a release/public-demo check reviews cycle, catalogue version, verification dates and unresolved conflicts. These are requirements, not claims of implemented controls.
 - **Catalogue pilot:** a deliberately bounded catalogue. Phase 0 records two official University of Johannesburg programme pages checked; this is not evidence of broad national coverage.
 - **Temporary inputs:** values used to generate results during the current anonymous exploration; no profile persistence is allowed in the MVP.
 
@@ -68,6 +71,9 @@ Funding matching (M4) and manual application tracking (M5) are included in the i
 8. Missing subject results, missing/ambiguous rules, uncertain programme/cycle applicability, unsupported calculation methods or stale/unverified requirements yield `UNKNOWN` where they prevent a reliable conclusion and no confirmed mandatory failure already determines `NOT_ELIGIBLE`.
 9. `ELIGIBLE` means only that all represented, supported and verified minimum requirements in the pilot screening are met. It is not an admission decision, prediction or guarantee; final decisions remain with the institution. No AI-generated result may override structured authoritative requirements. AI is not required for the initial MVP.
 10. Every displayed requirement and actionable deadline (if displayed) must be traceable to an active source record. No deadline should be shown unless verified for the relevant cycle.
+11. A requirement may be used for confident screening only when its explicitly supported admission cycle and source freshness are verified. Re-verify at least every 30 days and sooner after a source-announced change, a relevant deadline passing, or a cycle change.
+12. Resolve source conflicts only when official-source applicability makes the governing requirement clear. If authoritative sources remain in conflict, do not select a favorable threshold; the affected requirement remains unresolved and yields `UNKNOWN` when it could change the result, subject to OR-004 precedence.
+13. A curator verifies extracted requirements against the source before publication. Before release/public demo, check the catalogue version, cycle applicability, verification dates and unresolved conflicts. This is a required control; it is not evidence that implementation or operational verification has occurred.
 
 ## 5. MVP feature requirements
 
@@ -277,7 +283,7 @@ Exact thresholds, test set size, and measurement ownership are open; do not repo
 
 ## 9. Explicitly unresolved / not approved
 
-See `docs/product/OPEN-REQUIREMENTS.md`. The owner resolved the M4/M5 scope conflict by including funding matching and manual application tracking at P1 / medium priority; their detailed data rules and tracker persistence/lifecycle remain open. Other open items include mark/subject validation, eligibility semantics for composite requirements, source freshness, supported admission cycles, privacy/telemetry details, measurable accessibility/performance targets and MVP success thresholds.
+See `docs/product/OPEN-REQUIREMENTS.md`. OR-001 through OR-005 have owner-approved decisions recorded, including the M4/M5 scope, anonymous inputs, mark/subject validation, eligibility precedence/composite rules, and admission-cycle/source-freshness contract. Implementation and verification evidence for these requirements remain outstanding. OR-006 privacy/telemetry and OR-007 the exact learner-facing meaning/scope of ELIGIBLE remain P0 blockers; measurable accessibility/performance targets, catalogue coverage and MVP success thresholds also remain open.
 
 ## 10. PRD gate assessment
 

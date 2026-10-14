@@ -40,10 +40,12 @@
 - **Status:** Resolved — owner approved the contract; implementation and automated test evidence remain outstanding.
 
 ### OR-005 — Admission cycle and source freshness
-- **Ambiguity:** Catalogue versioning is described, and Phase 0 checked two UJ programme pages, but no current admission cycle, stale-source threshold, re-verification cadence, conflict resolution process or release-time source check is frozen.
-- **Decision required:** Define supported cycle(s), minimum source metadata, freshness threshold, source conflict policy and curator sign-off.
+- **Decision:** **Resolved by owner on 2026-10-14.** The pilot supports only admission cycles explicitly identified on each programme requirement record; prior-cycle rules must not be carried forward silently. Each requirement record must identify the institution, qualification/programme and requirement; official publisher; source page/document title and URL; last verification date; applicable admission cycle; extracted requirement including conditions/exceptions; catalogue version; and curator sign-off status.
+- **Freshness:** Re-verify admission sources at least every 30 days, and sooner when a source announces a change, a relevant deadline passes, or the applicable cycle changes. A source that is stale, inaccessible or otherwise unverifiable cannot support a confident eligibility conclusion.
+- **Conflicts:** Prefer an official source that explicitly applies to the programme and cycle. A programme-specific source takes precedence over a general institutional page only when its applicability is clear. If authoritative sources remain in conflict, do not guess: mark the affected requirement unresolved and return `UNKNOWN` where the conflict prevents reliable screening, unless a separately verified mandatory failure already determines `NOT_ELIGIBLE` under OR-004.
+- **Sign-off/release check:** A curator must verify extracted requirements against the source before publication. Before release/public demo, review the catalogue version, cycle applicability, verification dates and unresolved conflicts. These are required controls, not evidence that tooling or operational checks have been implemented.
 - **Impact:** Whether a requirement can be used for ELIGIBLE/NOT_ELIGIBLE.
-- **Status:** Open.
+- **Status:** Resolved — owner-approved contract; source records, curation controls, implementation and verification evidence remain outstanding.
 
 ### OR-006 — Privacy and browser telemetry boundary
 - **Ambiguity:** Phase 0 prohibits persistence/telemetry of profile values, but static hosting, browser storage, hosting access logs, Application Insights/analytics and third-party error reporting have not been implementation-verified.
@@ -117,4 +119,4 @@ Supported file types/size, consent, retention/deletion, extraction confidence, h
 
 ## Gate disposition
 
-**PRD READY: BLOCKED.** OR-001 scope inclusion, OR-002 anonymous input contract, OR-003 mark/subject validation contract and OR-004 eligibility precedence/composite rules are resolved by owner decision. OR-005 through OR-007 remain material P0 blockers. OR-015 and OR-016 have been promoted to P1 because the medium-priority funding and tracker features are in the intended MVP; resolve their data, lifecycle and privacy contracts before implementation. No implementation tasks are created here.
+**PRD READY: BLOCKED.** OR-001 through OR-005 are resolved by owner decision, including the admission-cycle/source-freshness contract. OR-006 privacy/telemetry and OR-007 the exact learner-facing meaning/scope of ELIGIBLE remain material P0 blockers. The resolved contracts still require implementation, catalogue evidence, tests and release verification; decisions alone do not pass those gates. OR-015 and OR-016 remain P1 because the medium-priority funding and tracker features are in the intended MVP; resolve their data, lifecycle and privacy contracts before implementation. No implementation tasks are created here.
