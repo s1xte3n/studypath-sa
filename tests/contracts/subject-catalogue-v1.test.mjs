@@ -2,6 +2,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 
 // Contract-only reference implementation. This deliberately has no aliases.
+// It is not production application code and cannot establish runtime privacy behavior.
 // Keep in sync with docs/product/SUBJECT-CATALOGUE-V1.md.
 const VERSION = "subject-catalogue-v1";
 const SUBJECTS = new Map([
@@ -16,6 +17,18 @@ const SUBJECTS = new Map([
   ["english — first additional language", "ENGLISH_FIRST_ADDITIONAL_LANGUAGE"],
   ["english — second additional language", "ENGLISH_SECOND_ADDITIONAL_LANGUAGE"],
 ]);
+const CANONICAL_LABELS = new Map([
+  ["MATHEMATICS", "Mathematics"],
+  ["MATHEMATICAL_LITERACY", "Mathematical Literacy"],
+  ["TECHNICAL_MATHEMATICS", "Technical Mathematics"],
+  ["PHYSICAL_SCIENCES", "Physical Sciences"],
+  ["TECHNICAL_SCIENCES", "Technical Sciences"],
+  ["LIFE_SCIENCES", "Life Sciences"],
+  ["LIFE_ORIENTATION", "Life Orientation"],
+  ["ENGLISH_HOME_LANGUAGE", "English — Home Language"],
+  ["ENGLISH_FIRST_ADDITIONAL_LANGUAGE", "English — First Additional Language"],
+  ["ENGLISH_SECOND_ADDITIONAL_LANGUAGE", "English — Second Additional Language"],
+]);
 
 function normalizeSubject(input, catalogueVersion = VERSION) {
   if (typeof input !== "string" || catalogueVersion !== VERSION) {
@@ -26,7 +39,7 @@ function normalizeSubject(input, catalogueVersion = VERSION) {
   if (!subjectId) {
     return { subjectId: null, displayName: null, normalizationStatus: "UNRESOLVED", catalogueVersion: VERSION };
   }
-  const displayName = [...SUBJECTS.entries()].find(([, id]) => id === subjectId)[0];
+  const displayName = CANONICAL_LABELS.get(subjectId);
   return {
     subjectId,
     displayName,
@@ -45,8 +58,10 @@ function normalizeSubjectSet(labels) {
   };
 }
 
-test("T-SUB-001: trims and collapses whitespace for exact canonical label", () => {
-  assert.equal(normalizeSubject("  Mathematics   ").subjectId, "MATHEMATICS");
+test("T-SUB-001: trims/collapses whitespace and returns canonical display label", () => {
+  const result = normalizeSubject("  mAtHeMaTiCs   ");
+  assert.equal(result.subjectId, "MATHEMATICS");
+  assert.equal(result.displayName, "Mathematics");
 });
 test("T-SUB-002: case variation resolves to same canonical ID", () => {
   assert.equal(normalizeSubject("mAtHeMaTiCs").subjectId, "MATHEMATICS");
