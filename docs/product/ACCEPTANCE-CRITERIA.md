@@ -77,6 +77,7 @@
 - **AC-DET-004:** Each official next-step link resolves to the URL recorded for the corresponding source record and has a meaningful accessible label.
 - **AC-DET-005:** An unknown pathway identifier produces a clear not-found state and does not expose unrelated catalogue information.
 - **AC-DET-006:** Details and results clearly state that the institution/provider makes the final admission decision.
+- **AC-DET-007:** Next-step content is limited to official source links and neutral, source-backed guidance to verify requirements or continue with the institution/provider; no personalised action planner, predefined next-action taxonomy, application submission or unsupported deadline is implied.
 
 ## REQ-PRV-001 — Privacy-minimising anonymous exploration
 
