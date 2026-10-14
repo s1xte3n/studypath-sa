@@ -80,7 +80,19 @@
       "url": "https://www.uj.ac.za/wp-content/uploads/2026/07/uj_undergrad_prospectus2027_online_25jun2026.pdf",
       "sourceVersion": "Online 25 June 2026 version (path includes July 2026 upload)",
       "verificationDate": "2026-10-14",
-      "limitation": "Existing project documents also reference the June 2026 upload URL. Compare the official PDF versions and record checksums before sign-off; do not assume the versions are identical."
+      "limitation": "Existing project documents also reference the June 2026 upload URL. Compare the official PDF versions and record checksums before sign-off; do not assume the versions are identical.",
+      "localEvidence": {
+        "filename": "uj_undergrad_prospectus2027_online_25jun2026.pdf",
+        "inspectedLocally": true,
+        "pdfPages": 100,
+        "pdfVersion": "1.7",
+        "fileSizeBytes": 8313488,
+        "metadataCreationUtc": "2026-06-25T10:31:02Z",
+        "metadataModificationUtc": "2026-06-25T10:31:52Z",
+        "sha256": "998901c32c614f00a5b8f9fe22b6f4e3c06772c2bf00bf07fd6bef1304ea499c",
+        "inspectionMethod": "pdftotext -layout; selected printed-page text reviewed",
+        "limitation": "No visual inspection of every programme row/footnote and no byte-level comparison against March- and June-named prospectus candidates."
+      }
     },
     {
       "id": "SRC-UJ-CBE-2027",
@@ -88,7 +100,14 @@
       "url": "https://www.uj.ac.za/wp-content/uploads/2026/04/brochure-cbe_undergraduate_2027-intake.pdf",
       "sourceVersion": "2027 intake brochure",
       "verificationDate": "2026-10-14",
-      "limitation": "Use for CBE cycle-specific rows; confirm page references and exact applicable conditions during final curation."
+      "limitation": "Use for CBE cycle-specific rows; confirm page references and exact applicable conditions during final curation.",
+      "localEvidence": {
+        "filename": "brochure-cbe_undergraduate_2027-intake.pdf",
+        "inspectedLocally": true,
+        "sha256": "37a22d52403b1dfd09d830f0e1a284b9df4bb3864d51d4efb97d4a4d48b78598",
+        "inspectionMethod": "pdftotext -layout; candidate programme rows reviewed",
+        "limitation": "Complete visual review of all applicable footnotes and final curator approval remain outstanding."
+      }
     },
     {
       "id": "SRC-UJ-2027-PROS-MARCH-CANDIDATE",
