@@ -1,8 +1,9 @@
 # StudyPath SA — Project Overview
 
-**Status:** Phase 1 — PRD and requirements planning  
-**Last updated:** 2026-10-13  
-**Readiness gate:** PROJECT READY — PASSED for Phase 1 planning only
+**Status:** Phase 2 — Requirements matrix and traceability  
+**Last updated:** 2026-10-14  
+**Phase 0 gate:** PROJECT READY — PASSED for Phase 1 planning only  
+**Latest passed gate:** PRD READY — PASSED on 2026-10-14 for the approved PRD/acceptance-criteria baseline only
 
 ## Purpose
 Help South African Grade 11–12 learners and recent matric graduates explore study pathways using school marks, subjects, interests, preferences and admission requirements.
@@ -19,7 +20,7 @@ Help South African Grade 11–12 learners and recent matric graduates explore st
 - MVP journey: learner enters relevant subjects/marks and interests, explores explainable pathway matches, reviews eligibility and uncertainty, then follows official-source next steps.
 - Defer document uploads, AI chat and application submission from the initial MVP unless a later approved change establishes a requirement.
 - Start with a small manually curated catalogue from official sources; record provenance, including source URL, verification date and catalogue version where practical.
-- Anonymous exploration first. Defer cross-session saved pathways and manual application tracking until account, persistence and privacy boundaries are approved.
+- Anonymous exploration first. Cross-session saved pathways remain excluded. Manual application tracking is included at P1 with page-memory-only entries; no server/database or browser storage is approved.
 - Use synthetic development data and minimise collection. Anonymous exploration should not ask for names, ID numbers or contact details.
 - R100/month is a hard total spend cap; prefer free tiers and verify prices, quotas, and overage risks before provisioning.
 - Do not provision Azure resources until subscription/tenant access, permissions, cost controls and deployment responsibility are confirmed.
@@ -46,4 +47,4 @@ This is a baseline, not evidence that these services have been provisioned or th
 - Application code, tests, CI/CD, infrastructure and deployment are not yet evidenced by the initial inspection.
 
 ## Current gate
-PROJECT READY passed on 2026-10-13 for PRD/requirements planning only. The owner attests account-specific Azure and hackathon checks are complete; public UJ/Microsoft source checks are logged in `PHASE0-ONLINE-EVIDENCE.md`. The gate does not mean the app is implemented, tested, deployed or ready for public learner use. See `PROJECT-STATUS.md` and `OPEN-QUESTIONS.md`.
+Phase 0 `PROJECT READY` passed on 2026-10-13 for Phase 1 planning only. Phase 1 `PRD READY` passed on 2026-10-14 after explicit owner approval of the revised PRD and measurable acceptance criteria. Current work is Phase 2 requirements traceability; `REQUIREMENTS READY` has not passed. Neither gate means the app is implemented, tested, deployed or ready for public learner use. Account-specific Azure and hackathon checks remain owner-attested; public UJ/Microsoft source checks are logged in `PHASE0-ONLINE-EVIDENCE.md`. See `PROJECT-STATUS.md` and `OPEN-QUESTIONS.md`.
