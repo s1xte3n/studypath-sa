@@ -130,3 +130,15 @@ The five requirement artifacts were committed on branch `docs/phase-2-requiremen
 | Requirement gaps | `docs/product/REQUIREMENT-GAPS.md` | Updated — P0 evidence blockers remain | GAP-001 starting source and GAP-008 architecture direction resolved at decision level; catalogue, privacy, funding and contract evidence remain open. |
 
 D-044 supersedes D-019's static-first selection only. Sensitive financial criteria remain excluded; unknown or unsupported criteria lead to uncertainty and official-provider direction. No implementation, tests, provisioning or deployment are claimed.
+
+
+## Contract proposals and traceability extension — 2026-10-14
+
+| Artifact | Path | Status | Notes |
+|---|---|---|---|
+| Subject normalization contract | `docs/product/SUBJECT-NORMALIZATION-CONTRACT.md` | Draft proposal merged in PR #30 | Canonical IDs/aliases and language distinction need owner/curator approval; GAP-002 open; T-SUB-001–010 planned only. |
+| Pathway relationship evidence contract | `docs/product/PATHWAY-RELATIONSHIP-EVIDENCE-CONTRACT.md` | Draft proposal merged in PR #31 | Defines evidence/sign-off requirements; no relationship pair approved; GAP-003 open; T-REL-001–008 planned only. |
+| Traceability registry extension | `docs/product/TRACEABILITY-MATRIX.md` | Proposed update | Adds contract-specific test IDs and aligns requirement status; no executable test/CI/release evidence. |
+| Canonical requirements matrix | `docs/product/REQUIREMENTS.md` | Proposed update | Links the two contract proposals and records AC-FUND/AC-APP cross-check as planning-complete only. |
+
+The `REQUIREMENTS READY` gate remains **NOT PASSED**. No application implementation, executable test run, CI result, privacy clearance, Azure provisioning or deployment is claimed.
