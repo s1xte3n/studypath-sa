@@ -12,7 +12,7 @@ The matrix below remains a traceability plan, not proof of implementation. For g
 
 | Requirement | PRD / acceptance source | Contract or UI | Test IDs | Expected implementation area (unverified) | CI evidence | Release evidence |
 |---|---|---|---|---|---|---|
-| REQ-EXP-001 | PRD §5; AC-EXP-001–014; draft subject contract | Anonymous explorer form; approved subject dictionary and unresolved handling remain proposals | T-EXP-001–004, T-SUB-001–010 | Form, subject dictionary, validation, memory state | Not available | Subject dictionary/aliases not approved; no implementation evidence |
+| REQ-EXP-001 | PRD §5; AC-EXP-001–014; draft subject contract | Anonymous explorer form; owner-approved subject-catalogue-v1 contract; reference tests exist, execution and production implementation unverified | T-EXP-001–004, T-SUB-001–010 | Form, subject dictionary, validation, memory state | Not available | Owner-approved v1 has no aliases; execution and implementation evidence unavailable |
 | REQ-CAT-001 | PRD §5; AC-CAT-001–012; draft API contract | API catalogue response/source fields; client adapter; empty/stale state | T-CAT-001–003, T-API-001–002, T-API-004 | Curated source data, API adapter, catalogue validator | Not available | 6–8 reviewed records not evidenced; API contract/cost/privacy review open |
 | REQ-MAT-001 | PRD §5; AC-MAT-001–021 | Eligibility result/reason model; no API frozen | T-MAT-001–004 | Deterministic evaluator, composite rules, reasons, stable ordering | Not available | Golden set not executed |
 | REQ-ALT-001 | PRD §5; AC-ALT-001–007; draft pathway relationship contract | Relationship type, rationale, official source, cycle, freshness and curator sign-off | T-ALT-001–002, T-REL-001–008 | Reviewed relationship data and alternatives UI | Not available | No specific relationship approved; exact pair evidence/sign-off outstanding |
@@ -106,7 +106,7 @@ The merged subject and pathway documents define additional **planned** tests. Th
 
 | Test family | Contract | Requirements/gap | Gate condition |
 |---|---|---|---|
-| T-SUB-001–010 | [Subject normalization contract](SUBJECT-NORMALIZATION-CONTRACT.md) | REQ-EXP-001, REQ-MAT-001, REQ-CAT-001, REQ-PRV-001; GAP-002 | Approve canonical IDs, input behavior, alias policy, language distinctions and versioning; then add executable tests. |
+| T-SUB-001–012 | [Subject catalogue v1](SUBJECT-CATALOGUE-V1.md) | REQ-EXP-001, REQ-MAT-001, REQ-CAT-001, REQ-PRV-001; GAP-002 | Owner approval recorded; execute the existing reference tests and verify implementation/runtime separately. |
 | T-REL-001–008 | [Pathway relationship evidence contract](PATHWAY-RELATIONSHIP-EVIDENCE-CONTRACT.md) | REQ-ALT-001, REQ-MAT-001, REQ-PRV-001; GAP-003 | Approve evidence threshold and curator workflow; verify each named pair before publication; then add executable tests. |
 
 **Verification state:** all test IDs in this document remain design identifiers. No application test results, CI run evidence or release evidence have been verified. Privacy/network tests remain release blockers.
