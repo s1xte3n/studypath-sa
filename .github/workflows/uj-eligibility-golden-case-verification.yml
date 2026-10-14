@@ -2,7 +2,7 @@ name: UJ eligibility golden-case verification
 
 on:
   push:
-    branches: [main]
+    branches: [feat/uj-2027-eligibility-evaluator]
   pull_request:
     paths:
       - "src/domain/eligibility/**"

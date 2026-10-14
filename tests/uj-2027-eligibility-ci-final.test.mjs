@@ -3,7 +3,7 @@ import assert from "node:assert/strict";
 import {readFile} from "node:fs/promises";
 import {fileURLToPath} from "node:url";
 import path from "node:path";
-import {evaluateEligibility,levelForPercent} from "../src/domain/eligibility/uj-2027-evaluator-ci2.mjs";
+import {evaluateEligibility,levelForPercent} from "../src/domain/eligibility/uj-2027-evaluator.mjs";
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),"..");
 const oracle=JSON.parse(await readFile(path.join(root,"tests/fixtures/uj-2027-eligibility-golden-cases.v1.json"),"utf8"));
 const cat=JSON.parse(await readFile(path.join(root,"docs/product/uj-2027-pilot-catalogue-draft.json"),"utf8"));

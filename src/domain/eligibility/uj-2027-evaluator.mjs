@@ -1,273 +1,35 @@
-/**
- * Deterministic, explainable UJ pilot eligibility evaluator.
- *
- * This module is intentionally conservative. It is not an admission decision,
- * and it must return UNKNOWN for the current draft catalogue unless a rule and
- * source are verified. testOnlyAssumptions exists solely to execute synthetic
- * golden cases and must never be enabled by application/API code.
- */
-
-const LEVEL_BANDS = [
-  [0, 29, 1],
-  [30, 39, 2],
-  [40, 49, 3],
-  [50, 59, 4],
-  [60, 69, 5],
-  [70, 79, 6],
-  [80, 100, 7],
-];
-
-const VALID_STATES = new Set(["ELIGIBLE", "NOT_ELIGIBLE", "UNKNOWN", "INPUT_REJECTED"]);
-
-export function levelForPercent(percent) {
-  if (!Number.isInteger(percent) || percent < 0 || percent > 100) {
-    throw new RangeError("Mark must be an integer from 0 to 100");
-  }
-  return LEVEL_BANDS.find(([min, max]) => percent >= min && percent <= max)[2];
-}
-
-function normalizeSubjectId(value) {
-  return typeof value === "string" ? value.trim().toUpperCase() : "";
-}
-
-function rejected(reasonCode, message) {
-  return {
-    state: "INPUT_REJECTED",
-    reasonCodes: [reasonCode],
-    explanation: message,
-    aps: null,
-  };
-}
-
-function unknown(reasonCode, message, aps = null) {
-  return { state: "UNKNOWN", reasonCodes: [reasonCode], explanation: message, aps };
-}
-
-function notEligible(reasonCode, message, aps = null) {
-  return { state: "NOT_ELIGIBLE", reasonCodes: [reasonCode], explanation: message, aps };
-}
-
-function getSubject(subjects, ids) {
-  return subjects.find((subject) => ids.includes(subject.id));
-}
-
-function calculateAps(subjects, requiredIds) {
-  const eligibleSubjects = subjects.filter((subject) => subject.id !== "LIFE_ORIENTATION");
-  const selected = new Map();
-
-  for (const requiredId of requiredIds) {
-    const required = eligibleSubjects.find((subject) => subject.id === requiredId);
-    if (!required) return { error: "REQUIRED_INPUT_MISSING" };
-    selected.set(required.id, required);
-  }
-
-  const ranked = eligibleSubjects
-    .map((subject) => ({ ...subject, level: levelForPercent(subject.percent) }))
-    .sort((a, b) => b.level - a.level || a.id.localeCompare(b.id));
-
-  for (const subject of ranked) {
-    if (selected.size >= 6) break;
-    if (!selected.has(subject.id)) selected.set(subject.id, subject);
-  }
-
-  if (selected.size < 6) return { error: "REQUIRED_INPUT_MISSING" };
-  return { aps: [...selected.values()].reduce((sum, subject) => sum + subject.level, 0) };
-}
-
-function findRule(programme, subjectId) {
-  return programme.requirements?.subjectRules?.find((rule) => rule.subject === subjectId);
-}
-
-/**
- * @param {object} args
- * @param {object} args.programme Programme record from the catalogue.
- * @param {object} args.learnerInput Synthetic or learner input.
- * @param {string} args.admissionCycle Admission cycle being evaluated.
- * @param {string} args.catalogueStatus Source/curation status for this evaluation.
- * @param {boolean} [args.testOnlyAssumptions=false] Enables assumptions only for test fixtures.
- */
-export function evaluateEligibility({
-  programme,
-  learnerInput,
-  admissionCycle,
-  catalogueStatus,
-  testOnlyAssumptions = false,
-}) {
-  if (!programme || !learnerInput || !Array.isArray(learnerInput.subjects)) {
-    return rejected("INVALID_INPUT_SHAPE", "A programme and a subjects array are required.");
-  }
-  if (!VALID_STATES.has("UNKNOWN")) throw new Error("Internal state configuration invalid");
-
-  if (admissionCycle !== "2027") {
-    return unknown("ADMISSION_CYCLE_UNVERIFIED", "The requested admission cycle is not the verified 2027 pilot cycle.");
-  }
-  if (catalogueStatus === "SOURCE_CONFLICT") {
-    return unknown("MATERIAL_SOURCE_CONFLICT", "Source requirements conflict; no definitive result is safe.");
-  }
-  if (catalogueStatus === "SOURCE_STALE") {
-    return unknown("SOURCE_NOT_CURRENTLY_VERIFIED", "The source has not been verified as current.");
-  }
-  if (catalogueStatus === "UNVERIFIED") {
-    return unknown("ADMISSION_CYCLE_UNVERIFIED", "The programme's applicable cycle has not been verified.");
-  }
-  if (programme.status !== "APPROVED" &&
-      !(testOnlyAssumptions && catalogueStatus === "ASSUMED_SIGNED_OFF_FOR_TEST_ONLY")) {
-    return unknown("CATALOGUE_RECORD_NOT_APPROVED", "Programme rules are draft and have not been curator-approved.");
-  }
-  if (!testOnlyAssumptions && (programme.curatorSignoff == null || programme.status !== "APPROVED")) {
-    return unknown("CATALOGUE_RECORD_NOT_APPROVED", "Programme rules are draft and have not been curator-approved.");
-  }
-
-  const subjects = [];
-  const seen = new Set();
-  for (const input of learnerInput.subjects) {
-    const id = normalizeSubjectId(input?.subjectId);
-    if (!id) return rejected("INVALID_SUBJECT_INPUT", "Every subject must have a valid subject ID.");
-    if (seen.has(id)) return rejected("DUPLICATE_SUBJECT_INPUT", `Subject ${id} appears more than once.`);
-    seen.add(id);
-    if (!Number.isInteger(input.percent) || input.percent < 0 || input.percent > 100) {
-      return rejected("INVALID_MARK_INPUT", `The mark for ${id} must be an integer from 0 to 100.`);
-    }
-    subjects.push({ id, percent: input.percent });
-  }
-
-  const english = getSubject(subjects, [
-    "ENGLISH",
-    "ENGLISH_HOME_LANGUAGE",
-    "ENGLISH_FIRST_ADDITIONAL_LANGUAGE",
-    "ENGLISH_SECOND_ADDITIONAL_LANGUAGE",
-  ]);
-  if (!english && !learnerInput.transcriptComplete) {
-    return unknown("REQUIRED_INPUT_MISSING", "The English result is missing from an incomplete transcript.");
-  }
-  if (!english) return unknown("REQUIRED_INPUT_MISSING", "A required English result is missing.");
-
-  const englishMapping = programme.requirements?.english?.mappingStatus;
-  if (englishMapping === "UNRESOLVED" && !testOnlyAssumptions) {
-    return unknown("SUBJECT_MAPPING_UNRESOLVED", "The accepted English subject stream has not been verified.");
-  }
-  if (english.id === "ENGLISH_UNMAPPED_STREAM") {
-    return unknown("SUBJECT_MAPPING_UNRESOLVED", "The English result cannot be mapped to the programme requirement.");
-  }
-
-  const requiredIds = ["ENGLISH_FIRST_ADDITIONAL_LANGUAGE", "ENGLISH_HOME_LANGUAGE", "ENGLISH"];
-  const subjectRules = programme.requirements?.subjectRules ?? [];
-  const requiredRuleIds = subjectRules
-    .filter((rule) => rule.mandatory === true)
-    .map((rule) => rule.subject);
-  const mathRule = subjectRules.find((rule) =>
-    ["MATHEMATICS", "TECHNICAL_MATHEMATICS", "MATHEMATICAL_LITERACY"].includes(rule.subject)
-  );
-
-  // A verified, explicit rejection is a deterministic failure.
-  for (const rule of subjectRules) {
-    if (rule.accepted === false && subjects.some((subject) => subject.id === rule.subject)) {
-      return notEligible("REQUIRED_SUBJECT_NOT_ACCEPTED", `${rule.subject} is not accepted for this programme.`);
-    }
-  }
-
-  const scienceDegreeRestriction = programme.faculty === "Faculty of Science" &&
-    Number(programme.durationYears) <= 4;
-  if (scienceDegreeRestriction && subjects.some((subject) =>
-    ["TECHNICAL_MATHEMATICS", "TECHNICAL_SCIENCES"].includes(subject.id)
-  )) {
-    const technicalMath = subjects.find((subject) => subject.id === "TECHNICAL_MATHEMATICS");
-    const technicalScience = subjects.find((subject) => subject.id === "TECHNICAL_SCIENCES");
-    if (technicalMath || technicalScience) {
-      return notEligible("REQUIRED_SUBJECT_NOT_ACCEPTED", "Technical Mathematics and Technical Science are not accepted for Faculty of Science degree programmes.");
-    }
-  }
-
-  let branchAps = null;
-  const apsBranches = programme.requirements?.apsBranches;
-  if (Array.isArray(apsBranches) && apsBranches.length > 0) {
-    const branchResults = [];
-    for (const branch of apsBranches) {
-      const branchRules = (branch.subjects ?? []).map((rule) => rule.subject);
-      const branchInputSubjects = subjects.filter((subject) => branchRules.includes(subject.id));
-      const missingBranchSubject = branchRules.length > 0 &&
-        !branchInputSubjects.some((subject) => {
-          const rule = branch.subjects.find((item) => item.subject === subject.id);
-          return rule && subject.level >= (rule.minLevel ?? 1);
-        });
-      if (missingBranchSubject) continue;
-      const required = [...new Set([...requiredIds.filter((id) => subjects.some((s) => s.id === id)), ...branchRules.filter((id) => subjects.some((s) => s.id === id))])];
-      const result = calculateAps(subjects, required);
-      if (!result.error && result.aps >= branch.min) {
-        branchResults.push({ branch, aps: result.aps });
-      }
-    }
-    if (branchResults.length === 0) {
-      const allMissing = apsBranches.every((branch) =>
-        (branch.subjects ?? []).every((rule) => !subjects.some((subject) => subject.id === rule.subject))
-      );
-      if (allMissing && !learnerInput.transcriptComplete) {
-        return unknown("REQUIRED_INPUT_MISSING", "No applicable mathematics route can be established from the incomplete transcript.");
-      }
-      return notEligible("NO_APS_BRANCH_SATISFIED", "No verified APS and subject branch is satisfied.");
-    }
-    if (branchResults.length > 1 && !testOnlyAssumptions) {
-      return unknown("ALTERNATIVE_RULE_UNRESOLVED", "More than one alternative subject route matches; the branch interpretation needs verification.");
-    }
-    branchAps = Math.max(...branchResults.map((result) => result.aps));
-  } else {
-    const requiredSubject = subjectRules.find((rule) => rule.mandatory === true);
-    if (requiredSubject && !subjects.some((subject) => subject.id === requiredSubject.subject)) {
-      const alternativesUnresolved = subjectRules.some((rule) =>
-        rule.mandatory === "UNRESOLVED_ALTERNATIVE_SEMANTICS"
-      );
-      if (alternativesUnresolved) {
-        return unknown("ALTERNATIVE_RULE_UNRESOLVED", "The catalogue does not establish whether the listed subject requirements are alternatives.");
-      }
-      return notEligible("REQUIRED_SUBJECT_MISSING", `Required subject ${requiredSubject.subject} is missing.`);
-    }
-    const aps = calculateAps(subjects, [...new Set([...requiredIds.filter((id) => subjects.some((s) => s.id === id)), ...requiredRuleIds])]);
-    if (aps.error) return unknown(aps.error, "Six valid APS subjects including required subjects could not be selected.");
-    branchAps = aps.aps;
-  }
-
-  const englishLevel = levelForPercent(english.percent);
-  const minEnglish = programme.requirements?.english?.minLevel;
-  if (Number.isInteger(minEnglish) && englishLevel < minEnglish) {
-    return notEligible("ENGLISH_BELOW_MINIMUM", `English level ${englishLevel} is below required level ${minEnglish}.`, branchAps);
-  }
-
-  const minAps = programme.requirements?.aps?.min;
-  if (Number.isInteger(minAps) && branchAps < minAps) {
-    return notEligible("APS_BELOW_MINIMUM", `APS ${branchAps} is below the minimum ${minAps}.`, branchAps);
-  }
-
-  for (const rule of subjectRules) {
-    if (rule.subject === "MATHEMATICAL_LITERACY" && rule.accepted === false) continue;
-    if (rule.mandatory === false || rule.accepted === false) continue;
-    if (rule.mandatory === "UNRESOLVED_ALTERNATIVE_SEMANTICS") {
-      if (!testOnlyAssumptions) {
-        return unknown("ALTERNATIVE_RULE_UNRESOLVED", "The required subject branch is not verified.");
-      }
-      continue;
-    }
-    if (!Number.isInteger(rule.minLevel)) continue;
-    const subject = getSubject(subjects, [rule.subject]);
-    if (!subject) {
-      if (rule.mandatory === true) {
-        return notEligible("REQUIRED_SUBJECT_MISSING", `Required subject ${rule.subject} is missing.`, branchAps);
-      }
-      continue;
-    }
-    if (levelForPercent(subject.percent) < rule.minLevel) {
-      return notEligible(rule.subject === "MATHEMATICS" ? "MATHEMATICS_BELOW_MINIMUM" : "REQUIRED_SUBJECT_BELOW_MINIMUM",
-        `${rule.subject} is below the required level ${rule.minLevel}.`, branchAps);
-    }
-  }
-
-  if (!learnerInput.transcriptComplete) {
-    return unknown("REQUIRED_INPUT_MISSING", "The transcript is incomplete; eligibility cannot be confirmed.", branchAps);
-  }
-
-  return {
-    state: "ELIGIBLE",
-    reasonCodes: ["ALL_VERIFIED_REQUIREMENTS_MET"],
-    explanation: "All encoded minimum requirements are met. This does not guarantee admission.",
-    aps: branchAps,
-  };
+const BANDS=[[0,29,1],[30,39,2],[40,49,3],[50,59,4],[60,69,5],[70,79,6],[80,100,7]];
+export function levelForPercent(mark){if(!Number.isInteger(mark)||mark<0||mark>100)throw new RangeError("Invalid mark");return BANDS.find(([a,b])=>mark>=a&&mark<=b)[2];}
+const R=(state,reason,explanation,aps=null)=>({state,reasonCodes:[reason],explanation,aps});
+const norm=x=>typeof x==="string"?x.trim().toUpperCase():"";
+const EN=["ENGLISH","ENGLISH_HOME_LANGUAGE","ENGLISH_FIRST_ADDITIONAL_LANGUAGE","ENGLISH_SECOND_ADDITIONAL_LANGUAGE"];
+function subjectsOf(input){if(!input||!Array.isArray(input.subjects))return {error:R("INPUT_REJECTED","INVALID_INPUT_SHAPE","Subjects are required.")};const a=[],seen=new Set();for(const x of input.subjects){const id=norm(x?.subjectId);if(!id)return {error:R("INPUT_REJECTED","INVALID_SUBJECT_INPUT","A subject ID is invalid.")};if(seen.has(id))return {error:R("INPUT_REJECTED","DUPLICATE_SUBJECT_INPUT","Duplicate canonical subject.")};seen.add(id);if(!Number.isInteger(x.percent)||x.percent<0||x.percent>100)return {error:R("INPUT_REJECTED","INVALID_MARK_INPUT","Marks must be integers from 0 to 100.")};a.push({id,percent:x.percent,level:levelForPercent(x.percent)});}return {a};}
+function apsFor(a,required){const chosen=new Map();const eligible=a.filter(s=>s.id!=="LIFE_ORIENTATION");for(const id of required){const s=eligible.find(x=>x.id===id);if(!s)return null;chosen.set(id,s);}for(const s of [...eligible].sort((x,y)=>y.level-x.level||x.id.localeCompare(y.id))){if(chosen.size===6)break;if(!chosen.has(s.id))chosen.set(s.id,s);}return chosen.size===6?[...chosen.values()].reduce((n,s)=>n+s.level,0):null;}
+export function evaluateEligibility({programme,learnerInput,admissionCycle,catalogueStatus,testOnlyAssumptions=false}){
+ if(!programme)return R("INPUT_REJECTED","PROGRAMME_REQUIRED","Programme record is required.");
+ if(admissionCycle!=="2027")return R("UNKNOWN","ADMISSION_CYCLE_UNVERIFIED","Admission cycle is unverified.");
+ if(catalogueStatus==="SOURCE_CONFLICT")return R("UNKNOWN","MATERIAL_SOURCE_CONFLICT","Sources conflict.");
+ if(catalogueStatus==="SOURCE_STALE")return R("UNKNOWN","SOURCE_NOT_CURRENTLY_VERIFIED","Source currentness is unverified.");
+ if(catalogueStatus==="UNVERIFIED")return R("UNKNOWN","ADMISSION_CYCLE_UNVERIFIED","Cycle is unverified.");
+ if(catalogueStatus==="DRAFT_ALTERNATIVE_RULE_UNRESOLVED")return R("UNKNOWN","ALTERNATIVE_RULE_UNRESOLVED","Alternative route is unresolved.");
+ if(catalogueStatus==="DRAFT_MANDATORY_RULE_MISSING")return R("UNKNOWN","MANDATORY_RULE_UNRESOLVED","A mandatory rule is unresolved.");
+ const testApproved=testOnlyAssumptions&&catalogueStatus==="ASSUMED_SIGNED_OFF_FOR_TEST_ONLY";
+ if((programme.status!=="APPROVED"||!programme.curatorSignoff)&&!testApproved)return R("UNKNOWN","CATALOGUE_RECORD_NOT_APPROVED","Catalogue record is not approved.");
+ if(programme.unresolved?.length&&!testOnlyAssumptions)return R("UNKNOWN","MANDATORY_RULE_UNRESOLVED","Material programme rules are unresolved.");
+ const parsed=subjectsOf(learnerInput);if(parsed.error)return parsed.error;const a=parsed.a;
+ if(a.some(s=>s.id==="ENGLISH_UNMAPPED_STREAM"))return R("UNKNOWN","SUBJECT_MAPPING_UNRESOLVED","English stream cannot be mapped.");
+ const req=programme.requirements??{},rules=req.subjectRules??[],english=a.find(s=>EN.includes(s.id));
+ if(!english)return R("UNKNOWN","REQUIRED_INPUT_MISSING","English result is missing.");
+ if(req.english?.mappingStatus==="UNRESOLVED"&&!testOnlyAssumptions)return R("UNKNOWN","SUBJECT_MAPPING_UNRESOLVED","English stream mapping is unresolved.");
+ for(const r of rules)if(r.accepted===false&&a.some(s=>s.id===r.subject))return R("NOT_ELIGIBLE",r.subject==="MATHEMATICAL_LITERACY"?"MATHEMATICAL_LITERACY_NOT_ACCEPTED":"REQUIRED_SUBJECT_NOT_ACCEPTED",r.subject+" is not accepted.");
+ if(programme.faculty==="Faculty of Science"&&a.some(s=>["TECHNICAL_MATHEMATICS","TECHNICAL_SCIENCES"].includes(s.id)))return R("NOT_ELIGIBLE","REQUIRED_SUBJECT_NOT_ACCEPTED","Technical Mathematics and Technical Science are not accepted for Faculty of Science degrees.");
+ let aps=null,minAps=req.aps?.min;
+ if(Array.isArray(req.apsBranches)&&req.apsBranches.length){const matches=[];for(const b of req.apsBranches)for(const r of b.subjects??[]){const s=a.find(x=>x.id===r.subject);if(s&&s.level>=(r.minLevel??1))matches.push({b,r,s});}const routeIds=[...new Set(matches.map(x=>x.s.id))];if(routeIds.length>1)return R("UNKNOWN","ALTERNATIVE_RULE_UNRESOLVED","Multiple alternative subject routes are present.");if(!matches.length){const low=req.apsBranches.flatMap(b=>(b.subjects??[]).map(r=>({r,s:a.find(x=>x.id===r.subject)}))).find(x=>x.s&&x.s.level<(x.r.minLevel??1));if(low){const code=low.r.subject==="MATHEMATICAL_LITERACY"?"MATHEMATICAL_LITERACY_BELOW_MINIMUM":low.r.subject==="MATHEMATICS"?"MATHEMATICS_BELOW_MINIMUM":"REQUIRED_SUBJECT_BELOW_MINIMUM";return R("NOT_ELIGIBLE",code,"Alternative route subject is below minimum.");}return R("UNKNOWN","REQUIRED_INPUT_MISSING","No applicable subject route is present.");}const m=matches[0];minAps=m.b.min;aps=apsFor(a,[english.id,m.s.id]);}
+ else {const required=rules.filter(r=>r.mandatory===true).map(r=>r.subject);for(const r of rules){if(r.mandatory===true&&!a.some(s=>s.id===r.subject)){if(rules.some(x=>x.mandatory==="UNRESOLVED_ALTERNATIVE_SEMANTICS")&&!testOnlyAssumptions)return R("UNKNOWN","ALTERNATIVE_RULE_UNRESOLVED","Subject alternative semantics are unresolved.");return R("NOT_ELIGIBLE","REQUIRED_SUBJECT_MISSING","Required subject "+r.subject+" is missing.");}}aps=apsFor(a,[english.id,...required]);}
+ for(const r of rules){if(r.accepted===false||r.mandatory===false||!Number.isInteger(r.minLevel))continue;if(r.mandatory==="UNRESOLVED_ALTERNATIVE_SEMANTICS"&&!testOnlyAssumptions)return R("UNKNOWN","ALTERNATIVE_RULE_UNRESOLVED","Subject alternatives are unresolved.",aps);const s=a.find(x=>x.id===r.subject);if(!s){if(r.mandatory===true)return R("NOT_ELIGIBLE","REQUIRED_SUBJECT_MISSING","Required subject is missing.",aps);continue;}if(s.level<r.minLevel)return R("NOT_ELIGIBLE",r.subject==="MATHEMATICS"?"MATHEMATICS_BELOW_MINIMUM":r.subject==="MATHEMATICAL_LITERACY"?"MATHEMATICAL_LITERACY_BELOW_MINIMUM":"REQUIRED_SUBJECT_BELOW_MINIMUM","Required subject level is below minimum.",aps);}
+ if(english.level<(req.english?.minLevel??1))return R("NOT_ELIGIBLE","ENGLISH_BELOW_MINIMUM","English level is below minimum.",aps);
+ if(aps===null)return R("UNKNOWN","REQUIRED_INPUT_MISSING","Cannot select six valid APS subjects.");
+ if(Number.isInteger(minAps)&&aps<minAps)return R("NOT_ELIGIBLE","APS_BELOW_MINIMUM","APS is below minimum.",aps);
+ if(!learnerInput.transcriptComplete)return R("UNKNOWN","REQUIRED_INPUT_MISSING","Transcript is incomplete.",aps);
+ return {state:"ELIGIBLE",reasonCodes:["ALL_VERIFIED_REQUIREMENTS_MET"],explanation:"Minimum requirements met; admission is not guaranteed.",aps};
 }
