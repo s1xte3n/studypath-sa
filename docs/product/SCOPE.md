@@ -1,6 +1,6 @@
 # StudyPath SA — Scope
 
-**Status:** Draft; reflects approved Phase 0 direction pending resolution of the source-specification conflict.
+**Status:** Draft; reflects owner-approved Phase 0 and OR-008–OR-014 decisions. Explicit PRD approval and OR-015/016 detail remain outstanding.
 
 ## MVP (P0 candidate)
 
@@ -14,7 +14,7 @@ The MVP is the anonymous-first, source-grounded pathway explorer:
 7. Provide accessible mobile-first form, results, loading, empty, validation and failure states.
 8. Preserve the anonymous/privacy-minimising boundary: no account, no persistent profile, synthetic development/demo data.
 
-**Pilot limitation:** Phase 0 records two official University of Johannesburg programme pages checked. The actual published catalogue size and release freshness policy are not frozen here. The MVP must not claim national catalogue completeness.
+**Pilot limitation:** Target 6–8 curated programme records, prioritising Gauteng and official sources that can be verified and maintained. Include qualification types only where official evidence supports them. The two UJ pages checked in Phase 0 do not establish that the 6–8 publication-ready record target has been met. The MVP must not claim national catalogue completeness.
 
 ## P1 — Medium-priority capabilities in the intended MVP
 
@@ -22,7 +22,7 @@ Funding matching and manual application tracking are in the intended MVP scope a
 
 - **REQ-FUND-001 — Funding catalogue and matching:** a bounded, curated set of funding opportunities with source-backed criteria, provenance, verification dates, deadline/expiry handling, explainable matches and explicit uncertainty.
 - **REQ-APP-001 — Manual application tracker:** learner-reported tracking of supported university/funding applications, with approved statuses and next steps. Tracker lifecycle and data/persistence model must be approved before implementation.
-- A more complete curated catalogue covering additional institutions, provinces, qualification types and TVET options.
+- Catalogue expansion beyond the initial 6–8 record pilot, including additional institutions, provinces, qualification types and TVET options only when the corresponding official records can be verified.
 - Institution/qualification comparison.
 
 Saved pathways and authenticated learner profiles remain outside the intended MVP and require separate approval. P1 means medium priority within the intended MVP, not permission to skip acceptance criteria or privacy/security gates.
@@ -59,9 +59,9 @@ These future ideas are not approved implementation commitments.
 - Real learner personal data in development/demo testing.
 - Paid Azure services or provisioning without renewed cost approval; R100/month total cap and no-provisioning boundary remain in force.
 
-## Scope conflict requiring decision
+## Funding and tracker boundaries still open
 
-The supplied specification labels M4 funding matching and M5 application tracking as Must Have. The owner has now resolved the scope conflict by including both in the intended MVP at P1 / medium priority, behind the P0 core pathway-discovery journey. The anonymous-first preference remains, but the tracker data/persistence model and the inputs permitted for funding matching are not approved. These are tracked in OR-006, OR-015 and OR-016. The decision does not authorise accounts, cross-session persistence or collection of sensitive financial data.
+The supplied specification labels M4 funding matching and M5 application tracking as Must Have. OR-001 resolves the scope conflict by including both in the intended MVP at P1 / medium priority, behind the P0 core pathway-discovery journey. Funding criteria/data rules (OR-015) and tracker lifecycle/data handling (OR-016) remain open. The approved OR-006 privacy boundary applies: this scope decision does not authorise accounts, cross-session persistence, persistent tracker records or collection of sensitive financial data.
 
 ## Dependencies and constraints
 

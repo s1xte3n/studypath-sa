@@ -2,7 +2,7 @@
 
 **Last updated:** 2026-10-14  
 **Phase:** 1 — PRD and requirements planning  
-**Gate:** PROJECT READY passed for Phase 1 planning only; **PRD READY remains blocked pending product decisions**.
+**Gate:** PROJECT READY passed for Phase 1 planning only; **PRD READY remains blocked pending explicit PRD approval and resolution of OR-015/016**.
 
 ## Source-of-truth references
 
@@ -33,7 +33,7 @@ These references were supplied in the project conversation; they are not yet sto
 - Primary MVP journey is anonymous-first: learner enters subjects/marks and interests, sees explainable pathway matches and eligibility/uncertainty, and follows official-source next steps.
 - Defer document uploads, AI chat, direct application submission, cross-session saved pathways and authenticated profiles.
 - Include funding matching (M4) and manual application tracking (M5) in the intended MVP at P1 / medium priority, behind the P0 core pathway-discovery journey. Their detailed data rules, tracker lifecycle and persistence/privacy constraints remain open.
-- Start with a small, manually curated official-source catalogue.
+- Start with a 6–8 record manually curated official-source pilot, prioritising Gauteng; qualification types are included only where supported by official evidence. No national coverage claim.
 - Enforce R100/month maximum total spend; prefer free tiers and validate costs, quotas and overages before provisioning.
 - Use synthetic development data and minimise personal data.
 - Do not provision Azure until subscription/tenant access, permissions, cost controls and deployment responsibility are confirmed.
@@ -45,7 +45,7 @@ The owner approved the Phase 0 decision records and attests that account-specifi
 
 | Requirement | Current evidence | Remaining blocker |
 |---|---|---|
-| Catalogue | Two official UJ programme pages checked; source/provenance and UNKNOWN boundary recorded | Refresh before release; no backup curator; catalogue pilot size not frozen |
+| Catalogue | Two official UJ programme pages checked; OR-008 sets a 6–8 curated programme-record target prioritising Gauteng; OR-005/007 source and eligibility boundaries recorded | Actual publication-ready records, relationship evidence and curator review records remain outstanding; no backup curator/independent reviewer confirmed |
 | Cloud | Owner attests subscription/access and permission checks complete | Recheck planned resource permissions before provisioning; assistant did not access Azure portal |
 | Budget | Official Microsoft pages checked; owner attests budget/billing checks complete | Recheck planned resources and private cost evidence before provisioning |
 | Privacy | Synthetic-only boundary approved | Verify implementation, telemetry/logging, notice, retention and applicable privacy/legal review before public use |
@@ -68,7 +68,7 @@ The owner approved the Phase 0 decision records and attests that account-specifi
 | User stories/use cases | `docs/product/USER-STORIES.md` | Draft | Stories and core use cases mapped to requirement IDs |
 | Acceptance criteria | `docs/product/ACCEPTANCE-CRITERIA.md` | Draft | Candidate testable criteria for every MVP requirement; no test execution implied |
 | Scope | `docs/product/SCOPE.md` | Draft | P0 core journey plus P1 medium-priority funding matching and manual tracking; implementation boundaries remain open |
-| Open requirements | `docs/product/OPEN-REQUIREMENTS.md` | Open — decisions required | P0 ambiguities and later-feature questions explicitly recorded |
+| Open requirements | `docs/product/OPEN-REQUIREMENTS.md` | OR-001–OR-014 resolved; OR-015–OR-018 open | Funding/tracker detail remains open for P1 implementation; later-scope questions remain tracked |
 
 ## Planned downstream artifacts
 
@@ -89,6 +89,6 @@ The owner approved the Phase 0 decision records and attests that account-specifi
 
 ## Gate assessment
 
-**PRD READY: BLOCKED.** The product artifacts have been updated on branch `docs/phase-1-prd-scope-b`. The owner resolved OR-001 by including M4 funding matching and M5 manual application tracking at P1 / medium priority in the intended MVP. OR-002 through OR-007 remain P0 blockers; OR-015 and OR-016 are P1 requirements to resolve before implementing the added features. No implementation, test execution, provisioning or deployment is claimed.
+**PRD READY: BLOCKED.** OR-001–OR-014 have owner-approved decisions; this decision package is recorded on branch `docs/resolve-or-008-014-decisions` and awaits review. OR-015 funding criteria/data and OR-016 tracker lifecycle/data handling remain open before those P1 features can be implemented and before the requirements baseline/architecture is treated as complete. Actual catalogue/relationship curation, test execution, privacy review, provisioning and deployment are not established by these decisions and are not claimed.
 
 PROJECT READY passed for Phase 1 planning only. No application implementation, test execution, Azure provisioning or deployment is claimed.

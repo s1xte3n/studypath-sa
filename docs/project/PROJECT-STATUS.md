@@ -25,10 +25,10 @@
 | Tests, CI workflows, infrastructure, database | Not verified; no execution evidence available | 
 | Deployment | Confirmed by project owner on 2026-10-14: StudyPath SA has not been deployed. No live application URL or deployment has been verified. |
 | MVP journey | Direction accepted: anonymous learner journey from subject/mark/interest inputs to explainable pathways, eligibility/uncertainty and official next steps |
-| Catalogue | Two UJ programme pages checked online; minimum thresholds and 2026 application dates recorded in `PHASE0-ONLINE-EVIDENCE.md`; full admission prediction remains out of scope and ambiguity maps to UNKNOWN |
+| Catalogue | Two UJ programme pages checked online; OR-008 now sets a 6–8 curated programme-record target prioritising Gauteng. Actual publication-ready records and relationship evidence are not yet verified; eligibility remains minimum-requirement screening and ambiguity maps to UNKNOWN |
 | Budget | Owner reports an Active `StudyPath SA` Azure Plan subscription, Owner access, and no costs as of 2026-10-14. This is owner-supplied portal information; billing scope/date range and supporting evidence are not independently reviewed. Public Microsoft pricing/quota sources were checked. No saved quote was uploaded. Free static hosting only; no paid add-ons without renewed approval. |
 | Privacy and identity | Synthetic-only, no-persistence/no-profile-telemetry boundary approved; implementation verification, hosting metadata review and any applicable privacy/legal assessment are downstream build/release gates; real learner inputs remain prohibited |
-| Azure subscription and accountable owners | Owner confirms a subscription exists and is theirs; permissions/billing visibility are not independently verified. Owner will hold all roles for now; no backup/independent reviewer. |
+| Azure subscription and accountable owners | Owner confirms a subscription exists and is theirs; permissions/billing visibility are not independently verified. Under OR-014, temporary single-owner review is accepted with documented self-review/release checks; seek independent review before public learner use and record the limitation if unavailable. |
 | Hackathon | Owner confirms team profile and new-app status. Supplied programme reviewed: interactive real-time app, deck max 10 slides, demo video max 90 seconds, SSDLC and Lean Business Canvas; Monday 23:59 submission implies 26 Oct 2026. Sonke portal not independently accessed; verify displayed timezone/upload details at submission. |
 
 ## Completed
@@ -37,6 +37,7 @@
 - Established Phase 0 documentation and recorded the accepted MVP, budget, privacy, anonymous-first and no-provisioning directions.
 - Reviewed the supplied product specification for the catalogue/provenance and deterministic eligibility guardrails.
 - Reviewed the supplied hackathon programme: team profiling, app eligibility, deck/video, SSDLC, Lean Business Canvas and submission timing.
+- Owner approved OR-008–OR-014 on 2026-10-14. The decision documentation is being prepared on `docs/resolve-or-008-014-decisions`; the PRD remains draft, and no implementation, test execution or release evidence is implied.
 - Researched official Azure pricing/documentation pages for the preliminary budget screen.
 - Merged `docs/project/PROJECT-READY-EVIDENCE.md` via PR #4; the pack does not constitute approval or gate passage.
 - Recorded owner confirmations: one person holds all roles for now; Azure subscription exists and is owned by the project owner; team is profiled on Sonke; this is a new app being developed before the hackathon.
@@ -52,12 +53,12 @@ The following are downstream implementation/release controls, not blockers to be
 3. Keep eligibility to sourced minimum-requirement screening and return UNKNOWN on incomplete or ambiguous rules.
 4. Before provisioning, recheck the planned resource list against the R100/month cap and the owner's private cost evidence; do not add paid/metered services without renewed approval.
 5. Verify the Sonke portal’s displayed submission deadline/timezone and upload limits before final submission.
-6. Obtain independent review if feasible; the owner remains the single person holding all roles.
+6. Under OR-014, retain source/relationship self-review records, run available automated checks and complete a release checklist; seek independent review before public learner use, and document the limitation if no reviewer is available.
 
 ## Resolved in principle
 - MVP journey and key exclusions.
-- Anonymous exploration first; defer cross-session saves and manual tracking.
-- Start with a small manually curated catalogue from official sources.
+- Anonymous exploration first; cross-session saved pathways remain excluded. Funding matching and manual application tracking are intended P1 MVP capabilities under OR-001, but their detailed funding/tracker contracts remain open under OR-015/016.
+- Start with a 6–8 record manually curated official-source pilot, prioritising Gauteng, under OR-008; actual records and review evidence remain outstanding.
 - Hard R100/month total spend cap; no provisioning before cost/access approval.
 - Azure Static Web Apps Free is an acceptable hosting plan on the existing subscription; the project will not rely on the expired 12-month Azure free-account offer. Owner reports no project resources currently provisioned and no credits will be used.
 
