@@ -4,6 +4,8 @@
 **Last updated:** 2026-10-14  
 **Priority:** P0 blocks readiness/safety/budget; P1 must resolve before dependent phase; P2/P3 later.
 
+**Historical-note convention:** Dated Q-019/source-reconciliation paragraphs are retained as an audit trail; later dated updates supersede earlier source-conflict snapshots. Current Q-019 status is owner-approved candidate selection for the bounded pilot, with complete rule extraction, executable test oracles, curator sign-off and publication readiness still open.
+
 The owner approved the seven proposed Q decisions on 2026-10-13 and previously attested that account-specific checks were complete. On 2026-10-14, the owner supplied local Git command output showing a clean `main` branch with no local/remote divergence and confirmed that StudyPath SA has not been deployed. The owner also reports the Azure `StudyPath SA` subscription is Active, their role is Owner, the plan is Azure Plan, and no costs exist. These details remain owner-attested: billing scope/date range and supporting portal evidence have not been independently reviewed. The subscription ID and directory identifiers are intentionally excluded from repository documentation. Evidence is recorded in `PHASE0-ONLINE-EVIDENCE.md`.
 
 | ID | Priority | Question / remaining work | Owner | Required evidence / gate impact |
