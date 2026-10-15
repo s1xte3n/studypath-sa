@@ -21,7 +21,8 @@ These references were supplied in the project conversation; they are not yet sto
 | Project overview | `docs/project/PROJECT-OVERVIEW.md` | Present in repository |
 | Project status | `docs/project/PROJECT-STATUS.md` | Updated on main; Phase 1 planning authorized |
 | Master project checklist | `docs/project/MASTER-PROJECT-CHECKLIST.md` | Present; Phase 0 recorded as passed for Phase 1 planning only |
-| Decisions and assumptions | `docs/project/DECISIONS.md` | Present in repository |
+| Decisions and assumptions | `docs/project/DECISIONS.md` | D-046 added on branch for review |
+| Q-020 change control | `docs/project/Q020-CHANGE-CONTROL.md` | Owner-approved scope and implementation gates documented on branch for review |
 | Open questions | `docs/project/OPEN-QUESTIONS.md` | Present in repository; downstream work tracked |
 | Project charter | `docs/project/PROJECT-CHARTER.md` | Present in repository |
 | Artifact index | `docs/project/ARTIFACT-INDEX.md` | Updated on this PR branch |
@@ -31,7 +32,7 @@ These references were supplied in the project conversation; they are not yet sto
 ## Accepted Phase 0 decisions
 
 - Primary MVP journey is anonymous-first: learner enters subjects/marks and interests, sees explainable pathway matches and eligibility/uncertainty, and follows official-source next steps.
-- Defer document uploads, AI chat, direct application submission, cross-session saved pathways and authenticated profiles.
+- D-046 separately approves authenticated pathway matching, saved pathways, pathway comparison, saved funding opportunities and a personal dashboard, subject to Q-020 lifecycle/security/privacy/test/cost gates. Academic profile persistence requires explicit opt-in. Keep the application tracker page-memory-only. Continue to defer uploads, AI chat and direct application submission.
 - Include funding matching (M4) and manual application tracking (M5) in the intended MVP at P1 / medium priority, behind the P0 core pathway-discovery journey. OR-015 funding rules and OR-016 tracker lifecycle/field rules are approved; tracker entries are page-memory-only and no persistence mechanism is in scope.
 - Start with a 6–8 record manually curated official-source pilot, prioritising Gauteng; qualification types are included only where supported by official evidence. No national coverage claim.
 - Enforce R100/month maximum total spend; prefer free tiers and validate costs, quotas and overages before provisioning.
@@ -64,9 +65,9 @@ The owner approved the Phase 0 decision records and attests that account-specifi
 
 | Artifact | Path | Status | Notes |
 |---|---|---|---|
-| Product requirements document | `docs/product/PRD.md` | Draft — owner review required | Feature specifications include actors, preconditions, triggers, inputs, rules, success/failure, permissions, edge cases, dependencies, acceptance links, NFRs and exclusions |
+| Product requirements document | `docs/product/PRD.md` | Owner-approved baseline; D-046 authenticated scope extension reconciled on branch for review | Authenticated implementation remains blocked by Q-020 lifecycle, privacy/security, contract, test and cost gates |
 | User stories/use cases | `docs/product/USER-STORIES.md` | Draft | Stories and core use cases mapped to requirement IDs |
-| Acceptance criteria | `docs/product/ACCEPTANCE-CRITERIA.md` | Draft | Candidate testable criteria for every MVP requirement; no test execution implied |
+| Acceptance criteria | `docs/product/ACCEPTANCE-CRITERIA.md` | Owner-approved baseline; AC-AUTH-001–016 added on branch for review | Authenticated criteria are planned test oracles, not implementation or test evidence |
 | Scope | `docs/product/SCOPE.md` | Draft | P0 core journey plus P1 medium-priority funding matching and manual tracking; implementation boundaries remain open |
 | Open requirements | `docs/product/OPEN-REQUIREMENTS.md` | OR-001–OR-018 policy decisions recorded; OR-016 lifecycle and page-memory-only persistence aligned | Funding records and tracker implementation evidence remain outstanding; any future persistence would require separate change control |
 

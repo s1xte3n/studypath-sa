@@ -9,9 +9,9 @@ Use an API-first design and review the versioned interface before implementing d
 ## Tiered data boundary (D-045; design direction only)
 - **Anonymous/non-logged-in:** public curated programme/funding catalogue API only; deterministic matching runs client-side. Learner marks, subjects, interests, results and tracker entries remain in page memory and must never be sent to an API, URL, analytics, application log or error telemetry.
 - **Authenticated/logged-in:** server-side matching is the intended direction, using only explicitly approved profile fields over HTTPS in an authenticated request. Do not put profile values in URLs or telemetry; exclude profile payloads from application/error logs. Server-side matching must not be implemented until the identity provider, authentication flow, server-side authorization, account isolation, data minimisation, consent/notice, logging/retention/deletion, error/cache behavior, threat model, tests and cost are approved.
-- Login does not itself authorize profile persistence, saved pathways, cross-session tracker sync, profile storage or any unspecified special feature. Q-020 requires each account-gated feature and data lifecycle to be explicitly defined.
+- D-046 approves the feature scope for authenticated server-side matching, saved pathways, pathway comparison, saved funding opportunities and a derived personal dashboard. Login alone is not profile-storage consent. Academic profile persistence requires explicit opt-in. Q-020 remains open for exact schemas, lifecycle, identity/authorization, account isolation, privacy/legal review, operational controls, tests and cost. The tracker remains page-memory-only with no sync.
 - No real learner data in development/demo; use synthetic data. Real learner data remains blocked until applicable privacy/legal review and implementation verification are complete.
-- Database, Blob Storage, profile persistence, uploads and cloud sync remain out of scope unless a later approved change explicitly includes them.
+- A database or other persistence service may be considered only to support D-046's approved profile/bookmark scope after schema, consent/lifecycle, identity/authorization, privacy/security, test and cost gates pass. Blob uploads, document extraction, tracker persistence and tracker cloud sync remain out of scope.
 - Use synthetic data for development/demo. Real learner data remains prohibited until applicable privacy/legal review and implementation verification are complete.
 - Funding flow must not ask for national ID, household income, bank details, family/financial documents or other sensitive financial data. If a material criterion is unsupported or sensitive, disclose uncertainty and direct the learner to official checks.
 
@@ -50,7 +50,7 @@ Azure Static Web Apps, API Management and Azure Functions are candidates from th
 | Curator → catalogue | Official-source records and review metadata | Required provenance, cycle, verification date, version and curator sign-off |
 
 ## Open decisions/evidence
-- D-045 resolves the product direction: anonymous catalogue-only/client-side matching; authenticated server-side matching. Q-018 remains open for the authenticated contract, privacy/security, identity/authorization and cost gates; Q-020 defines account-gated features and data lifecycle.
+- D-045 defines the anonymous/authenticated matching split; D-046 approves the authenticated feature list. Q-018 and Q-020 remain open for contract, lifecycle, identity/authorization, privacy/security, runtime and cost evidence.
 - Runtime/cost: choose Functions/API Management composition and prove complete cost stays within R100/month.
 - Contract: approve paths, schemas, error format, cache semantics, timeout/retry, CORS and version compatibility.
 - Privacy: inspect provider logging/retention, API logs, request payloads, dependencies, browser storage/history and privacy notice.
