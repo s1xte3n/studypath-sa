@@ -1,7 +1,7 @@
 # StudyPath SA — MVP Acceptance Criteria
 
 **Status:** Approved by product owner on 2026-10-14 as the MVP acceptance-criteria baseline; criteria are targets/test oracles, not evidence that implementation or tests exist. Actual catalogue/relationship records, implementation, test execution and verification evidence remain outstanding.  
-**Convention:** Each AC has a unique ID and maps to one PRD requirement. These are product acceptance criteria, not evidence that implementation or tests exist.
+**Convention:** Each feature AC has a unique ID and maps to its named requirement in the PRD and canonical requirements matrix. The `AC-NFR-001–005` items are cross-cutting verification controls mapped to existing requirements in `REQUIREMENTS.md`, not separate product NFRs. `AC-COST-FUT-*` and `AC-AI-FUT-*` are future-scope criteria mapped to OR-017 and OR-018, not initial-MVP acceptance gates. Acceptance criteria are test oracles, not evidence that implementation or tests exist.
 
 ## Scope and gate applicability (D-044–D-047)
 
