@@ -182,7 +182,7 @@ The anonymous-first intended MVP still prioritises P0 pathway discovery, eligibi
 - **Permissions:** Anonymous read-only access.
 - **Edge cases:** Incomplete detail record; duplicate names; official source redirects; source refers to a different admission cycle; mobile external-link handling.
 - **Dependencies:** REQ-CAT-001, REQ-MAT-001 and source provenance.
-- **Acceptance criteria:** See AC-DET-001 through AC-DET-006.
+- **Acceptance criteria:** See AC-DET-001 through AC-DET-007.
 - **Non-functional requirements:** Mobile-readable; links have meaningful labels; external-source provenance is accessible; clear uncertainty and no guarantees.
 - **Out of scope:** Application submission, scraping live source pages at request time, a personalised action planner or predefined next-action option taxonomy, displaying unverified fees/deadlines.
 
