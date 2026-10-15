@@ -151,3 +151,11 @@ The `REQUIREMENTS READY` gate remains **NOT PASSED**. No application implementat
 | UJ 2027 programme catalogue register | `docs/product/PROGRAMME-CATALOGUE-REGISTER.md` | Updated to record the stronger CBE brochure evidence and the remaining original-table/curator checks. |
 
 The source follow-up is documentation-only. GAP-001 and the REQUIREMENTS READY gate remain open/not passed; no application tests or release evidence are implied.
+
+### Q-020 lifecycle and implementation readiness
+
+| Artifact | Path | Status | Notes |
+|---|---|---|---|
+| Lifecycle and implementation readiness | `docs/project/Q020-LIFECYCLE-IMPLEMENTATION-READINESS.md` | Proposed; explicit owner decisions open | Data inventory, opt-in/withdrawal, retention/deletion/backups, identity/session controls, authorization, API proposals, cost gate and T-AUTH verification plan. Does not authorize implementation. |
+
+Q-020 remains P0 and implementation readiness is not passed. See the artifact's Q020-DEC-01–14 approval register; do not infer approval from the proposal.

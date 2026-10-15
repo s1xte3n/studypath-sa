@@ -136,3 +136,7 @@ Record approved changes to scope, stack, budget, audience, data use or deadlines
 - No real learner data, new provisioning, deployment or release is authorized by this decision alone. Use synthetic data until review and runtime controls are verified.
 - This decision resolves the product-owner feature-choice portion of Q-020. Q-020 remains P0/open for lifecycle, contract, security/privacy, cost and test evidence. REQUIREMENTS READY and release gates remain open.
 - Source: explicit product-owner approval in the StudyPath SA project conversation on 2026-10-15.
+
+## Q-020 lifecycle recommendations (proposed; not approved)
+
+The product owner approved D-046's authenticated feature scope, but has not yet approved the detailed lifecycle policy. See [Q020-LIFECYCLE-IMPLEMENTATION-READINESS.md](Q020-LIFECYCLE-IMPLEMENTATION-READINESS.md) for the proposed minimum-field inventory, consent/withdrawal, retention/deletion/backup schedule, identity/session design, authorization and privacy controls, cost gate, test plan and explicit decision register. These recommendations are **not decisions** until each Q020-DEC item is explicitly approved or revised. No schema freeze, implementation, provisioning or real learner data is authorized by the proposal.

@@ -83,3 +83,7 @@ Approve before implementation. Do not include learner values, stack traces, secr
 - Verify source records; schema design does not verify catalogue data.
 
 **Contract gate: DRAFT / NOT IMPLEMENTATION-READY.**
+
+## Q-020 lifecycle implementation-readiness proposal
+
+The proposed data inventory, lifecycle rules, deletion/backup behavior, authorization requirements, cache/logging controls, candidate resource operations and approval register are documented in [Q020-LIFECYCLE-IMPLEMENTATION-READINESS.md](../project/Q020-LIFECYCLE-IMPLEMENTATION-READINESS.md). This does not freeze this draft contract. Exact schemas, status/error semantics, auth/session protocol, retention, idempotency, concurrency, rate limits and OpenAPI tests remain gates. No authenticated feature route is implementation-approved.
