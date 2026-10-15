@@ -21,6 +21,10 @@
 
 The owner selected tiered matching: anonymous users use a public catalogue API with client-side matching; logged-in users are intended to use authenticated server-side matching and may later receive account-gated features. Recorded as D-045 and reflected in the draft architecture/API contract on branch `docs/login-tiered-matching-change-control`. This is a documentation/change-control proposal only. Authentication, profile transmission, persistence, feature-specific data lifecycle, privacy/security approval, cost verification, implementation, CI and deployment are not complete. Q-018 remains open for architecture/security/cost gates; Q-020 requires the logged-in special features and data lifecycle to be defined. No Azure provisioning or real learner-data use is authorized.
 
+## Q-020 gate-closure work — 2026-10-15
+
+Prepared a review/decision pack on branch `docs/q020-gate-closure-proposal`: `Q020-DECISION-PACK.md`, `Q020-PRIVACY-LEGAL-AGE-REVIEW.md`, `Q020-ARCHITECTURE-THREAT-MODEL.md`, and `Q020-COST-AND-TEST-READINESS.md`. These are proposals/checklists, not proof that the gates have passed. The recommended session design is Entra External ID candidate + OIDC authorization code with PKCE and memory-only token cache. The authenticated service stack is still unpriced; the R100/month cap is not demonstrated for it. A qualified South African privacy/legal review is still required before real learner data. No implementation, provisioning, production identity configuration or deployment is authorized.
+
 ## State by area
 
 | Area | Status |
