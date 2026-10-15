@@ -57,17 +57,18 @@
 
 **REQUIREMENTS READY: NOT PASSED.**
 
-This matrix is the initial traceability artifact. The phase cannot pass while programme rules remain incomplete, pathway relationships and funding records are unsupported, privacy/runtime controls lack verification, and the API/runtime contract is unresolved. The bounded subject-catalogue-v1 decision is owner-approved and its 12 contract tests are reported passing, but runtime/privacy evidence remains open. Requirements and tests are mapped at a planning level; implementation paths, executable test results, CI evidence and release evidence remain absent.
+This matrix is a planning-level traceability artifact, not implementation or release evidence. Phase 2 requirements readiness depends on complete, internally consistent, testable requirements and traceability, with unresolved user-visible P0 behavior explicitly resolved or safely bounded. Missing publication-ready programme records (GAP-001), verified relationship pairs (GAP-003), and current funding records (GAP-005, P1) remain data/catalogue readiness gates; they must not be fabricated, but their absence alone does not make requirements incomplete when the contract explicitly permits an empty/unknown result. Runtime privacy verification (GAP-004), API/runtime feasibility (GAP-008), application implementation, executable runtime tests, CI and release evidence remain downstream implementation/security/test/release gates and are not passed by this matrix. The owner-approved subject-catalogue-v1 decision and reported 12 contract tests cover only the bounded reference contract; runtime integration and privacy evidence remain open.
 
 ## Next actions
 
-1. Review and approve this matrix's requirement IDs and cross-links; align the NFR identifiers with the PRD before gate sign-off.
-2. Complete GAP-001 by turning the seven UJ candidates into full rule records and obtaining curator sign-off; reach the 6–8 verified-record target.
-3. Close the remaining GAP-002 runtime/privacy evidence and verify the committed contract test command in CI; do not reopen approved subject IDs/alias policy without change control.
-4. Resolve GAP-003 with evidence-backed relationship pairs or leave the relationship catalogue empty.
-5. Build and verify GAP-004 privacy/runtime evidence and GAP-008 API/runtime feasibility before learner-facing implementation is release-ready.
-6. Curate 3–5 funding records for GAP-005.
-7. After evidence decisions, freeze API/interface contracts and test strategy, then implement and run tests. Do not mark criteria passed without recorded execution evidence.
+1. Review and approve this matrix's requirement IDs, cross-links and normative wording; reconcile NFR identifiers with the PRD before Phase 2 sign-off.
+2. Complete the Phase 2 cross-artifact audit: confirm every in-scope requirement has measurable acceptance criteria and planned verification, all IDs/ranges match, priorities and exclusions are consistent, and every unresolved P0 behavior is resolved or explicitly bounded.
+3. Preserve GAP-001 catalogue completeness and source conflicts as a data/publication gate; incomplete or ambiguous rules must not produce definitive eligibility.
+4. Preserve GAP-002 subject-contract/reference-test evidence separately from production integration and runtime/privacy verification; verify any claimed CI result against the exact commit.
+5. Keep GAP-003 empty unless relationship pairs have sufficient official evidence and curator sign-off.
+6. Keep GAP-004 runtime privacy and GAP-008 API/runtime feasibility as downstream implementation/security/release gates; do not transmit learner inputs/results/tracker entries or claim those controls verified without evidence.
+7. Keep GAP-005's 3–5 current official funding records as P1 catalogue readiness, not a prerequisite to P0 requirements completeness; do not enable funding matches without verified records.
+8. Record the review summary and explicit owner acceptance only after Phase 2 checklist items A4–A6 and required traceability checks are satisfied. Do not mark criteria passed without evidence.
 
 
 ## GAP-001 / GAP-002 joint review update — 2026-10-14
