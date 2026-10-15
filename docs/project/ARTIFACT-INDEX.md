@@ -65,11 +65,11 @@ The owner approved the Phase 0 decision records and attests that account-specifi
 
 | Artifact | Path | Status | Notes |
 |---|---|---|---|
-| Product requirements document | `docs/product/PRD.md` | Owner-approved baseline; D-046 authenticated scope extension reconciled on branch for review | Authenticated implementation remains blocked by Q-020 lifecycle, privacy/security, contract, test and cost gates |
+| Product requirements document | `docs/product/PRD.md` | Owner-approved baseline; D-046/D-048 future authenticated scope is explicitly mapped to REQ-AUTH-001 and excluded from D-047 demo | Authenticated implementation remains blocked by Q-018/Q-020 lifecycle, privacy/security, contract, test and cost gates |
 | User stories/use cases | `docs/product/USER-STORIES.md` | Draft | Stories and core use cases mapped to requirement IDs |
-| Acceptance criteria | `docs/product/ACCEPTANCE-CRITERIA.md` | Owner-approved baseline; AC-AUTH-001–016 added on branch for review | Authenticated criteria are planned test oracles, not implementation or test evidence |
+| Acceptance criteria | `docs/product/ACCEPTANCE-CRITERIA.md` | Owner-approved baseline; AC-AUTH-001–016 document D-046/D-048 future scope | Authenticated criteria are planned test oracles, not implementation or test evidence |
 | Scope | `docs/product/SCOPE.md` | Draft | P0 core journey plus P1 medium-priority funding matching and manual tracking; implementation boundaries remain open |
-| Open requirements | `docs/product/OPEN-REQUIREMENTS.md` | OR-001–OR-018 policy decisions recorded; OR-016 lifecycle and page-memory-only persistence aligned | Funding records and tracker implementation evidence remain outstanding; any future persistence would require separate change control |
+| Open requirements | `docs/product/OPEN-REQUIREMENTS.md` | OR-001–OR-018 dispositions recorded; OR-019 remains open for API/runtime composition and cost/provider review; OR-016 page-memory-only policy aligned | Funding records, runtime privacy and tracker implementation evidence remain outstanding; future persistence requires separate change control |
 
 ## Planned downstream artifacts
 
@@ -109,7 +109,7 @@ The approval does not claim implementation, catalogue curation, test passage, pr
 
 | Artifact | Path | Status | Notes |
 |---|---|---|---|
-| Canonical requirements matrix | `docs/product/REQUIREMENTS.md` | Created — planning baseline | Nine functional requirements and eight cross-cutting NFRs mapped to priority, dependencies, logical components, acceptance criteria and planned verification IDs. |
+| Canonical requirements matrix | `docs/product/REQUIREMENTS.md` | Created — planning baseline; updated by the Phase 2 traceability audit | Nine current MVP functional requirements plus REQ-AUTH-001 future scope, and eight NFRs, mapped to acceptance/verification criteria. |
 | Traceability matrix | `docs/product/TRACEABILITY-MATRIX.md` | Created — evidence pending | Requirement → PRD/AC → contract/UI → test ID → expected implementation area → CI/release evidence. Contract, implementation, CI and release evidence remain unavailable. |
 | Feature backlog | `docs/product/FEATURE-BACKLOG.md` | Created — blocked items labelled | P0 core journey sequenced before P1 funding and tracker. Ambiguous behavior is not treated as an implementation task. |
 | Dependency matrix | `docs/product/DEPENDENCY-MATRIX.md` | Created — planning baseline | Functional, data, privacy and verification dependencies recorded; architecture and API boundaries are not assumed. |
@@ -137,10 +137,10 @@ D-044 supersedes D-019's static-first selection only. Sensitive financial criter
 
 | Artifact | Path | Status | Notes |
 |---|---|---|---|
-| Subject normalization contract | `docs/product/SUBJECT-NORMALIZATION-CONTRACT.md` | Draft proposal merged in PR #30 | Canonical IDs/aliases and language distinction need owner/curator approval; GAP-002 open; T-SUB-001–010 planned only. |
+| Subject normalization contract | `docs/product/SUBJECT-NORMALIZATION-CONTRACT.md` | Contract reference retained; subject-catalogue-v1 policy subsequently owner-approved | T-SUB-001–012 reference tests are limited to normalization; production integration and runtime privacy remain unverified. |
 | Pathway relationship evidence contract | `docs/product/PATHWAY-RELATIONSHIP-EVIDENCE-CONTRACT.md` | Draft proposal merged in PR #31 | Defines evidence/sign-off requirements; no relationship pair approved; GAP-003 open; T-REL-001–008 planned only. |
-| Traceability registry extension | `docs/product/TRACEABILITY-MATRIX.md` | Proposed update | Adds contract-specific test IDs and aligns requirement status; no executable test/CI/release evidence. |
-| Canonical requirements matrix | `docs/product/REQUIREMENTS.md` | Proposed update | Links the two contract proposals and records AC-FUND/AC-APP cross-check as planning-complete only. |
+| Traceability registry | `docs/product/TRACEABILITY-MATRIX.md` | Updated through merged PR #79 and this proposed audit | Planned test IDs remain plans except where an exact historical CI run is cited; application/release evidence remains unavailable. |
+| Canonical requirements matrix | `docs/product/REQUIREMENTS.md` | Updated planning baseline | AC-DET-007, REQ-AUTH-001 and AC-NFR cross-cutting mappings are explicitly linked; implementation evidence remains unavailable. |
 
 The `REQUIREMENTS READY` gate remains **NOT PASSED**. No application implementation, executable test run, CI result, privacy clearance, Azure provisioning or deployment is claimed.
 ## GAP-001 source follow-up — 2026-10-14
@@ -194,3 +194,7 @@ The inspected main tree at `e3564527b48dc0ca3cb55d4c208da5dc620b23ff` contains e
 |---|---|---|---|
 | MVP scope reconciliation | `docs/product/MVP-SCOPE-RECONCILIATION-D-044-D-047.md` | Merged via PR #71 (commit `ef23f08f703d45ad7d3f9a2565c087117246cf4f`) | Separates intended API-first architecture, anonymous/authenticated scope, and the interim D-047 local synthetic-only demo. Phase 2 checklist A2 is checked; A3–A6 and the overall Phase 2 gate remain open. No implementation or runtime evidence implied. |
 | Phase 2 A3 authenticated-boundary review | `docs/product/PHASE-2-A3-AUTHENTICATED-BOUNDARY-REVIEW.md` | Owner accepted 2026-10-15; A3 boundary decision recorded as D-048 | Five authenticated features remain future scope and are excluded from the current local demo; profile persistence requires separate opt-in and approved lifecycle; tracker remains page-memory-only. Exact contracts and lifecycle controls remain in Q-018 / Phase 3 and Q-020. No implementation, privacy clearance or runtime evidence implied. |
+
+## Phase 2 traceability audit — 2026-10-15
+
+The audit branch reconciles the pathway-detail AC-DET range, maps the approved future authenticated extension as REQ-AUTH-001, maps AC-NFR-001–005 to existing requirements, updates the OR-019 register status, and records A4–A6/source fidelity evidence in the Phase 2 checklist/review. The gate remains OPEN pending the remaining B–D checks and explicit overall product-owner acceptance. No application implementation, runtime privacy evidence, deployment or release readiness is claimed.
