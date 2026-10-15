@@ -1,7 +1,7 @@
 # StudyPath SA — MVP Scope Reconciliation (D-044–D-047)
 
 **Purpose:** Reconcile the approved API-first product direction, anonymous/authenticated boundary, authenticated feature scope, and interim synthetic-only local demo without treating them as contradictory releases.
-**Status:** Documentation reconciliation for review; it introduces no new feature authorization and does not pass Phase 2 or any implementation/release gate.
+**Status:** Merged via PR #71 on 2026-10-15 (merge commit `ef23f08f703d45ad7d3f9a2565c087117246cf4f`). This reconciles the decision-level scope for checklist A2 only; it introduces no new feature authorization and does not pass Phase 2 or any implementation/release gate.
 **Decision sources:** `docs/project/DECISIONS.md`, decisions D-044, D-045, D-046 and D-047 (2026-10-14 to 2026-10-15).
 **Related requirements:** `docs/product/PRD.md`, `REQUIREMENTS.md`, `ACCEPTANCE-CRITERIA.md`, `TRACEABILITY-MATRIX.md`, and `docs/project/G-SYN-001-SYNTHETIC-ONLY-MVP-GATE.md`.
 
