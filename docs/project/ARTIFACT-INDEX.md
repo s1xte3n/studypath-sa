@@ -186,3 +186,10 @@ Q-020 remains **OPEN / P0** and `Q-020 IMPLEMENTATION READY` remains **NOT PASSE
 | G-SYN-001 synthetic-only MVP gate | `docs/project/G-SYN-001-SYNTHETIC-ONLY-MVP-GATE.md` | Defined; **NOT PASSED** | Sets SYN-001–SYN-010 acceptance criteria for a local browser-only demo, privacy canaries, accessibility, provenance and CI. App/UI and runtime privacy evidence are not yet established. |
 
 The inspected main tree at `e3564527b48dc0ca3cb55d4c208da5dc620b23ff` contains eligibility domain code, golden-case tests, and two workflows, but does not establish a runnable learner-facing UI, package manifest/lockfile, browser privacy harness, API, or deployment. Passing domain/contract tests does not pass G-SYN-001 or the Phase 2 `REQUIREMENTS READY` gate.
+
+
+## MVP scope reconciliation — D-044–D-047
+
+| Artifact | Path | Status | Notes |
+|---|---|---|---|
+| MVP scope reconciliation | `docs/product/MVP-SCOPE-RECONCILIATION-D-044-D-047.md` | Proposed in branch `docs/reconcile-mvp-scope-d044-d047`; review/merge pending | Separates intended API-first architecture, anonymous/authenticated scope, and the interim D-047 local synthetic-only demo. A2 is checked in the proposed checklist update; A3–A6 and Phase 2 gate remain open. No implementation or runtime evidence implied. |

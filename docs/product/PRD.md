@@ -39,6 +39,14 @@ Where the broader specification conflicts with the accepted Phase 0 MVP boundary
 
 Funding matching (M4) and manual application tracking (M5) are included in the intended anonymous-first MVP at **P1 / medium priority**, behind the P0 core pathway-discovery journey. OR-015 defines a 3–5-opportunity official-source funding pilot and limited non-sensitive matching inputs. OR-016 defines tracker statuses, transitions and permitted fields. **Tracker entries are page-memory-only in the initial MVP**: no server/database, localStorage, sessionStorage, IndexedDB, cookies, account, or cloud sync; reload/close may discard entries. This is the owner-approved policy and does not require a persistence gate. Anonymous profile inputs/results remain memory-only. Authenticated matching payloads may be sent only through an approved authenticated contract; academic profile persistence requires explicit opt-in and must pass Q-020 gates. Sensitive financial data and document uploads are not approved. See `OPEN-REQUIREMENTS.md`.
 
+## 2.1 Scope layers and precedence (D-044–D-047)
+
+Read the MVP at three distinct levels. The **intended product direction** is API-first, with a reviewed versioned `/api/v1` contract before dependent components are implemented (D-044). The **intended access boundary** is anonymous public-catalogue retrieval plus client-side matching, while authenticated server-side matching and the D-046 account-gated feature extension remain conditional on their gates (D-045/D-046). The **current build and verification slice** is the local synthetic-only browser demo under D-047 and G-SYN-001.
+
+For G-SYN-001, the demo must run locally without provisioning or deploying a hosted API; local synthetic catalogue fixtures may be used. This limits the current verification slice and does not cancel the API-first direction. The authenticated extension—personalised server-side matching, saved pathways, pathway comparison, saved funding opportunities and a derived personal dashboard—is approved product scope, not current demo scope or implementation authorization. Academic-profile persistence requires separate explicit opt-in; the tracker remains page-memory-only.
+
+The anonymous-first intended MVP still prioritises P0 pathway discovery, eligibility correctness, privacy and accessibility. Funding matching and manual application tracking remain P1 behind P0, with tracker entries only in page memory. Real learner data, production identity, authentication, authenticated matching, profile persistence, uploads, cloud sync, Azure provisioning and deployment remain prohibited for the D-047 slice. G-SYN-001 and all downstream implementation, privacy, cost and release gates remain separate; see [MVP Scope Reconciliation](MVP-SCOPE-RECONCILIATION-D-044-D-047.md).
+
 ## 3. Actors and permissions
 
 | Actor | Permissions | Restrictions |
