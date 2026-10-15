@@ -3,6 +3,18 @@
 **Status:** Approved by product owner on 2026-10-14 as the MVP acceptance-criteria baseline; criteria are targets/test oracles, not evidence that implementation or tests exist. Actual catalogue/relationship records, implementation, test execution and verification evidence remain outstanding.  
 **Convention:** Each AC has a unique ID and maps to one PRD requirement. These are product acceptance criteria, not evidence that implementation or tests exist.
 
+## Scope and gate applicability (D-044–D-047)
+
+These criteria describe the intended product baseline, with the following execution boundary:
+
+- G-SYN-001 is the current local browser-only demo gate. It uses synthetic fixtures and page-memory state; it does not require authentication, a hosted API, cloud resources or deployment. The learner's profile inputs, results and tracker entries must not be transmitted or persisted.
+- The D-045 anonymous path is public catalogue retrieval only plus client-side matching. A public catalogue request must not carry learner-specific fields.
+- The `REQ-AUTH-001` criteria below define the approved future authenticated extension under D-046. They are not a direction to implement authenticated behavior in the D-047 demo; implementation remains blocked by Q-018/Q-020 and related security/privacy, contract, test and cost gates.
+- D-046's approved scope is personalised server-side matching, saved pathways, pathway comparison, saved funding opportunities and a derived personal dashboard. Academic-profile persistence requires separate explicit opt-in; the tracker remains page-memory-only and never syncs across sessions.
+- Funding matching and manual tracking remain P1 behind the P0 core journey. This scope note does not imply that current catalogue/funding records, implementation, tests, CI, runtime privacy or release gates have passed.
+
+See [MVP Scope Reconciliation](MVP-SCOPE-RECONCILIATION-D-044-D-047.md) for the decision-to-scope mapping.
+
 ## REQ-EXP-001 — Anonymous pathway input
 
 - **AC-EXP-001:** Given the explorer is available, when a learner opens it, then they can begin entering pathway inputs without creating an account or supplying a name, email, phone number or national ID.
