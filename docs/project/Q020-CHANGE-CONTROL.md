@@ -61,3 +61,7 @@ Map each approved feature to requirement ID → UI/API contract → test ID → 
 ## 8. Explicit exclusions
 
 No tracker persistence, application submission/integration, uploads, document extraction, AI-based eligibility decisions, notifications, sensitive financial-data collection or implicit profile storage is approved by this change.
+
+## Lifecycle proposal and remaining approval register
+
+See [Q020-LIFECYCLE-IMPLEMENTATION-READINESS.md](Q020-LIFECYCLE-IMPLEMENTATION-READINESS.md) for the proposed data inventory, lifecycle, opt-in and withdrawal behavior, retention/deletion/backup recommendations, account isolation, logging/telemetry/cache requirements, candidate API/schema design, cost gate and executable verification plan. The Q020-DEC-01–14 register remains open; the proposal does not freeze the contract or authorize implementation, provisioning, deployment or real learner data.
