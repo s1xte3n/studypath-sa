@@ -271,3 +271,16 @@ These documents make the remaining decisions and evidence requirements explicit;
 - **Release:** Not authorized.
 
 **Gate result: Q-020 IMPLEMENTATION READY — NOT PASSED.** Proceed to implementation only after the owner approval register and dependent privacy, architecture, cost and test gates have evidence-backed closure.
+
+
+## 12. Owner decisions A–E recorded — 2026-10-15
+
+The owner explicitly approved decisions A–E. The canonical record is [Q020-OWNER-DECISIONS-A-E.md](Q020-OWNER-DECISIONS-A-E.md), with the updated [gate-closure decision pack](Q020-DECISION-PACK.md).
+
+- **A — APPROVED:** Evaluate Microsoft Entra External ID first; proposed SPA flow is OIDC authorization code + PKCE with MSAL and memory-only token cache. Provider capabilities and configuration are not verified.
+- **B — APPROVED:** Adopt token-subject-derived ownership, default-deny authorization, per-subject read/write/delete isolation, parameterized SQL, no-store account responses and no profile data in URLs/logs/telemetry as the design baseline. Not implemented or runtime-verified.
+- **C — APPROVED AS INTERNAL TARGETS:** Immediate stop of profile use/writes on withdrawal; active profile deletion target 30 days; active account-linked deletion target 30 days after account deletion; backup expiry target 35 days with deletion tombstones replayed before restore activation; routine logs target 30 days or less; no default match-history persistence. These are not legal/public guarantees; privacy/legal and provider/runtime verification remain mandatory.
+- **D — APPROVED:** Hard R100/month total project cap. Defer authenticated persistence/features unless a complete service-by-service forecast demonstrates the full design fits. Cost compliance is not verified; no provisioning is authorized.
+- **E — APPROVED:** Adopt the executable test matrix, including privacy canaries, authz/cross-account isolation, consent/withdrawal, deletion/restore, operational controls, accessibility/security/regression and 20+ reviewed synthetic golden cases with zero false-positive ELIGIBLE outcomes. Tests have not thereby been implemented or run.
+
+**Gate outcome remains unchanged:** Q-020 IMPLEMENTATION READY — **NOT PASSED**. Qualified South African privacy/legal and age-appropriate review, provider verification, all-in cost forecast, runnable implementation baseline, executable tests/CI and operational-control verification remain open. No real learner data, cloud provisioning, production identity configuration or deployment is authorized. The anonymous privacy boundary and page-memory-only tracker remain unchanged.
