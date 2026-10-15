@@ -5,6 +5,14 @@
 
 Priority meanings follow the SOP: P0 core/release blocker/security; P1 intended-MVP behavior behind P0; P2 important quality/deferred; P3 future/extended. Status describes planning, not implementation. Components below are logical areas; no API or architecture contract is frozen.
 
+## Scope applicability (D-044–D-047)
+
+- **Intended architecture:** API-first; review the versioned `/api/v1` contract before dependent components are implemented. The local G-SYN-001 gate does not require a hosted API or cloud provisioning; local synthetic catalogue fixtures are acceptable for that gate.
+- **Anonymous path:** public catalogue retrieval only, with deterministic matching in the browser. Learner profile inputs, results and tracker entries stay in page memory and are never sent to an API, URL, analytics, application log or error telemetry.
+- **Approved authenticated extension:** authenticated server-side matching, saved pathways, pathway comparison, saved funding opportunities and a derived dashboard are intended scope under D-046. These are not in the current local-demo slice and remain gated by Q-018/Q-020 and applicable contract, security/privacy, testing and cost evidence. Academic-profile persistence requires explicit opt-in; tracker entries never persist or sync across sessions.
+- **Current D-047 slice:** synthetic data only; local browser demo; no authentication, production identity, real learner data, profile persistence, uploads, cloud sync, Azure provisioning or deployment. Requirements below describe intended behavior where applicable, not evidence that it has been implemented or verified.
+- **Priority:** core discovery/correctness/privacy/accessibility are P0. Funding and manual tracking remain P1 and cannot displace P0 reliability or correctness. See [MVP Scope Reconciliation](MVP-SCOPE-RECONCILIATION-D-044-D-047.md).
+
 ## Functional requirements
 
 | Requirement ID | Requirement | Priority | Dependencies | Affected components / UI contract | Acceptance criteria | Verification IDs | Status |
