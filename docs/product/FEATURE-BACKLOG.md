@@ -45,14 +45,14 @@
 - **Requirements:** REQ-DET-001, REQ-CAT-001, REQ-UX-001.
 - **Dependencies:** P0-01 and P0-04.
 - **Deliverable:** Sourced result/detail views, unknown fields, official links and honest empty/not-found states.
-- **Verification:** T-DET-001–002, T-CAT-003, T-UX-003.
+- **Verification:** T-DET-001–006, T-CAT-002–004, T-UX-003–004, T-API-001–002, T-API-004.
 - **Excluded:** Application submission, unverified costs/deadlines, personalised task planner.
 
 ### P0-06 — Publish verified pathway relationships
 - **Requirements:** REQ-ALT-001.
 - **Dependencies:** P0-01 and P0-04; rationale, provenance and approval for every relationship.
 - **Deliverable:** Only reviewed ALTERNATIVE, RELATED_FIELD, PROGRESSION or ARTICULATION records.
-- **Verification:** T-ALT-001–002.
+- **Verification:** T-ALT-001–002, T-REL-001–008.
 - **Blocked:** Relationship records are not evidenced. ARTICULATION requires explicit official evidence.
 
 ### P0-07 — Accessible and resilient learner experience
@@ -75,7 +75,7 @@
 - **Requirement:** REQ-FUND-001.
 - **Dependencies:** P0 privacy boundary, OR-015, approved limited non-sensitive inputs, 3–5 verified funding records.
 - **Deliverable:** Source-backed criteria, checklist metadata, published amount/coverage if available, deadline/timezone, cycle, currentness and explanation.
-- **Verification:** T-FUND-001–003.
+- **Verification:** T-FUND-001–006, T-API-001–002, T-API-004.
 - **Blocked:** Actual source-verified funding records. No sensitive financial inputs, uploads or award guarantees.
 
 ### P1-02 — Manual memory-only application tracker
