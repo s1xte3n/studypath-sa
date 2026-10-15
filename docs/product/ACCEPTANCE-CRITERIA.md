@@ -192,3 +192,7 @@ These criteria record future semantics approved under OR-017 and OR-018. They do
 - **AC-AUTH-016:** Given the authenticated feature set is proposed for release, when the release gate is evaluated, then contract, authorization/isolation, consent/withdrawal, deletion/retention, privacy network/log/storage inspection, error/cache behavior, deterministic matching, accessibility, resilience and cost tests have actual recorded results; a documented plan alone does not pass the gate.
 
 **Open test inputs/gates:** exact profile and bookmark schemas, consent/notice text, retention duration, deletion/backup expiry, identity provider, account recovery behavior, comparison field set, dashboard summaries, cache policy and monthly workload remain to be approved in Q-020/Q-018 before these criteria can be frozen as executable contracts.
+
+## Q-020 lifecycle verification plan
+
+The detailed planned security/privacy/lifecycle test matrix T-AUTH-001–018 is in [Q020-LIFECYCLE-IMPLEMENTATION-READINESS.md](../project/Q020-LIFECYCLE-IMPLEMENTATION-READINESS.md). These are planned test cases, not execution evidence. Freeze them against the approved API schema and retention/consent policy before implementation; record actual outcomes, commit, environment and evidence artifacts.
