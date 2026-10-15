@@ -21,8 +21,8 @@ These references were supplied in the project conversation; they are not yet sto
 | Project overview | `docs/project/PROJECT-OVERVIEW.md` | Present in repository |
 | Project status | `docs/project/PROJECT-STATUS.md` | Updated on main; Phase 1 planning authorized |
 | Master project checklist | `docs/project/MASTER-PROJECT-CHECKLIST.md` | Present; Phase 0 recorded as passed for Phase 1 planning only |
-| Decisions and assumptions | `docs/project/DECISIONS.md` | D-046 added on branch for review |
-| Q-020 change control | `docs/project/Q020-CHANGE-CONTROL.md` | Owner-approved scope and implementation gates documented on branch for review |
+| Decisions and assumptions | `docs/project/DECISIONS.md` | D-044–D-048 recorded on main; current decisions and gate limits documented |
+| Q-020 change control | `docs/project/Q020-CHANGE-CONTROL.md` | Owner-approved feature boundary and implementation gates documented; Q-020 remains open/not passed |
 | Open questions | `docs/project/OPEN-QUESTIONS.md` | Present in repository; downstream work tracked |
 | Project charter | `docs/project/PROJECT-CHARTER.md` | Present in repository |
 | Artifact index | `docs/project/ARTIFACT-INDEX.md` | Updated on this PR branch |
@@ -68,19 +68,19 @@ The owner approved the Phase 0 decision records and attests that account-specifi
 | Product requirements document | `docs/product/PRD.md` | Owner-approved baseline; D-046/D-048 future authenticated scope is explicitly mapped to REQ-AUTH-001 and excluded from D-047 demo | Authenticated implementation remains blocked by Q-018/Q-020 lifecycle, privacy/security, contract, test and cost gates |
 | User stories/use cases | `docs/product/USER-STORIES.md` | Draft | Stories and core use cases mapped to requirement IDs |
 | Acceptance criteria | `docs/product/ACCEPTANCE-CRITERIA.md` | Owner-approved baseline; AC-AUTH-001–016 document D-046/D-048 future scope | Authenticated criteria are planned test oracles, not implementation or test evidence |
-| Scope | `docs/product/SCOPE.md` | Draft | P0 core journey plus P1 medium-priority funding matching and manual tracking; implementation boundaries remain open |
+| Scope | `docs/product/SCOPE.md` | D-044–D-048 scope boundary reconciled; Phase 2 gate remains open | P0 core journey precedes P1 funding/tracker; authenticated extension is future/gated; implementation boundaries remain open |
 | Open requirements | `docs/product/OPEN-REQUIREMENTS.md` | OR-001–OR-018 dispositions recorded; OR-019 remains open for API/runtime composition and cost/provider review; OR-016 page-memory-only policy aligned | Funding records, runtime privacy and tracker implementation evidence remain outstanding; future persistence requires separate change control |
 
 ## Planned downstream artifacts
 
 | Artifact | Status | Dependency |
 |---|---|---|
-| Requirements and traceability matrix | Not started | PRD approval |
-| Architecture and ADRs | Not started | Approved requirements |
-| API/interface contracts | Not started | Requirements and architecture |
-| Environment and secret inventory | Not started | Approved contracts and deployment plan |
-| Test strategy and test cases | Not started | Approved requirements/contracts |
-| Implementation, security review and CI/CD | Not started | Approved upstream artifacts |
+| Requirements and traceability matrix | Created — planning baseline | PRD approval; Phase 2 audit/owner acceptance remains in progress |
+| Architecture and ADRs | Draft artifacts exist; not frozen/approved | `REQUIREMENTS READY` acceptance, then Phase 3 review |
+| API/interface contracts | Draft contract exists; not implementation-ready | Phase 3 architecture, OR-019/Q-018, privacy/provider and cost review |
+| Environment and secret inventory | Not verified / not ready | Approved contracts and an authorized deployment plan; no provisioning is currently authorized |
+| Test strategy and test cases | Partial: subject contract tests, eligibility tests and planned traceability IDs exist; end-to-end/browser privacy suite remains unavailable | Approved requirements/contracts and runnable application |
+| Implementation, security review and CI/CD | Partial domain/test code and two workflows exist; learner-facing UI, browser privacy harness and release evidence not established | Approved upstream artifacts; G-SYN-001 remains open/not passed |
 | Release and smoke-test evidence | Not available | Implemented/deployed release |
 | Deck, demo video, Lean Business Canvas and SSDLC evidence | Not started/verified | Hackathon submission plan |
 
@@ -175,7 +175,7 @@ Q-020 remains **OPEN / P0** and `Q-020 IMPLEMENTATION READY` remains **NOT PASSE
 
 | Artifact | Path | Status | Notes |
 |---|---|---|---|
-| G-Q020-1 external review request | `docs/project/G-Q020-1-EXTERNAL-REVIEW-REQUEST.md` | Prepared on branch for review; gate remains blocked | Reviewer scope, evidence limitations, decision questions and response template. No qualified review/sign-off evidenced. |
+| G-Q020-1 external review request | `docs/project/G-Q020-1-EXTERNAL-REVIEW-REQUEST.md` | Preparation merged via PR #67; gate remains blocked | Reviewer scope, evidence limitations, decision questions and response template. No qualified review/sign-off evidenced. |
 | Q-020 privacy/legal/age review pack | `docs/project/Q020-PRIVACY-LEGAL-AGE-REVIEW.md` | Prepared; not approved | Data inventory and review questions; not legal advice or proof of compliance. Real learner data remains prohibited. |
 
 
