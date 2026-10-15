@@ -159,3 +159,13 @@ The source follow-up is documentation-only. GAP-001 and the REQUIREMENTS READY g
 | Lifecycle and implementation readiness | `docs/project/Q020-LIFECYCLE-IMPLEMENTATION-READINESS.md` | Proposed; explicit owner decisions open | Data inventory, opt-in/withdrawal, retention/deletion/backups, identity/session controls, authorization, API proposals, cost gate and T-AUTH verification plan. Does not authorize implementation. |
 
 Q-020 remains P0 and implementation readiness is not passed. See the artifact's Q020-DEC-01–14 approval register; do not infer approval from the proposal.
+
+
+## Q-020 owner decisions A–E — 2026-10-15
+
+| Artifact | Path | Status | Notes |
+|---|---|---|---|
+| Q-020 gate-closure decision pack | `docs/project/Q020-DECISION-PACK.md` | Owner decisions A–E approved | Design/constraint approvals only; independent legal, provider, cost, implementation and runtime-test gates remain open. |
+| Q-020 owner decision record | `docs/project/Q020-OWNER-DECISIONS-A-E.md` | Approved decision record | Records each approval and its limits; does not authorize real learner data, provisioning, production identity configuration or deployment. |
+
+Q-020 remains **OPEN / P0** and `Q-020 IMPLEMENTATION READY` remains **NOT PASSED**. The R100/month cap is approved but cost compliance is not verified. Privacy/legal review, provider capability, executable runtime tests/CI and operational controls remain outstanding.
