@@ -1,7 +1,7 @@
 # StudyPath SA — Open Questions
 
 **Status:** Phase 2 — requirements matrix and traceability; `PROJECT READY` passed on 2026-10-13 for Phase 1 planning; `PRD READY` passed on 2026-10-14 for the approved PRD/acceptance-criteria baseline only; downstream implementation/release work remains open  
-**Last updated:** 2026-10-14  
+**Last updated:** 2026-10-15  
 **Priority:** P0 blocks readiness/safety/budget; P1 must resolve before dependent phase; P2/P3 later.
 
 **Historical-note convention:** Dated Q-019/source-reconciliation paragraphs are retained as an audit trail; later dated updates supersede earlier source-conflict snapshots. Current Q-019 status is owner-approved candidate selection for the bounded pilot, with complete rule extraction, executable test oracles, curator sign-off and publication readiness still open.
