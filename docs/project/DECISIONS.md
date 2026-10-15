@@ -120,3 +120,19 @@ Record approved changes to scope, stack, budget, audience, data use or deadlines
 - No implementation, real learner-data use, resource provisioning or deployment is authorized by this direction alone. Use synthetic data until privacy/legal review and runtime controls are verified. Keep total project spend within R100/month.
 - This decision resolves the product-direction choice in Q-018, but Q-018 remains open for architecture/security/cost evidence; Q-020 tracks the required authenticated-feature scope and data-lifecycle decisions.
 - Source: explicit product-owner decision in the StudyPath SA project conversation on 2026-10-15.
+
+## D-046 — Authenticated learner feature scope and lifecycle gates (owner approval, 2026-10-15)
+
+**Decision:** The product owner approved the following authenticated feature scope: (1) personalised pathway matching, (2) saved pathways, (3) pathway comparison, (4) saved funding opportunities, and (5) a personal study dashboard. Academic profile persistence is permitted only after explicit opt-in. The application tracker remains page-memory-only and must not sync or persist across sessions.
+
+- Anonymous users retain the D-045 boundary: public catalogue API only, client-side matching, and learner inputs/results/tracker entries stay in page memory and are not transmitted to APIs, URLs, analytics, application logs or error telemetry.
+- Authenticated server-side matching may receive only approved minimum fields in an authenticated HTTPS request. Login is not profile-storage consent.
+- Saved pathways and saved funding may persist only stable catalogue identifiers plus minimum ownership/audit metadata approved in the final schema. Resolve details from current verified catalogue records; do not duplicate snapshots without a separate decision.
+- Pathway comparison is an approved scope extension to the PRD's earlier institution-comparison non-goal. Compare supported verified catalogue fields and label missing fields unavailable; do not imply admission or invent a quality ranking.
+- The dashboard is a derived view over approved features and does not independently authorize extra collection, profile persistence, tracker sync or duplicate storage.
+- Profile persistence requires separate explicit opt-in, clear withdrawal behavior and an approved lifecycle. Retention periods, deletion/backup expiry, account recovery and final schemas remain open gates; this decision does not invent those details.
+- Tracker policy is unchanged: no API, database, localStorage, sessionStorage, IndexedDB, cookies, account or cloud sync; reload/close may discard entries.
+- Required before implementation: approved contracts and field schemas; identity provider and server-side authorization/account isolation; privacy notice and applicable privacy/legal review; data minimization, consent/withdrawal, retention/deletion and shared-device behavior; log/telemetry/cache controls; deterministic matching and feature acceptance tests; verified full service cost within the R100/month cap.
+- No real learner data, new provisioning, deployment or release is authorized by this decision alone. Use synthetic data until review and runtime controls are verified.
+- This decision resolves the product-owner feature-choice portion of Q-020. Q-020 remains P0/open for lifecycle, contract, security/privacy, cost and test evidence. REQUIREMENTS READY and release gates remain open.
+- Source: explicit product-owner approval in the StudyPath SA project conversation on 2026-10-15.
