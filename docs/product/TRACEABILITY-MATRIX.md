@@ -59,8 +59,8 @@ The matrix below remains a traceability plan, not proof of implementation. For g
 | T-CAT-003 | REQ-CAT-001, NFR-SCOPE-001 | Empty state and no national-completeness claim | P0 |
 | T-CAT-004 | REQ-CAT-001, NFR-DATA-001 | Unavailable, moved or inaccessible official source blocks publication/confident use | P0 |
 | T-CAT-005 | REQ-CAT-001, NFR-DATA-001 | Audit the 6–8-record pilot threshold and required record metadata before publication | P0 |
-| T-MAT-001 | REQ-MAT-001 | ELIGIBLE/NOT_ELIGIBLE/UNKNOWN and threshold boundaries | P0 |
-| T-MAT-002 | REQ-MAT-001 | AND/OR/conditional precedence; known failure plus unknown | P0 |
+| T-MAT-001 | REQ-MAT-001 | All applicable mandatory rules are verified and met before ELIGIBLE is returned | P0 |
+| T-MAT-002 | REQ-MAT-001 | A confirmed mandatory failure yields NOT_ELIGIBLE under the approved precedence rules | P0 |
 | T-MAT-003 | REQ-MAT-001 | Missing, unsupported or materially unknown rule/input produces UNKNOWN unless a confirmed mandatory failure controls | P0 |
 | T-MAT-004 | REQ-MAT-001 | AND/OR/conditional precedence; known failure plus unknown | P0 |
 | T-MAT-005 | REQ-MAT-001, NFR-DATA-001 | APS/points method, subject inclusion and source conflicts do not produce unsupported certainty | P0 |
