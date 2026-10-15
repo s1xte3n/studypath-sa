@@ -1,6 +1,6 @@
 # Q-020 Lifecycle and Implementation Readiness
 
-**Status:** Proposed lifecycle baseline for owner approval; not implementation-ready until the explicit decisions and gates below are closed.
+**Status:** Owner decisions Q020-DEC-01–14 recorded on 2026-10-15. Proposals/constraints are approved to the extent recorded below; implementation readiness remains NOT PASSED pending privacy/legal, architecture, cost and test evidence.
 **Scope authority:** D-046 approves the five authenticated features and explicit opt-in for academic-profile persistence. It does not approve a data-retention schedule, identity-provider configuration, database schema, session design, or runtime implementation.
 **Baseline:** Q-020, Q-018, D-044, D-045, D-046, `docs/project/Q020-CHANGE-CONTROL.md`, `docs/architecture/API-CONTRACT.md`, and AC-AUTH-001–016.
 **Security boundary:** Synthetic data only. No real learner data, cloud provisioning, production identity configuration, or deployment is authorized by this document.
@@ -9,7 +9,7 @@
 
 Turn the approved authenticated feature scope into a reviewable lifecycle and implementation plan without silently approving high-impact unresolved choices.
 
-**Q-020 remains OPEN / P0.** The proposals in this document are recommendations for explicit owner, privacy/legal, architecture and cost approval. They are not settled policy or implementation instructions until the approval register is completed and the relevant evidence is attached.
+**Q-020 remains OPEN / P0.** The owner has approved the proposal/constraint/gate disposition for Q020-DEC-01–14 as recorded below. Approval of a proposal does not prove provider capability, legal suitability, configured retention, actual deletion behavior, affordability or runtime controls. Those require evidence and the dependent gates remain open.
 
 ### Approved scope that this proposal preserves
 
@@ -216,33 +216,44 @@ Each test must record test data version, environment, exact command/steps, expec
 | Q020-F — Implementation | Small PRs for identity, transient matching, saved IDs, opt-in profile lifecycle, deletion workflow, comparison/dashboard | Code reviewed; tests run; security/privacy checks pass; no tracker persistence |
 | Q020-G — Release | Deployment, runtime privacy inspection, backup/restore deletion test, smoke test, cost review, incident and rollback evidence | Explicit release approval; no gate inferred from documentation or CI alone |
 
-## 9. Explicit owner approval register — currently OPEN
+## 9. Owner approval register — decisions recorded 2026-10-15
 
-The product owner must approve or revise the proposals below. An unfilled item is a blocker, not implied consent.
+The product owner explicitly approved the proposals, security constraints, or gates listed below. “Approved proposal” means the proposed policy direction is accepted; it does not certify legal compliance, provider capabilities, configured runtime behavior, or release readiness.
 
-| ID | Decision requiring explicit approval | Recommended proposal | State |
+| ID | Decision | Owner disposition | State and remaining boundary |
 |---|---|---|---|
-| Q020-DEC-01 | Identity provider | Evaluate Microsoft Entra External ID first because it is in the documented baseline; select only after audience, privacy, protocol and cost checks | OPEN |
-| Q020-DEC-02 | Exact persisted profile fields | Study stage; canonical subject IDs + integer marks; controlled optional interest IDs, province and study-mode preferences; no free text | OPEN |
-| Q020-DEC-03 | Matching-result persistence | No stored match history or result snapshots by default | OPEN |
-| Q020-DEC-04 | Consent behavior | Separate unchecked opt-in; versioned notice/purpose; timestamp; immediate write stop on withdrawal; profile deletion initiated on withdrawal | OPEN |
-| Q020-DEC-05 | Profile retention | Retain only while opt-in remains active; target active-store deletion within 30 days after withdrawal | OPEN |
-| Q020-DEC-06 | Saved-item retention | Keep until user removes item or account is deleted; store stable IDs only | OPEN |
-| Q020-DEC-07 | Account deletion SLA | Disable access promptly; target active-data deletion within 30 days | OPEN |
-| Q020-DEC-08 | Backup expiry | Target maximum 35 days; reapply deletion records before restored data is reactivated | OPEN |
-| Q020-DEC-09 | Routine log retention | Target 30 days or shorter; no profile payloads; verify every provider's actual behavior | OPEN |
-| Q020-DEC-10 | Session model | Choose only after threat-model review; no tokens in URLs/persistent browser storage; cookie sessions require CSRF protection | OPEN |
-| Q020-DEC-11 | Shared-device/account recovery | Clear/partition account data on logout/switch; define re-authentication and recovery with selected provider | OPEN |
-| Q020-DEC-12 | Minors and legal review | Complete applicable South African privacy/legal and age-appropriate design review before real learner data | OPEN |
-| Q020-DEC-13 | Hosting/database/logging stack | Approve only after security and complete cost assessment; no provisioning before approval | OPEN |
-| Q020-DEC-14 | Monthly workload and cap | Approve realistic workload and service-by-service cost forecast under R100/month | OPEN |
+| Q020-DEC-01 | Identity provider | Approve proposal: evaluate Microsoft Entra External ID first; select only after audience, privacy, protocol and cost checks | APPROVED PROPOSAL; provider is not selected/configured and evaluation evidence remains required |
+| Q020-DEC-02 | Exact persisted profile fields | Approve proposal: study stage; canonical subject IDs and integer marks; controlled optional interest IDs, province and study-mode preferences; no free text | APPROVED PROPOSAL; final API/schema validation and privacy review remain required |
+| Q020-DEC-03 | Matching-result persistence | Approve proposal: do not store match history or result snapshots by default | APPROVED |
+| Q020-DEC-04 | Consent and withdrawal | Approve proposal: separate unchecked opt-in; versioned notice/purpose and timestamp; stop writes immediately on withdrawal and initiate profile deletion | APPROVED PROPOSAL; notice text, implementation and verification remain required |
+| Q020-DEC-05 | Profile retention | Approve proposal: retain only while opt-in remains active; target active-store deletion within 30 days after withdrawal | APPROVED TARGET, subject to privacy/legal and technical verification; not a verified service guarantee |
+| Q020-DEC-06 | Saved-item retention | Approve proposal: retain until learner removes item or account is deleted; stable IDs only | APPROVED |
+| Q020-DEC-07 | Account deletion SLA | Approve proposal: disable access promptly; target active-data deletion within 30 days | APPROVED TARGET, subject to privacy/legal and technical verification; not a verified service guarantee |
+| Q020-DEC-08 | Backup expiry | Approve proposal: target maximum 35 days and reapply deletion records before restored data is reactivated | APPROVED TARGET, subject to provider capability, backup design and restore-test evidence |
+| Q020-DEC-09 | Routine log retention | Approve proposal: target 30 days or shorter; no profile payloads; verify each provider's actual behavior | APPROVED TARGET, subject to service-by-service configuration and verification |
+| Q020-DEC-10 | Session model | Approve security constraints: no tokens in URLs or persistent browser storage; cookie sessions require CSRF protection; mechanism deferred until threat-model review | CONSTRAINTS APPROVED; SESSION MECHANISM DEFERRED / OPEN |
+| Q020-DEC-11 | Shared-device/account recovery | Approve proposal: clear/partition account data on logout or account switch; define re-authentication and recovery with selected provider | APPROVED PROPOSAL; detailed design and tests remain required |
+| Q020-DEC-12 | Minors and legal review | Approve gate: complete applicable South African privacy/legal and age-appropriate design review before real learner data | GATE APPROVED; review is not evidenced complete; real learner data remains blocked |
+| Q020-DEC-13 | Hosting/database/logging stack | Approve gate: approve services only after security and full cost assessment; no provisioning before approval | GATE APPROVED; service selection, assessment and provisioning authorization remain open |
+| Q020-DEC-14 | Workload and monthly cap | Approve gate: establish realistic workload and service-by-service forecast within R100/month | GATE APPROVED; cost evidence is not yet available and no paid provisioning is authorized |
+
+### Consequences and non-approvals
+
+- The approved retention windows are targets, not verified guarantees or public-facing promises. Do not represent them as implemented or assured until provider settings, legal suitability, deletion workflows and restore behavior are verified.
+- Q020-DEC-01 does not select Microsoft Entra External ID unconditionally or authorize production identity configuration.
+- Q020-DEC-10 intentionally leaves the session mechanism undecided.
+- Q020-DEC-12–14 approve mandatory gates, not completion of those gates.
+- No real learner data, cloud provisioning, production identity configuration or deployment is authorized by these decisions.
+- The anonymous privacy boundary remains unchanged: anonymous learner inputs/results/tracker entries must not be transmitted to APIs, URLs, analytics, application logs or error telemetry. The application tracker remains page-memory-only.
+
+
 
 ## 10. Current readiness assessment
 
 - **Scope:** Approved under D-046.
-- **Lifecycle policy:** Proposed; owner decisions above remain open.
+- **Lifecycle policy:** Owner proposal/constraint/gate dispositions recorded for Q020-DEC-01–14; retention/deletion targets and controls still require privacy/legal, provider and runtime verification.
 - **API contract/schema:** Draft, not frozen.
-- **Identity/authentication/authorization:** Not selected/configured/verified.
+- **Identity/authentication/authorization:** Entra External ID is the first candidate to evaluate, not selected/configured; session mechanism deferred; server-side authorization/isolation not implemented or verified.
 - **Privacy/legal review:** Not evidenced as completed for this authenticated scope.
 - **Implementation/tests:** No authenticated runtime implementation or test results are claimed by this document.
 - **CI:** Existing contract workflow is not a substitute for runtime privacy/security tests.
