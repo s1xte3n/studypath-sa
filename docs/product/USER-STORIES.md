@@ -9,6 +9,10 @@
 ## Secondary persona
 **Recent matric graduate:** needs to explore options, but programme/admission-cycle coverage may be incomplete and must be shown as unknown where unsupported.
 
+## Scope note — approved future authenticated extension
+
+The stories and use cases below describe the current anonymous-first journey and intended P1 funding/tracker behavior. The D-046 authenticated extension is separately recorded as `REQ-AUTH-001` in `PRD.md` and `REQUIREMENTS.md`, with future-scope criteria `AC-AUTH-001–016`. It is deliberately not represented as a current D-047/G-SYN-001 demo journey; Q-018/Q-020 and the applicable privacy, security, contract, test and cost gates remain prerequisites.
+
 ## Stories and use cases
 
 | Story ID | Requirement ID | User story / use case | Outcome |
