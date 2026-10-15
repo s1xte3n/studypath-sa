@@ -246,3 +246,12 @@ The owner explicitly approved all five decisions A–E. The approved design base
 **Verified repository correction at commit `e3564527b48dc0ca3cb55d4c208da5dc620b23ff`:** the recursive default-branch tree includes `src/domain/eligibility/uj-2027-evaluator.mjs`, golden-case tests, and two GitHub Actions workflows. Earlier statements in this status file that no tests/workflows or application source were found reflect earlier snapshots and are superseded to that extent. The inspected tree still does not establish a root package manifest/lockfile, learner-facing UI/app entry point, browser-test harness, API implementation, or deployment/infrastructure code. Domain tests are not runtime privacy evidence.
 
 **Next action:** build a minimal local browser-only vertical slice with synthetic fixtures, then implement and run the SYN-001–SYN-010 checks. Do not mark the gate passed until results are tied to a commit. The Phase 2 `REQUIREMENTS READY` gate remains open; this bounded demo work does not silently close it. No Azure provisioning, deployment, real learner data, production identity, or persistence is authorized.
+
+
+## MVP scope reconciliation — D-044–D-047
+
+**Change under review:** branch `docs/reconcile-mvp-scope-d044-d047`; proposed reconciliation document: `docs/product/MVP-SCOPE-RECONCILIATION-D-044-D-047.md`.
+
+The scope model distinguishes (1) the intended API-first `/api/v1` architecture, (2) the D-045 anonymous client-side matching and D-046 approved but gated authenticated feature extension, and (3) the immediate D-047 local synthetic-only browser demo. The PRD, canonical requirements matrix, acceptance criteria and traceability matrix explicitly record this distinction. The local demo does not require a hosted API, but this does not cancel the API-first target. No new implementation, provisioning, deployment or real learner-data use is authorized.
+
+**Checklist disposition:** A2 is checked in the proposed checklist update only. The change has not been merged/reviewed yet; A3–A6, the remaining Phase 2 evidence and formal product-owner acceptance remain open. G-SYN-001 remains OPEN / NOT PASSED. No tests/build/CI/runtime privacy checks were run by this documentation change.
