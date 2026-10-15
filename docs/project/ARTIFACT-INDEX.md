@@ -169,3 +169,11 @@ Q-020 remains P0 and implementation readiness is not passed. See the artifact's 
 | Q-020 owner decision record | `docs/project/Q020-OWNER-DECISIONS-A-E.md` | Approved decision record | Records each approval and its limits; does not authorize real learner data, provisioning, production identity configuration or deployment. |
 
 Q-020 remains **OPEN / P0** and `Q-020 IMPLEMENTATION READY` remains **NOT PASSED**. The R100/month cap is approved but cost compliance is not verified. Privacy/legal review, provider capability, executable runtime tests/CI and operational controls remain outstanding.
+
+
+## Q-020 external gate evidence
+
+| Artifact | Path | Status | Notes |
+|---|---|---|---|
+| G-Q020-1 external review request | `docs/project/G-Q020-1-EXTERNAL-REVIEW-REQUEST.md` | Prepared on branch for review; gate remains blocked | Reviewer scope, evidence limitations, decision questions and response template. No qualified review/sign-off evidenced. |
+| Q-020 privacy/legal/age review pack | `docs/project/Q020-PRIVACY-LEGAL-AGE-REVIEW.md` | Prepared; not approved | Data inventory and review questions; not legal advice or proof of compliance. Real learner data remains prohibited. |
