@@ -1,6 +1,6 @@
 # StudyPath SA — Open Product Requirements
 
-**Status:** OR-001–OR-018 decisions are recorded. OR-016 lifecycle and page-memory-only persistence are aligned with the approved policy review; persistent storage is excluded from the initial MVP.  
+**Status:** OR-001–OR-018 dispositions are recorded; OR-019 remains open for API/runtime composition and cost/provider review. OR-016 lifecycle and page-memory-only persistence are aligned with the approved policy review; persistent storage is excluded from the initial MVP.  
 **Owner:** Product owner (currently one person holds all project roles, per Phase 0 status).  
 **Priority:** P0 blocks PRD READY; P1 affects important behavior/scope; P2 can be decided before relevant later feature.
 
