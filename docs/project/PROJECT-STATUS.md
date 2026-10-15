@@ -250,8 +250,8 @@ The owner explicitly approved all five decisions A–E. The approved design base
 
 ## MVP scope reconciliation — D-044–D-047
 
-**Change under review:** branch `docs/reconcile-mvp-scope-d044-d047`; proposed reconciliation document: `docs/product/MVP-SCOPE-RECONCILIATION-D-044-D-047.md`.
+**Merged:** PR [#71](https://github.com/s1xte3n/studypath-sa/pull/71), merge commit `ef23f08f703d45ad7d3f9a2565c087117246cf4f`. Reconciliation document: `docs/product/MVP-SCOPE-RECONCILIATION-D-044-D-047.md`.
 
 The scope model distinguishes (1) the intended API-first `/api/v1` architecture, (2) the D-045 anonymous client-side matching and D-046 approved but gated authenticated feature extension, and (3) the immediate D-047 local synthetic-only browser demo. The PRD, canonical requirements matrix, acceptance criteria and traceability matrix explicitly record this distinction. The local demo does not require a hosted API, but this does not cancel the API-first target. No new implementation, provisioning, deployment or real learner-data use is authorized.
 
-**Checklist disposition:** A2 is checked in the proposed checklist update only. The change has not been merged/reviewed yet; A3–A6, the remaining Phase 2 evidence and formal product-owner acceptance remain open. G-SYN-001 remains OPEN / NOT PASSED. No tests/build/CI/runtime privacy checks were run by this documentation change.
+**Checklist disposition:** A2 is checked on `main`. A3–A6, the remaining Phase 2 evidence and formal product-owner acceptance remain open. G-SYN-001 remains OPEN / NOT PASSED. The branch's contract-test workflow passed run [#32](https://github.com/s1xte3n/studypath-sa/actions/runs/38775543157); no application build, runtime privacy tests, provisioning or deployment were performed by this documentation change.
