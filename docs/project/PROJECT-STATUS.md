@@ -255,3 +255,16 @@ The owner explicitly approved all five decisions A–E. The approved design base
 The scope model distinguishes (1) the intended API-first `/api/v1` architecture, (2) the D-045 anonymous client-side matching and D-046 approved but gated authenticated feature extension, and (3) the immediate D-047 local synthetic-only browser demo. The PRD, canonical requirements matrix, acceptance criteria and traceability matrix explicitly record this distinction. The local demo does not require a hosted API, but this does not cancel the API-first target. No new implementation, provisioning, deployment or real learner-data use is authorized.
 
 **Checklist disposition:** A2 is checked on `main`. A3–A6, the remaining Phase 2 evidence and formal product-owner acceptance remain open. G-SYN-001 remains OPEN / NOT PASSED. The branch's contract-test workflow passed run [#32](https://github.com/s1xte3n/studypath-sa/actions/runs/38775543157); no application build, runtime privacy tests, provisioning or deployment were performed by this documentation change.
+
+
+## A3 authenticated-feature boundary accepted — 2026-10-15
+
+**Decision status:** Product owner approved the A3 proposal as written; D-048 records the decision. The requirements checklist now marks A3 complete at the boundary-decision level only.
+
+- Five authenticated features remain approved future scope but are excluded from the D-047/G-SYN-001 local synthetic-only demo.
+- Academic-profile persistence remains off by default pending separate explicit opt-in and approved lifecycle controls.
+- The tracker remains page-memory-only.
+- Exact API schemas, identity/session/authorization, comparison/dashboard behavior, retention/deletion/backups, provider controls and cost remain open under Q-018 / Phase 3 and Q-020.
+- **Still open/not passed:** A4–A6; overall Phase 2 REQUIREMENTS READY; Q-018; Q-020 implementation readiness; G-SYN-001; browser privacy/accessibility/runtime evidence; application build/test evidence; external privacy/legal review; provisioning and deployment.
+
+The owner decision is not implementation or test evidence. No application code, runtime behavior, infrastructure or deployment was changed by this decision record.
