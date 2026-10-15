@@ -182,6 +182,10 @@ These criteria record future semantics approved under OR-017 and OR-018. They do
 - OR-008–OR-014 decisions are owner-approved; actual catalogue completeness, relationship evidence, accessibility conformance, performance measurements, golden-set results and usability evidence remain to be verified.
 - OR-006 policy is approved; implementation evidence for reset/temporary-data lifecycle, storage/network inspection and exact hosting telemetry/retention review is required before public demo.
 
+## A3 owner decision — authenticated-feature boundary accepted (D-048, 2026-10-15)
+
+The product owner accepted the boundary in [the A3 review](PHASE-2-A3-AUTHENTICATED-BOUNDARY-REVIEW.md) as proposed. The five D-046 authenticated features remain approved future scope and are excluded from the D-047/G-SYN-001 local synthetic-only demo. Academic-profile persistence stays off by default pending separate explicit opt-in and an approved lifecycle; the tracker remains page-memory-only. Exact schemas and undecided comparison/dashboard behavior remain assigned to Q-018 / Phase 3 and Q-020. This decision aligns the requirements boundary; it does not freeze executable contracts or provide implementation, privacy, test or release evidence.
+
 ## REQ-AUTH-001 — Authenticated feature scope (D-046; acceptance criteria are planned, not tested)
 
 **Gate note:** These criteria define the approved scope extension. They do not authorize implementation before Q-020 privacy/security, data lifecycle, contract, test and cost gates pass. Authenticated behavior must remain separate from the anonymous in-memory path.

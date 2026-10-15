@@ -1,7 +1,7 @@
 # StudyPath SA — Decisions and Assumptions
 
 **Status:** Phase 0 decisions recorded; PROJECT READY passed for Phase 1 planning; Phase 1 PRD READY passed on 2026-10-14; current work is Phase 2 requirements traceability  
-**Last updated:** 2026-10-14
+**Last updated:** 2026-10-15
 
 Owner explicitly approved COST-01, DATA-01, ELIGIBILITY-01, PRIVACY-01, RELEASE-01 and OWNER-01, and approved the directions recorded for Q-002, Q-003, Q-004, Q-005, Q-010, Q-015 and Q-016 on 2026-10-13. The owner subsequently attested that all remaining account-specific checks are complete. Official UJ and Microsoft public sources and the supplied hackathon programme are documented in `PHASE0-ONLINE-EVIDENCE.md`. Account-specific portal/billing records were not independently inspected by the assistant. PROJECT READY passed for Phase 1 planning only.
 
@@ -156,3 +156,19 @@ The product owner approved D-046's authenticated feature scope, but has not yet 
 - The Phase 2 `REQUIREMENTS READY` gate and all downstream release gates remain open.
 
 Source: explicit project-owner instruction to proceed to the next gate using the previously proposed synthetic-only demo boundary (2026-10-15).
+
+
+## D-048 — Accepted authenticated-feature boundary for A3 (owner decision, 2026-10-15)
+
+**Decision:** The product owner approved the proposal in docs/product/PHASE-2-A3-AUTHENTICATED-BOUNDARY-REVIEW.md as proposed.
+
+- Retain D-046's five authenticated features as approved future product scope: authenticated server-side pathway matching, saved pathways, pathway comparison, saved funding opportunities and a derived personal dashboard.
+- Keep all five features outside the D-047 / G-SYN-001 local synthetic-only demo. The current demo must not expose login or authenticated-only controls.
+- Keep academic-profile persistence off by default. Login is not consent; any future profile writes require separate explicit opt-in after an approved notice and must follow an approved withdrawal/deletion lifecycle.
+- Keep the application tracker page-memory-only, including for authenticated users; do not sync it to accounts or restore it after reload/close.
+- Explicitly defer unresolved authenticated schemas and detailed behaviors to the named later gates: Q-018 / Phase 3 for architecture, identity/session, API, authorization, cache/error and cost contracts; Q-020 and required privacy/legal review for profile fields, notice/consent evidence, retention, deletion/backups and lifecycle controls. Comparison fields and dashboard outputs require explicit product/UI contract approval before implementation.
+- This is a requirements-boundary decision only. It does not approve implementation, real learner data, production identity, persistence, provisioning, deployment, legal/privacy clearance or release readiness. The R100/month cap and all existing interim restrictions remain in force.
+
+**Gate consequence:** A3 may be marked complete for the boundary decision once this disposition is reconciled across requirements, traceability and checklist artifacts. Q-018, Q-020, G-SYN-001, the overall Phase 2 gate and downstream release gates remain open until their own evidence criteria pass.
+
+Source: explicit product-owner approval in the StudyPath SA project conversation on 2026-10-15, followed by the recorded approval comment on PR #74.

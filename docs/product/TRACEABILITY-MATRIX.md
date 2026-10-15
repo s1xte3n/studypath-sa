@@ -114,3 +114,10 @@ The merged subject and pathway documents define additional **planned** tests. Th
 | T-REL-001–008 | [Pathway relationship evidence contract](PATHWAY-RELATIONSHIP-EVIDENCE-CONTRACT.md) | REQ-ALT-001, REQ-MAT-001, REQ-PRV-001; GAP-003 | Approve evidence threshold and curator workflow; verify each named pair before publication; then add executable tests. |
 
 **Verification state (historical evidence, 2026-10-14):** the checked-in Node.js subject-catalogue reference tests T-SUB-001–012 ran successfully in GitHub Actions run [38643577867](https://github.com/s1xte3n/studypath-sa/actions/runs/38643577867) for PR #56 at commit `ee2181e62786176ab2c353ad4e112bd309672dbb`. PH2-002 aligns the documented IDs to the cases in that suite. Check the PR's current head commit for CI status; historical CI evidence must not be treated as verification of a later revision. The suite is a reference normalizer, not production application or runtime privacy verification. Application/build, privacy/network, accessibility, catalogue publication, deployment, smoke-test and release evidence remain unavailable. Privacy/network tests remain release blockers.
+
+
+## A3 owner decision traceability — D-048 (2026-10-15)
+
+| Decision | Requirements / acceptance criteria | Planned verification | Disposition and evidence boundary |
+|---|---|---|---|
+| D-048 — authenticated-feature boundary accepted | D-046; REQ-AUTH-001; AC-AUTH-001–016; AC-APP-001–009 for page-memory-only tracker | T-AUTH-001–018, T-PRV-001–004, T-API-001–004 and G-SYN-001 privacy canaries remain planned until contracts and implementation are ready | Owner approval recorded in PR #74 and docs/project/DECISIONS.md. Five authenticated features remain future scope, excluded from current local demo; profile persistence requires separate opt-in; tracker remains page-memory-only. This is decision evidence only, not test execution, runtime privacy verification, implementation, or release evidence. Exact contracts remain in Q-018 / Phase 3 and Q-020. |
