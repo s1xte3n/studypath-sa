@@ -12,7 +12,7 @@ The matrix below remains a traceability plan, not proof of implementation. For g
 
 | Requirement | PRD / acceptance source | Contract or UI | Test IDs | Expected implementation area (unverified) | CI evidence | Release evidence |
 |---|---|---|---|---|---|---|
-| REQ-EXP-001 | PRD §5; AC-EXP-001–014; draft subject contract | Anonymous explorer form; owner-approved subject-catalogue-v1 contract; reference tests exist | T-EXP-001–004, T-SUB-001–010 | Form, subject dictionary, validation, memory state | T-SUB-001–012 reference tests passed in GitHub Actions run [38643577867](https://github.com/s1xte3n/studypath-sa/actions/runs/38643577867), PR #56; application tests not present/verified | Owner-approved v1 has no aliases; production implementation and runtime evidence unavailable |
+| REQ-EXP-001 | PRD §5; AC-EXP-001–014; draft subject contract | Anonymous explorer form; owner-approved subject-catalogue-v1 contract; reference tests exist | T-EXP-001–004, T-SUB-001–012 | Form, subject dictionary, validation, memory state | T-SUB-001–012 reference tests passed in GitHub Actions run [38643577867](https://github.com/s1xte3n/studypath-sa/actions/runs/38643577867), PR #56; application tests not present/verified | Owner-approved v1 has no aliases; production implementation and runtime evidence unavailable |
 | REQ-CAT-001 | PRD §5; AC-CAT-001–012; draft API contract | API catalogue response/source fields; client adapter; empty/stale state | T-CAT-001–003, T-API-001–002, T-API-004 | Curated source data, API adapter, catalogue validator | Not available | 6–8 reviewed records not evidenced; API contract/cost/privacy review open |
 | REQ-MAT-001 | PRD §5; AC-MAT-001–021 | Eligibility result/reason model; no API frozen | T-MAT-001–004 | Deterministic evaluator, composite rules, reasons, stable ordering | Not available | Golden set not executed |
 | REQ-ALT-001 | PRD §5; AC-ALT-001–007; draft pathway relationship contract | Relationship type, rationale, official source, cycle, freshness and curator sign-off | T-ALT-001–002, T-REL-001–008 | Reviewed relationship data and alternatives UI | Not available | No specific relationship approved; exact pair evidence/sign-off outstanding |
@@ -36,18 +36,20 @@ The matrix below remains a traceability plan, not proof of implementation. For g
 |---|---|---|---:|
 | T-EXP-001 | REQ-EXP-001 | Valid required fields and study-stage options | P0 |
 | T-EXP-002 | REQ-EXP-001 | Mark boundaries 0/100; reject decimal, negative, >100, malformed/missing without coercion | P0 |
-| T-EXP-003 | REQ-EXP-001 | Approved alias normalization, duplicate canonical subject, unsupported subject | P0 |
+| T-EXP-003 | REQ-EXP-001 | Reject unapproved aliases; detect duplicate canonical subjects; keep unsupported subjects unresolved | P0 |
 | T-EXP-004 | REQ-EXP-001, REQ-PRV-001 | Optional fields blank and no identity requirement | P0 |
-| T-SUB-001 | REQ-EXP-001 | Exact canonical subject label resolves only through approved dictionary | P0 |
-| T-SUB-002 | REQ-EXP-001 | Case/whitespace normalization follows approved exact-match policy | P0 |
-| T-SUB-003 | REQ-EXP-001 | Explicitly approved alias resolves to recorded canonical ID | P0 |
-| T-SUB-004 | REQ-EXP-001 | Unapproved abbreviation/near-match remains unresolved | P0 |
-| T-SUB-005 | REQ-EXP-001, REQ-MAT-001 | Mathematics, Mathematical Literacy and Technical Mathematics never cross-map | P0 |
-| T-SUB-006 | REQ-EXP-001 | Alias collision remains unresolved and raises catalogue validation defect | P0 |
-| T-SUB-007 | REQ-MAT-001 | Missing achievement level does not imply pass/fail | P0 |
-| T-SUB-008 | REQ-MAT-001 | Unsupported language category or subject equivalence produces UNKNOWN | P0 |
-| T-SUB-009 | REQ-PRV-001, NFR-PRV-001 | Learner subjects/marks absent from API requests, URLs and telemetry | P0 |
-| T-SUB-010 | REQ-CAT-001, REQ-MAT-001 | Dictionary-version mismatch is handled without trusting stale mapping | P0 |
+| T-SUB-001 | REQ-EXP-001 | Trim/collapse whitespace and resolve an exact canonical label; return the canonical display label | P0 |
+| T-SUB-002 | REQ-EXP-001 | Case variation of an exact canonical label resolves to the same ID | P0 |
+| T-SUB-003 | REQ-EXP-001 | Unapproved abbreviations and aliases remain unresolved | P0 |
+| T-SUB-004 | REQ-EXP-001 | Mathematics, Mathematical Literacy and Technical Mathematics remain distinct | P0 |
+| T-SUB-005 | REQ-EXP-001 | Physical Sciences and Technical Sciences remain distinct | P0 |
+| T-SUB-006 | REQ-EXP-001 | English Home Language, First Additional Language and Second Additional Language remain distinct | P0 |
+| T-SUB-007 | REQ-EXP-001 | Duplicate resolved subject IDs are detectable in a subject set | P0 |
+| T-SUB-008 | REQ-EXP-001 | Unsupported input does not select an arbitrary mapping | P0 |
+| T-SUB-009 | REQ-EXP-001 | Non-string subject input remains unresolved | P0 |
+| T-SUB-010 | REQ-EXP-001 | Catalogue-version mismatch remains unresolved | P0 |
+| T-SUB-011 | REQ-EXP-001, REQ-PRV-001 | Reference normalizer output omits the raw input label; runtime egress still requires T-PRV-002/003 | P0 |
+| T-SUB-012 | REQ-EXP-001, REQ-MAT-001 | Generic/unsupported English label remains unresolved; programme-level UNKNOWN requires evaluator tests | P0 |
 | T-CAT-001 | REQ-CAT-001, NFR-DATA-001 | Source/cycle/freshness/version/sign-off completeness | P0 |
 | T-CAT-002 | REQ-CAT-001, NFR-REL-001 | Missing, stale, conflicting or wrong-cycle rule cannot create certainty | P0 |
 | T-CAT-003 | REQ-CAT-001, NFR-SCOPE-001 | Empty state and no national-completeness claim | P0 |
@@ -106,7 +108,7 @@ The merged subject and pathway documents define additional **planned** tests. Th
 
 | Test family | Contract | Requirements/gap | Gate condition |
 |---|---|---|---|
-| T-SUB-001–012 | [Subject catalogue v1](SUBJECT-CATALOGUE-V1.md) | REQ-EXP-001, REQ-MAT-001, REQ-CAT-001, REQ-PRV-001; GAP-002 | Owner approval recorded; execute the existing reference tests and verify implementation/runtime separately. |
+| T-SUB-001–012 | [Subject catalogue v1](SUBJECT-CATALOGUE-V1.md) | REQ-EXP-001, REQ-MAT-001, REQ-CAT-001, REQ-PRV-001; GAP-002 | Reference-test IDs now align to the checked-in Node test cases. These tests cover normalization only; evaluator UNKNOWN semantics, duplicate rejection, runtime egress, and real dictionary refresh need separate tests/evidence. |
 | T-REL-001–008 | [Pathway relationship evidence contract](PATHWAY-RELATIONSHIP-EVIDENCE-CONTRACT.md) | REQ-ALT-001, REQ-MAT-001, REQ-PRV-001; GAP-003 | Approve evidence threshold and curator workflow; verify each named pair before publication; then add executable tests. |
 
-**Verification state (updated 2026-10-14):** the existing Node.js subject-catalogue reference tests T-SUB-001–012 ran successfully in GitHub Actions run [38643577867](https://github.com/s1xte3n/studypath-sa/actions/runs/38643577867) for PR #56 at commit `ee2181e62786176ab2c353ad4e112bd309672dbb`. This is not evidence that the broader planned test IDs have executable implementations. Application/build, privacy/network, accessibility, catalogue publication, deployment, smoke-test and release evidence remain unavailable. Privacy/network tests remain release blockers.
+**Verification state (historical evidence, 2026-10-14):** the checked-in Node.js subject-catalogue reference tests T-SUB-001–012 ran successfully in GitHub Actions run [38643577867](https://github.com/s1xte3n/studypath-sa/actions/runs/38643577867) for PR #56 at commit `ee2181e62786176ab2c353ad4e112bd309672dbb`. PH2-002 aligns the documented IDs to the cases in that suite. Check the PR's current head commit for CI status; historical CI evidence must not be treated as verification of a later revision. The suite is a reference normalizer, not production application or runtime privacy verification. Application/build, privacy/network, accessibility, catalogue publication, deployment, smoke-test and release evidence remain unavailable. Privacy/network tests remain release blockers.
