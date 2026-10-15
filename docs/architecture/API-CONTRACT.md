@@ -3,20 +3,24 @@
 **Version:** Draft v0.1  
 **Base path:** `/api/v1`  
 **Status:** Proposed for review; not frozen and not implemented.  
-**Authority:** D-044 and `docs/architecture/ARCHITECTURE.md`.
+**Authority:** D-044/D-045 and `docs/architecture/ARCHITECTURE.md`.
 
-## Purpose and privacy boundary
-The API serves public curated catalogue data only under the interim privacy boundary. It must not receive learner marks, subjects, interests, profile values, matching results, tracker entries, identity data or sensitive financial data. Eligibility/funding matching remains client-side until OR-019 is explicitly resolved through change control.
+## Purpose and tiered privacy boundary
+- Anonymous requests may retrieve public curated catalogue data only. Anonymous APIs must not receive learner marks, subjects, interests, profile values, match results, tracker entries, identity data or sensitive financial data. Anonymous matching stays client-side.
+- Authenticated server-side matching is the product direction under D-045, but no profile-bearing route is approved for implementation yet. A future route must require verified authentication, server-side authorization and ownership/account-isolation checks, accept only approved minimum fields, validate all input, avoid profile data in URLs/logs/telemetry, and define retention/deletion and error/cache semantics.
+- Login alone does not authorize persistent storage or syncing tracker/saved-pathway data. Q-020 must define each special feature and its data lifecycle before those routes are designed.
+- Do not use real learner data until applicable privacy/legal review and implementation controls are verified. Development/demo data must be synthetic.
 
-All routes below are candidates. Do not implement until routes/schema, runtime, cache/error behavior and cost are approved.
+All routes below are candidates. Do not implement until route/schema, identity, authorization, privacy/security, runtime, cache/error behavior, tests and total cost are approved.
 
 ## Candidate routes
 | Method/path | Purpose | Learner data accepted? | Status |
 |---|---|---|---|
 | `GET /api/v1/programmes` | Return versioned curated programme catalogue and provenance | No | Draft candidate |
 | `GET /api/v1/funding-opportunities` | Return versioned public funding opportunities and provenance | No | Draft candidate |
+| `POST /api/v1/matches` | Authenticated server-side pathway matching using approved minimal profile fields | Yes, authenticated only | **Not approved for implementation**; schema/security/cost gate required |
 
-No write routes, server-side matching endpoint or tracker endpoint is approved. Do not add admin, auth, upload or health routes without a requirement/decision.
+Authentication/identity routes, profile persistence, saved-pathway sync and tracker endpoints are not approved. Identity-provider managed flows should be evaluated before designing custom auth endpoints. Do not add admin, upload or health routes without a requirement/decision.
 
 ## Draft response envelope
 ```json
