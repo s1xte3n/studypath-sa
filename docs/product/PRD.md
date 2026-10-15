@@ -27,15 +27,17 @@ Where the broader specification conflicts with the accepted Phase 0 MVP boundary
 5. Trace displayed requirements and next steps to source records, preferring official institution/government/provider information. (C)
 6. Deliver a mobile-first, accessible, reliable interactive application suitable for a hackathon demo. (C)
 
-### Non-goals for the initial MVP
-- Creating an account, authentication, cross-session profile persistence or saved pathways; these remain excluded unless separately approved.
+### Non-goals for the anonymous initial MVP
+- Account creation/authentication, cross-session profile persistence, saved pathways, saved funding opportunities, pathway comparison and the authenticated dashboard are not part of the anonymous first-release acceptance baseline. Their feature scope is separately approved under D-046, but implementation remains blocked by Q-020 lifecycle, privacy/security, contract, test and cost gates.
 - Direct application submission or application-system integration.
-- Cost planning, notifications, institution comparison, AI chat, document upload/extraction, skill-gap analysis or graduation tracking.
+- Cost planning, notifications, AI chat, document upload/extraction, skill-gap analysis or graduation tracking.
 - Guaranteeing admission, funding, application outcomes or completeness of national coverage.
 - Full national catalogue coverage or automated crawling.
 - Using real learner personal data in development/demo flows. Synthetic-only boundary applies.
 
-Funding matching (M4) and manual application tracking (M5) are included in the intended MVP at **P1 / medium priority**, behind the P0 core pathway-discovery journey. OR-015 defines a 3–5-opportunity official-source funding pilot and limited non-sensitive matching inputs. OR-016 defines tracker statuses, transitions and permitted fields. **Tracker entries are page-memory-only in the initial MVP**: no server/database, localStorage, sessionStorage, IndexedDB, cookies, account, or cloud sync; reload/close may discard entries. This is the owner-approved policy and does not require a persistence gate. Profile inputs/results also remain memory-only. Sensitive financial data and document uploads are not approved. See `OPEN-REQUIREMENTS.md`.
+**Approved authenticated scope extension (D-046; not yet implementation-ready):** authenticated learners are intended to receive personalised server-side pathway matching, saved pathways, pathway comparison, saved funding opportunities and a personal study dashboard. Academic profile persistence requires explicit opt-in; login alone is not consent. The dashboard may only aggregate approved feature data. Pathway comparison uses verified supported catalogue fields and is a formally approved change to the earlier institution-comparison non-goal. This extension does not change the anonymous D-045 boundary or authorize real learner data, provisioning, deployment or release. Q-020 remains open until data lifecycle, schemas, authorization/isolation, privacy/legal review, runtime controls, acceptance tests and cost gates pass.
+
+Funding matching (M4) and manual application tracking (M5) are included in the intended anonymous-first MVP at **P1 / medium priority**, behind the P0 core pathway-discovery journey. OR-015 defines a 3–5-opportunity official-source funding pilot and limited non-sensitive matching inputs. OR-016 defines tracker statuses, transitions and permitted fields. **Tracker entries are page-memory-only in the initial MVP**: no server/database, localStorage, sessionStorage, IndexedDB, cookies, account, or cloud sync; reload/close may discard entries. This is the owner-approved policy and does not require a persistence gate. Anonymous profile inputs/results remain memory-only. Authenticated matching payloads may be sent only through an approved authenticated contract; academic profile persistence requires explicit opt-in and must pass Q-020 gates. Sensitive financial data and document uploads are not approved. See `OPEN-REQUIREMENTS.md`.
 
 ## 3. Actors and permissions
 
