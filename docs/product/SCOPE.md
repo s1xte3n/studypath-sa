@@ -1,6 +1,6 @@
 # StudyPath SA — Scope
 
-**Status:** Draft; reflects owner-approved Phase 0 and OR-008–OR-018 decisions. Explicit PRD approval and the OR-006-compatible tracker-persistence gate remain outstanding.
+**Status:** Scope reconciliation in progress. The Phase 1 PRD baseline is owner-approved. D-046 authenticated features are approved future scope but excluded from the D-047/G-SYN-001 local synthetic-only demo; the tracker remains page-memory-only. This document does not establish implementation readiness.
 
 ## MVP (P0 candidate)
 
@@ -21,11 +21,11 @@ The MVP is the anonymous-first, source-grounded pathway explorer:
 Funding matching and manual application tracking are in the intended MVP scope at medium priority. They follow the P0 core pathway-discovery journey and must not displace core eligibility correctness, privacy safeguards, test coverage or demo reliability.
 
 - **REQ-FUND-001 — Funding catalogue and matching:** a 3–5-opportunity official-source pilot with limited non-sensitive inputs, source-backed criteria, provenance, verification dates, deadline/timezone and expiry handling, explainable matches and explicit uncertainty.
-- **REQ-APP-001 — Manual application tracker:** learner-reported tracking of supported university/funding applications, with defined status transitions and minimal approved fields. Implement session-memory-only until any tracker-only browser-local persistence receives explicit OR-006-compatible change-control and privacy/security approval.
+- **REQ-APP-001 — Manual application tracker:** learner-reported tracking of supported university/funding applications, with defined status transitions and minimal approved fields. Keep entries page-memory-only; do not use browser-local persistence, server persistence or cloud sync. Any proposed change requires explicit change control and privacy/security review.
 - Catalogue expansion beyond the initial 6–8 record pilot, including additional institutions, provinces, qualification types and TVET options only when the corresponding official records can be verified.
 - Institution/qualification comparison.
 
-Saved pathways and authenticated learner profiles remain outside the intended MVP and require separate approval. P1 means medium priority within the intended MVP, not permission to skip acceptance criteria or privacy/security gates.
+D-046 separately approves authenticated pathway matching, saved pathways, pathway comparison, saved funding opportunities and a derived personal dashboard as future product scope. These features are excluded from the D-047/G-SYN-001 local synthetic-only demo and remain gated by Q-018/Q-020, exact contracts, security/privacy review, test evidence and cost approval. Academic-profile persistence is off by default and requires separate explicit opt-in under an approved lifecycle. P1 means medium priority within the intended MVP, not permission to skip acceptance criteria or privacy/security gates.
 
 ## P2 — Later product capabilities
 
@@ -53,9 +53,9 @@ These future ideas are not approved implementation commitments.
 - Automated nationwide web crawling or unsupported institutional coverage claims.
 - AI as the authority for eligibility, requirements or deadlines.
 - Document upload or extraction in the initial MVP.
-- Accounts, authentication, cross-session saving and notifications in the initial MVP.
+- Accounts, authentication, cross-session saving and notifications in the D-047/G-SYN-001 local synthetic-only demo. Authenticated features remain approved future scope under D-046 but are gated and not implemented by this boundary.
 - Direct application submission and external application-system status synchronisation.
-- Persistent tracker records until the OR-006-compatible change-control and privacy/security gate explicitly approves tracker-only persistence; collection of sensitive funding inputs remains excluded.
+- Tracker persistence: excluded. Tracker entries remain page-memory-only unless a future, separately approved change supersedes the current decision; collection of sensitive funding inputs remains excluded.
 - Real learner personal data in development/demo testing.
 - Paid Azure services or provisioning without renewed cost approval; R100/month total cap and no-provisioning boundary remain in force.
 
