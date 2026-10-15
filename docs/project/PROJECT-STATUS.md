@@ -227,3 +227,13 @@ The product owner explicitly approved the proposal/constraint/gate dispositions 
 The owner explicitly approved all five decisions A–E. The approved design baseline and limits are recorded in [Q020-DECISION-PACK.md](Q020-DECISION-PACK.md) and the [owner decision record](Q020-OWNER-DECISIONS-A-E.md): (A) evaluate Entra External ID first with OIDC authorization code + PKCE and memory-only token cache; (B) adopt token-subject-derived API ownership and account-isolation constraints; (C) accept retention/deletion periods as internal engineering targets only; (D) maintain the hard R100/month total cap and defer authenticated persistence/features unless a complete forecast proves affordability; (E) adopt the executable acceptance matrix, including 20+ reviewed synthetic golden cases and zero false-positive ELIGIBLE results.
 
 **Q-020 remains OPEN / P0; IMPLEMENTATION READY — NOT PASSED.** These are design/constraint approvals, not evidence of legal compliance, provider capability, cost compliance, implementation, runtime tests, CI for runtime controls or deployment. Qualified South African privacy/legal and age-appropriate review, provider verification, a complete cost forecast, runnable implementation baseline, executable tests/CI and operational-control verification remain open. Real learner data, provisioning, production identity configuration and deployment remain unauthorized until applicable gates pass. Anonymous inputs/results/tracker entries remain page-memory-only and must not be transmitted to APIs, URLs, analytics, logs or telemetry.
+
+
+## G-Q020-1 — External privacy/legal/minors review preparation — 2026-10-15
+
+- **Gate state: BLOCKED — qualified independent review not evidenced.**
+- Added `docs/project/G-Q020-1-EXTERNAL-REVIEW-REQUEST.md` with scope, evidence limitations, reviewer questions, decision criteria and a response template.
+- Existing `docs/project/Q020-PRIVACY-LEGAL-AGE-REVIEW.md` remains the data-inventory and legal-questions pack.
+- This work prepares the review; it is not legal advice, a legal opinion, POPIA compliance evidence, or approval to process real learner data.
+- No qualified reviewer has been identified or signed off in repository evidence. Do not infer a reviewer has been contacted.
+- Real learner data remains prohibited; synthetic-only development, no provisioning/deployment, and no authenticated persistence remain in force.
