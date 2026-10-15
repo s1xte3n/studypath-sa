@@ -1,6 +1,6 @@
 # Phase 2 A3 — Authenticated-feature boundary review
 
-**Status:** Proposed owner decision; A3 remains OPEN until the product owner accepts the disposition below and the linked requirements are reconciled.
+**Status:** Accepted by the product owner on 2026-10-15; recorded as D-048. A3's authenticated-feature boundary decision is closed after reconciliation in the requirements, traceability and checklist artifacts. Q-018, Q-020, G-SYN-001 and the overall Phase 2 gate remain open.
 **Scope:** Requirements-only change control. This document does not authorize implementation, identity configuration, transmission of real learner data, persistence, provisioning or deployment.
 **Baseline:** D-044–D-047, Q-018, Q-020, `REQ-AUTH-001`, `AC-AUTH-001–016`, and `T-AUTH-001–018`.
 
@@ -65,10 +65,8 @@ If the owner does not want to make these future-scope decisions now, use formal 
 
 ## 6. Acceptance and gate status
 
-**A3 status after this proposal: OPEN — owner acceptance required.**
+**A3 boundary decision: ACCEPTED by the product owner on 2026-10-15 and recorded as D-048.**
 
-To close A3, the product owner must accept the boundary in Section 1 and either:
-- approve the listed observable outcomes while explicitly assigning the exact contracts/parameters in Section 4 to named later gates; or
-- approve formal scope changes that defer any feature whose user-visible behavior is not yet decided.
+The owner accepted the boundary in Section 1 as proposed. The exact contracts and unresolved parameters in Section 4 are explicitly deferred to Q-018 / Phase 3 and Q-020, with privacy/legal review and applicable architecture, security, cost and test gates still required. The checklist and source-of-truth records have been reconciled to record this acceptance.
 
-After owner acceptance, update `docs/project/DECISIONS.md`, `docs/project/OPEN-QUESTIONS.md`, the acceptance criteria and traceability matrix consistently. Only then may the checklist item be evaluated for completion. A3 acceptance alone does not pass the full Phase 2 gate, G-SYN-001, Q-018, Q-020 or release readiness.
+This closes A3's boundary-decision criterion only. It does **not** pass the full Phase 2 REQUIREMENTS READY gate, G-SYN-001, Q-018, Q-020 or release readiness, and does not authorize implementation, real learner data, production identity, persistence, provisioning or deployment.
