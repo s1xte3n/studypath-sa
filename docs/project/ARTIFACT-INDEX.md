@@ -2,6 +2,7 @@
 
 **Last updated:** 2026-10-15  
 **Phase:** 2 — Requirements matrix and traceability  
+**Historical-note convention:** Dated sections below preserve prior review snapshots. Where an older row says “proposed,” “on branch for review,” or “not started,” use the latest status table and subsequent dated updates as current; earlier snapshots are not current approval or implementation evidence.  
 **Gate:** Phase 0 `PROJECT READY` passed for Phase 1 planning only; Phase 1 `PRD READY` **passed on 2026-10-14** after explicit owner approval of the revised PRD and measurable acceptance criteria. Phase 2 requirements traceability remains outstanding.
 
 ## Source-of-truth references
