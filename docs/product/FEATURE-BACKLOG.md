@@ -22,10 +22,10 @@
 
 ### P0-02 — Approve supported subject vocabulary
 - **Requirements:** REQ-EXP-001, REQ-MAT-001.
-- **Dependencies:** Owner/curator decision on canonical IDs, display names and explicitly approved aliases.
-- **Deliverable:** Explicit supported subject/alias catalogue.
+- **Dependencies:** The owner-approved `subject-catalogue-v1` contract and its exact canonical labels; no aliases are accepted. Verify the checked-in reference tests against that contract.
+- **Deliverable:** Explicit supported subject catalogue using exact canonical labels after approved whitespace/case cleanup, with no aliases or inferred equivalence.
 - **Verification:** T-EXP-003.
-- **Blocked:** Vocabulary is not established in the reviewed baseline; do not infer supported subjects or equivalence.
+- **Boundary:** The contract decision is recorded; production integration, UI duplicate rejection, evaluator behavior, dictionary refresh and runtime privacy still require implementation and verification. Do not infer unsupported subjects or equivalence.
 
 ### P0-03 — Anonymous input validation and memory-only state
 - **Requirements:** REQ-EXP-001, REQ-PRV-001.
