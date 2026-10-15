@@ -17,6 +17,10 @@
 - Added `docs/project/PHASE0-RESOLUTION-PROPOSAL.md` and `docs/project/PHASE0-ONLINE-EVIDENCE.md`. Official UJ programme pages and Microsoft Static Web Apps pricing/quota sources were checked online. The owner approved all six decision records and attests the account-specific checks are complete. PROJECT READY is passed for Phase 1 PRD/planning only; account-specific evidence remains owner-attested rather than independently inspected.
 - Local repository verification was supplied by the project owner on 2026-10-14: path `Sixteen/Desktop/Projects/studypath-sa`, branch `main`, HEAD `3a8f17e44c9c2f079b8ce71e14eebd56519cb52e`, `git status` clean, local branch up to date with `origin/main`, and `git rev-list --left-right --count main...origin/main` returned `0 0`. The tracked-file listing supplied for this check contains repository guidance and `docs/project/` files; it does not list application source, a package manifest, tests or CI workflow. This is owner-supplied command output, not a direct inspection of the local filesystem by the assistant.
 
+## Product direction update — 2026-10-15
+
+The owner selected tiered matching: anonymous users use a public catalogue API with client-side matching; logged-in users are intended to use authenticated server-side matching and may later receive account-gated features. Recorded as D-045 and reflected in the draft architecture/API contract on branch `docs/login-tiered-matching-change-control`. This is a documentation/change-control proposal only. Authentication, profile transmission, persistence, feature-specific data lifecycle, privacy/security approval, cost verification, implementation, CI and deployment are not complete. Q-018 remains open for architecture/security/cost gates; Q-020 requires the logged-in special features and data lifecycle to be defined. No Azure provisioning or real learner-data use is authorized.
+
 ## State by area
 
 | Area | Status |
