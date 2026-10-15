@@ -140,3 +140,19 @@ Record approved changes to scope, stack, budget, audience, data use or deadlines
 ## Q-020 lifecycle recommendations (proposed; not approved)
 
 The product owner approved D-046's authenticated feature scope, but has not yet approved the detailed lifecycle policy. See [Q020-LIFECYCLE-IMPLEMENTATION-READINESS.md](Q020-LIFECYCLE-IMPLEMENTATION-READINESS.md) for the proposed minimum-field inventory, consent/withdrawal, retention/deletion/backup schedule, identity/session design, authorization and privacy controls, cost gate, test plan and explicit decision register. These recommendations are **not decisions** until each Q020-DEC item is explicitly approved or revised. No schema freeze, implementation, provisioning or real learner data is authorized by the proposal.
+
+
+## D-047 — Interim synthetic-only MVP boundary (owner direction, 2026-10-15)
+
+**Decision:** For the next build/verification step, defer obtaining the independent South African privacy/legal review and limit work to a synthetic-data-only, local browser demo until the technical gate is evaluated. This is a temporary scope boundary, not a cancellation of the review and not a finding that POPIA or other obligations do not apply.
+
+- Only synthetic profiles, marks, interests, tracker entries and fixtures may be used.
+- Learner inputs/results/tracker entries must remain in page memory and must not be transmitted or persisted.
+- Defer real learner data, authentication, production identity, authenticated matching, profile persistence, uploads, cloud sync, Azure provisioning and deployment.
+- Public-demo use remains subject to a separate review of hosting/provider metadata, logs, cookies, telemetry, third-party resources, notice accuracy and runtime evidence.
+- G-SYN-001 must pass with browser-level privacy tests, deterministic matching checks, accessibility checks, reproducible build/test evidence and CI results before describing the demo boundary as verified.
+- The hard total spend cap remains R100/month. No billable resource or service is authorized by this decision.
+- G-Q020-1 independent review remains deferred/open; no legal clearance or independent sign-off is implied. Revisit it before real learner-data processing or production identity/persistence.
+- The Phase 2 `REQUIREMENTS READY` gate and all downstream release gates remain open.
+
+Source: explicit project-owner instruction to proceed to the next gate using the previously proposed synthetic-only demo boundary (2026-10-15).

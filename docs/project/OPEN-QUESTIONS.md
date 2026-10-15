@@ -57,3 +57,11 @@ The rule reconciliation note `docs/product/UJ-2027-RULE-RECONCILIATION-UPDATE.md
 ## Q-019 curator decision update — 2026-10-14
 
 The project owner explicitly approved all seven UJ 2027 candidate records and shared interpretation proposals in `docs/product/UJ-2027-CURATOR-REVIEW-PACK.md`. Q-019 is therefore resolved for the **owner/curator decision** on the bounded NSC pilot baseline, but remains open for evidence completeness and implementation readiness: exact APS subject-selection semantics, English-stream mapping, programme-specific footnotes/selection conditions, approved executable test oracles, deterministic implementation, and the 20+ case golden set remain outstanding. Apply `UNKNOWN` whenever unresolved details could change eligibility; do not claim definitive `ELIGIBLE` outcomes from incomplete rules. GAP-001 and `REQUIREMENTS READY` remain open/not passed.
+
+## G-SYN-001 — Synthetic-only MVP verification (2026-10-15)
+
+**Status: OPEN / NOT PASSED.** The next bounded workstream is to build and verify a local browser-only demo with synthetic data. The current default-branch tree includes deterministic eligibility code and golden-case CI, but a learner-facing app entry point, package manifest/lockfile, browser privacy harness, and runtime privacy evidence have not been established. See [G-SYN-001 gate](G-SYN-001-SYNTHETIC-ONLY-MVP-GATE.md).
+
+Exit evidence: reproducible app build/test; browser end-to-end journey; zero false-positive `ELIGIBLE` outcomes across the reviewed golden set; sentinel-value canaries for network, URL/history, browser storage, console/logging and telemetry; reset/reload non-persistence; accessibility checks; CI result tied to the reviewed commit; verified source provenance and visible demo limitations.
+
+The external privacy/legal review is deferred for this interim step, not waived. Real learner data, production identity, authenticated persistence, Azure provisioning and deployment remain prohibited. Public-demo hosting/provider metadata and any platform processing must be reviewed before public use. The Phase 2 `REQUIREMENTS READY` gate remains open.

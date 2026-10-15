@@ -237,3 +237,12 @@ The owner explicitly approved all five decisions A–E. The approved design base
 - This work prepares the review; it is not legal advice, a legal opinion, POPIA compliance evidence, or approval to process real learner data.
 - No qualified reviewer has been identified or signed off in repository evidence. Do not infer a reviewer has been contacted.
 - Real learner data remains prohibited; synthetic-only development, no provisioning/deployment, and no authenticated persistence remain in force.
+
+
+## Synthetic-only MVP gate — 2026-10-15
+
+**G-SYN-001 — Synthetic-Only MVP Verification: OPEN / NOT PASSED.** See [G-SYN-001 gate criteria](G-SYN-001-SYNTHETIC-ONLY-MVP-GATE.md). The gate is defined to keep work moving without real learner data or an external legal review at this stage; it is not a legal-compliance finding or permission to deploy publicly.
+
+**Verified repository correction at commit `e3564527b48dc0ca3cb55d4c208da5dc620b23ff`:** the recursive default-branch tree includes `src/domain/eligibility/uj-2027-evaluator.mjs`, golden-case tests, and two GitHub Actions workflows. Earlier statements in this status file that no tests/workflows or application source were found reflect earlier snapshots and are superseded to that extent. The inspected tree still does not establish a root package manifest/lockfile, learner-facing UI/app entry point, browser-test harness, API implementation, or deployment/infrastructure code. Domain tests are not runtime privacy evidence.
+
+**Next action:** build a minimal local browser-only vertical slice with synthetic fixtures, then implement and run the SYN-001–SYN-010 checks. Do not mark the gate passed until results are tied to a commit. The Phase 2 `REQUIREMENTS READY` gate remains open; this bounded demo work does not silently close it. No Azure provisioning, deployment, real learner data, production identity, or persistence is authorized.

@@ -177,3 +177,12 @@ Q-020 remains **OPEN / P0** and `Q-020 IMPLEMENTATION READY` remains **NOT PASSE
 |---|---|---|---|
 | G-Q020-1 external review request | `docs/project/G-Q020-1-EXTERNAL-REVIEW-REQUEST.md` | Prepared on branch for review; gate remains blocked | Reviewer scope, evidence limitations, decision questions and response template. No qualified review/sign-off evidenced. |
 | Q-020 privacy/legal/age review pack | `docs/project/Q020-PRIVACY-LEGAL-AGE-REVIEW.md` | Prepared; not approved | Data inventory and review questions; not legal advice or proof of compliance. Real learner data remains prohibited. |
+
+
+## Synthetic-only MVP verification gate — 2026-10-15
+
+| Artifact | Path | Status | Notes |
+|---|---|---|---|
+| G-SYN-001 synthetic-only MVP gate | `docs/project/G-SYN-001-SYNTHETIC-ONLY-MVP-GATE.md` | Defined; **NOT PASSED** | Sets SYN-001–SYN-010 acceptance criteria for a local browser-only demo, privacy canaries, accessibility, provenance and CI. App/UI and runtime privacy evidence are not yet established. |
+
+The inspected main tree at `e3564527b48dc0ca3cb55d4c208da5dc620b23ff` contains eligibility domain code, golden-case tests, and two workflows, but does not establish a runnable learner-facing UI, package manifest/lockfile, browser privacy harness, API, or deployment. Passing domain/contract tests does not pass G-SYN-001 or the Phase 2 `REQUIREMENTS READY` gate.
