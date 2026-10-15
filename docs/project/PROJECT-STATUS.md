@@ -205,3 +205,15 @@ The product owner approved D-046's authenticated feature scope: personalised pat
 A reviewable proposal is recorded in [Q020-LIFECYCLE-IMPLEMENTATION-READINESS.md](Q020-LIFECYCLE-IMPLEMENTATION-READINESS.md). It defines minimum proposed data classes, transient versus persisted behavior, opt-in and withdrawal, proposed retention/deletion/backup windows, account isolation, logging/telemetry/cache controls, session/shared-device handling, candidate API resources, a test plan and explicit owner decisions. These are proposals, not approved policy.
 
 **Q-020 IMPLEMENTATION READY: NOT PASSED.** Identity provider/session design, exact persisted fields, retention periods, deletion and backup behavior, privacy/legal review, frozen API contract, workload/cost evidence and executable security/privacy tests remain open. No authenticated implementation, real learner data, Azure provisioning or deployment is claimed or authorized.
+
+## Q-020 owner decision register — 2026-10-15
+
+The product owner explicitly approved the proposal/constraint/gate dispositions for Q020-DEC-01–14. The register and boundaries are recorded in `docs/project/Q020-LIFECYCLE-IMPLEMENTATION-READINESS.md`.
+
+- Approved proposal directions: first evaluate Microsoft Entra External ID (not yet selected); minimal controlled profile fields; no match-history/result persistence by default; separate versioned opt-in and withdrawal; profile retained only while opt-in is active; saved items retained until removal/account deletion; shared-device clearing/account partitioning; and the proposed deletion/backup/log-retention targets.
+- Approved security constraints: no tokens in URLs or persistent browser storage; cookie sessions require CSRF protection. The session mechanism remains deferred until threat-model review.
+- Approved gates: complete South African privacy/legal and age-appropriate design review before real learner data; select/provision hosting only after security and full cost assessment; evidence a realistic service-by-service workload forecast under the R100/month cap.
+- The 30-day active-data deletion targets, 35-day backup-expiry target and 30-day-or-shorter routine-log target are not verified guarantees or public-facing promises. Provider capabilities/configuration, legal suitability, deletion/restore behavior and tests remain to be evidenced.
+- Q-020 remains **OPEN / P0; IMPLEMENTATION READY — NOT PASSED**. The approvals do not authorize real learner data, cloud provisioning, production identity configuration, authenticated implementation or deployment. No runtime tests, security/privacy tests, cost verification, CI run or deployment were performed by this documentation update.
+- The anonymous privacy boundary and page-memory-only application tracker remain unchanged.
+
