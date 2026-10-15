@@ -115,7 +115,7 @@ A documentation-ID audit against the proposed branch found:
 - Zero test IDs referenced by the canonical requirements matrix or feature backlog missing from the traceability registry or Q-020 test plan.
 - Zero conflicting repeated test-definition rows across the traceability and Q-020 registries.
 
-These are documentation/reference checks, not executable application tests. The checked-in subject-catalogue reference suite has historical run evidence; PR #79's contract-test run #52 passed on the PR head only. No merge-commit workflow result, application build, browser journey, runtime privacy test, catalogue publication or release evidence is claimed.
+These are documentation/reference checks, not executable application tests. The checked-in subject-catalogue reference suite has historical run evidence. PR #79's contract-test run #52 passed on its PR head only. This audit branch's Contract tests workflow run [#54](https://github.com/s1xte3n/studypath-sa/actions/runs/38789226191) passed on head `fbe002e29f35fdbf97a46ada391fca520667e036`. These contract-workflow results do not establish an application build, browser journey, runtime privacy test, catalogue publication or release evidence.
 
 ### Source fidelity and priority decisions
 
