@@ -193,3 +193,4 @@ The inspected main tree at `e3564527b48dc0ca3cb55d4c208da5dc620b23ff` contains e
 | Artifact | Path | Status | Notes |
 |---|---|---|---|
 | MVP scope reconciliation | `docs/product/MVP-SCOPE-RECONCILIATION-D-044-D-047.md` | Merged via PR #71 (commit `ef23f08f703d45ad7d3f9a2565c087117246cf4f`) | Separates intended API-first architecture, anonymous/authenticated scope, and the interim D-047 local synthetic-only demo. Phase 2 checklist A2 is checked; A3–A6 and the overall Phase 2 gate remain open. No implementation or runtime evidence implied. |
+| Phase 2 A3 authenticated-boundary review | `docs/product/PHASE-2-A3-AUTHENTICATED-BOUNDARY-REVIEW.md` | Proposed; owner acceptance required | Maps the approved authenticated feature scope to AC-AUTH-001–016, identifies undecided contracts and gates, and keeps A3 open. No implementation, privacy clearance or runtime evidence implied. |
