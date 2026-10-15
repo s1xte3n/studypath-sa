@@ -248,7 +248,17 @@ The product owner explicitly approved the proposals, security constraints, or ga
 
 
 
-## 10. Current readiness assessment
+## 10. Gate-closure supporting artifacts
+
+The following review artifacts have been prepared on branch `docs/q020-gate-closure-proposal`:
+- [Owner decision pack](Q020-DECISION-PACK.md) — five explicit proposed decisions, including session mechanism and a cost-gated deferral option.
+- [South African privacy/legal and age-appropriate review](Q020-PRIVACY-LEGAL-AGE-REVIEW.md) — review checklist and required qualified-reviewer disposition; this review is NOT complete.
+- [Architecture and threat model](Q020-ARCHITECTURE-THREAT-MODEL.md) — proposed MSAL authorization-code + PKCE, memory-only token cache, API boundaries and threat controls.
+- [Cost model and executable test readiness](Q020-COST-AND-TEST-READINESS.md) — service-by-service cost gaps and 20 executable acceptance scenarios.
+
+These documents make the remaining decisions and evidence requirements explicit; they do not close the legal review, provider verification, actual cost forecast, runtime controls or test execution gates.
+
+## 11. Current readiness assessment
 
 - **Scope:** Approved under D-046.
 - **Lifecycle policy:** Owner proposal/constraint/gate dispositions recorded for Q020-DEC-01–14; retention/deletion targets and controls still require privacy/legal, provider and runtime verification.
