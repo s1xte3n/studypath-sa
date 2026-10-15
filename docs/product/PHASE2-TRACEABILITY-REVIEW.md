@@ -102,7 +102,20 @@ Before changing the gate, the project owner/reviewer must confirm:
 | `REQ-AUTH-001` and `AC-AUTH-001–016` described owner-approved D-046/D-048 future scope but the canonical requirements matrix omitted the requirement. | Added `REQ-AUTH-001` as P3/future scope in the PRD and canonical matrix; aligned user-story scope note and traceability row. | Authenticated implementation remains excluded from D-047/G-SYN-001 and blocked by Q-018/Q-020, privacy/security, tests and cost gates. |
 | `AC-NFR-001–005` were defined as cross-cutting verification criteria but had no explicit canonical requirement mapping. | Added a mapping table to the canonical requirements and traceability matrices; clarified that these are cross-cutting controls, not separate product NFRs. | AC-COST-FUT and AC-AI-FUT remain future criteria tied to OR-017/OR-018, not initial-MVP gates. |
 | The open-requirements and artifact-index summaries stopped at OR-018 although OR-019 had been added. | Updated current summaries to show OR-001–OR-018 dispositions recorded and OR-019 explicitly open. | OR-019's runtime/API composition, provider-retention and cost choices remain assigned to Q-018/Phase 3 and later gates. |
+| The synthetic-only gate traceability table covered only part of the current demo requirement set. | Added explicit G-SYN-001 mappings for catalogue, relationships, detail views, accessibility, funding's gated/disabled state, and the relevant NFRs. | Mapping only; all implementation/CI/runtime evidence fields remain unavailable. |
 | GAP-002 still called the PR #79 traceability correction “proposed.” | Updated it to record PR #79 merge and its exact PR-head contract-test run. | Run #52 passed at PR-head commit `a6e3d2378595049c340f5654ece5ee6a723327d2`; this is not CI evidence for the merge commit or application/runtime behavior. |
+
+### Bidirectional identifier audit (proposed branch)
+
+A documentation-ID audit against the proposed branch found:
+
+- 134 acceptance-criterion definitions; zero duplicate AC definitions.
+- Zero defined acceptance-criterion IDs missing from the canonical requirements matrix.
+- All 10 PRD functional requirement IDs represented in the canonical requirements matrix, including `REQ-AUTH-001` as future/gated scope.
+- Zero test IDs referenced by the canonical requirements matrix or feature backlog missing from the traceability registry or Q-020 test plan.
+- Zero conflicting repeated test-definition rows across the traceability and Q-020 registries.
+
+These are documentation/reference checks, not executable application tests. The checked-in subject-catalogue reference suite has historical run evidence; PR #79's contract-test run #52 passed on the PR head only. No merge-commit workflow result, application build, browser journey, runtime privacy test, catalogue publication or release evidence is claimed.
 
 ### Source fidelity and priority decisions
 
@@ -112,7 +125,7 @@ Before changing the gate, the project owner/reviewer must confirm:
 
 ### Remaining blockers and conditional Phase 3 handoff
 
-- Remaining Phase 2 work: complete B3–B11 and C3–C6 evidence; finish D1 and the remaining GAP/Q cross-checks; run a bidirectional criterion/test-ID audit against the final proposed branch; and obtain explicit overall product-owner acceptance (E2). Do not mark `REQUIREMENTS READY` passed before these are evidenced.
+- Remaining Phase 2 work: review and merge this proposed audit baseline, then obtain explicit overall product-owner acceptance (E2) for the reconciled baseline. The checklist marks A–D evidence items complete on this branch; this does not itself constitute owner acceptance. Do not mark `REQUIREMENTS READY` passed before that decision is recorded.
 - Later gates remain open: verified 6–8 programme records and curator sign-off; relationship-pair evidence; 3–5 funding records before enabling P1 funding; architecture/API/provider/cost review within the R100/month cap; a runnable local UI and browser/privacy harness; golden-set, accessibility, performance and runtime privacy evidence; qualified privacy/legal review before real learner data; CI on the reviewed implementation commit; and deployment/release checks.
 - Phase 3 entry criteria, **after** Phase 2 acceptance: freeze architecture and ADRs against the accepted requirement baseline; resolve OR-019/Q-018 API/runtime composition, timeout/retry/cache/failure semantics, identity boundaries and provider controls; prove full cost against the R100/month cap before provisioning; preserve the page-memory-only learner-data boundary and synthetic-only demo restrictions. No infrastructure provisioning is authorized by this handoff.
 
