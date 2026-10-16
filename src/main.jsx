@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { createRoot } from "react-dom/client";
 import "./styles.css";
+import { validateStudentEntries } from "./domain/student-input-validation.mjs";
 
 const STAGES = [
   { value: "GRADE_11", label: "Grade 11" },
@@ -54,18 +55,7 @@ function App() {
 
   function submitForm(event) {
     event.preventDefault();
-    const errors = [];
-    if (!stage) errors.push("Select your current study stage.");
-    if (!subjects.length) errors.push("Add at least one subject and mark.");
-    const seen = new Set();
-    subjects.forEach((item, index) => {
-      if (!item.subject) errors.push(`Choose a subject for row ${index + 1}.`);
-      if (item.mark === "" || !Number.isInteger(Number(item.mark)) || Number(item.mark) < 0 || Number(item.mark) > 100) {
-        errors.push(`Enter a whole-number mark from 0 to 100 for row ${index + 1}.`);
-      }
-      if (item.subject && seen.has(item.subject)) errors.push(`${item.subject} is listed more than once.`);
-      if (item.subject) seen.add(item.subject);
-    });
+    const errors = validateStudentEntries({ stage, subjects });
     setNotice(errors.length ? errors.join(" ") : "Your entries passed basic form validation. Pathway matching is not enabled in this scaffold, so no eligibility result has been calculated.");
     setSubmitted(errors.length === 0);
   }
