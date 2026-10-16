@@ -209,3 +209,26 @@ The audit branch reconciles the pathway-detail AC-DET range, maps the approved f
 | Owner acceptance decision | `docs/project/DECISIONS.md` (D-049) | Accepted 2026-10-16 | Acceptance conditions and exclusions are explicit; downstream gates are not waived. |
 
 Phase 3 architecture/ADR work may begin. OR-019, Q-018, Q-020, G-SYN-001, catalogue/funding provenance, executable app/browser/privacy tests, cost validation, qualified review where required, provisioning and deployment remain open at their own gates. PR #80 contract CI passed on its PR head (run #56); no workflow result was returned for merge commit `aeb7b27da3a5bfc01e5f7a378f391f1d43a16c0c`. No application build, runtime privacy test, provisioning or deployment is claimed.
+
+
+## Phase 3 architecture artifacts — 2026-10-16
+
+The following artifacts are present on branch `docs/phase-3-architecture-baseline` as **proposed/draft architecture for owner review**, not approved implementation contracts. Existing D-044–D-047 boundaries and Q-018/Q-020 gates are preserved.
+
+| Artifact | Path | Status | Notes |
+|---|---|---|---|
+| System architecture | `docs/architecture/ARCHITECTURE.md` | Draft — review required | Components, boundaries, flows, failure/recovery, scalability, availability and cost constraints; explicitly not architecture-ready |
+| Data model | `docs/architecture/DATA-MODEL.md` | Proposed — review required | Logical catalogue entities, provenance, constraints, indexes, lifecycle and ownership; no database approved |
+| Security architecture | `docs/architecture/SECURITY-ARCHITECTURE.md` | Draft — runtime unverified | Trust boundaries, current privacy rules, future authentication gates and threat checklist |
+| Infrastructure | `docs/architecture/INFRASTRUCTURE.md` | Proposed — no provisioning authorized | Environments, candidate Azure services, CI/CD, Terraform, cost controls, deployment and rollback |
+| Observability | `docs/architecture/OBSERVABILITY.md` | Proposed — not implemented | Privacy-preserving logs/metrics/alerts, operational signals and verification checklist |
+| ADR index | `docs/architecture/ADR-INDEX.md` | Draft — review required | Index of five decisions and gate rule |
+| ADR-001 | `docs/architecture/ADR-001.md` | Accepted direction; details open | API-first boundary and tiered data handling; not runtime authorization |
+| ADR-002 | `docs/architecture/ADR-002.md` | Proposed | Curated provenance and deterministic eligibility |
+| ADR-003 | `docs/architecture/ADR-003.md` | Privacy boundary accepted; future controls proposed | Anonymous privacy and gated authenticated extension |
+| ADR-004 | `docs/architecture/ADR-004.md` | Proposed — no provisioning authorized | Infrastructure composition and R100/month cost gate |
+| ADR-005 | `docs/architecture/ADR-005.md` | Proposed | Privacy-preserving observability and recovery |
+
+### Phase 3 readiness
+
+**Architecture gate: NOT PASSED.** These documents record a coherent proposal, but owner review/freeze is still required for API contract/runtime composition, eligibility rule semantics and golden set, pilot publication evidence, CI requirements, cost/resource list, and (before any authenticated or real-learner-data use) identity, authorization, consent/lifecycle and privacy controls. No implementation, tests, CI result, cloud provisioning or deployment is implied by artifact creation.
