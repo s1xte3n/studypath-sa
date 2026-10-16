@@ -30,7 +30,7 @@ jobs:
       - name: Install locked application dependencies
         run: npm ci --no-audit --no-fund
       - name: Install pinned browser test tools without changing application manifests
-        run: npm install --no-save --package-lock=false @playwright/test@1.55.0 @axe-core/playwright@4.10.3 --no-audit --no-fund
+        run: npm install --no-save --package-lock=false @playwright/test@1.55.0 @axe-core/playwright@4.10.1 --no-audit --no-fund
       - name: Install Chromium and OS dependencies
         run: npx playwright install --with-deps chromium
       - name: Run existing unit and contract tests
