@@ -60,11 +60,26 @@ All applicable items must pass on one reviewed commit; documentation alone does 
 
 | Requirement | Test IDs | Implementation | CI evidence | Release evidence |
 |---|---|---|---|---|
+| REQ-CAT-001 — curated catalogue and provenance | SYN-002, SYN-003, SYN-008 | Curated synthetic fixtures and source metadata; publication-ready real records remain a separate catalogue gate | Not available | Not available |
+| REQ-ALT-001 — verified alternatives/relationships | SYN-002, SYN-008 | Not yet established for UI; do not display unverified relationship pairs | Not available | Not available |
+| REQ-DET-001 — pathway detail and official next steps | SYN-002, SYN-006, SYN-008 | Not yet established for UI | Not available | Not available |
+| REQ-UX-001 — accessible mobile-first experience | SYN-006 | Not yet established for UI | Not available | Not available |
 | REQ-EXP-001 — anonymous input and results | SYN-002, SYN-005, SYN-006 | Not yet established for UI | Not available for UI | Not available |
 | REQ-MAT-001 — deterministic eligibility and uncertainty | SYN-002, SYN-003 | `src/domain/eligibility/uj-2027-evaluator.mjs` | Existing workflow must be checked against current commit; no runtime UI claim | Not available |
 | REQ-PRV-001 — memory-only synthetic exploration | SYN-004, SYN-005 | Browser implementation not yet established | Privacy suite not yet present/verified | Not available |
 | REQ-APP-001 — manual tracker, session-only | SYN-005 | UI implementation not yet established | Not available | Not available |
+| REQ-FUND-001 — P1 funding pilot | SYN-002, SYN-005, SYN-008 when enabled; T-FUND-001–006 | Keep omitted/disabled until 3–5 current official-source records are curated; any transient state must clear under SYN-005 | Not available | Not available |
+| NFR-SEC-001 — secrets/input/transport boundary | SYN-009 | Build/dependency and network boundary not yet established | Not available | Not available |
+| NFR-DATA-001 — sourced eligibility claims | SYN-002, SYN-003, SYN-008 | Not yet established for full UI journey | Not available | Not available |
+| NFR-REL-001 — honest recoverable failures | SYN-006 | Not yet established for UI | Not available | Not available |
+| NFR-ACC-001 — accessibility | SYN-006 | Not yet established for UI | Not available | Not available |
+| NFR-PERF-001 — matching p95 target | SYN-002 plus T-PERF-001 | Benchmark protocol/device/result not recorded | Not available | Not available |
+| NFR-PRV-001 — no profile persistence/telemetry | SYN-004, SYN-005 | Browser privacy harness not yet established | Not available | Not available |
+| NFR-COMP-001 — no guarantees | SYN-002, SYN-008 | UI copy not yet reviewed | Not available | Not available |
+| NFR-SCOPE-001 — bounded pilot/no national claim | SYN-008 | UI scope disclosure not yet established | Not available | Not available |
 | NFR — accessibility, reproducibility, evidence | SYN-001, SYN-006, SYN-007, SYN-010 | Not yet established for UI | Not available | Not available |
+
+**Traceability boundary:** P1 funding remains gated on 3–5 verified records and must be omitted/disabled rather than fabricated until that gate passes. The rows above add requirement-to-SYN mappings only; they do not imply implementation or test evidence.
 
 ## Required sequence
 

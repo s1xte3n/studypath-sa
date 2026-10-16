@@ -1,6 +1,6 @@
 # StudyPath SA — Scope
 
-**Status:** Scope reconciliation in progress. The Phase 1 PRD baseline is owner-approved. D-046 authenticated features are approved future scope but excluded from the D-047/G-SYN-001 local synthetic-only demo; the tracker remains page-memory-only. This document does not establish implementation readiness.
+**Status:** Scope reconciliation for D-044–D-048 is recorded. The Phase 1 PRD baseline is owner-approved. D-046 authenticated features are approved future scope but excluded from the D-047/G-SYN-001 local synthetic-only demo; the tracker remains page-memory-only. Phase 2 `REQUIREMENTS READY` remains open, and this document does not establish implementation readiness.
 
 ## MVP (P0 candidate)
 

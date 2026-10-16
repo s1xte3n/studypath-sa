@@ -49,8 +49,8 @@ Privacy boundary + memory state ────────────────
 ## Constraints and unresolved dependencies
 
 - The 6–8 programme records and 3–5 funding records must be real, sourced and reviewed; Phase 0 source checks do not meet publication acceptance by themselves.
-- The actual supported subject vocabulary and alias list is not established by this matrix.
-- Funding/tracker acceptance-criteria IDs and the tracker transition table need verification before test implementation.
+- The supported vocabulary is defined in the owner-approved `subject-catalogue-v1` artifacts; this dependency matrix does not duplicate the canonical list. Production integration, duplicate rejection and runtime privacy remain unverified.
+- Funding/tracker acceptance-criteria IDs and the OR-016 transition table were cross-checked in the Phase 2 source review; executable feature tests and implementation evidence remain outstanding.
 - D-044 selects API-first, but exact runtime composition, route/schema details, API Management necessity, cache/failure semantics and cost remain open. The draft API contract proposes catalogue-only GET routes; no learner inputs may be sent while OR-019/Q-018 remains unresolved.
 - Performance device/browser and benchmark protocol must be recorded before a performance acceptance result can be claimed.
 - API-first introduces a network dependency. Timeout/retry/cache/fallback behavior must be defined before implementation; numerical availability targets remain unapproved.

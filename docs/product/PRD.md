@@ -182,7 +182,7 @@ The anonymous-first intended MVP still prioritises P0 pathway discovery, eligibi
 - **Permissions:** Anonymous read-only access.
 - **Edge cases:** Incomplete detail record; duplicate names; official source redirects; source refers to a different admission cycle; mobile external-link handling.
 - **Dependencies:** REQ-CAT-001, REQ-MAT-001 and source provenance.
-- **Acceptance criteria:** See AC-DET-001 through AC-DET-006.
+- **Acceptance criteria:** See AC-DET-001 through AC-DET-007.
 - **Non-functional requirements:** Mobile-readable; links have meaningful labels; external-source provenance is accessible; clear uncertainty and no guarantees.
 - **Out of scope:** Application submission, scraping live source pages at request time, a personalised action planner or predefined next-action option taxonomy, displaying unverified fees/deadlines.
 
@@ -260,6 +260,15 @@ The anonymous-first intended MVP still prioritises P0 pathway discovery, eligibi
 - **Dependencies:** OR-006, OR-016, funding catalogue and supported pathway catalogue.
 - **Acceptance criteria:** AC-APP-001 through AC-APP-009 in `ACCEPTANCE-CRITERIA.md`.
 - **Out of scope:** Direct submission, external application-system integration, institution-verified status, notifications, sensitive notes, document storage and uploads.
+### REQ-AUTH-001 — Approved authenticated extension (future scope; not the D-047 demo)
+
+- **Priority:** P3 / future-extended scope. This requirement records the D-046 extension accepted through D-048; it is not part of the current G-SYN-001 local synthetic-only demo.
+- **Approved capabilities:** authenticated server-side pathway matching, saved pathways, pathway comparison, saved funding opportunities and a derived personal dashboard.
+- **Acceptance source:** `AC-AUTH-001–016` in `ACCEPTANCE-CRITERIA.md`. These criteria remain planned, not tested, and do not freeze implementation contracts.
+- **Dependencies and gate:** Q-018 / Phase 3 must approve the API, identity/session and authorization boundary; Q-020 must resolve the permitted data fields, opt-in/withdrawal, retention/deletion/backups, provider controls and lifecycle. Security/privacy review, executable isolation/privacy tests and full cost evidence must pass before implementation or provisioning.
+- **Privacy constraints:** academic-profile persistence is off by default and requires separate explicit opt-in under an approved lifecycle. The application tracker remains page-memory-only. The anonymous path remains catalogue-only API retrieval plus client-side matching; learner inputs/results/tracker entries must not be transmitted.
+- **Status:** Approved future scope only. No authenticated implementation, real learner data, production identity, persistence, provisioning or deployment is authorized by this requirement.
+
 ## 6. Cross-cutting non-functional requirements
 
 | ID | Requirement | Status / verification intent |

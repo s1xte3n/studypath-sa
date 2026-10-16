@@ -7,7 +7,7 @@ The matrix below remains a traceability plan, not proof of implementation. For g
 ---
 # StudyPath SA — Traceability Matrix
 
-**Status:** Planned traceability baseline. D-044 selects API-first; draft contract exists. A GitHub Actions run passed the existing Node.js subject-catalogue contract tests on PR #56 (run 38643577867, commit ee2181e62786176ab2c353ad4e112bd309672dbb). This is limited contract-test evidence, not application implementation, runtime privacy or release verification.  
+**Status:** Planned traceability baseline. D-044 selects API-first; draft contract exists. Historical subject-catalogue reference tests passed on PR #56 (run [38643577867](https://github.com/s1xte3n/studypath-sa/actions/runs/38643577867), commit `ee2181e62786176ab2c353ad4e112bd309672dbb`). The documentation-only PR #79 contract-test workflow also passed on PR head `a6e3d2378595049c340f5654ece5ee6a723327d2` (run [#52](https://github.com/s1xte3n/studypath-sa/actions/runs/38785826810)); no workflow result was returned for merge commit `f3fdc009f19600abc6830fd1af1752c1ff633149`. These are limited contract-suite results, not application build/journey, runtime privacy or release verification.  
 **Chain:** Requirement → contract/UI → test ID → implementation area → CI/release evidence.
 
 **Scope applicability:** D-044/D-045 define the intended API-first tiered architecture; D-046 records the approved but gated authenticated feature extension; D-047 limits the current verification slice to a local synthetic-only browser demo. The local demo does not require a hosted API, and no learner-specific input/result/tracker data may be transmitted or persisted. Authenticated acceptance criteria remain future/gated requirements, not current demo implementation evidence. See [MVP Scope Reconciliation](MVP-SCOPE-RECONCILIATION-D-044-D-047.md).
@@ -18,11 +18,12 @@ The matrix below remains a traceability plan, not proof of implementation. For g
 | REQ-CAT-001 | PRD §5; AC-CAT-001–012; draft API contract | API catalogue response/source fields; client adapter; empty/stale state | T-CAT-001–005, T-API-001–002, T-API-004, T-NFR-001 | Curated source data, API adapter, catalogue validator | Not available | 6–8 reviewed records not evidenced; API contract/cost/privacy review open |
 | REQ-MAT-001 | PRD §5; AC-MAT-001–021 | Eligibility result/reason model; no API frozen | T-MAT-001–008, T-NFR-002–003 | Deterministic evaluator, composite rules, reasons, stable ordering | Not available | Golden set not executed |
 | REQ-ALT-001 | PRD §5; AC-ALT-001–007; draft pathway relationship contract | Relationship type, rationale, official source, cycle, freshness and curator sign-off | T-ALT-001–002, T-REL-001–008 | Reviewed relationship data and alternatives UI | Not available | No specific relationship approved; exact pair evidence/sign-off outstanding |
-| REQ-DET-001 | PRD §5; AC-DET-001–006 | Detail/source links/not-found state | T-DET-001–006 | Detail view and source-link handling | Not available | Not available |
+| REQ-DET-001 | PRD §5; AC-DET-001–007 | Detail/source links/not-found state and source-backed next-step guidance | T-DET-001–006 | Detail view and source-link handling | Not available | Not available |
 | REQ-PRV-001 | PRD §5; AC-PRV-001–013; D-044/Q-018 | Privacy notice, reset, catalogue-only API requests; no profile in URL/storage/network/logs | T-PRV-001–006, T-API-003 | Memory state, API request inspection, telemetry/dependency controls, hosting review | Not available | Privacy verification not available |
 | REQ-UX-001 | PRD §5; AC-UX-001–011 | Responsive journey, loading/empty/error states | T-UX-001–005, T-PERF-001, T-NFR-005 | UI patterns, semantic controls, recoverable errors | Not available | Accessibility evidence not available |
 | REQ-FUND-001 | PRD §5; AC-FUND-001–009; draft API contract | Public funding catalogue data; matching uses only approved limited client inputs | T-FUND-001–006, T-API-001–002, T-API-004 | Funding records, API adapter and client-side matching | Not available | 3–5 reviewed records not available; API boundary open |
 | REQ-APP-001 | PRD §5; OR-016; AC-APP-001–009 | Tracker fields/status lifecycle; memory-only | T-APP-001–006 | In-memory tracker and transition validation | Not available | Lifecycle/AC mapping cross-checked in planning; implementation and tests unavailable |
+| REQ-AUTH-001 (future scope; not D-047 demo) | PRD §5; D-046/D-048; AC-AUTH-001–016 | Authenticated API/identity, authorization/isolation, opt-in profile lifecycle, saved items, comparison and dashboard; contracts pending Q-018/Q-020 | T-AUTH-001–018, T-PRV-001–006, T-API-001–004 | Future authenticated boundary and lifecycle controls | Not available | Not authorized for implementation; contracts, privacy/security, tests and cost remain open |
 | NFR-SEC-001 | PRD §6 | Build/hosting/network boundary | T-SEC-001, T-API-004 | Build configuration and any network boundary | Not available | Not available |
 | NFR-PRV-001 | PRD §6; OR-006 | Storage/network/log/telemetry inspection | T-PRV-001–006, T-API-003 | Storage, network, logging, hosting review | Not available | Release blocker until evidenced |
 | NFR-DATA-001 | PRD §6; OR-005/008 | Requirement/source metadata | T-CAT-001, T-CAT-004–005, T-MAT-005, T-MAT-008, T-NFR-001 | Catalogue validation/evaluator | Not available | Not available |
@@ -31,6 +32,18 @@ The matrix below remains a traceability plan, not proof of implementation. For g
 | NFR-PERF-001 | PRD §6; OR-012 | In-browser matching/results | T-PERF-001 | Evaluator and benchmark harness | Not available | Device/protocol/results not available |
 | NFR-COMP-001 | PRD §6 | Results/funding/details copy | T-COMP-001 | Content review | Not available | Not available |
 | NFR-SCOPE-001 | PRD §6; OR-008 | Catalogue scope disclosure | T-CAT-003 | Catalogue and UX copy | Not available | Not available |
+
+## Cross-cutting acceptance criteria traceability
+
+| Acceptance criterion | Requirement(s) | Evidence status |
+|---|---|---|
+| AC-NFR-001 | REQ-CAT-001, REQ-MAT-001, NFR-DATA-001 | Planned source/provenance audit; not executed |
+| AC-NFR-002 | REQ-MAT-001, NFR-DATA-001 | Planned golden-set gate; not executed |
+| AC-NFR-003 | REQ-CAT-001, REQ-MAT-001, REQ-PRV-001, NFR-REL-001, NFR-PRV-001 | Cross-cutting assertion rule; implementation and evidence unavailable |
+| AC-NFR-004 | All in-scope requirements | Evidence-governance rule; not a standalone product requirement |
+| AC-NFR-005 | REQ-UX-001, NFR-ACC-001 | Usability evidence/limitation record not available |
+| AC-COST-FUT-001–005 | OR-017 | Deferred future-scope criteria; not initial-MVP gates |
+| AC-AI-FUT-001–005 | OR-018 | Deferred future-scope criteria; not initial-MVP gates |
 
 ## Planned test ID registry
 

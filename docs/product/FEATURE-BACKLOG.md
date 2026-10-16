@@ -1,6 +1,6 @@
 # StudyPath SA — Feature Backlog
 
-**Status:** Planning only. D-044 selects API-first, but runtime, final contract, privacy boundary and cost remain open. Items are implementation-ready only to the extent that their acceptance criteria are specified; blocked items are explicitly labelled. Ambiguous behavior is not converted into a task.
+**Status:** Planning only. D-044 selects API-first and D-045/D-048 define the approved anonymous/authenticated boundary; runtime composition, final interface contract, provider/privacy verification and cost remain open. Items are implementation-ready only to the extent that their acceptance criteria are specified; blocked items are explicitly labelled. Ambiguous behavior is not converted into a task.
 
 ## P0 — Architecture and data-contract gate
 
