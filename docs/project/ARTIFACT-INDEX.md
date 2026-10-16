@@ -1,7 +1,7 @@
 # StudyPath SA — Artifact Index
 
 **Last updated:** 2026-10-16  
-**Phase:** 4 — API/interface contracts (`ARCHITECTURE READY` passed 2026-10-16 for design/traceability only; contract CI passed on merge commit after PR #89; Phase 4 gate still pending owner review and open decisions)  
+**Phase:** 4 — API/interface contracts (`ARCHITECTURE READY` passed 2026-10-16 for design/traceability only; contract CI passed on merge commit after PR #89; Phase 4 owner review accepted on 2026-10-16; runtime/cost and catalogue evidence remain open)  
 **Historical-note convention:** Dated sections below preserve prior review snapshots. Where an older row says “proposed,” “on branch for review,” or “not started,” use the latest status table and subsequent dated updates as current; earlier snapshots are not current approval or implementation evidence.  
 **Gate:** Phase 0 `PROJECT READY`, Phase 1 `PRD READY`, Phase 2 `REQUIREMENTS READY`, and the Phase 3 architecture baseline are accepted for their stated scope only. D-050 records architecture approval on 2026-10-16. Phase 4 API/interface contract work is next; downstream implementation, cost, privacy/security and release gates remain open.
 
@@ -266,3 +266,10 @@ Phase 3 `ARCHITECTURE READY` is passed. Phase 4 API/interface contracts is the c
 ## Phase 4 validation evidence — 2026-10-16
 
 PR #89 merged as `bbad7b869a1e2e59184d37c486a7185d70e809f5`. The merge-commit OpenAPI validation, contract tests and UJ eligibility golden-case verification all passed: [OpenAPI](https://github.com/s1xte3n/studypath-sa/actions/runs/38912794797), [contract tests](https://github.com/s1xte3n/studypath-sa/actions/runs/38912794987), [golden cases](https://github.com/s1xte3n/studypath-sa/actions/runs/38912795061). This is automated documentation/contract-test evidence, not runtime, privacy, catalogue-publication or deployment evidence. Phase 4 is not passed. Remaining work includes owner contract review, OR-019/Q-018 provider/runtime, network/cache/rate-limit/retry/logging and cost decisions, and verification/sign-off of publication-ready catalogue records.
+
+
+## Phase 4 continuation artifacts — 2026-10-16
+
+- `docs/product/FUNDING-CATALOGUE-REGISTER.md` — official-source research register for initial funding candidates. NSFAS 2027 is a research lead only; conflicting official closing-date statements block publication pending clarification and curator sign-off.
+- `docs/project/DECISIONS.md` — D-052 records owner approval to continue with the public catalogue contract baseline and reiterates the implementation/provisioning limits.
+- Owner approval permits continued Phase 4 work; it does not pass the contract gate. Runtime/provider/cost decisions, source-backed publication records, runtime privacy and release evidence remain outstanding.

@@ -206,3 +206,13 @@ Source: explicit product-owner approval in the StudyPath SA project conversation
 **Limits:** This is a documented draft baseline, not an owner-approved final contract or implementation authorization. CORS, cache TTL, retry/timeout and rate-limit settings, runtime/provider composition, provider log/retention behavior, OpenAPI/schema validation, executable contract tests, catalogue publication and total cost remain open. No Azure provisioning or real learner data is authorized.
 
 **Source:** Phase 4 draft artifacts created on branch `docs/phase-4-api-contract`, 2026-10-16.
+
+## D-052 — Owner approval to proceed with Phase 4 contract baseline (2026-10-16)
+
+**Decision:** The product owner explicitly stated, “I verified and approve all,” and directed the project to continue. This records approval to proceed using the current public catalogue API field/enum baseline and boundaries in D-051 / `docs/api/`: only anonymous, read-only `GET /api/v1/programmes` and `GET /api/v1/funding-opportunities`; anonymous matching and manual tracking stay in the browser; learner inputs/results/tracker entries are not sent to APIs or persisted; synthetic data only during development.
+
+**Limits:** This is not authorization to implement authenticated endpoints, transmit or persist learner data, provision Azure resources, introduce paid/metered services, or deploy. It does not resolve runtime/provider/CORS/cache/rate-limit/timeout/retry/log-retention decisions or prove the R100/month cap. Those require explicit values, evidence and cost review under Q-018 / OR-019. It does not approve a funding deadline contradicted by official sources.
+
+**Evidence note:** The NSFAS 2027 application page currently states 31 October 2026; the South African Government announcement dated 18 September 2026 states 18 November 2026. Until NSFAS clarifies the conflict and the curator records the result, the deadline remains unresolved and the candidate is not publication-ready.
+
+**Source:** Explicit product-owner approval in the StudyPath SA project conversation on 2026-10-16; official source links and evidence status recorded in `docs/product/FUNDING-CATALOGUE-REGISTER.md`.

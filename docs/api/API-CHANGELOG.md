@@ -36,3 +36,8 @@ Breaking wire changes require a major version namespace and migration plan. Addi
 - PR #89 corrected two remaining test assertions: route paths are checked against the contract/endpoint inventory rather than the path-variable inventory, and the tracker privacy assertion now matches the documented IF-002 wording.
 - All three workflows passed on merge commit `bbad7b869a1e2e59184d37c486a7185d70e809f5`: [OpenAPI validation](https://github.com/s1xte3n/studypath-sa/actions/runs/38912794797), [contract tests](https://github.com/s1xte3n/studypath-sa/actions/runs/38912794987), and [UJ eligibility golden-case verification](https://github.com/s1xte3n/studypath-sa/actions/runs/38912795061).
 - This closes the current automated assertion failures only. Contract owner review, runtime/provider/network and cost decisions, verified catalogue records, implementation and runtime privacy verification remain open; this draft is not yet approved for implementation.
+
+
+## Owner approval update — 2026-10-16
+
+The product owner explicitly approved proceeding with the current public catalogue wire-contract baseline. Scope remains limited to anonymous read-only catalogue retrieval at `GET /api/v1/programmes` and `GET /api/v1/funding-opportunities`; learner matching and manual tracking remain browser-local. This approval does not authorize implementation, provisioning, paid services, authenticated endpoints or real learner data. Runtime/provider settings, cost, source-backed catalogue publication and runtime privacy evidence remain open.
