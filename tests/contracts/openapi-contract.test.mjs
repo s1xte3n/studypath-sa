@@ -44,9 +44,10 @@ test("OpenAPI error and catalogue schemas exist and close unexpected properties"
   assert.match(openapi, /^    ProgrammeCatalogueResponse:\s*$/m);
   assert.match(openapi, /^    FundingCatalogueResponse:\s*$/m);
   assert.match(openapi, /additionalProperties:\s*false/);
-  assert.match(openapi, /ELIGIBLE/);
-  assert.match(openapi, /NOT_ELIGIBLE/);
-  assert.match(openapi, /UNKNOWN/);
+  assert.match(schemas, /EligibilityStatus/);
+  assert.match(schemas, /ELIGIBLE/);
+  assert.match(schemas, /NOT_ELIGIBLE/);
+  assert.match(schemas, /UNKNOWN/);
 });
 
 test("Markdown inventory and error/schema docs preserve the same contract boundary", () => {
