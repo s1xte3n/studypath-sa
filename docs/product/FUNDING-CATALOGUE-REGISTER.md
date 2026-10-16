@@ -59,3 +59,51 @@
 - The register is a research artifact only; it is not a published API catalogue and is not curator sign-off.
 
 **Disposition:** NSFAS 2027 is a credible official-source candidate, but the conflicting closing dates make it unsuitable for definitive deadline display until reconciled.
+
+
+## Candidate FND-FUNZA-LUSHAKA-2027 — Funza Lushaka Bursary Programme
+
+**Provider:** Department of Basic Education / Funza Lushaka Bursary Programme  
+**Applicable cycle:** 2027  
+**Status:** **RESEARCHED CANDIDATE — not publication-ready**  
+**Research date:** 2026-10-16  
+**Official sources:**
+- Programme home and current cycle dates: https://www.funzalushaka.doe.gov.za/Home/
+- Official FAQ and programme/selection conditions: https://www.funzalushaka.doe.gov.za/Home/FAQ
+- Official application portal: https://www.funzalushaka.doe.gov.za/
+
+### Observed facts
+
+- The official programme home page says 2027 applications for new applicants close on **31 January 2027**; re-applications for existing/returning bursars close on **30 November 2026**. These are different applicant categories and must not be merged.
+- The official page states first-time applicants must be 30 years old or younger.
+- The official FAQ describes the programme as supporting selected students completing teaching qualifications in identified priority subject areas. It lists BEd and PGCE in Senior Phase/FET teaching as supported qualification types, subject to applicable programme rules.
+- The FAQ states applicants must already have admission to an eligible public higher education institution and meet the programme's national selection criteria; selection and allocations are not guaranteed.
+- The FAQ describes a service obligation to teach at a public school for the same number of years as bursary support received.
+- The official FAQ says award value varies by institution and the bursary may cover essential expenses such as tuition, accommodation/meals, books and learning materials, and potentially a living allowance subject to caps and available allocation. Do not publish a fixed award amount.
+
+### Normalized draft handling
+
+| Field | Draft value | Reason |
+|---|---|---|
+| Stable ID | `FND-FUNZA-LUSHAKA-2027` | Internal catalogue ID; not a provider reference |
+| Provider | Funza Lushaka Bursary Programme | Official programme name |
+| Cycle | `2027` | Explicitly listed by the official programme page |
+| Official website | https://www.funzalushaka.doe.gov.za/ | Official provider portal |
+| Application URL | https://www.funzalushaka.doe.gov.za/ | Official application portal |
+| Deadline text | New applicants: 31 January 2027; returning bursars: 30 November 2026 | Applicant categories must remain distinct |
+| Deadline timestamp | `null` pending contract normalization and recheck | Do not assume an end-of-day timezone from a date-only statement |
+| Eligibility summary | Teaching-qualification-focused; age, citizenship, admission, priority subject and national selection rules apply | Full current-cycle rules must be extracted and reviewed before deterministic matching |
+| Amount/coverage | Variable by institution and allocation; no fixed amount asserted | Official FAQ describes variable institutional cost structures and caps |
+| Service obligation | Teaching service obligation applies; official FAQ says one year of service for each funded year | Must be prominent before a learner treats the award as suitable |
+| Source verification | 2026-10-16 | Research date; not curator approval |
+| Publication status | Research-only / not publishable | Full 2027 policy/rule verification, normalized fields, tests and curator sign-off remain outstanding |
+
+### Required actions before publication
+
+1. Verify the complete 2027 policy, official application notes and all current-cycle criteria against the current official portal.
+2. Capture exact source sections, version/publication dates, applicant categories, supported qualification types, priority subjects, citizenship/age rules, institutional admission conditions, service obligation and award/coverage caveats.
+3. Preserve the distinct new-applicant and returning-bursar deadlines; normalize a timestamp only if the provider supplies an unambiguous time and timezone.
+4. Create deterministic tests only for supported facts; do not infer individual funding eligibility from academic marks alone.
+5. Have the curator sign off the complete record and its source evidence before publication.
+
+**Disposition:** This adds a second official-source funding candidate, not a second approved opportunity. The 3–5 verified-opportunity target is still unmet.
