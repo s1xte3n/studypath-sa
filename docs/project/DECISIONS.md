@@ -195,3 +195,14 @@ Source: explicit product-owner approval in the StudyPath SA project conversation
 ## Phase 3 architecture gate assessment — 2026-10-16
 
 `ARCHITECTURE READY` is assessed **PASSED** against the gate's stated criteria: requirement-to-component/ADR/verification traceability, explicit privacy/security trust boundaries, and documented major alternatives/trade-offs. Evidence is in `docs/architecture/ARCHITECTURE-READINESS-REVIEW.md`. This is a gate assessment of the approved architecture baseline, not a new approval of unresolved technical decisions. API/runtime composition, catalogue rule semantics and publication, CI/runtime evidence, cost, privacy/legal review, provisioning and release remain separately gated. Phase 4 API/interface contract work may proceed within the catalogue-only and synthetic-only constraints.
+
+
+## D-051 — Phase 4 public interface contract baseline (draft, 2026-10-16)
+
+**Decision recorded for contract review:** Keep the current API contract limited to public, read-only catalogue retrieval via `GET /api/v1/programmes` and `GET /api/v1/funding-opportunities`. Anonymous matching and manual application tracking remain local browser interfaces. No learner inputs, results or tracker entries may be transmitted or persisted. The tracker has no API endpoint. Authenticated feature routes remain deferred until Q-018/Q-020 and cost/privacy/security/test gates pass.
+
+**Draft contract conventions:** lowerCamelCase JSON property names; uppercase snake-case enums; stable opaque catalogue IDs; RFC 3339 UTC timestamps with `Z`; ISO `YYYY-MM-DD` dates; explicit nullability; one safe error envelope; stable ascending-ID list order; no pagination/filter/sort parameters for the bounded pilot. Breaking changes require a new major API namespace and migration plan.
+
+**Limits:** This is a documented draft baseline, not an owner-approved final contract or implementation authorization. CORS, cache TTL, retry/timeout and rate-limit settings, runtime/provider composition, provider log/retention behavior, OpenAPI/schema validation, executable contract tests, catalogue publication and total cost remain open. No Azure provisioning or real learner data is authorized.
+
+**Source:** Phase 4 draft artifacts created on branch `docs/phase-4-api-contract`, 2026-10-16.
