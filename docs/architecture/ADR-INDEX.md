@@ -1,6 +1,6 @@
 # Architecture Decision Records — Index
 
-**Status:** Architecture baseline and logical boundaries approved by product owner on 2026-10-16. Approval does not convert unapproved implementation details or deferred service choices into accepted decisions.  
+**Status:** Phase 3 `ARCHITECTURE READY` passed on 2026-10-16 for architecture design/traceability only. Approval does not convert unapproved implementation details or deferred service choices into accepted decisions. See [architecture readiness review](ARCHITECTURE-READINESS-REVIEW.md).  
 **Rule:** An ADR records a decision and its context; it is not proof of implementation.
 
 | ADR | Title | Status | Requirement / decision | Summary |
@@ -14,3 +14,8 @@
 ## Gate rule
 
 The owner approved the architecture baseline on 2026-10-16. This does not close material implementation gates tracked in `docs/project/OPEN-QUESTIONS.md`, especially API contract/runtime composition, catalogue rule semantics, privacy/runtime inspection, cost and deployment responsibility. No ADR authorizes provisioning or authenticated profile handling on its own.
+
+
+## Phase 3 gate result
+
+`ARCHITECTURE READY` is **PASSED** for requirement traceability, explicit security/privacy boundaries, and documented major trade-offs. ADR-002, ADR-004 and ADR-005 retain proposed/runtime-specific decisions where approval is still required; they do not authorize implementation or provisioning. The next phase is Phase 4 API/interface contracts.
