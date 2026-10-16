@@ -1,7 +1,7 @@
 # StudyPath SA — Open Questions
 
-**Status:** Phase 2 — requirements matrix and traceability; `PROJECT READY` passed on 2026-10-13 for Phase 1 planning; `PRD READY` passed on 2026-10-14 for the approved PRD/acceptance-criteria baseline only; downstream implementation/release work remains open  
-**Last updated:** 2026-10-15  
+**Status:** Phase 2 `REQUIREMENTS READY` passed on 2026-10-16 for requirements definition and traceability only; Phase 3 architecture/ADR work may begin; downstream implementation/release work remains open  
+**Last updated:** 2026-10-16  
 **Priority:** P0 blocks readiness/safety/budget; P1 must resolve before dependent phase; P2/P3 later.
 
 **Historical-note convention:** Dated Q-019/source-reconciliation paragraphs are retained as an audit trail; later dated updates supersede earlier source-conflict snapshots. Current Q-019 status is owner-approved candidate selection for the bounded pilot, with complete rule extraction, executable test oracles, curator sign-off and publication readiness still open.
@@ -36,7 +36,7 @@ The owner approved the seven proposed Q decisions on 2026-10-13 and previously a
 ## Gate policy
 - `PROJECT READY` passed on 2026-10-13 for Phase 1 PRD/requirements planning only.
 - `PRD READY` passed on 2026-10-14 after explicit product-owner approval of `docs/product/PRD.md` and `docs/product/ACCEPTANCE-CRITERIA.md`. This approves the requirements baseline only; it does not imply implementation, test execution, privacy clearance, deployment or release readiness.
-- Current phase is Phase 2 — requirements matrix and traceability. `REQUIREMENTS READY` has not passed.
+- Phase 2 `REQUIREMENTS READY` passed on 2026-10-16 for requirements definition and traceability only. Current next phase is Phase 3 — architecture and ADRs; Q-018, Q-020, OR-019, G-SYN-001 and downstream data/privacy/cost/release evidence remain open.
 - Local Git state is supported by owner-supplied command output dated 2026-10-14, and the owner confirms the app is not deployed. Owner-attested Azure account details and cost status (Active subscription, Owner role, Azure Plan, no costs reported on 2026-10-14) and Sonke portal details are not independently verified by the assistant. Recheck the exact resource list and cost evidence before provisioning; do not add paid/metered services without renewed approval.
 - Do not use real learner data until appropriate privacy/legal review and implementation controls are verified.
 
@@ -72,3 +72,8 @@ The external privacy/legal review is deferred for this interim step, not waived.
 ## A3 authenticated-boundary owner decision — 2026-10-15
 
 D-048 records the product owner's approval of the authenticated-feature boundary. A3's boundary decision is resolved; this does not close Q-018 or Q-020. Exact API schemas, identity/session and authorization contracts, comparison/dashboard details, consent evidence, retention/deletion/backup expiry, provider controls and cost evidence remain assigned to Q-018 / Phase 3 and Q-020 as applicable. No implementation, real learner data, provisioning or deployment is authorized.
+
+
+## Phase 2 owner acceptance — 2026-10-16
+
+The product owner accepted the reconciled requirements baseline at merged commit `aeb7b27da3a5bfc01e5f7a378f391f1d43a16c0c` (D-049). `REQUIREMENTS READY` is PASSED for requirements definition and traceability only. This does not close Q-018 or Q-020, pass G-SYN-001, approve catalogue/funding publication, authorize real learner data, or authorize Azure provisioning/deployment. Preserve the current question rows and downstream evidence requirements; reopen requirements if later evidence exposes a genuine specification ambiguity or contradiction.
