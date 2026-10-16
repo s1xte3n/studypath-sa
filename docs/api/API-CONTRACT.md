@@ -2,7 +2,7 @@
 
 **Contract version:** 1.0.0-draft  
 **API base path:** `/api/v1`  
-**Status:** Contract baseline prepared for owner review; not implemented. The public catalogue wire contract is defined here. Runtime/provider deployment remains gated by OR-019/Q-018, cost review and privacy verification. Authenticated operations are deliberately not contracted for implementation.  
+**Status:** Public catalogue wire-contract baseline owner-approved on 2026-10-16; not implemented. The public catalogue wire contract is defined here. Runtime/provider deployment remains gated by OR-019/Q-018, cost review and privacy verification. Authenticated operations are deliberately not contracted for implementation.  
 **Authority:** `docs/product/REQUIREMENTS.md`, `docs/product/ACCEPTANCE-CRITERIA.md`, D-044–D-048, D-050, `docs/architecture/ARCHITECTURE.md`, `docs/architecture/SECURITY-ARCHITECTURE.md`, and `docs/architecture/API-CONTRACT.md`.
 
 ## 1. Contract invariants
@@ -120,4 +120,4 @@ All HTTP error responses use `APIError`: `error.code`, safe `error.message`, and
 
 ## 8. Readiness / known gates
 
-This contract does not make the following complete: OR-019/Q-018 runtime composition, API Management necessity, CORS origins, cache TTL, numeric rate limits, timeout/retry values, hosting/provider log review, catalogue publication, funding publication, G-SYN-001 browser privacy verification, authenticated Q-020 contracts, implementation, CI or deployment. No Azure provisioning or real learner data is authorized by this document.
+Owner approval permits continued work against this public catalogue wire-contract baseline; it does not authorize implementation or provisioning. This contract does not make the following complete: OR-019/Q-018 runtime composition, API Management necessity, CORS origins, cache TTL, numeric rate limits, timeout/retry values, hosting/provider log review, catalogue publication, funding publication, G-SYN-001 browser privacy verification, authenticated Q-020 contracts, implementation, CI or deployment. No Azure provisioning or real learner data is authorized by this document.
