@@ -1,6 +1,6 @@
 # StudyPath SA — System Architecture
 
-**Status:** Architecture baseline proposal for review; not yet approved for implementation.  
+**Status:** Architecture baseline approved by product owner on 2026-10-16; implementation remains subject to explicit downstream gates.  
 **Phase:** 3 — Architecture. **Baseline date:** 2026-10-16.  
 **Source of truth:** approved PRD, `docs/product/REQUIREMENTS.md`, scope reconciliation D-044–D-047, open questions, and current decision records.  
 **Important:** This design does not assert that application code, cloud resources, CI/CD, or deployments exist.
@@ -159,4 +159,4 @@ ADRs are indexed in `ADR-INDEX.md`; proposed records cover API-first boundary, c
 8. Before any real learner data/authenticated tier: freeze identity provider and flow, authorization/ownership model, consent and profile lifecycle, privacy notice, retention/deletion, telemetry, threat model and cross-user isolation tests.
 9. Define operational ownership, alerts, recovery targets and release evidence.
 
-**Gate status: NOT YET ARCHITECTURE READY.** The architecture direction is documented, but material runtime/contract/cost/privacy decisions remain open and the required companion documents need review. Do not begin dependent implementation until the architecture and ADRs are explicitly accepted.
+**Gate status: ARCHITECTURE DIRECTION APPROVED — DEPENDENT IMPLEMENTATION GATES REMAIN OPEN.** The product owner approved this architecture baseline on 2026-10-16. This freezes the documented logical boundaries and approved scope, not unresolved endpoint schemas, runtime composition, eligibility rule semantics, catalogue publication evidence, CI requirements, cost/resource approval, or privacy/security controls. Do not implement components whose specific gates remain open; do not provision cloud resources or process real learner data.
