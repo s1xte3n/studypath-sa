@@ -1,10 +1,10 @@
 # StudyPath SA — Master Project Checklist
 
-**Last updated:** 2026-10-14  
+**Last updated:** 2026-10-16  
 **Repository:** https://github.com/s1xte3n/studypath-sa  
-**Current phase:** Phase 2 — Requirements matrix and traceability  
-**Latest passed gate:** `PRD READY` — **PASSED on 2026-10-14 for the approved PRD/acceptance-criteria baseline only**  
-**Next gate:** `REQUIREMENTS READY` — not yet passed
+**Current phase:** Phase 3 — Architecture and ADRs  
+**Latest passed gate:** `REQUIREMENTS READY` — **PASSED on 2026-10-16 for requirements definition and traceability only; D-049 records explicit owner acceptance**  
+**Next gate:** `ARCHITECTURE READY` — not yet passed
 
 ## Gate status at a glance
 
@@ -12,7 +12,7 @@
 |---|---|---|---|
 | 0 — Project State | `PROJECT READY` | **PASSED on 2026-10-13 for Phase 1 planning only.** Scope, constraints, key decisions and high-impact risks are documented. Owner-supplied command output dated 2026-10-14 shows a clean local `main` branch matching `origin/main` (`0 0` divergence). Owner confirms the app has not been deployed. Owner reports the Azure subscription is Active, their role is Owner, plan is Azure Plan, and no costs exist; account-specific evidence remains owner-attested, not independently inspected. | **Complete for the Phase 1 planning gate. Do not label Phase 0 “in progress.”** Keep Azure/Sonke evidence limitations visible; deployment is a known not-deployed state and must be addressed at later delivery/release gates. |
 | 1 — PRD | `PRD READY` | **PASSED on 2026-10-14.** Product owner explicitly approved the revised PRD and measurable acceptance criteria; approval is recorded in `docs/project/DECISIONS.md` and `docs/product/PRD.md`. This approves the requirements baseline only, not implementation or release. | Complete for the PRD approval gate only |
-| 2 — Requirements | `REQUIREMENTS READY` | Not verified; requirements matrix and traceability are not yet approved. | Not complete |
+| 2 — Requirements | `REQUIREMENTS READY` | **PASSED on 2026-10-16 for requirements definition and traceability only.** D-049 records explicit owner acceptance; PR #81 merged the acceptance record. The Contract tests workflow passed on the resulting `main` merge commit (`742a36e2326a49734454b52138336337d74a7217`, run [#62](https://github.com/s1xte3n/studypath-sa/actions/runs/38888728612)). | Complete for requirements definition and traceability only; no implementation/release implication |
 | 3 — Architecture | `ARCHITECTURE READY` | Proposed baseline exists; architecture approval and implementation are not verified. | Not complete |
 | 4 — API / Interface Contract | `CONTRACT READY` | Initial endpoint inventory exists; complete, approved contract is not verified. | Not complete |
 | 5 — Environments | `ENV READY` | Not verified; environment and configuration inventory is not established as complete. | Not complete |
@@ -58,8 +58,8 @@ The unchecked items above are **evidence limitations or downstream implementatio
 
 Do not mark a phase complete just because a document exists. Confirm that its required artefacts are reviewed/approved and that evidence is recorded.
 
-- **Phase 2 — Requirements:** map each requirement to acceptance criteria, UI/API contract, test ID, implementation, CI result and release evidence.
-- **Phase 3 — Architecture:** approve the architecture, data flows, trust boundaries, key decisions and deployment model.
+- **Phase 2 — Requirements:** **PASSED on 2026-10-16 for requirements definition and traceability only.** D-049/PR #81 records owner acceptance. The traceability matrix remains a plan: implementation paths, runtime evidence, app build/journeys, catalogue publication and release evidence are not thereby verified. See `docs/product/REQUIREMENT-GAPS.md`.
+- **Phase 3 — Architecture:** current phase. Review and approve architecture, data flows, trust boundaries, key decisions, failure/recovery, observability and deployment model. Do not authorize implementation or provisioning until the relevant architecture, contract, privacy/security, test and cost gates pass.
 - **Phase 4 — API/interface contract:** define and approve schemas, validation, errors, authentication/authorisation where applicable, and versioning.
 - **Phase 5 — Environments:** document configuration, secret handling, environment separation, access and cost controls; never commit secrets.
 - **Phase 6 — Test strategy:** map unit, integration, contract, accessibility, security, regression and end-to-end tests to requirements.
@@ -80,4 +80,4 @@ Do not mark a phase complete just because a document exists. Confirm that its re
 
 ## Next action
 
-Proceed to **Phase 2 — Requirements matrix and traceability**. Phase 0 remains **PASSED for Phase 1 planning only**; Phase 1 `PRD READY` is **PASSED for the approved PRD/acceptance-criteria baseline only**. Do not infer implementation, testing, privacy clearance or release readiness.
+Proceed to **Phase 3 — Architecture and ADRs**. Phase 0 `PROJECT READY`, Phase 1 `PRD READY`, and Phase 2 `REQUIREMENTS READY` have passed only within their documented planning/requirements scopes. The Contract tests workflow passed on the current `main` merge commit, but this is not evidence of an app build, browser journey, runtime privacy behavior, catalogue publication, infrastructure validation, deployment or release readiness. Keep OR-019, Q-018, Q-020 and G-SYN-001 open/not passed; synthetic-only remains, and Azure provisioning/deployment and real learner data are not authorized by these gates.
