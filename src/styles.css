@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap');
 
-:root{font-family:"DM Sans",Arial,sans-serif;color:#17372f;background:#f7f8f4;font-synthesis:none;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased;--green:#155c45;--deep:#123b32;--muted:#65766f;--line:#dce4de;--paper:#fff}
+:root{font-family:Arial,sans-serif;color:#17372f;background:#f7f8f4;font-synthesis:none;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased;--green:#155c45;--deep:#123b32;--muted:#65766f;--line:#dce4de;--paper:#fff}
 *{box-sizing:border-box}
 body{margin:0;min-width:320px}
 button,input,select{font:inherit}
@@ -8,7 +8,7 @@ button,a,select,input{outline-offset:3px}
 :focus-visible{outline:3px solid #d49a35}
 .app-shell{max-width:1440px;margin:0 auto;overflow:hidden}
 .topbar{height:76px;padding:0 clamp(20px,6vw,88px);display:flex;align-items:center;justify-content:space-between;background:#fff;border-bottom:1px solid #edf0ec}
-.wordmark{display:flex;align-items:center;gap:9px;text-decoration:none;color:var(--deep);font-family:Manrope,sans-serif;font-weight:800;font-size:20px;letter-spacing:-.7px}
+.wordmark{display:flex;align-items:center;gap:9px;text-decoration:none;color:var(--deep);font-family:Arial,sans-serif;font-weight:800;font-size:20px;letter-spacing:-.7px}
 .mark{display:grid;place-items:center;background:var(--green);color:white;width:31px;height:31px;border-radius:9px;font-size:17px}
 .country{color:#ba7b1d;margin-left:-7px}
 .topbar-note{font-size:13px;color:var(--muted)}
@@ -16,7 +16,7 @@ main{max-width:1020px;margin:0 auto;padding:0 clamp(20px,5vw,56px)}
 .hero{padding:64px 0 46px;max-width:720px}
 .eyebrow{font-size:11px;letter-spacing:1.7px;font-weight:700;color:#8a641e;margin:0 0 14px}
 h1,h2,h3,p{margin-top:0}
-h1,h2,h3{font-family:Manrope,Arial,sans-serif;letter-spacing:-1px}
+h1,h2,h3{font-family:Arial,sans-serif;letter-spacing:-1px}
 h1{font-size:clamp(38px,6vw,64px);line-height:1.08;margin-bottom:20px;font-weight:800;color:var(--deep)}
 h1 span{color:var(--green)}
 .hero-copy{font-size:17px;line-height:1.7;color:#52665d;max-width:590px;margin-bottom:28px}
@@ -53,7 +53,7 @@ select:focus,input:focus{border-color:var(--green)}
 .next-steps h2{max-width:540px;margin-bottom:26px}
 .steps-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 .steps-grid article{padding:22px;background:#eef2ec;border-radius:12px}
-.step-number{font-family:Manrope,sans-serif;color:#a47729;font-size:12px;font-weight:800;letter-spacing:1px}
+.step-number{font-family:Arial,sans-serif;color:#a47729;font-size:12px;font-weight:800;letter-spacing:1px}
 .steps-grid h3{font-size:17px;margin:12px 0 8px;letter-spacing:-.3px}
 .steps-grid p{font-size:13px;line-height:1.65;color:#61736a;margin-bottom:0}
 footer{display:flex;justify-content:space-between;gap:20px;padding:22px clamp(20px,6vw,88px);border-top:1px solid var(--line);font-size:11px;color:#6c7a72}
