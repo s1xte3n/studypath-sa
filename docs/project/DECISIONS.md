@@ -1,7 +1,7 @@
 # StudyPath SA — Decisions and Assumptions
 
 **Status:** Phase 0 decisions recorded; PROJECT READY passed for Phase 1 planning; Phase 1 PRD READY passed on 2026-10-14; current work is Phase 2 requirements traceability  
-**Last updated:** 2026-10-15
+**Last updated:** 2026-10-16
 
 Owner explicitly approved COST-01, DATA-01, ELIGIBILITY-01, PRIVACY-01, RELEASE-01 and OWNER-01, and approved the directions recorded for Q-002, Q-003, Q-004, Q-005, Q-010, Q-015 and Q-016 on 2026-10-13. The owner subsequently attested that all remaining account-specific checks are complete. Official UJ and Microsoft public sources and the supplied hackathon programme are documented in `PHASE0-ONLINE-EVIDENCE.md`. Account-specific portal/billing records were not independently inspected by the assistant. PROJECT READY passed for Phase 1 planning only.
 
@@ -172,3 +172,19 @@ Source: explicit project-owner instruction to proceed to the next gate using the
 **Gate consequence:** A3 may be marked complete for the boundary decision once this disposition is reconciled across requirements, traceability and checklist artifacts. Q-018, Q-020, G-SYN-001, the overall Phase 2 gate and downstream release gates remain open until their own evidence criteria pass.
 
 Source: explicit product-owner approval in the StudyPath SA project conversation on 2026-10-15, followed by the recorded approval comment on PR #74.
+
+
+## D-049 — Phase 2 REQUIREMENTS READY baseline accepted (owner decision, 2026-10-16)
+
+**Decision:** The product owner explicitly accepts the reconciled Phase 2 requirements baseline on merged `main` commit `aeb7b27da3a5bfc01e5f7a378f391f1d43a16c0c` (PR #80, “docs: complete Phase 2 scope and traceability audit”). This acceptance closes the requirements-definition and traceability gate only; it is not an implementation, catalogue-publication, runtime-privacy, test, CI-on-merge-commit, legal-review, provisioning, deployment or release approval.
+
+**Accepted scope and conditions:**
+- Accept the canonical requirements/acceptance-criteria/traceability baseline and the documented OR-001–OR-019 dispositions as reconciled in PR #80.
+- Preserve OR-019 as open for API/runtime composition, provider logging/retention and cost review; resolve it in Phase 3 and applicable downstream gates.
+- Preserve all documented exclusions and safety conditions: synthetic-only local demo, no real learner data, no production identity or authenticated persistence, no uploads, no Azure provisioning or deployment until the applicable gates pass, and the R100/month total spend cap.
+- Phase 3 architecture/ADR work may begin from this accepted requirements baseline. This does not authorize application implementation until architecture/API, privacy/security, data provenance and cost dependencies are approved as required.
+- G-SYN-001 remains OPEN / NOT PASSED. Q-018 and Q-020 remain open. Catalogue and funding publication evidence, deterministic implementation/golden-set execution, browser privacy/accessibility evidence, qualified privacy/legal review where required, and release evidence remain outstanding.
+
+**Gate result:** Phase 2 `REQUIREMENTS READY` is accepted as PASSED for requirements definition and traceability only. All downstream gates retain their independent status and evidence requirements.
+
+**Source:** Explicit product-owner approval in the StudyPath SA project conversation on 2026-10-16.

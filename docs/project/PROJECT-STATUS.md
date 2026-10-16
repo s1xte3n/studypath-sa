@@ -1,12 +1,12 @@
 # StudyPath SA — Project Status
 
-**Status:** Phase 2 — Requirements matrix and traceability  
+**Status:** Phase 3 — Architecture and ADRs (Phase 2 requirements baseline accepted)  
 **Phase 0 gate:** `PROJECT READY` — **PASSED for Phase 1 planning only**  
 **Last completed gate:** `PRD READY` — **PASSED on 2026-10-14 for the approved PRD/acceptance-criteria baseline only**  
-**Current gate:** `REQUIREMENTS READY` — **OPEN; Phase 2 remains in progress**  
-**Historical-note convention:** This file preserves dated status snapshots as an audit trail. Older statements that a PR was only proposed/on a branch, or that later checklist items were still open, describe the snapshot at that date; subsequent merged PRs and the latest Phase 2 audit note below supersede those statuses. The current gate remains OPEN unless the top status and explicit owner-acceptance record say otherwise.  
-**Latest Phase 2 audit note (2026-10-15):** PR #79 is merged at `f3fdc009f19600abc6830fd1af1752c1ff633149`. The follow-on branch `docs/phase-2-a4-a6-traceability-audit` records A4–A6 source/scope review, corrects the `AC-DET-007`, `REQ-AUTH-001`, `AC-NFR-001–005` and OR-019 summary mappings, and records the bidirectional ID audit and G-SYN-001 requirement mappings. The proposed checklist marks A–D evidence items complete on that branch; review/merge and explicit overall product-owner acceptance remain pending before Phase 2 can pass. This audit branch's Contract tests workflow run [#54](https://github.com/s1xte3n/studypath-sa/actions/runs/38789226191) passed on head `fbe002e29f35fdbf97a46ada391fca520667e036`. PR #79's contract-test workflow passed on its PR head; no workflow result was returned for the merge commit. No app build, browser journey, runtime privacy, cloud provisioning, deployment or release is claimed.  
-**Last updated:** 2026-10-15
+**Current gate:** `REQUIREMENTS READY` — **PASSED on 2026-10-16 for requirements definition and traceability only**  
+**Historical-note convention:** This file preserves dated status snapshots as an audit trail. Older statements that a PR was only proposed/on a branch, or that later checklist items were still open, describe the snapshot at that date; subsequent merged PRs and the latest Phase 2 audit note below supersede those statuses. The latest dated acceptance note and D-049 decision record are authoritative for the current gate; older snapshots remain historical.  
+**Historical Phase 2 audit snapshot (2026-10-15; superseded by the acceptance note below):** PR #79 is merged at `f3fdc009f19600abc6830fd1af1752c1ff633149`. The follow-on branch `docs/phase-2-a4-a6-traceability-audit` records A4–A6 source/scope review, corrects the `AC-DET-007`, `REQ-AUTH-001`, `AC-NFR-001–005` and OR-019 summary mappings, and records the bidirectional ID audit and G-SYN-001 requirement mappings. At that snapshot, checklist items and overall owner acceptance remained pending. PR #80 subsequently merged the traceability audit, and D-049 records explicit owner acceptance on 2026-10-16; see the current Phase 2 acceptance note below. This audit branch's Contract tests workflow run [#54](https://github.com/s1xte3n/studypath-sa/actions/runs/38789226191) passed on head `fbe002e29f35fdbf97a46ada391fca520667e036`. PR #79's contract-test workflow passed on its PR head; no workflow result was returned for the merge commit. No app build, browser journey, runtime privacy, cloud provisioning, deployment or release is claimed.  
+**Last updated:** 2026-10-16
 
 ## Verified repository state
 - Repository: https://github.com/s1xte3n/studypath-sa
@@ -270,3 +270,12 @@ The scope model distinguishes (1) the intended API-first `/api/v1` architecture,
 - **Still open/not passed:** A4–A6; overall Phase 2 REQUIREMENTS READY; Q-018; Q-020 implementation readiness; G-SYN-001; browser privacy/accessibility/runtime evidence; application build/test evidence; external privacy/legal review; provisioning and deployment.
 
 The owner decision is not implementation or test evidence. No application code, runtime behavior, infrastructure or deployment was changed by this decision record.
+
+
+## Phase 2 REQUIREMENTS READY — accepted 2026-10-16
+
+The product owner explicitly accepted the reconciled requirements baseline on merged `main` commit `aeb7b27da3a5bfc01e5f7a378f391f1d43a16c0c` (PR #80). D-049 records the decision, accepted scope, conditions and exclusions. The Phase 2 checklist A–E is complete and `REQUIREMENTS READY` is PASSED for requirements definition and traceability only. This permits Phase 3 architecture/ADR work to begin; it does not certify implementation readiness or authorize deployment.
+
+**Still open / not passed:** OR-019 API/runtime composition, provider logging/retention and cost; Q-018 architecture/API contracts; Q-020 lifecycle and privacy/security controls; G-SYN-001 synthetic-only browser demo; verified catalogue/funding publication; deterministic implementation and golden-set execution; browser privacy/accessibility checks; external privacy/legal review where required; CI evidence tied to the reviewed implementation commit; Azure provisioning, deployment and release.
+
+**Evidence limits:** PR #80's contract tests passed on PR head `159f0d6e351317e6e1f4607dcabafbccaf63a2d9` (run [#56](https://github.com/s1xte3n/studypath-sa/actions/runs/38789412582)); no workflow result was returned for merge commit `aeb7b27da3a5bfc01e5f7a378f391f1d43a16c0c`. This is documentation/contract CI evidence only, not app build, browser, runtime privacy or release evidence. No provisioning or deployment was performed.

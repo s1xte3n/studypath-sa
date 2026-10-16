@@ -1,6 +1,6 @@
 # StudyPath SA — Requirement Gaps
 
-**Status:** Open register for Phase 2. Ambiguous requirements are not implementation tasks.  
+**Status:** Open downstream gap register after Phase 2 `REQUIREMENTS READY` passed on 2026-10-16. These gaps do not reopen requirements readiness unless new evidence reveals a requirement ambiguity or contradiction. Ambiguous requirements are not implementation tasks.  
 **Sources:** Approved PRD, acceptance criteria and OPEN-REQUIREMENTS.md.
 
 ## Blocking gaps
@@ -49,7 +49,7 @@
 
 The following are tracked as later data-curation, architecture, implementation, test, security/privacy or release evidence—not automatic Phase 2 requirements-completeness blockers: completing the 6–8 publication-ready programme records; obtaining 3–5 verified funding records (P1); approving any relationship pairs (an empty set is allowed); runtime privacy inspection; final API/runtime/cost decisions; executable app/UI paths; test execution; CI and release evidence.
 
-**Decision:** REQUIREMENTS READY remains OPEN pending the remaining Phase 2 consistency work and explicit product-owner acceptance. GAP-001 catalogue publication, GAP-003 relationship publication, GAP-004 privacy assurance, GAP-005 funding records, and GAP-008 detailed architecture/contract decisions remain open for their applicable later gates. This status does not claim implementation, tests, CI, privacy verification or release readiness.
+**Decision (superseded 2026-10-16):** The product owner accepted the reconciled requirements baseline at merged commit `aeb7b27da3a5bfc01e5f7a378f391f1d43a16c0c`; `REQUIREMENTS READY` is PASSED for requirements definition and traceability only (D-049). GAP-001 catalogue publication, GAP-003 relationship publication, GAP-004 privacy assurance, GAP-005 funding records, and GAP-008 detailed architecture/contract decisions remain open for their applicable downstream gates. This status does not claim implementation, tests beyond the cited contract CI, runtime privacy verification or release readiness.
 
 
 ## UJ 2027 source reconciliation note — 2026-10-14
@@ -85,7 +85,7 @@ This section supersedes the earlier blanket statement that all open P0/P1 gaps b
 | GAP-008 (P0 API/runtime) | API-first direction is decided; unresolved route/schema/runtime/cache/error/cost decisions are explicitly downstream architecture and API-contract work. | Blocks implementation/provisioning until architecture, contract, environment and cost review are approved. No provisioning is authorized here. |
 | GAP-009–012 (P1 quality/resilience) | Quality targets and safe behavior are stated; missing protocols are explicit. | Resolve protocol details before dependent implementation/verification; retain test evidence placeholders. |
 
-**Proposed requirements-gate outcome:** no open finding identified here requires silently changing an approved requirement or inventing data to define it. The matrix can move to owner gate acceptance and Phase 3 architecture. This does not close the gaps or declare catalogue, runtime, test, CI or release evidence complete.
+**Requirements-gate disposition (2026-10-16):** No open finding in this register required silently changing an approved requirement or inventing data to define it. The product owner accepted the reconciled baseline and Phase 2 passed for requirements definition/traceability; Phase 3 architecture may begin. The gap rows remain active at their stated downstream gates. This does not declare catalogue, runtime, test, privacy, CI-on-merge-commit or release evidence complete.
 
 ### Evidence placeholders (intentionally not completed)
 
@@ -94,3 +94,8 @@ This section supersedes the earlier blanket statement that all open P0/P1 gaps b
 - CI workflow/run URL and tested commit: Not available
 - Runtime privacy inspection: Not performed
 - Deployment/smoke test/release approval: Not available
+
+
+## Phase 2 gate acceptance — 2026-10-16
+
+D-049 records explicit product-owner acceptance of the requirements baseline at merged commit `aeb7b27da3a5bfc01e5f7a378f391f1d43a16c0c`. Phase 2 `REQUIREMENTS READY` is PASSED for requirements definition and traceability only. Keep each gap open until its own evidence is satisfied; if downstream work reveals a missing or contradictory requirement, reopen the relevant Phase 2 issue through change control.
