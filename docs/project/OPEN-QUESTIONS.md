@@ -1,6 +1,6 @@
 # StudyPath SA — Open Questions
 
-**Status:** Phase 2 `REQUIREMENTS READY` passed on 2026-10-16 for requirements definition and traceability only; Phase 3 architecture/ADR work may begin; downstream implementation/release work remains open  
+**Status:** Phase 2 `REQUIREMENTS READY` and Phase 3 `ARCHITECTURE READY` passed on 2026-10-16 for requirements definition and architecture design/traceability respectively; Phase 4 API/interface contracts is current; downstream implementation/release work remains open  
 **Last updated:** 2026-10-16  
 **Priority:** P0 blocks readiness/safety/budget; P1 must resolve before dependent phase; P2/P3 later.
 
@@ -77,3 +77,8 @@ D-048 records the product owner's approval of the authenticated-feature boundary
 ## Phase 2 owner acceptance — 2026-10-16
 
 The product owner accepted the reconciled requirements baseline at merged commit `aeb7b27da3a5bfc01e5f7a378f391f1d43a16c0c` (D-049). `REQUIREMENTS READY` is PASSED for requirements definition and traceability only. This does not close Q-018 or Q-020, pass G-SYN-001, approve catalogue/funding publication, authorize real learner data, or authorize Azure provisioning/deployment. Preserve the current question rows and downstream evidence requirements; reopen requirements if later evidence exposes a genuine specification ambiguity or contradiction.
+
+
+## Phase 3 gate update — `ARCHITECTURE READY` passed (2026-10-16)
+
+The architecture design/traceability gate is passed. See `docs/architecture/ARCHITECTURE-READINESS-REVIEW.md` for the requirement-to-component/ADR/verification mapping, trust boundaries, and trade-offs. This does not close Q-018 (API/runtime composition and authenticated boundary), Q-020 (authenticated lifecycle/privacy/security), Q-019 (catalogue evidence and rule oracles), G-SYN-001, or cost, runtime privacy/accessibility, CI, provisioning, deployment and release controls. Phase 4 may define the catalogue-only API contract; no cloud provisioning or real learner-data processing is authorized.
