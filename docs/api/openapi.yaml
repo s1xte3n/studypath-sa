@@ -102,6 +102,18 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/APIErrorResponse'
+        '405':
+          description: HTTP method is not supported for this route.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIErrorResponse'
+        '406':
+          description: Requested response media type is not supported.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIErrorResponse'
         '429':
           description: Request rate limit exceeded.
           content:
