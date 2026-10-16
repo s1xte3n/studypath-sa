@@ -28,4 +28,4 @@ Breaking wire changes require a major version namespace and migration plan. Addi
 
 - Added `.github/workflows/openapi-validation.yml` to run pinned Redocly CLI `lint --extends spec` against the OpenAPI 3.1 document and execute `node --test` on pull requests/pushes affecting API docs or contract tests.
 - Added `tests/contracts/openapi-contract.test.mjs` for route inventory, anonymous/read-only scope, response status presence, schema declarations and learner-data privacy invariants.
-- This automation is not itself evidence of passing validation; record the actual CI run and address all findings before contract approval.
+- Initial CI evidence: Redocly OpenAPI lint passed on PR #87; 3 of 33 Node tests failed because assertions expected enum values in OpenAPI rather than the reusable Markdown schema, and expected route/privacy wording in the wrong document. Corrective assertions are proposed on `fix/phase-4-contract-ci`; contract approval remains blocked until the follow-up run passes.
