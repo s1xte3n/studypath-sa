@@ -1,7 +1,7 @@
 # StudyPath SA — System Architecture
 
-**Status:** Architecture baseline approved by product owner on 2026-10-16; implementation remains subject to explicit downstream gates.  
-**Phase:** 3 — Architecture. **Baseline date:** 2026-10-16.  
+**Status:** Phase 3 `ARCHITECTURE READY` passed on 2026-10-16 for design traceability, security-boundary definition and recorded trade-offs; implementation remains subject to explicit downstream gates.  
+**Phase artifact:** 3 — Architecture. **Baseline date:** 2026-10-16. **Next phase:** 4 — API/interface contracts.  
 **Source of truth:** approved PRD, `docs/product/REQUIREMENTS.md`, scope reconciliation D-044–D-047, open questions, and current decision records.  
 **Important:** This design does not assert that application code, cloud resources, CI/CD, or deployments exist.
 
@@ -160,3 +160,8 @@ ADRs are indexed in `ADR-INDEX.md`; proposed records cover API-first boundary, c
 9. Define operational ownership, alerts, recovery targets and release evidence.
 
 **Gate status: ARCHITECTURE DIRECTION APPROVED — DEPENDENT IMPLEMENTATION GATES REMAIN OPEN.** The product owner approved this architecture baseline on 2026-10-16. This freezes the documented logical boundaries and approved scope, not unresolved endpoint schemas, runtime composition, eligibility rule semantics, catalogue publication evidence, CI requirements, cost/resource approval, or privacy/security controls. Do not implement components whose specific gates remain open; do not provision cloud resources or process real learner data.
+
+
+## Architecture readiness gate — passed 2026-10-16
+
+The architecture gate is passed for design and traceability only. The requirements-to-component/ADR/verification mapping, explicit trust boundaries, trade-offs, and exclusions are recorded in [ARCHITECTURE-READINESS-REVIEW.md](ARCHITECTURE-READINESS-REVIEW.md). This does not pass Phase 4 contract approval, catalogue publication, rule semantics/golden-set execution, G-SYN-001, runtime privacy/accessibility, CI, cost review, provisioning, deployment or release. Q-018, Q-020 and catalogue evidence gates remain open.
