@@ -1,0 +1,51 @@
+name: Browser E2E, privacy and accessibility
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: browser-e2e-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  browser-e2e:
+    name: Chromium learner journey, privacy and accessibility
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - name: Install locked application dependencies
+        run: npm ci --no-audit --no-fund
+      - name: Install pinned browser test tools without changing application manifests
+        run: npm install --no-save --package-lock=false @playwright/test@1.55.0 @axe-core/playwright@4.10.3 --no-audit --no-fund
+      - name: Install Chromium and OS dependencies
+        run: npx playwright install --with-deps chromium
+      - name: Run existing unit and contract tests
+        run: npm test
+      - name: Run browser E2E, privacy and accessibility tests
+        run: npx playwright test
+      - name: Build production assets
+        run: npm run build
+      - name: Upload Playwright report on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: browser-e2e-report
+          path: |
+            playwright-report/
+            test-results/
+          if-no-files-found: ignore
+          retention-days: 7
