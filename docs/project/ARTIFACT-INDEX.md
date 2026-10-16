@@ -266,3 +266,10 @@ Phase 3 `ARCHITECTURE READY` is passed. Phase 4 API/interface contracts is the c
 ## Phase 4 validation evidence — 2026-10-16
 
 PR #89 merged as `bbad7b869a1e2e59184d37c486a7185d70e809f5`. The merge-commit OpenAPI validation, contract tests and UJ eligibility golden-case verification all passed: [OpenAPI](https://github.com/s1xte3n/studypath-sa/actions/runs/38912794797), [contract tests](https://github.com/s1xte3n/studypath-sa/actions/runs/38912794987), [golden cases](https://github.com/s1xte3n/studypath-sa/actions/runs/38912795061). This is automated documentation/contract-test evidence, not runtime, privacy, catalogue-publication or deployment evidence. Phase 4 is not passed. Remaining work includes owner contract review, OR-019/Q-018 provider/runtime, network/cache/rate-limit/retry/logging and cost decisions, and verification/sign-off of publication-ready catalogue records.
+
+
+## Phase 4 continuation artifacts — 2026-10-16
+
+- `docs/product/FUNDING-CATALOGUE-REGISTER.md` — official-source research register for initial funding candidates. NSFAS 2027 is a research lead only; conflicting official closing-date statements block publication pending clarification and curator sign-off.
+- `docs/project/DECISIONS.md` — D-052 records owner approval to continue with the public catalogue contract baseline and reiterates the implementation/provisioning limits.
+- Owner approval permits continued Phase 4 work; it does not pass the contract gate. Runtime/provider/cost decisions, source-backed publication records, runtime privacy and release evidence remain outstanding.
