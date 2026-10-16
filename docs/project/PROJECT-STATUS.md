@@ -1,6 +1,6 @@
 # StudyPath SA — Project Status
 
-**Status:** Phase 3 — Architecture and ADRs (Phase 2 requirements baseline accepted)  
+**Status:** Phase 3 architecture baseline approved on 2026-10-16; Phase 2 requirements baseline accepted  
 **Phase 0 gate:** `PROJECT READY` — **PASSED for Phase 1 planning only**  
 **Last completed gate:** `PRD READY` — **PASSED on 2026-10-14 for the approved PRD/acceptance-criteria baseline only**  
 **Current gate:** `REQUIREMENTS READY` — **PASSED on 2026-10-16 for requirements definition and traceability only**  
@@ -84,8 +84,12 @@ Owner approval of the Phase 0 direction/materials is recorded. These approvals d
 - Hackathon deliverables and date are extracted from the supplied programme. The owner confirms Sonke profiling and new-app status; the portal itself was not accessed. Confirm the portal timezone/upload details before submission.
 - The supplied local tracked-file listing and remote repository inspection do not constitute a complete audit of every branch or historical commit.
 
+## Phase 3 architecture approval — 2026-10-16
+
+The product owner explicitly approved the architecture baseline in `docs/architecture/` on 2026-10-16. This approves the documented logical architecture, current D-047 local synthetic-demo boundary, privacy constraints, catalogue/provenance principles, and gated nature of future runtime/authenticated features. It does not approve unresolved endpoint schemas, runtime/service composition, catalogue publication records or rule semantics, CI requirements, cost feasibility, Azure provisioning, real learner-data processing, or deployment. Those remain explicit downstream gates.
+
 ## Next gate
-Phase 1 `PRD READY` passed on 2026-10-14 after explicit owner approval of the revised PRD and measurable acceptance criteria. Current work is **Phase 2 — Requirements matrix and traceability**; `REQUIREMENTS READY` has not passed. Tracker entries are page-memory-only and persistent storage is out of scope. These planning gates do not approve implementation, Azure provisioning or deployment. No application tests were run and no cloud resources or deployment were changed by the documentation updates.
+Proceed to **Phase 4 — API/interface contracts**. Define and review the versioned `/api/v1` catalogue-only contract and schema/error/freshness behavior before dependent API-client implementation. Keep learner marks, subjects, interests, matching results and tracker entries out of API requests. Resolve the eligibility contract and golden-set semantics against approved requirements, and preserve `UNKNOWN` for missing or ambiguous source rules. No Azure provisioning or real learner-data use is authorized. Application build/runtime privacy/deployment status remains unverified.
 
 
 ## Azure cost estimate update — 2026-10-14

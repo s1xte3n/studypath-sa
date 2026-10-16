@@ -1,6 +1,6 @@
 # Architecture Decision Records — Index
 
-**Status:** Draft ADR set for owner review. Decisions marked **Accepted direction** reflect existing approved product/project decisions; proposed technical choices remain **Proposed** until explicitly accepted.  
+**Status:** Architecture baseline and logical boundaries approved by product owner on 2026-10-16. Approval does not convert unapproved implementation details or deferred service choices into accepted decisions.  
 **Rule:** An ADR records a decision and its context; it is not proof of implementation.
 
 | ADR | Title | Status | Requirement / decision | Summary |
@@ -13,4 +13,4 @@
 
 ## Gate rule
 
-Architecture is not ready for implementation until the owner reviews the ADRs and closes or explicitly accepts the material decisions in `docs/project/OPEN-QUESTIONS.md`, especially API contract/runtime composition, catalogue rule semantics, privacy/runtime inspection, cost and deployment responsibility. No ADR authorizes provisioning or authenticated profile handling on its own.
+The owner approved the architecture baseline on 2026-10-16. This does not close material implementation gates tracked in `docs/project/OPEN-QUESTIONS.md`, especially API contract/runtime composition, catalogue rule semantics, privacy/runtime inspection, cost and deployment responsibility. No ADR authorizes provisioning or authenticated profile handling on its own.

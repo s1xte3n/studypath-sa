@@ -1,9 +1,9 @@
 # StudyPath SA — Artifact Index
 
 **Last updated:** 2026-10-16  
-**Phase:** 3 — Architecture and ADRs (Phase 2 requirements baseline accepted)  
+**Phase:** 4 — API/interface contracts (architecture baseline owner-approved 2026-10-16)  
 **Historical-note convention:** Dated sections below preserve prior review snapshots. Where an older row says “proposed,” “on branch for review,” or “not started,” use the latest status table and subsequent dated updates as current; earlier snapshots are not current approval or implementation evidence.  
-**Gate:** Phase 0 `PROJECT READY` passed for Phase 1 planning only; Phase 1 `PRD READY` passed on 2026-10-14; Phase 2 `REQUIREMENTS READY` **passed on 2026-10-16 for requirements definition and traceability only** after explicit owner acceptance recorded as D-049. Downstream implementation and release gates remain open.
+**Gate:** Phase 0 `PROJECT READY`, Phase 1 `PRD READY`, Phase 2 `REQUIREMENTS READY`, and the Phase 3 architecture baseline are accepted for their stated scope only. D-050 records architecture approval on 2026-10-16. Phase 4 API/interface contract work is next; downstream implementation, cost, privacy/security and release gates remain open.
 
 ## Source-of-truth references
 

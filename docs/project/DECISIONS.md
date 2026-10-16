@@ -1,11 +1,13 @@
 # StudyPath SA — Decisions and Assumptions
 
-**Status:** Phase 0 decisions recorded; PROJECT READY passed for Phase 1 planning; Phase 1 PRD READY passed on 2026-10-14; current work is Phase 2 requirements traceability  
+**Status:** Phase 0, Phase 1 and Phase 2 gates recorded; architecture baseline owner-approved on 2026-10-16; current work is Phase 4 API/interface contracts  
 **Last updated:** 2026-10-16
 
 Owner explicitly approved COST-01, DATA-01, ELIGIBILITY-01, PRIVACY-01, RELEASE-01 and OWNER-01, and approved the directions recorded for Q-002, Q-003, Q-004, Q-005, Q-010, Q-015 and Q-016 on 2026-10-13. The owner subsequently attested that all remaining account-specific checks are complete. Official UJ and Microsoft public sources and the supplied hackathon programme are documented in `PHASE0-ONLINE-EVIDENCE.md`. Account-specific portal/billing records were not independently inspected by the assistant. PROJECT READY passed for Phase 1 planning only.
 
 ## Confirmed decisions
+
+| D-050 | Architecture baseline approved | Product owner explicitly approved `docs/architecture/` on 2026-10-16. Approval freezes the documented logical boundaries and scope direction; it does not close unresolved API/runtime, catalogue-rule, CI, cost, privacy/security, provisioning or release gates. |
 
 | ID | Decision | Source / consequence |
 |---|---|---|
