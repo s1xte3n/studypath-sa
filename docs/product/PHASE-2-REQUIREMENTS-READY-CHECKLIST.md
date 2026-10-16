@@ -77,8 +77,8 @@ Phase 2 does **not** certify that the catalogue is publication-ready, the archit
 ## E. Formal gate acceptance — REQUIRED
 
 - [x] **E1. Publish a concise Phase 2 review summary.** See `PHASE2-TRACEABILITY-REVIEW.md` for the reviewed artifact set, source fidelity findings, corrected AC/requirement mappings, explicit decisions, remaining blockers and evidence links. The review is a proposed audit record on the current branch; the overall gate remains open.
-- [ ] **E2. Obtain explicit product-owner acceptance.** Record the decision, date, accepted baseline/commit, and any conditions or exclusions in `docs/project/DECISIONS.md` or a linked gate record. A PR merge or CI pass alone is not product-owner gate acceptance.
-- [ ] **E3. Update the gate status consistently.** Change `REQUIREMENTS READY` to PASSED only after A–E are satisfied; update `PROJECT-STATUS.md`, `REQUIREMENT-GAPS.md`, `OPEN-QUESTIONS.md` and `ARTIFACT-INDEX.md` to the same disposition.
+- [x] **E2. Obtain explicit product-owner acceptance.** The product owner explicitly accepted the reconciled requirements baseline on 2026-10-16 at merged `main` commit `aeb7b27da3a5bfc01e5f7a378f391f1d43a16c0c` (PR #80). Conditions and exclusions are recorded in [D-049](../project/DECISIONS.md).
+- [x] **E3. Update the gate status consistently.** The explicit owner acceptance and Phase 2 disposition are reflected in `PROJECT-STATUS.md`, `REQUIREMENT-GAPS.md`, `OPEN-QUESTIONS.md` and `ARTIFACT-INDEX.md`. Downstream implementation, privacy, catalogue, cost and release gates remain open.
 - [x] **E4. Preserve the conditional handoff.** `PHASE2-TRACEABILITY-REVIEW.md` records Phase 3 entry criteria and the downstream catalogue, architecture/API, implementation, privacy/security, test, cost, CI, external review and release gates that remain open. Phase 3 is not authorized to start until overall Phase 2 acceptance is recorded; no implementation, privacy clearance, catalogue readiness, deployment or release readiness is claimed.
 
 ## Items that are not automatic Phase 2 blockers
@@ -98,7 +98,7 @@ If any of these exposes a missing or contradictory **requirement**, return that 
 
 ## Gate decision record
 
-- **Baseline commit reviewed:** `f3fdc009f19600abc6830fd1af1752c1ff633149`; proposed checklist updates are on `docs/phase-2-a4-a6-traceability-audit`.
-- **Gate result:** OPEN until all required items are evidenced and E2 owner acceptance is recorded. A3 is closed at the requirements-boundary decision level only.
-- **Owner acceptance:** A3 boundary acceptance recorded as D-048 on 2026-10-15. A4–A6 and B–D are marked evidenced in this proposed audit branch; overall REQUIREMENTS READY acceptance is still pending an explicit owner decision on the reconciled baseline.
-- **Next gate:** Phase 3 — architecture and ADRs, after REQUIREMENTS READY passes.
+- **Baseline commit reviewed and accepted:** `aeb7b27da3a5bfc01e5f7a378f391f1d43a16c0c` (PR #80 merge commit).
+- **Gate result:** PASSED for requirements definition and traceability on 2026-10-16, after A–E were satisfied and explicit owner acceptance was recorded in D-049. This does not pass implementation, catalogue, runtime privacy, CI/release or deployment gates.
+- **Owner acceptance:** Overall baseline accepted by the product owner on 2026-10-16; see D-049. D-048 records the separate A3 boundary decision.
+- **Next gate:** Phase 3 — architecture and ADRs. OR-019, Q-018, privacy/security, catalogue provenance, test and cost constraints remain explicit inputs; no implementation, provisioning or deployment is authorized by this gate.
