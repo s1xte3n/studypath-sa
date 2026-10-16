@@ -100,7 +100,7 @@ The owner approved the Phase 0 decision records and attests that account-specifi
 | Variables inventory | `docs/api/API-VARIABLES.md` | Draft v1.0.0 | Defines path/query/header/body variables and browser-local data boundaries. |
 | Examples | `docs/api/API-EXAMPLES.md` | Draft v1.0.0 | Contains illustrative request/response examples; sample values are not catalogue evidence. |
 | Contract changelog | `docs/api/API-CHANGELOG.md` | Initial draft entry | Records field/version/privacy decisions and remaining review gates. |
-| OpenAPI | `docs/api/openapi.yaml` | Draft OpenAPI 3.1.0 | Dedicated Redocly validation is now configured in `.github/workflows/openapi-validation.yml`; results pending for this branch. API invariant assertions added at `tests/contracts/openapi-contract.test.mjs`. |
+| OpenAPI | `docs/api/openapi.yaml` | Draft OpenAPI 3.1.0 | Dedicated Redocly validation is configured in `.github/workflows/openapi-validation.yml`. On PR #87 merge, Redocly lint passed but 3/33 API invariant tests failed due to overly brittle assertions; follow-up fixes are proposed on `fix/phase-4-contract-ci`. Do not mark contract validation passed until follow-up CI is green. |
 | Existing architecture contract note | `docs/architecture/API-CONTRACT.md` | Historical draft; superseded by canonical `docs/api/` artifacts | Retained for architecture history; updated to point to the Phase 4 canonical contract. |
 
 ### Phase 4 scope and gate limits
