@@ -304,3 +304,14 @@ PR #86 merged the canonical draft interface documentation. The next change adds 
 PR #89 merged at `bbad7b869a1e2e59184d37c486a7185d70e809f5`. The merge-commit GitHub Actions runs all passed: [OpenAPI validation](https://github.com/s1xte3n/studypath-sa/actions/runs/38912794797), [Contract tests](https://github.com/s1xte3n/studypath-sa/actions/runs/38912794987), and [UJ eligibility golden-case verification](https://github.com/s1xte3n/studypath-sa/actions/runs/38912795061). The earlier brittle contract assertions are corrected. This verifies the documented contract checks and current golden-case workflow only; it does not verify an application runtime, privacy/telemetry behaviour, published catalogue data, cloud resources or deployment.
 
 **Phase 4 remains open.** Complete owner review of the frozen fields/enums and resolve OR-019/Q-018 deployment-profile decisions (provider/runtime, CORS, cache, rate limits, timeout/retry, provider logging/retention and cost). Verify publication-ready programme/funding records and provenance. No API implementation, Azure provisioning or real learner-data use is authorized by these CI results.
+
+
+## Phase 4 owner approval and funding evidence update — 2026-10-16
+
+The product owner explicitly confirmed: “I verified and approve all” and instructed the project to continue. Record this as approval to proceed with the reviewed Phase 4 public catalogue contract baseline and its documented scope: anonymous read-only catalogue retrieval only; matching and manual tracking remain browser-local; synthetic data only; no learner data in API requests; no provisioning or deployment authorization.
+
+The approval does not create evidence for runtime settings or data publication. OR-019/Q-018 still require an evidence-backed deployment profile for runtime/provider composition, CORS origins, cache behavior/TTL, rate limits, timeouts/retries, provider logging/retention and total cost under the R100/month cap. No paid/metered services or Azure resources are authorized by this documentation approval.
+
+A source check for the funding register found conflicting official 2027 NSFAS closing-date statements: the NSFAS application page currently states 31 October 2026, while the South African Government announcement of the 2027 cycle states 18 November 2026. The candidate is recorded as research-only with deadline unresolved; neither date is normalized into a definitive learner-facing deadline until NSFAS provides authoritative clarification and the curator records the source/version.
+
+**Current gate:** Phase 4 `CONTRACT READY` remains **OPEN / NOT PASSED**. Next evidence work is source reconciliation and complete, curator-approved programme/funding records, plus the deployment profile and passing checks on the current PR/merge commit. This approval is not implementation, test, privacy-runtime, provisioning, deployment or release evidence.
