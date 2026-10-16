@@ -105,12 +105,12 @@ function App() {
             <div className="subject-list">
               {subjects.map((item, index) => (
                 <div className="subject-row" key={index}>
-                  <label className="visually-hidden" htmlFor={`subject-${index}`}>Subject ${index + 1}</label>
+                  <label className="visually-hidden" htmlFor={`subject-${index}`}>Subject {index + 1}</label>
                   <select id={`subject-${index}`} value={item.subject} onChange={event => updateSubject(index, "subject", event.target.value)} required>
                     <option value="">Choose a subject</option>
                     {SUBJECTS.map(subject => <option key={subject} value={subject}>{subject}</option>)}
                   </select>
-                  <label className="visually-hidden" htmlFor={`mark-${index}`}>Mark for subject ${index + 1}</label>
+                  <label className="visually-hidden" htmlFor={`mark-${index}`}>Mark for subject {index + 1}</label>
                   <input id={`mark-${index}`} inputMode="numeric" type="number" min="0" max="100" step="1" placeholder="Mark %" value={item.mark} onChange={event => updateSubject(index, "mark", event.target.value)} required />
                   <button className="remove-button" type="button" onClick={() => removeSubject(index)} disabled={subjects.length === 1} aria-label={`Remove subject row ${index + 1}`}>×</button>
                 </div>
