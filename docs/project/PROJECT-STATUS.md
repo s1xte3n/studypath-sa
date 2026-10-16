@@ -297,3 +297,10 @@ The architecture readiness assessment is recorded in [ARCHITECTURE-READINESS-REV
 PR #86 merged the canonical draft interface documentation. The next change adds `.github/workflows/openapi-validation.yml`, which runs pinned Redocly CLI validation against `docs/api/openapi.yaml` and executes `node --test`. It also adds `tests/contracts/openapi-contract.test.mjs` to assert the two approved public read-only paths, documented response status coverage, core schema declarations and learner-data privacy boundary.
 
 **Status:** PR #87 merged at `e725ffc6e1858612cccd3aaa291ee469da7e0d5b`. The first observed `OpenAPI validation` run passed Redocly lint but failed 3 of 33 Node tests due to assertions that did not match the source documentation layout; follow-up fix is in PR branch `fix/phase-4-contract-ci`. Contract gate remains blocked until the corrective CI run passes. Owner approval, runtime/provider/cost decisions, catalogue record verification and privacy/runtime evidence remain required. No application runtime or deployment is claimed.
+
+
+## Phase 4 contract CI update — 2026-10-16
+
+PR #89 merged at `bbad7b869a1e2e59184d37c486a7185d70e809f5`. The merge-commit GitHub Actions runs all passed: [OpenAPI validation](https://github.com/s1xte3n/studypath-sa/actions/runs/38912794797), [Contract tests](https://github.com/s1xte3n/studypath-sa/actions/runs/38912794987), and [UJ eligibility golden-case verification](https://github.com/s1xte3n/studypath-sa/actions/runs/38912795061). The earlier brittle contract assertions are corrected. This verifies the documented contract checks and current golden-case workflow only; it does not verify an application runtime, privacy/telemetry behaviour, published catalogue data, cloud resources or deployment.
+
+**Phase 4 remains open.** Complete owner review of the frozen fields/enums and resolve OR-019/Q-018 deployment-profile decisions (provider/runtime, CORS, cache, rate limits, timeout/retry, provider logging/retention and cost). Verify publication-ready programme/funding records and provenance. No API implementation, Azure provisioning or real learner-data use is authorized by these CI results.
