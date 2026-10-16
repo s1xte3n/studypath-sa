@@ -1,7 +1,7 @@
 # StudyPath SA — Artifact Index
 
 **Last updated:** 2026-10-16  
-**Phase:** 4 — API/interface contracts (architecture baseline owner-approved 2026-10-16)  
+**Phase:** 4 — API/interface contracts (`ARCHITECTURE READY` passed 2026-10-16 for design/traceability only)  
 **Historical-note convention:** Dated sections below preserve prior review snapshots. Where an older row says “proposed,” “on branch for review,” or “not started,” use the latest status table and subsequent dated updates as current; earlier snapshots are not current approval or implementation evidence.  
 **Gate:** Phase 0 `PROJECT READY`, Phase 1 `PRD READY`, Phase 2 `REQUIREMENTS READY`, and the Phase 3 architecture baseline are accepted for their stated scope only. D-050 records architecture approval on 2026-10-16. Phase 4 API/interface contract work is next; downstream implementation, cost, privacy/security and release gates remain open.
 
@@ -232,3 +232,12 @@ The following artifacts are present on branch `docs/phase-3-architecture-baselin
 ### Phase 3 readiness
 
 **Architecture gate: NOT PASSED.** These documents record a coherent proposal, but owner review/freeze is still required for API contract/runtime composition, eligibility rule semantics and golden set, pilot publication evidence, CI requirements, cost/resource list, and (before any authenticated or real-learner-data use) identity, authorization, consent/lifecycle and privacy controls. No implementation, tests, CI result, cloud provisioning or deployment is implied by artifact creation.
+
+
+## Phase 3 architecture gate evidence
+
+| Artifact | Path | Status |
+|---|---|---|
+| Architecture readiness review and requirement/security/trade-off traceability | `docs/architecture/ARCHITECTURE-READINESS-REVIEW.md` | Added for the Phase 3 `ARCHITECTURE READY` pass; design/traceability only, not implementation or release evidence |
+
+Phase 3 `ARCHITECTURE READY` is passed. Phase 4 API/interface contracts is the current phase. Q-018, Q-020, Q-019, G-SYN-001 and implementation/release evidence remain open where applicable.
