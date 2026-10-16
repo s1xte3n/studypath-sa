@@ -1,9 +1,9 @@
 # StudyPath SA — Artifact Index
 
-**Last updated:** 2026-10-15  
-**Phase:** 2 — Requirements matrix and traceability  
+**Last updated:** 2026-10-16  
+**Phase:** 3 — Architecture and ADRs (Phase 2 requirements baseline accepted)  
 **Historical-note convention:** Dated sections below preserve prior review snapshots. Where an older row says “proposed,” “on branch for review,” or “not started,” use the latest status table and subsequent dated updates as current; earlier snapshots are not current approval or implementation evidence.  
-**Gate:** Phase 0 `PROJECT READY` passed for Phase 1 planning only; Phase 1 `PRD READY` **passed on 2026-10-14** after explicit owner approval of the revised PRD and measurable acceptance criteria. Phase 2 requirements traceability remains outstanding.
+**Gate:** Phase 0 `PROJECT READY` passed for Phase 1 planning only; Phase 1 `PRD READY` passed on 2026-10-14; Phase 2 `REQUIREMENTS READY` **passed on 2026-10-16 for requirements definition and traceability only** after explicit owner acceptance recorded as D-049. Downstream implementation and release gates remain open.
 
 ## Source-of-truth references
 
@@ -93,7 +93,7 @@ The owner approved the Phase 0 decision records and attests that account-specifi
 
 **PRD READY: PASSED on 2026-10-14** after explicit owner approval of the revised PRD and measurable acceptance criteria. PR #22 merged the documentation alignment to `main`. This gate approves the requirements baseline only. Actual programme/funding catalogue curation, relationship evidence, test execution, privacy review, provisioning and deployment remain outstanding and are not claimed.
 
-Phase 0 `PROJECT READY` passed for Phase 1 planning only. Current work is Phase 2 requirements traceability; `REQUIREMENTS READY` has not passed. No application implementation, test execution, Azure provisioning or deployment is claimed.
+Phase 0 `PROJECT READY`, Phase 1 `PRD READY` and Phase 2 `REQUIREMENTS READY` have passed for their respective planning/requirements baselines only. Current next phase is Phase 3 architecture and ADRs. No application implementation, app test execution, Azure provisioning or deployment is claimed.
 
 ## Phase 1 PRD artifacts and approval
 
@@ -143,7 +143,7 @@ D-044 supersedes D-019's static-first selection only. Sensitive financial criter
 | Traceability registry | `docs/product/TRACEABILITY-MATRIX.md` | Updated through merged PR #79 and this proposed audit | Planned test IDs remain plans except where an exact historical CI run is cited; application/release evidence remains unavailable. |
 | Canonical requirements matrix | `docs/product/REQUIREMENTS.md` | Updated planning baseline | AC-DET-007, REQ-AUTH-001 and AC-NFR cross-cutting mappings are explicitly linked; implementation evidence remains unavailable. |
 
-The `REQUIREMENTS READY` gate remains **NOT PASSED**. No application implementation, executable test run, CI result, privacy clearance, Azure provisioning or deployment is claimed.
+Historical note: the Phase 2 gate was not passed at the time this section was written. On 2026-10-16 the owner accepted the reconciled baseline and `REQUIREMENTS READY` passed for requirements definition/traceability only. No application implementation, app test run, privacy clearance, Azure provisioning or deployment is implied.
 ## GAP-001 source follow-up — 2026-10-14
 
 | Artifact | Path | Status / purpose |
@@ -199,3 +199,13 @@ The inspected main tree at `e3564527b48dc0ca3cb55d4c208da5dc620b23ff` contains e
 ## Phase 2 traceability audit — 2026-10-15
 
 The audit branch reconciles the pathway-detail AC-DET range, maps the approved future authenticated extension as REQ-AUTH-001, maps AC-NFR-001–005 to existing requirements, updates the OR-019 register status, adds G-SYN-001 mappings and records the bidirectional ID audit plus A4–A6/source fidelity evidence. A–D checklist evidence is marked complete on the proposed branch; the gate remains OPEN pending review/merge and explicit overall product-owner acceptance. No application implementation, runtime privacy evidence, deployment or release readiness is claimed.
+
+
+## Phase 2 acceptance and Phase 3 handoff — 2026-10-16
+
+| Artifact | Path | Status | Notes |
+|---|---|---|---|
+| Phase 2 exit checklist | `docs/product/PHASE-2-REQUIREMENTS-READY-CHECKLIST.md` | **PASSED** for requirements definition and traceability | A–E satisfied; explicit owner acceptance of merged commit `aeb7b27da3a5bfc01e5f7a378f391f1d43a16c0c` recorded in D-049. |
+| Owner acceptance decision | `docs/project/DECISIONS.md` (D-049) | Accepted 2026-10-16 | Acceptance conditions and exclusions are explicit; downstream gates are not waived. |
+
+Phase 3 architecture/ADR work may begin. OR-019, Q-018, Q-020, G-SYN-001, catalogue/funding provenance, executable app/browser/privacy tests, cost validation, qualified review where required, provisioning and deployment remain open at their own gates. PR #80 contract CI passed on its PR head (run #56); no workflow result was returned for merge commit `aeb7b27da3a5bfc01e5f7a378f391f1d43a16c0c`. No application build, runtime privacy test, provisioning or deployment is claimed.
