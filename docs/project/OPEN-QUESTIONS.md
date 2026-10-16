@@ -111,3 +111,10 @@ A further official-source research pass added `FND-FUNZA-LUSHAKA-2027` to `docs/
 The NSFAS deadline conflict remains open. The current official NSFAS application page and related NSFAS pages state 31 October 2026, while the South African Government launch statement dated 18 September 2026 states 18 November 2026. This research pass did not find an authoritative correction or direct clarification resolving that conflict. Keep the deadline unresolved in the catalogue; do not infer which date governs.
 
 The register now contains two research candidates but still does not meet the target of 3–5 complete, curator-approved funding opportunities. Research is not publication approval and does not pass the Phase 4 contract gate.
+
+## Funding-catalogue research pass — 2026-10-16 (PR candidate expansion)
+
+A follow-up official-source research pass added two candidates to `docs/product/FUNDING-CATALOGUE-REGISTER.md`: the Northern Cape Premier's Bursary Programme and Garden Route District Municipality External Bursary. Both pages advertise 2027 support with a 31 October 2026 closing date, but the full rules, normalized fields, deterministic tests and curator approval are not complete. Treat both as research-only, not publishable catalogue records. Their application processes request or reference sensitive identity/household-finance evidence; StudyPath SA must not collect that information.
+
+The register now contains four research candidates (NSFAS, Funza Lushaka, Northern Cape Premier's Bursary, and Garden Route District Municipality). This does **not** satisfy the target of 3–5 fully verified and curator-approved opportunities. NSFAS's conflicting 2027 deadline statements remain unresolved. Next catalogue gate: review complete official adverts and current-cycle rules, confirm deadline/status and geographic/qualification restrictions, normalize only supported non-sensitive criteria, add deterministic tests, and record curator sign-off. No runtime/API catalogue or eligibility behavior was changed.
+
