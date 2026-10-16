@@ -100,14 +100,14 @@ The owner approved the Phase 0 decision records and attests that account-specifi
 | Variables inventory | `docs/api/API-VARIABLES.md` | Draft v1.0.0 | Defines path/query/header/body variables and browser-local data boundaries. |
 | Examples | `docs/api/API-EXAMPLES.md` | Draft v1.0.0 | Contains illustrative request/response examples; sample values are not catalogue evidence. |
 | Contract changelog | `docs/api/API-CHANGELOG.md` | Initial draft entry | Records field/version/privacy decisions and remaining review gates. |
-| OpenAPI | `docs/api/openapi.yaml` | Draft OpenAPI 3.1.0 | Machine-readable public catalogue GET routes only; validation/execution not yet evidenced. |
+| OpenAPI | `docs/api/openapi.yaml` | Draft OpenAPI 3.1.0 | Machine-readable public catalogue GET routes only; no dedicated OpenAPI validator has run. The existing Node.js test workflow passed on PR head commit `2b0e309ba056e827cb81e5a3e2afda6aceaa1fbf` (run [38906242615](https://github.com/s1xte3n/studypath-sa/actions/runs/38906242615)); it executes `node --test`, not OpenAPI validation. |
 | Existing architecture contract note | `docs/architecture/API-CONTRACT.md` | Historical draft; superseded by canonical `docs/api/` artifacts | Retained for architecture history; updated to point to the Phase 4 canonical contract. |
 
 ### Phase 4 scope and gate limits
 
 The draft contract maps API-001 to `REQ-CAT-001`, `REQ-DET-001`, `REQ-MAT-001`, `REQ-ALT-001` and `NFR-DATA-001`; API-002 to `REQ-FUND-001` and privacy/data-quality NFRs; IF-001 to the anonymous exploration/matching/privacy requirements; and IF-002 to `REQ-APP-001` and `REQ-PRV-001`. Authenticated routes, profile persistence, saved items, comparison/dashboard endpoints, tracker persistence, uploads, AI, admin writes and direct application submission are explicitly excluded from this contract.
 
-**Not yet passed:** owner review of the frozen draft; schema/OpenAPI validation; executable contract tests; API runtime/provider selection and OR-019/Q-018 cost/logging/cache/CORS/rate-limit decisions; catalogue/funding record publication; implementation, CI, privacy/runtime verification, deployment and release evidence. Creating these documents does not authorize provisioning or real learner data.
+**Not yet passed:** owner review of the frozen draft; dedicated schema/OpenAPI validation and API-specific contract assertions; API runtime/provider selection and OR-019/Q-018 cost/logging/cache/CORS/rate-limit decisions; catalogue/funding record publication; implementation, CI, privacy/runtime verification, deployment and release evidence. Creating these documents does not authorize provisioning or real learner data.
 
 ## Gate assessment
 
