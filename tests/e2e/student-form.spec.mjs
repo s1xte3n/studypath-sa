@@ -5,14 +5,14 @@ test("learner can edit rows, validate entries, and reset the form", async ({ pag
   await page.goto("/");
   await expect(page.getByRole("heading", { name: "Tell us about your studies" })).toBeVisible();
 
-  await page.getByLabel("Subject 1").selectOption("Mathematics");
-  await page.getByLabel("Mark for subject 1").fill("75");
+  await page.locator("#subject-0").selectOption("Mathematics");
+  await page.locator("#mark-0").fill("75");
   await page.getByRole("button", { name: /Add another subject/ }).click();
-  await expect(page.getByLabel("Subject 2")).toBeVisible();
-  await page.getByLabel("Subject 2").selectOption("Physical Sciences");
-  await page.getByLabel("Mark for subject 2").fill("81");
+  await expect(page.locator("#subject-1")).toBeVisible();
+  await page.locator("#subject-1").selectOption("Physical Sciences");
+  await page.locator("#mark-1").fill("81");
   await page.getByRole("button", { name: /Remove subject row 2/ }).click();
-  await expect(page.getByLabel("Subject 2")).toHaveCount(0);
+  await expect(page.locator("#subject-1")).toHaveCount(0);
 
   await page.getByRole("button", { name: /Check my entries/ }).click();
   await expect(page.getByRole("status")).toContainText("basic form validation");
@@ -20,15 +20,15 @@ test("learner can edit rows, validate entries, and reset the form", async ({ pag
 
   await page.getByRole("button", { name: "Reset" }).click();
   await expect(page.getByLabel("Your current stage")).toHaveValue("GRADE_12");
-  await expect(page.getByLabel("Subject 1")).toHaveValue("English Home Language");
-  await expect(page.getByLabel("Mark for subject 1")).toHaveValue("");
+  await expect(page.locator("#subject-0")).toHaveValue("English Home Language");
+  await expect(page.locator("#mark-0")).toHaveValue("");
   await expect(page.getByRole("status")).toHaveCount(0);
 });
 
 test("invalid learner input is announced and does not produce an eligibility result", async ({ page }) => {
   await page.goto("/");
-  await page.getByLabel("Subject 1").selectOption("Mathematics");
-  await page.getByLabel("Mark for subject 1").fill("101");
+  await page.locator("#subject-0").selectOption("Mathematics");
+  await page.locator("#mark-0").fill("101");
   await page.getByRole("button", { name: /Check my entries/ }).click();
 
   await expect(page.getByRole("status")).toContainText("whole-number mark from 0 to 100");
@@ -60,8 +60,8 @@ test("no learner entries are transmitted or persisted across reload", async ({ p
   await page.goto("/");
   const learnerMarker = "SYNTHETIC-MARK-93";
   const subjectMarker = "Mathematics";
-  await page.getByLabel("Subject 1").selectOption(subjectMarker);
-  await page.getByLabel("Mark for subject 1").fill("93");
+  await page.locator("#subject-0").selectOption(subjectMarker);
+  await page.locator("#mark-0").fill("93");
   await page.getByRole("button", { name: /Check my entries/ }).click();
   await expect(page.getByRole("status")).toContainText("basic form validation");
 
@@ -86,8 +86,8 @@ test("no learner entries are transmitted or persisted across reload", async ({ p
   expect(consoleMessages.join("\n")).not.toContain(learnerMarker);
 
   await page.reload();
-  await expect(page.getByLabel("Mark for subject 1")).toHaveValue("");
-  await expect(page.getByLabel("Subject 1")).toHaveValue("English Home Language");
+  await expect(page.locator("#mark-0")).toHaveValue("");
+  await expect(page.locator("#subject-0")).toHaveValue("English Home Language");
 });
 
 test("automated accessibility scan has no critical or serious WCAG violations", async ({ page }) => {
