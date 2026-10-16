@@ -92,7 +92,7 @@ The existing GitHub Actions `Contract tests` workflow passed on PR head commit `
 
 ## Phase 4 validation automation update — 2026-10-16
 
-The merged API contract now has a follow-up change on branch `ci/phase-4-openapi-validation`: pinned Redocly OpenAPI lint and API-specific Node.js assertions are configured in GitHub Actions. The run must pass before the contract gate can be considered. Remaining questions are unchanged: final owner approval of the wire schema; OR-019/Q-018 provider/runtime, CORS, cache, timeout/retry, rate limits, logging/retention and R100/month cost; source-backed catalogue/funding records; and runtime privacy verification. Do not treat authored automation as test evidence.
+The merged API contract now has a follow-up change on branch `ci/phase-4-openapi-validation`: pinned Redocly OpenAPI lint and API-specific Node.js assertions are configured in GitHub Actions. The run must pass before the contract gate can be considered. Owner review of the current public wire-schema baseline was accepted on 2026-10-16 (D-052). Remaining questions are OR-019/Q-018 provider/runtime, CORS, cache, timeout/retry, rate limits, logging/retention and R100/month cost; source-backed catalogue/funding records; and runtime privacy verification. Do not treat authored automation as test evidence.
 
 
 ## Phase 4 owner approval and funding evidence update — 2026-10-16
