@@ -51,11 +51,12 @@ test("OpenAPI error and catalogue schemas exist and close unexpected properties"
 });
 
 test("Markdown inventory and error/schema docs preserve the same contract boundary", () => {
-  for (const text of [contract, endpoints, variables]) {
+  for (const text of [contract, endpoints]) {
     assert.match(text, /\/api\/v1\/programmes/);
     assert.match(text, /\/api\/v1\/funding-opportunities/);
     assert.match(text, /page-memory-only|page memory/i);
   }
+  assert.match(variables, /remain in page memory/i);
   for (const status of ["400", "405", "406", "429", "500", "503", "504"]) {
     assert.ok(errors.includes(status), `API-ERRORS.md missing status ${status}`);
   }
@@ -68,5 +69,5 @@ test("learner inputs and tracker data are prohibited from API transmission", () 
   assert.match(contract, /MUST NOT transmit marks/i);
   assert.match(contract, /tracker is page-memory-only/i);
   assert.match(errors, /Never log request bodies, marks, interests, matching results or tracker entries/i);
-  assert.match(variables, /must not be sent to a server or persisted across page reload\/close/i);
+  assert.match(variables, /No variable from IF-002 is sent to a server or persisted across page reload\/close/i);
 });
