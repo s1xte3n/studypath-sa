@@ -118,3 +118,12 @@ A follow-up official-source research pass added two candidates to `docs/product/
 
 The register now contains four research candidates (NSFAS, Funza Lushaka, Northern Cape Premier's Bursary, and Garden Route District Municipality). This does **not** satisfy the target of 3–5 fully verified and curator-approved opportunities. NSFAS's conflicting 2027 deadline statements remain unresolved. Next catalogue gate: review complete official adverts and current-cycle rules, confirm deadline/status and geographic/qualification restrictions, normalize only supported non-sensitive criteria, add deterministic tests, and record curator sign-off. No runtime/API catalogue or eligibility behavior was changed.
 
+
+
+## Funding-candidate rule verification — 2026-10-16 (follow-up)
+
+A follow-up official-source review is recorded in [FUNDING-CANDIDATE-RULE-VERIFICATION-2026-10-16.md](../product/FUNDING-CANDIDATE-RULE-VERIFICATION-2026-10-16.md).
+
+- **Northern Cape Premier's Bursary 2027 remains blocked:** the official programme page says age 18–30 and shows award bands up to R800,000 household income; the official FAQ instead says age 18–35 and shows a different award table. Do not normalize age or award values until the provider clarifies which current-cycle rules govern. The checklist requests sensitive identity and household-finance evidence; StudyPath SA must not collect it.
+- **Garden Route District Municipality 2027 has a clearer initial scope:** current Grade 12 / Grade 12 completers and current tertiary students, full-time study at SAQA-accredited tertiary or TVET institutions, and parents permanently resident within the municipal area; published closing date 31 October 2026. The official notice still leaves award/coverage and complete selection rules insufficiently normalized. It requests identity and parental-income evidence that StudyPath SA must not collect.
+- Both records remain research-only and unpublished. This source review did not change code, API data, or tests. Next gate is authoritative resolution of Northern Cape conflicts, review of the Garden Route application form, curator-approved non-sensitive rules, deterministic tests, and provenance/sign-off. Missing or conflicting criteria remain `UNKNOWN`; no publication approval is implied.
