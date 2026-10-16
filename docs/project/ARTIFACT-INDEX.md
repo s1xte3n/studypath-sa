@@ -1,7 +1,7 @@
 # StudyPath SA — Artifact Index
 
 **Last updated:** 2026-10-16  
-**Phase:** 4 — API/interface contracts (`ARCHITECTURE READY` passed 2026-10-16 for design/traceability only; contract CI passed on merge commit after PR #89; Phase 4 gate still pending owner review and open decisions)  
+**Phase:** 4 — API/interface contracts (`ARCHITECTURE READY` passed 2026-10-16 for design/traceability only; contract CI passed on merge commit after PR #89; Phase 4 owner review accepted on 2026-10-16; runtime/cost and catalogue evidence remain open)  
 **Historical-note convention:** Dated sections below preserve prior review snapshots. Where an older row says “proposed,” “on branch for review,” or “not started,” use the latest status table and subsequent dated updates as current; earlier snapshots are not current approval or implementation evidence.  
 **Gate:** Phase 0 `PROJECT READY`, Phase 1 `PRD READY`, Phase 2 `REQUIREMENTS READY`, and the Phase 3 architecture baseline are accepted for their stated scope only. D-050 records architecture approval on 2026-10-16. Phase 4 API/interface contract work is next; downstream implementation, cost, privacy/security and release gates remain open.
 
