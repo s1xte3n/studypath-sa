@@ -22,3 +22,10 @@ Initial Phase 4 contract baseline created for review.
 ### Compatibility rules
 
 Breaking wire changes require a major version namespace and migration plan. Additive optional fields may be introduced within v1 only if clients tolerate unknown properties. Changing requiredness, nullability, enum values, ID meaning, sort semantics, or error codes is breaking. Update all contract documents, OpenAPI and tests before dependent code.
+
+
+## 1.0.0-draft follow-up — validation automation (2026-10-16)
+
+- Added `.github/workflows/openapi-validation.yml` to run pinned Redocly CLI `lint --extends spec` against the OpenAPI 3.1 document and execute `node --test` on pull requests/pushes affecting API docs or contract tests.
+- Added `tests/contracts/openapi-contract.test.mjs` for route inventory, anonymous/read-only scope, response status presence, schema declarations and learner-data privacy invariants.
+- This automation is not itself evidence of passing validation; record the actual CI run and address all findings before contract approval.

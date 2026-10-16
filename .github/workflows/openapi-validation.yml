@@ -1,0 +1,40 @@
+name: OpenAPI validation
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "docs/api/**"
+      - "tests/contracts/**"
+      - ".github/workflows/openapi-validation.yml"
+  push:
+    branches: [main]
+    paths:
+      - "docs/api/**"
+      - "tests/contracts/**"
+      - ".github/workflows/openapi-validation.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: openapi-validation-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate-openapi:
+    name: Validate OpenAPI and contract invariants
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Validate OpenAPI 3.1 specification
+        run: npx --yes @redocly/cli@1.34.5 lint --extends spec docs/api/openapi.yaml
+      - name: Run repository and API contract tests
+        run: node --test

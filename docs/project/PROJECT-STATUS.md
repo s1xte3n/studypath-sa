@@ -290,3 +290,10 @@ The product owner explicitly accepted the reconciled requirements baseline on me
 The architecture readiness assessment is recorded in [ARCHITECTURE-READINESS-REVIEW.md](../architecture/ARCHITECTURE-READINESS-REVIEW.md). Requirements trace to logical components, ADRs, security boundaries and acceptance/verification IDs; major trade-offs are documented in ADR-001–ADR-005. The pass is limited to the architecture design baseline. It does not claim implementation, tests, CI, runtime privacy/accessibility verification, catalogue publication, cloud provisioning, deployment or release.
 
 **Next gate:** Phase 4 API/interface contracts. Keep the initial public API catalogue-only; learner marks, subjects/results, interests, recommendations and tracker entries must not be request fields. Define schemas, provenance, versioning, validation, errors, freshness/cache semantics and contract tests. Q-018, Q-020, Q-019 and G-SYN-001 remain open as applicable. No cloud provisioning or real learner-data processing is authorized.
+
+
+## Phase 4 follow-up — contract validation automation (2026-10-16)
+
+PR #86 merged the canonical draft interface documentation. The next change adds `.github/workflows/openapi-validation.yml`, which runs pinned Redocly CLI validation against `docs/api/openapi.yaml` and executes `node --test`. It also adds `tests/contracts/openapi-contract.test.mjs` to assert the two approved public read-only paths, documented response status coverage, core schema declarations and learner-data privacy boundary.
+
+**Status:** Automation authored on branch `ci/phase-4-openapi-validation`; CI has not yet been observed for this branch in this status snapshot. This does not pass the Phase 4 gate. Owner approval, successful validation/test evidence, remaining runtime/provider/cost decisions, catalogue record verification and privacy/runtime evidence are still required. No application runtime or deployment is claimed.
