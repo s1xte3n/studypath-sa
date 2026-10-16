@@ -107,3 +107,92 @@
 5. Have the curator sign off the complete record and its source evidence before publication.
 
 **Disposition:** This adds a second official-source funding candidate, not a second approved opportunity. The 3–5 verified-opportunity target is still unmet.
+
+## Candidate FND-NC-PREMIER-2027 — Northern Cape Premier's Bursary Programme
+
+**Provider:** Northern Cape Provincial Government, Office of the Premier  
+**Applicable cycle:** 2027  
+**Status:** **RESEARCHED CANDIDATE — not publication-ready**  
+**Research date:** 2026-10-16  
+**Official source:** https://www.northerncape.gov.za/bursary/
+
+### Observed facts
+
+- The official provincial bursary page advertises support for full-time undergraduate / first-qualification studies at an accredited South African higher education institution.
+- The published eligibility summary identifies South African citizenship and unemployed youth aged 18–30 from the Northern Cape as the intended applicant group.
+- The official page lists a closing date of **31 October 2026** and states that late applications will not be considered.
+- The page includes income-banded award values and asks for household/parent/guardian financial evidence. These are sensitive criteria and documents; StudyPath SA must not collect or infer them. Applicants must use the provider's official process.
+- The source page is official, but this research pass did not verify the full advert, all exclusions, required proof, award conditions, or the latest application submission instructions.
+
+### Normalized draft handling
+
+| Field | Draft value | Reason |
+|---|---|---|
+| Stable ID | `FND-NC-PREMIER-2027` | Internal catalogue ID only |
+| Provider | Northern Cape Provincial Government — Office of the Premier | As named by the official page |
+| Cycle | `2027` | Advertised cycle |
+| Official website | https://www.northerncape.gov.za/bursary/ | Official provincial page |
+| Application URL | https://www.northerncape.gov.za/bursary/ | Entry page; verify the current form and submission channel from the full advert |
+| Deadline text | 31 October 2026; no late applications | Official page statement; recheck before publication |
+| Deadline timestamp | `null` | Date-only source; no time/timezone normalized |
+| Eligibility summary | Intended for qualifying unemployed South African citizens aged 18–30 from the Northern Cape pursuing a first undergraduate qualification full-time | Summary only; full rules not yet normalized |
+| Award amount/coverage | Official page displays income-banded award values; not reproduced as a definitive user-facing amount in this research pass | Full advert, conditions and budget availability need review |
+| Sensitive data handling | Do not collect household income, bank statements, IDs or supporting documents in StudyPath SA | Refer applicants to the provider's own process |
+| Source verification | 2026-10-16 | Research date, not curator approval |
+| Publication status | Research-only / not publishable | Full advert review, normalized criteria, tests and curator sign-off outstanding |
+
+### Required actions before publication
+
+1. Review the complete official advert and application form; record source title, version/date, sections and exact submission method.
+2. Verify citizenship, residence, age, unemployment, qualification-level, institution, academic-performance, income-band and other conditions, distinguishing hard requirements from preferences.
+3. Do not build eligibility checks from household income or request financial documents. Keep unsupported/sensitive rules unknown and link to the official provider process.
+4. Recheck deadline and available funding on the day of curation; do not infer an extension.
+5. Create deterministic tests for every non-sensitive, explicitly supported rule and obtain curator sign-off.
+
+**Disposition:** Potentially relevant to Northern Cape learners, but restricted geography and sensitive financial criteria require careful handling. It is a research candidate, not an approved funding opportunity.
+
+## Candidate FND-GRDM-2027 — Garden Route District Municipality External Bursary
+
+**Provider:** Garden Route District Municipality  
+**Applicable cycle:** 2027  
+**Status:** **RESEARCHED CANDIDATE — not publication-ready**  
+**Research date:** 2026-10-16  
+**Official source:** https://www.gardenroute.gov.za/2026/09/04/04-september-2026-opportunities-financial-assistance-towards-further-studies-2027/
+
+### Observed facts
+
+- The official municipal notice advertises financial assistance for further studies in the 2027 academic year and states applications opened on 1 September 2026.
+- The published closing date is **31 October 2026**.
+- The notice requests a completed application, CV and cover letter, Grade 12 or latest tertiary results, ID, an affidavit of parents' combined income, and proof of residential address.
+- Applications are described as being submitted to the municipality's Records office for the attention of the Training and Development Section. The complete advert/form must be reviewed to confirm the current submission instructions.
+- This is a locally scoped opportunity, not a national bursary. The exact residency boundary, qualification/field restrictions, selection rules, amount and award conditions have not yet been normalized in this research pass.
+- Household income and identity documents are sensitive. StudyPath SA must not collect them; direct applicants to the official municipal process.
+
+### Normalized draft handling
+
+| Field | Draft value | Reason |
+|---|---|---|
+| Stable ID | `FND-GRDM-2027` | Internal catalogue ID only |
+| Provider | Garden Route District Municipality | Official notice |
+| Cycle | `2027` | Explicitly advertised |
+| Official website | https://www.gardenroute.gov.za/ | Official municipal website |
+| Opportunity notice | https://www.gardenroute.gov.za/2026/09/04/04-september-2026-opportunities-financial-assistance-towards-further-studies-2027/ | Official notice and form link |
+| Deadline text | 31 October 2026 | Official notice; recheck before publication |
+| Deadline timestamp | `null` | Date-only source; no time/timezone normalized |
+| Eligibility summary | Financial assistance for further study in 2027; full residency, study-level and selection rules need verification | Do not infer broad eligibility from the notice heading |
+| Required documents | Notice lists application form, CV, cover letter, results, ID, parental combined-income affidavit and proof of address | Applicant should confirm the complete current checklist with the municipality |
+| Award amount/coverage | Not normalized | Verify official advert and conditions |
+| Sensitive data handling | Do not collect IDs or household income evidence in StudyPath SA | Refer applicants to the municipality |
+| Source verification | 2026-10-16 | Research date, not curator approval |
+| Publication status | Research-only / not publishable | Full advert/rules, deterministic tests and curator sign-off outstanding |
+
+### Required actions before publication
+
+1. Review the complete advert and application form, including exact residency, qualification, field-of-study, academic, financial and selection criteria.
+2. Confirm whether the programme is limited to residents of the district and represent that geographic restriction explicitly.
+3. Confirm submission channel, deadline details, award amount/coverage, and any service or repayment obligation from the official source.
+4. Never collect IDs, household income evidence or supporting documents in StudyPath SA.
+5. Recheck current-cycle status and have the curator approve the normalized record and tests.
+
+**Disposition:** Potentially useful as a locally scoped opportunity, but it must not be presented as nationally available. It remains research-only.
+
