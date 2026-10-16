@@ -3,8 +3,8 @@
 **Last updated:** 2026-10-16  
 **Repository:** https://github.com/s1xte3n/studypath-sa  
 **Current phase:** Phase 3 — Architecture and ADRs  
-**Latest passed gate:** `PRD READY` — **PASSED on 2026-10-14 for the approved PRD/acceptance-criteria baseline only**  
-**Next gate:** `REQUIREMENTS READY` — not yet passed
+**Latest passed gate:** `REQUIREMENTS READY` — **PASSED on 2026-10-16 for requirements definition and traceability only; D-049 records explicit owner acceptance**  
+**Next gate:** `ARCHITECTURE READY` — not yet passed
 
 ## Gate status at a glance
 
