@@ -118,3 +118,56 @@ test("automated accessibility scan has no critical or serious WCAG violations", 
     nodes: item.nodes.map(node => node.target)
   })), null, 2)).toEqual([]);
 });
+
+
+test("synthetic learner markers are absent from browser history, IndexedDB, Cache API and cross-tab state", async ({ page, context }) => {
+  const marker = "SYNTHETIC-PRIVACY-SENTINEL-741";
+  await page.goto("/");
+  await page.locator("#subject-0").selectOption("Mathematics");
+  await page.locator("#mark-0").fill("74");
+  await page.getByRole("button", { name: /Check my entries/ }).click();
+
+  const browserState = await page.evaluate(async (sentinel) => {
+    const storage = {
+      localStorageKeys: Object.keys(localStorage),
+      sessionStorageKeys: Object.keys(sessionStorage),
+      cookie: document.cookie,
+      historyState: JSON.stringify(history.state),
+      url: location.href,
+      indexedDbNames: typeof indexedDB.databases === "function"
+        ? (await indexedDB.databases()).map(db => db.name ?? "")
+        : ["unsupported"],
+      cacheNames: await caches.keys()
+    };
+    const serialised = JSON.stringify(storage);
+    return {
+      localStorageKeys: storage.localStorageKeys,
+      sessionStorageKeys: storage.sessionStorageKeys,
+      cookie: storage.cookie,
+      historyContainsSentinel: storage.historyState.includes(sentinel),
+      urlContainsSentinel: storage.url.includes(sentinel),
+      indexedDbNames: storage.indexedDbNames,
+      cacheNames: storage.cacheNames,
+      stateContainsSentinel: serialised.includes(sentinel)
+    };
+  }, marker);
+
+  expect(browserState.localStorageKeys).toEqual([]);
+  expect(browserState.sessionStorageKeys).toEqual([]);
+  expect(browserState.cookie).toBe("");
+  expect(browserState.historyContainsSentinel).toBe(false);
+  expect(browserState.urlContainsSentinel).toBe(false);
+  expect(browserState.indexedDbNames).toEqual([]);
+  expect(browserState.cacheNames).toEqual([]);
+  expect(browserState.stateContainsSentinel).toBe(false);
+
+  const secondPage = await context.newPage();
+  await secondPage.goto("/");
+  await expect(secondPage.locator("#mark-0")).toHaveValue("");
+  await expect(secondPage.locator("#subject-0")).toHaveValue("English Home Language");
+  await secondPage.close();
+
+  await page.reload();
+  await expect(page.locator("#mark-0")).toHaveValue("");
+  await expect(page.locator("#subject-0")).toHaveValue("English Home Language");
+});
