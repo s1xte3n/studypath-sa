@@ -119,14 +119,13 @@ test("automated accessibility scan has no critical or serious WCAG violations", 
   })), null, 2)).toEqual([]);
 });
 
-
 test("transient learner entries are not persisted in browser storage or restored across tabs and reloads", async ({ page, context }) => {
   await page.goto("/");
   await page.locator("#subject-0").selectOption("Mathematics");
   await page.locator("#mark-0").fill("74");
   await page.getByRole("button", { name: /Check my entries/ }).click();
 
-  const browserState = await page.evaluate(async (sentinel) => {
+  const browserState = await page.evaluate(async () => {
     return {
       localStorageKeys: Object.keys(localStorage),
       sessionStorageKeys: Object.keys(sessionStorage),
