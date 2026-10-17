@@ -65,6 +65,16 @@ test("Markdown inventory and error/schema docs preserve the same contract bounda
   assert.match(schemas, /CatalogueId/);
 });
 
+test("unsupported Accept negotiation is canonical 406 NOT_ACCEPTABLE", () => {
+  assert.match(contract, /406 NOT_ACCEPTABLE.*valid Accept header excludes JSON/);
+  assert.match(errors, /\| 406 \| `NOT_ACCEPTABLE` \| A syntactically valid `Accept` header excludes JSON/);
+  assert.match(errors, /\| 400 \| `INVALID_ACCEPT_HEADER` \| Syntactically malformed `Accept` header/);
+  assert.doesNotMatch(errors, /\| 400 \| `INVALID_ACCEPT_HEADER` \| Explicitly unsupported response media type/);
+  assert.equal((openapi.match(/name: Accept/g) ?? []).length, 2);
+  assert.equal((openapi.match(/No response representation is acceptable under the client's Accept header/g) ?? []).length, 2);
+  assert.match(openapi, /INVALID_REQUEST_BODY/);
+});
+
 test("learner inputs and tracker data are prohibited from API transmission", () => {
   assert.match(contract, /MUST NOT transmit marks/i);
   assert.match(contract, /tracker is page-memory-only/i);
