@@ -206,3 +206,121 @@ test("unknown routes return a safe 404 error envelope", async () => {
     assert.deepEqual(Object.keys(result.body.error).sort(), ["code", "message", "requestId"]);
   });
 });
+
+
+test("schema integrity excludes missing fields, invalid enums, malformed IDs and impossible UTC timestamps", async () => {
+  await withServer({
+    programmes: [
+      programme("SYNTH-VALID"),
+      programme("synthetic-lowercase-id"),
+      programme("SYNTH-BAD-ENUM", { qualificationType: "CERTIFICATE" }),
+      programme("SYNTH-BAD-DATE", { verifiedAt: "2026-02-30T10:00:00Z" }),
+      programme("SYNTH-MISSING-TITLE", { title: undefined }),
+      programme("SYNTH-MISSING-CYCLE", { applicableCycle: "" }),
+      programme("SYNTH-BAD-SOURCE-DATE", {
+        sources: [{ ...source, verifiedAt: "2026-13-01T00:00:00Z" }],
+      }),
+      programme("SYNTH-BAD-PROVINCE", {
+        institution: {
+          id: "SYNTHETIC-INSTITUTION",
+          name: "Synthetic institution",
+          institutionType: "UNIVERSITY",
+          province: "ATLANTIS",
+          websiteUrl: "https://example.invalid",
+        },
+      }),
+    ],
+  }, async (base) => {
+    const result = await send(base, "/api/v1/programmes");
+    assert.equal(result.status, 200);
+    assert.deepEqual(result.body.items.map((item) => item.id), ["SYNTH-VALID"]);
+  });
+});
+
+test("internal exceptions return a generic 500 without stack or configuration leakage", async () => {
+  await withServer({
+    now: () => { throw new Error("PRIVATE_STACK_SENTINEL /etc/private/config"); },
+  }, async (base) => {
+    const result = await send(base, "/api/v1/programmes");
+    assert.equal(result.status, 500);
+    assert.match(result.headers.get("content-type"), /^application\/json; charset=utf-8$/);
+    assert.equal(result.headers.get("x-content-type-options"), "nosniff");
+    assert.equal(result.body.error.code, "INTERNAL_ERROR");
+    assert.deepEqual(Object.keys(result.body.error).sort(), ["code", "message", "requestId"]);
+    assert.doesNotMatch(JSON.stringify(result.body), /PRIVATE_STACK_SENTINEL|\/etc\/private\/config|Error:/);
+  });
+});
+
+test("profile-like headers are neither echoed nor used for catalogue personalization", async () => {
+  const marker = "SYNTHETIC-HEADER-SENTINEL-789";
+  await withServer({ programmes: [programme("SYNTH-PUBLIC")] }, async (base) => {
+    const result = await sendRaw(base, "/api/v1/programmes", {
+      headers: { "X-Student-Profile": marker },
+    });
+    assert.equal(result.status, 200);
+    assert.deepEqual(result.body.items.map((item) => item.id), ["SYNTH-PUBLIC"]);
+    assert.doesNotMatch(JSON.stringify(result.body), new RegExp(marker));
+  });
+});
+
+test("catalogue handler makes no downstream fetch calls", async () => {
+  const originalFetch = globalThis.fetch;
+  let downstreamCalls = 0;
+  globalThis.fetch = async () => {
+    downstreamCalls += 1;
+    throw new Error("Unexpected downstream network call");
+  };
+  try {
+    await withServer({ programmes: [programme("SYNTH-NETWORK-FREE")] }, async (base) => {
+      const result = await sendRaw(base, "/api/v1/programmes");
+      assert.equal(result.status, 200);
+      assert.equal(result.body.items[0].id, "SYNTH-NETWORK-FREE");
+      assert.equal(downstreamCalls, 0);
+    });
+  } finally {
+    globalThis.fetch = originalFetch;
+  }
+});
+
+test("a representative synthetic catalogue response stays within the local payload budget", async () => {
+  const programmes = Array.from({ length: 250 }, (_, index) =>
+    programme("SYNTH-" + String(index).padStart(4, "0")));
+  await withServer({ programmes }, async (base) => {
+    const startedAt = process.hrtime.bigint();
+    const result = await sendRaw(base, "/api/v1/programmes");
+    const elapsedMs = Number(process.hrtime.bigint() - startedAt) / 1_000_000;
+    const responseBytes = Buffer.byteLength(JSON.stringify(result.body));
+    assert.equal(result.status, 200);
+    assert.equal(result.body.items.length, 250);
+    assert.ok(responseBytes < 1_000_000, "synthetic 250-item response should remain under 1 MB");
+    assert.ok(elapsedMs < 5000, "local synthetic response should complete under 5 seconds");
+  });
+});
+
+
+test("PUT, PATCH, DELETE and OPTIONS are rejected by the local route handler", async () => {
+  await withServer({}, async (base) => {
+    for (const method of ["PUT", "PATCH", "DELETE", "OPTIONS"]) {
+      const result = await sendRaw(base, "/api/v1/programmes", { method });
+      assert.equal(result.status, 405, method + " should be rejected");
+      assert.equal(result.headers.allow, "GET");
+      assert.equal(result.body.error.code, "METHOD_NOT_ALLOWED");
+    }
+  });
+});
+
+
+test("funding publication rejects missing required nullable schema properties", async () => {
+  await withServer({
+    fundingOpportunities: [
+      funding("FUND-VALID"),
+      funding("FUND-MISSING-DESCRIPTION", { description: undefined }),
+      funding("FUND-MISSING-DEADLINE", { deadlineAt: undefined }),
+      funding("FUND-INVALID-ID", { id: "funding-invalid" }),
+    ],
+  }, async (base) => {
+    const result = await send(base, "/api/v1/funding-opportunities");
+    assert.equal(result.status, 200);
+    assert.deepEqual(result.body.items.map((item) => item.id), ["FUND-VALID"]);
+  });
+});
