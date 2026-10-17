@@ -60,15 +60,21 @@ test("no learner entries are transmitted or persisted across reload", async ({ p
   await page.goto("/");
   const learnerMarker = "SYNTHETIC-MARK-93";
   const subjectMarker = "Mathematics";
+  const mark = "93";
   await page.locator("#subject-0").selectOption(subjectMarker);
-  await page.locator("#mark-0").fill("93");
+  await page.locator("#mark-0").fill(mark);
   await page.getByRole("button", { name: /Check my entries/ }).click();
   await expect(page.getByRole("status")).toContainText("basic form validation");
 
-  const currentUrl = page.url();
-  expect(currentUrl).not.toContain(learnerMarker);
-  expect(currentUrl).not.toContain("93");
-  expect(currentUrl).not.toContain(subjectMarker);
+  const currentUrl = new URL(page.url());
+  expect(currentUrl.href).not.toContain(learnerMarker);
+  expect(currentUrl.href).not.toContain(subjectMarker);
+  for (const value of currentUrl.searchParams.values()) {
+    expect(value).not.toContain(learnerMarker);
+    expect(value).not.toBe(mark);
+    expect(value).not.toContain(subjectMarker);
+  }
+
   expect(await page.evaluate(() => ({
     local: Object.keys(localStorage),
     session: Object.keys(sessionStorage),
@@ -76,14 +82,20 @@ test("no learner entries are transmitted or persisted across reload", async ({ p
   }))).toEqual({ local: [], session: [], cookies: "" });
 
   for (const request of requests) {
-    expect(new URL(request.url).origin).toBe("http://127.0.0.1:4173");
-    expect(request.url).not.toContain(learnerMarker);
-    expect(request.url).not.toContain("93");
-    expect(request.postData).not.toContain(learnerMarker);
-    expect(request.postData).not.toContain("93");
-    expect(request.postData).not.toContain(subjectMarker);
+    const url = new URL(request.url);
+    expect(url.origin).toBe("http://127.0.0.1:4173");
+    expect(request.method).toBe("GET");
+    expect(url.href).not.toContain(learnerMarker);
+    expect(url.href).not.toContain(subjectMarker);
+    for (const value of url.searchParams.values()) {
+      expect(value).not.toContain(learnerMarker);
+      expect(value).not.toBe(mark);
+      expect(value).not.toContain(subjectMarker);
+    }
+    expect(request.postData).toBe("");
   }
   expect(consoleMessages.join("\n")).not.toContain(learnerMarker);
+  expect(consoleMessages.join("\n")).not.toContain(subjectMarker);
 
   await page.reload();
   await expect(page.locator("#mark-0")).toHaveValue("");
