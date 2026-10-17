@@ -243,11 +243,11 @@ test("internal exceptions return a generic 500 without stack or configuration le
   }, async (base) => {
     const result = await send(base, "/api/v1/programmes");
     assert.equal(result.status, 500);
-    assert.match(result.headers.get("content-type"), /^application\\/json; charset=utf-8$/);
+    assert.match(result.headers.get("content-type"), /^application\/json; charset=utf-8$/);
     assert.equal(result.headers.get("x-content-type-options"), "nosniff");
     assert.equal(result.body.error.code, "INTERNAL_ERROR");
     assert.deepEqual(Object.keys(result.body.error).sort(), ["code", "message", "requestId"]);
-    assert.doesNotMatch(JSON.stringify(result.body), /PRIVATE_STACK_SENTINEL|\\/etc\\/private\\/config|Error:/);
+    assert.doesNotMatch(JSON.stringify(result.body), /PRIVATE_STACK_SENTINEL|\/etc\/private\/config|Error:/);
   });
 });
 
