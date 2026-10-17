@@ -1,6 +1,6 @@
 # Phase 4 — Runtime Profile Options for Owner Decision
 
-**Status:** Option B is owner-approved as the first candidate for validation only; no deployable runtime is approved and no provisioning is authorized.
+**Status:** Option B is approved for validation only; D-053 records that numeric rate limiting is not available in the current evidence and public hosted deployment remains blocked until abuse controls and cost are approved.
 **Date:** 2026-10-16
 **Related:** D-004, D-044, D-050–D-052, ADR-001, ADR-004, ADR-005, Q-018, Q-020, OR-019.
 **Hard constraint:** total project spend must remain at or below R100/month. This document does not authorize provisioning.
@@ -61,7 +61,7 @@ The full stack (fixed-cost API Management, database, Blob Storage, identity, AI/
 
 Continue validating **Option B first**, because it may satisfy the catalogue-only API need using Static Web Apps Free's managed Functions capability. Option C is the fallback if a verified limitation prevents a requirement from being met. Keep Option A as the working state while validation continues.
 
-The current evidence assessment is recorded in [OPTION-B-VALIDATION-EVIDENCE.md](OPTION-B-VALIDATION-EVIDENCE.md). It finds the profile plausible but does not establish hosted route behavior, numeric rate limiting, subscription-specific free-grant eligibility, complete cost <= R100/month, or deployment readiness.
+The current evidence assessment is recorded in [OPTION-B-VALIDATION-EVIDENCE.md](OPTION-B-VALIDATION-EVIDENCE.md). It finds the profile plausible but does not establish hosted route behavior, subscription-specific free-grant eligibility, complete cost <= R100/month, or deployment readiness. The rate-limiting disposition is in [RATE-LIMITING-DECISION.md](RATE-LIMITING-DECISION.md): continue local validation, but do not publicly deploy Option B until a cost-approved abuse-control approach or explicit risk exception is approved.
 
 ## Evidence required before the runtime gate can pass
 
@@ -71,7 +71,7 @@ The current evidence assessment is recorded in [OPTION-B-VALIDATION-EVIDENCE.md]
 4. Runtime compatibility evidence for the managed Functions API, including Node.js version, route mapping to `/api/v1`, response constraints, and behavior for unsupported methods/queries.
 5. Provider-settings review for request/response capture, access logs, diagnostics, retention, telemetry, default error pages and data location.
 6. Threat review for anonymous routes, rate limits, abuse controls and, for Option C, direct Function endpoint exposure.
-7. Approved CORS (if any cross-origin calls are used), cache TTL/stale policy, timeout/retry values, rate limits, logging allow-list/retention and operational owner.
+7. Approved CORS (if any cross-origin calls are used), cache TTL/stale policy, timeout/retry values, logging allow-list/retention and operational owner. For rate limiting, follow [D-053](RATE-LIMITING-DECISION.md): demonstrate an enforceable, cost-approved control or obtain explicit risk-exception approval before public hosted deployment.
 8. Synthetic integration tests for both routes, error envelopes, response schema, catalogue provenance/freshness, unavailable/timeout behavior and proof learner data is absent from network requests and logs.
 9. Final owner approval of runtime settings and a separate explicit authorization before any provisioning or deployment.
 
@@ -94,7 +94,8 @@ The current evidence assessment is recorded in [OPTION-B-VALIDATION-EVIDENCE.md]
 - API Management: excluded from this candidate; revisit only if required controls cannot be met otherwise and cost is re-approved.
 - Complete monthly cost / R100 cap: **NOT CERTIFIED**; see [OPTION-B-VALIDATION-EVIDENCE.md](OPTION-B-VALIDATION-EVIDENCE.md).
 - CORS: same-origin `/api` routing intended; hosted behavior not tested.
-- Cache TTL, stale policy, timeouts/retries, numeric rate limits, logging allow-list/retention: proposed/open; not approved as runtime settings.
+- Cache TTL, stale policy, timeouts/retries, and logging allow-list/retention: proposed/open; not approved as runtime settings.
+- Numeric rate limiting: D-053 says no numeric per-IP limit is established for Option B; public hosted deployment remains blocked until an enforceable, cost-approved abuse control or explicit risk exception is approved.
 - Operational owner and rollback/disable method: must be recorded before deployment.
 - Reviewer / decision date: product owner, 2026-10-17.
 - Explicit provisioning authorization: **NO**.
