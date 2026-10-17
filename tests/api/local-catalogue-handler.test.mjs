@@ -120,8 +120,8 @@ test("API-001 returns only publication-ready synthetic programmes in stable ID o
   }, async (base) => {
     const result = await send(base, "/api/v1/programmes");
     assert.equal(result.status, 200);
-    assert.match(result.headers["content-type"], /^application\/json; charset=utf-8$/);
-    assert.equal(result.headers["x-content-type-options"], "nosniff");
+    assert.match(result.headers.get("content-type"), /^application\/json; charset=utf-8$/);
+    assert.equal(result.headers.get("x-content-type-options"), "nosniff");
     assert.deepEqual(result.body.items.map((item) => item.id), ["SYNTH-A", "SYNTH-Z"]);
     assert.equal(result.body.generatedAt, "2026-10-17T12:00:00.000Z");
   });
