@@ -5,8 +5,12 @@ info:
   description: >
     Draft machine-readable contract for public catalogue reads only. Anonymous
     matching is client-side. Learner inputs, results and tracker entries must
-    never be sent to this API. Runtime deployment and catalogue publication are
-    not verified; see docs/api/API-CONTRACT.md.
+    never be sent to this API. A 404 NOT_FOUND for an unmatched path is a
+    routing/gateway outcome, not a response from either operation defined below.
+    For 429 responses, Retry-After is optional; when present under this contract
+    it is a non-negative integer number of seconds, and no delay is guaranteed.
+    Runtime deployment and catalogue publication are not verified; see
+    docs/api/API-CONTRACT.md.
 servers:
   - url: /api/v1
     description: Relative API base; deployment origin is not yet approved.
@@ -59,6 +63,7 @@ paths:
           description: Request rate limit exceeded.
           headers:
             Retry-After:
+              description: Optional non-negative integer retry delay in seconds; no delay is guaranteed.
               schema:
                 type: integer
                 minimum: 0
@@ -128,7 +133,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/APIErrorResponse'
         '429':
-          description: Request rate limit exceeded.
+          description: Request rate limit exceeded, only when a deployment-level control enforces a limit.
+          headers:
+            Retry-After:
+              description: Optional non-negative integer retry delay in seconds; no delay is guaranteed.
+              schema:
+                type: integer
+                minimum: 0
           content:
             application/json:
               schema:
