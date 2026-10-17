@@ -192,24 +192,43 @@ function parseAccept(header) {
   const entries = header.split(",");
   if (entries.some((entry) => entry.trim() === "")) return { malformed: true };
 
+  const matchingRanges = [];
   for (const entry of entries) {
     const [mediaRaw, ...params] = entry.trim().split(";");
     const media = mediaRaw.trim().toLowerCase();
-    if (!/^(\*|[!#$%&'*+.^_\`|~0-9a-z-]+)\/(\*|[!#$%&'*+.^_\`|~0-9a-z-]+)$/.test(media)) {
+    if (!/^(\*|[!#$%&'*+.^_\`|~0-9a-z-]+)\/(\*|[!#$%&'*+.^_\`|~0-9a-z-]+)$/.test(media)
+      || (media.startsWith("*/") && media !== "*/*")) {
       return { malformed: true };
     }
+
     let quality = 1;
+    let qualitySeen = false;
     for (const param of params) {
-      const match = /^\s*q\s*=\s*(.*?)\s*$/i.exec(param);
-      if (match) {
-        if (!/^(?:0(?:\.\d{0,3})?|1(?:\.0{0,3})?)$/.test(match[1])) return { malformed: true };
+      const trimmed = param.trim();
+      if (/^q\s*=/i.test(trimmed)) {
+        if (qualitySeen) return { malformed: true };
+        const match = /^q\s*=\s*(.*?)\s*$/i.exec(trimmed);
+        if (!match || !/^(?:0(?:\.\d{0,3})?|1(?:\.0{0,3})?)$/.test(match[1])) {
+          return { malformed: true };
+        }
         quality = Number(match[1]);
+        qualitySeen = true;
       }
     }
-    const permitsJson = media === "application/json" || media === "application/*" || media === "*/*";
-    if (permitsJson && quality > 0) return { accepted: true };
+
+    let specificity = -1;
+    if (media === "application/json") specificity = 2;
+    else if (media === "application/*") specificity = 1;
+    else if (media === "*/*") specificity = 0;
+    if (specificity >= 0) matchingRanges.push({ specificity, quality });
   }
-  return { accepted: false };
+
+  if (matchingRanges.length === 0) return { accepted: false };
+  const highestSpecificity = Math.max(...matchingRanges.map((range) => range.specificity));
+  const effectiveQuality = Math.max(...matchingRanges
+    .filter((range) => range.specificity === highestSpecificity)
+    .map((range) => range.quality));
+  return { accepted: effectiveQuality > 0 };
 }
 
 function writeJson(res, statusCode, body, extraHeaders = {}) {

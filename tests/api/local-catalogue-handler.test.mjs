@@ -185,6 +185,52 @@ test("malformed Accept syntax is distinct from a valid but unsupported represent
   });
 });
 
+test("Accept specificity overrides a permissive wildcard when JSON has q=0", async () => {
+  await withServer({}, async (base) => {
+    for (const accept of [
+      "application/json;q=0, */*;q=1",
+      "application/json;q=0, application/*;q=0.8, */*;q=1",
+      "application/json; q=0.000, */*;q=0.5",
+    ]) {
+      const result = await send(base, "/api/v1/programmes", { headers: { Accept: accept } });
+      assert.equal(result.status, 406, accept);
+      assert.equal(result.body.error.code, "NOT_ACCEPTABLE", accept);
+    }
+  });
+});
+
+test("Accept negotiation selects the most specific matching range", async () => {
+  await withServer({}, async (base) => {
+    const cases = [
+      ["application/json;q=0.2, */*;q=1", 200],
+      ["application/*;q=0.7, */*;q=0.1", 200],
+      ["text/html;q=1, application/json;q=0.1", 200],
+      ["application/json;q=0, text/html;q=1", 406],
+    ];
+    for (const [accept, expectedStatus] of cases) {
+      const result = await send(base, "/api/v1/programmes", { headers: { Accept: accept } });
+      assert.equal(result.status, expectedStatus, accept);
+      if (expectedStatus === 406) assert.equal(result.body.error.code, "NOT_ACCEPTABLE", accept);
+    }
+  });
+});
+
+test("duplicate or malformed Accept quality parameters return 400 INVALID_ACCEPT_HEADER", async () => {
+  await withServer({}, async (base) => {
+    for (const accept of [
+      "application/json;q=0.5;q=1",
+      "application/json;q=NaN",
+      "application/json;q=1.001",
+      "application/json;q=-0.1",
+      "application/json;q=0.1234",
+    ]) {
+      const result = await send(base, "/api/v1/programmes", { headers: { Accept: accept } });
+      assert.equal(result.status, 400, accept);
+      assert.equal(result.body.error.code, "INVALID_ACCEPT_HEADER", accept);
+    }
+  });
+});
+
 test("GET request bodies are rejected and never reflected", async () => {
   const marker = "SYNTHETIC-BODY-SENTINEL-456";
   await withServer({}, async (base) => {
