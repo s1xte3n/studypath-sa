@@ -324,3 +324,31 @@ test("funding publication rejects missing required nullable schema properties", 
     assert.deepEqual(result.body.items.map((item) => item.id), ["FUND-VALID"]);
   });
 });
+
+test("all local HTTP error classes preserve the required safe response headers", async () => {
+  await withServer({
+    now: () => { throw new Error("PRIVATE_HEADER_TEST_SENTINEL"); },
+  }, async (base) => {
+    const cases = [
+      { path: "/api/v1/programmes?unknown=1", status: 400, code: "INVALID_QUERY_PARAMETER" },
+      { path: "/api/v1/programmes", headers: { Accept: "not-a-media-type" }, status: 400, code: "INVALID_ACCEPT_HEADER" },
+      { path: "/api/v1/programmes", headers: { Accept: "text/html" }, status: 406, code: "NOT_ACCEPTABLE" },
+      { path: "/api/v1/programmes", method: "POST", status: 405, code: "METHOD_NOT_ALLOWED" },
+      { path: "/api/v1/not-a-route", status: 404, code: "NOT_FOUND" },
+      { path: "/api/v1/programmes", status: 500, code: "INTERNAL_ERROR" },
+    ];
+
+    for (const scenario of cases) {
+      const result = await sendRaw(base, scenario.path, {
+        method: scenario.method ?? "GET",
+        headers: scenario.headers ?? {},
+      });
+      assert.equal(result.status, scenario.status, scenario.code + " status");
+      assert.match(result.headers["content-type"] ?? "", /^application\\/json; charset=utf-8$/);
+      assert.equal(result.headers["x-content-type-options"], "nosniff");
+      assert.equal(result.body.error.code, scenario.code);
+      assert.deepEqual(Object.keys(result.body.error).sort(), ["code", "message", "requestId"]);
+      assert.doesNotMatch(JSON.stringify(result.body), /PRIVATE_HEADER_TEST_SENTINEL|Error:/);
+    }
+  });
+});
