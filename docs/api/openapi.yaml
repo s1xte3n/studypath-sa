@@ -38,7 +38,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ProgrammeCatalogueResponse'
         '400':
-          description: Unsupported query parameter or request representation.
+          description: Unsupported query parameter, GET request body, or malformed Accept header.
           content:
             application/json:
               schema:
@@ -92,6 +92,16 @@ paths:
         Returns the complete bounded published funding set in ascending ID
         order. No learner-specific or sensitive financial data is accepted.
       security: []
+      parameters:
+        - name: Accept
+          in: header
+          required: false
+          description: >
+            Optional content-negotiation header. Missing Accept or a value that
+            permits application/json is accepted. If no supported representation
+            is acceptable, the response is 406 NOT_ACCEPTABLE.
+          schema:
+            type: string
       responses:
         '200':
           description: Published funding catalogue; items may be empty.
@@ -100,7 +110,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/FundingCatalogueResponse'
         '400':
-          description: Unsupported query parameter or request representation.
+          description: Unsupported query parameter, GET request body, or malformed Accept header.
           content:
             application/json:
               schema:
@@ -112,7 +122,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/APIErrorResponse'
         '406':
-          description: Requested response media type is not supported.
+          description: No response representation is acceptable under the client's Accept header.
           content:
             application/json:
               schema:
@@ -155,7 +165,7 @@ components:
           properties:
             code:
               type: string
-              enum: [INVALID_QUERY_PARAMETER, INVALID_ACCEPT_HEADER, NOT_FOUND, METHOD_NOT_ALLOWED, NOT_ACCEPTABLE, RATE_LIMITED, INTERNAL_ERROR, CATALOGUE_UNAVAILABLE, UPSTREAM_TIMEOUT]
+              enum: [INVALID_QUERY_PARAMETER, INVALID_REQUEST_BODY, INVALID_ACCEPT_HEADER, NOT_FOUND, METHOD_NOT_ALLOWED, NOT_ACCEPTABLE, RATE_LIMITED, INTERNAL_ERROR, CATALOGUE_UNAVAILABLE, UPSTREAM_TIMEOUT]
             message:
               type: string
               minLength: 1
