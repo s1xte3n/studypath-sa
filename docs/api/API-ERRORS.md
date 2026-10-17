@@ -25,12 +25,12 @@ All fields are required for HTTP errors. `message` is safe and non-sensitive. `r
 | 404 | `NOT_FOUND` | Reserved for a future contracted resource route; not expected from current list operations | Show not found; do not infer an empty catalogue |
 | 405 | `METHOD_NOT_ALLOWED` | Unsupported HTTP method on a known API route | Correct method; no automatic retry |
 | 406 | `NOT_ACCEPTABLE` | Client explicitly requests an unsupported response format | Request JSON |
-| 429 | `RATE_LIMITED` | Deployment-enforced request quota exceeded | Respect `Retry-After` if supplied; no aggressive retry |
+| 429 | `RATE_LIMITED` | Only when a configured deployment-level control actually enforces a request limit and the limit is exceeded; not provided by the current Option B evidence | Respect `Retry-After` if supplied; no aggressive retry |
 | 500 | `INTERNAL_ERROR` | Unexpected server failure | Show recoverable generic error; support may use requestId |
 | 503 | `CATALOGUE_UNAVAILABLE` | Catalogue store/provider unavailable or no valid snapshot can be served | Show recoverable error; do not substitute fabricated data |
 | 504 | `UPSTREAM_TIMEOUT` | Approved upstream dependency exceeds configured timeout | Show recoverable error; retry only within client retry policy |
 
-For 429 responses, `Retry-After` is an optional integer number of seconds. No numeric rate limit or retry schedule is fixed until the hosting/runtime and cost profile is approved. The 404/405/406 entries are HTTP semantics for gateway/routing behavior; only the current list operations are defined application routes.
+For 429 responses, `Retry-After` is an optional integer number of seconds. No numeric rate limit is currently approved or established for Option B. Do not claim or simulate `RATE_LIMITED` unless an actual deployment-level control enforces the limit. See [RATE-LIMITING-DECISION.md](RATE-LIMITING-DECISION.md). The 404/405/406 entries are HTTP semantics for gateway/routing behavior; only the current list operations are defined application routes.
 
 ## Rules
 
