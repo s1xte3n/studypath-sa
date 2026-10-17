@@ -1,13 +1,13 @@
 # Phase 4 — Runtime Profile Options for Owner Decision
 
-**Status:** Proposal for review only; no option is approved by this document.
+**Status:** Option B is owner-approved as the first candidate for validation only; no deployable runtime is approved and no provisioning is authorized.
 **Date:** 2026-10-16
 **Related:** D-004, D-044, D-050–D-052, ADR-001, ADR-004, ADR-005, Q-018, Q-020, OR-019.
 **Hard constraint:** total project spend must remain at or below R100/month. This document does not authorize provisioning.
 
-## Decision required
+## Decision record
 
-The public catalogue wire contract is approved for continued work, but a hosted runtime is not selected. Choose and approve a runtime profile before implementation of a hosted API or Phase 5 environment configuration.
+The product owner approved Option B on 2026-10-17 for compatibility, security and cost validation only. This does not approve a deployable runtime, hosted API implementation, provisioning, paid services, or deployment. The local synthetic-only demo remains the working environment.
 
 The architecture direction is API-first (D-044). The current local synthetic demo remains the implementation slice and can continue without a hosted API. The static-only option below is therefore a fallback/demo choice, not a silent replacement for the API-first decision.
 
@@ -26,7 +26,7 @@ The architecture direction is API-first (D-044). The current local synthetic dem
 
 ### Option B — Azure Static Web Apps Free + managed Azure Functions API, without API Management
 
-**Candidate to verify and cost first; not yet approved.**
+**Owner-approved candidate for validation only; not approved for deployment.**
 
 - Static Web Apps Free hosts the frontend and its managed HTTP-triggered Functions API. Microsoft documents managed API functions as available on the Free plan.
 - Serve only the two anonymous, read-only catalogue routes. Keep the API response limited to curator-approved catalogue data; no learner profile or tracker storage.
@@ -57,13 +57,13 @@ The architecture direction is API-first (D-044). The current local synthetic dem
 
 The full stack (fixed-cost API Management, database, Blob Storage, identity, AI/document services and paid monitoring) is not justified by the two public read-only catalogue routes alone. Do not select it unless a specific approved requirement and a service-by-service estimate demonstrate that the complete project remains within the hard cap.
 
-## Provisional recommendation
+## Current recommendation
 
-Evaluate **Option B first**, because it may satisfy the catalogue-only API need using Static Web Apps Free's managed Functions capability. Option C is the fallback if verified runtime/route constraints make Option B unsuitable. Keep Option A as the safe interim state while approval and cost evidence are gathered.
+Continue validating **Option B first**, because it may satisfy the catalogue-only API need using Static Web Apps Free's managed Functions capability. Option C is the fallback if a verified limitation prevents a requirement from being met. Keep Option A as the working state while validation continues.
 
-This is a recommendation for review, not a decision. It does not establish that Option B fits the budget, supports the required Node.js runtime, meets operational needs, or should be created.
+The current evidence assessment is recorded in [OPTION-B-VALIDATION-EVIDENCE.md](OPTION-B-VALIDATION-EVIDENCE.md). It finds the profile plausible but does not establish hosted route behavior, numeric rate limiting, subscription-specific free-grant eligibility, complete cost <= R100/month, or deployment readiness.
 
-## Evidence required before selecting Option B or C
+## Evidence required before the runtime gate can pass
 
 1. Current Microsoft pricing calculator estimate for every proposed resource and selected region, plus a written inventory of resources included/excluded.
 2. Confirmation of the actual subscription offer/billing scope and applicable free grants; review Cost Analysis privately and do not commit identifiers/screenshots.
@@ -73,7 +73,7 @@ This is a recommendation for review, not a decision. It does not establish that 
 6. Threat review for anonymous routes, rate limits, abuse controls and, for Option C, direct Function endpoint exposure.
 7. Approved CORS (if any cross-origin calls are used), cache TTL/stale policy, timeout/retry values, rate limits, logging allow-list/retention and operational owner.
 8. Synthetic integration tests for both routes, error envelopes, response schema, catalogue provenance/freshness, unavailable/timeout behavior and proof learner data is absent from network requests and logs.
-9. Product-owner approval of the selected option and explicit authorization before provisioning.
+9. Final owner approval of runtime settings and a separate explicit authorization before any provisioning or deployment.
 
 ## External references reviewed 2026-10-16
 
@@ -86,18 +86,15 @@ This is a recommendation for review, not a decision. It does not establish that 
 - Existing project cost baseline and caveats: ../project/AZURE-COST-ESTIMATE.md
 - Existing architecture alternatives and no-provisioning boundary: ../architecture/ADR-004.md
 
-## Decision record — complete after review
+## Decision record
 
-- Selected option (A / B / C / D):
-- Reason and requirement(s) satisfied:
-- Hosting plan, runtime version and region:
-- API Management decision and evidence:
-- Complete monthly cost estimate / R100 cap confirmation:
-- Approved CORS origins or same-origin confirmation:
-- Cache TTL and stale policy:
-- Timeouts/retries:
-- Rate limits:
-- Logging allow-list and retention:
-- Operational owner and rollback/disable method:
-- Reviewer / date:
-- Explicit provisioning authorization (yes/no):
+- Selected candidate: **Option B — approved for validation only (2026-10-17)**
+- Reason: smallest plausible candidate for two anonymous, read-only catalogue routes; avoids separate Function App and API Management unless a verified requirement needs them.
+- Hosting plan: Static Web Apps Free candidate; Node.js 22 proposed for managed API validation; region not yet selected.
+- API Management: excluded from this candidate; revisit only if required controls cannot be met otherwise and cost is re-approved.
+- Complete monthly cost / R100 cap: **NOT CERTIFIED**; see [OPTION-B-VALIDATION-EVIDENCE.md](OPTION-B-VALIDATION-EVIDENCE.md).
+- CORS: same-origin `/api` routing intended; hosted behavior not tested.
+- Cache TTL, stale policy, timeouts/retries, numeric rate limits, logging allow-list/retention: proposed/open; not approved as runtime settings.
+- Operational owner and rollback/disable method: must be recorded before deployment.
+- Reviewer / decision date: product owner, 2026-10-17.
+- Explicit provisioning authorization: **NO**.
