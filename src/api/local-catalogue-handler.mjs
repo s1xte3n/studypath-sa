@@ -133,7 +133,9 @@ function validCommonRecord(record) {
     || !hasText(record.catalogueVersion, 100)
     || !Array.isArray(record.sources) || record.sources.length === 0
     || !record.sources.every(validSource)) return null;
-  return new Set(record.sources.map((source) => source.sourceId));
+  const sourceIds = record.sources.map((source) => source.sourceId);
+  if (new Set(sourceIds).size !== sourceIds.length) return null;
+  return new Set(sourceIds);
 }
 
 function publicationReady(record, kind) {
@@ -296,10 +298,31 @@ export function createLocalCatalogueHandler({
         return;
       }
 
-      const items = catalogues[kind]
-        .filter((record) => publicationReady(record, kind))
-        .slice()
-        .sort((a, b) => a.id.localeCompare(b.id));
+      const candidates = catalogues[kind].filter((record) => publicationReady(record, kind));
+      const idCounts = new Map();
+      for (const record of candidates) {
+        idCounts.set(record.id, (idCounts.get(record.id) ?? 0) + 1);
+      }
+
+      // Withhold every colliding public ID; choosing one duplicate would make
+      // catalogue identity depend on input order or an arbitrary tie-breaker.
+      let items = candidates.filter((record) => idCounts.get(record.id) === 1);
+
+      if (kind === "programmes") {
+        const publishedProgrammeIds = new Set(items.map((record) => record.id));
+        items = items.map((record) => ({
+          ...record,
+          // Relationship evidence is optional for discovery. A malformed record
+          // fails publication validation above; a well-formed relationship whose
+          // endpoints do not resolve is withheld without hiding the programme.
+          relationships: record.relationships.filter((relationship) =>
+            relationship.fromProgrammeId === record.id
+            && publishedProgrammeIds.has(relationship.fromProgrammeId)
+            && publishedProgrammeIds.has(relationship.toProgrammeId)),
+        }));
+      }
+
+      items = items.slice().sort((a, b) => a.id.localeCompare(b.id));
 
       writeJson(res, 200, {
         contractVersion: "1.0.0-draft",
