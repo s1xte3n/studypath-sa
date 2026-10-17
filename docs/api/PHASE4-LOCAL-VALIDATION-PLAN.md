@@ -1,7 +1,7 @@
 # Phase 4 — Local-Only API Compatibility Validation Plan
 
-**Status:** Local-only synthetic harness and LAPI-001–015 scenarios are implemented; this branch adds explicit cross-error-class header assertions for LAPI-014. CI verification for this branch is pending. Hosted runtime/configuration validation remains blocked.  
-**Base:** `main` includes PR #110 merge commit `1f05300e2f4400bd88f7914b153924d4a32f26a0` (local synthetic validation harness extension). This branch adds the remaining explicit error-header assertion coverage for LAPI-014.  
+**Status:** PR #111 is merged. This branch adds nested requirement and pathway-relationship validation cases under LAPI-009; CI verification for this branch is pending. Hosted runtime/configuration validation remains blocked.  
+**Base:** `main` includes PR #111 merge commit `1fdf674879b686c957fc0b3637bff907ad8017b3`. This branch extends LAPI-009 with nested rule-source, enum, relationship approval, and date-validation cases.  
 **Runtime candidate:** Option B (Static Web Apps managed Functions), approved for validation only.  
 **Hard boundaries:** no Azure resources, deployment, paid services, real learner data, or hosted API implementation are authorized by this plan.
 
@@ -50,7 +50,7 @@ Implement a local-only adapter/harness only after its shape is agreed; keep fixt
 
 ## Acceptance gate
 
-This plan is complete only when each applicable LAPI case has a test ID, implementation reference, and passing CI evidence. LAPI-009 currently validates a deliberately scoped subset of the OpenAPI schema rather than every nested constraint. LAPI-014 now has explicit assertions for JSON content type, `nosniff`, canonical error envelope keys, and absence of exception sentinels across representative 400/404/405/406/500 responses; branch CI remains required. LAPI-016 and all Azure-hosted behavior remain blocked until separate runtime/deployment approval. The rate-limit, subscription cost, cache policy and operational diagnostic gates are not satisfied by local tests.
+This plan is complete only when each applicable LAPI case has a test ID, implementation reference, and passing CI evidence. LAPI-009 now has additional nested requirement and pathway-relationship cases in this branch, but still does not validate every OpenAPI constraint. LAPI-014 has explicit assertions for JSON content type, `nosniff`, canonical error envelope keys, and absence of exception sentinels across representative 400/404/405/406/500 responses; PR #111 is merged and its CI evidence must be checked against the actual workflow results. LAPI-016 and all Azure-hosted behavior remain blocked until separate runtime/deployment approval. The rate-limit, subscription cost, cache policy and operational diagnostic gates are not satisfied by local tests.
 
 ## Gate decision
 
