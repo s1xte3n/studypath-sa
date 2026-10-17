@@ -57,3 +57,26 @@ This review checks whether a managed edge/gateway provides a documented alternat
 No reviewed option is both demonstrated to enforce the required anonymous per-IP limit and evidenced as fitting the R100/month total cap. This is a bounded documentation review, not proof that no alternative exists.
 
 **Disposition unchanged:** keep public hosted API **NO-GO**. Continue local synthetic-only validation. Reopen the decision only if (a) the owner changes the budget and approves a fully costed enforcement design, or (b) the owner explicitly requests a documented risk-exception review after considering abuse, availability, and cost exposure. A risk exception must not be described as rate limiting, and it does not itself establish that the R100/month cap is met. Do not provision or deploy as part of this review.
+
+
+## Owner-approved temporary risk exception — 2026-10-17
+
+**Approval record:** The project owner explicitly approved documenting a risk exception in the StudyPath SA project conversation on 2026-10-17. This approval is for the exception record only; it is not approval to provision resources, incur paid charges, deploy the public API, or waive other release gates.
+
+### Exception scope
+
+- **Risk accepted for planning:** a future, explicitly approved demonstration deployment might not have enforceable numeric per-IP rate limiting. This is a risk acceptance, not a technical control; do not describe the API as rate-limited or claim `429 RATE_LIMITED` is enforced.
+- **Data boundary:** synthetic, publication-reviewed catalogue records only. No learner profiles, authentication, uploads, profile persistence, personal data, or learner-specific server-side matching.
+- **Exposure boundary:** this exception does not authorize a general-purpose or production public service. If a demonstration is later approved, restrict it to the shortest practical demo window and intended demo audience where the platform permits; do not assume an IP allowlist or access restriction exists unless tested.
+- **Cost boundary:** the R100/month all-in cap remains in force. The exception does not accept unknown or unbounded cost and does not certify the budget. A costed resource inventory, billing/forecast evidence, and owner approval are required before provisioning.
+- **Operational safeguards required before any demo deployment:** confirm platform-side spend controls and alerting available for the chosen plan; establish health/error and traffic monitoring; document an operator and immediate disable/rollback procedure; verify response-size and catalogue bounds; confirm provider logging does not capture learner-like input; run deployed smoke/security checks; and record start/end times for the exception. If any required safeguard cannot be established, deployment remains NO-GO.
+- **Expiry:** the exception expires at the end of the approved hackathon demonstration window, or earlier if unexpected traffic, cost growth, privacy leakage, instability, or abuse is detected. Any extension requires a new explicit owner approval and updated risk review.
+- **Residual risks:** automated abuse, denial of service, noisy traffic, resource exhaustion, unexpected usage charges, availability loss, and lack of a numeric per-IP enforcement guarantee remain possible.
+
+### Decision and gate interpretation
+
+The owner has accepted the *rate-limiting gap as a documented risk for a bounded future demo*, subject to the constraints above. This does not mean the gap has been fixed.
+
+**Public hosted API status: NO-GO until the remaining pre-deployment conditions are evidenced and separately approved.** In particular, the total-cost cap, deployment-specific security/privacy controls, catalogue provenance/publication sign-off, runtime contract tests, and shutdown controls remain independent gates. No resources are to be provisioned and nothing is to be deployed by this documentation change.
+
+**Review trigger:** before any proposed demo deployment, review this exception against the actual resource list, hosting plan, billing exposure, traffic model, logs, available spend controls, and shutoff procedure. Record evidence and obtain explicit deployment approval separately.
