@@ -184,10 +184,12 @@ components:
           type: string
           minLength: 1
           maxLength: 300
+          pattern: '\\S'
         publisher:
           type: string
           minLength: 1
           maxLength: 300
+          pattern: '\\S'
         sourceUrl:
           type: string
           format: uri
@@ -205,6 +207,7 @@ components:
           type: string
           minLength: 1
           maxLength: 40
+          pattern: '\\S'
         evidenceNote:
           type: [string, 'null']
           minLength: 1
@@ -224,6 +227,7 @@ components:
           type: string
           minLength: 1
           maxLength: 100
+          pattern: '\\S'
         generatedAt:
           type: string
           format: date-time
@@ -254,6 +258,7 @@ components:
               type: string
               minLength: 1
               maxLength: 300
+              pattern: '\\S'
             institutionType:
               type: string
               enum: [UNIVERSITY, TVET_COLLEGE, OTHER]
@@ -268,6 +273,7 @@ components:
           type: string
           minLength: 1
           maxLength: 300
+          pattern: '\\S'
         qualificationType:
           type: string
           enum: [DEGREE, DIPLOMA, HIGHER_CERTIFICATE, TVET, OTHER]
@@ -355,6 +361,7 @@ components:
           type: string
           minLength: 1
           maxLength: 500
+          pattern: '\\S'
         sourceIds:
           type: array
           minItems: 1
@@ -380,6 +387,7 @@ components:
           type: string
           minLength: 1
           maxLength: 500
+          pattern: '\\S'
         evidenceStatus:
           type: string
           const: VERIFIED
@@ -406,6 +414,7 @@ components:
           type: string
           minLength: 1
           maxLength: 500
+          pattern: '\\S'
     FundingCatalogueResponse:
       allOf:
         - $ref: '#/components/schemas/CatalogueEnvelope'
@@ -426,10 +435,12 @@ components:
           type: string
           minLength: 1
           maxLength: 300
+          pattern: '\\S'
         provider:
           type: string
           minLength: 1
           maxLength: 300
+          pattern: '\\S'
         description:
           type: [string, 'null']
           maxLength: 2000
@@ -449,6 +460,7 @@ components:
           type: string
           minLength: 1
           maxLength: 300
+          pattern: '\\S'
         deadlineAt:
           type: [string, 'null']
           format: date-time
