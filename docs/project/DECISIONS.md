@@ -216,3 +216,16 @@ Source: explicit product-owner approval in the StudyPath SA project conversation
 **Evidence note:** The NSFAS 2027 application page currently states 31 October 2026; the South African Government announcement dated 18 September 2026 states 18 November 2026. Until NSFAS clarifies the conflict and the curator records the result, the deadline remains unresolved and the candidate is not publication-ready.
 
 **Source:** Explicit product-owner approval in the StudyPath SA project conversation on 2026-10-16; official source links and evidence status recorded in `docs/product/FUNDING-CATALOGUE-REGISTER.md`.
+
+
+## D-053 — Rate-limiting and public hosted API gate (2026-10-17)
+
+**Decision:** Do not add API Management or another paid gateway solely to obtain rate limiting under the R100/month total cap. Do not implement an in-memory Function counter as an abuse control. Continue Option B validation and the local synthetic-only demo, but do not publicly deploy the API until an enforceable abuse/traffic control is selected, costed and tested, or the owner explicitly approves a documented risk exception.
+
+- Microsoft documentation does not establish a numeric per-IP rate limit for the proposed Static Web Apps Free managed API profile.
+- API Management Consumption does not support `rate-limit-by-key`; a browser-embedded subscription key is not a secret and is not an appropriate replacement for anonymous per-IP control.
+- The API contract's `429 RATE_LIMITED` semantics apply only when a real deployment-level enforcement control is configured and triggered. Do not fabricate a 429 or claim the control exists without evidence.
+- Public catalogue-only, bounded responses, same-origin access and caching are defence-in-depth, not substitutes for a numeric rate limit. Scraping, denial-of-service and quota-exhaustion risks remain.
+- No resources, paid services, deployment or real learner data are authorized. The R100/month budget remains uncertified and Phase 4 remains OPEN / NOT PASSED.
+
+Evidence and implementation implications: [docs/api/RATE-LIMITING-DECISION.md](../api/RATE-LIMITING-DECISION.md). Official Microsoft sources: https://learn.microsoft.com/en-us/azure/static-web-apps/configuration and https://learn.microsoft.com/en-us/azure/api-management/api-management-sample-flexible-throttling.

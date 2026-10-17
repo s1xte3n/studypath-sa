@@ -26,7 +26,7 @@
 - No request body is accepted by the public GET operations. Unknown query parameters are rejected with `400 INVALID_QUERY_PARAMETER`; there are no pagination, filtering or sorting parameters because the approved bounded pilot returns the full published set and deterministic ordering.
 - List order is stable ascending by `id`. Consumers must not rely on a particular item count.
 - No mutation or idempotency-key header applies to read-only GET operations. GETs are safe and idempotent.
-- `Cache-Control`, CORS allow-list, rate limits, provider request logging and cache TTL must be set by the deployment profile only after OR-019/Q-018 cost/provider review. Until that profile is approved, do not claim a hosted runtime is ready. Do not cache stale eligibility rules as current; clients must display source freshness/cycle state.
+- `Cache-Control`, CORS allow-list, rate limits, provider request logging and cache TTL must be set by the deployment profile only after OR-019/Q-018 cost/provider review. D-053 records that Option B does not currently establish numeric per-IP rate limiting; do not claim the `429 RATE_LIMITED` behavior unless an actual deployment-level control is configured. Public hosted deployment remains blocked pending abuse-control and cost approval. Until that profile is approved, do not claim a hosted runtime is ready. Do not cache stale eligibility rules as current; clients must display source freshness/cycle state.
 - All network traffic must use HTTPS. No API secrets belong in browser code.
 
 ## 3. Authentication and authorization
