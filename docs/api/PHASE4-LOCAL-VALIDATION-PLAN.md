@@ -1,6 +1,6 @@
 # Phase 4 — Local-Only API Compatibility Validation Plan
 
-**Status:** PR #111 is merged. This branch adds nested requirement and pathway-relationship validation cases under LAPI-009; CI verification for this branch is pending. Hosted runtime/configuration validation remains blocked.  
+**Status:** PR #112 is merged, but its push CI has four failing checks and one successful check. The failures currently trace to a JavaScript syntax error in `tests/api/local-catalogue-handler.test.mjs` (`SyntaxError: Invalid regular expression flags`) that prevents the local catalogue test file from loading. This fix branch corrects the content-type assertion regex and updates this plan to reflect the actual CI evidence. Hosted runtime/configuration validation remains blocked.  
 **Base:** `main` includes PR #111 merge commit `1fdf674879b686c957fc0b3637bff907ad8017b3`. This branch extends LAPI-009 with nested rule-source, enum, relationship approval, and date-validation cases.  
 **Runtime candidate:** Option B (Static Web Apps managed Functions), approved for validation only.  
 **Hard boundaries:** no Azure resources, deployment, paid services, real learner data, or hosted API implementation are authorized by this plan.
@@ -14,7 +14,8 @@ Prepare reproducible local evidence that the proposed public catalogue contract 
 - The React/Vite browser MVP and Node test suite exist.
 - The public catalogue contract is defined in `docs/api/API-CONTRACT.md`.
 - API-001 and API-002 remain contract-only for runtime/deployment. `src/api/local-catalogue-handler.mjs` is a local test harness only; it is not an approved production or Azure handler.
-- Post-merge CI on this base commit passed: browser build, browser E2E/privacy/accessibility, contract tests, and OpenAPI validation.
+- CI on the observed post-merge commit did **not** pass: the OpenAPI document validation step succeeded, but the repository/API contract test step failed because the catalogue-handler test file contains an invalid regular-expression literal. The same syntax error caused the contract suite and the browser workflows' pre-E2E test step to fail; browser E2E and production asset build were skipped as a consequence.
+- The UJ eligibility golden-case verification workflow passed. That result does not override the failing checks above.
 - Those workflows do not test a deployed API.
 
 ## Validation matrix
@@ -54,4 +55,4 @@ This plan is complete only when each applicable LAPI case has a test ID, impleme
 
 ## Gate decision
 
-**Phase 4 remains OPEN.** The local-only harness is test code, not a production API handler. This plan authorizes neither Azure resources nor deployment.
+**Phase 4 remains OPEN.** The local-only harness is test code, not a production API handler. The merged change is not CI-verified because the current test suite fails to parse. This plan authorizes neither Azure resources nor deployment.

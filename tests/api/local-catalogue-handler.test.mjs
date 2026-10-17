@@ -344,7 +344,7 @@ test("all local HTTP error classes preserve the required safe response headers",
         headers: scenario.headers ?? {},
       });
       assert.equal(result.status, scenario.status, scenario.code + " status");
-      assert.match(result.headers["content-type"] ?? "", /^application\\/json; charset=utf-8$/);
+      assert.match(result.headers["content-type"] ?? "", /^application\/json; charset=utf-8$/);
       assert.equal(result.headers["x-content-type-options"], "nosniff");
       assert.equal(result.body.error.code, scenario.code);
       assert.deepEqual(Object.keys(result.body.error).sort(), ["code", "message", "requestId"]);
