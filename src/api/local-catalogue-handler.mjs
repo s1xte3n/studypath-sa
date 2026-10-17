@@ -28,7 +28,7 @@ function isObject(value) {
 }
 
 function hasText(value, maxLength = 300) {
-  return typeof value === "string" && value.trim().length > 0 && value.trim().length <= maxLength;
+  return typeof value === "string" && value.trim().length > 0 && value.length <= maxLength;
 }
 
 function validId(value) {
