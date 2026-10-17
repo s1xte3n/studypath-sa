@@ -1,24 +1,44 @@
 # G-SYN-001 — Synthetic-Only MVP Verification Gate
 
-**Status:** OPEN — gate defined; runnable application and runtime privacy evidence are not yet established.
-**Date:** 2026-10-15
-**Base commit inspected:** `e3564527b48dc0ca3cb55d4c208da5dc620b23ff`
+**Status:** OPEN — current repository and CI evidence reviewed; acceptance criteria remain partially satisfied and the gate is NOT PASSED.
+**Last evidence review:** 2026-10-17
+**Repository baseline reviewed:** `6a6099f10f5957ef0e7e0c87fed058af172921f3` (main)
+**Scope:** Local, synthetic-only browser demo. This gate does not approve real learner-data processing, legal compliance, Azure provisioning, production identity, persistent profiles, public deployment, or paid services.
 **Scope:** Build and verify a minimal local, browser-only StudyPath SA demo using synthetic data. This gate does not approve legal compliance, real learner-data processing, Azure provisioning, production identity, persistent profiles, or deployment.
 
 ## Objective
 
 Deliver the smallest runnable student journey that can be tested end-to-end without processing real learner information or introducing unapproved recurring costs. The demo must not require a login or transmit learner inputs/results/tracker entries. Catalogue requests, if introduced later and separately approved, may contain public catalogue data only.
 
-## Verified baseline at the inspected commit
+## Current repository baseline and evidence
 
-The recursive GitHub tree at `e3564527b48dc0ca3cb55d4c208da5dc620b23ff` contains:
+The current `main` commit reviewed is `6a6099f10f5957ef0e7e0c87fed058af172921f3`. The earlier `e3564527b48dc0ca3cb55d4c208da5dc620b23ff` inspection above is historical and must not be used to describe the current tree.
 
-- Deterministic eligibility evaluator: `src/domain/eligibility/uj-2027-evaluator.mjs`.
-- Golden-case and evaluator tests: `tests/uj-2027-eligibility-ci-final.test.mjs`, `tests/uj-2027-eligibility-golden-cases.test.mjs`, plus test fixtures.
-- Two GitHub Actions workflows: `.github/workflows/contract-tests.yml` and `.github/workflows/uj-eligibility-golden-case-verification.yml`.
-- Product, requirements, architecture, and privacy-verification documentation.
+Current repository artifacts include:
 
-The inspected tree did **not** show a root `package.json`/lockfile, app entry point, frontend UI, browser-test harness, API implementation, or deployment/infrastructure code. This is a statement about the inspected default-branch tree, not every external system or branch. The current workflows invoke Node's test runner directly; a passing domain test does not establish a working UI or runtime privacy.
+- React/Vite application entry point: `src/main.jsx`; responsive styles: `src/styles.css`.
+- Dependency manifest and lockfile: `package.json` and `package-lock.json`.
+- Student-entry validation: `src/domain/student-input-validation.mjs`.
+- Deterministic UJ 2027 evaluator: `src/domain/eligibility/uj-2027-evaluator.mjs`.
+- Local catalogue handler: `src/api/local-catalogue-handler.mjs`.
+- Browser tests: `tests/e2e/student-form.spec.mjs`; Playwright configuration: `playwright.config.mjs`.
+- Unit/domain/API/contract tests and UJ eligibility golden-case fixtures.
+- Five workflows: browser E2E/privacy/accessibility, browser MVP build, contract tests, OpenAPI validation, and UJ eligibility golden-case verification.
+
+All five workflows passed on the current main commit on 2026-10-17:
+- [Browser E2E, privacy and accessibility](https://github.com/s1xte3n/studypath-sa/actions/runs/39045654154)
+- [Browser MVP build](https://github.com/s1xte3n/studypath-sa/actions/runs/39045654225)
+- [Contract tests](https://github.com/s1xte3n/studypath-sa/actions/runs/39045654207)
+- [OpenAPI validation](https://github.com/s1xte3n/studypath-sa/actions/runs/39045654244)
+- [UJ eligibility golden-case verification](https://github.com/s1xte3n/studypath-sa/actions/runs/39045654276)
+
+These are remote CI results, not evidence that the assistant ran a clean local install or reproduced the tests locally. A local clone attempt was blocked by DNS resolution for `github.com`; no local test command is claimed to have run.
+
+### What the current browser evidence establishes
+
+The browser suite tests editable student-entry rows, basic input validation and reset; invalid-input announcements; a keyboard-focus assertion; an automated privacy check covering same-origin GET-only behavior, URL parameters, local/session storage, cookies, console output and reload reset; and an axe scan for critical/serious accessibility violations. The suite explicitly asserts that basic form validation does not calculate an eligibility result.
+
+This is a useful baseline, but it does **not** establish the complete student journey from marks/interests to explainable pathway results and official next steps. The current privacy test does not evidence every requested channel and failure mode in SYN-004. A responsive CSS breakpoint is present, but a documented manual keyboard and narrow-viewport review was not found in the evidence reviewed.
 
 ## Scope for this gate
 
@@ -56,40 +76,40 @@ All applicable items must pass on one reviewed commit; documentation alone does 
 | SYN-009 | No unapproved infrastructure, secrets, or recurring services are introduced. | Diff review and repository scan; no provisioning/deployment action; cost-impact statement. |
 | SYN-010 | Interim scope, open risks, and evidence links are reflected in project status and artifact index. | Updated source-of-truth documentation tied to the reviewed commit. |
 
-## Traceability
+## Traceability and current evidence assessment
 
-| Requirement | Test IDs | Implementation | CI evidence | Release evidence |
-|---|---|---|---|---|
-| REQ-CAT-001 — curated catalogue and provenance | SYN-002, SYN-003, SYN-008 | Curated synthetic fixtures and source metadata; publication-ready real records remain a separate catalogue gate | Not available | Not available |
-| REQ-ALT-001 — verified alternatives/relationships | SYN-002, SYN-008 | Not yet established for UI; do not display unverified relationship pairs | Not available | Not available |
-| REQ-DET-001 — pathway detail and official next steps | SYN-002, SYN-006, SYN-008 | Not yet established for UI | Not available | Not available |
-| REQ-UX-001 — accessible mobile-first experience | SYN-006 | Not yet established for UI | Not available | Not available |
-| REQ-EXP-001 — anonymous input and results | SYN-002, SYN-005, SYN-006 | Not yet established for UI | Not available for UI | Not available |
-| REQ-MAT-001 — deterministic eligibility and uncertainty | SYN-002, SYN-003 | `src/domain/eligibility/uj-2027-evaluator.mjs` | Existing workflow must be checked against current commit; no runtime UI claim | Not available |
-| REQ-PRV-001 — memory-only synthetic exploration | SYN-004, SYN-005 | Browser implementation not yet established | Privacy suite not yet present/verified | Not available |
-| REQ-APP-001 — manual tracker, session-only | SYN-005 | UI implementation not yet established | Not available | Not available |
-| REQ-FUND-001 — P1 funding pilot | SYN-002, SYN-005, SYN-008 when enabled; T-FUND-001–006 | Keep omitted/disabled until 3–5 current official-source records are curated; any transient state must clear under SYN-005 | Not available | Not available |
-| NFR-SEC-001 — secrets/input/transport boundary | SYN-009 | Build/dependency and network boundary not yet established | Not available | Not available |
-| NFR-DATA-001 — sourced eligibility claims | SYN-002, SYN-003, SYN-008 | Not yet established for full UI journey | Not available | Not available |
-| NFR-REL-001 — honest recoverable failures | SYN-006 | Not yet established for UI | Not available | Not available |
-| NFR-ACC-001 — accessibility | SYN-006 | Not yet established for UI | Not available | Not available |
-| NFR-PERF-001 — matching p95 target | SYN-002 plus T-PERF-001 | Benchmark protocol/device/result not recorded | Not available | Not available |
-| NFR-PRV-001 — no profile persistence/telemetry | SYN-004, SYN-005 | Browser privacy harness not yet established | Not available | Not available |
-| NFR-COMP-001 — no guarantees | SYN-002, SYN-008 | UI copy not yet reviewed | Not available | Not available |
-| NFR-SCOPE-001 — bounded pilot/no national claim | SYN-008 | UI scope disclosure not yet established | Not available | Not available |
-| NFR — accessibility, reproducibility, evidence | SYN-001, SYN-006, SYN-007, SYN-010 | Not yet established for UI | Not available | Not available |
+| Requirement | Test IDs | Current implementation/evidence | Status |
+|---|---|---|---|
+| REQ-CAT-001 — curated catalogue and provenance | SYN-002, SYN-003, SYN-008 | Local catalogue handler exists; source-backed publication-ready programme records and curator sign-off remain outstanding. | Partial; catalogue publication blocked |
+| REQ-ALT-001 — verified alternatives/relationships | SYN-002, SYN-008 | Handler integrity checks exist, but approved relationship pairs and learner-facing alternatives are not established. | Not passed |
+| REQ-DET-001 — pathway detail and official next steps | SYN-002, SYN-006, SYN-008 | Complete result/detail/official-next-step journey is not established in the current browser suite. | Not passed |
+| REQ-UX-001 — accessible mobile-first experience | SYN-006 | Responsive CSS and automated axe checks exist; documented manual keyboard and narrow-viewport review not found. | Partial |
+| REQ-EXP-001 — anonymous input and results | SYN-002, SYN-005, SYN-006 | Student-entry form and validation exist; tests explicitly assert no eligibility result is calculated by the basic form. | Partial |
+| REQ-MAT-001 — deterministic eligibility and uncertainty | SYN-002, SYN-003 | `src/domain/eligibility/uj-2027-evaluator.mjs` and golden-case tests exist; evaluator-to-UI integration and reviewed 20+ case zero-false-positive release evidence remain outstanding. | Partial |
+| REQ-PRV-001 / NFR-PRV-001 — memory-only synthetic exploration | SYN-004, SYN-005 | Browser suite checks selected network, URL, storage, cookie, console and reload behaviors; the full SYN-004 channel/failure matrix is not demonstrated. | Partial |
+| REQ-APP-001 — manual tracker, session-only | SYN-005 | No verified tracker journey/reset evidence in the current browser suite. | Not passed |
+| REQ-FUND-001 — P1 funding pilot | SYN-002, SYN-005, SYN-008; T-FUND-001–006 | Funding candidates remain research-only until 3–5 records have complete current official-source rules and curator approval. | Blocked |
+| NFR-SEC-001 — secrets/input/transport boundary | SYN-009 | Manifest, lockfile and CI are present; a full security/dependency/hosting boundary review is not established by the cited workflows alone. | Partial |
+| NFR-DATA-001 — sourced eligibility claims | SYN-002, SYN-003, SYN-008 | Evaluator and catalogue code exist; complete learner-facing provenance and official next steps are not verified. | Partial |
+| NFR-REL-001 — honest recoverable failures | SYN-006 | Browser suite covers invalid input; complete loading, empty and runtime-failure states are not established. | Partial |
+| NFR-ACC-001 — accessibility | SYN-006 | Automated axe scan and keyboard-focus assertion passed in CI; manual review remains outstanding. | Partial |
+| NFR-PERF-001 — matching p95 target | SYN-002 plus T-PERF-001 | No benchmark protocol/device/result evidence reviewed. | Not passed |
+| NFR-COMP-001 / NFR-SCOPE-001 — no guarantees and bounded pilot | SYN-002, SYN-008 | Full learner-facing result copy and source disclosures have not been reviewed as a complete journey. | Not passed |
+| SYN-001, SYN-007 — reproducibility and CI | SYN-001, SYN-007 | Lockfile/build/test setup exists; five relevant main-commit workflows passed. Local reproduction was not run by the assistant. | Partial / CI passed |
+| SYN-009, SYN-010 — scope and documentation | SYN-009, SYN-010 | No deployment/provisioning is claimed; project docs are being reconciled by this change. | Partial until review/merge |
 
 **Traceability boundary:** P1 funding remains gated on 3–5 verified records and must be omitted/disabled rather than fabricated until that gate passes. The rows above add requirement-to-SYN mappings only; they do not imply implementation or test evidence.
 
-## Required sequence
+## Required next actions
 
-1. Confirm the approved requirement/contract baseline and keep `REQUIREMENTS READY` status truthful.
-2. Add the smallest browser-only app shell and synthetic fixtures; do not add APIs or persistence merely to make the demo appear complete.
-3. Add browser privacy canaries and end-to-end tests before claiming the memory-only boundary.
-4. Wire the tests and build into CI, then inspect the actual run results for the commit.
-5. Perform a focused accessibility, source-provenance, dependency, and hosting-boundary review.
-6. Record passed/failed/blocked items and obtain explicit review before any public deployment.
+1. Complete the core browser journey from synthetic inputs to explainable, deterministic pathway results and official-source next steps, or explicitly revise scope through change control.
+2. Expand privacy instrumentation and tests to cover all applicable SYN-004 channels and error paths; ensure test reports do not echo sentinel payloads.
+3. Add reset/reload/fresh-tab assertions for every implemented transient result, funding state and tracker entry.
+4. Record manual keyboard/focus and narrow-viewport checks; verify visible limitations, provenance and no-guarantee language in the full journey.
+5. Preserve the reviewed golden-case evidence, including the requirement for zero false-positive `ELIGIBLE` results; verify the required case count and oracle review before release.
+6. Run a clean local install/build/test when network access is available and record exact commands/results. Keep remote CI results separately identified.
+7. Update traceability and the artifact index to the reviewed commit, then reassess each SYN criterion with evidence links.
 
 ## Current gate decision
 
-**G-SYN-001: NOT PASSED.** The gate is defined and the repository baseline has been inspected, but the learner-facing app, browser-level privacy tests, build evidence, and runtime verification are not established. Continue using synthetic fixtures only. Do not infer privacy safety from absence of a UI, a documentation checklist, or a passing domain/contract test.
+**G-SYN-001: NOT PASSED.** Current code and CI materially advance the baseline, and all five main-commit workflows passed. However, the core pathway journey, full privacy channel/failure coverage, tracker/result lifecycle assertions, manual accessibility/responsive evidence, local reproducibility evidence and complete provenance/limitations review are not all established. Continue with synthetic data only. Do not treat documentation updates or green CI as proof of privacy safety, admission correctness, public-demo readiness or release approval.
