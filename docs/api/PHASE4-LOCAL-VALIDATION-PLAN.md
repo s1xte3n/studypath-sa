@@ -1,7 +1,7 @@
 # Phase 4 — Local-Only API Compatibility Validation Plan
 
-**Status:** Planned; no API handlers implemented by this document.  
-**Base:** main commit `0238d27ff3ece8960f61cf59fa1b8f08b990cc75`.  
+**Status:** Local-only synthetic harness implemented for LAPI-001–015 test scenarios; CI verification pending. Hosted runtime/configuration validation remains blocked.  
+**Base:** main includes PR #109 merge commit `dd11aae0525e1d78bd06b93111de4e7379254840`; follow-on harness work is under review.  
 **Runtime candidate:** Option B (Static Web Apps managed Functions), approved for validation only.  
 **Hard boundaries:** no Azure resources, deployment, paid services, real learner data, or hosted API implementation are authorized by this plan.
 
@@ -13,7 +13,7 @@ Prepare reproducible local evidence that the proposed public catalogue contract 
 
 - The React/Vite browser MVP and Node test suite exist.
 - The public catalogue contract is defined in `docs/api/API-CONTRACT.md`.
-- API-001 and API-002 remain contract-only; the repository does not yet contain the approved API handlers.
+- API-001 and API-002 remain contract-only for runtime/deployment. `src/api/local-catalogue-handler.mjs` is a local test harness only; it is not an approved production or Azure handler.
 - Post-merge CI on this base commit passed: browser build, browser E2E/privacy/accessibility, contract tests, and OpenAPI validation.
 - Those workflows do not test a deployed API.
 
@@ -23,35 +23,35 @@ Implement a local-only adapter/harness only after its shape is agreed; keep fixt
 
 | ID | Area | Input / scenario | Expected result | Evidence |
 |---|---|---|---|---|
-| LAPI-001 | Route mapping | `GET /api/v1/programmes` | Resolves only to API-001; JSON response matches the canonical schema | Unit/integration test |
-| LAPI-002 | Route mapping | `GET /api/v1/funding-opportunities` | Resolves only to API-002; JSON response matches the canonical schema | Unit/integration test |
-| LAPI-003 | Stable order | Synthetic items in shuffled input order | Published response sorted by stable ID ascending | Unit test |
-| LAPI-004 | Empty catalogue | No curator-approved synthetic records | `200` with `items: []`; no fallback/invented record | Unit test |
-| LAPI-005 | Query allow-list | Any unknown query parameter | `400 INVALID_QUERY_PARAMETER` using canonical error schema | Contract test |
-| LAPI-006 | Method allow-list | `POST`, `PUT`, `PATCH`, `DELETE`, `OPTIONS` to catalogue route | `405 METHOD_NOT_ALLOWED` where application handler receives request; note platform preflight behavior separately | Contract test |
-| LAPI-007 | Request body | GET carrying any body, including JSON | Rejected; body is not parsed, logged, or reflected | Contract test |
-| LAPI-008 | Content negotiation | Unsupported explicit `Accept` value | `406 NOT_ACCEPTABLE` per contract | Contract test |
-| LAPI-009 | Schema integrity | Missing required fields, invalid enums, malformed IDs/timestamps | Record rejected from publication; never silently repaired with guessed data | Unit test |
-| LAPI-010 | Publication guard | Missing source, applicable cycle, verification time, or curator approval | Record excluded from published response | Unit test |
-| LAPI-011 | Privacy sentinel | Synthetic marker strings in forbidden query/body/header positions | No marker appears in response, logs, error text, URL generation, or outbound calls | Automated sentinel test |
-| LAPI-012 | No downstream calls | Instrument network/fetch client in harness | Zero external calls from catalogue handler | Test spy / blocked network |
-| LAPI-013 | Safe errors | Simulated internal failure | Generic `500 INTERNAL_ERROR`; no stack, path, environment, or configuration leakage | Contract test |
-| LAPI-014 | Response headers | Successful and error responses | JSON content type; explicit cache/security headers are set at handler level only after policy approval | Header assertion |
-| LAPI-015 | Bounded response | Upper-bound synthetic catalogue | Response size bounded and execution comfortably below target; do not treat platform 45-second maximum as target | Test measurement |
-| LAPI-016 | Package/config | Inspect build artifact and runtime config in a local fixture | Selected Node runtime explicit; config/handler packaging matches intended route layout | Build/packaging check |
+| LAPI-001 | Route mapping | `GET /api/v1/programmes` | Resolves only to API-001; JSON response envelope is checked with synthetic fixtures | `tests/api/local-catalogue-handler.test.mjs` — automated; CI pending |
+| LAPI-002 | Route mapping | `GET /api/v1/funding-opportunities` | Resolves only to API-002; JSON response envelope is checked with synthetic fixtures | `tests/api/local-catalogue-handler.test.mjs` — automated; CI pending |
+| LAPI-003 | Stable order | Synthetic items in shuffled input order | Published response sorted by stable ID ascending | `tests/api/local-catalogue-handler.test.mjs` — automated; CI pending |
+| LAPI-004 | Empty catalogue | No curator-approved synthetic records | `200` with `items: []`; no fallback/invented record | `tests/api/local-catalogue-handler.test.mjs` — automated; CI pending |
+| LAPI-005 | Query allow-list | Any unknown query parameter | `400 INVALID_QUERY_PARAMETER` using canonical error schema; marker not reflected | `tests/api/local-catalogue-handler.test.mjs` — automated; CI pending |
+| LAPI-006 | Method allow-list | `POST`, `PUT`, `PATCH`, `DELETE`, `OPTIONS` to catalogue route | `405 METHOD_NOT_ALLOWED` with `Allow: GET` in the local handler; hosted/platform OPTIONS behavior remains unverified | `tests/api/local-catalogue-handler.test.mjs` — automated; CI pending |
+| LAPI-007 | Request body | GET carrying a JSON body | Rejected; marker is not reflected. No request-body parsing/logging is implemented in this harness | `tests/api/local-catalogue-handler.test.mjs` — automated; CI pending |
+| LAPI-008 | Content negotiation | Unsupported explicit `Accept` value and malformed syntax | `406 NOT_ACCEPTABLE` for valid-but-unsupported; `400 INVALID_ACCEPT_HEADER` for malformed syntax | `tests/api/local-catalogue-handler.test.mjs` — automated; CI pending |
+| LAPI-009 | Schema integrity | Missing required fields, invalid enums, malformed IDs and impossible UTC timestamps | Invalid records excluded; no repair or guessing | `tests/api/local-catalogue-handler.test.mjs` — automated; partial schema subset, CI pending |
+| LAPI-010 | Publication guard | Draft, unsigned, source-less, missing-source, invalid-cycle/date records | Records excluded; broader catalogue curation review remains separate | `tests/api/local-catalogue-handler.test.mjs` — automated; CI pending |
+| LAPI-011 | Privacy sentinel | Synthetic marker strings in query/body/header positions | No marker appears in response; no request logging or URL generation exists in the harness. CI does not establish provider log behavior | `tests/api/local-catalogue-handler.test.mjs` — automated; CI pending |
+| LAPI-012 | No downstream calls | Spy on global `fetch` during a raw HTTP request to the local server | Zero `fetch` calls from handler; this is not a full OS-level network sandbox | `tests/api/local-catalogue-handler.test.mjs` — automated; CI pending |
+| LAPI-013 | Safe errors | Injected timestamp-provider failure | Generic `500 INTERNAL_ERROR`; no stack/path/configuration sentinel leakage | `tests/api/local-catalogue-handler.test.mjs` — automated; CI pending |
+| LAPI-014 | Response headers | Successful and error responses | JSON content type and `X-Content-Type-Options: nosniff`; cache policy remains unapproved and is not invented | `tests/api/local-catalogue-handler.test.mjs` — success headers tested; add error-header assertion/CI evidence |
+| LAPI-015 | Bounded response | 250-record synthetic fixture | Response JSON under 1 MB and local response under 5 seconds; this is a representative regression budget, not a production maximum | `tests/api/local-catalogue-handler.test.mjs` — automated; CI pending |
+| LAPI-016 | Package/config | Inspect local package and runtime configuration | BLOCKED: no approved Static Web Apps handler layout/runtime config exists; do not invent deployment config during local-only validation | Remains blocked pending runtime decision and explicit deployment approval |
 
-## Contract questions to settle before coding
+## Remaining contract and runtime gates
 
 1. The contract lists `429 RATE_LIMITED` but a verified numeric rate-limiting mechanism is not established for this managed API profile. Do not implement a fake process-memory limiter or claim this response is operationally guaranteed. Resolve this requirement through the security decision gate.
-2. Confirm whether a GET request with a body can be reliably detected by the selected local adapter; reject where observable, and document platform behavior separately.
-3. Decide canonical error shape and status handling directly from `docs/api/API-ERRORS.md` and the OpenAPI contract; do not create parallel schemas.
+2. The local Node adapter detects GET bodies when content-length or transfer-encoding is observable; verify Azure/platform behavior separately before deployment.
+3. Canonical error shape/status handling follows `docs/api/API-ERRORS.md` and `docs/api/openapi.yaml`; malformed Accept syntax is `400 INVALID_ACCEPT_HEADER`, while valid-but-unsupported negotiation is `406 NOT_ACCEPTABLE`.
 4. Approve cache/security header values before making them defaults. The five-minute cache proposal remains unapproved.
 5. Use synthetic fixtures only. Never include marks, interests, funding circumstances, learner IDs, or real profile data in requests or test logs.
 
 ## Acceptance gate
 
-This plan is complete only when each applicable LAPI case has a test ID, implementation reference, and CI evidence. Cases that depend on Azure-hosted behavior must remain explicitly blocked until separate deployment approval. The rate-limit, subscription cost, and operational diagnostic gates are not satisfied by local tests.
+This plan is complete only when each applicable LAPI case has a test ID, implementation reference, and passing CI evidence. LAPI-009 currently validates a deliberately scoped subset of the OpenAPI schema rather than every nested constraint. LAPI-014 still needs explicit error-response header assertions. LAPI-016 and all Azure-hosted behavior remain blocked until separate runtime/deployment approval. The rate-limit, subscription cost, cache policy and operational diagnostic gates are not satisfied by local tests.
 
 ## Gate decision
 
-**Phase 4 remains OPEN.** This plan authorizes neither production handler implementation nor deployment. It is a test design artifact for owner review.
+**Phase 4 remains OPEN.** The local-only harness is test code, not a production API handler. This plan authorizes neither Azure resources nor deployment.
