@@ -184,35 +184,35 @@ components:
           type: string
           minLength: 1
           maxLength: 300
-          pattern: '\\S'
+          pattern: '\S'
         publisher:
           type: string
           minLength: 1
           maxLength: 300
-          pattern: '\\S'
+          pattern: '\S'
         sourceUrl:
           type: string
           format: uri
-          pattern: '^https://[^/?#@\\s]+(?:[/?#]|$)'
+          pattern: '^https://[^/?#@\s]+(?:[/?#]|$)'
         sourceSection:
           type: [string, 'null']
           minLength: 1
           maxLength: 300
-          pattern: '\\S'
+          pattern: '\S'
         verifiedAt:
           type: string
           format: date-time
-          pattern: '^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d{1,9})?Z$'
+          pattern: '^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d{1,9})?Z$'
         applicableCycle:
           type: string
           minLength: 1
           maxLength: 40
-          pattern: '\\S'
+          pattern: '\S'
         evidenceNote:
           type: [string, 'null']
           minLength: 1
           maxLength: 2000
-          pattern: '\\S'
+          pattern: '\S'
     CatalogueId:
       type: string
       pattern: '^[A-Z0-9][A-Z0-9._-]{0,99}$'
@@ -227,11 +227,11 @@ components:
           type: string
           minLength: 1
           maxLength: 100
-          pattern: '\\S'
+          pattern: '\S'
         generatedAt:
           type: string
           format: date-time
-          pattern: '^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d{1,9})?Z$'
+          pattern: '^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d{1,9})?Z$'
     ProgrammeCatalogueResponse:
       allOf:
         - $ref: '#/components/schemas/CatalogueEnvelope'
@@ -258,7 +258,7 @@ components:
               type: string
               minLength: 1
               maxLength: 300
-              pattern: '\\S'
+              pattern: '\S'
             institutionType:
               type: string
               enum: [UNIVERSITY, TVET_COLLEGE, OTHER]
@@ -268,12 +268,12 @@ components:
             websiteUrl:
               type: [string, 'null']
               format: uri
-              pattern: '^https://[^/?#@\\s]+(?:[/?#]|$)'
+              pattern: '^https://[^/?#@\s]+(?:[/?#]|$)'
         title:
           type: string
           minLength: 1
           maxLength: 300
-          pattern: '\\S'
+          pattern: '\S'
         qualificationType:
           type: string
           enum: [DEGREE, DIPLOMA, HIGHER_CERTIFICATE, TVET, OTHER]
@@ -297,7 +297,7 @@ components:
           type: string
           minLength: 1
           maxLength: 40
-          pattern: '\\S'
+          pattern: '\S'
         requirements:
           type: array
           items:
@@ -314,12 +314,12 @@ components:
         verifiedAt:
           type: string
           format: date-time
-          pattern: '^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d{1,9})?Z$'
+          pattern: '^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d{1,9})?Z$'
         catalogueVersion:
           type: string
           minLength: 1
           maxLength: 100
-          pattern: '\\S'
+          pattern: '\S'
         publicationStatus:
           type: string
           enum: [PUBLISHED, EXPIRED]
@@ -363,7 +363,7 @@ components:
           type: string
           minLength: 1
           maxLength: 500
-          pattern: '\\S'
+          pattern: '\S'
         sourceIds:
           type: array
           minItems: 1
@@ -389,7 +389,7 @@ components:
           type: string
           minLength: 1
           maxLength: 500
-          pattern: '\\S'
+          pattern: '\S'
         evidenceStatus:
           type: string
           const: VERIFIED
@@ -402,11 +402,11 @@ components:
           type: string
           minLength: 1
           maxLength: 40
-          pattern: '\\S'
+          pattern: '\S'
         verifiedAt:
           type: string
           format: date-time
-          pattern: '^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d{1,9})?Z$'
+          pattern: '^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d{1,9})?Z$'
         reviewBy:
           type: string
           format: date
@@ -417,7 +417,7 @@ components:
           type: string
           minLength: 1
           maxLength: 500
-          pattern: '\\S'
+          pattern: '\S'
     FundingCatalogueResponse:
       allOf:
         - $ref: '#/components/schemas/CatalogueEnvelope'
@@ -438,37 +438,37 @@ components:
           type: string
           minLength: 1
           maxLength: 300
-          pattern: '\\S'
+          pattern: '\S'
         provider:
           type: string
           minLength: 1
           maxLength: 300
-          pattern: '\\S'
+          pattern: '\S'
         description:
           type: [string, 'null']
           maxLength: 2000
         officialWebsiteUrl:
           type: [string, 'null']
           format: uri
-          pattern: '^https://[^/?#@\\s]+(?:[/?#]|$)'
+          pattern: '^https://[^/?#@\s]+(?:[/?#]|$)'
         applicationUrl:
           type: [string, 'null']
           format: uri
-          pattern: '^https://[^/?#@\\s]+(?:[/?#]|$)'
+          pattern: '^https://[^/?#@\s]+(?:[/?#]|$)'
         applicableCycle:
           type: string
           minLength: 1
           maxLength: 40
-          pattern: '\\S'
+          pattern: '\S'
         deadlineText:
           type: string
           minLength: 1
           maxLength: 300
-          pattern: '\\S'
+          pattern: '\S'
         deadlineAt:
           type: [string, 'null']
           format: date-time
-          pattern: '^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d{1,9})?Z$'
+          pattern: '^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d{1,9})?Z$'
         deadlineTimezone:
           type: [string, 'null']
           maxLength: 100
@@ -482,7 +482,7 @@ components:
             type: string
             minLength: 1
             maxLength: 120
-            pattern: '\\S'
+            pattern: '\S'
         publishedAmountText:
           type: [string, 'null']
           maxLength: 300
@@ -494,12 +494,12 @@ components:
         verifiedAt:
           type: string
           format: date-time
-          pattern: '^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d{1,9})?Z$'
+          pattern: '^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d{1,9})?Z$'
         catalogueVersion:
           type: string
           minLength: 1
           maxLength: 100
-          pattern: '\\S'
+          pattern: '\S'
         publicationStatus:
           type: string
           enum: [PUBLISHED, EXPIRED]
