@@ -1,7 +1,7 @@
 # StudyPath SA — Open Questions
 
-**Status:** Phase 2 `REQUIREMENTS READY` and Phase 3 `ARCHITECTURE READY` passed on 2026-10-16 for requirements definition and architecture design/traceability respectively; Phase 4 API/interface contracts and runtime validation are current; downstream implementation/release work remains open  
-**Last updated:** 2026-10-17 (rate-limiting disposition D-053 recorded)  
+**Status:** Phase 2 `REQUIREMENTS READY` and Phase 3 `ARCHITECTURE READY` passed on 2026-10-16 for their stated scopes; Phase 4 API/interface contract/runtime validation remains current. The current synthetic-only browser baseline and five passing main-commit CI workflows are recorded, but G-SYN-001 remains OPEN / NOT PASSED.
+**Last updated:** 2026-10-17 (synthetic-only evidence reconciliation; rate-limiting disposition D-053 recorded)  
 **Priority:** P0 blocks readiness/safety/budget; P1 must resolve before dependent phase; P2/P3 later.
 
 **Historical-note convention:** Dated Q-019/source-reconciliation paragraphs are retained as an audit trail; later dated updates supersede earlier source-conflict snapshots. Current Q-019 status is owner-approved candidate selection for the bounded pilot, with complete rule extraction, executable test oracles, curator sign-off and publication readiness still open.
@@ -36,7 +36,7 @@ The owner approved the seven proposed Q decisions on 2026-10-13 and previously a
 ## Gate policy
 - `PROJECT READY` passed on 2026-10-13 for Phase 1 PRD/requirements planning only.
 - `PRD READY` passed on 2026-10-14 after explicit product-owner approval of `docs/product/PRD.md` and `docs/product/ACCEPTANCE-CRITERIA.md`. This approves the requirements baseline only; it does not imply implementation, test execution, privacy clearance, deployment or release readiness.
-- Phase 2 `REQUIREMENTS READY` passed on 2026-10-16 for requirements definition and traceability only. Current next phase is Phase 3 — architecture and ADRs; Q-018, Q-020, OR-019, G-SYN-001 and downstream data/privacy/cost/release evidence remain open.
+- Phase 2 `REQUIREMENTS READY` passed on 2026-10-16 for requirements definition and traceability only. Phase 3 `ARCHITECTURE READY` passed on 2026-10-16 for design/traceability only. Phase 4 API/interface contract/runtime validation is current; Q-004, Q-018, Q-019, Q-020, OR-019, G-SYN-001 and downstream data/privacy/cost/release evidence remain open.
 - Local Git state is supported by owner-supplied command output dated 2026-10-14, and the owner confirms the app is not deployed. Owner-attested Azure account details and cost status (Active subscription, Owner role, Azure Plan, no costs reported on 2026-10-14) and Sonke portal details are not independently verified by the assistant. Recheck the exact resource list and cost evidence before provisioning; do not add paid/metered services without renewed approval.
 - Do not use real learner data until appropriate privacy/legal review and implementation controls are verified.
 
@@ -60,13 +60,13 @@ The rule reconciliation note `docs/product/UJ-2027-RULE-RECONCILIATION-UPDATE.md
 
 The project owner explicitly approved all seven UJ 2027 candidate records and shared interpretation proposals in `docs/product/UJ-2027-CURATOR-REVIEW-PACK.md`. Q-019 is therefore resolved for the **owner/curator decision** on the bounded NSC pilot baseline, but remains open for evidence completeness and implementation readiness: exact APS subject-selection semantics, English-stream mapping, programme-specific footnotes/selection conditions, approved executable test oracles, deterministic implementation, and the 20+ case golden set remain outstanding. Apply `UNKNOWN` whenever unresolved details could change eligibility; do not claim definitive `ELIGIBLE` outcomes from incomplete rules. GAP-001 and `REQUIREMENTS READY` remain open/not passed.
 
-## G-SYN-001 — Synthetic-only MVP verification (2026-10-15)
+## G-SYN-001 — Synthetic-only MVP verification (evidence reconciliation, 2026-10-17)
 
-**Status: OPEN / NOT PASSED.** The next bounded workstream is to build and verify a local browser-only demo with synthetic data. The current default-branch tree includes deterministic eligibility code and golden-case CI, but a learner-facing app entry point, package manifest/lockfile, browser privacy harness, and runtime privacy evidence have not been established. See [G-SYN-001 gate](G-SYN-001-SYNTHETIC-ONLY-MVP-GATE.md).
+**Status: OPEN / NOT PASSED.** The current `main` commit reviewed is `6a6099f10f5957ef0e7e0c87fed058af172921f3`. The repository now includes a React/Vite app entry point, package manifest/lockfile, student-input validation, local catalogue handler, deterministic UJ evaluator/golden cases, Playwright browser tests and five CI workflows. All five workflows passed on that main commit; links and exact scope are recorded in [G-SYN-001 gate](G-SYN-001-SYNTHETIC-ONLY-MVP-GATE.md) and [Project Status](PROJECT-STATUS.md).
 
-Exit evidence: reproducible app build/test; browser end-to-end journey; zero false-positive `ELIGIBLE` outcomes across the reviewed golden set; sentinel-value canaries for network, URL/history, browser storage, console/logging and telemetry; reset/reload non-persistence; accessibility checks; CI result tied to the reviewed commit; verified source provenance and visible demo limitations.
+The earlier statement that the app entry point, package manifest/lockfile and browser harness were absent described the prior inspected commit and is superseded by this evidence update. The current browser suite establishes basic form validation/reset and selected privacy/accessibility checks; it explicitly does not calculate an eligibility result from the basic form. The full pathway journey, comprehensive SYN-004 privacy-channel/failure coverage, full tracker/result lifecycle checks, documented manual responsive/keyboard review, local reproduction and publication-ready catalogue provenance remain open.
 
-The external privacy/legal review is deferred for this interim step, not waived. Real learner data, production identity, authenticated persistence, Azure provisioning and deployment remain prohibited. Public-demo hosting/provider metadata and any platform processing must be reviewed before public use. The Phase 2 `REQUIREMENTS READY` gate remains open.
+Exit evidence still required: complete student journey; reviewed golden set with zero false-positive `ELIGIBLE` outcomes and unresolved rules mapped to `UNKNOWN`; full applicable privacy canaries; reset/reload/fresh-tab lifecycle tests; automated and manual accessibility/responsive checks; CI tied to reviewed commit; provenance and visible limitations; and local reproduction where available. The external privacy/legal review is deferred for this interim step, not waived. Real learner data, production identity, authenticated persistence, Azure provisioning and deployment remain prohibited. Public-demo hosting/provider metadata and any platform processing must be reviewed before public use. The Phase 2 `REQUIREMENTS READY` gate remains passed for requirements definition/traceability only; this does not pass G-SYN-001.
 
 
 ## A3 authenticated-boundary owner decision — 2026-10-15
