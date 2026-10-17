@@ -52,9 +52,9 @@ A future authenticated route must derive owner identity from a validated identit
 - **Authorization:** Published, curator-approved records only. Draft, rejected, expired or unsigned records MUST NOT be returned as current published programme records.
 - **Path variables:** None.
 - **Query variables:** None. Unknown query parameters return `400 INVALID_QUERY_PARAMETER`.
-- **Headers:** `Accept: application/json` (recommended); `Authorization` is not required and must not be used to personalize the result. No request body.
+- **Headers:** `Accept` is optional; absent or JSON-compatible values are accepted. If the client explicitly requests no supported representation, return `406 NOT_ACCEPTABLE`. `Authorization` is not required and must not personalize the result. No request body.
 - **Success:** `200 OK`, `ProgrammeCatalogueResponse`. Empty approved catalogue returns `200` with `items: []`; do not invent fallback records.
-- **Expected errors:** `400 INVALID_QUERY_PARAMETER`; `405 METHOD_NOT_ALLOWED` for an unsupported method on this route; `406 NOT_ACCEPTABLE` for an explicitly unsupported media type; `429 RATE_LIMITED`; `500 INTERNAL_ERROR`; `503 CATALOGUE_UNAVAILABLE`; `504 UPSTREAM_TIMEOUT`.
+- **Expected errors:** `400 INVALID_QUERY_PARAMETER` for unknown query parameters and `400 INVALID_REQUEST_BODY` for a GET body; `405 METHOD_NOT_ALLOWED` for an unsupported method on this route; `406 NOT_ACCEPTABLE` when the valid Accept header excludes JSON; `429 RATE_LIMITED` only when a deployment-level control enforces it; `500 INTERNAL_ERROR`; `503 CATALOGUE_UNAVAILABLE`; `504 UPSTREAM_TIMEOUT`.
 - **Validation:** Reject unsupported query parameters. Validate every published record against the response schema before serialization. Omit records whose publication evidence is incomplete rather than relaxing schema requirements.
 - **Isolation/privacy:** The response is identical in substance for anonymous callers and contains no learner data. Request telemetry may contain technical metadata only; do not log request bodies or learner values.
 - **Side effects:** None. No write, audit event containing learner data, or catalogue mutation.
@@ -72,9 +72,9 @@ A future authenticated route must derive owner identity from a validated identit
 - **Authorization:** Published, curator-approved opportunities only.
 - **Path variables:** None.
 - **Query variables:** None. Unknown query parameters return `400 INVALID_QUERY_PARAMETER`.
-- **Headers:** `Accept: application/json` (recommended). No request body.
+- **Headers:** `Accept` is optional; absent or JSON-compatible values are accepted. If the client explicitly requests no supported representation, return `406 NOT_ACCEPTABLE`. No request body.
 - **Success:** `200 OK`, `FundingCatalogueResponse`. Empty approved catalogue returns `200` with `items: []`.
-- **Expected errors:** `400 INVALID_QUERY_PARAMETER`; `405 METHOD_NOT_ALLOWED` for an unsupported method on this route; `406 NOT_ACCEPTABLE` for an explicitly unsupported media type; `429 RATE_LIMITED`; `500 INTERNAL_ERROR`; `503 CATALOGUE_UNAVAILABLE`; `504 UPSTREAM_TIMEOUT`.
+- **Expected errors:** `400 INVALID_QUERY_PARAMETER` for unknown query parameters and `400 INVALID_REQUEST_BODY` for a GET body; `405 METHOD_NOT_ALLOWED` for an unsupported method on this route; `406 NOT_ACCEPTABLE` when the valid Accept header excludes JSON; `429 RATE_LIMITED` only when a deployment-level control enforces it; `500 INTERNAL_ERROR`; `503 CATALOGUE_UNAVAILABLE`; `504 UPSTREAM_TIMEOUT`.
 - **Validation:** Validate each record against the schema; do not invent requirements, amount, deadline, timezone, required documents or award likelihood. Unsupported criteria are marked `UNKNOWN` or explicitly not assessed.
 - **Isolation/privacy:** Response is public and non-personalized. The request must not carry marks, financial circumstances, identity or tracker data.
 - **Side effects:** None.
