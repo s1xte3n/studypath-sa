@@ -24,9 +24,12 @@ paths:
         - name: Accept
           in: header
           required: false
+          description: >
+            Optional content-negotiation header. Missing Accept or a value that
+            permits application/json is accepted. If no supported representation
+            is acceptable, the response is 406 NOT_ACCEPTABLE.
           schema:
             type: string
-            enum: [application/json]
       responses:
         '200':
           description: Published programme catalogue; items may be empty.
@@ -47,7 +50,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/APIErrorResponse'
         '406':
-          description: Requested response media type is not supported.
+          description: No response representation is acceptable under the client's Accept header.
           content:
             application/json:
               schema:
