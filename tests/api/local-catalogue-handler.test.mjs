@@ -229,6 +229,9 @@ test("schema integrity excludes missing fields, invalid enums, malformed IDs and
           websiteUrl: "https://example.invalid",
         },
       }),
+      programme("SYNTH-DUPLICATE-STUDY-MODE", { studyModes: ["ONLINE", "ONLINE"] }),
+      programme("SYNTH-BAD-NQF-LEVEL", { nqfLevel: 11 }),
+      programme("SYNTH-OVERLONG-LOCATION", { locationText: "L".repeat(301) }),
     ],
   }, async (base) => {
     const result = await send(base, "/api/v1/programmes");

@@ -151,11 +151,13 @@ function publicationReady(record, kind) {
       || !hasText(record.title)
       || !QUALIFICATION_TYPES.has(record.qualificationType)
       || !Array.isArray(record.studyModes)
+      || new Set(record.studyModes).size !== record.studyModes.length
       || !record.studyModes.every((mode) => STUDY_MODES.has(mode))
-      || !(record.nqfLevel === undefined || record.nqfLevel === null || (Number.isInteger(record.nqfLevel) && record.nqfLevel > 0))
+      || !(record.nqfLevel === undefined || record.nqfLevel === null || (Number.isInteger(record.nqfLevel) && record.nqfLevel >= 1 && record.nqfLevel <= 10))
       || !(record.durationYears === undefined || record.durationYears === null || (typeof record.durationYears === "number"
         && Number.isFinite(record.durationYears) && record.durationYears > 0))
-      || !(record.locationText === undefined || record.locationText === null || typeof record.locationText === "string")
+      || !(record.locationText === undefined || record.locationText === null
+        || (typeof record.locationText === "string" && record.locationText.length <= 300))
       || !Array.isArray(record.requirements)
       || !record.requirements.every((rule) => validRequirement(rule, sourceIds))
       || !Array.isArray(record.relationships)
