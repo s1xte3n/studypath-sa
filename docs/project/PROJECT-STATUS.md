@@ -1,12 +1,12 @@
 # StudyPath SA — Project Status
 
-**Status:** Phase 3 `ARCHITECTURE READY` passed on 2026-10-16 for design/traceability only; Phase 4 API/interface contracts is current.  
+**Status:** Phase 3 `ARCHITECTURE READY` passed on 2026-10-16 for design/traceability only; Phase 4 API/interface contracts and Option B runtime validation are current.  
 **Phase 0 gate:** `PROJECT READY` — **PASSED for Phase 1 planning only**  
 **Last completed gate:** `ARCHITECTURE READY` — **PASSED on 2026-10-16 for architecture design/traceability only**  
-**Current phase/gate:** Phase 4 — API/interface contracts; freeze and review the catalogue-only `/api/v1` contract before implementing dependent API consumers.  
+**Current phase/gate:** Phase 4 — API/interface contracts/runtime validation; public catalogue wire contract is owner-approved for continued work, Option B is approved for validation only, and hosting/cost/security gates remain open.  
 **Historical-note convention:** This file preserves dated status snapshots as an audit trail. Older statements that a PR was only proposed/on a branch, or that later checklist items were still open, describe the snapshot at that date; subsequent merged PRs and the latest Phase 2 audit note below supersede those statuses. The latest dated acceptance note and D-049 decision record are authoritative for the current gate; older snapshots remain historical.  
 **Historical Phase 2 audit snapshot (2026-10-15; superseded by the acceptance note below):** PR #79 is merged at `f3fdc009f19600abc6830fd1af1752c1ff633149`. The follow-on branch `docs/phase-2-a4-a6-traceability-audit` records A4–A6 source/scope review, corrects the `AC-DET-007`, `REQ-AUTH-001`, `AC-NFR-001–005` and OR-019 summary mappings, and records the bidirectional ID audit and G-SYN-001 requirement mappings. At that snapshot, checklist items and overall owner acceptance remained pending. PR #80 subsequently merged the traceability audit, and D-049 records explicit owner acceptance on 2026-10-16; see the current Phase 2 acceptance note below. This audit branch's Contract tests workflow run [#54](https://github.com/s1xte3n/studypath-sa/actions/runs/38789226191) passed on head `fbe002e29f35fdbf97a46ada391fca520667e036`. PR #79's contract-test workflow passed on its PR head; no workflow result was returned for the merge commit. No app build, browser journey, runtime privacy, cloud provisioning, deployment or release is claimed.  
-**Last updated:** 2026-10-16
+**Last updated:** 2026-10-17
 
 ## Verified repository state
 - Repository: https://github.com/s1xte3n/studypath-sa
@@ -315,3 +315,8 @@ The approval does not create evidence for runtime settings or data publication. 
 A source check for the funding register found conflicting official 2027 NSFAS closing-date statements: the NSFAS application page currently states 31 October 2026, while the South African Government announcement of the 2027 cycle states 18 November 2026. The candidate is recorded as research-only with deadline unresolved; neither date is normalized into a definitive learner-facing deadline until NSFAS provides authoritative clarification and the curator records the source/version.
 
 **Current gate:** Phase 4 `CONTRACT READY` remains **OPEN / NOT PASSED**. Next evidence work is source reconciliation and complete, curator-approved programme/funding records, plus the deployment profile and passing checks on the current PR/merge commit. This approval is not implementation, test, privacy-runtime, provisioning, deployment or release evidence.
+
+
+## Option B runtime candidate validation — 2026-10-17
+
+The product owner approved Option B (Azure Static Web Apps Free + managed Azure Functions API, without API Management) as the first candidate for compatibility, security and cost validation only. PR #105 records the decision. `docs/api/OPTION-B-VALIDATION-EVIDENCE.md` documents current Microsoft compatibility evidence, security controls and residual risks, a conditional Functions usage model, and private billing checks still required. Current disposition: **candidate plausible; all-in cost NOT CERTIFIED; runtime security/rate-limit controls NOT VERIFIED; Phase 4 OPEN**. The local synthetic-only demo remains in place. No Azure resources were provisioned and no deployment was performed or authorized.
