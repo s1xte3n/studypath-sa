@@ -27,6 +27,8 @@
 - List order is stable ascending by `id`. Consumers must not rely on a particular item count.
 - No mutation or idempotency-key header applies to read-only GET operations. GETs are safe and idempotent.
 - `Cache-Control`, CORS allow-list, rate limits, provider request logging and cache TTL must be set by the deployment profile only after OR-019/Q-018 cost/provider review. D-053 records that Option B does not currently establish numeric per-IP rate limiting; do not claim the `429 RATE_LIMITED` behavior unless an actual deployment-level control is configured. Public hosted deployment remains blocked pending abuse-control and cost approval. Until that profile is approved, do not claim a hosted runtime is ready. Do not cache stale eligibility rules as current; clients must display source freshness/cycle state.
+- `404 NOT_FOUND` is a routing/gateway outcome for a path that does not match a contracted route; it is not an expected response from API-001 or API-002. A 404 must not be interpreted as a genuinely empty catalogue.
+- A deployment-level control may include `Retry-After` on `429 RATE_LIMITED`. The header is optional; when present under this contract it is a non-negative integer number of seconds. No numeric rate limit or guaranteed retry delay is approved for Option B.
 - All network traffic must use HTTPS. No API secrets belong in browser code.
 
 ## 3. Authentication and authorization
