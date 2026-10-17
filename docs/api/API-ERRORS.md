@@ -21,10 +21,10 @@ All fields are required for HTTP errors. `message` is safe and non-sensitive. `r
 | Status | Code | When used | Client behavior |
 |---:|---|---|---|
 | 400 | `INVALID_QUERY_PARAMETER` | Any unsupported query parameter on API-001/API-002 | Fix client request; do not retry unchanged |
-| 400 | `INVALID_ACCEPT_HEADER` | Explicitly unsupported response media type | Retry only with `Accept: application/json` |
+| 400 | `INVALID_ACCEPT_HEADER` | Syntactically malformed `Accept` header, if detected by the application boundary | Correct the header; do not retry unchanged |
 | 404 | `NOT_FOUND` | Reserved for a future contracted resource route; not expected from current list operations | Show not found; do not infer an empty catalogue |
 | 405 | `METHOD_NOT_ALLOWED` | Unsupported HTTP method on a known API route | Correct method; no automatic retry |
-| 406 | `NOT_ACCEPTABLE` | Client explicitly requests an unsupported response format | Request JSON |
+| 406 | `NOT_ACCEPTABLE` | A syntactically valid `Accept` header excludes every representation the API can provide (JSON) | Retry with `Accept: application/json` or omit `Accept` |
 | 429 | `RATE_LIMITED` | Only when a configured deployment-level control actually enforces a request limit and the limit is exceeded; not provided by the current Option B evidence | Respect `Retry-After` if supplied; no aggressive retry |
 | 500 | `INTERNAL_ERROR` | Unexpected server failure | Show recoverable generic error; support may use requestId |
 | 503 | `CATALOGUE_UNAVAILABLE` | Catalogue store/provider unavailable or no valid snapshot can be served | Show recoverable error; do not substitute fabricated data |
@@ -34,6 +34,7 @@ For 429 responses, `Retry-After` is an optional integer number of seconds. No nu
 
 ## Rules
 
+- A missing `Accept` header, `*/*`, or a header that permits `application/json` is acceptable. If the header is syntactically valid but excludes JSON, return `406 NOT_ACCEPTABLE`; do not report this as `400 INVALID_ACCEPT_HEADER`.
 - Current list operations return `200` with `items: []` when the published set is genuinely empty. An outage, invalid catalogue snapshot or timeout must not be represented as an empty success.
 - Error responses must not echo query values or request bodies.
 - Do not return HTTP 200 with an error envelope.
