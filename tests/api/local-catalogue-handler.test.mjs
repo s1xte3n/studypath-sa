@@ -410,3 +410,119 @@ test("nested requirements and pathway relationships must satisfy source-backed s
     assert.deepEqual(result.body.items.map((item) => item.id), ["SYNTH-VALID"]);
   });
 });
+
+
+test("LAPI-009 schema boundaries: programme and funding OpenAPI constraints exclude invalid synthetic records", async () => {
+  const validRequirement = {
+    ruleId: "SYNTH-RULE-BOUNDARY",
+    requirementType: "SUBJECT_MARK",
+    operator: "GTE",
+    subjectId: "MATHEMATICS",
+    threshold: 60,
+    acceptedValues: null,
+    conditionRuleId: null,
+    mandatory: true,
+    description: "Synthetic minimum mark requirement.",
+    sourceIds: ["SYNTHETIC-SOURCE"],
+    verificationState: "VERIFIED",
+  };
+  const validRelationship = {
+    id: "SYNTH-REL-BOUNDARY",
+    fromProgrammeId: "SYNTH-BOUNDARY-VALID",
+    toProgrammeId: "SYNTH-OTHER",
+    type: "ALTERNATIVE",
+    rationale: "Synthetic relationship rationale.",
+    evidenceStatus: "VERIFIED",
+    sourceIds: ["SYNTHETIC-SOURCE"],
+    applicableCycle: "2027",
+    verifiedAt: "2026-10-17T10:00:00Z",
+    reviewBy: "2027-01-01",
+    curatorApproved: true,
+    caveat: "Synthetic relationship caveat.",
+  };
+
+  const invalidProgrammes = [
+    ["institution missing required name", { institution: { ...programme("X").institution, name: undefined } }],
+    ["institution name exceeds maxLength", { institution: { ...programme("X").institution, name: "N".repeat(301) } }],
+    ["institution enum invalid", { institution: { ...programme("X").institution, institutionType: "PRIVATE_UNIVERSITY" } }],
+    ["institution URL is not HTTPS", { institution: { ...programme("X").institution, websiteUrl: "http://example.invalid" } }],
+    ["title exceeds maxLength", { title: "T".repeat(301) }],
+    ["qualification enum invalid", { qualificationType: "CERTIFICATE" }],
+    ["NQF below minimum", { nqfLevel: 0 }],
+    ["NQF is not an integer", { nqfLevel: 1.5 }],
+    ["duration is not positive", { durationYears: 0 }],
+    ["duration is not finite", { durationYears: Number.POSITIVE_INFINITY }],
+    ["study mode enum invalid", { studyModes: ["CORRESPONDENCE"] }],
+    ["study modes are not unique", { studyModes: ["ONLINE", "ONLINE"] }],
+    ["location text exceeds maxLength", { locationText: "L".repeat(301) }],
+    ["applicable cycle exceeds maxLength", { applicableCycle: "C".repeat(41) }],
+    ["source name exceeds maxLength", { sources: [{ ...source, sourceName: "S".repeat(301) }] }],
+    ["source publisher exceeds maxLength", { sources: [{ ...source, publisher: "P".repeat(301) }] }],
+    ["source URL is not HTTPS", { sources: [{ ...source, sourceUrl: "http://example.invalid/source" }] }],
+    ["source section missing required nullable property", { sources: [{ ...source, sourceSection: undefined }] }],
+    ["source evidence note exceeds maxLength", { sources: [{ ...source, evidenceNote: "E".repeat(2001) }] }],
+    ["source timestamp is impossible", { sources: [{ ...source, verifiedAt: "2026-02-30T10:00:00Z" }] }],
+    ["requirements must be an array", { requirements: null }],
+    ["requirement enum invalid", { requirements: [{ ...validRequirement, operator: "APPROXIMATELY" }] }],
+    ["requirement description exceeds maxLength", { requirements: [{ ...validRequirement, description: "D".repeat(501) }] }],
+    ["requirement sourceIds must not be empty", { requirements: [{ ...validRequirement, sourceIds: [] }] }],
+    ["requirement source must belong to record", { requirements: [{ ...validRequirement, sourceIds: ["UNKNOWN-SOURCE"] }] }],
+    ["required nullable requirement property must be present", { requirements: [{ ...validRequirement, subjectId: undefined }] }],
+    ["relationship enum invalid", { relationships: [{ ...validRelationship, type: "SHORTCUT" }] }],
+    ["relationship rationale exceeds maxLength", { relationships: [{ ...validRelationship, rationale: "R".repeat(501) }] }],
+    ["relationship requires verified evidence", { relationships: [{ ...validRelationship, evidenceStatus: "UNVERIFIED" }] }],
+    ["relationship reviewBy must be a real date", { relationships: [{ ...validRelationship, reviewBy: "2027-02-30" }] }],
+    ["relationship caveat exceeds maxLength", { relationships: [{ ...validRelationship, caveat: "C".repeat(501) }] }],
+    ["limitation exceeds maxLength", { limitations: ["L".repeat(501)] }],
+    ["source collection must not be empty", { sources: [] }],
+  ];
+
+  const invalidFunding = [
+    ["funding name exceeds maxLength", { name: "N".repeat(301) }],
+    ["funding provider exceeds maxLength", { provider: "P".repeat(301) }],
+    ["funding description required even when nullable", { description: undefined }],
+    ["funding description exceeds maxLength", { description: "D".repeat(2001) }],
+    ["funding official URL is not HTTPS", { officialWebsiteUrl: "http://example.invalid" }],
+    ["funding application URL is not HTTPS", { applicationUrl: "http://example.invalid/apply" }],
+    ["funding deadline text exceeds maxLength", { deadlineText: "D".repeat(301) }],
+    ["funding deadline timestamp is impossible", { deadlineAt: "2026-02-30T10:00:00Z" }],
+    ["funding timezone exceeds maxLength", { deadlineTimezone: "Z".repeat(101) }],
+    ["funding document must not be empty", { requiredDocuments: [" "] }],
+    ["funding document exceeds maxLength", { requiredDocuments: ["D".repeat(121)] }],
+    ["funding amount text exceeds maxLength", { publishedAmountText: "A".repeat(301) }],
+    ["funding limitations exceed maxLength", { limitations: ["L".repeat(501)] }],
+    ["funding source collection must not be empty", { sources: [] }],
+    ["funding required nullable deadline property must be present", { deadlineAt: undefined }],
+  ];
+
+  const programmeFixtures = [
+    programme("SYNTH-BOUNDARY-VALID", {
+      requirements: [validRequirement],
+      relationships: [validRelationship],
+    }),
+    ...invalidProgrammes.map(([reason, overrides], index) =>
+      programme("SYNTH-BOUNDARY-BAD-" + String(index).padStart(2, "0"), overrides)),
+  ];
+  const fundingFixtures = [
+    funding("FUND-BOUNDARY-VALID"),
+    ...invalidFunding.map(([reason, overrides], index) =>
+      funding("FUND-BOUNDARY-BAD-" + String(index).padStart(2, "0"), overrides)),
+  ];
+
+  await withServer({ programmes: programmeFixtures, fundingOpportunities: fundingFixtures }, async (base) => {
+    const programmeResult = await send(base, "/api/v1/programmes");
+    assert.equal(programmeResult.status, 200);
+    assert.deepEqual(programmeResult.body.items.map((item) => item.id), ["SYNTH-BOUNDARY-VALID"],
+      "only the valid programme fixture should pass all covered schema boundaries");
+
+    const fundingResult = await send(base, "/api/v1/funding-opportunities");
+    assert.equal(fundingResult.status, 200);
+    assert.deepEqual(fundingResult.body.items.map((item) => item.id), ["FUND-BOUNDARY-VALID"],
+      "only the valid funding fixture should pass all covered schema boundaries");
+
+    assert.equal(invalidProgrammes.length, 33);
+    assert.equal(invalidFunding.length, 15);
+    assert.ok(invalidProgrammes.every(([reason]) => typeof reason === "string" && reason.length > 0));
+    assert.ok(invalidFunding.every(([reason]) => typeof reason === "string" && reason.length > 0));
+  });
+});
