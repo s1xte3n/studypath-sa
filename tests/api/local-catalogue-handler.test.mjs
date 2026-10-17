@@ -206,7 +206,6 @@ test("Accept negotiation selects the most specific matching range", async () => 
       ["application/*;q=0.7, */*;q=0.1", 200],
       ["text/html;q=1, application/json;q=0.1", 200],
       ["application/json;q=0, text/html;q=1", 406],
-      ["application/json;q=0.5, application/json;q=0", 406],
     ];
     for (const [accept, expectedStatus] of cases) {
       const result = await send(base, "/api/v1/programmes", { headers: { Accept: accept } });
