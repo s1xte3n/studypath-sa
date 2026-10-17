@@ -1,9 +1,9 @@
 # StudyPath SA — Artifact Index
 
-**Last updated:** 2026-10-16  
-**Phase:** 4 — API/interface contracts (`ARCHITECTURE READY` passed 2026-10-16 for design/traceability only; contract CI passed on merge commit after PR #89; Phase 4 owner review accepted on 2026-10-16; runtime/cost and catalogue evidence remain open)  
+**Last updated:** 2026-10-17
+**Phase:** 4 — API/interface contracts/runtime validation (`ARCHITECTURE READY` passed 2026-10-16 for design/traceability only; current main-commit contract/OpenAPI/browser/eligibility CI passed; G-SYN-001 remains open/not passed; runtime, cost, privacy coverage and catalogue publication evidence remain open)  
 **Historical-note convention:** Dated sections below preserve prior review snapshots. Where an older row says “proposed,” “on branch for review,” or “not started,” use the latest status table and subsequent dated updates as current; earlier snapshots are not current approval or implementation evidence.  
-**Gate:** Phase 0 `PROJECT READY`, Phase 1 `PRD READY`, Phase 2 `REQUIREMENTS READY`, and the Phase 3 architecture baseline are accepted for their stated scope only. D-050 records architecture approval on 2026-10-16. Phase 4 API/interface contract work is next; downstream implementation, cost, privacy/security and release gates remain open.
+**Gate:** Phase 0 `PROJECT READY`, Phase 1 `PRD READY`, Phase 2 `REQUIREMENTS READY`, and Phase 3 `ARCHITECTURE READY` are accepted for their stated scope only. Phase 4 API/interface contract/runtime validation is current. The current synthetic-only browser baseline and five passing main-commit CI workflows are documented below; G-SYN-001, downstream runtime/privacy, cost, catalogue publication and release gates remain open.
 
 ## Source-of-truth references
 
@@ -58,9 +58,25 @@ The owner approved the Phase 0 decision records and attests that account-specifi
 
 - Private repository: https://github.com/s1xte3n/studypath-sa
 - Default branch: `main`.
-- Initial root listing: `README.md` only; no application source, tests, CI/CD, infrastructure or deployment verified in the initial inspection.
-- Project owner supplied local status on 2026-10-14: branch `main`, clean working tree, synchronized with `origin/main`. This was owner-supplied command output, not direct local filesystem inspection by the assistant.
-- Owner confirmed the project has not been deployed and no project Azure resources have been provisioned.
+- Historical initial root listing reported `README.md` only; that statement is superseded by the current repository inspection below.
+- Current reviewed `main` commit: `6a6099f10f5957ef0e7e0c87fed058af172921f3`.
+- Current artifacts include `package.json`/`package-lock.json`, `src/main.jsx`, `src/styles.css`, student-entry validation, local catalogue handler, UJ evaluator/golden cases, Playwright browser tests and five CI workflows.
+- Five workflows passed on this main commit on 2026-10-17: [browser E2E/privacy/accessibility](https://github.com/s1xte3n/studypath-sa/actions/runs/39045654154), [browser MVP build](https://github.com/s1xte3n/studypath-sa/actions/runs/39045654225), [contract tests](https://github.com/s1xte3n/studypath-sa/actions/runs/39045654207), [OpenAPI validation](https://github.com/s1xte3n/studypath-sa/actions/runs/39045654244), [UJ eligibility golden-case verification](https://github.com/s1xte3n/studypath-sa/actions/runs/39045654276).
+- These are remote CI results. Local reproduction was not completed because a local clone attempt failed at DNS resolution for `github.com`; no local test run is claimed.
+- The browser suite covers basic form validation/reset, invalid input, a keyboard-focus assertion, selected no-transmission/no-persistence checks and automated axe checks. It explicitly states the basic form does not calculate an eligibility result. G-SYN-001 remains OPEN / NOT PASSED.
+- Owner confirmed the project has not been deployed and no project Azure resources have been provisioned; no deployment/provisioning is claimed.
+
+## G-SYN-001 synthetic-only MVP — evidence reconciliation (2026-10-17)
+
+| Evidence area | Current evidence | Status / limitation |
+|---|---|---|
+| Repository baseline | Current main commit `6a6099f10f5957ef0e7e0c87fed058af172921f3`; app entry, manifest/lockfile, browser harness and local catalogue handler present | Baseline verified remotely |
+| CI | Five workflows passed on current main commit; run links are listed above | CI passed; not a release approval |
+| Browser journey | Student-entry form, basic validation and reset are tested | Does not yet establish the full explainable pathway-result and official-next-step journey |
+| Privacy | Automated checks cover selected network, URL, storage, cookie, console and reload behaviors | Full SYN-004 channels and failure paths are not yet evidenced |
+| Accessibility/responsiveness | Automated axe scan and keyboard-focus assertion pass; responsive breakpoint exists | Manual keyboard/focus and narrow-viewport review not documented |
+| Local reproducibility | Local clone attempt failed at GitHub DNS resolution | Local install/build/test not run by assistant |
+| Gate | `docs/project/G-SYN-001-SYNTHETIC-ONLY-MVP-GATE.md` | **OPEN / NOT PASSED**; synthetic-only use continues, no deployment/provisioning/real learner data |
 
 ## Phase 1 product artifacts
 
@@ -80,8 +96,8 @@ The owner approved the Phase 0 decision records and attests that account-specifi
 | Architecture and ADRs | Draft artifacts exist; not frozen/approved | `REQUIREMENTS READY` acceptance, then Phase 3 review |
 | API/interface contracts | Draft contract exists; not implementation-ready | Phase 3 architecture, OR-019/Q-018, privacy/provider and cost review |
 | Environment and secret inventory | Not verified / not ready | Approved contracts and an authorized deployment plan; no provisioning is currently authorized |
-| Test strategy and test cases | Partial: subject contract tests, eligibility tests and planned traceability IDs exist; end-to-end/browser privacy suite remains unavailable | Approved requirements/contracts and runnable application |
-| Implementation, security review and CI/CD | Partial domain/test code and two workflows exist; learner-facing UI, browser privacy harness and release evidence not established | Approved upstream artifacts; G-SYN-001 remains open/not passed |
+| Test strategy and test cases | Partial: domain, contract, Playwright browser, privacy/accessibility and golden-case tests exist; current CI passed remotely, but privacy channel coverage and manual checks remain incomplete | Approved requirements/contracts; complete core journey and expanded verification |
+| Implementation, security review and CI/CD | React/Vite scaffold and browser harness exist; core pathway-result journey is not established; five workflows passed on current main; local reproduction and full security review remain outstanding | Approved upstream artifacts; G-SYN-001 remains open/not passed |
 | Release and smoke-test evidence | Not available | Implemented/deployed release |
 | Deck, demo video, Lean Business Canvas and SSDLC evidence | Not started/verified | Hackathon submission plan |
 

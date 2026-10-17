@@ -1,6 +1,6 @@
 # StudyPath SA — Project Status
 
-**Status:** Phase 3 `ARCHITECTURE READY` passed on 2026-10-16 for design/traceability only; Phase 4 API/interface contracts and Option B runtime validation are current.  
+**Status:** Phase 3 `ARCHITECTURE READY` passed on 2026-10-16 for design/traceability only; Phase 4 API/interface contract work and Option B validation remain current. The current synthetic-only browser baseline and five passing main-commit CI workflows are verified remotely; G-SYN-001 remains NOT PASSED.  
 **Phase 0 gate:** `PROJECT READY` — **PASSED for Phase 1 planning only**  
 **Last completed gate:** `ARCHITECTURE READY` — **PASSED on 2026-10-16 for architecture design/traceability only**  
 **Current phase/gate:** Phase 4 — API/interface contracts/runtime validation; public catalogue wire contract is owner-approved for continued work, Option B is approved for validation only, D-053 records the rate-limiting disposition, and public hosted deployment remains blocked pending an enforceable abuse control and cost approval.  
@@ -8,11 +8,22 @@
 **Historical Phase 2 audit snapshot (2026-10-15; superseded by the acceptance note below):** PR #79 is merged at `f3fdc009f19600abc6830fd1af1752c1ff633149`. The follow-on branch `docs/phase-2-a4-a6-traceability-audit` records A4–A6 source/scope review, corrects the `AC-DET-007`, `REQ-AUTH-001`, `AC-NFR-001–005` and OR-019 summary mappings, and records the bidirectional ID audit and G-SYN-001 requirement mappings. At that snapshot, checklist items and overall owner acceptance remained pending. PR #80 subsequently merged the traceability audit, and D-049 records explicit owner acceptance on 2026-10-16; see the current Phase 2 acceptance note below. This audit branch's Contract tests workflow run [#54](https://github.com/s1xte3n/studypath-sa/actions/runs/38789226191) passed on head `fbe002e29f35fdbf97a46ada391fca520667e036`. PR #79's contract-test workflow passed on its PR head; no workflow result was returned for the merge commit. No app build, browser journey, runtime privacy, cloud provisioning, deployment or release is claimed.  
 **Last updated:** 2026-10-17
 
+## Current synthetic-only MVP evidence snapshot — 2026-10-17
+
+Reviewed current `main` commit: `6a6099f10f5957ef0e7e0c87fed058af172921f3`.
+
+- Current artifacts include `package.json`/`package-lock.json`, React/Vite entry point `src/main.jsx`, responsive stylesheet `src/styles.css`, student input validation, a local catalogue handler, deterministic UJ evaluator/golden-case tests, Playwright browser tests, and five CI workflows.
+- All five GitHub Actions workflows passed on the reviewed main commit: [browser E2E/privacy/accessibility](https://github.com/s1xte3n/studypath-sa/actions/runs/39045654154), [browser MVP build](https://github.com/s1xte3n/studypath-sa/actions/runs/39045654225), [contract tests](https://github.com/s1xte3n/studypath-sa/actions/runs/39045654207), [OpenAPI validation](https://github.com/s1xte3n/studypath-sa/actions/runs/39045654244), and [UJ eligibility golden-case verification](https://github.com/s1xte3n/studypath-sa/actions/runs/39045654276).
+- Browser evidence covers basic form validation/reset, invalid-input announcements, a keyboard-focus assertion, selected no-transmission/no-persistence checks and an axe scan. It explicitly does not calculate an eligibility result from the basic form.
+- The complete pathway-result journey and official next steps, comprehensive SYN-004 privacy-channel/failure coverage, tracker/result lifecycle verification, documented manual responsive/keyboard review, and complete publication-ready catalogue evidence remain outstanding.
+- Remote CI results are not local reproduction. A local clone attempt was blocked by DNS resolution for `github.com`; no local test command is claimed to have run.
+- G-SYN-001 remains **OPEN / NOT PASSED**. No Azure provisioning, deployment, paid service or real learner-data use is authorized by this status update.
+
 ## Verified repository state
 - Repository: https://github.com/s1xte3n/studypath-sa
 - Visibility: private; default branch: `main`.
 - Connected GitHub integration reports admin, read and write permissions.
-- Initial root listing contained `README.md` only; README content is a project title and one-line description.
+- Historical Phase 0 root listing contained `README.md` only; that early snapshot is superseded by the current repository evidence recorded in the 2026-10-17 synthetic-only MVP snapshot below.
 - Phase 0 baseline documentation and accepted direction decisions are present in the project documentation.
 - The PROJECT READY evidence pack and owner-confirmation update were merged through PRs #4 and #5.
 - On 2026-10-14, the owner supplied Azure portal details stating that the `StudyPath SA` subscription is Active, the owner role is Owner, the plan is Azure Plan, and no costs exist. These details are owner-attested; subscription identifiers are intentionally excluded from the repository. Billing scope/date range and redacted portal evidence have not been independently reviewed.
@@ -33,8 +44,9 @@ Prepared a review/decision pack on branch `docs/q020-gate-closure-proposal`: `Q0
 |---|---|
 | Product specification, hackathon programme, development SOP | Supplied project references; hackathon programme reviewed and online evidence logged |
 | Documented React/Vite + Azure stack | Owner-confirmed baseline; not provisioned/validated |
-| Application source and dependencies | Not found in initial root listing; no implementation verified |
-| Tests, CI workflows, infrastructure, database | Not verified; no execution evidence available | 
+| Application source and dependencies | Current React/Vite scaffold, package manifest/lockfile, input validation and local catalogue handler are present; full learner pathway journey remains incomplete |
+| Tests and CI workflows | Browser, contract, OpenAPI and eligibility tests/workflows are present; five main-commit workflows passed remotely on 2026-10-17; local reproduction not performed |
+| Infrastructure, database and deployment | No provisioning or deployment is claimed; runtime/provider behavior, all-in cost and release evidence remain outstanding | 
 | Deployment | Confirmed by project owner on 2026-10-14: StudyPath SA has not been deployed. No live application URL or deployment has been verified. |
 | MVP journey | Direction accepted: anonymous learner journey from subject/mark/interest inputs to explainable pathways, eligibility/uncertainty and official next steps |
 | Catalogue | UJ 2027 prospectus selected as starting source; four programme candidates listed in `docs/product/PROGRAMME-CATALOGUE-REGISTER.md`. These are research leads, not publication-ready records. The 6–8 record target, complete source/rule verification and relationship evidence remain outstanding; ambiguity maps to UNKNOWN |
@@ -77,7 +89,8 @@ The following are downstream implementation/release controls, not blockers to be
 Owner approval of the Phase 0 direction/materials is recorded. These approvals do not by themselves provide the external and implementation evidence required to pass the gate.
 
 ## Evidence limitations
-- No application tests, build, security scan, cloud resource, or CI run has been performed or verified. The project owner confirmed on 2026-10-14 that StudyPath SA has not been deployed; therefore there is no live deployment to smoke-test yet. Phase 0 passage does not imply these exist.
+- Five remote CI workflows passed on main commit `6a6099f10f5957ef0e7e0c87fed058af172921f3` on 2026-10-17 (see current evidence snapshot above). The assistant did not reproduce the tests locally; the local clone attempt failed at DNS resolution for `github.com`.
+- No deployment, cloud provisioning, live-hosting smoke test, comprehensive security review, runtime/provider privacy verification, or release is claimed. The project owner previously confirmed that StudyPath SA has not been deployed. Phase 0 passage and green CI do not imply release readiness.
 - The owner reports that the `StudyPath SA` subscription is Active, their role is Owner, the plan is Azure Plan, and no costs exist (2026-10-14). Account-specific details, billing scope/date range and redacted evidence were not independently inspected by the assistant; no billing screenshot or saved quote was committed. See `PHASE0-ONLINE-EVIDENCE.md`.
 - Pricing review is a preliminary screen of official pricing pages, not a saved Pricing Calculator quote; final regional prices, currency conversion, tax, usage assumptions and credits remain unverified.
 - Official UJ programme pages and Microsoft pricing/quota pages were checked online on 2026-10-13. OR-008 supersedes the earlier two-programme proposal with a target of 6–8 curated programme records prioritising Gauteng; the actual publication-ready catalogue remains outstanding. Full admission predictions remain unsupported and incomplete rules must return UNKNOWN.
@@ -249,9 +262,7 @@ The owner explicitly approved all five decisions A–E. The approved design base
 
 **G-SYN-001 — Synthetic-Only MVP Verification: OPEN / NOT PASSED.** See [G-SYN-001 gate criteria](G-SYN-001-SYNTHETIC-ONLY-MVP-GATE.md). The gate is defined to keep work moving without real learner data or an external legal review at this stage; it is not a legal-compliance finding or permission to deploy publicly.
 
-**Verified repository correction at commit `e3564527b48dc0ca3cb55d4c208da5dc620b23ff`:** the recursive default-branch tree includes `src/domain/eligibility/uj-2027-evaluator.mjs`, golden-case tests, and two GitHub Actions workflows. Earlier statements in this status file that no tests/workflows or application source were found reflect earlier snapshots and are superseded to that extent. The inspected tree still does not establish a root package manifest/lockfile, learner-facing UI/app entry point, browser-test harness, API implementation, or deployment/infrastructure code. Domain tests are not runtime privacy evidence.
-
-**Next action:** build a minimal local browser-only vertical slice with synthetic fixtures, then implement and run the SYN-001–SYN-010 checks. Do not mark the gate passed until results are tied to a commit. The Phase 2 `REQUIREMENTS READY` gate remains open; this bounded demo work does not silently close it. No Azure provisioning, deployment, real learner data, production identity, or persistence is authorized.
+**Verified repository correction at commit `e3564527b48dc0ca3cb55d4c208da5dc620b23ff`:** the recursive default-branch tree includes `src/domain/eligibility/uj-2027-evaluator.mjs`, golden-case tests, and two GitHub Actions workflows. Earlier statements in this status file that no tests/workflows or application source were found reflect earlier snapshots and are superseded to that extent. This paragraph and the following next-action note are a historical status snapshot from 2026-10-15, before the current React/Vite scaffold, browser tests and five CI workflows were added. They are retained for audit history only and are superseded by the 2026-10-17 synthetic-only MVP evidence snapshot near the top of this file. The Phase 2 `REQUIREMENTS READY` gate passed on 2026-10-16 for requirements definition and traceability only; G-SYN-001 remains open/not passed. No Azure provisioning, deployment, real learner data, production identity, or persistence is authorized.
 
 
 ## MVP scope reconciliation — D-044–D-047
