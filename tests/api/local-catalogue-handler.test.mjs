@@ -352,3 +352,58 @@ test("all local HTTP error classes preserve the required safe response headers",
     }
   });
 });
+
+test("nested requirements and pathway relationships must satisfy source-backed schema constraints", async () => {
+  const validRequirement = {
+    ruleId: "SYNTH-RULE-1",
+    requirementType: "SUBJECT_MARK",
+    operator: "GTE",
+    subjectId: "MATHEMATICS",
+    threshold: 60,
+    acceptedValues: null,
+    conditionRuleId: null,
+    mandatory: true,
+    description: "Synthetic minimum mark requirement.",
+    sourceIds: ["SYNTHETIC-SOURCE"],
+    verificationState: "VERIFIED",
+  };
+  const validRelationship = {
+    id: "SYNTH-REL-1",
+    fromProgrammeId: "SYNTH-VALID",
+    toProgrammeId: "SYNTH-OTHER",
+    type: "ALTERNATIVE",
+    rationale: "Synthetic relationship rationale.",
+    evidenceStatus: "VERIFIED",
+    sourceIds: ["SYNTHETIC-SOURCE"],
+    applicableCycle: "2027",
+    verifiedAt: "2026-10-17T10:00:00Z",
+    reviewBy: "2027-01-01",
+    curatorApproved: true,
+    caveat: "Synthetic relationship caveat.",
+  };
+
+  await withServer({
+    programmes: [
+      programme("SYNTH-VALID", {
+        requirements: [validRequirement],
+        relationships: [validRelationship],
+      }),
+      programme("SYNTH-BAD-RULE-SOURCE", {
+        requirements: [{ ...validRequirement, ruleId: "SYNTH-RULE-2", sourceIds: ["MISSING-SOURCE"] }],
+      }),
+      programme("SYNTH-BAD-RULE-ENUM", {
+        requirements: [{ ...validRequirement, ruleId: "SYNTH-RULE-3", operator: "APPROXIMATELY" }],
+      }),
+      programme("SYNTH-BAD-RELATIONSHIP", {
+        relationships: [{ ...validRelationship, id: "SYNTH-REL-2", curatorApproved: false }],
+      }),
+      programme("SYNTH-BAD-RELATIONSHIP-DATE", {
+        relationships: [{ ...validRelationship, id: "SYNTH-REL-3", reviewBy: "2027-02-30" }],
+      }),
+    ],
+  }, async (base) => {
+    const result = await send(base, "/api/v1/programmes");
+    assert.equal(result.status, 200);
+    assert.deepEqual(result.body.items.map((item) => item.id), ["SYNTH-VALID"]);
+  });
+});
