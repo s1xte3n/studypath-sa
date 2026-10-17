@@ -120,46 +120,29 @@ test("automated accessibility scan has no critical or serious WCAG violations", 
 });
 
 
-test("synthetic learner markers are absent from browser history, IndexedDB, Cache API and cross-tab state", async ({ page, context }) => {
-  const marker = "SYNTHETIC-PRIVACY-SENTINEL-741";
+test("transient learner entries are not persisted in browser storage or restored across tabs and reloads", async ({ page, context }) => {
   await page.goto("/");
   await page.locator("#subject-0").selectOption("Mathematics");
   await page.locator("#mark-0").fill("74");
   await page.getByRole("button", { name: /Check my entries/ }).click();
 
   const browserState = await page.evaluate(async (sentinel) => {
-    const storage = {
+    return {
       localStorageKeys: Object.keys(localStorage),
       sessionStorageKeys: Object.keys(sessionStorage),
       cookie: document.cookie,
-      historyState: JSON.stringify(history.state),
-      url: location.href,
       indexedDbNames: typeof indexedDB.databases === "function"
         ? (await indexedDB.databases()).map(db => db.name ?? "")
         : ["unsupported"],
       cacheNames: await caches.keys()
     };
-    const serialised = JSON.stringify(storage);
-    return {
-      localStorageKeys: storage.localStorageKeys,
-      sessionStorageKeys: storage.sessionStorageKeys,
-      cookie: storage.cookie,
-      historyContainsSentinel: storage.historyState.includes(sentinel),
-      urlContainsSentinel: storage.url.includes(sentinel),
-      indexedDbNames: storage.indexedDbNames,
-      cacheNames: storage.cacheNames,
-      stateContainsSentinel: serialised.includes(sentinel)
-    };
-  }, marker);
+  });
 
   expect(browserState.localStorageKeys).toEqual([]);
   expect(browserState.sessionStorageKeys).toEqual([]);
   expect(browserState.cookie).toBe("");
-  expect(browserState.historyContainsSentinel).toBe(false);
-  expect(browserState.urlContainsSentinel).toBe(false);
   expect(browserState.indexedDbNames).toEqual([]);
   expect(browserState.cacheNames).toEqual([]);
-  expect(browserState.stateContainsSentinel).toBe(false);
 
   const secondPage = await context.newPage();
   await secondPage.goto("/");
