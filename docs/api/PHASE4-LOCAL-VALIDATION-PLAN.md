@@ -1,7 +1,7 @@
 # Phase 4 — Local-Only API Compatibility Validation Plan
 
-**Status:** Local-only synthetic harness implemented for LAPI-001–015 test scenarios; CI verification pending. Hosted runtime/configuration validation remains blocked.  
-**Base:** main includes PR #109 merge commit `dd11aae0525e1d78bd06b93111de4e7379254840`; follow-on harness work is under review.  
+**Status:** Local-only synthetic harness and LAPI-001–015 scenarios are implemented; this branch adds explicit cross-error-class header assertions for LAPI-014. CI verification for this branch is pending. Hosted runtime/configuration validation remains blocked.  
+**Base:** `main` includes PR #110 merge commit `1f05300e2f4400bd88f7914b153924d4a32f26a0` (local synthetic validation harness extension). This branch adds the remaining explicit error-header assertion coverage for LAPI-014.  
 **Runtime candidate:** Option B (Static Web Apps managed Functions), approved for validation only.  
 **Hard boundaries:** no Azure resources, deployment, paid services, real learner data, or hosted API implementation are authorized by this plan.
 
@@ -36,7 +36,7 @@ Implement a local-only adapter/harness only after its shape is agreed; keep fixt
 | LAPI-011 | Privacy sentinel | Synthetic marker strings in query/body/header positions | No marker appears in response; no request logging or URL generation exists in the harness. CI does not establish provider log behavior | `tests/api/local-catalogue-handler.test.mjs` — automated; CI pending |
 | LAPI-012 | No downstream calls | Spy on global `fetch` during a raw HTTP request to the local server | Zero `fetch` calls from handler; this is not a full OS-level network sandbox | `tests/api/local-catalogue-handler.test.mjs` — automated; CI pending |
 | LAPI-013 | Safe errors | Injected timestamp-provider failure | Generic `500 INTERNAL_ERROR`; no stack/path/configuration sentinel leakage | `tests/api/local-catalogue-handler.test.mjs` — automated; CI pending |
-| LAPI-014 | Response headers | Successful and error responses | JSON content type and `X-Content-Type-Options: nosniff`; cache policy remains unapproved and is not invented | `tests/api/local-catalogue-handler.test.mjs` — success and 500 error headers asserted; CI pending |
+| LAPI-014 | Response headers | Successful and error responses | JSON content type and `X-Content-Type-Options: nosniff`; cache policy remains unapproved and is not invented | `tests/api/local-catalogue-handler.test.mjs` — success and representative 400/404/405/406/500 error headers asserted; branch CI pending |
 | LAPI-015 | Bounded response | 250-record synthetic fixture | Response JSON under 1 MB and local response under 5 seconds; this is a representative regression budget, not a production maximum | `tests/api/local-catalogue-handler.test.mjs` — automated; CI pending |
 | LAPI-016 | Package/config | Inspect local package and runtime configuration | BLOCKED: no approved Static Web Apps handler layout/runtime config exists; do not invent deployment config during local-only validation | Remains blocked pending runtime decision and explicit deployment approval |
 
@@ -50,7 +50,7 @@ Implement a local-only adapter/harness only after its shape is agreed; keep fixt
 
 ## Acceptance gate
 
-This plan is complete only when each applicable LAPI case has a test ID, implementation reference, and passing CI evidence. LAPI-009 currently validates a deliberately scoped subset of the OpenAPI schema rather than every nested constraint. LAPI-014 still needs explicit error-response header assertions. LAPI-016 and all Azure-hosted behavior remain blocked until separate runtime/deployment approval. The rate-limit, subscription cost, cache policy and operational diagnostic gates are not satisfied by local tests.
+This plan is complete only when each applicable LAPI case has a test ID, implementation reference, and passing CI evidence. LAPI-009 currently validates a deliberately scoped subset of the OpenAPI schema rather than every nested constraint. LAPI-014 now has explicit assertions for JSON content type, `nosniff`, canonical error envelope keys, and absence of exception sentinels across representative 400/404/405/406/500 responses; branch CI remains required. LAPI-016 and all Azure-hosted behavior remain blocked until separate runtime/deployment approval. The rate-limit, subscription cost, cache policy and operational diagnostic gates are not satisfied by local tests.
 
 ## Gate decision
 
