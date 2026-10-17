@@ -216,6 +216,7 @@ test("schema integrity excludes missing fields, invalid enums, malformed IDs and
       programme("SYNTH-BAD-ENUM", { qualificationType: "CERTIFICATE" }),
       programme("SYNTH-BAD-DATE", { verifiedAt: "2026-02-30T10:00:00Z" }),
       programme("SYNTH-MISSING-TITLE", { title: undefined }),
+      programme("SYNTH-MISSING-CYCLE", { applicableCycle: "" }),
       programme("SYNTH-BAD-SOURCE-DATE", {
         sources: [{ ...source, verifiedAt: "2026-13-01T00:00:00Z" }],
       }),
@@ -242,6 +243,8 @@ test("internal exceptions return a generic 500 without stack or configuration le
   }, async (base) => {
     const result = await send(base, "/api/v1/programmes");
     assert.equal(result.status, 500);
+    assert.match(result.headers.get("content-type"), /^application\\/json; charset=utf-8$/);
+    assert.equal(result.headers.get("x-content-type-options"), "nosniff");
     assert.equal(result.body.error.code, "INTERNAL_ERROR");
     assert.deepEqual(Object.keys(result.body.error).sort(), ["code", "message", "requestId"]);
     assert.doesNotMatch(JSON.stringify(result.body), /PRIVATE_STACK_SENTINEL|\\/etc\\/private\\/config|Error:/);
