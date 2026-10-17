@@ -293,3 +293,15 @@ test("a representative synthetic catalogue response stays within the local paylo
     assert.ok(elapsedMs < 5000, "local synthetic response should complete under 5 seconds");
   });
 });
+
+
+test("PUT, PATCH, DELETE and OPTIONS are rejected by the local route handler", async () => {
+  await withServer({}, async (base) => {
+    for (const method of ["PUT", "PATCH", "DELETE", "OPTIONS"]) {
+      const result = await sendRaw(base, "/api/v1/programmes", { method });
+      assert.equal(result.status, 405, method + " should be rejected");
+      assert.equal(result.headers.allow, "GET");
+      assert.equal(result.body.error.code, "METHOD_NOT_ALLOWED");
+    }
+  });
+});
