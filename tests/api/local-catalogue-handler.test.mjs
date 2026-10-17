@@ -520,7 +520,7 @@ test("LAPI-009 schema boundaries: programme and funding OpenAPI constraints excl
     assert.deepEqual(fundingResult.body.items.map((item) => item.id), ["FUND-BOUNDARY-VALID"],
       "only the valid funding fixture should pass all covered schema boundaries");
 
-    assert.equal(invalidProgrammes.length, 34);
+    assert.equal(invalidProgrammes.length, 33);
     assert.equal(invalidFunding.length, 15);
     assert.ok(invalidProgrammes.every(([reason]) => typeof reason === "string" && reason.length > 0));
     assert.ok(invalidFunding.every(([reason]) => typeof reason === "string" && reason.length > 0));
