@@ -308,3 +308,19 @@ test("PUT, PATCH, DELETE and OPTIONS are rejected by the local route handler", a
     }
   });
 });
+
+
+test("funding publication rejects missing required nullable schema properties", async () => {
+  await withServer({
+    fundingOpportunities: [
+      funding("FUND-VALID"),
+      funding("FUND-MISSING-DESCRIPTION", { description: undefined }),
+      funding("FUND-MISSING-DEADLINE", { deadlineAt: undefined }),
+      funding("FUND-INVALID-ID", { id: "funding-invalid" }),
+    ],
+  }, async (base) => {
+    const result = await send(base, "/api/v1/funding-opportunities");
+    assert.equal(result.status, 200);
+    assert.deepEqual(result.body.items.map((item) => item.id), ["FUND-VALID"]);
+  });
+});
