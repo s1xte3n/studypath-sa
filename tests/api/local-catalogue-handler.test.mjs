@@ -374,30 +374,39 @@ test("funding publication rejects missing required nullable schema properties", 
   });
 });
 
-test("all local HTTP error classes preserve the required safe response headers", async () => {
+test("all local HTTP errors preserve the canonical safe envelope and headers", async () => {
+  let requestSequence = 0;
   await withServer({
-    now: () => { throw new Error("PRIVATE_HEADER_TEST_SENTINEL"); },
+    now: () => { throw new Error("PRIVATE_HEADER_TEST_SENTINEL /etc/private/config"); },
+    requestId: () => "synthetic-request-" + String(++requestSequence).padStart(3, "0"),
   }, async (base) => {
     const cases = [
-      { path: "/api/v1/programmes?unknown=1", status: 400, code: "INVALID_QUERY_PARAMETER" },
+      { path: "/api/v1/programmes?unknown=PRIVATE_QUERY_SENTINEL", status: 400, code: "INVALID_QUERY_PARAMETER" },
       { path: "/api/v1/programmes", headers: { Accept: "not-a-media-type" }, status: 400, code: "INVALID_ACCEPT_HEADER" },
       { path: "/api/v1/programmes", headers: { Accept: "text/html" }, status: 406, code: "NOT_ACCEPTABLE" },
       { path: "/api/v1/programmes", method: "POST", status: 405, code: "METHOD_NOT_ALLOWED" },
       { path: "/api/v1/not-a-route", status: 404, code: "NOT_FOUND" },
+      { path: "/api/v1/programmes", body: JSON.stringify({ marker: "PRIVATE_BODY_SENTINEL" }), headers: { "Content-Type": "application/json" }, status: 400, code: "INVALID_REQUEST_BODY" },
       { path: "/api/v1/programmes", status: 500, code: "INTERNAL_ERROR" },
     ];
 
-    for (const scenario of cases) {
+    for (const [index, scenario] of cases.entries()) {
       const result = await sendRaw(base, scenario.path, {
         method: scenario.method ?? "GET",
         headers: scenario.headers ?? {},
+        body: scenario.body ?? "",
       });
       assert.equal(result.status, scenario.status, scenario.code + " status");
-      assert.match(result.headers["content-type"] ?? "", /^application\/json; charset=utf-8$/);
+      assert.match(result.headers["content-type"] ?? "", /^application\\/json; charset=utf-8$/);
       assert.equal(result.headers["x-content-type-options"], "nosniff");
+      assert.deepEqual(Object.keys(result.body).sort(), ["error"], scenario.code + " top-level envelope");
+      assert.deepEqual(Object.keys(result.body.error).sort(), ["code", "message", "requestId"], scenario.code + " error fields");
       assert.equal(result.body.error.code, scenario.code);
-      assert.deepEqual(Object.keys(result.body.error).sort(), ["code", "message", "requestId"]);
-      assert.doesNotMatch(JSON.stringify(result.body), /PRIVATE_HEADER_TEST_SENTINEL|Error:/);
+      assert.equal(typeof result.body.error.message, "string");
+      assert.ok(result.body.error.message.trim().length > 0, scenario.code + " must have a safe message");
+      assert.equal(result.body.error.requestId, "synthetic-request-" + String(index + 1).padStart(3, "0"));
+      assert.doesNotMatch(result.body.error.requestId, /PRIVATE|SENTINEL|marks|student|profile/i);
+      assert.doesNotMatch(JSON.stringify(result.body), /PRIVATE_HEADER_TEST_SENTINEL|PRIVATE_QUERY_SENTINEL|PRIVATE_BODY_SENTINEL|\\/etc\\/private\\/config|Error:|stack/i);
     }
   });
 });
