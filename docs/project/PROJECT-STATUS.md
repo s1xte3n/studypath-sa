@@ -23,7 +23,7 @@ Reviewed current `main` commit: `6a6099f10f5957ef0e7e0c87fed058af172921f3`.
 - Repository: https://github.com/s1xte3n/studypath-sa
 - Visibility: private; default branch: `main`.
 - Connected GitHub integration reports admin, read and write permissions.
-- Initial root listing contained `README.md` only; README content is a project title and one-line description.
+- Historical Phase 0 root listing contained `README.md` only; that early snapshot is superseded by the current repository evidence recorded in the 2026-10-17 synthetic-only MVP snapshot below.
 - Phase 0 baseline documentation and accepted direction decisions are present in the project documentation.
 - The PROJECT READY evidence pack and owner-confirmation update were merged through PRs #4 and #5.
 - On 2026-10-14, the owner supplied Azure portal details stating that the `StudyPath SA` subscription is Active, the owner role is Owner, the plan is Azure Plan, and no costs exist. These details are owner-attested; subscription identifiers are intentionally excluded from the repository. Billing scope/date range and redacted portal evidence have not been independently reviewed.
@@ -262,9 +262,7 @@ The owner explicitly approved all five decisions A–E. The approved design base
 
 **G-SYN-001 — Synthetic-Only MVP Verification: OPEN / NOT PASSED.** See [G-SYN-001 gate criteria](G-SYN-001-SYNTHETIC-ONLY-MVP-GATE.md). The gate is defined to keep work moving without real learner data or an external legal review at this stage; it is not a legal-compliance finding or permission to deploy publicly.
 
-**Verified repository correction at commit `e3564527b48dc0ca3cb55d4c208da5dc620b23ff`:** the recursive default-branch tree includes `src/domain/eligibility/uj-2027-evaluator.mjs`, golden-case tests, and two GitHub Actions workflows. Earlier statements in this status file that no tests/workflows or application source were found reflect earlier snapshots and are superseded to that extent. The inspected tree still does not establish a root package manifest/lockfile, learner-facing UI/app entry point, browser-test harness, API implementation, or deployment/infrastructure code. Domain tests are not runtime privacy evidence.
-
-**Next action:** build a minimal local browser-only vertical slice with synthetic fixtures, then implement and run the SYN-001–SYN-010 checks. Do not mark the gate passed until results are tied to a commit. The Phase 2 `REQUIREMENTS READY` gate remains open; this bounded demo work does not silently close it. No Azure provisioning, deployment, real learner data, production identity, or persistence is authorized.
+**Verified repository correction at commit `e3564527b48dc0ca3cb55d4c208da5dc620b23ff`:** the recursive default-branch tree includes `src/domain/eligibility/uj-2027-evaluator.mjs`, golden-case tests, and two GitHub Actions workflows. Earlier statements in this status file that no tests/workflows or application source were found reflect earlier snapshots and are superseded to that extent. This paragraph and the following next-action note are a historical status snapshot from 2026-10-15, before the current React/Vite scaffold, browser tests and five CI workflows were added. They are retained for audit history only and are superseded by the 2026-10-17 synthetic-only MVP evidence snapshot near the top of this file. The Phase 2 `REQUIREMENTS READY` gate passed on 2026-10-16 for requirements definition and traceability only; G-SYN-001 remains open/not passed. No Azure provisioning, deployment, real learner data, production identity, or persistence is authorized.
 
 
 ## MVP scope reconciliation — D-044–D-047
