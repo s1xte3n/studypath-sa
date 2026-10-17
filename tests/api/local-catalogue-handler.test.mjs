@@ -397,7 +397,7 @@ test("all local HTTP errors preserve the canonical safe envelope and headers", a
         body: scenario.body ?? "",
       });
       assert.equal(result.status, scenario.status, scenario.code + " status");
-      assert.match(result.headers["content-type"] ?? "", /^application\\/json; charset=utf-8$/);
+      assert.match(result.headers["content-type"] ?? "", /^application\/json; charset=utf-8$/);
       assert.equal(result.headers["x-content-type-options"], "nosniff");
       assert.deepEqual(Object.keys(result.body).sort(), ["error"], scenario.code + " top-level envelope");
       assert.deepEqual(Object.keys(result.body.error).sort(), ["code", "message", "requestId"], scenario.code + " error fields");
@@ -406,7 +406,7 @@ test("all local HTTP errors preserve the canonical safe envelope and headers", a
       assert.ok(result.body.error.message.trim().length > 0, scenario.code + " must have a safe message");
       assert.equal(result.body.error.requestId, "synthetic-request-" + String(index + 1).padStart(3, "0"));
       assert.doesNotMatch(result.body.error.requestId, /PRIVATE|SENTINEL|marks|student|profile/i);
-      assert.doesNotMatch(JSON.stringify(result.body), /PRIVATE_HEADER_TEST_SENTINEL|PRIVATE_QUERY_SENTINEL|PRIVATE_BODY_SENTINEL|\\/etc\\/private\\/config|Error:|stack/i);
+      assert.doesNotMatch(JSON.stringify(result.body), /PRIVATE_HEADER_TEST_SENTINEL|PRIVATE_QUERY_SENTINEL|PRIVATE_BODY_SENTINEL|\/etc\/private\/config|Error:|stack/i);
     }
   });
 });
