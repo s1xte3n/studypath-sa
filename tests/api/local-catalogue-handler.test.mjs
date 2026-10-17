@@ -572,3 +572,70 @@ test("LAPI-009 schema boundaries: programme and funding OpenAPI constraints excl
     assert.ok(invalidFunding.every(([reason]) => typeof reason === "string" && reason.length > 0));
   });
 });
+
+test("catalogue integrity withholds all records that share a duplicate public ID", async () => {
+  await withServer({
+    programmes: [
+      programme("SYNTH-DUPLICATE"),
+      programme("SYNTH-KEEP"),
+      programme("SYNTH-DUPLICATE", { title: "Conflicting duplicate programme" }),
+    ],
+    fundingOpportunities: [
+      funding("FUND-DUPLICATE"),
+      funding("FUND-KEEP"),
+      funding("FUND-DUPLICATE", { name: "Conflicting duplicate funding" }),
+    ],
+  }, async (base) => {
+    const programmes = await send(base, "/api/v1/programmes");
+    assert.equal(programmes.status, 200);
+    assert.deepEqual(programmes.body.items.map((item) => item.id), ["SYNTH-KEEP"]);
+
+    const fundingResult = await send(base, "/api/v1/funding-opportunities");
+    assert.equal(fundingResult.status, 200);
+    assert.deepEqual(fundingResult.body.items.map((item) => item.id), ["FUND-KEEP"]);
+  });
+});
+
+test("catalogue integrity rejects duplicate source IDs within one record", async () => {
+  await withServer({
+    programmes: [
+      programme("SYNTH-DUPLICATE-SOURCE-ID", {
+        sources: [{ ...source }, { ...source, sourceName: "Conflicting duplicate source ID" }],
+      }),
+      programme("SYNTH-KEEP"),
+    ],
+  }, async (base) => {
+    const result = await send(base, "/api/v1/programmes");
+    assert.equal(result.status, 200);
+    assert.deepEqual(result.body.items.map((item) => item.id), ["SYNTH-KEEP"]);
+  });
+});
+
+test("catalogue integrity omits relationships whose programme endpoints do not resolve", async () => {
+  const relationship = {
+    id: "SYNTH-REL-DANGLING",
+    fromProgrammeId: "SYNTH-ORIGIN",
+    toProgrammeId: "SYNTH-MISSING-TARGET",
+    type: "ALTERNATIVE",
+    rationale: "Synthetic relationship for reference-integrity testing.",
+    evidenceStatus: "VERIFIED",
+    sourceIds: ["SYNTHETIC-SOURCE"],
+    applicableCycle: "2027",
+    verifiedAt: "2026-10-17T10:00:00Z",
+    reviewBy: "2027-01-01",
+    curatorApproved: true,
+    caveat: "Synthetic relationship; no admission or credit-transfer guarantee.",
+  };
+  await withServer({
+    programmes: [
+      programme("SYNTH-ORIGIN", { relationships: [relationship] }),
+      programme("SYNTH-VALID-TARGET"),
+    ],
+  }, async (base) => {
+    const result = await send(base, "/api/v1/programmes");
+    assert.equal(result.status, 200);
+    assert.deepEqual(result.body.items.map((item) => item.id), ["SYNTH-ORIGIN", "SYNTH-VALID-TARGET"]);
+    assert.deepEqual(result.body.items.find((item) => item.id === "SYNTH-ORIGIN").relationships, []);
+  });
+});
+
