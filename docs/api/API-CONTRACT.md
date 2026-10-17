@@ -72,7 +72,7 @@ A future authenticated route must derive owner identity from a validated identit
 - **Authorization:** Published, curator-approved opportunities only.
 - **Path variables:** None.
 - **Query variables:** None. Unknown query parameters return `400 INVALID_QUERY_PARAMETER`.
-- **Headers:** `Accept: application/json` (recommended). No request body.
+- **Headers:** `Accept` is optional; absent or JSON-compatible values are accepted. If the client explicitly requests no supported representation, return `406 NOT_ACCEPTABLE`. No request body.
 - **Success:** `200 OK`, `FundingCatalogueResponse`. Empty approved catalogue returns `200` with `items: []`.
 - **Expected errors:** `400 INVALID_QUERY_PARAMETER` for unknown query parameters and `400 INVALID_REQUEST_BODY` for a GET body; `405 METHOD_NOT_ALLOWED` for an unsupported method on this route; `406 NOT_ACCEPTABLE` when the valid Accept header excludes JSON; `429 RATE_LIMITED` only when a deployment-level control enforces it; `500 INTERNAL_ERROR`; `503 CATALOGUE_UNAVAILABLE`; `504 UPSTREAM_TIMEOUT`.
 - **Validation:** Validate each record against the schema; do not invent requirements, amount, deadline, timezone, required documents or award likelihood. Unsupported criteria are marked `UNKNOWN` or explicitly not assessed.
