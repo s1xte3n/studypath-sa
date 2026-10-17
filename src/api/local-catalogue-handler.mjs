@@ -97,7 +97,7 @@ function validRequirement(rule, sourceIds) {
     && (rule.threshold === null || (typeof rule.threshold === "number" && Number.isFinite(rule.threshold)))
     && (rule.acceptedValues === null || (Array.isArray(rule.acceptedValues)
       && rule.acceptedValues.every((value) => typeof value === "string"
-        || (typeof value === "number" && Number.isFinite(value))))
+        || (typeof value === "number" && Number.isFinite(value)))))
     && (rule.conditionRuleId === null || validId(rule.conditionRuleId))
     && typeof rule.mandatory === "boolean"
     && hasText(rule.description, 500)
@@ -152,10 +152,10 @@ function publicationReady(record, kind) {
       || !QUALIFICATION_TYPES.has(record.qualificationType)
       || !Array.isArray(record.studyModes)
       || !record.studyModes.every((mode) => STUDY_MODES.has(mode))
-      || !(record.nqfLevel === null || (Number.isInteger(record.nqfLevel) && record.nqfLevel > 0))
-      || !(record.durationYears === null || (typeof record.durationYears === "number"
+      || !(record.nqfLevel === undefined || record.nqfLevel === null || (Number.isInteger(record.nqfLevel) && record.nqfLevel > 0))
+      || !(record.durationYears === undefined || record.durationYears === null || (typeof record.durationYears === "number"
         && Number.isFinite(record.durationYears) && record.durationYears > 0))
-      || !(record.locationText === null || typeof record.locationText === "string")
+      || !(record.locationText === undefined || record.locationText === null || typeof record.locationText === "string")
       || !Array.isArray(record.requirements)
       || !record.requirements.every((rule) => validRequirement(rule, sourceIds))
       || !Array.isArray(record.relationships)
@@ -169,17 +169,17 @@ function publicationReady(record, kind) {
 
   return hasText(record.name)
     && hasText(record.provider)
-    && (record.description === null || (typeof record.description === "string" && record.description.length <= 2000))
-    && validHttpsUrl(record.officialWebsiteUrl, true)
-    && validHttpsUrl(record.applicationUrl, true)
+    && (record.description === undefined || record.description === null || (typeof record.description === "string" && record.description.length <= 2000))
+    && (record.officialWebsiteUrl === undefined || validHttpsUrl(record.officialWebsiteUrl, true))
+    && (record.applicationUrl === undefined || validHttpsUrl(record.applicationUrl, true))
     && hasText(record.deadlineText)
-    && (record.deadlineAt === null || validUtcTimestamp(record.deadlineAt))
-    && (record.deadlineTimezone === null || (typeof record.deadlineTimezone === "string" && record.deadlineTimezone.length <= 100))
+    && (record.deadlineAt === undefined || record.deadlineAt === null || validUtcTimestamp(record.deadlineAt))
+    && (record.deadlineTimezone === undefined || record.deadlineTimezone === null || (typeof record.deadlineTimezone === "string" && record.deadlineTimezone.length <= 100))
     && Array.isArray(record.requirements)
     && record.requirements.every((rule) => validRequirement(rule, sourceIds))
     && Array.isArray(record.requiredDocuments)
     && record.requiredDocuments.every((document) => hasText(document, 120))
-    && (record.publishedAmountText === null
+    && (record.publishedAmountText === undefined || record.publishedAmountText === null
       || (typeof record.publishedAmountText === "string" && record.publishedAmountText.length <= 300))
     && Array.isArray(record.limitations)
     && record.limitations.every((limitation) => typeof limitation === "string" && limitation.length <= 500);
