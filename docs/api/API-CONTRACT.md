@@ -52,7 +52,7 @@ A future authenticated route must derive owner identity from a validated identit
 - **Authorization:** Published, curator-approved records only. Draft, rejected, expired or unsigned records MUST NOT be returned as current published programme records.
 - **Path variables:** None.
 - **Query variables:** None. Unknown query parameters return `400 INVALID_QUERY_PARAMETER`.
-- **Headers:** `Accept: application/json` (recommended); `Authorization` is not required and must not be used to personalize the result. No request body.
+- **Headers:** `Accept` is optional; absent or JSON-compatible values are accepted. If the client explicitly requests no supported representation, return `406 NOT_ACCEPTABLE`. `Authorization` is not required and must not personalize the result. No request body.
 - **Success:** `200 OK`, `ProgrammeCatalogueResponse`. Empty approved catalogue returns `200` with `items: []`; do not invent fallback records.
 - **Expected errors:** `400 INVALID_QUERY_PARAMETER`; `405 METHOD_NOT_ALLOWED` for an unsupported method on this route; `406 NOT_ACCEPTABLE` for an explicitly unsupported media type; `429 RATE_LIMITED`; `500 INTERNAL_ERROR`; `503 CATALOGUE_UNAVAILABLE`; `504 UPSTREAM_TIMEOUT`.
 - **Validation:** Reject unsupported query parameters. Validate every published record against the response schema before serialization. Omit records whose publication evidence is incomplete rather than relaxing schema requirements.
