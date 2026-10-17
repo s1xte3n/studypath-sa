@@ -21,6 +21,7 @@ All fields are required for HTTP errors. `message` is safe and non-sensitive. `r
 | Status | Code | When used | Client behavior |
 |---:|---|---|---|
 | 400 | `INVALID_QUERY_PARAMETER` | Any unsupported query parameter on API-001/API-002 | Fix client request; do not retry unchanged |
+| 400 | `INVALID_REQUEST_BODY` | A request body is sent to a public GET operation | Retry without a body; do not retry unchanged |
 | 400 | `INVALID_ACCEPT_HEADER` | Syntactically malformed `Accept` header, if detected by the application boundary | Correct the header; do not retry unchanged |
 | 404 | `NOT_FOUND` | Reserved for a future contracted resource route; not expected from current list operations | Show not found; do not infer an empty catalogue |
 | 405 | `METHOD_NOT_ALLOWED` | Unsupported HTTP method on a known API route | Correct method; no automatic retry |
