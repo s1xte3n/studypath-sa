@@ -56,3 +56,18 @@ The local evidence reconciliation is complete for LAPI-001–015: each applicabl
 ## Gate decision
 
 **Phase 4 remains OPEN.** The PR #119 LAPI-009 boundary suite is merged and all five workflows passed on head commit `4d4febcb7f569ea6234375c415c589d9e109a6e5` (contract `39036698565`, OpenAPI `39036698540`, browser build `39036698564`, browser E2E/privacy/accessibility `39036698569`, UJ golden cases `39036698541`). The merge commit is `c597e477ca7550e98c82b98651ec979f96128ef3`. The local-only harness is test code, not a production API handler. Remaining hosted runtime/configuration, operational rate limiting, cost, cache, and provider privacy behavior are not verified. This plan authorizes neither Azure resources nor deployment.
+
+
+## Rate-limit risk-exception merge and CI evidence — 2026-10-17
+
+The owner-approved temporary risk exception is recorded in `docs/api/RATE-LIMITING-DECISION.md` and merged by PR #123 at `67dfd923740f64035f4c91fde0c60f5cd8ae8928`. The exception documents a bounded future demo risk; it does not implement rate limiting, guarantee `429 RATE_LIMITED`, certify the R100/month cap, or authorize provisioning/deployment.
+
+PR #123 head `8e706a561c1f75c95f73458dda08db90d9b47173` passed the following PR-triggered workflows:
+- Contract tests: [39039950359](https://github.com/s1xte3n/studypath-sa/actions/runs/39039950359)
+- Browser MVP build: [39039950362](https://github.com/s1xte3n/studypath-sa/actions/runs/39039950362)
+- OpenAPI validation: [39039950579](https://github.com/s1xte3n/studypath-sa/actions/runs/39039950579)
+- Browser E2E, privacy and accessibility: [39039950353](https://github.com/s1xte3n/studypath-sa/actions/runs/39039950353)
+
+These are checks on the PR head, not the merge SHA; the merge-SHA query returned no PR-triggered workflow runs. The change was documentation-only. Do not interpret these checks as runtime, hosted privacy, billing, abuse-control, catalogue-publication or deployment evidence.
+
+**Disposition unchanged:** Phase 4 remains OPEN; public hosted API remains NO-GO. Continue local synthetic-only validation and close the independent cost, catalogue provenance/publication, privacy/security, runtime and shutdown-control gates before seeking separate deployment approval.
