@@ -507,6 +507,7 @@ test("LAPI-009 schema boundaries: programme and funding OpenAPI constraints excl
     ["source section must not be blank", { sources: [{ ...source, sourceSection: "   " }] }],
     ["source evidence note must not be blank", { sources: [{ ...source, evidenceNote: "   " }] }],
     ["source URL must not contain credentials", { sources: [{ ...source, sourceUrl: "https://user:password@example.invalid/source" }] }],
+    ["source timestamp fractional precision exceeds OpenAPI limit", { sources: [{ ...source, verifiedAt: "2026-10-17T10:00:00.1234567890Z" }] }],
     ["source publisher exceeds maxLength", { sources: [{ ...source, publisher: "P".repeat(301) }] }],
     ["source URL is not HTTPS", { sources: [{ ...source, sourceUrl: "http://example.invalid/source" }] }],
     ["source section missing required nullable property", { sources: [{ ...source, sourceSection: undefined }] }],
@@ -517,6 +518,8 @@ test("LAPI-009 schema boundaries: programme and funding OpenAPI constraints excl
     ["requirement description exceeds maxLength", { requirements: [{ ...validRequirement, description: "D".repeat(501) }] }],
     ["requirement sourceIds must not be empty", { requirements: [{ ...validRequirement, sourceIds: [] }] }],
     ["requirement source must belong to record", { requirements: [{ ...validRequirement, sourceIds: ["UNKNOWN-SOURCE"] }] }],
+    ["subject ID violates CatalogueId pattern", { requirements: [{ ...validRequirement, subjectId: "maths" }] }],
+    ["condition rule ID violates CatalogueId pattern", { requirements: [{ ...validRequirement, conditionRuleId: "rule-1" }] }],
     ["required nullable requirement property must be present", { requirements: [{ ...validRequirement, subjectId: undefined }] }],
     ["relationship enum invalid", { relationships: [{ ...validRelationship, type: "SHORTCUT" }] }],
     ["relationship rationale exceeds maxLength", { relationships: [{ ...validRelationship, rationale: "R".repeat(501) }] }],
@@ -534,6 +537,7 @@ test("LAPI-009 schema boundaries: programme and funding OpenAPI constraints excl
     ["funding description exceeds maxLength", { description: "D".repeat(2001) }],
     ["funding official URL is not HTTPS", { officialWebsiteUrl: "http://example.invalid" }],
     ["funding official URL must not contain credentials", { officialWebsiteUrl: "https://user:password@example.invalid" }],
+    ["funding deadline timestamp must use UTC Z", { deadlineAt: "2026-10-17T10:00:00+02:00" }],
     ["funding application URL is not HTTPS", { applicationUrl: "http://example.invalid/apply" }],
     ["funding deadline text exceeds maxLength", { deadlineText: "D".repeat(301) }],
     ["funding deadline timestamp is impossible", { deadlineAt: "2026-02-30T10:00:00Z" }],
@@ -571,8 +575,8 @@ test("LAPI-009 schema boundaries: programme and funding OpenAPI constraints excl
     assert.deepEqual(fundingResult.body.items.map((item) => item.id), ["FUND-BOUNDARY-VALID"],
       "only the valid funding fixture should pass all covered schema boundaries");
 
-    assert.equal(invalidProgrammes.length, 33);
-    assert.equal(invalidFunding.length, 15);
+    assert.equal(invalidProgrammes.length, 40);
+    assert.equal(invalidFunding.length, 17);
     assert.ok(invalidProgrammes.every(([reason]) => typeof reason === "string" && reason.length > 0));
     assert.ok(invalidFunding.every(([reason]) => typeof reason === "string" && reason.length > 0));
   });
