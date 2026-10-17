@@ -169,17 +169,17 @@ function publicationReady(record, kind) {
 
   return hasText(record.name)
     && hasText(record.provider)
-    && (record.description === undefined || record.description === null || (typeof record.description === "string" && record.description.length <= 2000))
-    && (record.officialWebsiteUrl === undefined || validHttpsUrl(record.officialWebsiteUrl, true))
-    && (record.applicationUrl === undefined || validHttpsUrl(record.applicationUrl, true))
+    && (record.description === null || (typeof record.description === "string" && record.description.length <= 2000))
+    && validHttpsUrl(record.officialWebsiteUrl, true)
+    && validHttpsUrl(record.applicationUrl, true)
     && hasText(record.deadlineText)
-    && (record.deadlineAt === undefined || record.deadlineAt === null || validUtcTimestamp(record.deadlineAt))
-    && (record.deadlineTimezone === undefined || record.deadlineTimezone === null || (typeof record.deadlineTimezone === "string" && record.deadlineTimezone.length <= 100))
+    && (record.deadlineAt === null || validUtcTimestamp(record.deadlineAt))
+    && (record.deadlineTimezone === null || (typeof record.deadlineTimezone === "string" && record.deadlineTimezone.length <= 100))
     && Array.isArray(record.requirements)
     && record.requirements.every((rule) => validRequirement(rule, sourceIds))
     && Array.isArray(record.requiredDocuments)
     && record.requiredDocuments.every((document) => hasText(document, 120))
-    && (record.publishedAmountText === undefined || record.publishedAmountText === null
+    && (record.publishedAmountText === null
       || (typeof record.publishedAmountText === "string" && record.publishedAmountText.length <= 300))
     && Array.isArray(record.limitations)
     && record.limitations.every((limitation) => typeof limitation === "string" && limitation.length <= 500);
