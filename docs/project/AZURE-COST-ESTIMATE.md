@@ -96,3 +96,9 @@ Public sources were checked on 2026-10-14. The project owner supplied the calcul
 - **Not performed:** Azure resources have not been provisioned; no deployment or post-deployment cost observation exists.
 
 **Disposition:** The supplied calculator output shows **$0.00/month and $0.00 upfront** for the listed Static Web Apps Free configuration. The project-wide hard cap remains **R100/month**. The estimate supports proceeding with cost review for this narrow configuration, but it is not proof that all project costs are zero and does not authorize provisioning. Verify private Cost Analysis and the exact planned resource list before creating resources.
+
+## 8. Update — Option B candidate (2026-10-17)
+
+The calculator output above remains a static-only estimate and **does not include the managed Functions API**. The product owner has approved Option B for validation only. The integrated API is billed at Azure Functions Consumption rates; its free-grant eligibility and ancillary costs are not yet verified against the actual subscription. See [Option B compatibility, security and cost evidence](../api/OPTION-B-VALIDATION-EVIDENCE.md) for the conditional usage model and outstanding private checks.
+
+**Current cost gate: NOT PASSED.** Do not treat the prior $0.00 Static Web Apps Free estimate as the all-in Option B total. No provisioning or deployment is authorized.
