@@ -50,6 +50,8 @@ test("keyboard users can reach the form controls and see focus", async ({ page }
 test("no learner entries are transmitted or persisted across reload", async ({ page }) => {
   const requests = [];
   const consoleMessages = [];
+  const browserErrors = [];
+  page.on("pageerror", error => browserErrors.push(error.message));
   page.on("request", request => requests.push({
     url: request.url(),
     method: request.method(),
@@ -57,8 +59,99 @@ test("no learner entries are transmitted or persisted across reload", async ({ p
   }));
   page.on("console", message => consoleMessages.push(message.text()));
 
+  await page.addInitScript(() => {
+    const audit = [];
+    const hooks = [
+      "fetch", "XMLHttpRequest.open", "XMLHttpRequest.send",
+      "navigator.sendBeacon", "WebSocket", "WebSocket.send",
+      "history.pushState", "history.replaceState", "window.error",
+      "unhandledrejection"
+    ];
+    Object.defineProperty(window, "__studyPathPrivacyAudit", { value: audit });
+    Object.defineProperty(window, "__studyPathPrivacyAuditHooks", { value: hooks });
+    const serialize = value => {
+      if (typeof value === "string") return value;
+      try { return JSON.stringify(value); } catch { return String(value); }
+    };
+    const record = entry => audit.push(entry);
+
+    const originalFetch = window.fetch.bind(window);
+    window.fetch = (input, init = {}) => {
+      const requestUrl = typeof input === "string" ? input : input?.url;
+      record({
+        channel: "fetch",
+        url: requestUrl ?? "",
+        method: init.method ?? input?.method ?? "GET",
+        body: serialize(init.body ?? "")
+      });
+      return originalFetch(input, init);
+    };
+
+    const originalOpen = XMLHttpRequest.prototype.open;
+    const originalSend = XMLHttpRequest.prototype.send;
+    XMLHttpRequest.prototype.open = function(method, url, ...args) {
+      this.__studyPathAuditRequest = { method: String(method), url: String(url) };
+      record({ channel: "XMLHttpRequest.open", method: String(method), url: String(url) });
+      return originalOpen.call(this, method, url, ...args);
+    };
+    XMLHttpRequest.prototype.send = function(body) {
+      record({
+        channel: "XMLHttpRequest.send",
+        method: this.__studyPathAuditRequest?.method ?? "",
+        url: this.__studyPathAuditRequest?.url ?? "",
+        body: serialize(body ?? "")
+      });
+      return originalSend.call(this, body);
+    };
+
+    if (typeof navigator.sendBeacon === "function") {
+      Object.defineProperty(navigator, "sendBeacon", {
+        configurable: true,
+        value: (url, body) => {
+          record({ channel: "navigator.sendBeacon", url: String(url), body: serialize(body ?? "") });
+          return false;
+        }
+      });
+    }
+
+    const OriginalWebSocket = window.WebSocket;
+    window.WebSocket = new Proxy(OriginalWebSocket, {
+      construct(target, args) {
+        const url = String(args[0]);
+        record({ channel: "WebSocket", url, protocols: serialize(args[1] ?? "") });
+        if (new URL(url, location.href).host !== location.host) {
+          throw new DOMException("External WebSocket blocked by privacy test", "SecurityError");
+        }
+        return Reflect.construct(target, args, target);
+      }
+    });
+    const originalSocketSend = OriginalWebSocket.prototype.send;
+    OriginalWebSocket.prototype.send = function(data) {
+      record({ channel: "WebSocket.send", url: this.url, body: serialize(data) });
+      return originalSocketSend.call(this, data);
+    };
+
+    for (const method of ["pushState", "replaceState"]) {
+      const original = history[method].bind(history);
+      history[method] = (state, unused, url) => {
+        record({ channel: "history." + method, state: serialize(state), url: String(url ?? location.href) });
+        return original(state, unused, url);
+      };
+    }
+    window.addEventListener("error", event => {
+      record({ channel: "window.error", message: event.message ?? "", source: event.filename ?? "" });
+    });
+    window.addEventListener("unhandledrejection", event => {
+      record({ channel: "unhandledrejection", reason: serialize(event.reason) });
+    });
+  });
+  await page.route("**/*", route => {
+    const destination = new URL(route.request().url());
+    if (destination.origin !== "http://127.0.0.1:4173") return route.abort();
+    return route.continue();
+  });
   await page.goto("/");
-  const learnerMarker = "SYNTHETIC-MARK-93";
+  const learnerMarker = "93";
   const subjectMarker = "Mathematics";
   const mark = "93";
   await page.locator("#subject-0").selectOption(subjectMarker);
@@ -96,6 +189,26 @@ test("no learner entries are transmitted or persisted across reload", async ({ p
   }
   expect(consoleMessages.join("\n")).not.toContain(learnerMarker);
   expect(consoleMessages.join("\n")).not.toContain(subjectMarker);
+  expect(browserErrors.join("\n")).not.toContain(learnerMarker);
+  expect(browserErrors.join("\n")).not.toContain(subjectMarker);
+
+  const audit = await page.evaluate(() => ({
+    hooks: window.__studyPathPrivacyAuditHooks,
+    calls: window.__studyPathPrivacyAudit
+  }));
+  expect(audit.hooks).toEqual([
+    "fetch", "XMLHttpRequest.open", "XMLHttpRequest.send",
+    "navigator.sendBeacon", "WebSocket", "WebSocket.send",
+    "history.pushState", "history.replaceState", "window.error",
+    "unhandledrejection"
+  ]);
+  const auditText = JSON.stringify(audit.calls);
+  expect(auditText).not.toContain(learnerMarker);
+  expect(auditText).not.toContain(subjectMarker);
+  expect(audit.calls.filter(call => call.url).every(call => {
+    const destination = new URL(call.url, "http://127.0.0.1:4173");
+    return destination.host === "127.0.0.1:4173";
+  })).toBe(true);
 
   await page.reload();
   await expect(page.locator("#mark-0")).toHaveValue("");
