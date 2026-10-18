@@ -2,7 +2,7 @@
 
 **Status:** OPEN — current repository and CI evidence reviewed; acceptance criteria remain partially satisfied and the gate is NOT PASSED.
 **Last evidence review:** 2026-10-18
-**Latest repository baseline reviewed:** `bf137ec9060d59942ded92af258e2bf9e23cbc0a` (main)
+**Latest repository baseline reviewed:** `9cde29ae3bb6c3d928c30549a35be9c4fe95f94e` (main; PR #135 merge)
 **Scope:** Local, synthetic-only browser demo. This gate does not approve real learner-data processing, legal compliance, Azure provisioning, production identity, persistent profiles, public deployment, or paid services.
 
 ## Objective
@@ -11,7 +11,7 @@ Deliver the smallest runnable student journey that can be tested end-to-end with
 
 ## Current repository baseline and evidence
 
-The current `main` commit reviewed is `6a6099f10f5957ef0e7e0c87fed058af172921f3`. The earlier `e3564527b48dc0ca3cb55d4c208da5dc620b23ff` inspection above is historical and must not be used to describe the current tree.
+The current `main` commit reviewed is `9cde29ae3bb6c3d928c30549a35be9c4fe95f94e` (PR #135 merge). The earlier `e3564527b48dc0ca3cb55d4c208da5dc620b23ff` inspection and the `6a6099f10f5957ef0e7e0c87fed058af172921f3` CI snapshot below are historical and must not be used to describe the current tree.
 
 Current repository artifacts include:
 
@@ -24,7 +24,7 @@ Current repository artifacts include:
 - Unit/domain/API/contract tests and UJ eligibility golden-case fixtures.
 - Five workflows: browser E2E/privacy/accessibility, browser MVP build, contract tests, OpenAPI validation, and UJ eligibility golden-case verification.
 
-All five workflows passed on the current main commit on 2026-10-17:
+Historical CI snapshot — all five workflows passed on commit `6a6099f10f5957ef0e7e0c87fed058af172921f3` on 2026-10-17 (not the current main baseline):
 - [Browser E2E, privacy and accessibility](https://github.com/s1xte3n/studypath-sa/actions/runs/39045654154)
 - [Browser MVP build](https://github.com/s1xte3n/studypath-sa/actions/runs/39045654225)
 - [Contract tests](https://github.com/s1xte3n/studypath-sa/actions/runs/39045654207)
@@ -42,11 +42,12 @@ This is a useful baseline, but it does **not** establish the complete student jo
 
 ## Latest browser privacy evidence — 2026-10-18
 
-Reviewed main commit `bf137ec9060d59942ded92af258e2bf9e23cbc0a`, following merged PRs #132 and #133. The earlier 2026-10-17 five-workflow list above is a historical snapshot for commit `6a6099f10f5957ef0e7e0c87fed058af172921f3`; it is not the latest repository baseline.
+Reviewed PR #135 merge commit `9cde29ae3bb6c3d928c30549a35be9c4fe95f94e` on `main`, following merged PRs #132, #133 and #135. The earlier 2026-10-17 five-workflow list above is a historical snapshot for commit `6a6099f10f5957ef0e7e0c87fed058af172921f3`; it is not the latest repository baseline.
 
 - [PR #132 — Expand synthetic-only browser lifecycle privacy tests](https://github.com/s1xte3n/studypath-sa/pull/132) added assertions that transient learner entries do not appear in local/session storage, cookies, IndexedDB, Cache API, a fresh tab, or after reload.
 - [PR #133 — Instrument additional synthetic-only browser privacy channels](https://github.com/s1xte3n/studypath-sa/pull/133) added test-only instrumentation for fetch, XHR, sendBeacon, WebSocket, history mutations, window errors and unhandled promise rejections, plus checks against sentinel values in the observed channels. The test blocks non-local HTTP requests and external WebSocket construction in its test context.
-- All four PR workflows passed on merge commit `bf137ec9060d59942ded92af258e2bf9e23cbc0a`: [browser E2E/privacy/accessibility](https://github.com/s1xte3n/studypath-sa/actions/runs/39118371483), [browser MVP build](https://github.com/s1xte3n/studypath-sa/actions/runs/39118371484), [contract tests](https://github.com/s1xte3n/studypath-sa/actions/runs/39118371572), and [UJ eligibility golden-case verification](https://github.com/s1xte3n/studypath-sa/actions/runs/39118371618).
+- PR #132/#133 browser privacy instrumentation remains the current coverage baseline. PR [#135](https://github.com/s1xte3n/studypath-sa/pull/135) fixed a false positive in `tests/e2e/student-form.spec.mjs`: the generic marker `93` could match an unrelated Vite asset URL, so the marker was changed to `learner-privacy-sentinel-7f4a2d`; the separate synthetic mark remains `93` and its exact-value leakage checks remain.
+- All four PR #135 workflow runs passed on head commit `973f5c10e3a8b261639d0c9c219e63532c92c6d5`: [browser E2E/privacy/accessibility](https://github.com/s1xte3n/studypath-sa/actions/runs/39119250982), [browser MVP build](https://github.com/s1xte3n/studypath-sa/actions/runs/39119250960), [contract tests](https://github.com/s1xte3n/studypath-sa/actions/runs/39119250884), and [UJ eligibility golden-case verification](https://github.com/s1xte3n/studypath-sa/actions/runs/39119250985). These runs were associated with the PR head; the workflow-run lookup returned no merge-commit workflow runs for `9cde29ae3bb6c3d928c30549a35be9c4fe95f94e`, so do not describe them as merge-commit CI.
 
 These tests improve selected browser-context evidence only. They do not establish host/provider logs, browser behavior outside the instrumented context, external analytics or telemetry not exercised by the tests, legal compliance, complete privacy safety, or release readiness. No local test run, Azure provisioning, deployment, or real learner-data processing is claimed. The gate remains **OPEN / NOT PASSED**.
 
@@ -96,7 +97,7 @@ All applicable items must pass on one reviewed commit; documentation alone does 
 | REQ-UX-001 — accessible mobile-first experience | SYN-006 | Responsive CSS and automated axe checks exist; documented manual keyboard and narrow-viewport review not found. | Partial |
 | REQ-EXP-001 — anonymous input and results | SYN-002, SYN-005, SYN-006 | Student-entry form and validation exist; tests explicitly assert no eligibility result is calculated by the basic form. | Partial |
 | REQ-MAT-001 — deterministic eligibility and uncertainty | SYN-002, SYN-003 | `src/domain/eligibility/uj-2027-evaluator.mjs` and golden-case tests exist; evaluator-to-UI integration and reviewed 20+ case zero-false-positive release evidence remain outstanding. | Partial |
-| REQ-PRV-001 / NFR-PRV-001 — memory-only synthetic exploration | SYN-004, SYN-005 | Browser suite checks selected network, URL, storage, cookie, console and reload behaviors; the full SYN-004 channel/failure matrix is not demonstrated. | Partial |
+| REQ-PRV-001 / NFR-PRV-001 — memory-only synthetic exploration | SYN-004, SYN-005 | Browser suite instruments fetch, XHR, sendBeacon, WebSocket, history, window errors and unhandled rejections, and checks selected storage/cookie/reload/fresh-tab behavior; provider logs, external analytics/telemetry and unexercised browser/platform paths remain outside the evidence. | Partial |
 | REQ-APP-001 — manual tracker, session-only | SYN-005 | No verified tracker journey/reset evidence in the current browser suite. | Not passed |
 | REQ-FUND-001 — P1 funding pilot | SYN-002, SYN-005, SYN-008; T-FUND-001–006 | Funding candidates remain research-only until 3–5 records have complete current official-source rules and curator approval. | Blocked |
 | NFR-SEC-001 — secrets/input/transport boundary | SYN-009 | Manifest, lockfile and CI are present; a full security/dependency/hosting boundary review is not established by the cited workflows alone. | Partial |
@@ -105,7 +106,7 @@ All applicable items must pass on one reviewed commit; documentation alone does 
 | NFR-ACC-001 — accessibility | SYN-006 | Automated axe scan and keyboard-focus assertion passed in CI; manual review remains outstanding. | Partial |
 | NFR-PERF-001 — matching p95 target | SYN-002 plus T-PERF-001 | No benchmark protocol/device/result evidence reviewed. | Not passed |
 | NFR-COMP-001 / NFR-SCOPE-001 — no guarantees and bounded pilot | SYN-002, SYN-008 | Full learner-facing result copy and source disclosures have not been reviewed as a complete journey. | Not passed |
-| SYN-001, SYN-007 — reproducibility and CI | SYN-001, SYN-007 | Lockfile/build/test setup exists; five relevant main-commit workflows passed. Local reproduction was not run by the assistant. | Partial / CI passed |
+| SYN-001, SYN-007 — reproducibility and CI | SYN-001, SYN-007 | Lockfile/build/test setup exists; all four PR #135 workflows passed on its head commit. No workflow runs were returned for the merge commit, and local reproduction was not run. | Partial / PR-head CI passed |
 | SYN-009, SYN-010 — scope and documentation | SYN-009, SYN-010 | No deployment/provisioning is claimed; project docs are being reconciled by this change. | Partial until review/merge |
 
 **Traceability boundary:** P1 funding remains gated on 3–5 verified records and must be omitted/disabled rather than fabricated until that gate passes. The rows above add requirement-to-SYN mappings only; they do not imply implementation or test evidence.
@@ -122,4 +123,4 @@ All applicable items must pass on one reviewed commit; documentation alone does 
 
 ## Current gate decision
 
-**G-SYN-001: NOT PASSED.** Current code and CI materially advance the baseline, and all five main-commit workflows passed. However, the core pathway journey, full privacy channel/failure coverage, tracker/result lifecycle assertions, manual accessibility/responsive evidence, local reproducibility evidence and complete provenance/limitations review are not all established. Continue with synthetic data only. Do not treat documentation updates or green CI as proof of privacy safety, admission correctness, public-demo readiness or release approval.
+**G-SYN-001: NOT PASSED.** PR #135's four PR-head workflows passed, but the merge-commit workflow lookup returned no runs. Current code and CI materially advance the baseline. However, the core pathway journey, full privacy channel/failure coverage, tracker/result lifecycle assertions, manual accessibility/responsive evidence, local reproducibility evidence and complete provenance/limitations review are not all established. Continue with synthetic data only. Do not treat documentation updates or green CI as proof of privacy safety, admission correctness, public-demo readiness or release approval.

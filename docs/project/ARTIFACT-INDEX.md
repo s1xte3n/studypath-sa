@@ -300,3 +300,14 @@ PR #89 merged as `bbad7b869a1e2e59184d37c486a7185d70e809f5`. The merge-commit Op
 | Browser privacy channel instrumentation | `tests/e2e/student-form.spec.mjs` | PR #133 merged | Test-only instrumentation for additional browser channels and sentinel checks; not a complete provider/hosting or compliance audit. |
 
 Merge-commit workflows passed: [browser E2E/privacy/accessibility](https://github.com/s1xte3n/studypath-sa/actions/runs/39118371483), [browser MVP build](https://github.com/s1xte3n/studypath-sa/actions/runs/39118371484), [contract tests](https://github.com/s1xte3n/studypath-sa/actions/runs/39118371572), [UJ eligibility golden-case verification](https://github.com/s1xte3n/studypath-sa/actions/runs/39118371618). These are remote CI results; no local test execution or release readiness is implied.
+
+
+## Privacy-test false-positive correction — 2026-10-18
+
+| Artifact | Path | Status | Notes |
+|---|---|---|---|
+| Synthetic-only MVP gate | `docs/project/G-SYN-001-SYNTHETIC-ONLY-MVP-GATE.md` | Updated for PR #135 merge `9cde29ae3bb6c3d928c30549a35be9c4fe95f94e` | Records PR-head CI evidence and distinguishes it from merge-commit evidence; G-SYN-001 remains NOT PASSED. |
+| Project status | `docs/project/PROJECT-STATUS.md` | Updated for PR #135 | Records the sentinel-collision root cause, passing PR-head workflows and evidence limitation. |
+| Privacy test sentinel | `tests/e2e/student-form.spec.mjs` | PR #135 merged | Uses a distinctive sentinel instead of `93` to prevent incidental asset URL matches; mark-specific leakage checks remain. |
+
+All four PR-head workflows passed on `973f5c10e3a8b261639d0c9c219e63532c92c6d5`: [browser E2E/privacy/accessibility](https://github.com/s1xte3n/studypath-sa/actions/runs/39119250982), [browser MVP build](https://github.com/s1xte3n/studypath-sa/actions/runs/39119250960), [contract tests](https://github.com/s1xte3n/studypath-sa/actions/runs/39119250884), and [UJ eligibility golden-case verification](https://github.com/s1xte3n/studypath-sa/actions/runs/39119250985). No workflow runs were returned for merge commit `9cde29ae3bb6c3d928c30549a35be9c4fe95f94e`; no local tests, deployment or release readiness are claimed.
