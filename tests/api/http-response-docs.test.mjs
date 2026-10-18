@@ -2,7 +2,10 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 
-const read = (path) => readFile(new URL(path, import.meta.url), "utf8");
+// Git may check Markdown/YAML out with CRLF on Windows. These assertions use
+// LF delimiters, so normalize line endings at the file boundary.
+const read = async (path) =>
+  (await readFile(new URL(path, import.meta.url), "utf8")).replace(/\r\n/g, "\n");
 
 test("404 is documented as routing-level, not a list-operation response", async () => {
   const [contract, errors, openapi] = await Promise.all([
