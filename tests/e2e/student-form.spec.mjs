@@ -47,6 +47,36 @@ test("keyboard users can reach the form controls and see focus", async ({ page }
   await expect(page.locator(":focus")).toHaveCSS("outline-style", "solid");
 });
 
+test("mobile viewport keeps the learner form visible without horizontal overflow", async ({ page }) => {
+  await page.setViewportSize({ width: 320, height: 720 });
+  await page.goto("/");
+
+  await expect(page.getByRole("heading", { name: "Tell us about your studies" })).toBeVisible();
+  await expect(page.locator("#stage")).toBeVisible();
+  await expect(page.locator("#subject-0")).toBeVisible();
+  await expect(page.locator("#mark-0")).toBeVisible();
+  await expect(page.getByRole("button", { name: /Check my entries/ })).toBeVisible();
+
+  const layout = await page.evaluate(() => ({
+    viewportWidth: window.innerWidth,
+    documentWidth: document.documentElement.scrollWidth,
+    controls: ["#stage", "#subject-0", "#mark-0"].map(selector => {
+      const rect = document.querySelector(selector).getBoundingClientRect();
+      return { left: rect.left, right: rect.right };
+    })
+  }));
+
+  expect(layout.documentWidth).toBeLessThanOrEqual(layout.viewportWidth);
+  for (const control of layout.controls) {
+    expect(control.left).toBeGreaterThanOrEqual(0);
+    expect(control.right).toBeLessThanOrEqual(layout.viewportWidth);
+  }
+
+  await page.keyboard.press("Tab");
+  await expect(page.getByRole("link", { name: "StudyPath SA home" })).toBeFocused();
+  await expect(page.getByRole("link", { name: "StudyPath SA home" })).toHaveCSS("outline-style", "solid");
+});
+
 test("no learner entries are transmitted or persisted across reload", async ({ page }) => {
   const requests = [];
   const consoleMessages = [];
