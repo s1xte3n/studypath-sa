@@ -1,14 +1,26 @@
 # StudyPath SA — Project Status
 
-**Status:** Phase 3 `ARCHITECTURE READY` passed on 2026-10-16 for design/traceability only; Phase 4 API/interface contract work and Option B validation remain current. The current synthetic-only browser baseline includes PR #135's four passing PR-head workflows; no workflow runs were returned for its merge commit. G-SYN-001 remains NOT PASSED.  
+**Status:** Phase 3 `ARCHITECTURE READY` passed on 2026-10-16 for design/traceability only; Phase 4 API/interface contract work and Option B validation remain current. The latest synthetic-only baseline is main merge commit `6c91b5f9eabbdd07316f92eac876c6f8f5cd41d4` (PR #137), with four successful main-commit workflows; G-SYN-001 remains NOT PASSED.  
 **Phase 0 gate:** `PROJECT READY` — **PASSED for Phase 1 planning only**  
 **Last completed gate:** `ARCHITECTURE READY` — **PASSED on 2026-10-16 for architecture design/traceability only**  
 **Current phase/gate:** Phase 4 — API/interface contracts/runtime validation; public catalogue wire contract is owner-approved for continued work, Option B is approved for validation only, D-053 records the rate-limiting disposition, and public hosted deployment remains blocked pending an enforceable abuse control and cost approval.  
 **Historical-note convention:** This file preserves dated status snapshots as an audit trail. Older statements that a PR was only proposed/on a branch, or that later checklist items were still open, describe the snapshot at that date; subsequent merged PRs and the latest Phase 2 audit note below supersede those statuses. The latest dated acceptance note and D-049 decision record are authoritative for the current gate; older snapshots remain historical.  
 **Historical Phase 2 audit snapshot (2026-10-15; superseded by the acceptance note below):** PR #79 is merged at `f3fdc009f19600abc6830fd1af1752c1ff633149`. The follow-on branch `docs/phase-2-a4-a6-traceability-audit` records A4–A6 source/scope review, corrects the `AC-DET-007`, `REQ-AUTH-001`, `AC-NFR-001–005` and OR-019 summary mappings, and records the bidirectional ID audit and G-SYN-001 requirement mappings. At that snapshot, checklist items and overall owner acceptance remained pending. PR #80 subsequently merged the traceability audit, and D-049 records explicit owner acceptance on 2026-10-16; see the current Phase 2 acceptance note below. This audit branch's Contract tests workflow run [#54](https://github.com/s1xte3n/studypath-sa/actions/runs/38789226191) passed on head `fbe002e29f35fdbf97a46ada391fca520667e036`. PR #79's contract-test workflow passed on its PR head; no workflow result was returned for the merge commit. No app build, browser journey, runtime privacy, cloud provisioning, deployment or release is claimed.  
-**Last updated:** 2026-10-17
+**Last updated:** 2026-10-18
 
-## Current synthetic-only MVP evidence snapshot — 2026-10-17
+## Current synthetic-only MVP evidence snapshot — 2026-10-18
+
+Reviewed current `main` commit: `6c91b5f9eabbdd07316f92eac876c6f8f5cd41d4` (merge of PR #137).
+
+- Four GitHub Actions workflows passed on this exact main commit: [browser E2E/privacy/accessibility](https://github.com/s1xte3n/studypath-sa/actions/runs/39120290042), [browser MVP build](https://github.com/s1xte3n/studypath-sa/actions/runs/39120290021), [contract tests](https://github.com/s1xte3n/studypath-sa/actions/runs/39120290039), and [UJ eligibility golden-case verification](https://github.com/s1xte3n/studypath-sa/actions/runs/39120290056).
+- PR #137 adds a 320px viewport automated regression check. It does not constitute manual accessibility or responsive verification.
+- The OpenAPI validation workflow is path-filtered and was not triggered by PR #137's changes; no OpenAPI pass is claimed on this SHA.
+- `src/main.jsx` still implements form entry, validation and reset only; it explicitly says pathway matching is not enabled. The deterministic evaluator is separate and not connected to the learner-facing flow.
+- Selected browser privacy and lifecycle checks exist, but full failure-path coverage, external host/provider behavior and telemetry boundaries remain unverified.
+- Remote CI success is not local reproduction. Local working-tree status and a clean local install/test/build remain unverified.
+- G-SYN-001 remains **OPEN / NOT PASSED**. No Azure provisioning, deployment, paid service or real learner-data use is authorized.
+
+## Historical synthetic-only MVP evidence snapshot — 2026-10-17
 
 Reviewed current `main` commit: `6a6099f10f5957ef0e7e0c87fed058af172921f3`.
 
