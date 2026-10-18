@@ -1,7 +1,7 @@
 # StudyPath SA — Open Questions
 
-**Status:** Phase 2 `REQUIREMENTS READY` and Phase 3 `ARCHITECTURE READY` passed on 2026-10-16 for their stated scopes; Phase 4 API/interface contract/runtime validation remains current. The current synthetic-only browser baseline and five passing main-commit CI workflows are recorded, but G-SYN-001 remains OPEN / NOT PASSED.
-**Last updated:** 2026-10-17 (synthetic-only evidence reconciliation; rate-limiting disposition D-053 recorded)  
+**Status:** Phase 2 `REQUIREMENTS READY` and Phase 3 `ARCHITECTURE READY` passed on 2026-10-16 for their stated scopes; Phase 4 API/interface contract/runtime validation remains current. Four relevant workflows passed on main merge commit `6c91b5f9eabbdd07316f92eac876c6f8f5cd41d4`; G-SYN-001 remains OPEN / NOT PASSED.
+**Last updated:** 2026-10-18 (G-SYN-001 baseline reconciliation; rate-limiting disposition D-053 remains recorded)  
 **Priority:** P0 blocks readiness/safety/budget; P1 must resolve before dependent phase; P2/P3 later.
 
 **Historical-note convention:** Dated Q-019/source-reconciliation paragraphs are retained as an audit trail; later dated updates supersede earlier source-conflict snapshots. Current Q-019 status is owner-approved candidate selection for the bounded pilot, with complete rule extraction, executable test oracles, curator sign-off and publication readiness still open.
