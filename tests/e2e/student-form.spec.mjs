@@ -118,3 +118,38 @@ test("automated accessibility scan has no critical or serious WCAG violations", 
     nodes: item.nodes.map(node => node.target)
   })), null, 2)).toEqual([]);
 });
+
+test("transient learner entries are not persisted in browser storage or restored across tabs and reloads", async ({ page, context }) => {
+  await page.goto("/");
+  await page.locator("#subject-0").selectOption("Mathematics");
+  await page.locator("#mark-0").fill("74");
+  await page.getByRole("button", { name: /Check my entries/ }).click();
+
+  const browserState = await page.evaluate(async () => {
+    return {
+      localStorageKeys: Object.keys(localStorage),
+      sessionStorageKeys: Object.keys(sessionStorage),
+      cookie: document.cookie,
+      indexedDbNames: typeof indexedDB.databases === "function"
+        ? (await indexedDB.databases()).map(db => db.name ?? "")
+        : ["unsupported"],
+      cacheNames: await caches.keys()
+    };
+  });
+
+  expect(browserState.localStorageKeys).toEqual([]);
+  expect(browserState.sessionStorageKeys).toEqual([]);
+  expect(browserState.cookie).toBe("");
+  expect(browserState.indexedDbNames).toEqual([]);
+  expect(browserState.cacheNames).toEqual([]);
+
+  const secondPage = await context.newPage();
+  await secondPage.goto("/");
+  await expect(secondPage.locator("#mark-0")).toHaveValue("");
+  await expect(secondPage.locator("#subject-0")).toHaveValue("English Home Language");
+  await secondPage.close();
+
+  await page.reload();
+  await expect(page.locator("#mark-0")).toHaveValue("");
+  await expect(page.locator("#subject-0")).toHaveValue("English Home Language");
+});
