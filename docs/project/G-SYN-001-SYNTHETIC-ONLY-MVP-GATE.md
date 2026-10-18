@@ -2,7 +2,7 @@
 
 **Status:** OPEN — current repository and CI evidence reviewed; acceptance criteria remain partially satisfied and the gate is NOT PASSED.
 **Last evidence review:** 2026-10-18
-**Latest repository baseline reviewed:** `9cde29ae3bb6c3d928c30549a35be9c4fe95f94e` (main; PR #135 merge)
+**Latest repository baseline reviewed:** `6c91b5f9eabbdd07316f92eac876c6f8f5cd41d4` (main; PR #137 merge)
 **Scope:** Local, synthetic-only browser demo. This gate does not approve real learner-data processing, legal compliance, Azure provisioning, production identity, persistent profiles, public deployment, or paid services.
 
 ## Objective
@@ -11,7 +11,7 @@ Deliver the smallest runnable student journey that can be tested end-to-end with
 
 ## Current repository baseline and evidence
 
-The current `main` commit reviewed is `9cde29ae3bb6c3d928c30549a35be9c4fe95f94e` (PR #135 merge). The earlier `e3564527b48dc0ca3cb55d4c208da5dc620b23ff` inspection and the `6a6099f10f5957ef0e7e0c87fed058af172921f3` CI snapshot below are historical and must not be used to describe the current tree.
+The current `main` commit reviewed is `6c91b5f9eabbdd07316f92eac876c6f8f5cd41d4` (PR #137 merge). The earlier `e3564527b48dc0ca3cb55d4c208da5dc620b23ff` inspection and the `6a6099f10f5957ef0e7e0c87fed058af172921f3` CI snapshot below are historical and must not be used to describe the current tree.
 
 Current repository artifacts include:
 
@@ -50,6 +50,20 @@ Reviewed PR #135 merge commit `9cde29ae3bb6c3d928c30549a35be9c4fe95f94e` on `mai
 - All four PR #135 workflow runs passed on head commit `973f5c10e3a8b261639d0c9c219e63532c92c6d5`: [browser E2E/privacy/accessibility](https://github.com/s1xte3n/studypath-sa/actions/runs/39119250982), [browser MVP build](https://github.com/s1xte3n/studypath-sa/actions/runs/39119250960), [contract tests](https://github.com/s1xte3n/studypath-sa/actions/runs/39119250884), and [UJ eligibility golden-case verification](https://github.com/s1xte3n/studypath-sa/actions/runs/39119250985). These runs were associated with the PR head; the workflow-run lookup returned no merge-commit workflow runs for `9cde29ae3bb6c3d928c30549a35be9c4fe95f94e`, so do not describe them as merge-commit CI.
 
 These tests improve selected browser-context evidence only. They do not establish host/provider logs, browser behavior outside the instrumented context, external analytics or telemetry not exercised by the tests, legal compliance, complete privacy safety, or release readiness. No local test run, Azure provisioning, deployment, or real learner-data processing is claimed. The gate remains **OPEN / NOT PASSED**.
+
+## Latest main-branch baseline — 2026-10-18 (PR #137 merge)
+
+Reviewed current `main` commit `6c91b5f9eabbdd07316f92eac876c6f8f5cd41d4`, the merge commit for [PR #137 — Add narrow mobile viewport regression coverage](https://github.com/s1xte3n/studypath-sa/pull/137). The working tree is not available through this remote repository inspection, and no clean local install or local test run is claimed.
+
+Four GitHub Actions workflows completed successfully on this exact main merge commit:
+- [Browser E2E, privacy and accessibility](https://github.com/s1xte3n/studypath-sa/actions/runs/39120290042) — job `Chromium learner journey, privacy and accessibility`, success.
+- [Browser MVP build](https://github.com/s1xte3n/studypath-sa/actions/runs/39120290021) — job `Install, test and build browser MVP`, success.
+- [Contract tests](https://github.com/s1xte3n/studypath-sa/actions/runs/39120290039) — job `Node.js contract tests`, success.
+- [UJ eligibility golden-case verification](https://github.com/s1xte3n/studypath-sa/actions/runs/39120290056) — job `verify`, success.
+
+PR #137 adds an automated 320px viewport regression test for form visibility, horizontal overflow, control bounds and keyboard focus. This is automated coverage, not a documented manual responsive/accessibility review. The OpenAPI validation workflow is path-filtered to `docs/api/**`, `tests/contracts/**`, and its own workflow file; PR #137 did not change those paths, so no OpenAPI run was expected for this commit and none is claimed.
+
+The current UI remains a basic subject/mark-entry form. `src/main.jsx` calls `validateStudentEntries` and explicitly states that pathway matching is not enabled; the separate evaluator in `src/domain/eligibility/uj-2027-evaluator.mjs` is not integrated into the learner-facing flow. Thus the latest CI improves confidence in the current scaffold but does not close SYN-002 or the full G-SYN-001 gate. The privacy test suite covers selected browser channels and lifecycle checks; unexercised failure paths, host/provider logs, external telemetry and behavior outside the instrumented browser context remain unverified. The current browser privacy test audits only values actually entered into the available UI: the subject (`Mathematics`) and mark (`93`). The earlier unused `learnerMarker` constant and its vacuous assertions were removed in this change; the UI has no learner-name field. This does not broaden coverage to data fields or flows the current UI does not implement. 
 
 ## Scope for this gate
 

@@ -1,9 +1,15 @@
 # StudyPath SA — Artifact Index
 
-**Last updated:** 2026-10-17
-**Phase:** 4 — API/interface contracts/runtime validation (`ARCHITECTURE READY` passed 2026-10-16 for design/traceability only; current main-commit contract/OpenAPI/browser/eligibility CI passed; G-SYN-001 remains open/not passed; runtime, cost, privacy coverage and catalogue publication evidence remain open)  
+**Last updated:** 2026-10-18
+**Phase:** 4 — API/interface contracts/runtime validation (`ARCHITECTURE READY` passed 2026-10-16 for design/traceability only; four relevant browser/build/contract/eligibility workflows passed on main merge commit `6c91b5f9eabbdd07316f92eac876c6f8f5cd41d4`; no OpenAPI run is claimed for that commit; G-SYN-001 remains open/not passed; runtime, cost, privacy coverage and catalogue publication evidence remain open)  
 **Historical-note convention:** Dated sections below preserve prior review snapshots. Where an older row says “proposed,” “on branch for review,” or “not started,” use the latest status table and subsequent dated updates as current; earlier snapshots are not current approval or implementation evidence.  
 **Gate:** Phase 0 `PROJECT READY`, Phase 1 `PRD READY`, Phase 2 `REQUIREMENTS READY`, and Phase 3 `ARCHITECTURE READY` are accepted for their stated scope only. Phase 4 API/interface contract/runtime validation is current. The current synthetic-only browser baseline and five passing main-commit CI workflows are documented below; G-SYN-001, downstream runtime/privacy, cost, catalogue publication and release gates remain open.
+
+## Latest synthetic-only gate evidence — 2026-10-18
+
+Current `main`: `6c91b5f9eabbdd07316f92eac876c6f8f5cd41d4` (merge of [PR #137](https://github.com/s1xte3n/studypath-sa/pull/137)). Four workflows passed on that exact commit: [browser E2E/privacy/accessibility](https://github.com/s1xte3n/studypath-sa/actions/runs/39120290042), [browser MVP build](https://github.com/s1xte3n/studypath-sa/actions/runs/39120290021), [contract tests](https://github.com/s1xte3n/studypath-sa/actions/runs/39120290039), and [UJ eligibility golden-case verification](https://github.com/s1xte3n/studypath-sa/actions/runs/39120290056). PR #137 adds automated 320px viewport regression coverage. The OpenAPI workflow is path-filtered and did not run for this test-only change.
+
+G-SYN-001 remains OPEN / NOT PASSED: the UI still stops at input validation, local reproduction and manual accessibility checks remain unverified, and catalogue/provenance/privacy evidence is incomplete. Remote CI is not local test evidence. No provisioning, deployment, paid services or real learner data are approved.
 
 ## Source-of-truth references
 

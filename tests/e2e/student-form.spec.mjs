@@ -181,7 +181,6 @@ test("no learner entries are transmitted or persisted across reload", async ({ p
     return route.continue();
   });
   await page.goto("/");
-  const learnerMarker = "learner-privacy-sentinel-7f4a2d";
   const subjectMarker = "Mathematics";
   const mark = "93";
   await page.locator("#subject-0").selectOption(subjectMarker);
@@ -190,10 +189,8 @@ test("no learner entries are transmitted or persisted across reload", async ({ p
   await expect(page.getByRole("status")).toContainText("basic form validation");
 
   const currentUrl = new URL(page.url());
-  expect(currentUrl.href).not.toContain(learnerMarker);
   expect(currentUrl.href).not.toContain(subjectMarker);
   for (const value of currentUrl.searchParams.values()) {
-    expect(value).not.toContain(learnerMarker);
     expect(value).not.toBe(mark);
     expect(value).not.toContain(subjectMarker);
   }
@@ -208,18 +205,14 @@ test("no learner entries are transmitted or persisted across reload", async ({ p
     const url = new URL(request.url);
     expect(url.origin).toBe("http://127.0.0.1:4173");
     expect(request.method).toBe("GET");
-    expect(url.href).not.toContain(learnerMarker);
     expect(url.href).not.toContain(subjectMarker);
     for (const value of url.searchParams.values()) {
-      expect(value).not.toContain(learnerMarker);
       expect(value).not.toBe(mark);
       expect(value).not.toContain(subjectMarker);
     }
     expect(request.postData).toBe("");
   }
-  expect(consoleMessages.join("\n")).not.toContain(learnerMarker);
   expect(consoleMessages.join("\n")).not.toContain(subjectMarker);
-  expect(browserErrors.join("\n")).not.toContain(learnerMarker);
   expect(browserErrors.join("\n")).not.toContain(subjectMarker);
 
   const audit = await page.evaluate(() => ({
@@ -233,7 +226,6 @@ test("no learner entries are transmitted or persisted across reload", async ({ p
     "unhandledrejection"
   ]);
   const auditText = JSON.stringify(audit.calls);
-  expect(auditText).not.toContain(learnerMarker);
   expect(auditText).not.toContain(subjectMarker);
   expect(audit.calls.filter(call => call.url).every(call => {
     const destination = new URL(call.url, "http://127.0.0.1:4173");
