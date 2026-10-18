@@ -1,10 +1,9 @@
 # G-SYN-001 — Synthetic-Only MVP Verification Gate
 
 **Status:** OPEN — current repository and CI evidence reviewed; acceptance criteria remain partially satisfied and the gate is NOT PASSED.
-**Last evidence review:** 2026-10-17
-**Repository baseline reviewed:** `6a6099f10f5957ef0e7e0c87fed058af172921f3` (main)
+**Last evidence review:** 2026-10-18
+**Latest repository baseline reviewed:** `bf137ec9060d59942ded92af258e2bf9e23cbc0a` (main)
 **Scope:** Local, synthetic-only browser demo. This gate does not approve real learner-data processing, legal compliance, Azure provisioning, production identity, persistent profiles, public deployment, or paid services.
-**Scope:** Build and verify a minimal local, browser-only StudyPath SA demo using synthetic data. This gate does not approve legal compliance, real learner-data processing, Azure provisioning, production identity, persistent profiles, or deployment.
 
 ## Objective
 
@@ -39,6 +38,17 @@ These are remote CI results, not evidence that the assistant ran a clean local i
 The browser suite tests editable student-entry rows, basic input validation and reset; invalid-input announcements; a keyboard-focus assertion; an automated privacy check covering same-origin GET-only behavior, URL parameters, local/session storage, cookies, console output and reload reset; and an axe scan for critical/serious accessibility violations. The suite explicitly asserts that basic form validation does not calculate an eligibility result.
 
 This is a useful baseline, but it does **not** establish the complete student journey from marks/interests to explainable pathway results and official next steps. The current privacy test does not evidence every requested channel and failure mode in SYN-004. A responsive CSS breakpoint is present, but a documented manual keyboard and narrow-viewport review was not found in the evidence reviewed.
+
+
+## Latest browser privacy evidence — 2026-10-18
+
+Reviewed main commit `bf137ec9060d59942ded92af258e2bf9e23cbc0a`, following merged PRs #132 and #133. The earlier 2026-10-17 five-workflow list above is a historical snapshot for commit `6a6099f10f5957ef0e7e0c87fed058af172921f3`; it is not the latest repository baseline.
+
+- [PR #132 — Expand synthetic-only browser lifecycle privacy tests](https://github.com/s1xte3n/studypath-sa/pull/132) added assertions that transient learner entries do not appear in local/session storage, cookies, IndexedDB, Cache API, a fresh tab, or after reload.
+- [PR #133 — Instrument additional synthetic-only browser privacy channels](https://github.com/s1xte3n/studypath-sa/pull/133) added test-only instrumentation for fetch, XHR, sendBeacon, WebSocket, history mutations, window errors and unhandled promise rejections, plus checks against sentinel values in the observed channels. The test blocks non-local HTTP requests and external WebSocket construction in its test context.
+- All four PR workflows passed on merge commit `bf137ec9060d59942ded92af258e2bf9e23cbc0a`: [browser E2E/privacy/accessibility](https://github.com/s1xte3n/studypath-sa/actions/runs/39118371483), [browser MVP build](https://github.com/s1xte3n/studypath-sa/actions/runs/39118371484), [contract tests](https://github.com/s1xte3n/studypath-sa/actions/runs/39118371572), and [UJ eligibility golden-case verification](https://github.com/s1xte3n/studypath-sa/actions/runs/39118371618).
+
+These tests improve selected browser-context evidence only. They do not establish host/provider logs, browser behavior outside the instrumented context, external analytics or telemetry not exercised by the tests, legal compliance, complete privacy safety, or release readiness. No local test run, Azure provisioning, deployment, or real learner-data processing is claimed. The gate remains **OPEN / NOT PASSED**.
 
 ## Scope for this gate
 

@@ -289,3 +289,14 @@ PR #89 merged as `bbad7b869a1e2e59184d37c486a7185d70e809f5`. The merge-commit Op
 - `docs/product/FUNDING-CATALOGUE-REGISTER.md` — official-source research register for initial funding candidates. NSFAS 2027 is a research lead only; conflicting official closing-date statements block publication pending clarification and curator sign-off.
 - `docs/project/DECISIONS.md` — D-052 records owner approval to continue with the public catalogue contract baseline and reiterates the implementation/provisioning limits.
 - Owner approval permits continued Phase 4 work; it does not pass the contract gate. Runtime/provider/cost decisions, source-backed publication records, runtime privacy and release evidence remain outstanding.
+
+
+## Synthetic-only browser privacy evidence update — 2026-10-18
+
+| Artifact | Path | Status | Notes |
+|---|---|---|---|
+| Synthetic-only MVP gate | `docs/project/G-SYN-001-SYNTHETIC-ONLY-MVP-GATE.md` | Updated for main `bf137ec9060d59942ded92af258e2bf9e23cbc0a` | Reconciles PRs #132/#133 and merge-commit CI evidence; gate remains **NOT PASSED**. |
+| Browser lifecycle privacy tests | `tests/e2e/student-form.spec.mjs` | PR #132 merged | Tests selected in-memory lifecycle behavior across storage APIs, reload and new-tab contexts. |
+| Browser privacy channel instrumentation | `tests/e2e/student-form.spec.mjs` | PR #133 merged | Test-only instrumentation for additional browser channels and sentinel checks; not a complete provider/hosting or compliance audit. |
+
+Merge-commit workflows passed: [browser E2E/privacy/accessibility](https://github.com/s1xte3n/studypath-sa/actions/runs/39118371483), [browser MVP build](https://github.com/s1xte3n/studypath-sa/actions/runs/39118371484), [contract tests](https://github.com/s1xte3n/studypath-sa/actions/runs/39118371572), [UJ eligibility golden-case verification](https://github.com/s1xte3n/studypath-sa/actions/runs/39118371618). These are remote CI results; no local test execution or release readiness is implied.
