@@ -151,7 +151,7 @@ test("no learner entries are transmitted or persisted across reload", async ({ p
     return route.continue();
   });
   await page.goto("/");
-  const learnerMarker = "93";
+  const learnerMarker = "learner-privacy-sentinel-7f4a2d";
   const subjectMarker = "Mathematics";
   const mark = "93";
   await page.locator("#subject-0").selectOption(subjectMarker);
