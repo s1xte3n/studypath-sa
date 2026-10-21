@@ -376,3 +376,13 @@ The repository review found no dedicated analytics SDK in `package.json`, a loop
 Official Microsoft documentation research is recorded in [Azure Logging and External Telemetry Research](AZURE-LOGGING-TELEMETRY-RESEARCH.md). It covers the planned Azure logging surfaces and distinguishes platform Activity Log, configurable resource diagnostics, application monitoring, and exported-copy retention. Documented examples include Activity Log's 90-day default retention, configurable API Management request/body/client-IP logging, Functions/Application Insights telemetry, PostgreSQL diagnostic categories, Blob request logs, and license-dependent Entra audit/sign-in retention. These are service-documentation findings, not evidence of StudyPath's actual configuration.
 
 No deployed Azure resources, diagnostic settings, workspaces, storage lifecycle policies, Entra tenant logs, AI endpoints, or provider terms for a final selected SKU/region were inspected. Exact service selection and settings remain unknown. The research checkbox may be complete; actual provider verification remains open and is mandatory before deployment. No provisioning or deployment was performed, and synthetic/demo data only remains required.
+
+
+## Hackathon implementation handoff — 2026-10-21
+
+- Owner direction recorded in D-054: prioritise a hackathon-ready product now; production hardening follows after the event.
+- Current repository inspection confirms the React/Vite form validates entries but does not yet calculate learner-facing pathway results. The existing deterministic UJ 2027 evaluator and local catalogue handler are separate code paths and must be inspected and integrated through a small tested adapter.
+- Handoff: docs/project/HACKATHON-IMPLEMENTATION-HANDOFF.md. Submission requirements and preparation: docs/project/HACKATHON-SUBMISSION-CHECKLIST.md.
+- Next action: implement the P0 evaluator-to-UI vertical slice on a feature branch, then add results/details, privacy/accessibility regression and demo rehearsal.
+- Gate state: G-SYN-001 remains OPEN / NOT PASSED. Do not claim product readiness until the learner-facing journey is tested end-to-end. This documentation change did not run tests, deploy services, verify runtime privacy, or certify cost.
+- Hackathon dates/deadline per supplied programme: 23–25 October 2026; submission Monday 26 October 2026 at 23:59 via Sonke. Verify portal timezone and field/file requirements.
