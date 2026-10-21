@@ -2,9 +2,9 @@
 
 **Last updated:** 2026-10-21  
 **Repository:** https://github.com/s1xte3n/studypath-sa  
-**Current phase:** Phase 4 — API / Interface Contract  
+**Current phase:** Phase 4 — API / Interface Contract (scope split: local hackathon demo versus future hosted API)  
 **Latest passed gate:** `ARCHITECTURE READY` — **PASSED on 2026-10-16 for architecture design/traceability only**  
-**Next gate:** `CONTRACT READY` — not yet passed
+**Next gate:** `HACKATHON IMPLEMENTATION READY` — scoped documentation baseline under review; not yet passed
 
 ## Gate status at a glance
 
@@ -80,7 +80,7 @@ Do not mark a phase complete just because a document exists. Confirm that its re
 
 ## Next action
 
-Proceed with **Phase 4 — API / Interface Contract**. Phase 0 `PROJECT READY`, Phase 1 `PRD READY`, Phase 2 `REQUIREMENTS READY`, and Phase 3 `ARCHITECTURE READY` have passed only within their documented planning/design scopes. Reconcile the API contract with approved requirements and architecture, close or explicitly defer contract-level questions, and maintain traceability to contract tests. Provider logging research is complete, but actual provider verification is deferred until the exact deployment design/configuration exists and remains mandatory before deployment. Keep OR-019, Q-018, Q-020 and G-SYN-001 open/not passed as applicable; synthetic-only remains, and Azure provisioning/deployment and real learner data are not authorized.
+**Immediate next action:** review and merge the scoped [Hackathon Implementation Baseline](HACKATHON-IMPLEMENTATION-BASELINE.md), then start the local synthetic-only React/Vite vertical slice. The FNB hackathon begins 2026-10-23; the supplied programme gives a 2026-10-26 23:59 Sonke submission deadline. Do not let production API runtime decisions block the local browser demo: the /api/v1 contract, Azure hosting, public abuse controls, provider retention and all-in cost certification remain later hosted-deployment gates. Phase 0 `PROJECT READY`, Phase 1 `PRD READY`, Phase 2 `REQUIREMENTS READY`, and Phase 3 `ARCHITECTURE READY` passed only within their recorded scopes. Preserve privacy, synthetic-only data, deterministic eligibility, source truthfulness, accessibility and regression tests. G-SYN-001 remains open/not passed; no Azure provisioning, deployment or real learner data is authorized.
 
 
 ## Privacy checklist — provider logging and telemetry (2026-10-21)

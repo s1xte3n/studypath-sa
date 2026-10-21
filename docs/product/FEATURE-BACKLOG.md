@@ -2,6 +2,19 @@
 
 **Status:** Planning only. D-044 selects API-first and D-045/D-048 define the approved anonymous/authenticated boundary; runtime composition, final interface contract, provider/privacy verification and cost remain open. Items are implementation-ready only to the extent that their acceptance criteria are specified; blocked items are explicitly labelled. Ambiguous behavior is not converted into a task.
 
+## Hackathon critical path — 2026-10-21
+
+The owner has prioritised a judge-ready product for the 23–25 October hackathon, with Sonke submission due 26 October 2026 according to the supplied programme. Follow `../project/HACKATHON-IMPLEMENTATION-BASELINE.md` for the scoped implementation order. Do not hold the local browser journey for production hosting decisions.
+
+1. Wire validated learner inputs to the existing deterministic evaluator.
+2. Render explainable ELIGIBLE / NOT_ELIGIBLE / UNKNOWN results and honest source-backed details.
+3. Add missing/invalid/empty/error/reset states and clear synthetic/demo disclosures.
+4. Verify memory-only privacy, mobile responsiveness, keyboard/focus and accessibility.
+5. Run focused tests, browser E2E, relevant CI and production build; rehearse the complete demo.
+6. Finish the deck (10 slides maximum), 90-second demo video, Sonke SSDLC and Lean Business Canvas.
+
+Funding and tracker are secondary to a complete, correct core journey. Azure, hosted API, auth, persistence and production abuse/cost/provider controls remain post-hackathon deployment gates. This priority does not waive privacy, truthful data, deterministic eligibility or testing.
+
 ## P0 — Architecture and data-contract gate
 
 ### P0-00 — Freeze the API-first data boundary and prove budget feasibility

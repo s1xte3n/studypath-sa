@@ -317,3 +317,11 @@ Merge-commit workflows passed: [browser E2E/privacy/accessibility](https://githu
 | Privacy test sentinel | `tests/e2e/student-form.spec.mjs` | PR #135 merged | Uses a distinctive sentinel instead of `93` to prevent incidental asset URL matches; mark-specific leakage checks remain. |
 
 All four PR-head workflows passed on `973f5c10e3a8b261639d0c9c219e63532c92c6d5`: [browser E2E/privacy/accessibility](https://github.com/s1xte3n/studypath-sa/actions/runs/39119250982), [browser MVP build](https://github.com/s1xte3n/studypath-sa/actions/runs/39119250960), [contract tests](https://github.com/s1xte3n/studypath-sa/actions/runs/39119250884), and [UJ eligibility golden-case verification](https://github.com/s1xte3n/studypath-sa/actions/runs/39119250985). No workflow runs were returned for merge commit `9cde29ae3bb6c3d928c30549a35be9c4fe95f94e`; no local tests, deployment or release readiness are claimed.
+
+
+## Hackathon implementation baseline — 2026-10-21
+
+| Artifact | Path | Status | Notes |
+|---|---|---|---|
+| Hackathon implementation baseline | `docs/project/HACKATHON-IMPLEMENTATION-BASELINE.md` | Proposed for review in PR | Freezes the P0 local synthetic-only student journey, explicit production deferrals, implementation sequence, demo-ready evidence, and submission deliverables. Does not claim implementation or gate completion. |
+| Hackathon-first delivery decision | `docs/project/DECISIONS.md` — D-054 | Proposed in PR | Records owner direction to prioritise a judge-ready product now and production hardening after the event, without waiving privacy or correctness requirements. |
