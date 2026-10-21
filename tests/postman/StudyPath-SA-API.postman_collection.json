@@ -1,0 +1,62 @@
+{
+  "info": {
+    "name": "StudyPath SA Public Catalogue API (Contract Tests)",
+    "description": "Contract-scoped requests only. Runtime is not verified; configure API_BASE_URL and run only against an explicitly approved test runtime. No learner inputs or secrets are sent.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "List published programmes",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{API_BASE_URL}}/programmes",
+        "description": "Contract: GET /api/v1/programmes. Expect 200 JSON only when an approved runtime and published catalogue exist."
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Response content type is JSON', () => pm.response.to.have.header('Content-Type', /application\\\\/json/i));",
+              "pm.test('Expected success status is 200', () => pm.response.to.have.status(200));",
+              "if (pm.response.code === 200) { const body = pm.response.json(); pm.test('Catalogue envelope is present', () => { pm.expect(body).to.have.property('contractVersion'); pm.expect(body).to.have.property('catalogueVersion'); pm.expect(body).to.have.property('items').that.is.an('array'); }); }"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Unsupported Accept returns 406",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/xml"
+          }
+        ],
+        "url": "{{API_BASE_URL}}/programmes",
+        "description": "Contract requires 406 NOT_ACCEPTABLE when application/json is not acceptable. Run only against an approved runtime."
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Unsupported Accept returns canonical 406', () => pm.response.to.have.status(406));",
+              "if (pm.response.code === 406) { const body = pm.response.json(); pm.test('Error code is NOT_ACCEPTABLE', () => pm.expect(body.error.code).to.eql('NOT_ACCEPTABLE')); }"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

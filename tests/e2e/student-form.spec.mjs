@@ -15,8 +15,11 @@ test("learner can edit rows, validate entries, and reset the form", async ({ pag
   await expect(page.locator("#subject-1")).toHaveCount(0);
 
   await page.getByRole("button", { name: /Check my entries/ }).click();
-  await expect(page.getByRole("status")).toContainText("basic form validation");
-  await expect(page.getByRole("status")).toContainText("no eligibility result has been calculated");
+  await expect(page.getByRole("status")).toContainText("Pathway exploration completed");
+  await expect(page.getByRole("status")).toContainText("results are UNKNOWN");
+  await expect(page.getByRole("heading", { name: "Pathways to investigate" })).toBeVisible();
+  await expect(page.locator(".result-card")).toHaveCount(7);
+  await expect(page.locator(".eligibility-state")).toHaveText(Array(7).fill("UNKNOWN"));
 
   await page.getByRole("button", { name: "Reset" }).click();
   await expect(page.getByLabel("Your current stage")).toHaveValue("GRADE_12");
@@ -47,8 +50,9 @@ test("correcting invalid marks clears the error and valid entries still do not i
   await page.locator("#mark-0").fill("90");
   await expect(page.getByRole("status")).toHaveCount(0);
   await page.getByRole("button", { name: /Check my entries/ }).click();
-  await expect(page.getByRole("status")).toContainText("basic form validation");
-  await expect(page.getByRole("status")).toContainText("no eligibility result has been calculated");
+  await expect(page.getByRole("status")).toContainText("Pathway exploration completed");
+  await expect(page.getByRole("status")).toContainText("results are UNKNOWN");
+  await expect(page.locator(".result-card")).toHaveCount(7);
 });
 
 test("changing the study stage clears a stale validation notice", async ({ page }) => {
