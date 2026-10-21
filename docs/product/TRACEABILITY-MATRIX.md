@@ -1,3 +1,15 @@
+## Current CI evidence update — 2026-10-22
+
+For commit `aa43b783ecb97aa3dac8f1ed18ebe727e5231e41` on `main`, the project owner supplied output from `gh run list --commit` showing these workflows completed successfully:
+
+- [Browser E2E, privacy and accessibility](https://github.com/s1xte3n/studypath-sa/actions/runs/39681570939)
+- [Contract tests](https://github.com/s1xte3n/studypath-sa/actions/runs/39681570917)
+- [Browser MVP build](https://github.com/s1xte3n/studypath-sa/actions/runs/39681571109)
+
+This is exact-commit CI evidence for the three named workflows, supplied by the repository owner. It does **not** fill every row's implementation/test/release evidence fields, prove that all planned requirements are implemented, or establish a deployment/release. Requirement-level traceability and release approval remain open. No independent workflow rerun is claimed.
+
+---
+
 # Gate classification update — 2026-10-14
 
 The matrix below remains a traceability plan, not proof of implementation. For gate purposes, distinguish requirements completeness from data publication, architecture/API approval, implementation, CI and release. Open catalogue conflicts (GAP-001) and the absence of a verified relationship pair (GAP-003) do not make the requirements ambiguous: the safe contract is to withhold unsupported records/relationships and report uncertainty/no verified alternative. GAP-002's owner-approved subject-v1 decision and executable reference test file have been found in the repository; test execution and production implementation remain unverified. GAP-005 is P1 and does not block P0 requirements readiness. GAP-004 and GAP-008 remain downstream architecture/implementation/release blockers as classified in REQUIREMENT-GAPS.md.

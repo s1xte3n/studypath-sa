@@ -1,3 +1,20 @@
+# Current verification update — 2026-10-22
+
+**Reviewed commit:** `aa43b783ecb97aa3dac8f1ed18ebe727e5231e41` on `main`. The project owner supplied terminal output confirming the local branch was `main`, synchronized with `origin/main`, `git status --short` was empty, and the current commit was `aa43b783ecb97aa3dac8f1ed18ebe727e5231e41`. This is owner-supplied local evidence.
+
+**GitHub Actions on this exact commit — owner-supplied `gh run list --commit` output:**
+- [Browser E2E, privacy and accessibility](https://github.com/s1xte3n/studypath-sa/actions/runs/39681570939) — completed, success.
+- [Contract tests](https://github.com/s1xte3n/studypath-sa/actions/runs/39681570917) — completed, success.
+- [Browser MVP build](https://github.com/s1xte3n/studypath-sa/actions/runs/39681571109) — completed, success.
+
+These results establish that the three listed workflows passed for this commit. They do not establish that every planned test/workflow ran, that the application is deployed, or that all requirements are implemented. The assistant has not independently rerun the workflows.
+
+**Current disposition:** the exact-commit CI evidence gap for these three workflows is closed. Overall release remains **OPEN / NOT PASSED**. Preserve the local synthetic-only demo scope. The UJ 2027 catalogue remains `DRAFT_NOT_FOR_DEFINITIVE_SCREENING`; learner-facing eligibility remains `UNKNOWN` until verified rules, provenance, catalogue version and curator approval justify a stronger state. Azure provisioning, public deployment, paid services and real learner-data use remain unauthorized.
+
+**Next gate:** reconcile traceability evidence against actual implementation and executed tests; prepare and verify the submission deck (maximum 10 slides), demo video (maximum 90 seconds), SSDLC fields and Lean Business Canvas; verify Sonke portal requirements and retain submission confirmation. Do not claim submission or release until evidence exists.
+
+---
+
 # StudyPath SA — Project Status
 
 
