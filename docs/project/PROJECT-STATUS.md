@@ -1,5 +1,31 @@
 # StudyPath SA — Project Status
 
+
+## Current verification update — 2026-10-21 (supersedes the older Phase 5–7 in-progress snapshot below)
+
+**Reviewed repository state:** The project owner supplied local Git output showing branch `main`, synchronized with `origin/main`, at merge commit `0c4120864f51580e09f6588872cd78d404e91493` (PR #147). The owner also supplied local verification outputs; these are owner-reported evidence, not independently executed by this update.
+
+**Local automated verification reported by the owner**
+- `npm test`: 71 tests passed, 0 failed, 0 skipped.
+- `npm run build`: passed using Vite 7.3.7.
+- `npx playwright test --workers=1`: 11 browser tests passed.
+- The initial parallel Playwright run had 10 passes and one timeout. The isolated timed-out test and subsequent serial suite passed; root cause of the initial timeout is not established.
+- The owner reported manual passes for invalid-input validation, seven draft pathway candidates, all eligibility states remaining `UNKNOWN`, admissions disclosures and official-source links, reset behavior, no learner input/result restoration after reload, and keyboard navigation with visible focus.
+- The owner reported a 320 CSS-pixel viewport check with `viewportWidth: 320`, `pageWidth: 320`, and `hasHorizontalOverflow: false`.
+
+**Current disposition:** The local synthetic-only browser MVP has passed the owner-reported local automated checks and manual journey checks above. This supersedes the older statement in the historical Phase 5–7 snapshot that implementation/CI verification was pending. It does not rewrite the historical snapshot or establish that all CI workflows passed on the current merge commit.
+
+**Still open / not passed**
+1. G-SYN-001 and the overall release gate remain **OPEN / NOT PASSED** pending full requirement-to-test traceability and review of all required evidence.
+2. The UJ 2027 catalogue remains `DRAFT_NOT_FOR_DEFINITIVE_SCREENING`; all learner-facing eligibility results must remain `UNKNOWN` until source rules, catalogue version/provenance and curator approval support stronger conclusions.
+3. The initial parallel Playwright timeout has no established root cause and should be monitored in CI; serial success is recorded without increasing timeouts or changing application behavior merely to mask it.
+4. Local `test-results/` was reported as an untracked generated directory. The owner must remove generated artifacts if present and verify a clean working tree.
+5. This update does not independently verify GitHub Actions on the exact current merge SHA, complete all Phase 0 inventory files, certify costs, pass hosted API/runtime controls, or verify cloud configuration.
+6. Azure provisioning/deployment, paid services, public hosting, and real learner-data use remain unauthorized. Production security, privacy/legal, cost, provider-retention, abuse/rate-limit, catalogue publication, deployment, monitoring and rollback gates remain mandatory before hosted/public release.
+
+**Next action:** remove local generated test artifacts if present; verify `git status` is clean on `main`; reconcile the remaining project documents and traceability; inspect CI results on the exact current commit; then perform the formal hackathon demo/release-gate review. No deployment or production-readiness claim is made.
+
+
 **Status:** Architecture design/traceability passed on 2026-10-16. On 2026-10-21 the owner reprioritised delivery for the FNB hackathon: freeze a local synthetic-only React/Vite vertical slice first; production hardening follows after the event. The implementation baseline is proposed in `docs/project/HACKATHON-IMPLEMENTATION-BASELINE.md`; this is not evidence implementation has started. G-SYN-001 remains OPEN / NOT PASSED.  
 **Phase 0 gate:** `PROJECT READY` — **PASSED for Phase 1 planning only**  
 **Last completed gate:** `ARCHITECTURE READY` — **PASSED on 2026-10-16 for architecture design/traceability only**  
