@@ -3,7 +3,7 @@
 **Purpose:** Freeze the smallest coherent, judge-ready product slice and its implementation boundaries before coding.
 **Planning date:** 2026-10-21
 **Hackathon:** FNB App of the Year Hackathon 2026; programme runs 23–25 October. The supplied programme says submission is due Monday, 26 October 2026 at 23:59 through Sonke.
-**Status:** Proposed baseline for owner review; documentation change does not mean implementation has started or any gate has passed.
+**Status:** Scope direction approved by owner under D-054 on 2026-10-21; implementation and G-SYN-001 remain OPEN / NOT PASSED. This approval does not approve deployment or production readiness.
 **Authority:** Owner direction in the project conversation on 2026-10-21: optimise for a hackathon-ready product in two days; production hardening follows after the hackathon. Existing approved PRD, requirements, acceptance criteria, architecture, and D-044–D-053 boundaries remain authoritative except for this explicitly scoped delivery priority.
 
 ## 1. Delivery objective
