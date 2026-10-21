@@ -325,3 +325,15 @@ All four PR-head workflows passed on `973f5c10e3a8b261639d0c9c219e63532c92c6d5`:
 |---|---|---|---|
 | Hackathon implementation baseline | `docs/project/HACKATHON-IMPLEMENTATION-BASELINE.md` | Proposed for review in PR | Freezes the P0 local synthetic-only student journey, explicit production deferrals, implementation sequence, demo-ready evidence, and submission deliverables. Does not claim implementation or gate completion. |
 | Hackathon-first delivery decision | `docs/project/DECISIONS.md` — D-054 | Proposed in PR | Records owner direction to prioritise a judge-ready product now and production hardening after the event, without waiving privacy or correctness requirements. |
+
+
+## Hackathon implementation handoff — 2026-10-21
+
+| Artifact | Path | Status | Notes |
+|---|---|---|---|
+| Hackathon implementation baseline | docs/project/HACKATHON-IMPLEMENTATION-BASELINE.md | Approved scope direction under D-054; implementation/gate still open | Defines the synthetic-only P0 slice and post-event production deferrals. |
+| Hackathon implementation handoff | docs/project/HACKATHON-IMPLEMENTATION-HANDOFF.md | Added on this PR branch | Vertical-slice order, affected code paths, requirement/test traceability, verification expectations and merge/demo gate. |
+| Hackathon submission checklist | docs/project/HACKATHON-SUBMISSION-CHECKLIST.md | Added on this PR branch | Programme-based deck/video/SSDLC/Lean Business Canvas requirements plus proposed demo and submission rehearsal. |
+| Project status | docs/project/PROJECT-STATUS.md | Updated on this PR branch | Records current implementation gap and next action; no tests or release are claimed. |
+
+This documentation handoff does not pass G-SYN-001, Phase 4 runtime validation, quality/delivery/release gates, or authorize cloud provisioning, public deployment or real learner data.
