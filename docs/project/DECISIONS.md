@@ -229,3 +229,16 @@ Source: explicit product-owner approval in the StudyPath SA project conversation
 - No resources, paid services, deployment or real learner data are authorized. The R100/month budget remains uncertified and Phase 4 remains OPEN / NOT PASSED.
 
 Evidence and implementation implications: [docs/api/RATE-LIMITING-DECISION.md](../api/RATE-LIMITING-DECISION.md). Official Microsoft sources: https://learn.microsoft.com/en-us/azure/static-web-apps/configuration and https://learn.microsoft.com/en-us/azure/api-management/api-management-sample-flexible-throttling.
+
+
+## D-054 — Hackathon-first implementation scope (2026-10-21)
+
+**Decision:** With the FNB App of the Year Hackathon beginning 2026-10-23 and submission due 2026-10-26 according to the supplied programme, prioritise a coherent, tested, local browser-based student journey over production infrastructure. The product owner explicitly directed that the target is a hackathon-ready product now and production hardening afterwards.
+
+- The immediate implementation target is the React/Vite synthetic-only demo: validated learner inputs, deterministic explainable eligibility states, honest source-backed results/details, uncertainty, reset/recovery, mobile accessibility and privacy-safe behavior.
+- The public /api/v1 catalogue contract remains a future integration boundary for this delivery slice. API runtime selection, Azure provisioning/deployment, authentication, persistence, paid services, and public hosted abuse controls are not required to implement or demonstrate the local browser journey.
+- Funding and manual tracker work remain secondary to a complete, truthful core journey; implement them only when source records and acceptance criteria are ready.
+- This decision does not waive privacy/security safeguards, synthetic-only data, truthful provenance, eligibility correctness, testing, or honest limitation disclosure. It does not certify the R100/month budget, pass G-SYN-001, approve deployment, or declare production readiness.
+- Production runtime/provider, cost, retention, abuse-control, catalogue publication and release gates remain mandatory after the hackathon and before any hosted/public deployment.
+
+**Evidence/traceability:** Owner direction in the project conversation dated 2026-10-21; implementation scope and acceptance checks in [HACKATHON-IMPLEMENTATION-BASELINE.md](HACKATHON-IMPLEMENTATION-BASELINE.md); official event dates and submission requirements in the supplied FNB AOTY Hackathon 2026 programme PDF.
