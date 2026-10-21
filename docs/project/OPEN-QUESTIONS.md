@@ -137,3 +137,10 @@ The product owner approved Option B (Static Web Apps Free + managed Functions AP
 ## Rate-limit risk-exception status — 2026-10-17
 
 PR #123 merged the owner-approved temporary rate-limit risk exception at `67dfd923740f64035f4c91fde0c60f5cd8ae8928`. The exception approval resolves the decision to document/accept this specific risk for a bounded future demo; it does **not** resolve Q-004 cost evidence, catalogue publication/provenance, deployment-specific security/privacy controls, runtime verification, operational shutdown controls, or separate deployment approval. The public hosted API remains **NO-GO** until those independent gates are evidenced and the owner separately approves deployment. The R100/month cap remains binding and unverified; no resources are authorized by this exception.
+
+
+## Provider logging and telemetry — scoped update (2026-10-21)
+
+The owner confirmed Azure as the intended provider, local-only current state, synthetic/demo data only, and acceptance of provider defaults only after documented terms and retention are reviewed. The owner also accepted completing a local-only review now while retaining provider-specific verification as a pre-deployment gate. See [Provider Logging and Telemetry Review](PROVIDER-LOGGING-TELEMETRY-REVIEW.md).
+
+This resolves the immediate documentation/scope decision, not the technical evidence question. Exact Azure services, diagnostics/log categories, metadata captured, access, retention/deletion, and any external telemetry remain unknown until a concrete deployment configuration is proposed and inspected. Do not provision/deploy or use real learner data on the strength of this scoped review. Keep G-SYN-001 and the public deployment gate open.

@@ -1,6 +1,6 @@
 # StudyPath SA — Master Project Checklist
 
-**Last updated:** 2026-10-16  
+**Last updated:** 2026-10-21  
 **Repository:** https://github.com/s1xte3n/studypath-sa  
 **Current phase:** Phase 3 — Architecture and ADRs  
 **Latest passed gate:** `REQUIREMENTS READY` — **PASSED on 2026-10-16 for requirements definition and traceability only; D-049 records explicit owner acceptance**  
@@ -81,3 +81,14 @@ Do not mark a phase complete just because a document exists. Confirm that its re
 ## Next action
 
 Proceed to **Phase 3 — Architecture and ADRs**. Phase 0 `PROJECT READY`, Phase 1 `PRD READY`, and Phase 2 `REQUIREMENTS READY` have passed only within their documented planning/requirements scopes. The Contract tests workflow passed on the current `main` merge commit, but this is not evidence of an app build, browser journey, runtime privacy behavior, catalogue publication, infrastructure validation, deployment or release readiness. Keep OR-019, Q-018, Q-020 and G-SYN-001 open/not passed; synthetic-only remains, and Azure provisioning/deployment and real learner data are not authorized by these gates.
+
+
+## Privacy checklist — provider logging and telemetry (2026-10-21)
+
+Decision recorded in [Provider Logging and Telemetry Review](PROVIDER-LOGGING-TELEMETRY-REVIEW.md): Azure is planned but the app is currently local-only; synthetic/demo data only; provider-default telemetry may be accepted only after reviewing documented terms and retention.
+
+- [x] Document the current local-only app/repository privacy review, with its explicit evidence limitations.
+- [ ] Verify actual hosting/provider logs, telemetry, terms and retention against the deployed configuration. **Mandatory before deployment; not verifiable from local browser tests.**
+- [ ] Approve public deployment only after provider-specific evidence and all other release gates pass.
+
+**Scope note:** The first checkbox above is complete as a documentation/review task only. This does not verify Azure logs, close G-SYN-001, certify legal compliance, or authorize provisioning, deployment, or real learner data.
