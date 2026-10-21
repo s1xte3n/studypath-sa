@@ -87,7 +87,7 @@ function App() {
 
           <form onSubmit={submitForm} noValidate>
             <label className="field-label" htmlFor="stage">Your current stage <span aria-hidden="true">*</span></label>
-            <select id="stage" value={stage} onChange={event => { setStage(event.target.value); setSubmitted(false); }} required>
+            <select id="stage" value={stage} onChange={event => { setStage(event.target.value); setSubmitted(false); setNotice(""); }} required>
               {STAGES.map(item => <option key={item.value} value={item.value}>{item.label}</option>)}
             </select>
 
