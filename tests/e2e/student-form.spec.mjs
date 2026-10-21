@@ -36,6 +36,67 @@ test("invalid learner input is announced and does not produce an eligibility res
   await expect(page.getByRole("status")).not.toContainText("ELIGIBLE");
 });
 
+
+test("correcting invalid marks clears the error and valid entries still do not imply eligibility", async ({ page }) => {
+  await page.goto("/");
+  await page.locator("#subject-0").selectOption("Mathematics");
+  await page.locator("#mark-0").fill("101");
+  await page.getByRole("button", { name: /Check my entries/ }).click();
+  await expect(page.getByRole("status")).toContainText("whole-number mark from 0 to 100");
+
+  await page.locator("#mark-0").fill("90");
+  await expect(page.getByRole("status")).toHaveCount(0);
+  await page.getByRole("button", { name: /Check my entries/ }).click();
+  await expect(page.getByRole("status")).toContainText("basic form validation");
+  await expect(page.getByRole("status")).toContainText("no eligibility result has been calculated");
+});
+
+test("changing the study stage clears a stale validation notice", async ({ page }) => {
+  await page.goto("/");
+  await page.locator("#subject-0").selectOption("");
+  await page.getByRole("button", { name: /Check my entries/ }).click();
+  await expect(page.getByRole("status")).toContainText("Choose a subject");
+
+  await page.getByLabel("Your current stage").selectOption("GRADE_11");
+  await expect(page.getByRole("status")).toHaveCount(0);
+});
+
+test("reset from an error state restores the default form and removes the notice", async ({ page }) => {
+  await page.goto("/");
+  await page.locator("#subject-0").selectOption("");
+  await page.locator("#mark-0").fill("101");
+  await page.getByRole("button", { name: /Check my entries/ }).click();
+  await expect(page.getByRole("status")).toBeVisible();
+
+  await page.getByRole("button", { name: "Reset" }).click();
+  await expect(page.getByLabel("Your current stage")).toHaveValue("GRADE_12");
+  await expect(page.locator("#subject-0")).toHaveValue("English Home Language");
+  await expect(page.locator("#mark-0")).toHaveValue("");
+  await expect(page.getByRole("status")).toHaveCount(0);
+});
+
+test("home-anchor back and forward navigation keeps transient form data out of the URL", async ({ page }) => {
+  await page.goto("/");
+  await page.locator("#subject-0").selectOption("Mathematics");
+  await page.locator("#mark-0").fill("82");
+
+  await page.getByRole("link", { name: "StudyPath SA home" }).click();
+  await expect(page).toHaveURL(/#home$/);
+  await expect(page.locator("#mark-0")).toHaveValue("82");
+
+  await page.goBack();
+  await expect(page).toHaveURL(/\/$/);
+  await expect(page.locator("#mark-0")).toHaveValue("82");
+
+  await page.goForward();
+  await expect(page).toHaveURL(/#home$/);
+  const url = new URL(page.url());
+  expect(url.href).not.toContain("Mathematics");
+  expect(url.search).toBe("");
+  await expect(page.locator("#subject-0")).toHaveValue("Mathematics");
+  await expect(page.locator("#mark-0")).toHaveValue("82");
+});
+
 test("keyboard users can reach the form controls and see focus", async ({ page }) => {
   await page.goto("/");
   await page.keyboard.press("Tab");
