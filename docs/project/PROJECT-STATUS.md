@@ -1,6 +1,6 @@
 # StudyPath SA — Project Status
 
-**Status:** Phase 3 `ARCHITECTURE READY` passed on 2026-10-16 for design/traceability only; Phase 4 API/interface contract work and Option B validation remain current. The latest synthetic-only baseline is main merge commit `6c91b5f9eabbdd07316f92eac876c6f8f5cd41d4` (PR #137), with four successful main-commit workflows; G-SYN-001 remains NOT PASSED.  
+**Status:** Architecture design/traceability passed on 2026-10-16. On 2026-10-21 the owner reprioritised delivery for the FNB hackathon: freeze a local synthetic-only React/Vite vertical slice first; production hardening follows after the event. The implementation baseline is proposed in `docs/project/HACKATHON-IMPLEMENTATION-BASELINE.md`; this is not evidence implementation has started. G-SYN-001 remains OPEN / NOT PASSED.  
 **Phase 0 gate:** `PROJECT READY` — **PASSED for Phase 1 planning only**  
 **Last completed gate:** `ARCHITECTURE READY` — **PASSED on 2026-10-16 for architecture design/traceability only**  
 **Current phase/gate:** Phase 4 — API/interface contracts/runtime validation; public catalogue wire contract is owner-approved for continued work, Option B is approved for validation only, D-053 records the rate-limiting disposition, and public hosted deployment remains blocked pending an enforceable abuse control and cost approval.  
