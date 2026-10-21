@@ -14,7 +14,7 @@ test("learner can edit rows, validate entries, and reset the form", async ({ pag
   await page.getByRole("button", { name: /Remove subject row 2/ }).click();
   await expect(page.locator("#subject-1")).toHaveCount(0);
 
-  await page.getByRole("button", { name: /Check my entries/ }).click();
+  await page.getByRole("button", { name: /Explore pathways/ }).click();
   await expect(page.getByRole("status")).toContainText("Pathway exploration completed");
   await expect(page.getByRole("status")).toContainText("results are UNKNOWN");
   await expect(page.getByRole("heading", { name: "Pathways to investigate" })).toBeVisible();
@@ -32,7 +32,7 @@ test("invalid learner input is announced and does not produce an eligibility res
   await page.goto("/");
   await page.locator("#subject-0").selectOption("Mathematics");
   await page.locator("#mark-0").fill("101");
-  await page.getByRole("button", { name: /Check my entries/ }).click();
+  await page.getByRole("button", { name: /Explore pathways/ }).click();
 
   await expect(page.getByRole("status")).toContainText("whole-number mark from 0 to 100");
   await expect(page.getByRole("status")).toHaveAttribute("aria-live", "polite");
@@ -44,12 +44,12 @@ test("correcting invalid marks clears the error and valid entries still do not i
   await page.goto("/");
   await page.locator("#subject-0").selectOption("Mathematics");
   await page.locator("#mark-0").fill("101");
-  await page.getByRole("button", { name: /Check my entries/ }).click();
+  await page.getByRole("button", { name: /Explore pathways/ }).click();
   await expect(page.getByRole("status")).toContainText("whole-number mark from 0 to 100");
 
   await page.locator("#mark-0").fill("90");
   await expect(page.getByRole("status")).toHaveCount(0);
-  await page.getByRole("button", { name: /Check my entries/ }).click();
+  await page.getByRole("button", { name: /Explore pathways/ }).click();
   await expect(page.getByRole("status")).toContainText("Pathway exploration completed");
   await expect(page.getByRole("status")).toContainText("results are UNKNOWN");
   await expect(page.locator(".result-card")).toHaveCount(7);
@@ -58,7 +58,7 @@ test("correcting invalid marks clears the error and valid entries still do not i
 test("changing the study stage clears a stale validation notice", async ({ page }) => {
   await page.goto("/");
   await page.locator("#subject-0").selectOption("");
-  await page.getByRole("button", { name: /Check my entries/ }).click();
+  await page.getByRole("button", { name: /Explore pathways/ }).click();
   await expect(page.getByRole("status")).toContainText("Choose a subject");
 
   await page.getByLabel("Your current stage").selectOption("GRADE_11");
@@ -69,7 +69,7 @@ test("reset from an error state restores the default form and removes the notice
   await page.goto("/");
   await page.locator("#subject-0").selectOption("");
   await page.locator("#mark-0").fill("101");
-  await page.getByRole("button", { name: /Check my entries/ }).click();
+  await page.getByRole("button", { name: /Explore pathways/ }).click();
   await expect(page.getByRole("status")).toBeVisible();
 
   await page.getByRole("button", { name: "Reset" }).click();
@@ -120,7 +120,7 @@ test("mobile viewport keeps the learner form visible without horizontal overflow
   await expect(page.locator("#stage")).toBeVisible();
   await expect(page.locator("#subject-0")).toBeVisible();
   await expect(page.locator("#mark-0")).toBeVisible();
-  await expect(page.getByRole("button", { name: /Check my entries/ })).toBeVisible();
+  await expect(page.getByRole("button", { name: /Explore pathways/ })).toBeVisible();
 
   const layout = await page.evaluate(() => ({
     viewportWidth: window.innerWidth,
@@ -250,8 +250,8 @@ test("no learner entries are transmitted or persisted across reload", async ({ p
   const mark = "93";
   await page.locator("#subject-0").selectOption(subjectMarker);
   await page.locator("#mark-0").fill(mark);
-  await page.getByRole("button", { name: /Check my entries/ }).click();
-  await expect(page.getByRole("status")).toContainText("basic form validation");
+  await page.getByRole("button", { name: /Explore pathways/ }).click();
+  await expect(page.getByRole("status")).toContainText("Pathway exploration completed");
 
   const currentUrl = new URL(page.url());
   expect(currentUrl.href).not.toContain(subjectMarker);
@@ -323,7 +323,7 @@ test("transient learner entries are not persisted in browser storage or restored
   await page.goto("/");
   await page.locator("#subject-0").selectOption("Mathematics");
   await page.locator("#mark-0").fill("74");
-  await page.getByRole("button", { name: /Check my entries/ }).click();
+  await page.getByRole("button", { name: /Explore pathways/ }).click();
 
   const browserState = await page.evaluate(async () => {
     return {
