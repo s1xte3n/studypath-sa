@@ -86,3 +86,10 @@ The current local demo should not require runtime secrets. Never put secrets in 
 - [ ] Do not mark any check passed until executed and evidenced.
 
 **Gate:** Security design documented; security implementation and runtime privacy remain unverified.
+
+
+## Provider logging/telemetry evidence status (2026-10-21)
+
+The current owner-approved scope is local-only, synthetic/demo data; Microsoft Azure is planned but no deployed configuration has been verified. Repository inspection found no dedicated analytics SDK declared in `package.json`; selected browser tests cover only instrumented cases. Neither fact proves what a hosting provider records. See [Provider Logging and Telemetry Review](../project/PROVIDER-LOGGING-TELEMETRY-REVIEW.md) for the evidence boundary and mandatory pre-deployment review.
+
+Before deployment, identify the exact services and external processors, inspect provider terms and actual diagnostic settings, record log fields/access/retention/deletion, minimise or redact learner-related data where configurable, and rerun deployed privacy checks. If defaults or retention remain unknown, deployment stays blocked. This review does not pass G-SYN-001 or authorize real learner data.
