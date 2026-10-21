@@ -337,3 +337,23 @@ All four PR-head workflows passed on `973f5c10e3a8b261639d0c9c219e63532c92c6d5`:
 | Project status | docs/project/PROJECT-STATUS.md | Updated on this PR branch | Records current implementation gap and next action; no tests or release are claimed. |
 
 This documentation handoff does not pass G-SYN-001, Phase 4 runtime validation, quality/delivery/release gates, or authorize cloud provisioning, public deployment or real learner data.
+
+
+## Phase 5–7 implementation branch update — 2026-10-21
+
+Branch: `feat/hackathon-pathway-results-phases-5-7` (not yet merged; CI pending).
+
+| Artifact | Path | Status |
+|---|---|---|
+| Pathway adapter | `src/domain/pathway-matching.mjs` | Added on implementation branch; CI pending |
+| Learner journey/results UI | `src/main.jsx`, `src/styles.css` | Updated on implementation branch; browser CI pending |
+| Adapter tests | `tests/pathway-matching.test.mjs` | Added; execution pending |
+| Postman collection | `tests/postman/StudyPath-SA-API.postman_collection.json` | Contract-scoped; not run because no runtime is verified |
+| Postman environment template | `tests/postman/StudyPath-SA-environment-template.json` | Non-secret template; API_BASE_URL disabled until runtime is approved |
+| Environment variables | `docs/config/ENVIRONMENT-VARIABLES.md` | Initial repository-based inventory; review required as runtime evolves |
+| Environment matrix | `docs/config/ENVIRONMENT-MATRIX.md` | Initial local/CI/deployment boundary inventory |
+| Secret handling | `docs/config/SECRETS-MANAGEMENT.md` | Local MVP boundary documented; repository/provider secrets not audited |
+| Test data | `docs/config/TEST-DATA.md`, `docs/testing/TEST-DATA-PLAN.md` | Synthetic-only lifecycle documented |
+| Test strategy | `docs/testing/TEST-STRATEGY.md` | Initial strategy; must be reconciled against full requirement matrix |
+| Test matrix/cases/priorities/release gates | `docs/testing/TEST-MATRIX.md`, `TEST-CASES.md`, `TEST-PRIORITIES.md`, `RELEASE-GATES.md` | Initial vertical-slice traceability; not a complete all-requirement sign-off |
+| Project status | `docs/project/PROJECT-STATUS.md` | Branch snapshot appended; implementation and CI not yet accepted |
