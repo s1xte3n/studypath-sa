@@ -88,7 +88,8 @@ Proceed to **Phase 3 — Architecture and ADRs**. Phase 0 `PROJECT READY`, Phase
 Decision recorded in [Provider Logging and Telemetry Review](PROVIDER-LOGGING-TELEMETRY-REVIEW.md): Azure is planned but the app is currently local-only; synthetic/demo data only; provider-default telemetry may be accepted only after reviewing documented terms and retention.
 
 - [x] Document the current local-only app/repository privacy review, with its explicit evidence limitations.
-- [ ] Verify actual hosting/provider logs, telemetry, terms and retention against the deployed configuration. **Mandatory before deployment; not verifiable from local browser tests.**
+- [x] Research official Microsoft documentation for planned Azure logging surfaces, collection controls and documented retention; record findings and links in `docs/project/AZURE-LOGGING-TELEMETRY-RESEARCH.md`.
+- [ ] Verify actual hosting/provider logs, telemetry, terms and retention against the exact selected services and deployed configuration. **Mandatory before deployment; documentation research is not configuration evidence.**
 - [ ] Approve public deployment only after provider-specific evidence and all other release gates pass.
 
 **Scope note:** The first checkbox above is complete as a documentation/review task only. This does not verify Azure logs, close G-SYN-001, certify legal compliance, or authorize provisioning, deployment, or real learner data.
