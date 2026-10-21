@@ -144,3 +144,10 @@ PR #123 merged the owner-approved temporary rate-limit risk exception at `67dfd9
 The owner confirmed Azure as the intended provider, local-only current state, synthetic/demo data only, and acceptance of provider defaults only after documented terms and retention are reviewed. The owner also accepted completing a local-only review now while retaining provider-specific verification as a pre-deployment gate. See [Provider Logging and Telemetry Review](PROVIDER-LOGGING-TELEMETRY-REVIEW.md).
 
 This resolves the immediate documentation/scope decision, not the technical evidence question. Exact Azure services, diagnostics/log categories, metadata captured, access, retention/deletion, and any external telemetry remain unknown until a concrete deployment configuration is proposed and inspected. Do not provision/deploy or use real learner data on the strength of this scoped review. Keep G-SYN-001 and the public deployment gate open.
+
+
+## Azure provider logging research follow-up — 2026-10-21
+
+Official Microsoft Learn research is documented in [Azure Logging and External Telemetry Research](AZURE-LOGGING-TELEMETRY-RESEARCH.md). It identifies relevant logging planes and configuration-dependent retention for the architecture's planned Azure services. This resolves what documentation to consult and what settings to inspect, but does not verify StudyPath's actual logs or retention.
+
+Still open: finalize exact services/SKUs/regions and external providers; review applicable product terms for those choices; inspect diagnostic settings, Application Insights/Log Analytics, APIM request/body/client-IP settings, PostgreSQL log categories, storage lifecycle policies, Entra log licensing/export, AI data handling, and GitHub Actions log retention; then collect redacted configuration evidence and run synthetic deployed-environment probes. Azure remains undeployed. Do not close provider verification, G-SYN-001, or the public deployment gate on the basis of documentation research alone.
