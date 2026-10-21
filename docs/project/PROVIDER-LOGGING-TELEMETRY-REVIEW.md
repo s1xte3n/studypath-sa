@@ -71,3 +71,8 @@ Before any Azure/public deployment is approved, record evidence for the exact se
 - [ ] **Public deployment/privacy gate** — remains blocked until all pre-deployment evidence and other release gates pass.
 
 This scoped checklist completion is not a claim of legal compliance, complete privacy assurance, provider-log verification, Azure configuration verification, deployment, or release readiness.
+
+
+## Follow-up research
+
+On 2026-10-21, official Microsoft documentation was reviewed and the documented behaviour, retention examples, links and deployment evidence checklist were recorded in [Azure Logging and External Telemetry Research](AZURE-LOGGING-TELEMETRY-RESEARCH.md). This research supports the next inspection plan but does not verify actual StudyPath service settings, applicable final product terms, or deployed retention. The provider-specific verification checkbox remains open.
