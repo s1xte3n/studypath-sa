@@ -386,3 +386,26 @@ No deployed Azure resources, diagnostic settings, workspaces, storage lifecycle 
 - Next action: implement the P0 evaluator-to-UI vertical slice on a feature branch, then add results/details, privacy/accessibility regression and demo rehearsal.
 - Gate state: G-SYN-001 remains OPEN / NOT PASSED. Do not claim product readiness until the learner-facing journey is tested end-to-end. This documentation change did not run tests, deploy services, verify runtime privacy, or certify cost.
 - Hackathon dates/deadline per supplied programme: 23–25 October 2026; submission Monday 26 October 2026 at 23:59 via Sonke. Verify portal timezone and field/file requirements.
+
+
+## Phase 5–7 implementation branch snapshot — 2026-10-21
+
+**Branch:** `feat/hackathon-pathway-results-phases-5-7`  
+**Base commit inspected:** `9586593f188760b9e8c29edbe5e3fbef2a86f365` (main at branch creation).  
+**Status:** Implementation in progress; CI verification pending; no merge, deployment, or release claimed.
+
+- Added a learner-facing adapter at `src/domain/pathway-matching.mjs` that calls the existing deterministic UJ evaluator and maps supported UI subjects to canonical subject IDs.
+- Updated `src/main.jsx` and `src/styles.css` to render pathway cards, UNKNOWN states, draft-catalogue disclosure, official source links, and resettable result state.
+- Added `tests/pathway-matching.test.mjs` and updated browser E2E expectations for results rendering.
+- Added initial Phase 5 inventory files under `docs/config/`, Phase 6 strategy/matrix/cases/priority/release gate files under `docs/testing/`, and contract-scoped Postman collection/environment template.
+- The current UJ catalogue remains `DRAFT_NOT_FOR_DEFINITIVE_SCREENING`; all learner-facing outcomes must remain UNKNOWN. The draft does not support publication or definitive eligibility.
+- Local npm commands were not run through the GitHub connector. The PR's CI workflows must be inspected before marking implementation tests passed.
+- Postman runtime requests are not executed because no hosted API runtime is verified. Azure provisioning, deployment, real learner data, and paid services remain unauthorized.
+
+### Current blockers / next gate
+
+1. Verify all CI workflows on the PR head; fix any failures.
+2. Review privacy E2E after results render, including request interception and reset/reload behavior.
+3. Confirm source and official next-step links, 320px layout, keyboard focus, and axe results.
+4. Keep G-SYN-001 OPEN until its full evidence gate is met.
+5. Catalogue publication remains blocked until governing prospectus version, applicable rules, curator sign-off, and source provenance are resolved.
