@@ -2,9 +2,9 @@
 
 **Last updated:** 2026-10-21  
 **Repository:** https://github.com/s1xte3n/studypath-sa  
-**Current phase:** Phase 4 — API / Interface Contract  
+**Current phase:** Phase 4 — API / Interface Contract (scope split: local hackathon demo versus future hosted API)  
 **Latest passed gate:** `ARCHITECTURE READY` — **PASSED on 2026-10-16 for architecture design/traceability only**  
-**Next gate:** `CONTRACT READY` — not yet passed
+**Next gate:** `HACKATHON IMPLEMENTATION READY` — scoped documentation baseline under review; not yet passed
 
 ## Gate status at a glance
 
