@@ -1,3 +1,15 @@
+## Current implementation and gate reconciliation — 2026-10-22
+
+The earlier status summary above remains the current exact-commit CI record; this section adds a source-level implementation reconciliation after inspecting `src/main.jsx`, `src/domain/pathway-matching.mjs`, `tests/pathway-matching.test.mjs`, `tests/e2e/student-form.spec.mjs`, and `docs/product/uj-2027-pilot-catalogue-draft.json`.
+
+**Implemented in the local demo:** student stage and subject/mark entry, input validation, deterministic adapter-to-evaluator integration, in-memory pathway results, seven UJ 2027 pilot result cards, explicit UNKNOWN states, explanations/limitations, official-source links, draft-catalogue/no-guarantee disclosure, and reset. Browser tests cover the results journey, invalid inputs, selected privacy channels, reset, keyboard focus and 320px layout; adapter tests assert that draft-catalogue outcomes remain UNKNOWN even for strong marks.
+
+**Still open:** G-SYN-001 remains **OPEN / NOT PASSED**. The catalogue is marked `DRAFT_NOT_FOR_DEFINITIVE_SCREENING`; source-version and rule interpretation issues and missing curator sign-off prohibit definitive eligibility claims. Current CI evidence is the three owner-supplied exact-commit workflow results listed above; no independent rerun is claimed. Manual accessibility/responsive review, a clean local verification record on the frozen candidate commit, complete privacy/hosting/provider review and requirement-level evidence audit remain outstanding. Funding matching and the application tracker are not implemented in the current UI. There is no verified hosted API runtime, Azure deployment, public release, or authorization to use real learner data.
+
+**Next action:** finish the SYN-001–SYN-010 evidence table in `docs/project/G-SYN-001-SYNTHETIC-ONLY-MVP-GATE.md`, reconcile the requirement-level matrix, then freeze a candidate commit and perform a demo/release review. Do not mark the gate passed based on green CI or documentation edits alone.
+
+---
+
 # Current verification update — 2026-10-22
 
 **Reviewed commit:** `aa43b783ecb97aa3dac8f1ed18ebe727e5231e41` on `main`. The project owner supplied terminal output confirming the local branch was `main`, synchronized with `origin/main`, `git status --short` was empty, and the current commit was `aa43b783ecb97aa3dac8f1ed18ebe727e5231e41`. This is owner-supplied local evidence.
