@@ -16,6 +16,7 @@ test("learner can edit rows, validate entries, and reset the form", async ({ pag
   await page.getByRole("button", { name: /Remove subject row 2/ }).click();
   await expect(page.locator("#subject-1")).toHaveCount(0);
 
+  await page.locator("#stage").selectOption("GRADE_12");
   await page.getByRole("button", { name: /Explore pathways/ }).click();
   await expect(page.getByRole("status")).toContainText("Pathway exploration completed");
   await expect(page.getByRole("status")).toContainText("results are UNKNOWN");
@@ -51,6 +52,7 @@ test("correcting invalid marks clears the error and valid entries still do not i
   await expect(page.getByRole("status")).toContainText("whole-number mark from 0 to 100");
 
   await page.locator("#mark-0").fill("90");
+  await page.locator("#stage").selectOption("GRADE_12");
   await expect(page.getByRole("status")).toHaveCount(0);
   await page.getByRole("button", { name: /Explore pathways/ }).click();
   await expect(page.getByRole("status")).toContainText("Pathway exploration completed");
@@ -251,6 +253,7 @@ test("no learner entries are transmitted or persisted across reload", async ({ p
   await page.goto("/");
   const subjectMarker = "Mathematics";
   const mark = "93";
+  await page.locator("#stage").selectOption("GRADE_12");
   await page.locator("#subject-0").selectOption(subjectMarker);
   await page.locator("#mark-0").fill(mark);
   await page.getByRole("button", { name: /Explore pathways/ }).click();
