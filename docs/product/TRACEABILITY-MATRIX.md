@@ -1,3 +1,25 @@
+## Current implementation reconciliation — 2026-10-22
+
+This section supplements the broader requirements traceability plan below. The historical matrix includes requirements for the intended API-first product and future authenticated scope; its planned test IDs are not proof that those features exist. For current local-demo status, use the latest gate and status records.
+
+**Reviewed baseline:** `aa43b783ecb97aa3dac8f1ed18ebe727e5231e41` on `main`. The project owner supplied exact-commit CI output for [browser E2E/privacy/accessibility](https://github.com/s1xte3n/studypath-sa/actions/runs/39681570939), [contract tests](https://github.com/s1xte3n/studypath-sa/actions/runs/39681570917), and [browser MVP build](https://github.com/s1xte3n/studypath-sa/actions/runs/39681571109). This evidence is owner-supplied and was not independently rerun here.
+
+| Requirement / current slice | Current contract/UI and implementation | Executed-test / CI evidence | Remaining gap / disposition |
+|---|---|---|---|
+| REQ-EXP-001 — synthetic student input | `src/main.jsx`; `src/domain/student-input-validation.mjs`; supported stages and subject/whole-number mark input | `tests/e2e/student-form.spec.mjs` exercises valid entry, invalid marks, row editing and reset; browser workflow linked above | No interests/preferences input in the current UI; full PRD breadth not implemented. |
+| REQ-MAT-001 — explainable eligibility state | `src/domain/pathway-matching.mjs` calls deterministic UJ evaluator; `src/main.jsx` renders state, reason, limitation and source link | `tests/pathway-matching.test.mjs` asserts draft results stay UNKNOWN even with strong marks; E2E asserts seven UNKNOWN cards | Catalogue remains draft, governing prospectus/version and some rules unresolved, curator sign-off absent. Do not claim definitive eligibility or mark this requirement fully passed. |
+| REQ-CAT-001 / NFR-DATA-001 — sourced catalogue | `docs/product/uj-2027-pilot-catalogue-draft.json`; records include source evidence and unresolved fields | Browser E2E checks result cards and source links are present; current CI link above | Source completeness, authoritative version reconciliation, freshness and curator approval remain blocked. |
+| REQ-PRV-001 / NFR-PRV-001 — memory-only demo | React component state; privacy notice says values are not sent or saved across reload; browser instrumentation in `tests/e2e/student-form.spec.mjs` | Browser E2E/privacy workflow above | Test evidence covers selected instrumented channels only; no hosting/provider log, external analytics, legal/privacy review or deployment boundary audit. |
+| REQ-UX-001 / NFR-ACC-001 — accessible responsive journey | Labels, live status, focus styles and responsive styles in `src/main.jsx` / `src/styles.css` | E2E includes axe scan, keyboard focus and 320px viewport checks | Manual keyboard and responsive review not evidenced. |
+| REQ-APP-001 — application tracker | No learner-facing tracker implementation identified in current `src/main.jsx` | No current tracker test evidence identified | Not implemented in this local demo; remains out of the current vertical slice. |
+| REQ-FUND-001 — funding discovery | No funding matching flow identified in current `src/main.jsx` | No current funding-flow test evidence identified | Not implemented in this local demo; candidate records remain research-only. |
+| REQ-AUTH-001 — authenticated features | No authenticated account/profile flow in current local demo | Not in the current browser MVP workflows | Future/gated scope; not part of this synthetic-only demo. |
+| API/runtime and deployment | Local browser demo; no verified hosted API runtime or deployed service identified by this evidence | Contract workflow passed on the reviewed commit | Contract tests are not runtime integration or deployment evidence. No cloud provisioning/deployment approval. |
+
+**Evidence rule:** exact-commit workflow results support only the named workflows. They do not prove every planned test ID passed, all requirements are implemented, or a release is approved. Maintain the chain Requirement ID → UI/API contract → executable test → implementation → CI run/commit → release evidence; use `Not evidenced` where a link in the chain is missing.
+
+---
+
 ## Current CI evidence update — 2026-10-22
 
 For commit `aa43b783ecb97aa3dac8f1ed18ebe727e5231e41` on `main`, the project owner supplied output from `gh run list --commit` showing these workflows completed successfully:
