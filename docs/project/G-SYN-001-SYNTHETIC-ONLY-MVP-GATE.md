@@ -1,3 +1,28 @@
+# Current evidence reconciliation — 2026-10-22 (supersedes older baseline statements below)
+
+**Reviewed baseline:** `aa43b783ecb97aa3dac8f1ed18ebe727e5231e41` on `main`, based on repository files and owner-supplied exact-commit CI output recorded in `docs/project/PROJECT-STATUS.md`. Three workflows passed on that commit: [browser E2E/privacy/accessibility](https://github.com/s1xte3n/studypath-sa/actions/runs/39681570939), [contract tests](https://github.com/s1xte3n/studypath-sa/actions/runs/39681570917), and [browser MVP build](https://github.com/s1xte3n/studypath-sa/actions/runs/39681571109). These are owner-supplied CI records, not an independent rerun. Do not carry forward older statements that the learner-facing flow only validates inputs or that pathway matching is not integrated: current `src/main.jsx` calls `buildPathwayResults` from `src/domain/pathway-matching.mjs`, and the browser suite expects seven result cards marked `UNKNOWN`.
+
+**Current implemented slice:** local React/Vite form for Grade 11, Grade 12 and matric graduate; subject/mark validation; in-memory result state; seven draft UJ pilot records; result explanations and official-source links; visible draft/no-admission-guarantee disclosure; reset; browser tests for valid/invalid journeys, result rendering, selected privacy channels, keyboard focus, a 320 CSS-pixel viewport and axe critical/serious findings. The adapter tests assert that strong marks cannot promote this draft catalogue above `UNKNOWN`.
+
+**Gate decision remains: NOT PASSED.** The UI journey is now integrated, but this is not a fully approved pathway-matching product: the catalogue explicitly has `DRAFT_NOT_FOR_DEFINITIVE_SCREENING`, source-version conflicts and unresolved rule interpretation remain, and curator sign-off is absent. The current automated coverage does not replace manual keyboard/responsive review, full privacy/hosting/provider review, a clean local install/test record on the candidate commit, and an evidence audit against every applicable SYN criterion. The current UI does not implement the application tracker or funding flow; do not treat these as implemented. No API runtime, Azure deployment, real learner-data use, or release approval is evidenced.
+
+| Criterion | Reconciled status on reviewed baseline | Evidence / remaining work |
+|---|---|---|
+| SYN-001 reproducible setup | Partial | `package.json` and lockfile exist; owner reported local tests/build on a prior commit and three current-commit CI workflows passed. Record clean install/build/test on the frozen candidate commit. |
+| SYN-002 input-to-results journey | Implemented; automated coverage reported | `src/main.jsx`, `src/domain/pathway-matching.mjs`, `tests/e2e/student-form.spec.mjs`; seven results and official-source links are exercised. Results remain UNKNOWN because the catalogue is draft. Review full content/provenance manually. |
+| SYN-003 fail-closed eligibility | Partial | `tests/pathway-matching.test.mjs` asserts all draft-catalogue outcomes remain UNKNOWN for strong marks; golden-case CI is historical/current only where explicitly linked. Verify current golden-case workflow applicability and reviewed case count/oracle before sign-off. |
+| SYN-004 no egress/persistence | Partial | E2E instruments selected request, history, storage, cookie, console and error channels. Does not independently establish hosting/provider logs, external telemetry or every platform/error path. |
+| SYN-005 reset/lifecycle | Partial | Reset clears current form/result state in the browser journey; reload/fresh-tab assertions cover selected transient values. Review result-state lifecycle and all applicable channels. |
+| SYN-006 accessibility/responsiveness | Partial | Automated axe scan, keyboard-focus assertion and 320px overflow test exist. Manual keyboard, screen-reader/interaction and responsive review still needs a recorded result. |
+| SYN-007 CI | Partial / exact workflows passed | Three owner-reported workflows passed on `aa43b783ecb97aa3dac8f1ed18ebe727e5231e41`. Do not imply all five historical workflows ran on this commit. |
+| SYN-008 limitation disclosure | Partial | UI labels the 2027 catalogue as draft, outcomes UNKNOWN and no admission guarantee, and links official UJ sources. Review every result/source and copy before demo. |
+| SYN-009 scope/cost/secrets | Partial | No provisioning/deployment is claimed; this document review does not audit provider secrets, dependency risk, hosting, or costs. |
+| SYN-010 source-of-truth documentation | In progress | This update reconciles the prior stale baseline; review/merge and final candidate SHA still required. |
+
+**Release condition:** do not pass G-SYN-001 until the evidence is attached to one reviewed candidate commit and each applicable criterion has an explicit pass/fail/blocked decision. Keep demo data synthetic only and do not present UNKNOWN results as admissions advice.
+
+---
+
 # G-SYN-001 — Synthetic-Only MVP Verification Gate
 
 **Status:** OPEN — current repository and CI evidence reviewed; acceptance criteria remain partially satisfied and the gate is NOT PASSED.
