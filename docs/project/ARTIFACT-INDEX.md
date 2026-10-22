@@ -1,3 +1,23 @@
+# Current implementation and gate index — 2026-10-22
+
+**Reviewed main baseline:** `aa43b783ecb97aa3dac8f1ed18ebe727e5231e41`, based on owner-supplied local Git output and repository inspection. Three named GitHub Actions workflows were reported successful on that exact commit: [browser E2E/privacy/accessibility](https://github.com/s1xte3n/studypath-sa/actions/runs/39681570939), [contract tests](https://github.com/s1xte3n/studypath-sa/actions/runs/39681570917), [browser MVP build](https://github.com/s1xte3n/studypath-sa/actions/runs/39681571109). The assistant has not independently rerun these workflows.
+
+| Artifact | Current role / implementation evidence | Status |
+|---|---|---|
+| `src/main.jsx`, `src/styles.css` | Local student input form, in-memory results, UNKNOWN result cards, draft/no-guarantee disclosure, official links and reset | Implemented; review evidence required for release |
+| `src/domain/student-input-validation.mjs` | Student input validation | Implemented; test evidence is in project test suite |
+| `src/domain/pathway-matching.mjs` | Adapter from supported visible subjects/marks to deterministic evaluator | Implemented; draft catalogue forces UNKNOWN |
+| `docs/product/uj-2027-pilot-catalogue-draft.json` | Seven-record UJ 2027 draft pilot with provenance and unresolved issues | Draft only; not approved for definitive screening |
+| `tests/pathway-matching.test.mjs` | Checks draft results remain UNKNOWN, rejects unsupported subjects/invalid marks and malformed catalogue | Test file present; current execution evidence must be tied to candidate commit |
+| `tests/e2e/student-form.spec.mjs` | Browser journey, invalid input, reset, selected privacy channels, keyboard focus, 320px viewport and axe checks | Test file present; three named browser/build/contract workflows reported passing on baseline |
+| `docs/product/TRACEABILITY-MATRIX.md` | Requirement-to-contract/test/implementation/CI/release mapping | Reconciliation added; full requirement-level release traceability remains open |
+| `docs/project/G-SYN-001-SYNTHETIC-ONLY-MVP-GATE.md` | SYN-001–SYN-010 exit criteria and evidence decision | OPEN / NOT PASSED |
+| `docs/project/HACKATHON-SUBMISSION-CHECKLIST.md` | Deck/video/SSDLC/Lean Business Canvas/Sonke submission checks | Use for submission readiness; portal receipt still must be verified |
+
+**Current boundary:** synthetic data only; no claim of production readiness, definitive admission eligibility, funding matching, application tracker, hosted API runtime, Azure provisioning, deployment, or release approval. Historical dated sections below are retained as history and are superseded only where this current index explicitly states so.
+
+---
+
 # StudyPath SA — Artifact Index
 
 **Last updated:** 2026-10-18
