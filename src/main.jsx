@@ -87,7 +87,7 @@ function App() {
   return (
     <div className="app-shell">
       <header className="topbar">
-        <a className="wordmark" href="#home" aria-label="StudyPath SA home"><span className="mark">S</span> StudyPath <span className="country">SA</span></a>
+        <a className="wordmark" href="#home"><span className="mark">S</span> StudyPath <span className="country">SA</span></a>
         <span className="topbar-note">Study options, made clearer</span>
       </header>
 
