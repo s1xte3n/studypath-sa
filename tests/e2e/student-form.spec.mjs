@@ -84,7 +84,7 @@ test("home-anchor back and forward navigation keeps transient form data out of t
   await page.locator("#subject-0").selectOption("Mathematics");
   await page.locator("#mark-0").fill("82");
 
-  await page.getByRole("link", { name: "StudyPath SA home" }).click();
+  await page.getByRole("link", { name: "StudyPath SA" }).click();
   await expect(page).toHaveURL(/#home$/);
   await expect(page.locator("#mark-0")).toHaveValue("82");
 
@@ -104,7 +104,7 @@ test("home-anchor back and forward navigation keeps transient form data out of t
 test("keyboard users can reach the form controls and see focus", async ({ page }) => {
   await page.goto("/");
   await page.keyboard.press("Tab");
-  await expect(page.getByRole("link", { name: "StudyPath SA home" })).toBeFocused();
+  await expect(page.getByRole("link", { name: "StudyPath SA" })).toBeFocused();
   await page.keyboard.press("Tab");
   await page.keyboard.press("Tab");
   await page.keyboard.press("Tab");
@@ -138,8 +138,8 @@ test("mobile viewport keeps the learner form visible without horizontal overflow
   }
 
   await page.keyboard.press("Tab");
-  await expect(page.getByRole("link", { name: "StudyPath SA home" })).toBeFocused();
-  await expect(page.getByRole("link", { name: "StudyPath SA home" })).toHaveCSS("outline-style", "solid");
+  await expect(page.getByRole("link", { name: "StudyPath SA" })).toBeFocused();
+  await expect(page.getByRole("link", { name: "StudyPath SA" })).toHaveCSS("outline-style", "solid");
 });
 
 test("no learner entries are transmitted or persisted across reload", async ({ page }) => {
