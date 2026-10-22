@@ -27,8 +27,8 @@ const SUBJECTS = [
 ];
 
 function App() {
-  const [stage, setStage] = useState("GRADE_12");
-  const [subjects, setSubjects] = useState([{ subject: "English Home Language", mark: "" }]);
+  const [stage, setStage] = useState("");
+  const [subjects, setSubjects] = useState([{ subject: "", mark: "" }]);
   const [notice, setNotice] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [results, setResults] = useState([]);
@@ -55,8 +55,8 @@ function App() {
   }
 
   function resetForm() {
-    setStage("GRADE_12");
-    setSubjects([{ subject: "English Home Language", mark: "" }]);
+    setStage("");
+    setSubjects([{ subject: "", mark: "" }]);
     setResults([]);
     setNotice("");
     setSubmitted(false);
@@ -112,6 +112,7 @@ function App() {
           <form onSubmit={submitForm} noValidate>
             <label className="field-label" htmlFor="stage">Your current stage <span aria-hidden="true">*</span></label>
             <select id="stage" value={stage} onChange={event => { setStage(event.target.value); clearResults(); }} required>
+              <option value="">Choose current stage</option>
               {STAGES.map(item => <option key={item.value} value={item.value}>{item.label}</option>)}
             </select>
 
