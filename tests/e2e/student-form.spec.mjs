@@ -4,6 +4,8 @@ import AxeBuilder from "@axe-core/playwright";
 test("learner can edit rows, validate entries, and reset the form", async ({ page }) => {
   await page.goto("/");
   await expect(page.getByRole("heading", { name: "Tell us about your studies" })).toBeVisible();
+  await expect(page.locator("#stage option:checked")).toHaveText("Choose current stage");
+  await expect(page.locator("#subject-0 option:checked")).toHaveText("Choose a subject");
 
   await page.locator("#subject-0").selectOption("Mathematics");
   await page.locator("#mark-0").fill("75");
@@ -347,7 +349,7 @@ test("transient learner entries are not persisted in browser storage or restored
   const secondPage = await context.newPage();
   await secondPage.goto("/");
   await expect(secondPage.locator("#mark-0")).toHaveValue("");
-  await expect(secondPage.locator("#subject-0")).toHaveValue("English Home Language");
+  await expect(secondPage.locator("#subject-0")).toHaveValue("");
   await secondPage.close();
 
   await page.reload();
