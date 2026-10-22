@@ -22,8 +22,9 @@ test("learner can edit rows, validate entries, and reset the form", async ({ pag
   await expect(page.locator(".eligibility-state")).toHaveText(Array(7).fill("UNKNOWN"));
 
   await page.getByRole("button", { name: "Reset" }).click();
-  await expect(page.getByLabel("Your current stage")).toHaveValue("GRADE_12");
-  await expect(page.locator("#subject-0")).toHaveValue("English Home Language");
+  await expect(page.locator("#stage")).toHaveValue("");
+  await expect(page.locator("#stage option:checked")).toHaveText("Choose current stage");
+  await expect(page.locator("#subject-0")).toHaveValue("");
   await expect(page.locator("#mark-0")).toHaveValue("");
   await expect(page.getByRole("status")).toHaveCount(0);
 });
@@ -73,8 +74,8 @@ test("reset from an error state restores the default form and removes the notice
   await expect(page.getByRole("status")).toBeVisible();
 
   await page.getByRole("button", { name: "Reset" }).click();
-  await expect(page.getByLabel("Your current stage")).toHaveValue("GRADE_12");
-  await expect(page.locator("#subject-0")).toHaveValue("English Home Language");
+  await expect(page.locator("#stage")).toHaveValue("");
+  await expect(page.locator("#subject-0")).toHaveValue("");
   await expect(page.locator("#mark-0")).toHaveValue("");
   await expect(page.getByRole("status")).toHaveCount(0);
 });
@@ -299,7 +300,7 @@ test("no learner entries are transmitted or persisted across reload", async ({ p
 
   await page.reload();
   await expect(page.locator("#mark-0")).toHaveValue("");
-  await expect(page.locator("#subject-0")).toHaveValue("English Home Language");
+  await expect(page.locator("#subject-0")).toHaveValue("");
 });
 
 test("automated accessibility scan has no critical or serious WCAG violations", async ({ page }) => {
@@ -351,5 +352,5 @@ test("transient learner entries are not persisted in browser storage or restored
 
   await page.reload();
   await expect(page.locator("#mark-0")).toHaveValue("");
-  await expect(page.locator("#subject-0")).toHaveValue("English Home Language");
+  await expect(page.locator("#subject-0")).toHaveValue("");
 });
