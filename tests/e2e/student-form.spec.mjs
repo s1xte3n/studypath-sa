@@ -4,6 +4,8 @@ import AxeBuilder from "@axe-core/playwright";
 test("learner can edit rows, validate entries, and reset the form", async ({ page }) => {
   await page.goto("/");
   await expect(page.getByRole("heading", { name: "Tell us about your studies" })).toBeVisible();
+  await expect(page.locator("#stage option:checked")).toHaveText("Choose current stage");
+  await expect(page.locator("#subject-0 option:checked")).toHaveText("Choose a subject");
 
   await page.locator("#subject-0").selectOption("Mathematics");
   await page.locator("#mark-0").fill("75");
@@ -14,6 +16,7 @@ test("learner can edit rows, validate entries, and reset the form", async ({ pag
   await page.getByRole("button", { name: /Remove subject row 2/ }).click();
   await expect(page.locator("#subject-1")).toHaveCount(0);
 
+  await page.locator("#stage").selectOption("GRADE_12");
   await page.getByRole("button", { name: /Explore pathways/ }).click();
   await expect(page.getByRole("status")).toContainText("Pathway exploration completed");
   await expect(page.getByRole("status")).toContainText("results are UNKNOWN");
@@ -22,8 +25,9 @@ test("learner can edit rows, validate entries, and reset the form", async ({ pag
   await expect(page.locator(".eligibility-state")).toHaveText(Array(7).fill("UNKNOWN"));
 
   await page.getByRole("button", { name: "Reset" }).click();
-  await expect(page.getByLabel("Your current stage")).toHaveValue("GRADE_12");
-  await expect(page.locator("#subject-0")).toHaveValue("English Home Language");
+  await expect(page.locator("#stage")).toHaveValue("");
+  await expect(page.locator("#stage option:checked")).toHaveText("Choose current stage");
+  await expect(page.locator("#subject-0")).toHaveValue("");
   await expect(page.locator("#mark-0")).toHaveValue("");
   await expect(page.getByRole("status")).toHaveCount(0);
 });
@@ -48,6 +52,7 @@ test("correcting invalid marks clears the error and valid entries still do not i
   await expect(page.getByRole("status")).toContainText("whole-number mark from 0 to 100");
 
   await page.locator("#mark-0").fill("90");
+  await page.locator("#stage").selectOption("GRADE_12");
   await expect(page.getByRole("status")).toHaveCount(0);
   await page.getByRole("button", { name: /Explore pathways/ }).click();
   await expect(page.getByRole("status")).toContainText("Pathway exploration completed");
@@ -73,8 +78,8 @@ test("reset from an error state restores the default form and removes the notice
   await expect(page.getByRole("status")).toBeVisible();
 
   await page.getByRole("button", { name: "Reset" }).click();
-  await expect(page.getByLabel("Your current stage")).toHaveValue("GRADE_12");
-  await expect(page.locator("#subject-0")).toHaveValue("English Home Language");
+  await expect(page.locator("#stage")).toHaveValue("");
+  await expect(page.locator("#subject-0")).toHaveValue("");
   await expect(page.locator("#mark-0")).toHaveValue("");
   await expect(page.getByRole("status")).toHaveCount(0);
 });
@@ -248,6 +253,7 @@ test("no learner entries are transmitted or persisted across reload", async ({ p
   await page.goto("/");
   const subjectMarker = "Mathematics";
   const mark = "93";
+  await page.locator("#stage").selectOption("GRADE_12");
   await page.locator("#subject-0").selectOption(subjectMarker);
   await page.locator("#mark-0").fill(mark);
   await page.getByRole("button", { name: /Explore pathways/ }).click();
@@ -299,7 +305,7 @@ test("no learner entries are transmitted or persisted across reload", async ({ p
 
   await page.reload();
   await expect(page.locator("#mark-0")).toHaveValue("");
-  await expect(page.locator("#subject-0")).toHaveValue("English Home Language");
+  await expect(page.locator("#subject-0")).toHaveValue("");
 });
 
 test("automated accessibility scan has no critical or serious WCAG violations", async ({ page }) => {
@@ -346,10 +352,10 @@ test("transient learner entries are not persisted in browser storage or restored
   const secondPage = await context.newPage();
   await secondPage.goto("/");
   await expect(secondPage.locator("#mark-0")).toHaveValue("");
-  await expect(secondPage.locator("#subject-0")).toHaveValue("English Home Language");
+  await expect(secondPage.locator("#subject-0")).toHaveValue("");
   await secondPage.close();
 
   await page.reload();
   await expect(page.locator("#mark-0")).toHaveValue("");
-  await expect(page.locator("#subject-0")).toHaveValue("English Home Language");
+  await expect(page.locator("#subject-0")).toHaveValue("");
 });
