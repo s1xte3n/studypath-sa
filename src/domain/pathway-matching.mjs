@@ -39,7 +39,7 @@ function buildSourceLinks(programme, catalogue) {
         title: source.title || "Official UJ source document",
         url: source.url,
         role: source.sourceVersion || "Prospectus / intake source",
-        location: null,
+        location: evidence.find(item => item.sourceId === source.id)?.location || null,
         verificationDate: source.verificationDate || null
       });
     }
