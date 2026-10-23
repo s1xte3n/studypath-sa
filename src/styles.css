@@ -47,6 +47,10 @@ select:focus,input:focus{border-color:var(--green)}
 .form-notice{border-radius:8px;padding:13px 15px;font-size:13px;line-height:1.6;margin:18px 0 0}
 .notice-error{background:#fff1e9;color:#8c3e20;border:1px solid #f1d0be}
 .notice-info{background:#eef4ff;color:#244e7a;border:1px solid #d3e0f5}
+.field-error{color:#9a3f2a;font-size:12px;line-height:1.45;margin:6px 0 0}
+.subject-error{grid-column:1 / -1;margin-top:-3px}
+[aria-invalid="true"]{border-color:#b55237;background:#fffaf8}
+
 .next-steps{padding:60px 0 68px}
 .next-steps h2{max-width:540px;margin-bottom:26px}
 .steps-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
@@ -77,6 +81,8 @@ footer span:first-child{font-weight:700;color:#355648}
 .result-card-top{display:flex;justify-content:space-between;align-items:center;gap:10px}
 .eligibility-state{display:inline-flex;align-items:center;border-radius:999px;padding:6px 10px;font-size:11px;font-weight:800;letter-spacing:.5px}
 .state-unknown{color:#624719;background:#fff0cd;border:1px solid #ead49d}
+.state-eligible{color:#17613f;background:#e4f3e8;border:1px solid #b9dec5}
+.state-not-eligible{color:#8d3929;background:#fff0eb;border:1px solid #efc9bd}
 .result-cycle{font-size:11px;color:var(--muted)}
 .pathway-details{margin-top:18px;border-top:1px solid var(--line);padding-top:14px}
 .pathway-details summary{font-size:13px;font-weight:700;color:var(--green);cursor:pointer;line-height:1.5}

@@ -26,6 +26,16 @@ const SUBJECTS = [
   "Life Orientation"
 ];
 
+const STATE_LABELS = {
+  ELIGIBLE: "Eligible",
+  NOT_ELIGIBLE: "Not eligible",
+  UNKNOWN: "Unknown"
+};
+
+function getStateClass(state) {
+  return `state-${state.toLowerCase().replaceAll("_", "-")}`;
+}
+
 function PathwayDetails({ item }) {
   return (
     <details className="pathway-details">
@@ -36,7 +46,7 @@ function PathwayDetails({ item }) {
           {item.faculty && <div><dt>Faculty / college</dt><dd>{item.faculty}</dd></div>}
           {item.campus && <div><dt>Campus</dt><dd>{item.campus}</dd></div>}
           {item.durationYears && <div><dt>Published duration</dt><dd>{item.durationYears} years (confirm with UJ)</dd></div>}
-          <div><dt>Eligibility</dt><dd>UNKNOWN — the pilot catalogue is a draft and is not approved for definitive screening.</dd></div>
+          <div><dt>Eligibility</dt><dd>{STATE_LABELS[item.state]} — {item.limitation}</dd></div>
           <div><dt>Costs, deadlines and funding</dt><dd>Not provided in this catalogue. Check current official UJ information; no estimate is shown.</dd></div>
         </dl>
         {item.requirementNotes.length > 0 && (
@@ -70,6 +80,7 @@ function App() {
   const [stage, setStage] = useState("");
   const [subjects, setSubjects] = useState([{ subject: "", mark: "" }]);
   const [notice, setNotice] = useState("");
+  const [fieldErrors, setFieldErrors] = useState({ stage: "", subjects: {} });
   const [submitted, setSubmitted] = useState(false);
   const [results, setResults] = useState([]);
   const [savedPathways, setSavedPathways] = useState([]);
@@ -100,6 +111,7 @@ function App() {
     setResults([]);
     setSubmitted(false);
     setNotice("");
+    setFieldErrors({ stage: "", subjects: {} });
   }
 
   function updateSubject(index, field, value) {
@@ -124,6 +136,7 @@ function App() {
     setSavedPathways([]);
     setTracking({});
     setNotice("");
+    setFieldErrors({ stage: "", subjects: {} });
     setSubmitted(false);
   }
 
@@ -131,11 +144,21 @@ function App() {
     event.preventDefault();
     const errors = validateStudentEntries({ stage, subjects });
     if (errors.length) {
+      const nextFieldErrors = { stage: "", subjects: {} };
+      for (const error of errors) {
+        if (error.startsWith("Select your current")) nextFieldErrors.stage = error;
+        const row = error.match(/row (\d+)/)?.[1];
+        if (row) nextFieldErrors.subjects[Number(row) - 1] = [
+          ...(nextFieldErrors.subjects[Number(row) - 1] || []), error
+        ];
+      }
+      setFieldErrors(nextFieldErrors);
       setResults([]);
       setNotice(errors.join(" "));
       setSubmitted(false);
       return;
     }
+    setFieldErrors({ stage: "", subjects: {} });
 
     try {
       const nextResults = buildPathwayResults({ stage, subjects }, catalogue);
@@ -182,22 +205,24 @@ function App() {
 
           <form onSubmit={submitForm} noValidate>
             <label className="field-label" htmlFor="stage">Your current stage <span aria-hidden="true">*</span></label>
-            <select id="stage" value={stage} onChange={event => { setStage(event.target.value); clearResults(); }} required>
+            <select id="stage" value={stage} aria-invalid={Boolean(fieldErrors.stage)} aria-describedby={fieldErrors.stage ? "stage-error" : undefined} onChange={event => { setStage(event.target.value); clearResults(); }} required>
               <option value="">Choose current stage</option>
               {STAGES.map(item => <option key={item.value} value={item.value}>{item.label}</option>)}
             </select>
+            {fieldErrors.stage && <p className="field-error" id="stage-error">{fieldErrors.stage}</p>}
 
             <div className="subject-heading"><span className="field-label">Subjects and marks <span aria-hidden="true">*</span></span><span className="hint">Whole numbers · 0–100</span></div>
             <div className="subject-list">
               {subjects.map((item, index) => (
                 <div className="subject-row" key={index}>
                   <label className="visually-hidden" htmlFor={`subject-${index}`}>Subject {index + 1}</label>
-                  <select id={`subject-${index}`} value={item.subject} onChange={event => updateSubject(index, "subject", event.target.value)} required>
+                  <select id={`subject-${index}`} value={item.subject} aria-invalid={Boolean(fieldErrors.subjects[index]?.length)} aria-describedby={fieldErrors.subjects[index]?.length ? `subject-error-${index}` : undefined} onChange={event => updateSubject(index, "subject", event.target.value)} required>
                     <option value="">Choose a subject</option>
                     {SUBJECTS.map(subject => <option key={subject} value={subject}>{subject}</option>)}
                   </select>
                   <label className="visually-hidden" htmlFor={`mark-${index}`}>Mark for subject {index + 1}</label>
-                  <input id={`mark-${index}`} inputMode="numeric" type="number" min="0" max="100" step="1" placeholder="Mark %" value={item.mark} onChange={event => updateSubject(index, "mark", event.target.value)} required />
+                  <input id={`mark-${index}`} inputMode="numeric" type="number" min="0" max="100" step="1" placeholder="Mark %" value={item.mark} aria-invalid={Boolean(fieldErrors.subjects[index]?.length)} aria-describedby={fieldErrors.subjects[index]?.length ? `subject-error-${index}` : undefined} onChange={event => updateSubject(index, "mark", event.target.value)} required />
+                  {fieldErrors.subjects[index]?.length > 0 && <p className="field-error subject-error" id={`subject-error-${index}`}>{fieldErrors.subjects[index].join(" ")}</p>}
                   <button className="remove-button" type="button" onClick={() => removeSubject(index)} disabled={subjects.length === 1} aria-label={`Remove subject row ${index + 1}`}>×</button>
                 </div>
               ))}
@@ -213,7 +238,7 @@ function App() {
         </section>
 
         {results.length > 0 && (
-          <section className="results-section" aria-labelledby="results-title" aria-live="polite">
+          <section className="results-section" aria-labelledby="results-title">
             <div className="section-heading">
               <div><p className="eyebrow">STEP 2 · YOUR EXPLORATION</p><h2 id="results-title">Pathways to investigate</h2></div>
               <span className="step-count">{results.length} OPTIONS</span>
@@ -230,7 +255,7 @@ function App() {
             <div className="results-grid">
               {results.map(item => (
                 <article className="result-card" key={item.id}>
-                  <div className="result-card-top"><span className="eligibility-state state-unknown">UNKNOWN</span><span className="result-cycle">2027 pilot</span></div>
+                  <div className="result-card-top"><span className={`eligibility-state ${getStateClass(item.state)}`}>{STATE_LABELS[item.state]}</span><span className="result-cycle">2027 pilot</span></div>
                   <h3>{item.name}</h3>
                   <p className="result-institution">{item.institution}{item.campus ? ` · ${item.campus}` : ""}</p>
                   <p className="result-reason">{item.reason}</p>
@@ -261,7 +286,7 @@ function App() {
                     const progress = tracking[item.id] || { status: "NOT_STARTED", nextAction: "" };
                     return (
                       <article className="shortlist-card" key={item.id}>
-                        <div className="shortlist-card-heading"><span className="eligibility-state state-unknown">{item.state}</span><button className="remove-saved-button" type="button" onClick={() => toggleSavedPathway(item)} aria-label={`Remove ${item.name} from shortlist`}>Remove</button></div>
+                        <div className="shortlist-card-heading"><span className={`eligibility-state ${getStateClass(item.state)}`}>{STATE_LABELS[item.state]}</span><button className="remove-saved-button" type="button" onClick={() => toggleSavedPathway(item)} aria-label={`Remove ${item.name} from shortlist`}>Remove</button></div>
                         <h3>{item.name}</h3>
                         <p className="result-institution">{item.institution}{item.campus ? ` · ${item.campus}` : ""}</p>
                         <dl className="shortlist-facts">
