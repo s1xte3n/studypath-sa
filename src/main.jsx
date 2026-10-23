@@ -241,7 +241,7 @@ function App() {
               </div>
               <p className="section-copy">Save up to three options to compare key details. Track your own progress manually; StudyPath does not submit applications or contact institutions.</p>
               {savedPathways.length === 0 ? (
-                <p className="shortlist-empty" role="status">No pathways saved yet. Choose “Save to shortlist” on any result to compare it and track your next action.</p>
+                <p className="shortlist-empty">No pathways saved yet. Choose “Save to shortlist” on any result to compare it and track your next action.</p>
               ) : (
                 <div className="shortlist-grid">
                   {savedPathways.map(item => {
