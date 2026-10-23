@@ -53,6 +53,8 @@ function PathwayDetails({ item }) {
                 <li key={source.url}>
                   <a href={source.url} target="_blank" rel="noopener noreferrer">{source.title} <span aria-hidden="true">↗</span></a>
                   {source.role && <span className="source-role"> — {source.role}</span>}
+                  {source.location && <span className="source-meta"> · {source.location}</span>}
+                  {source.verificationDate && <span className="source-meta"> · Source checked {source.verificationDate}</span>}
                 </li>
               ))}
             </ul>
