@@ -139,6 +139,12 @@ function App() {
 
     try {
       const nextResults = buildPathwayResults({ stage, subjects }, catalogue);
+      if (nextResults.length === 0) {
+        setResults([]);
+        setNotice("No pathways are available from the current draft catalogue. Check the official UJ sources or try again later; this is not an admission decision.");
+        setSubmitted(true);
+        return;
+      }
       setResults(nextResults);
       setNotice("Pathway exploration completed. The current UJ 2027 catalogue is still a draft, so these results are UNKNOWN—not admission decisions.");
       setSubmitted(true);
