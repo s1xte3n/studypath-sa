@@ -148,8 +148,8 @@ function App() {
               <span className="step-count">{results.length} OPTIONS</span>
             </div>
             <div className="catalogue-warning" role="note">
-              <strong>Important: draft catalogue</strong>
-              <p>The University of Johannesburg 2027 pilot data has not been approved for definitive eligibility screening. Every result is marked UNKNOWN until the source rules are fully reconciled and curator-approved. These results do not predict or guarantee admission.</p>
+              <strong>Exploration results · 2027 pilot</strong>
+              <p>This catalogue is still being reviewed, so eligibility remains UNKNOWN. Use these matches to decide which official requirements to investigate next.</p>
             </div>
             <div className="results-grid">
               {results.map(item => (
@@ -157,8 +157,7 @@ function App() {
                   <div className="result-card-top"><span className="eligibility-state state-unknown">UNKNOWN</span><span className="result-cycle">2027 pilot</span></div>
                   <h3>{item.name}</h3>
                   <p className="result-institution">{item.institution}{item.campus ? ` · ${item.campus}` : ""}</p>
-                  <p>{item.reason}</p>
-                  <p className="result-limitation">{item.limitation}</p>
+                  <p className="result-reason">{item.reason}</p>
                   {item.sourceUrl && <a href={item.sourceUrl} target="_blank" rel="noreferrer">Review official UJ source <span aria-hidden="true">↗</span></a>}
                 </article>
               ))}
