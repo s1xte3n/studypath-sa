@@ -33,6 +33,13 @@ test("rejects decimal, non-numeric, negative and over-100 marks", () => {
   }
 });
 
+test("rejects unsupported subjects before pathway evaluation", () => {
+  assert.deepEqual(validateStudentEntries({
+    stage: "GRADE_12",
+    subjects: [{ subject: "Made-up subject", mark: "90" }]
+  }), ["Choose a supported subject for row 1."]);
+});
+
 test("rejects duplicate subjects", () => {
   assert.deepEqual(validateStudentEntries({ stage: "GRADE_11", subjects: [
     { subject: "Mathematics", mark: "60" },
