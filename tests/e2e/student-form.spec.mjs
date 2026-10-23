@@ -23,6 +23,9 @@ test("learner can edit rows, validate entries, and reset the form", async ({ pag
   await expect(page.getByRole("heading", { name: "Pathways to investigate" })).toBeVisible();
   await expect(page.locator(".result-card")).toHaveCount(7);
   await expect(page.locator(".eligibility-state")).toHaveText(Array(7).fill("UNKNOWN"));
+  await expect(page.getByRole("heading", { name: "How to read these options" })).toBeVisible();
+  await expect(page.getByText("These pathways are shown for exploration, not ranked by suitability.")).toBeVisible();
+  await expect(page.getByText("confirm the current rules using the official UJ links")).toBeVisible();
 
   await page.getByRole("button", { name: "Reset" }).click();
   await expect(page.locator("#stage")).toHaveValue("");
