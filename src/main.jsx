@@ -70,6 +70,29 @@ function App() {
   const [notice, setNotice] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [results, setResults] = useState([]);
+  const [savedPathways, setSavedPathways] = useState([]);
+  const [tracking, setTracking] = useState({});
+  const TRACKING_STATUSES = [
+    { value: "NOT_STARTED", label: "Not started" },
+    { value: "RESEARCHING", label: "Researching requirements" },
+    { value: "PREPARING", label: "Preparing application" },
+    { value: "SUBMITTED", label: "Marked as submitted" },
+    { value: "FOLLOW_UP", label: "Follow-up needed" },
+    { value: "OUTCOME_RECEIVED", label: "Outcome received" }
+  ];
+
+  function toggleSavedPathway(item) {
+    setSavedPathways(current => current.some(saved => saved.id === item.id)
+      ? current.filter(saved => saved.id !== item.id)
+      : current.length < 3 ? [...current, item] : current);
+  }
+
+  function updateTracking(id, field, value) {
+    setTracking(current => ({
+      ...current,
+      [id]: { status: current[id]?.status || "NOT_STARTED", nextAction: current[id]?.nextAction || "", [field]: value }
+    }));
+  }
 
   function clearResults() {
     setResults([]);
@@ -96,6 +119,8 @@ function App() {
     setStage("");
     setSubjects([{ subject: "", mark: "" }]);
     setResults([]);
+    setSavedPathways([]);
+    setTracking({});
     setNotice("");
     setSubmitted(false);
   }
@@ -197,9 +222,53 @@ function App() {
                   <p className="result-institution">{item.institution}{item.campus ? ` · ${item.campus}` : ""}</p>
                   <p className="result-reason">{item.reason}</p>
                   <PathwayDetails item={item} />
+                  <button
+                    className={`save-pathway-button ${savedPathways.some(saved => saved.id === item.id) ? "is-saved" : ""}`}
+                    type="button"
+                    onClick={() => toggleSavedPathway(item)}
+                    disabled={!savedPathways.some(saved => saved.id === item.id) && savedPathways.length >= 3}
+                    aria-pressed={savedPathways.some(saved => saved.id === item.id)}
+                  >
+                    {savedPathways.some(saved => saved.id === item.id) ? "Remove from shortlist" : "Save to shortlist"}
+                  </button>
                 </article>
               ))}
             </div>
+            <section className="shortlist-section" aria-labelledby="shortlist-title">
+              <div className="section-heading">
+                <div><p className="eyebrow">STEP 3 · YOUR NEXT STEPS</p><h2 id="shortlist-title">Saved pathways and application tracker</h2></div>
+                <span className="step-count">{savedPathways.length} / 3 SAVED</span>
+              </div>
+              <p className="section-copy">Save up to three options to compare key details. Track your own progress manually; StudyPath does not submit applications or contact institutions.</p>
+              {savedPathways.length === 0 ? (
+                <p className="shortlist-empty" role="status">No pathways saved yet. Choose “Save to shortlist” on any result to compare it and track your next action.</p>
+              ) : (
+                <div className="shortlist-grid">
+                  {savedPathways.map(item => {
+                    const progress = tracking[item.id] || { status: "NOT_STARTED", nextAction: "" };
+                    return (
+                      <article className="shortlist-card" key={item.id}>
+                        <div className="shortlist-card-heading"><span className="eligibility-state state-unknown">{item.state}</span><button className="remove-saved-button" type="button" onClick={() => toggleSavedPathway(item)} aria-label={`Remove ${item.name} from shortlist`}>Remove</button></div>
+                        <h3>{item.name}</h3>
+                        <p className="result-institution">{item.institution}{item.campus ? ` · ${item.campus}` : ""}</p>
+                        <dl className="shortlist-facts">
+                          <div><dt>Programme code</dt><dd>{item.code || "Not recorded"}</dd></div>
+                          <div><dt>Duration</dt><dd>{item.durationYears ? `${item.durationYears} years (confirm with UJ)` : "Not recorded"}</dd></div>
+                          <div><dt>Eligibility</dt><dd>UNKNOWN — confirm current official requirements.</dd></div>
+                        </dl>
+                        <label className="field-label" htmlFor={`tracking-status-${item.id}`}>My application progress</label>
+                        <select id={`tracking-status-${item.id}`} value={progress.status} onChange={event => updateTracking(item.id, "status", event.target.value)}>
+                          {TRACKING_STATUSES.map(status => <option key={status.value} value={status.value}>{status.label}</option>)}
+                        </select>
+                        <label className="field-label next-action-label" htmlFor={`tracking-action-${item.id}`}>My next action (optional)</label>
+                        <textarea id={`tracking-action-${item.id}`} rows="3" maxLength="240" placeholder="e.g. Confirm 2027 subject requirements with UJ" value={progress.nextAction} onChange={event => updateTracking(item.id, "nextAction", event.target.value)} />
+                        <p className="manual-tracking-note">Manual note only. This tracker is temporary and clears when you reset or reload the page.</p>
+                      </article>
+                    );
+                  })}
+                </div>
+              )}
+            </section>
             <div className="next-action">
               <h3>What you can do next</h3>
               <p>Check the current requirements with the institution, confirm which subject streams and admission rules apply to your programme, and review official application information before making decisions.</p>
