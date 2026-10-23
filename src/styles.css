@@ -127,3 +127,75 @@ footer span:first-child{font-weight:700;color:#355648}
 .next-action-label{margin-top:14px}
 @media(max-width:850px){.shortlist-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:600px){.shortlist-grid{grid-template-columns:1fr}.shortlist-card{padding:16px}.save-pathway-button{width:100%}}
+
+/* UJ × FNB exploration: purple identity, blue interaction, yellow emphasis. */
+:root{--green:#542583;--deep:#21152f;--muted:#5f6470;--line:#ddd9e6;--paper:#fff;--blue:#0876c9;--yellow:#f5c400;--canvas:#fbfaf7}
+body{background:var(--canvas);color:var(--deep)}
+.topbar{background:#fff;border-bottom-color:#e7e3eb}
+.wordmark{color:var(--deep)}
+.mark{background:#542583;border-radius:8px}
+.country{color:#0876c9}
+.topbar-note{color:#6d6875}
+.hero{max-width:760px}
+.eyebrow{color:#0876c9}
+h1,h2,h3,h4{color:var(--deep)}
+h1 span{color:#542583}
+.hero-copy{color:#5f6470}
+.privacy-note{background:#f1ecf8;border-color:#ddd0ed}
+.privacy-icon{color:#542583}
+.privacy-note strong{color:#3d1c63}
+.privacy-note p{color:#62566f}
+.explorer{box-shadow:0 14px 40px #21152f0d;border-color:#ddd9e6}
+.step-count{color:#514c5c;background:#f1eff4}
+.section-copy,.hint{color:#696472}
+.field-label{color:#342644}
+.field-label span{color:#0876c9}
+select,input{border-color:#c9c4d3;color:#30243a}
+select:focus,input:focus{border-color:#0876c9;box-shadow:0 0 0 3px #0876c926}
+.add-button,.text-button,.pathway-details summary,.result-card a,.next-action a{color:#0876c9}
+.primary-button{background:#542583}
+.primary-button:hover{background:#43206a}
+:focus-visible{outline-color:#0876c9}
+.notice-info{background:#edf6fd;color:#154d78;border-color:#c7e1f4}
+.notice-error{background:#fff4e8;color:#81461c;border-color:#f0d3ac}
+.next-steps{border-color:#ddd9e6}
+.steps-grid article{background:#f1ecf8}
+.step-number{color:#0876c9}
+.results-section{border-color:#ddd9e6}
+.catalogue-warning{border-color:#eedf9b;border-left-color:#f5c400;background:#fffbea;color:#5f4f00}
+.results-guidance{border-color:#cbe1f1;background:#f0f7fc}
+.results-guidance h3{color:#3d1c63}
+.results-guidance p{color:#485d6b}
+.result-card,.shortlist-card{border-color:#ddd9e6}
+.result-card h3,.shortlist-card h3{color:#30203f}
+.result-card p,.shortlist-facts dd{color:#5f6470}
+.result-card .result-institution{color:#0876c9}
+.result-card a,.next-action a{color:#0876c9}
+.state-unknown{color:#624f00;background:#fff7c9;border-color:#ead36a}
+.state-eligible{color:#17613f;background:#e4f3e8;border-color:#b9dec5}
+.state-not-eligible{color:#8d3929;background:#fff0eb;border-color:#efc9bd}
+.save-pathway-button{border-color:#0876c9;color:#0876c9}
+.save-pathway-button:hover,.save-pathway-button.is-saved{background:#eaf5fc}
+.shortlist-section{border-top-color:#ddd9e6}
+.shortlist-empty{background:#f1eff4;border-color:#c9c0d6;color:#5f6470}
+.next-action{background:#f1ecf8}
+.next-action p{color:#485d6b}
+footer{border-top-color:#ddd9e6;color:#696472}
+footer span:first-child{color:#542583}
+
+@media(prefers-color-scheme:dark){
+  :root{--canvas:#17131c;--paper:#211b28;--deep:#f7f1fb;--muted:#b9b0c2;--line:#41374a}
+  body{background:var(--canvas);color:var(--deep)}
+  .topbar,.explorer,.result-card,.shortlist-card{background:#211b28;border-color:#41374a}
+  .wordmark,h1,h2,h3,h4,.field-label,.result-card h3,.shortlist-card h3{color:#f7f1fb}
+  .topbar{border-bottom-color:#41374a}.topbar-note,.hero-copy,.section-copy,.hint,.result-card p,.shortlist-facts dd{color:#b9b0c2}
+  .privacy-note,.steps-grid article,.next-action{background:#2a2035;border-color:#4d3b60}
+  .privacy-note strong{color:#eadcff}.privacy-note p,.results-guidance p,.next-action p{color:#c7bdd0}
+  select,input,.shortlist-card textarea{background:#18141d;border-color:#5a4d63;color:#f7f1fb}
+  .step-count,.shortlist-empty{background:#2b2630;color:#c9bfd0}
+  .results-guidance{background:#182a38;border-color:#315b76}
+  .catalogue-warning{background:#332d18;border-color:#665a25;color:#f4e9a5}
+  .pathway-details,.detail-note,.official-links{border-color:#41374a}
+  .result-card .result-institution{color:#67b7ef}
+  footer{border-color:#41374a;color:#b9b0c2}
+}
