@@ -154,7 +154,7 @@ function App() {
       }
       setFieldErrors(nextFieldErrors);
       setResults([]);
-      setNotice("Please correct the highlighted fields before exploring pathways.");
+      setNotice(errors.join(" "));
       setSubmitted(false);
       return;
     }
