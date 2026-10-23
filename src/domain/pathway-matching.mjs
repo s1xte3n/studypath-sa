@@ -15,6 +15,30 @@ const SUBJECT_IDS = new Map([
   ["Life Orientation", "LIFE_ORIENTATION"]
 ]);
 
+function buildSourceLinks(programme, catalogue) {
+  const evidence = Array.isArray(programme.sourceEvidence) ? programme.sourceEvidence : [];
+  const links = evidence
+    .filter(item => typeof item.url === "string" && item.url.startsWith("https://www.uj.ac.za/"))
+    .map(item => ({
+      title: item.title || "Official UJ programme information",
+      url: item.url,
+      role: item.role || null
+    }));
+
+  const sourceIds = new Set(evidence.map(item => item.sourceId).filter(Boolean));
+  for (const source of catalogue.sources || []) {
+    if (sourceIds.has(source.id) && typeof source.url === "string" && source.url.startsWith("https://www.uj.ac.za/")) {
+      links.push({
+        title: source.title || "Official UJ source document",
+        url: source.url,
+        role: source.sourceVersion || "Prospectus / intake source"
+      });
+    }
+  }
+
+  return [...new Map(links.map(link => [link.url, link])).values()];
+}
+
 /**
  * Builds learner-facing pathway outcomes from the draft catalogue.
  * The current UJ pilot is deliberately not approved for definitive screening,
@@ -50,9 +74,14 @@ export function buildPathwayResults({ stage, subjects }, catalogue) {
     return {
       id: programme.id,
       name: programme.name,
+      code: programme.code ?? null,
       institution: catalogue.institution,
       faculty: programme.faculty ?? null,
       campus: programme.campus ?? null,
+      durationYears: Number.isInteger(programme.durationYears) ? programme.durationYears : null,
+      requirements: programme.requirements ?? null,
+      requirementNotes: Array.isArray(programme.unresolved) ? programme.unresolved : [],
+      sourceLinks: buildSourceLinks(programme, catalogue),
       state: outcome.state === "NOT_ELIGIBLE" ? "NOT_ELIGIBLE" :
         outcome.state === "ELIGIBLE" ? "ELIGIBLE" : "UNKNOWN",
       reason: outcome.explanation,

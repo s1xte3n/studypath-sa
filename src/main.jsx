@@ -26,6 +26,44 @@ const SUBJECTS = [
   "Life Orientation"
 ];
 
+function PathwayDetails({ item }) {
+  return (
+    <details className="pathway-details">
+      <summary>View pathway details and next steps</summary>
+      <div className="pathway-details-content">
+        <dl className="pathway-facts">
+          {item.code && <div><dt>Programme code</dt><dd>{item.code}</dd></div>}
+          {item.faculty && <div><dt>Faculty / college</dt><dd>{item.faculty}</dd></div>}
+          {item.campus && <div><dt>Campus</dt><dd>{item.campus}</dd></div>}
+          {item.durationYears && <div><dt>Published duration</dt><dd>{item.durationYears} years (confirm with UJ)</dd></div>}
+          <div><dt>Eligibility</dt><dd>UNKNOWN — the pilot catalogue is a draft and is not approved for definitive screening.</dd></div>
+          <div><dt>Costs, deadlines and funding</dt><dd>Not provided in this catalogue. Check current official UJ information; no estimate is shown.</dd></div>
+        </dl>
+        {item.requirementNotes.length > 0 && (
+          <div className="detail-note">
+            <h4>Items still requiring confirmation</h4>
+            <ul>{item.requirementNotes.map(note => <li key={note}>{note}</li>)}</ul>
+          </div>
+        )}
+        <div className="official-links">
+          <h4>Official information</h4>
+          {item.sourceLinks.length > 0 ? (
+            <ul>
+              {item.sourceLinks.map(source => (
+                <li key={source.url}>
+                  <a href={source.url} target="_blank" rel="noopener noreferrer">{source.title} <span aria-hidden="true">↗</span></a>
+                  {source.role && <span className="source-role"> — {source.role}</span>}
+                </li>
+              ))}
+            </ul>
+          ) : <p>No programme-specific source link is recorded. Visit the official UJ website to find current information.</p>}
+          <p className="application-note">These links provide information only. StudyPath does not submit applications.</p>
+        </div>
+      </div>
+    </details>
+  );
+}
+
 function App() {
   const [stage, setStage] = useState("");
   const [subjects, setSubjects] = useState([{ subject: "", mark: "" }]);
@@ -158,14 +196,14 @@ function App() {
                   <h3>{item.name}</h3>
                   <p className="result-institution">{item.institution}{item.campus ? ` · ${item.campus}` : ""}</p>
                   <p className="result-reason">{item.reason}</p>
-                  {item.sourceUrl && <a href={item.sourceUrl} target="_blank" rel="noreferrer">Review official UJ source <span aria-hidden="true">↗</span></a>}
+                  <PathwayDetails item={item} />
                 </article>
               ))}
             </div>
             <div className="next-action">
               <h3>What you can do next</h3>
               <p>Check the current requirements with the institution, confirm which subject streams and admission rules apply to your programme, and review official application information before making decisions.</p>
-              <a href="https://www.uj.ac.za/" target="_blank" rel="noreferrer">Visit the University of Johannesburg website <span aria-hidden="true">↗</span></a>
+              <a href="https://www.uj.ac.za/" target="_blank" rel="noopener noreferrer">Visit the University of Johannesburg website <span aria-hidden="true">↗</span></a>
             </div>
           </section>
         )}
