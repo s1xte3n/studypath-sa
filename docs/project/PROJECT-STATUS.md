@@ -486,3 +486,18 @@ No deployed Azure resources, diagnostic settings, workspaces, storage lifecycle 
 3. Confirm source and official next-step links, 320px layout, keyboard focus, and axe results.
 4. Keep G-SYN-001 OPEN until its full evidence gate is met.
 5. Catalogue publication remains blocked until governing prospectus version, applicable rules, curator sign-off, and source provenance are resolved.
+
+
+## Verification update — PR #170 merged (2026-10-24)
+
+**Current main commit verified via GitHub:** `a69618c62b614c66c01dd445289f014b1d4c3a05` (merge of PR #170, `fix/p0-journey-verification`).
+
+The following GitHub Actions runs are recorded as completed with conclusion `success` on that exact SHA:
+- [Browser MVP build #145](https://github.com/s1xte3n/studypath-sa/actions/runs/40032421662)
+- [Contract tests #242](https://github.com/s1xte3n/studypath-sa/actions/runs/40032421627)
+- [UJ eligibility golden-case verification #102](https://github.com/s1xte3n/studypath-sa/actions/runs/40032421586)
+- [Browser E2E, privacy and accessibility #139](https://github.com/s1xte3n/studypath-sa/actions/runs/40032421578)
+
+**Verified scope:** PR #170 adds rejection of unsupported subject strings at the input-validation boundary and an explicit empty-result message. The four listed CI workflows passed on the merge SHA. No independent local execution is asserted here.
+
+**Release/gate status remains OPEN / NOT PASSED.** The catalogue is still `DRAFT_NOT_FOR_DEFINITIVE_SCREENING`, eligibility must remain `UNKNOWN`, and source/rule reconciliation, curator approval, broader privacy/hosting review, manual accessibility checks, and complete requirement-to-test evidence reconciliation remain open. No deployment or real learner-data use is authorized by this CI evidence.

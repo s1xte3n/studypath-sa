@@ -187,3 +187,20 @@ All applicable items must pass on one reviewed commit; documentation alone does 
 ## Current gate decision
 
 **G-SYN-001: NOT PASSED.** PR #135's four PR-head workflows passed, but the merge-commit workflow lookup returned no runs. Current code and CI materially advance the baseline. However, the core pathway journey, full privacy channel/failure coverage, tracker/result lifecycle assertions, manual accessibility/responsive evidence, local reproducibility evidence and complete provenance/limitations review are not all established. Continue with synthetic data only. Do not treat documentation updates or green CI as proof of privacy safety, admission correctness, public-demo readiness or release approval.
+
+
+## Verified P0 journey merge evidence — 2026-10-24
+
+**Reviewed main commit:** `a69618c62b614c66c01dd445289f014b1d4c3a05`, merge of PR #170 (`fix/p0-journey-verification`). GitHub's `main` branch reference and the four workflow run records were checked for this update.
+
+**GitHub Actions on the exact merge commit — completed / success:**
+- [Browser MVP build #145](https://github.com/s1xte3n/studypath-sa/actions/runs/40032421662) — head SHA `a69618c62b614c66c01dd445289f014b1d4c3a05`.
+- [Contract tests #242](https://github.com/s1xte3n/studypath-sa/actions/runs/40032421627) — head SHA `a69618c62b614c66c01dd445289f014b1d4c3a05`.
+- [UJ eligibility golden-case verification #102](https://github.com/s1xte3n/studypath-sa/actions/runs/40032421586) — head SHA `a69618c62b614c66c01dd445289f014b1d4c3a05`.
+- [Browser E2E, privacy and accessibility #139](https://github.com/s1xte3n/studypath-sa/actions/runs/40032421578) — head SHA `a69618c62b614c66c01dd445289f014b1d4c3a05`.
+
+These four workflow records confirm successful completion for the listed workflows on the merge commit. They do not establish that every manual check or every release criterion is complete. No independent local test execution is claimed by this update.
+
+**Change scope in PR #170:** unsupported learner subjects are rejected at the form-validation boundary, with regression coverage; the empty evaluator-result state now presents an explanatory message. The canonical evaluator remains the eligibility authority.
+
+**Gate disposition: OPEN / NOT PASSED.** The UJ 2027 catalogue remains `DRAFT_NOT_FOR_DEFINITIVE_SCREENING`; all draft-catalogue outcomes must remain `UNKNOWN`. Source-version/rule reconciliation and curator sign-off, full privacy/hosting/provider review, manual accessibility evidence and the requirement-level evidence audit remain outstanding. Green CI does not approve the catalogue or authorize deployment, real learner data, or production-readiness claims.
