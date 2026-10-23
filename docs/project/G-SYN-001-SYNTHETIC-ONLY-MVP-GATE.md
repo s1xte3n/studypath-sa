@@ -1,3 +1,27 @@
+## Fresh candidate evidence update — 2026-10-23
+
+**Candidate commit:** `640bd1ade8ab274b49eb9b48999024ca5b43a334`.
+
+### Owner-reported manual demo results
+
+The project owner reports all eight manual checks passed on the candidate: fresh development-server startup; empty/default form state; invalid-input messaging; valid synthetic inputs to pathway results and explanations; visible draft-catalogue/non-definitive eligibility disclosure; official-source links opening correctly; reset clearing inputs, errors and results; and no horizontal overflow or blocking interaction issue at 320px.
+
+### Owner-reported tracked-path hygiene screen
+
+The supplied `git ls-files` output contains no obvious `.env`, secret/credential-named, generated-output, or common private-key paths according to the accompanying PowerShell filename pattern scan (zero matches). `.gitignore` excludes common dependency/build/test output and local-secret paths. This is not a content scan, history scan, secret-scanning result, or proof that tracked files contain no sensitive values. The output of `git status --short` was not included, so working-tree cleanliness is unverified.
+
+### Reassessment
+
+- **SYN-001:** automated install/test/build evidence and a fresh-session manual launch are reported on the candidate. npm emitted an install-script approval warning for `esbuild@0.28.2`; tests/build still passed. Keep the warning in the evidence record; do not claim the install was warning-free.
+- **SYN-002 / SYN-008:** owner-reported manual journey confirms visible pathway explanations, source links and draft/UNKNOWN/no-guarantee limitations in the demo. This does not approve the underlying catalogue for definitive screening.
+- **SYN-006:** manual 320px review is now owner-reported PASS for overflow/blocking issues. Manual screen-reader and broader keyboard/accessibility review remain unverified.
+- **SYN-009:** filename-only scan found no matching suspicious paths; content/history and provider/hosting review remain open.
+- **SYN-010:** this update records the owner-supplied evidence; a merged documentation commit and final candidate SHA still need to be recorded.
+
+**Gate remains NOT PASSED.** UJ 2027 catalogue status remains `DRAFT_NOT_FOR_DEFINITIVE_SCREENING`; curator sign-off and provenance/rule reconciliation remain blocking. Full privacy/hosting/provider review and the requirement-level evidence audit are also incomplete. No deployment, cloud provisioning, public release, or real learner-data processing is authorized by this update.
+
+---
+
 # Current evidence reconciliation — 2026-10-22 (supersedes older baseline statements below)
 
 **Reviewed baseline:** `aa43b783ecb97aa3dac8f1ed18ebe727e5231e41` on `main`, based on repository files and owner-supplied exact-commit CI output recorded in `docs/project/PROJECT-STATUS.md`. Three workflows passed on that commit: [browser E2E/privacy/accessibility](https://github.com/s1xte3n/studypath-sa/actions/runs/39681570939), [contract tests](https://github.com/s1xte3n/studypath-sa/actions/runs/39681570917), and [browser MVP build](https://github.com/s1xte3n/studypath-sa/actions/runs/39681571109). These are owner-supplied CI records, not an independent rerun. Do not carry forward older statements that the learner-facing flow only validates inputs or that pathway matching is not integrated: current `src/main.jsx` calls `buildPathwayResults` from `src/domain/pathway-matching.mjs`, and the browser suite expects seven result cards marked `UNKNOWN`.
