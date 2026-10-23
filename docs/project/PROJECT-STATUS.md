@@ -1,3 +1,25 @@
+## Fresh-session demo and repository hygiene evidence — 2026-10-23
+
+**Candidate commit under review:** `640bd1ade8ab274b49eb9b48999024ca5b43a334`. This evidence was supplied by the project owner in the project conversation; it is not an independent local inspection by the assistant.
+
+**Manual browser journey — owner-reported PASS (8/8 checks):**
+- Application opened from a fresh development-server session.
+- Form showed placeholder selections and no prefilled learner marks.
+- Invalid/incomplete input produced a clear validation message.
+- Valid synthetic inputs produced expected pathway results and explanations.
+- Draft UJ catalogue / non-definitive eligibility disclosure was visible.
+- Official-source links were present and opened intended sources.
+- Reset cleared learner inputs, validation messages and displayed results.
+- At a 320px viewport, no horizontal overflow or blocking interaction issue was observed.
+
+**Tracked-path filename screen — owner-supplied output:** `git ls-files` listed the tracked repository paths. The supplied PowerShell pattern scan returned no matches for environment files, secret/credential-named paths, common generated-output paths, or `.pem`, `.pfx`, and `.key` files. The supplied `.gitignore` excludes dependencies, build/test outputs, local environment files, common key formats, secret directories and local tooling output. This is a preliminary filename check only; it does not inspect file contents or Git history and does not establish that no secrets or personal data are present.
+
+**Not evidenced by this report:** output of `git status --short` was not supplied; no clean working tree is asserted here. No manual screen-reader review is reported. Full privacy/hosting/provider-log and third-party telemetry review, UJ source provenance and curator sign-off remain open. A successful manual demo does not pass G-SYN-001.
+
+**Next action:** complete content-level secret/data review without copying any sensitive values into issues, verify the working-tree state, record manual keyboard/screen-reader checks if available, and continue catalogue-curation and privacy evidence closure.
+
+---
+
 ## Current implementation and gate reconciliation — 2026-10-22
 
 The earlier status summary above remains the current exact-commit CI record; this section adds a source-level implementation reconciliation after inspecting `src/main.jsx`, `src/domain/pathway-matching.mjs`, `tests/pathway-matching.test.mjs`, `tests/e2e/student-form.spec.mjs`, and `docs/product/uj-2027-pilot-catalogue-draft.json`.
