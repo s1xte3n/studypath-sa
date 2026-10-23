@@ -70,7 +70,7 @@ footer span:first-child{font-weight:700;color:#355648}
 .result-card h3{font-size:19px;line-height:1.3;letter-spacing:-.3px;color:var(--deep);margin:16px 0 7px}
 .result-card p{font-size:13px;line-height:1.65;color:#52645a}
 .result-card .result-institution{font-weight:700;color:#385b4b;margin-bottom:12px}
-.result-card .result-limitation{padding:10px 12px;background:#f6f4ee;border-radius:7px;font-size:12px}
+.result-card .result-reason{margin-bottom:18px}
 .result-card a,.next-action a{color:var(--green);font-size:13px;font-weight:700;text-underline-offset:3px}
 .result-card-top{display:flex;justify-content:space-between;align-items:center;gap:10px}
 .eligibility-state{display:inline-flex;align-items:center;border-radius:999px;padding:6px 10px;font-size:11px;font-weight:800;letter-spacing:.5px}
