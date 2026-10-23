@@ -214,6 +214,11 @@ function App() {
               <strong>Exploration results · 2027 pilot</strong>
               <p>This catalogue is still being reviewed, so eligibility remains UNKNOWN. Use these matches to decide which official requirements to investigate next.</p>
             </div>
+            <aside className="results-guidance" aria-labelledby="results-guidance-title">
+              <h3 id="results-guidance-title">How to read these options</h3>
+              <p>These pathways are shown for exploration, not ranked by suitability. Because the catalogue is still a draft, StudyPath cannot confirm that you meet admission requirements or compare your chances of admission.</p>
+              <p><strong>Your next step:</strong> open pathway details, review the unresolved items, and confirm the current rules using the official UJ links before deciding where to apply.</p>
+            </aside>
             <div className="results-grid">
               {results.map(item => (
                 <article className="result-card" key={item.id}>
