@@ -22,6 +22,13 @@ test("draft catalogue results remain UNKNOWN regardless of strong marks", () => 
   assert.ok(results.every((item) => item.state === "UNKNOWN"));
   assert.ok(results.every((item) => item.catalogueStatus === "DRAFT_NOT_FOR_DEFINITIVE_SCREENING"));
   assert.ok(results.every((item) => item.sourceUrl?.startsWith("https://")));
+
+  const informationTechnology = results.find(item => item.id === "UJ-2027-BSC-IT");
+  const prospectus = informationTechnology.sourceLinks.find(item =>
+    item.url.includes("uj_undergrad_prospectus2027_online_25jun2026.pdf")
+  );
+  assert.equal(prospectus.location, "printed p. 86");
+  assert.equal(prospectus.verificationDate, "2026-10-14");
 });
 
 test("unsupported subjects and invalid marks fail closed", () => {

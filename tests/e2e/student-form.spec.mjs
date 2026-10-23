@@ -26,6 +26,17 @@ test("learner can edit rows, validate entries, and reset the form", async ({ pag
   await expect(page.getByRole("heading", { name: "How to read these options" })).toBeVisible();
   await expect(page.getByText("These pathways are shown for exploration, not ranked by suitability.")).toBeVisible();
   await expect(page.getByText("confirm the current rules using the official UJ links")).toBeVisible();
+  const sourceDetails = page
+    .locator(".pathway-details")
+    .filter({ hasText: "printed p. 86" })
+    .first();
+
+  await sourceDetails.locator("summary").click();
+
+  await expect(sourceDetails.getByText("printed p. 86")).toBeVisible();
+  await expect(
+    sourceDetails.getByText("Source checked 2026-10-14")
+  ).toBeVisible();
 
   await page.getByRole("button", { name: "Reset" }).click();
   await expect(page.locator("#stage")).toHaveValue("");
@@ -192,12 +203,12 @@ test("no learner entries are transmitted or persisted across reload", async ({ p
 
     const originalOpen = XMLHttpRequest.prototype.open;
     const originalSend = XMLHttpRequest.prototype.send;
-    XMLHttpRequest.prototype.open = function(method, url, ...args) {
+    XMLHttpRequest.prototype.open = function (method, url, ...args) {
       this.__studyPathAuditRequest = { method: String(method), url: String(url) };
       record({ channel: "XMLHttpRequest.open", method: String(method), url: String(url) });
       return originalOpen.call(this, method, url, ...args);
     };
-    XMLHttpRequest.prototype.send = function(body) {
+    XMLHttpRequest.prototype.send = function (body) {
       record({
         channel: "XMLHttpRequest.send",
         method: this.__studyPathAuditRequest?.method ?? "",
@@ -229,7 +240,7 @@ test("no learner entries are transmitted or persisted across reload", async ({ p
       }
     });
     const originalSocketSend = OriginalWebSocket.prototype.send;
-    OriginalWebSocket.prototype.send = function(data) {
+    OriginalWebSocket.prototype.send = function (data) {
       record({ channel: "WebSocket.send", url: this.url, body: serialize(data) });
       return originalSocketSend.call(this, data);
     };

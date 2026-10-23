@@ -17,21 +17,30 @@ const SUBJECT_IDS = new Map([
 
 function buildSourceLinks(programme, catalogue) {
   const evidence = Array.isArray(programme.sourceEvidence) ? programme.sourceEvidence : [];
+  const sources = catalogue.sources || [];
   const links = evidence
     .filter(item => typeof item.url === "string" && item.url.startsWith("https://www.uj.ac.za/"))
-    .map(item => ({
-      title: item.title || "Official UJ programme information",
-      url: item.url,
-      role: item.role || null
-    }));
+    .map(item => {
+      const source = sources.find(candidate => candidate.id === item.sourceId)
+        || sources.find(candidate => candidate.url === item.url);
+      return {
+        title: item.title || "Official UJ programme information",
+        url: item.url,
+        role: item.role || null,
+        location: item.location || null,
+        verificationDate: source?.verificationDate || null
+      };
+    });
 
   const sourceIds = new Set(evidence.map(item => item.sourceId).filter(Boolean));
-  for (const source of catalogue.sources || []) {
+  for (const source of sources) {
     if (sourceIds.has(source.id) && typeof source.url === "string" && source.url.startsWith("https://www.uj.ac.za/")) {
       links.push({
         title: source.title || "Official UJ source document",
         url: source.url,
-        role: source.sourceVersion || "Prospectus / intake source"
+        role: source.sourceVersion || "Prospectus / intake source",
+        location: evidence.find(item => item.sourceId === source.id)?.location || null,
+        verificationDate: source.verificationDate || null
       });
     }
   }
