@@ -1,3 +1,18 @@
+## Cross-screen regression traceability — issue #185 (2026-10-24)
+
+**Reviewed baseline:** `main` commit `82b60fac1476192c66082aa8b1ff2b1fd25a34be`. Changes are proposed on branch `test/185-filter-empty-state-regression`; CI evidence is pending.
+
+| Requirement slice | Contract / implementation | Test evidence | Current disposition |
+|---|---|---|---|
+| Recoverable empty filter result | `src/main.jsx` renders a status message when filters hide every catalogue candidate and offers a clear-filter action | New Playwright test in `tests/e2e/student-form.spec.mjs` asserts 30 total / 0 visible, then clears filters and verifies all 30 records return as `UNKNOWN` | Test added; not yet run by assistant or CI-verified |
+| Keyboard-accessible pathway details | Native `<details><summary>` disclosure in `src/main.jsx` | New Playwright test focuses the summary, presses Enter and checks disclosure opens | Test added; not yet run by assistant or CI-verified |
+| All-draft-catalogue uncertainty | `src/domain/pathway-matching.mjs` and catalogue publication gate keep unapproved records non-definitive | Existing E2E asserts 30 pathway cards show `Unknown`; new test reasserts after filter recovery | Automated coverage exists; catalogue source review and curator approval remain outstanding |
+| Cross-screen accessibility/privacy | `tests/e2e/student-form.spec.mjs`, `tests/e2e/shortlist-tracker.spec.mjs`, `playwright.config.mjs` | Existing CI scenarios cover selected viewport, theme, axe, keyboard, storage and request channels | Manual screen-reader, physical-device/browser matrix, host logs and external telemetry remain unverified |
+
+**Evidence chain:** issue #185 → browser UI contract → named Playwright tests → implementation in `src/main.jsx` → pending PR CI → no release evidence. Keep G-SYN-001 OPEN / NOT PASSED.
+
+---
+
 ## APS calculator traceability — issue #189 (2026-10-24)
 
 | Requirement slice | Contract / implementation | Tests | Evidence and remaining gate |
