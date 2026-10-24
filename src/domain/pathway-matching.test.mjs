@@ -18,7 +18,7 @@ const learner = {
   ]
 };
 
-test("pathway results expose programme facts and reviewed official UJ source URLs", () => {
+test("pathway results expose programme facts and retained official UJ source URLs", () => {
   const results = buildPathwayResults(learner, catalogue);
   assert.ok(results.length > 0);
 
@@ -28,7 +28,7 @@ test("pathway results expose programme facts and reviewed official UJ source URL
   assert.equal(it.faculty, "Faculty of Science");
   assert.equal(it.campus, "Auckland Park Kingsway");
   assert.equal(it.durationYears, 3);
-  assert.ok(it.sourceLinks.some(link => link.url === "https://www.uj.ac.za/university-courses/bsc-in-information-technology/"));
+  assert.ok(it.sourceLinks.some(link => link.url === "https://www.uj.ac.za/wp-content/uploads/2026/07/uj_undergrad_prospectus2027_online_25jun2026.pdf"));
   assert.ok(it.sourceLinks.some(link => link.url.endsWith(".pdf")));
   assert.ok(it.sourceLinks.every(link => link.url.startsWith("https://www.uj.ac.za/")));
 });
