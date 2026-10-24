@@ -1,3 +1,7 @@
+## Hackathon demo catalogue approval (2026-10-24)
+
+The project owner approved catalogue version `uj-2027-pilot-v0.3-hackathon-demo` as the source of truth for the bounded FNB AOTY Hackathon 2026 demo. This is a demo-scope decision only: all 30 individual programme records remain `DRAFT`, unresolved requirements remain disclosed, and the definitive-screening gate remains closed. Eligibility stays `UNKNOWN` wherever the evaluator lacks sufficient explicit rule evidence. This does not establish institutional endorsement, external curator sign-off, or production/public-release readiness.
+
 ## APS issue #189 — fail-closed candidate status (2026-10-24)
 
 The current issue acceptance contract requires exactly six distinct supported non-Life-Orientation subjects for a provisional APS total. Fewer or more than six returns `UNKNOWN`; no automatic subset selection or programme-required-subject selection is allowed while the applicable rules remain unresolved.
