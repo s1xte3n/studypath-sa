@@ -77,6 +77,7 @@ function PathwayDetails({ item }) {
 }
 
 function App() {
+  const [darkMode, setDarkMode] = useState(() => window.matchMedia?.("(prefers-color-scheme: dark)").matches ?? false);
   const [stage, setStage] = useState("");
   const [subjects, setSubjects] = useState([{ subject: "", mark: "" }]);
   const [notice, setNotice] = useState("");
@@ -179,11 +180,14 @@ function App() {
   }
 
   return (
-    <div className="app-shell theme-light">
+    <div className={`app-shell ${darkMode ? "theme-dark" : "theme-light"}`}>
       <header className="topbar">
         <a className="wordmark" href="#home"><span className="mark">S</span> StudyPath <span className="country">SA</span></a>
         <div className="topbar-actions">
           <span className="topbar-note">Study options, made clearer</span>
+          <button className="theme-toggle" type="button" onClick={() => setDarkMode(current => !current)} aria-pressed={darkMode} aria-label={darkMode ? "Switch to light mode" : "Switch to dark mode"}>
+            <span aria-hidden="true">{darkMode ? "☀" : "◐"}</span> {darkMode ? "Light mode" : "Dark mode"}
+          </button>
         </div>
       </header>
 
