@@ -1,3 +1,18 @@
+## Current main UI regression repair — 2026-10-24
+
+**Main baseline inspected:** `268d6f03322f82b7c47a3ddf0598e067880a73a1` (PR #175, `v0/uj-fnb-purple-theme`). The merge diff removed the theme toggle and its dark-theme CSS that had been introduced by PR #174. The browser accessibility check reported a contrast ratio of 4.07:1 for `#0876c9` text on `#f1ecf8`, below the 4.5:1 WCAG AA threshold for normal text.
+
+**Repair branch:** `fix/restore-theme-accessible-blue` (changes committed through GitHub API; pending PR/CI at the time of this note).
+
+- Restore an accessible light/dark theme toggle with an initial OS-preference default and in-session override.
+- Restore explicit dark-surface and supporting-text styles while retaining the purple-led design.
+- Replace the interaction blue with `#0065A8`; calculated contrast is 5.28:1 on `#f1ecf8` and 6.13:1 on white. These are local mathematical checks, not a substitute for the browser accessibility scan.
+- Extend the browser accessibility test to exercise the toggle and scan both themes.
+- Record the requested end-product design baseline in `docs/product/END-PRODUCT-UX-VISION.md`.
+
+**Verification status:** no local test run is claimed. Await PR checks for the restored theme, contrast correction, and new test. Recheck the current branch/PR before merging. The broader end-product experience remains a target baseline; it is not claimed fully implemented.
+
+---
 ## Fresh-session demo and repository hygiene evidence — 2026-10-23
 
 **Candidate commit under review:** `640bd1ade8ab274b49eb9b48999024ca5b43a334`. This evidence was supplied by the project owner in the project conversation; it is not an independent local inspection by the assistant.
