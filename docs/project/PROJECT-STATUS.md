@@ -529,3 +529,36 @@ The following GitHub Actions runs are recorded as completed with conclusion `suc
 **Verified scope:** PR #170 adds rejection of unsupported subject strings at the input-validation boundary and an explicit empty-result message. The four listed CI workflows passed on the merge SHA. No independent local execution is asserted here.
 
 **Release/gate status remains OPEN / NOT PASSED.** The catalogue is still `DRAFT_NOT_FOR_DEFINITIVE_SCREENING`, eligibility must remain `UNKNOWN`, and source/rule reconciliation, curator approval, broader privacy/hosting review, manual accessibility checks, and complete requirement-to-test evidence reconciliation remain open. No deployment or real learner-data use is authorized by this CI evidence.
+
+
+---
+
+# Hackathon demo-readiness review — 2026-10-24
+
+**Scope:** remote repository review and documentation preparation on branch `docs/hackathon-demo-readiness`; no app code changes. **Main baseline inspected:** `d377512d38cf4e93833e1c50984605cac12adbdb` (commit message: merge PR #177, recording PR #176 merge/CI evidence). GitHub repository metadata reports default branch `main` and private visibility. A remote GitHub connector does not expose the local developer working tree; local uncommitted changes are therefore **not inspected / unknown**.
+
+## Current implementation findings
+- `src/main.jsx` has study-stage, subject and mark inputs; validation; calls `buildPathwayResults`; renders pathway cards/details; discloses draft/UNKNOWN/no-guarantee limitations; provides official-source links; resets transient inputs/results; supports light/dark themes and session-only save/tracking state.
+- `src/domain/pathway-matching.mjs` maps supported subjects, validates integer marks 0–100, calls the deterministic evaluator, and carries catalogue provenance/source details into result objects. The draft catalogue boundary forces learner-facing outcomes to `UNKNOWN`.
+- `tests/e2e/student-form.spec.mjs` contains tests for input/edit/reset, invalid values, error correction, stale notices, URL/history handling, keyboard focus, 320px overflow, selected privacy/network/storage/reload behavior, and axe critical/serious checks in light/dark themes.
+- This source inspection is not a fresh test run. No local install, Node tests, Vite build, Playwright run, fresh-session rehearsal, or manual screen-reader review was performed by this assistant.
+
+## Exact-commit verification
+The GitHub combined status endpoint for `d377512d38cf4e93833e1c50984605cac12adbdb` returned one successful status context named **Vercel**. This does not prove the required test workflows ran on this exact SHA and is not a basis for claiming deployment/release readiness. The previously owner-reported four passing workflows refer to merge commit `0eafef65f42c10255ba6e307e6648ee822761a30`, not this current main SHA.
+
+## Work prepared on this branch
+- `docs/project/DEMO-RUNBOOK.md` — synthetic Grade 12 profile (Mathematics 75, Physical Sciences 81), timed runbook, validation step, expected seven UNKNOWN cards, reset/reload and fallback.
+- `docs/project/PRESENTATION-DECK-CONTENT.md` — ten-slide content draft compliant with the official slide ceiling; screenshot and final video URL placeholders remain.
+- `docs/project/HACKATHON-SSDLC-LEAN-CANVAS-PREP.md` — evidence-aligned draft, including actual limitations and manual Sonke actions.
+- `docs/project/HACKATHON-SUBMISSION-CHECKLIST.md` — programme-derived requirements and remaining owner actions.
+
+## Open blockers / owner actions
+1. Rehearse twice from a fresh session on the exact candidate; record SHA, browser/OS, commands, results and deviations.
+2. Run and capture current-candidate install/test/build and relevant Playwright/CI evidence; distinguish owner-supplied evidence from independently reproduced results.
+3. Perform and record manual keyboard, screen-reader and responsive review.
+4. Capture screenshots and export final <=10-slide PDF from the frozen candidate.
+5. Record video <=90 seconds, verify its URL privately, and place that link on the final deck.
+6. Verify Sonke team profile, deadline timezone and portal file/field requirements; complete actual SSDLC and Lean Business Canvas forms; upload through Submit Files and retain confirmation.
+7. Continue catalogue provenance/rule reconciliation, curator sign-off and full hosting/provider/telemetry privacy review before considering `G-SYN-001` closure.
+
+**Gate:** `G-SYN-001` remains **OPEN / NOT PASSED**. Documentation preparation is not app verification or release approval. No public deployment, Azure provisioning, paid services, or real learner data were used or authorized.

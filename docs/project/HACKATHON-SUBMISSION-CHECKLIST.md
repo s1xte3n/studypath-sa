@@ -83,3 +83,29 @@ Before upload:
 ## Source caveat
 
 The supplied programme states no presentations are scheduled; submission is through Sonke. The provided excerpt does not state the actual Sonke form fields, file-size limits, video-hosting requirements or timezone; verify those in the portal rather than assuming them.
+
+
+---
+
+## Demo-readiness assessment — 2026-10-24 (review branch; not submission approval)
+
+**Reviewed main SHA:** `d377512d38cf4e93833e1c50984605cac12adbdb`. The supplied programme confirms: team profile required for judging; PDF preferred; maximum 10 slides; demo video maximum 90 seconds; video link on slides; SSDLC and Lean Business Canvas; upload through Sonke by Monday 26 October 2026 at 23:59. **Timezone and portal-specific restrictions remain unverified and must be checked in Sonke.**
+
+### Added preparation artifacts on `docs/hackathon-demo-readiness`
+- `docs/project/DEMO-RUNBOOK.md` — timed live journey, synthetic profile, reset/restart and fallback.
+- `docs/project/PRESENTATION-DECK-CONTENT.md` — ten-slide content draft. Not an exported PDF; screenshots and final video link are placeholders.
+- `docs/project/HACKATHON-SSDLC-LEAN-CANVAS-PREP.md` — evidence-based SSDLC and Lean Business Canvas draft for the actual portal fields.
+
+### Status of required deliverables
+- [x] Programme limits extracted from supplied PDF (10 slides; 90-second video; Sonke; SSDLC and Lean Business Canvas).
+- [x] Synthetic profile and timed runbook drafted.
+- [x] Ten-slide deck content drafted within the programme limit.
+- [x] SSDLC and Lean Business Canvas preparation drafted with implemented/planned boundaries separated.
+- [ ] Export final PDF and replace screenshot placeholders using the frozen candidate.
+- [ ] Record video <=90 seconds and insert tested link into the deck.
+- [ ] Rehearse twice from a fresh session and record candidate-specific evidence.
+- [ ] Confirm team profile and portal requirements/timezone.
+- [ ] Complete actual SSDLC and Lean Business Canvas fields in Sonke.
+- [ ] Upload files via Submit Files and capture submission receipt.
+
+No portal interaction, PDF export, screenshots, video recording, rehearsal, or submission was performed by this assistant. The supplied programme does not specify portal form field names, file-size limits, video-hosting rules, or timezone; verify them in Sonke rather than guessing.

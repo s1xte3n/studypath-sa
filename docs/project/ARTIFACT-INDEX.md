@@ -406,3 +406,18 @@ Branch: `feat/hackathon-pathway-results-phases-5-7` (not yet merged; CI pending)
 | Test strategy | `docs/testing/TEST-STRATEGY.md` | Initial strategy; must be reconciled against full requirement matrix |
 | Test matrix/cases/priorities/release gates | `docs/testing/TEST-MATRIX.md`, `TEST-CASES.md`, `TEST-PRIORITIES.md`, `RELEASE-GATES.md` | Initial vertical-slice traceability; not a complete all-requirement sign-off |
 | Project status | `docs/project/PROJECT-STATUS.md` | Branch snapshot appended; implementation and CI not yet accepted |
+
+
+---
+
+# Hackathon demo-readiness artifacts — 2026-10-24
+
+| Artifact | Status on `docs/hackathon-demo-readiness` |
+|---|---|
+| `docs/project/DEMO-RUNBOOK.md` | Added — timed synthetic journey, expected outcomes, reset/restart, fallback and owner rehearsal checklist; rehearsal not performed by assistant |
+| `docs/project/PRESENTATION-DECK-CONTENT.md` | Added — exactly 10 slide sections, programme-aligned; not a PDF; screenshots and video URL still pending |
+| `docs/project/HACKATHON-SSDLC-LEAN-CANVAS-PREP.md` | Added — evidence-based draft for portal entry; actual Sonke fields not completed |
+| `docs/project/HACKATHON-SUBMISSION-CHECKLIST.md` | Updated with programme-derived constraints, artifact links and remaining actions |
+| `docs/project/PROJECT-STATUS.md` | Updated with current remote inspection, commit-specific evidence limits and release blockers |
+
+**Baseline:** `main` `d377512d38cf4e93833e1c50984605cac12adbdb`. New files are preparation artifacts on branch `docs/hackathon-demo-readiness`; they do not establish that the final deck/video exists, portal fields are complete, or submission was received. `G-SYN-001` remains OPEN / NOT PASSED.
