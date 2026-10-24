@@ -1,3 +1,15 @@
+## Catalogue publication gate — proposed implementation update (2026-10-24)
+
+**Base reviewed:** `91ed42b4ca451ab0d9a12ccf63b73d541585b45d`. The work below is on branch `feat/187-fail-closed-catalogue-gate` and is not merged or CI-verified.
+
+The baseline catalogue contains 30 programmes: 30 `DRAFT`, zero `APPROVED`; 7 have explicit null curator sign-off and 23 omit the field. The catalogue status is `DRAFT_NOT_FOR_DEFINITIVE_SCREENING`. Two retained source entries contain limitations; the governing source version and human curator sign-off remain unresolved.
+
+Proposed code adds `validateCatalogueForPublication` and calls it from the pathway-matching adapter. Any publication-gate issue forces each learner-facing outcome to `UNKNOWN` with reason code `CATALOGUE_PUBLICATION_GATE_FAILED`. Tests cover invalid/missing provenance, invalid dates/URLs/page locations, missing sign-off, unresolved rules and forged approval flags. A synthetic complete fixture tests structural acceptance only; it is not evidence of real UJ approval.
+
+**Not completed:** competing prospectus byte-level comparison; independent PDF hash and visual footnote review; definitive programme rule reconciliation; English/APS interpretation; human curator sign-off; local test/build execution; branch CI. Do not promote any programme. G-SYN-001 remains **NOT PASSED**.
+
+---
+
 ## Fresh candidate evidence update — 2026-10-23
 
 **Candidate commit:** `640bd1ade8ab274b49eb9b48999024ca5b43a334`.

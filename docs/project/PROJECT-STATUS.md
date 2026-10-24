@@ -1,3 +1,21 @@
+# Current catalogue-gate work — 2026-10-24
+
+**Base commit inspected:** `91ed42b4ca451ab0d9a12ccf63b73d541585b45d` on `main`. Work is proposed on branch `feat/187-fail-closed-catalogue-gate`; it has not been merged or deployed.
+
+**Catalogue baseline:** `uj-2027-pilot-v0.2-draft`, status `DRAFT_NOT_FOR_DEFINITIVE_SCREENING`; 30 programme records, 30 `DRAFT`, 0 `APPROVED`; 7 records explicitly have `curatorSignoff: null`, and 23 omit that property. Two official-source records are retained. Source-version approval and curator sign-off remain outstanding.
+
+**Changes proposed in this branch:**
+- Add `src/domain/eligibility/catalogue-publication-gate.mjs` to enforce explicit catalogue/source approval, source version/date/checksum/inspection evidence, official UJ HTTPS URLs, unique IDs, programme approval, named/date/scope/evidence curator sign-off, resolved rules, and exact printed-page references.
+- Integrate the gate into `src/domain/pathway-matching.mjs`. Any failed gate returns learner-facing `UNKNOWN` with `CATALOGUE_PUBLICATION_GATE_FAILED`, even if the catalogue-level status is manually changed.
+- Add automated tests for the current draft, missing catalogue/provenance/sign-off, invalid source/date/page references, forged approval flags, adapter fail-closed behavior, and a clearly synthetic structural fixture.
+- Add `docs/project/UJ-2027-CATALOGUE-EVIDENCE-AUDIT.md` with the inspected baseline and record-by-record unresolved evidence summary.
+
+**Source verification limits:** This work uses catalogue metadata already in Git. It does not independently download or hash the official PDFs, compare competing prospectus versions, visually verify every table/footnote, resolve English stream mapping or APS selection rules, or obtain human curator approval. The structural test fixture is synthetic and is not real approval.
+
+**Verification status:** The GitHub connector was used to create/update branch files. No local checkout, `npm test`, build, browser suite, or CI run was executed by this assistant for this branch. The proposed changes require review and CI. G-SYN-001 remains **NOT PASSED**; no deployment or publication is authorized.
+
+---
+
 ## PR #176 merged — 2026-10-24
 
 **Verified main commit:** `0eafef65f42c10255ba6e307e6648ee822761a30` (merge of PR #176).

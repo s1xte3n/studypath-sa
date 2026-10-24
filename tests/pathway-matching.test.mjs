@@ -46,3 +46,22 @@ test("unsupported subjects and invalid marks fail closed", () => {
 test("empty or malformed catalogue is rejected", () => {
   assert.throws(() => buildPathwayResults({ stage: "GRADE_12", subjects: [] }, null), /catalogue/);
 });
+
+test("publication-gate failures force UNKNOWN even if catalogue status is changed to approved", () => {
+  const unverified = structuredClone(catalogue);
+  unverified.status = "APPROVED_FOR_DEFINITIVE_SCREENING";
+  const results = buildPathwayResults({
+    stage: "MATRIC_GRADUATE",
+    subjects: [
+      { subject: "English First Additional Language", mark: "90" },
+      { subject: "Mathematics", mark: "90" },
+      { subject: "Physical Sciences", mark: "90" },
+      { subject: "Life Sciences", mark: "90" },
+      { subject: "Geography", mark: "90" },
+      { subject: "Accounting", mark: "90" }
+    ]
+  }, unverified);
+
+  assert.ok(results.every(item => item.state === "UNKNOWN"));
+  assert.ok(results.every(item => item.reasonCodes.includes("CATALOGUE_PUBLICATION_GATE_FAILED")));
+});
