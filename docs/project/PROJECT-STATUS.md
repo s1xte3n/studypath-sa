@@ -1,3 +1,19 @@
+# Local verification update — PR #197 merge (2026-10-24)
+
+**Reviewed commit:** `2a424b1ab085f59384ad3d2a593d5af67fb4fe08`, merge of [PR #197](https://github.com/s1xte3n/studypath-sa/pull/197).
+
+**Owner-supplied local verification on this commit:**
+- `npm test`: 86 passed, 0 failed, 0 skipped.
+- `npx playwright test`: 31 passed, 0 failed.
+- `npm run build`: passed with Vite 7.3.7.
+- `git status -sb`: `main...origin/main`; working tree clean and branch aligned with `origin/main`.
+
+These are terminal results supplied by the project owner; the assistant did not execute the commands locally. They verify the reported automated test/build results only. Physical-device testing, manual keyboard and screen-reader review, browser-matrix review, provider/hosting logs and a full external telemetry audit remain unverified. The browser network instrumentation observes only its instrumented channels.
+
+**Gate disposition: G-SYN-001 remains OPEN / NOT PASSED.** The UJ 2027 catalogue remains `DRAFT_NOT_FOR_DEFINITIVE_SCREENING`; authoritative source-file verification, full rule reconciliation and curator sign-off are still outstanding. Full privacy/hosting review, manual accessibility evidence and criterion-by-criterion release evidence reconciliation remain open. No deployment, provisioning, paid services or real learner-data use is authorized.
+
+---
+
 # Cross-screen quality review — PR #193 baseline (2026-10-24)
 
 **Reviewed main commit:** `d027fe6efab3c4c746ad79de03284ddf3d6cca91`. The branch-level review inspected `package.json`, `playwright.config.mjs`, `src/main.jsx`, `src/styles.css`, `src/domain/student-input-validation.mjs`, `tests/e2e/student-form.spec.mjs`, `tests/e2e/shortlist-tracker.spec.mjs`, and the browser E2E workflow.
