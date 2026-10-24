@@ -50,9 +50,10 @@ function buildSourceLinks(programme, catalogue) {
 }
 
 /**
- * Builds learner-facing pathway outcomes from the draft catalogue.
- * The current UJ pilot is deliberately not approved for definitive screening,
- * so its results must remain UNKNOWN regardless of the marks supplied.
+ * Builds learner-facing pathway outcomes.
+ * Hackathon-demo evaluation uses the owner-approved repository catalogue but
+ * still returns UNKNOWN when material programme rules remain unresolved.
+ * Definitive screening always requires the strict publication gate.
  */
 export function buildPathwayResults({ stage, subjects }, catalogue) {
   if (!catalogue || !Array.isArray(catalogue.programmes)) {
@@ -73,15 +74,17 @@ export function buildPathwayResults({ stage, subjects }, catalogue) {
     })
   };
 
-  const publicationGate = validateCatalogueForPublication(catalogue);
+  const demoMode = catalogue.status === "APPROVED_FOR_HACKATHON_DEMO_ONLY";
+  const publicationGate = demoMode ? null : validateCatalogueForPublication(catalogue);
 
   return catalogue.programmes.map((programme) => {
-    const outcome = publicationGate.publishable
+    const outcome = demoMode || publicationGate.publishable
       ? evaluateEligibility({
           programme,
           learnerInput,
           admissionCycle: catalogue.admissionCycle,
-          catalogueStatus: catalogue.status
+          catalogueStatus: catalogue.status,
+          evaluationMode: demoMode ? "HACKATHON_DEMO" : "DEFINITIVE"
         })
       : {
           state: "UNKNOWN",
@@ -109,9 +112,11 @@ export function buildPathwayResults({ stage, subjects }, catalogue) {
       reasonCodes: outcome.reasonCodes,
       catalogueStatus: catalogue.status,
       sourceUrl: catalogue.sources?.[0]?.url ?? null,
-      limitation: publicationGate.publishable
-        ? "Minimum requirements do not guarantee admission; consult the official institution for current requirements."
-        : "This catalogue has not passed the evidence publication gate and is not approved for definitive eligibility screening."
+      limitation: demoMode
+        ? "Hackathon-demo estimate only. Material programme rules remain unresolved; UNKNOWN is used where those gaps prevent a reliable outcome. Meeting listed minimums does not guarantee admission."
+        : publicationGate.publishable
+          ? "Minimum requirements do not guarantee admission; consult the official institution for current requirements."
+          : "This catalogue has not passed the evidence publication gate and is not approved for definitive eligibility screening."
     };
   });
 }

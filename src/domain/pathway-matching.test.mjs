@@ -33,15 +33,19 @@ test("pathway results expose programme facts and retained official UJ source URL
   assert.ok(it.sourceLinks.every(link => link.url.startsWith("https://www.uj.ac.za/")));
 });
 
-test("demo-approved catalogue results remain UNKNOWN and unresolved evidence is surfaced", () => {
-  const results = buildPathwayResults(learner, catalogue);
-  assert.ok(results.every(item => item.state === "UNKNOWN"));
+test("demo mode evaluates verified negative rules but unresolved positive outcomes stay UNKNOWN", () => {
+  const results = buildPathwayResults({ ...learner, stage: "MATRIC_GRADUATE" }, catalogue);
+  assert.ok(results.every(item => item.state !== "ELIGIBLE"));
+  assert.ok(results.some(item => item.state === "NOT_ELIGIBLE"));
+  assert.ok(results.some(item => item.state === "UNKNOWN"));
+
   const it = results.find(item => item.id === "UJ-2027-BSC-IT");
   assert.ok(it.requirementNotes.some(note => /English stream uses provisional English Home Language demo assumption/i.test(note)));
   assert.match(it.englishRequirementNote, /assumes English Home Language/i);
   assert.match(it.englishRequirementNote, /not treated as equivalent/i);
   assert.equal(it.catalogueStatus, "APPROVED_FOR_HACKATHON_DEMO_ONLY");
-  assert.match(it.limitation, /not approved for definitive eligibility screening/i);
+  assert.match(it.limitation, /Hackathon-demo estimate only/i);
+  assert.ok(it.reasonCodes.includes("MATERIAL_RULES_UNRESOLVED"));
 });
 
 test("missing detail data uses empty notes and source links rather than invented values", () => {
