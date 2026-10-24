@@ -322,21 +322,38 @@ test("no learner entries are transmitted or persisted across reload", async ({ p
   await expect(page.locator("#subject-0")).toHaveValue("");
 });
 
-test("automated accessibility scan has no critical or serious WCAG violations", async ({ page }) => {
+test("theme toggle works and light/dark surfaces have no critical or serious WCAG violations", async ({ page }) => {
+  await page.emulateMedia({ colorScheme: "light" });
   await page.goto("/");
-  const results = await new AxeBuilder({ page })
-    .withTags(["wcag2a", "wcag2aa", "wcag21a", "wcag21aa"])
-    .analyze();
+  const scanBlockingViolations = async () => {
+    const results = await new AxeBuilder({ page })
+      .withTags(["wcag2a", "wcag2aa", "wcag21a", "wcag21aa"])
+      .analyze();
+    const blocking = results.violations.filter(violation =>
+      violation.impact === "critical" || violation.impact === "serious"
+    );
+    expect(blocking, JSON.stringify(blocking.map(item => ({
+      id: item.id,
+      impact: item.impact,
+      description: item.description,
+      nodes: item.nodes.map(node => node.target)
+    })), null, 2)).toEqual([]);
+  };
 
-  const blocking = results.violations.filter(violation =>
-    violation.impact === "critical" || violation.impact === "serious"
-  );
-  expect(blocking, JSON.stringify(blocking.map(item => ({
-    id: item.id,
-    impact: item.impact,
-    description: item.description,
-    nodes: item.nodes.map(node => node.target)
-  })), null, 2)).toEqual([]);
+  const darkButton = page.getByRole("button", { name: "Switch to dark mode" });
+  await expect(darkButton).toBeVisible();
+  await expect(darkButton).toHaveAttribute("aria-pressed", "false");
+  await scanBlockingViolations();
+
+  await darkButton.click();
+  await expect(page.locator(".app-shell")).toHaveClass(/theme-dark/);
+  const lightButton = page.getByRole("button", { name: "Switch to light mode" });
+  await expect(lightButton).toHaveAttribute("aria-pressed", "true");
+  await scanBlockingViolations();
+
+  await lightButton.click();
+  await expect(page.locator(".app-shell")).toHaveClass(/theme-light/);
+  await expect(page.getByRole("button", { name: "Switch to dark mode" })).toHaveAttribute("aria-pressed", "false");
 });
 
 test("transient learner entries are not persisted in browser storage or restored across tabs and reloads", async ({ page, context }) => {
