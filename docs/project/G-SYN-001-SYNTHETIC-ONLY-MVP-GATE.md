@@ -304,3 +304,20 @@ Source review confirms current automated coverage for malformed and boundary mar
 \n\n## Issue #203 — NSC/APS separation guardrail (2026-10-24)
 
 The UI may explain the commonly seven-subject NSC profile and the separate provisional six-subject UJ APS input. It must not infer NSC pass, Bachelor/Diploma/Higher Certificate access level, or programme eligibility from APS. The current provisional calculator returns `UNKNOWN` for more than six supported non-Life-Orientation subjects and does not auto-select a subset. DBE source URLs and evidence limits are documented in `docs/product/NSC-AND-APS-DISTINCTION.md`. No pass-level thresholds are implemented. G-SYN-001 remains **OPEN / NOT PASSED**.
+
+
+---
+
+## Canonical Issue #185 evidence and G-SYN-001 disposition — 2026-10-24
+
+This is the current reconciliation for Issue #185; it supersedes older Issue #185 notes in this file that say the same regression CI is pending. Historical entries are retained as history.
+
+**Owner-reported Issue #185 disposition:** the project owner confirms acceptance criteria 1–10 have been tested and approved, including 320 CSS-pixel and desktop layouts, reset/reload/fresh-session behaviour, privacy checks across observable channels, synthetic-only data and accurate `UNKNOWN` disclosures, and explicit recording of remaining manual accessibility/device/browser/hosting-log/telemetry checks. This confirmation is owner-reported; the assistant has not independently reproduced those checks. Outstanding manual checks are not passed merely because they have been recorded.
+
+**Local test/build evidence:** `docs/project/LOCAL-VERIFICATION-2026-10-24.md` records owner-supplied results (`npm test`: 100/100; `npm run build`: successful; `npx playwright test`: 34/34). Exact local HEAD and `git status` were not captured, so do not claim this run is tied to a specific commit or is assistant-executed.
+
+**Remote CI links reported for current main work:** [Browser MVP build #252](https://github.com/s1xte3n/studypath-sa/actions/runs/40130511587), [Contract tests #349](https://github.com/s1xte3n/studypath-sa/actions/runs/40130511577), [Browser E2E/privacy/accessibility #246](https://github.com/s1xte3n/studypath-sa/actions/runs/40130511614), and [GitHub Pages preview workflow #27](https://github.com/s1xte3n/studypath-sa/actions/runs/40130511684). These workflow links do not substitute for manual review, catalogue curation, or release approval.
+
+**Issue #185:** criteria 1–10 are owner-confirmed; criterion 11 (link evidence and reconcile status/traceability documents) remains open pending review/merge and a final issue update. Manual keyboard/screen-reader review, physical-device/browser-matrix checks, host/provider logs and external telemetry review remain not evidenced. The privacy harness cannot prove behaviour outside its instrumented channels.
+
+**G-SYN-001 remains OPEN / NOT PASSED.** Separate gate blockers remain, including authoritative source-version verification, full catalogue rule reconciliation and institutional curator sign-off; broader privacy/accessibility/reproducibility evidence must be evaluated against the gate criteria. The catalogue remains `DRAFT_NOT_FOR_DEFINITIVE_SCREENING`, and programme eligibility must remain `UNKNOWN` when source-backed rules are unresolved. Synthetic data only; no production deployment, cloud provisioning, or real learner-data use is authorized.
