@@ -737,3 +737,12 @@ The GitHub combined status endpoint for `d377512d38cf4e93833e1c50984605cac12adbd
 **Evidence limits / outstanding manual work:** the assistant did not execute a local clean install, npm test, Playwright or build. The linked CI runs are remote CI evidence, not local reproduction. A human manual keyboard walkthrough, screen-reader review, physical-device/browser-matrix checks, and hosting/provider log plus external telemetry review have not been evidenced. Browser instrumentation only observes the channels and scenarios explicitly exercised; it is not proof of zero leakage across all platform/hosting channels.
 
 **Disposition:** the implementation-level regression coverage and exact-SHA CI are evidenced. Issue #185 must remain open until the remaining manual/privacy evidence is recorded or explicitly marked blocked with an owner and accepted scope. G-SYN-001 remains **OPEN / NOT PASSED**; the UJ 2027 catalogue remains DRAFT_NOT_FOR_DEFINITIVE_SCREENING, and all draft-catalogue eligibility results must remain UNKNOWN. No deployment, cloud provisioning, real learner data, or production-readiness claim is approved.
+
+
+## APS hackathon heuristic update — 2026-10-24
+
+**Status:** proposed in PR; not merged or CI-verified.
+
+Online research found UJ's public FAQ says APS uses the six best school subjects excluding Life Orientation, while including required programme subjects. UKZN and UCT publish similar but institution-specific variants. The hackathon implementation therefore proposes a provisional general estimate using the six highest supported non-LO achievement levels, plus an optional `requiredSubjects` input that forces programme-required subjects into the six before filling remaining places with the highest levels. The UI explicitly warns that the general score is not programme-specific.
+
+This is a demo heuristic, not a definitive UJ 2027 rule approval. Programme matching remains `UNKNOWN` because the catalogue has no curator-approved programme records. The prospectus/source audit and production verification remain open. G-SYN-001 remains OPEN / NOT PASSED. See [APS-189-ACCEPTANCE-RECONCILIATION.md](APS-189-ACCEPTANCE-RECONCILIATION.md) when merged and [PR #209](https://github.com/s1xte3n/studypath-sa/pull/209).
