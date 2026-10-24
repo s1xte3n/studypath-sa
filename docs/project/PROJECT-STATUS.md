@@ -608,3 +608,13 @@ The GitHub combined status endpoint for `d377512d38cf4e93833e1c50984605cac12adbd
 7. Continue catalogue provenance/rule reconciliation, curator sign-off and full hosting/provider/telemetry privacy review before considering `G-SYN-001` closure.
 
 **Gate:** `G-SYN-001` remains **OPEN / NOT PASSED**. Documentation preparation is not app verification or release approval. No public deployment, Azure provisioning, paid services, or real learner data were used or authorized.
+
+
+## Core journey stale-state fix — proposed PR (2026-10-24)
+
+- **Inspected baseline:** `301c7515e2e66c071da7cf12d26ae6e00158aa08` on `main`.
+- **Observed defect:** profile input changes clear visible results and validation notices, but leave `savedPathways` and `tracking` in React state. A subsequent submission can therefore reveal shortlist entries and manual notes created for an earlier profile.
+- **Proposed change:** the shared profile-change invalidation handler also clears the shortlist and tracker; add a Playwright regression covering save, add a tracker note, edit a mark, and submit the revised profile.
+- **Affected files:** `src/main.jsx`, `tests/e2e/student-form.spec.mjs`, `docs/product/TRACEABILITY-MATRIX.md`.
+- **Verification status:** source inspected through GitHub; no local checkout or local tests were run by this assistant. Branch created from the reviewed baseline; PR CI is required before treating the regression as verified.
+- **Unchanged safeguards:** synthetic inputs only; UJ catalogue remains draft and learner-facing eligibility remains UNKNOWN; G-SYN-001 remains **NOT PASSED**. No deployment, provisioning, or submission-artefact work is included.
