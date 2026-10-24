@@ -56,6 +56,11 @@ test("missing, fractional, and out-of-range marks are rejected", () => {
   }
 });
 
+test("unsupported subjects and non-string/non-number marks are rejected", () => {
+  assert.equal(calculateProvisionalAps(six.map((row, index) => index === 0 ? { ...row, subject: "Computer Science" } : row)).state, "INPUT_REJECTED");
+  assert.equal(calculateProvisionalAps(six.map((row, index) => index === 0 ? { ...row, mark: true } : row)).state, "INPUT_REJECTED");
+});
+
 test("source disclosure remains a draft and identifies the official prospectus", () => {
   assert.equal(APS_SOURCE.status, "DRAFT_NOT_FOR_DEFINITIVE_SCREENING");
   assert.equal(APS_SOURCE.printedPage, 16);
