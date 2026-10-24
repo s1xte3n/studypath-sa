@@ -300,3 +300,14 @@ This section supersedes the earlier Issue #185 row statuses below that say candi
 **Exact-SHA CI:** [Browser E2E/privacy/accessibility](https://github.com/s1xte3n/studypath-sa/actions/runs/40107386820), [Browser MVP build](https://github.com/s1xte3n/studypath-sa/actions/runs/40107386703), [Contract tests](https://github.com/s1xte3n/studypath-sa/actions/runs/40107386834), and [UJ eligibility golden cases](https://github.com/s1xte3n/studypath-sa/actions/runs/40107386706) all completed successfully on the reviewed SHA. The assistant did not run these commands locally.
 
 **Remaining gate evidence:** manual screen-reader/keyboard review, physical-device/browser-matrix review, hosting/provider logs, external telemetry and a clean local reproduction are unverified. Keep Issue #185 open until these are recorded or the project owner explicitly accepts a bounded demo-only disposition. G-SYN-001 remains OPEN / NOT PASSED.
+
+
+## APS six-subject selection — hackathon heuristic proposal (2026-10-24)
+
+| Requirement | Implementation proposal | Test coverage added in PR #209 | Limitations |
+|---|---|---|---|
+| APS-189-01 — count six non-LO subjects | Select six highest achievement levels for a general indicative score; Life Orientation excluded | More-than-six selection and LO exclusion | General score may not match a particular programme |
+| APS-189-02 — include required programme subjects | Optional `requiredSubjects` input forces all declared required subjects into the six, then fills remaining places by highest levels | Required-subject inclusion and missing/invalid required-subject cases | Only valid when the programme's required-subject list is verified; current draft catalogue does not supply approved rules |
+| APS-189-03 — fail safely with incomplete data | Fewer than six subjects or missing required subjects yields `UNKNOWN`; invalid marks/duplicates rejected | Unit tests in `tests/provisional-aps.test.mjs` | Does not upgrade programme eligibility from UNKNOWN |
+
+**Evidence status:** public online research informs a hackathon-only provisional heuristic; this is not source-curator approval. CI and test results for PR #209 must be checked against its exact head SHA. Keep UJ catalogue `DRAFT_NOT_FOR_DEFINITIVE_SCREENING` and G-SYN-001 OPEN / NOT PASSED.
