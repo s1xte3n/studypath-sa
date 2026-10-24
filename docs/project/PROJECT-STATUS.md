@@ -1,4 +1,17 @@
-## Current main UI regression repair — 2026-10-24
+## PR #176 merged — 2026-10-24
+
+**Verified main commit:** `0eafef65f42c10255ba6e307e6648ee822761a30` (merge of PR #176).
+
+- Theme toggle and dark-theme styles are merged.
+- Dark-theme footer wordmark contrast override is included.
+- Owner-reported successful CI on the merge commit: Contract tests #258, Browser MVP build #161, UJ eligibility golden-case #108, and Browser E2E/privacy/accessibility #155.
+- These workflow results are evidence for this commit; they do not establish production readiness or completion of the broader target UX.
+- The target experience remains documented in `docs/product/END-PRODUCT-UX-VISION.md`; perform a code-to-acceptance-criteria gap analysis before choosing the next implementation slice.
+- Local Playwright execution was not performed by this assistant. The project owner supplied a failing local/CI test output before the CSS correction; the merged-commit browser workflow subsequently passed.
+
+---
+
+## Earlier repair notes — 2026-10-24
 
 **Main baseline inspected:** `268d6f03322f82b7c47a3ddf0598e067880a73a1` (PR #175, `v0/uj-fnb-purple-theme`). The merge diff removed the theme toggle and its dark-theme CSS that had been introduced by PR #174. The browser accessibility check reported a contrast ratio of 4.07:1 for `#0876c9` text on `#f1ecf8`, below the 4.5:1 WCAG AA threshold for normal text.
 
@@ -10,7 +23,7 @@
 - Extend the browser accessibility test to exercise the toggle and scan both themes.
 - Record the requested end-product design baseline in `docs/product/END-PRODUCT-UX-VISION.md`.
 
-**Verification status:** no local test run is claimed. Await PR checks for the restored theme, contrast correction, and new test. Recheck the current branch/PR before merging. The broader end-product experience remains a target baseline; it is not claimed fully implemented.
+**Historical verification note (superseded):** this note described the pre-merge state. PR #176 has since merged; see the current status section above. The broader end-product experience remains a target baseline and is not claimed fully implemented.
 
 ---
 ## Fresh-session demo and repository hygiene evidence — 2026-10-23
