@@ -1,3 +1,17 @@
+# APS issue #189 — fail-closed acceptance update (2026-10-24)
+
+**Reviewed base:** `main` at `a48eb653cabae511c60d9a49043ff6a2532c2457`.  
+**Candidate branch:** `fix/189-aps-fail-closed-selection`.  
+**Decision:** the current issue acceptance contract requires exactly six supported non-Life-Orientation subjects for a provisional total. Fewer or more than six must return `UNKNOWN`; no automatic subset selection or programme-required-subject inclusion is allowed until the applicable official rule is verified, versioned and curator-reviewed.
+
+**Candidate changes:** calculator and tests updated; learner-facing limitation text updated; browser regression changed to expect `UNKNOWN` for more than six eligible subjects. Relevant paths: `src/domain/eligibility/provisional-aps.mjs`, `src/main.jsx`, `tests/provisional-aps.test.mjs`, `tests/e2e/student-form.spec.mjs`.
+
+**Verification:** files have been committed to the candidate branch through GitHub contents operations. The assistant has not run tests or a build locally. Candidate CI has not yet been verified. Do not mark issue #189 complete or claim these changes pass until workflows run on the exact PR head.
+
+**Source/curator gate:** `docs/project/UJ-2027-CATALOGUE-EVIDENCE-AUDIT.md` still reports 30 draft records and zero approved records; governing source-version confirmation, complete rule/footnote verification and curator sign-off remain outstanding. Programme eligibility must remain `UNKNOWN`; G-SYN-001 remains **OPEN / NOT PASSED**. No deployment, provisioning or real learner data is authorized.
+
+---
+
 # Cross-screen regression update — issue #185 (2026-10-24)
 
 **Reviewed `main` baseline:** `82b60fac1476192c66082aa8b1ff2b1fd25a34be` ([commit](https://github.com/s1xte3n/studypath-sa/commit/82b60fac1476192c66082aa8b1ff2b1fd25a34be)). This is the repository's latest commit confirmed before this branch was created.
