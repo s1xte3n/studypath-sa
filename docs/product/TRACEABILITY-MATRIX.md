@@ -194,3 +194,18 @@ The merged subject and pathway documents define additional **planned** tests. Th
 | Decision | Requirements / acceptance criteria | Planned verification | Disposition and evidence boundary |
 |---|---|---|---|
 | D-048 — authenticated-feature boundary accepted | D-046; REQ-AUTH-001; AC-AUTH-001–016; AC-APP-001–009 for page-memory-only tracker | T-AUTH-001–018, T-PRV-001–004, T-API-001–004 and G-SYN-001 privacy canaries remain planned until contracts and implementation are ready | Owner approval recorded in PR #74 and docs/project/DECISIONS.md. Five authenticated features remain future scope, excluded from current local demo; profile persistence requires separate opt-in; tracker remains page-memory-only. This is decision evidence only, not test execution, runtime privacy verification, implementation, or release evidence. Exact contracts remain in Q-018 / Phase 3 and Q-020. |
+
+
+## Cross-screen quality review addendum — 2026-10-24
+
+**Reviewed baseline:** `d027fe6efab3c4c746ad79de03284ddf3d6cca91` (PR #193 merge). This repository review found existing browser coverage for the primary journey, draft-catalogue UNKNOWN disclosure, reset, shortlist/tracker lifecycle, selected privacy channels, keyboard focus, 320px layout, axe critical/serious findings in light/dark themes, and dark-theme contrast.
+
+| Test ID | Requirement(s) | New regression coverage proposed in PR #194 | Evidence status |
+|---|---|---|---|
+| T-EXP-002 | REQ-EXP-001 | Fractional, negative, blank, and >100 browser marks must block results and associate an error with the mark field | Added to Playwright spec; awaiting CI |
+| T-EXP-003 | REQ-EXP-001 | Duplicate canonical subjects must be rejected before evaluation | Added to Playwright spec; awaiting CI |
+| T-UX-003 | REQ-UX-001, NFR-ACC-001 | Missing stage must expose field-specific invalid state and error association | Added to Playwright spec; awaiting CI |
+| T-UX-001 | REQ-UX-001, NFR-ACC-001 | Desktop viewport (1440 CSS px) must show results without document horizontal overflow | Added to Playwright spec; awaiting CI |
+
+Automation is not manual accessibility certification. Manual keyboard/screen-reader checks, actual-device review, full privacy/provider review, and candidate-commit verification remain outstanding. The UJ draft catalogue remains fail-closed to UNKNOWN; G-SYN-001 remains NOT PASSED.
+
