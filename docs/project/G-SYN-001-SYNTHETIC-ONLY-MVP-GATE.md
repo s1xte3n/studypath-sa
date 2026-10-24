@@ -1,3 +1,15 @@
+## Local verification update — PR #197 merge (2026-10-24)
+
+**Reviewed commit:** `2a424b1ab085f59384ad3d2a593d5af67fb4fe08`, merge of [PR #197](https://github.com/s1xte3n/studypath-sa/pull/197).
+
+**Owner-supplied local results:** `npm test` — 86 passed, 0 failed, 0 skipped; `npx playwright test` — 31 passed, 0 failed; `npm run build` — passed with Vite 7.3.7. The owner also reported a clean working tree on `main`, aligned with `origin/main`. The assistant did not execute these commands locally.
+
+This closes the owner-reported local automated test/build evidence gap for the reviewed commit only. Manual keyboard/screen-reader and physical-device review, full privacy/hosting/provider review, authoritative catalogue source/rule reconciliation, curator sign-off and the criterion-by-criterion evidence audit remain open.
+
+**Gate decision: OPEN / NOT PASSED.** Keep all draft-catalogue learner outcomes `UNKNOWN`. No deployment, provisioning, paid services, or real learner-data use is authorized.
+
+---
+
 ## Post-merge reconciliation — PR #192 (2026-10-24)
 
 **Status supersedes the earlier proposed/unmerged wording below.** The fail-closed catalogue publication gate is merged on main at `8cb0a0c66a326484b4f158e61eadddcb792c2cbb` via [PR #192](https://github.com/s1xte3n/studypath-sa/pull/192).
