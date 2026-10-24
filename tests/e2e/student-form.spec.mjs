@@ -406,7 +406,7 @@ test("populated dark-theme pathway details and shortlist have no color-contrast 
   await page.locator("#mark-1").fill("81");
   await page.getByRole("button", { name: /Explore pathways/ }).click();
 
-  await expect(page.locator(".result-card")).toHaveCount(7);
+  await expect(page.locator(".result-card")).toHaveCount(30);
   const details = page.locator(".pathway-details").first();
   await details.locator("summary").click();
   await expect(details.locator(".pathway-details-content")).toBeVisible();
