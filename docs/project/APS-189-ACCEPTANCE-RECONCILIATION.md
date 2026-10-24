@@ -1,42 +1,43 @@
 # APS issue #189 — acceptance reconciliation
 
 **Updated:** 2026-10-24  
-**Scope:** Reconcile the implemented hackathon demo with the still-open authoritative-source and curator-approval gates. This document does not approve the UJ catalogue or enable definitive eligibility screening.
+**Scope:** Align implementation with the current fail-closed acceptance contract. This document does not approve the UJ catalogue or enable definitive eligibility screening.
 
 ## Current decision
 
-The hackathon demo now calculates an **indicative best-six APS heuristic** from supported supplied subjects, excluding Life Orientation. Where configured, required subjects are included in the six before the remaining places are filled by the highest achievement levels. The UI explains the selection and marks the score as provisional.
+The learner-facing demo may show a provisional total **only when exactly six distinct supported non-Life-Orientation subjects are supplied**. Fewer than six returns `UNKNOWN`; more than six also returns `UNKNOWN` with no total and no automatic subject selection. Life Orientation is excluded and disclosed.
 
-This is a demo behavior, **not an approved, authoritative UJ admissions rule**. The implementation change does not resolve the source audit or curator-approval requirements, and APS does not determine programme eligibility. Programme outcomes must remain `UNKNOWN` while the catalogue publication gate is closed.
+The retained catalogue/source audit does not resolve the governing source version, subject-selection policy for more than six subjects, or programme-required-subject selection. Until these are verified, versioned and curator-reviewed, the demo must not apply a best-six heuristic or force required subjects into the total. This deliberately fails closed rather than implying an unapproved admissions rule.
 
-## Merged implementation
+## Implementation history and current candidate
 
-- **PR #209:** [Apply UJ best-six APS heuristic for hackathon demo](https://github.com/s1xte3n/studypath-sa/pull/209)
-- **Merge commit:** [`9116c0d7faf68ab1be91b047c1cabff0b1aafb7e`](https://github.com/s1xte3n/studypath-sa/commit/9116c0d7faf68ab1be91b047c1cabff0b1aafb7e)
-- **Relevant files:** `src/domain/eligibility/provisional-aps.mjs`, `src/main.jsx`, `tests/provisional-aps.test.mjs`, `tests/e2e/student-form.spec.mjs`.
-
-The repository owner reported successful merge-commit workflows for Browser E2E/privacy/accessibility, Browser MVP build, contract tests, UJ eligibility golden-case verification, and the GitHub Pages preview workflow. Those results are CI evidence for the merge commit; the preview workflow alone is not proof of production deployment or approval.
+- **Historical PR #209:** [Apply UJ best-six APS heuristic for hackathon demo](https://github.com/s1xte3n/studypath-sa/pull/209), merge commit [`9116c0d7faf68ab1be91b047c1cabff0b1aafb7e`](https://github.com/s1xte3n/studypath-sa/commit/9116c0d7faf68ab1be91b047c1cabff0b1aafb7e) introduced best-six demo selection.
+- The current issue #189 acceptance contract supersedes that provisional selection behavior until authoritative policy and curator review exist.
+- **Candidate change:** branch `fix/189-aps-fail-closed-selection` changes `src/domain/eligibility/provisional-aps.mjs`, `src/main.jsx`, `tests/provisional-aps.test.mjs` and `tests/e2e/student-form.spec.mjs` to fail closed for more than six eligible subjects and remove programme-required-subject selection from the calculator.
+- Candidate CI has not yet been verified. Do not describe this branch as merged or tested.
 
 ## Acceptance disposition
 
 | Requirement / control | Current disposition | Remaining evidence or action |
 |---|---|---|
-| Deterministic provisional mark-to-level calculation | Implemented; automated coverage exists | Keep tests aligned with any future rule changes |
-| Best-six selection for the hackathon demo | Implemented in PR #209 | Clearly label as provisional/demo behavior |
-| Life Orientation exclusion and explanation | Implemented; browser assertion covers exclusion copy | Retain regression coverage |
-| Required-subject inclusion | Supported by the demo configuration | Verify cycle- and programme-specific rules against authoritative sources before any definitive use |
-| APS separated from programme eligibility | Required; programme eligibility remains `UNKNOWN` while the catalogue gate is closed | Do not infer eligibility from an APS total |
+| Deterministic mark-to-level calculation | Implemented; unit tests cover documented boundaries | Verify applicable official source version and notes/footnotes |
+| Exactly six distinct non-Life-Orientation subjects | Provisional total allowed | Source/curator review still required |
+| Fewer than six eligible subjects | Returns `UNKNOWN` with no total | Retain tests |
+| More than six eligible subjects | Returns `UNKNOWN` with no automatic selection | Current candidate tests the fail-closed result |
+| Programme-required-subject inclusion | Not implemented pending verification | Verify applicable cycle- and programme-specific rules before adding |
+| Life Orientation exclusion | Excluded and shown to the learner | Retain unit/browser coverage |
+| APS separated from programme eligibility | Programme outcomes remain `UNKNOWN` while catalogue gate is closed | Do not infer eligibility from an APS total |
 | Governing UJ source version, scale, footnotes and selection semantics | **Blocked** | Verify official source files, version, printed pages, footnotes and relevant programme rules |
-| Catalogue approval and curator sign-off | **Blocked**; audited catalogue remains `DRAFT_NOT_FOR_DEFINITIVE_SCREENING`, with zero curator-approved programme records | Record dated, scoped, evidence-backed curator approval before publication |
+| Catalogue approval and curator sign-off | **Blocked**; catalogue remains `DRAFT_NOT_FOR_DEFINITIVE_SCREENING`, with zero curator-approved records | Record dated, scoped, evidence-backed curator approval before publication |
 | Manual accessibility and broader privacy review | **Open** under [issue #185](https://github.com/s1xte3n/studypath-sa/issues/185) | Manual keyboard/screen-reader, device/browser matrix, hosting/provider logs and external telemetry review remain unverified |
-| Overall synthetic demo gate | **G-SYN-001: OPEN / NOT PASSED** | Complete the gate’s full criterion-by-criterion evidence review |
+| Overall synthetic demo gate | **G-SYN-001: OPEN / NOT PASSED** | Complete criterion-by-criterion evidence review |
 
 ## Required next steps
 
-1. Keep issue [#189](https://github.com/s1xte3n/studypath-sa/issues/189) open until source verification and curator approval criteria pass.
-2. Verify the governing UJ source version, APS bands, selection semantics, programme-specific required subjects and footnotes against official materials.
+1. Review and merge the fail-closed candidate only if unit, browser, contract, golden-case and build workflows pass on its exact head SHA.
+2. Verify the governing UJ 2027 source version, APS bands, selection semantics, programme-specific required subjects and footnotes against official materials.
 3. Record human curator sign-off with reviewer, date, scope and supporting evidence; automated tests are not curator approval.
-4. Update the versioned catalogue/rule contract and golden cases in a separate reviewed change if source verification changes the rule.
+4. Only after the source/rule gate passes, propose any best-six or programme-required-subject behavior as a separate reviewed change with versioned rules and golden cases.
 5. Keep all affected programme eligibility results `UNKNOWN` until the catalogue publication gate passes.
 
 ## Guardrails
