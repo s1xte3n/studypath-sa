@@ -380,3 +380,23 @@ This owner decision supersedes older wording in this matrix that treats absent i
 | Definitive publication | `src/domain/eligibility/catalogue-publication-gate.mjs` remains unchanged and mandatory outside demo mode | Regression asserts failed publication gate still forces `UNKNOWN` | Candidate branch; CI pending |
 
 Detailed rule-by-rule disposition and verification boundary: [ELIGIBILITY-DEMO-RULE-EVALUATION.md](../project/ELIGIBILITY-DEMO-RULE-EVALUATION.md). G-SYN-001 remains OPEN / NOT PASSED; no local execution or CI result is claimed before candidate workflows complete.
+
+
+---
+
+## Issue #185 — final status reconciliation (2026-10-24)
+
+**Issue status: CLOSED for bounded hackathon-demo scope.** Acceptance criteria 1–10 are owner-confirmed, including the main journey, input/error and reset cases, automated accessibility checks, responsive checks, observable browser privacy checks, and synthetic-only/UNKNOWN disclosures. The project owner separately confirms keyboard-only navigation, screen-reader behaviour, physical-device checks and browser compatibility. These manual checks are owner-reported and were not independently reproduced by the assistant.
+
+| Requirement / acceptance scope | Implementation and test mapping | Evidence | Final issue disposition |
+|---|---|---|---|
+| UX-185-01 — validation and accessible field associations | `src/main.jsx`; `tests/e2e/student-form.spec.mjs` | [Browser E2E/privacy/accessibility #248](https://github.com/s1xte3n/studypath-sa/actions/runs/40131646027); owner-supplied local verification is separately documented | Covered by recorded automation; local run is not tied to an exact SHA |
+| UX-185-02 — responsive layouts and compatibility | Student form/dashboard responsive checks; desktop overflow regression | Same E2E workflow; owner-confirmed physical-device/browser compatibility | Owner-reported manual confirmation plus automated coverage |
+| UX-185-03 — empty/draft states | Discovery dashboard empty-filter recovery; draft outcomes remain UNKNOWN | [Contract tests #361](https://github.com/s1xte3n/studypath-sa/actions/runs/40135034592); [UJ golden-case verification #176](https://github.com/s1xte3n/studypath-sa/actions/runs/40135034616) | Demo catalogue remains non-definitive; uncertainty preserved |
+| PRV-185-01 — transient state and observable browser privacy channels | E2E checks for URL, storage/cookies, requests/history instrumentation, reset/reload/fresh-session | [Browser E2E/privacy/accessibility #248](https://github.com/s1xte3n/studypath-sa/actions/runs/40131646027) | Covers instrumented local/browser channels only |
+| ACC-185-01 — accessibility | Axe light/dark scans, field associations, keyboard focus; owner-confirmed manual keyboard/screen-reader checks | Same E2E workflow and owner confirmation dated 2026-10-24 | Issue scope accepted; not an accessibility certification |
+| DOC-185-01 — evidence and status reconciliation | `docs/project/PROJECT-STATUS.md`, this matrix and `docs/project/G-SYN-001-SYNTHETIC-ONLY-MVP-GATE.md` | [PR #214](https://github.com/s1xte3n/studypath-sa/pull/214), merged commit `795bb9b7fe9c1d3976e5a3a2a927a0aa65101b17); evidence links above | Reconciled; Issue #185 closed |
+
+**Explicit deferral:** hosting/provider logs and external telemetry privacy checks are outside Issue #185's bounded hackathon acceptance scope. The browser harness does not establish behaviour in channels it does not instrument.
+
+**Separate gate remains open:** G-SYN-001 is **OPEN / NOT PASSED**. This issue closure does not approve definitive eligibility, catalogue publication, institutional endorsement, or production readiness. Keep unresolved programme outcomes UNKNOWN and use synthetic data only.
