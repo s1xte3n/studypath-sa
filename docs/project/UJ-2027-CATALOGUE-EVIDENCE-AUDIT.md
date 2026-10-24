@@ -3,7 +3,7 @@
 **Audit baseline:** `main` at `91ed42b4ca451ab0d9a12ccf63b73d541585b45d`  
 **Catalogue file:** `docs/product/uj-2027-pilot-catalogue-draft.json`  
 **Catalogue version:** `uj-2027-pilot-v0.3-hackathon-demo`  
-**Catalogue status:** `APPROVED_FOR_HACKATHON_DEMO_ONLY` (bounded demo approval; definitive-screening gate remains closed)  
+**Catalogue status:** `APPROVED_FOR_HACKATHON_DEMO_ONLY` for the catalogue and all 30 programme records (project-owner approval for bounded demo only; definitive-screening gate remains closed)  
 **Audit date:** 2026-10-24
 
 ## Baseline inventory
@@ -11,15 +11,15 @@
 | Check | Inspected result |
 |---|---|
 | Programme records | 30 |
-| Records with `status: DRAFT` | 30 |
-| Records explicitly `status: APPROVED` | 0 |
+| Records with `status: APPROVED_FOR_HACKATHON_DEMO_ONLY` | 30 |
+| Records with `status: DRAFT` | 0 |
 | Records with `curatorSignoff: null` | 7 |
 | Records with no `curatorSignoff` property | 23 |
 | Source records | 2 |
 | Source version approval | Outstanding |
 | Catalogue publication | Not approved |
 
-All 30 records remain draft. The differing shape of the missing sign-off field is a data consistency issue, but neither `null` nor an absent property represents approval.
+All 30 records are explicitly approved by the StudyPath SA project owner for the bounded hackathon demo. This does not represent UJ endorsement, institutional curator sign-off, catalogue publication approval, or permission for definitive screening. The differing shape of the missing sign-off field remains a data consistency issue; `curatorSignoff` is deliberately not fabricated.
 
 ## Retained source register
 
@@ -32,7 +32,7 @@ The retained metadata records local SHA-256 values and says the PDFs were inspec
 
 ## Programme-level evidence matrix
 
-Every record below is draft, lacks a complete approved curator sign-off, and must not support definitive eligibility. The listed printed page is the current catalogue transcription, not an independent confirmation that all footnotes and conditions have been reconciled.
+Every record below is approved for the bounded hackathon demo only, lacks institutional curator sign-off, and must not support definitive eligibility where any material rule or evidence gap remains unresolved. The listed printed page is the current catalogue transcription, not an independent confirmation that all footnotes and conditions have been reconciled.
 
 | Programme ID | Source location(s) recorded | Material open interpretation / evidence gap |
 |---|---|---|
