@@ -160,12 +160,26 @@ function App() {
           nextFieldErrors.stage = error;
           continue;
         }
+        if (error.includes("is listed more than once.")) {
+          const duplicateSubject = error.slice(0, error.indexOf(" is listed more than once."));
+          subjects.forEach((item, duplicateIndex) => {
+            if (item.subject === duplicateSubject) {
+              const duplicateErrors = nextFieldErrors.subjects[duplicateIndex] || { subject: [], mark: [] };
+              duplicateErrors.subject.push(error);
+              nextFieldErrors.subjects[duplicateIndex] = duplicateErrors;
+            }
+          });
+          continue;
+        }
         const row = error.match(/row (\d+)/)?.[1];
         if (!row) continue;
         const index = Number(row) - 1;
         const rowErrors = nextFieldErrors.subjects[index] || { subject: [], mark: [] };
-        if (error.startsWith("Choose a subject")) rowErrors.subject.push(error);
-        else if (error.startsWith("Enter a whole-number mark")) rowErrors.mark.push(error);
+        if (error.startsWith("Choose a subject") || error.startsWith("Choose a supported subject")) {
+          rowErrors.subject.push(error);
+        } else if (error.startsWith("Enter a whole-number mark")) {
+          rowErrors.mark.push(error);
+        }
         nextFieldErrors.subjects[index] = rowErrors;
       }
       setFieldErrors(nextFieldErrors);
