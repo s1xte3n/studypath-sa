@@ -834,3 +834,14 @@ The project owner has approved the sources already maintained in the repository 
 Eligibility is not forced to `UNKNOWN` merely because external sign-off is absent. The deterministic evaluator may return `ELIGIBLE` or `NOT_ELIGIBLE` where repository-backed requirements and learner inputs are sufficient to establish the result. It must return `UNKNOWN` when relevant data/rules are missing, ambiguous, conflicting, or insufficient. Preserve source links, disclose known limitations, and state that results are indicative and do not guarantee admission.
 
 This is an owner-approved hackathon evidence boundary, not institutional endorsement or production approval. It does not resolve source conflicts or missing rule details that actually exist in the repository. Evaluate remaining G-SYN-001 criteria separately; production-grade source governance and additional institutional verification are post-hackathon work.
+
+
+---
+
+## Issue #185 closure reconciliation — 2026-10-24
+
+**Disposition: CLOSED — acceptance criteria satisfied for the bounded hackathon demo.** The issue's latest owner update confirms keyboard-only navigation, screen-reader behaviour, physical-device checks and browser compatibility. Hosting/provider log inspection and external telemetry privacy checks are explicitly deferred from this issue's hackathon acceptance scope. This is owner-reported manual evidence, not an independent reproduction by the assistant.
+
+**Merged documentation reconciliation:** [PR #214](https://github.com/s1xte3n/studypath-sa/pull/214), merge commit [795bb9b7fe9c1d3976e5a3a2a927a0aa65101b17](https://github.com/s1xte3n/studypath-sa/commit/795bb9b7fe9c1d3976e5a3a2a927a0aa65101b17). Reported successful workflows for that merge: [Browser E2E, privacy and accessibility](https://github.com/s1xte3n/studypath-sa/actions/runs/40131646027), [GitHub Pages preview](https://github.com/s1xte3n/studypath-sa/actions/runs/40131645958), [Browser MVP build](https://github.com/s1xte3n/studypath-sa/actions/runs/40131645912), and [Contract tests](https://github.com/s1xte3n/studypath-sa/actions/runs/40131645884). Owner-supplied local results remain separately identified in [LOCAL-VERIFICATION-2026-10-24.md](LOCAL-VERIFICATION-2026-10-24.md); exact local HEAD was not captured and the assistant did not run those commands.
+
+**Scope boundary:** privacy automation covers only instrumented local/browser channels. Deferring external logs/telemetry from Issue #185 is not a claim that those channels were audited. This closure does not pass G-SYN-001, approve definitive eligibility, establish institutional endorsement, or imply production readiness. Preserve UNKNOWN wherever requirements remain unresolved; synthetic data only.
