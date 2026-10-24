@@ -663,3 +663,16 @@ The GitHub combined status endpoint for `d377512d38cf4e93833e1c50984605cac12adbd
 - Reuse existing 320px, light/dark axe, keyboard-focus, privacy instrumentation, reload and reset coverage rather than duplicating it.
 
 **Verification:** no local commands were executed. Candidate branch CI has not yet been observed at the time of this update. Report tests as pending until CI provides exact-commit evidence. Manual keyboard walkthrough, screen-reader review, physical-device/browser matrix, provider/hosting logs, and full external telemetry audit remain unrun/blocked. G-SYN-001 remains OPEN / NOT PASSED; no deployment, provisioning or real learner data is approved.
+
+
+# Product differentiation planning update — 2026-10-24
+
+**Trigger:** Mentor feedback from Ronny Mabokela (University of Johannesburg) said that many solutions address the same problem and StudyPath SA should be more unique.
+
+**Documentation added on branch `docs/three-pillar-differentiation`:** [THREE-PILLAR-DIFFERENTIATION.md](../product/THREE-PILLAR-DIFFERENTIATION.md), linked from the end-product UX vision and requirements traceability matrix.
+
+**Three pillars recorded:** (1) explain what a learner's actual marks support, (2) discover evidence-backed alternative routes when a preferred pathway is blocked or uncertain, and (3) organise manual application-preparation next steps, with deadlines/funding shown only when source-backed.
+
+**Existing-scope reconciliation:** Pillar 1 is partly present in the existing local journey; source-backed APS is already tracked in #189 and still depends on official rule confirmation. Pillar 2 is already represented by REQ-ALT-001 but approved relationships and a complete alternatives flow are not evidenced. Pillar 3 is present in target UX / REQ-APP-001 and REQ-FUND-001 but the tracker and funding flow are explicitly not implemented in the current local demo. This documentation does not claim uniqueness, learner validation or feature completion.
+
+**Guardrails:** no invented alternatives, progression rules, costs, deadlines or funding; keep draft-catalogue results UNKNOWN; no application submission, cloud provisioning, persistent learner data or production deployment. G-SYN-001 remains OPEN / NOT PASSED. Implementation must follow existing P0 stability and evidence prerequisites.

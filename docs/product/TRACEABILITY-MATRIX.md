@@ -243,3 +243,16 @@ The dashboard is a summary of the current in-memory result set only. It adds no 
 | ACC-185-01 — theme and accessibility regressions | Existing axe scans in light/dark themes, keyboard focus and contrast checks reused | Existing E2E suite | Automated CI pending on candidate branch; manual screen-reader review not performed |
 
 Automated coverage is not a complete manual accessibility or privacy audit. Current draft-catalogue results must remain `UNKNOWN`; G-SYN-001 remains OPEN / NOT PASSED.
+
+
+## Three-pillar differentiation reconciliation — 2026-10-24
+
+Product direction and scope mapping: [THREE-PILLAR-DIFFERENTIATION.md](THREE-PILLAR-DIFFERENTIATION.md). This is a proposed positioning hypothesis, not proof of uniqueness or implementation completion.
+
+| Pillar | Existing requirement / issue | Current implementation evidence | Remaining gap / disposition |
+|---|---|---|---|
+| 1. What can I do with my actual marks? | `REQ-EXP-001`, `REQ-MAT-001`; issues [#161](https://github.com/s1xte3n/studypath-sa/issues/161), [#187](https://github.com/s1xte3n/studypath-sa/issues/187), [#189](https://github.com/s1xte3n/studypath-sa/issues/189) | Existing input and deterministic adapter journey; source-backed APS is tracked separately | APS rules need source confirmation; UJ catalogue and curator approval remain draft/blocked; do not upgrade UNKNOWN results. |
+| 2. If I do not qualify, what other route can I take? | `REQ-ALT-001`, `AC-ALT-001–007`; related catalogue issue [#187](https://github.com/s1xte3n/studypath-sa/issues/187) and comparison issue [#186](https://github.com/s1xte3n/studypath-sa/issues/186) | Requirements and target UX describe alternatives; no approved relationship pair / complete alternatives UI is evidenced | Implement explicit relationship data and alternatives UI only after authoritative source review and curator sign-off. If no verified alternative exists, say so; do not infer progression. |
+| 3. What do I do next? | `REQ-APP-001`, `REQ-FUND-001`; target UX includes manual tracking | Traceability states the current local demo has no learner-facing tracker or funding flow | Manual tracker is deferred from the current balanced sprint; funding discovery is not implemented. Define and test a page-memory-only tracker; add deadlines/funding only from authoritative, dated sources. |
+
+All three pillars must preserve synthetic-only demo data, no application submission, no admission/funding guarantees, and no unverified facts. Add implementation paths, test IDs, exact commit/CI links and release evidence only after work is actually completed and verified. G-SYN-001 remains OPEN / NOT PASSED.
