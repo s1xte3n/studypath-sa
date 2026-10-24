@@ -434,3 +434,18 @@ Reviewed main SHA: 4204f0b8bf350e4d7d7b7d890c47038415c5aabc.
 - Source-of-truth evidence summaries updated in docs/project/PROJECT-STATUS.md, docs/product/TRACEABILITY-MATRIX.md, and docs/project/G-SYN-001-SYNTHETIC-ONLY-MVP-GATE.md.
 - Not evidenced: assistant-run local clean install/tests/build, manual screen-reader/keyboard review, physical-device/browser-matrix checks, hosting/provider logs and external telemetry review.
 - Disposition: automated regression/CI evidence present; Issue #185 remains open for manual and broader privacy evidence. G-SYN-001 remains OPEN / NOT PASSED.
+
+
+---
+
+## Issue #160 — delivery artefact status (2026-10-25)
+
+| Artefact / workstream | Repository evidence | Status |
+|---|---|---|
+| `docs/project/DEMO-RUNBOOK.md` | Timed three-minute synthetic journey, expected UNKNOWN outcomes, reset/fallback steps | Draft present on main; live rehearsal not verified |
+| `docs/project/PRESENTATION-DECK-CONTENT.md` | Ten-slide content outline aligned to supplied programme | Draft present on main; final PDF export and frozen-build screenshots not verified |
+| `docs/project/HACKATHON-SUBMISSION-CHECKLIST.md` | Checklist records max 10 slides, <=90-second video, deck video link, SSDLC/Lean Canvas and portal confirmation requirements | Checklist present; portal completion/submission not verified |
+| Issue #189 provisional APS | Unit/browser test paths and fail-closed contract documented in issue | Open; unresolved source-selection policy remains a blocker |
+| Overall G-SYN-001 | `docs/project/G-SYN-001-SYNTHETIC-ONLY-MVP-GATE.md` | OPEN / NOT PASSED |
+
+**Next action:** Issue #164 is the delivery-critical child issue. Final artefacts must be generated from a frozen candidate and checked against the actual app; repository drafts are not proof of completed submission.
