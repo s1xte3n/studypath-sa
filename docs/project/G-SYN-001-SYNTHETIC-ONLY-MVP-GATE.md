@@ -1,3 +1,17 @@
+## Post-merge reconciliation — PR #192 (2026-10-24)
+
+**Status supersedes the earlier proposed/unmerged wording below.** The fail-closed catalogue publication gate is merged on main at `8cb0a0c66a326484b4f158e61eadddcb792c2cbb` via [PR #192](https://github.com/s1xte3n/studypath-sa/pull/192).
+
+Owner-supplied successful CI runs on that exact merge commit:
+- [Contract tests #287](https://github.com/s1xte3n/studypath-sa/actions/runs/40095802263)
+- [UJ eligibility golden-case verification #125](https://github.com/s1xte3n/studypath-sa/actions/runs/40095802269)
+- [Browser E2E, privacy and accessibility #184](https://github.com/s1xte3n/studypath-sa/actions/runs/40095802279)
+- [Browser MVP build #190](https://github.com/s1xte3n/studypath-sa/actions/runs/40095802289)
+
+These results establish that the listed CI workflows passed for this commit; they do not satisfy every G-SYN criterion or approve the real UJ catalogue. The catalogue remains `DRAFT_NOT_FOR_DEFINITIVE_SCREENING`; independent source-file hash/visual verification, rule reconciliation and named curator sign-off remain outstanding. Therefore G-SYN-001 remains **NOT PASSED**. No manual screen-reader audit, full privacy/hosting/provider review, or local clean-install run is claimed by this update. The Pages preview workflow completion is not, by itself, evidence of a completed deployment.
+
+---
+
 ## Catalogue publication gate — proposed implementation update (2026-10-24)
 
 **Base reviewed:** `91ed42b4ca451ab0d9a12ccf63b73d541585b45d`. The work below is on branch `feat/187-fail-closed-catalogue-gate` and is not merged or CI-verified.
