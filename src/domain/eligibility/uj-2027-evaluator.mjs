@@ -5,7 +5,7 @@ const norm=x=>typeof x==="string"?x.trim().toUpperCase():"";
 const EN=["ENGLISH","ENGLISH_HOME_LANGUAGE","ENGLISH_FIRST_ADDITIONAL_LANGUAGE","ENGLISH_SECOND_ADDITIONAL_LANGUAGE"];
 function subjectsOf(input){if(!input||!Array.isArray(input.subjects))return {error:R("INPUT_REJECTED","INVALID_INPUT_SHAPE","Subjects are required.")};const a=[],seen=new Set();for(const x of input.subjects){const id=norm(x?.subjectId);if(!id)return {error:R("INPUT_REJECTED","INVALID_SUBJECT_INPUT","A subject ID is invalid.")};if(seen.has(id))return {error:R("INPUT_REJECTED","DUPLICATE_SUBJECT_INPUT","Duplicate canonical subject.")};seen.add(id);if(!Number.isInteger(x.percent)||x.percent<0||x.percent>100)return {error:R("INPUT_REJECTED","INVALID_MARK_INPUT","Marks must be integers from 0 to 100.")};a.push({id,percent:x.percent,level:levelForPercent(x.percent)});}return {a};}
 function apsFor(a,required){const chosen=new Map();const eligible=a.filter(s=>s.id!=="LIFE_ORIENTATION");for(const id of required){const s=eligible.find(x=>x.id===id);if(!s)return null;chosen.set(id,s);}for(const s of [...eligible].sort((x,y)=>y.level-x.level||x.id.localeCompare(y.id))){if(chosen.size===6)break;if(!chosen.has(s.id))chosen.set(s.id,s);}return chosen.size===6?[...chosen.values()].reduce((n,s)=>n+s.level,0):null;}
-export function evaluateEligibility({programme,learnerInput,admissionCycle,catalogueStatus,testOnlyAssumptions=false}){
+export function evaluateEligibility({programme,learnerInput,admissionCycle,catalogueStatus,evaluationMode="DEFINITIVE",testOnlyAssumptions=false}){
  if(!programme)return R("INPUT_REJECTED","PROGRAMME_REQUIRED","Programme record is required.");
  if(admissionCycle!=="2027")return R("UNKNOWN","ADMISSION_CYCLE_UNVERIFIED","Admission cycle is unverified.");
  if(catalogueStatus==="SOURCE_CONFLICT")return R("UNKNOWN","MATERIAL_SOURCE_CONFLICT","Sources conflict.");
@@ -13,9 +13,9 @@ export function evaluateEligibility({programme,learnerInput,admissionCycle,catal
  if(catalogueStatus==="UNVERIFIED")return R("UNKNOWN","ADMISSION_CYCLE_UNVERIFIED","Cycle is unverified.");
  if(catalogueStatus==="DRAFT_ALTERNATIVE_RULE_UNRESOLVED")return R("UNKNOWN","ALTERNATIVE_RULE_UNRESOLVED","Alternative route is unresolved.");
  if(catalogueStatus==="DRAFT_MANDATORY_RULE_MISSING")return R("UNKNOWN","MANDATORY_RULE_UNRESOLVED","A mandatory rule is unresolved.");
+ const demoMode=evaluationMode==="HACKATHON_DEMO"&&catalogueStatus==="APPROVED_FOR_HACKATHON_DEMO_ONLY"&&programme.status==="APPROVED_FOR_HACKATHON_DEMO_ONLY";
  const testApproved=testOnlyAssumptions&&catalogueStatus==="ASSUMED_SIGNED_OFF_FOR_TEST_ONLY";
- if((programme.status!=="APPROVED"||!programme.curatorSignoff)&&!testApproved)return R("UNKNOWN","CATALOGUE_RECORD_NOT_APPROVED","Catalogue record is not approved.");
- if(programme.unresolved?.length&&!testOnlyAssumptions)return R("UNKNOWN","MANDATORY_RULE_UNRESOLVED","Material programme rules are unresolved.");
+ if(!demoMode&&(programme.status!=="APPROVED"||!programme.curatorSignoff)&&!testApproved)return R("UNKNOWN","CATALOGUE_RECORD_NOT_APPROVED","Catalogue record is not approved for definitive screening.");
  const parsed=subjectsOf(learnerInput);if(parsed.error)return parsed.error;const a=parsed.a;
  if(a.some(s=>s.id==="ENGLISH_UNMAPPED_STREAM"))return R("UNKNOWN","SUBJECT_MAPPING_UNRESOLVED","English stream cannot be mapped.");
  const req=programme.requirements??{},rules=req.subjectRules??[];
@@ -40,5 +40,6 @@ export function evaluateEligibility({programme,learnerInput,admissionCycle,catal
  if(aps===null)return R("UNKNOWN","REQUIRED_INPUT_MISSING","Cannot select six valid APS subjects.");
  if(Number.isInteger(minAps)&&aps<minAps)return R("NOT_ELIGIBLE","APS_BELOW_MINIMUM","APS is below minimum.",aps);
  if(!learnerInput.transcriptComplete)return R("UNKNOWN","REQUIRED_INPUT_MISSING","Transcript is incomplete.",aps);
+ if(programme.unresolved?.length&&!testOnlyAssumptions)return R("UNKNOWN","MATERIAL_RULES_UNRESOLVED","At least one material programme rule remains unresolved; verified minimums do not establish a confident positive eligibility outcome.",aps);
  return {state:"ELIGIBLE",reasonCodes:["ALL_VERIFIED_REQUIREMENTS_MET"],explanation:"Minimum requirements met; admission is not guaranteed.",aps};
 }
