@@ -110,6 +110,8 @@ function App() {
 
   function clearResults() {
     setResults([]);
+    setSavedPathways([]);
+    setTracking({});
     setSubmitted(false);
     setNotice("");
     setFieldErrors({ stage: "", subjects: {} });
