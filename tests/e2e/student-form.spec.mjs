@@ -424,3 +424,29 @@ test("populated dark-theme pathway details and shortlist have no color-contrast 
     }))
   })), null, 2)).toEqual([]);
 });
+
+
+test("only the missing mark field is highlighted when a subject is selected", async ({ page }) => {
+  await page.goto("/");
+  await page.locator("#stage").selectOption("GRADE_12");
+  await page.locator("#subject-0").selectOption("Mathematics");
+  await page.locator("#mark-0").fill("");
+  await page.getByRole("button", { name: /Explore pathways/ }).click();
+
+  await expect(page.getByRole("status")).toContainText("whole-number mark from 0 to 100");
+  await expect(page.locator("#subject-0")).toHaveAttribute("aria-invalid", "false");
+  await expect(page.locator("#mark-0")).toHaveAttribute("aria-invalid", "true");
+  await expect(page.locator("#subject-0")).not.toHaveCSS("border-color", "rgb(181, 82, 55)");
+});
+
+test("only the subject field is highlighted when a mark is entered without a subject", async ({ page }) => {
+  await page.goto("/");
+  await page.locator("#stage").selectOption("GRADE_12");
+  await page.locator("#subject-0").selectOption("");
+  await page.locator("#mark-0").fill("75");
+  await page.getByRole("button", { name: /Explore pathways/ }).click();
+
+  await expect(page.getByRole("status")).toContainText("Choose a subject");
+  await expect(page.locator("#subject-0")).toHaveAttribute("aria-invalid", "true");
+  await expect(page.locator("#mark-0")).toHaveAttribute("aria-invalid", "false");
+});
