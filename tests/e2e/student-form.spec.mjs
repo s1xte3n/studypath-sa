@@ -667,7 +667,7 @@ test("desktop results layout has no horizontal overflow", async ({ page }) => {
 });
 
 
-test("provisional APS is explainable and refuses unresolved selection of more than six subjects", async ({ page }) => {
+test("provisional APS explains best-six selection and keeps pathway eligibility UNKNOWN", async ({ page }) => {
   await page.goto("/");
   await page.locator("#stage").selectOption("GRADE_12");
   const rows = [
@@ -689,7 +689,7 @@ test("provisional APS is explainable and refuses unresolved selection of more th
   await expect(aps).toBeVisible();
   await expect(aps.getByText("Indicative total", { exact: true })).toBeVisible();
   await expect(aps.locator(".aps-total strong")).toHaveText("22");
-  await expect(aps.getByText("Life Orientation.", { exact: false })).toBeVisible();
+  await expect(aps.locator(".aps-excluded")).toContainText("Life Orientation.");
   await expect(aps.getByRole("link", { name: /UJ 2027 Undergraduate Prospectus/ })).toHaveAttribute("href", /uj_undergrad_prospectus2027/);
   await expect(page.locator(".result-card .eligibility-state").first()).toHaveText("Unknown");
 
@@ -697,7 +697,8 @@ test("provisional APS is explainable and refuses unresolved selection of more th
   await page.locator("#subject-7").selectOption("Business Studies");
   await page.locator("#mark-7").fill("100");
   await page.getByRole("button", { name: /Explore pathways/ }).click();
-  await expect(aps.getByRole("status")).toContainText("does not resolve which six to count");
-  await expect(aps.locator(".aps-total")).toHaveCount(0);
+  await expect(aps.getByText("Indicative total", { exact: true })).toBeVisible();
+  await expect(aps.locator(".aps-total strong")).toHaveText("28");
+  await expect(aps.getByText(/six highest achievement levels were counted/)).toBeVisible();
   await expect(page.locator(".result-card .eligibility-state").first()).toHaveText("Unknown");
 });
