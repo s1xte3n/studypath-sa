@@ -2,7 +2,7 @@
 
 **Draft only — not a final exported deck.** The supplied programme (p. 3) allows **no more than 10 slides**, prefers PDF, requires the demo video link on the slides, and asks for product/features, screenshots, demo details, security, user journey and architecture. This draft contains exactly 10 slide sections.
 
-**Baseline inspected:** `main` commit `d377512d38cf4e93833e1c50984605cac12adbdb`. Capture screenshots from the exact frozen candidate before export.
+**Baseline inspected:** `main` commit `268e4f55ccfce55874f6621a0b491acf93c6432f`. Capture screenshots from the exact frozen candidate before export.
 
 ## Slide 1 — StudyPath SA
 **Explore study pathways with more clarity.**  
@@ -24,16 +24,17 @@ Learners navigate scattered programme and admissions information. A useful next 
 **Synthetic demo profile:** Grade 12; Mathematics 75; Physical Sciences 81.
 
 ## Slide 4 — Product walkthrough
-Insert fresh screenshots of:
+Insert fresh screenshots from the frozen candidate of:
 - Empty form and validation.
 - Pathway results with **Unknown** states.
 - Expanded details with official UJ links.
+- Provisional APS panel showing its source and limitations.
 - Reset and theme toggle.
 
 **Do not use screenshots from a different commit than the submitted build.**
 
 ## Slide 5 — Matching and uncertainty
-The current application uses deterministic client-side logic to transform supported subjects/marks into pathway outcomes. The UJ 2027 pilot catalogue is draft and not approved for definitive screening. Therefore, all learner-facing outcomes remain **UNKNOWN**.  
+The current application uses deterministic client-side logic to transform supported subjects/marks into pathway outcomes and includes a separate provisional APS panel. The APS estimate is not an eligibility decision and remains unavailable when the input does not meet its exact-six-subject rule. The UJ 2027 pilot catalogue is draft and not approved for definitive screening. Therefore, all learner-facing outcomes remain **UNKNOWN**.  
 **Not an admission decision. No admission or funding guarantee.**
 
 ## Slide 6 — Trust and privacy boundary
