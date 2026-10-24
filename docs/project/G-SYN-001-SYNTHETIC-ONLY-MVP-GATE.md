@@ -343,3 +343,12 @@ This scope decision does not pass the overall G-SYN-001 gate. The gate remains *
 **Eligibility contract:** The evaluator may return `ELIGIBLE` or `NOT_ELIGIBLE` only when implemented deterministic rules and the learner's supplied data are sufficient to establish that outcome from the repository evidence. Return `UNKNOWN` when relevant requirements or learner data are missing, ambiguous, contradictory, or insufficient to determine the outcome. Record source limitations and provide source links; results are indicative and do not guarantee admission.
 
 **Gate interpretation:** Absence of additional institutional sign-off is not, by itself, a hackathon blocker under this owner decision. Remaining G-SYN-001 criteria must still be assessed independently, including implementation correctness, regression evidence, privacy boundaries, accessibility, reproducibility, and documentation. Do not infer that this decision resolves any actual source conflict or missing rule; disclose such gaps and return `UNKNOWN` for affected outcomes. Production-grade institutional verification and source governance are post-hackathon work.
+
+
+---
+
+## Issue #185 closure boundary — 2026-10-24
+
+Issue [#185](https://github.com/s1xte3n/studypath-sa/issues/185) is closed for the bounded hackathon-demo scope after evidence/status reconciliation in [PR #214](https://github.com/s1xte3n/studypath-sa/pull/214). The project owner confirms manual keyboard-only navigation, screen-reader behaviour, physical-device checks and browser compatibility. These are owner-reported results, not independently reproduced by the assistant. Hosting/provider log inspection and external telemetry checks are explicitly deferred from Issue #185's hackathon acceptance scope; automated privacy checks remain limited to instrumented local/browser channels.
+
+**G-SYN-001 remains OPEN / NOT PASSED.** Issue #185 closure does not satisfy this gate's separate source provenance, rule reconciliation, catalogue approval or other applicable acceptance requirements. It does not authorize definitive eligibility, production deployment, cloud provisioning or real learner data. Preserve UNKNOWN when source-backed requirements remain unresolved.
