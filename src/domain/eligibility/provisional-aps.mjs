@@ -9,6 +9,11 @@ const BANDS = [
 ];
 
 const LIFE_ORIENTATION = "LIFE ORIENTATION";
+const SUPPORTED_SUBJECTS = new Set([
+  "ENGLISH HOME LANGUAGE", "ENGLISH FIRST ADDITIONAL LANGUAGE", "ENGLISH SECOND ADDITIONAL LANGUAGE",
+  "MATHEMATICS", "MATHEMATICAL LITERACY", "PHYSICAL SCIENCES", "LIFE SCIENCES",
+  "GEOGRAPHY", "HISTORY", "BUSINESS STUDIES", "ACCOUNTING", LIFE_ORIENTATION
+]);
 const normaliseSubject = value => typeof value === "string" ? value.trim().replace(/\\s+/g, " ").toUpperCase() : "";
 
 export function achievementLevelForMark(mark) {
@@ -34,7 +39,8 @@ export function calculateProvisionalAps(subjectRows) {
   for (const row of subjectRows) {
     const subject = normaliseSubject(row?.subject);
     const rawMark = typeof row?.mark === "string" ? row.mark.trim() : row?.mark;
-    if (!subject || rawMark === "" || rawMark === null || rawMark === undefined ||
+    if (!subject || !SUPPORTED_SUBJECTS.has(subject) ||
+        !(typeof rawMark === "string" || typeof rawMark === "number") || rawMark === "" || rawMark === null || rawMark === undefined ||
         !Number.isInteger(Number(rawMark)) || Number(rawMark) < 0 || Number(rawMark) > 100) {
       return { state: "INPUT_REJECTED", aps: null, reason: "Every listed subject needs a supported name and a whole-number mark from 0 to 100.", includedSubjects: [], excludedSubjects: [] };
     }
