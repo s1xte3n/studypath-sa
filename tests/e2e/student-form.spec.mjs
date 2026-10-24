@@ -505,6 +505,44 @@ test("only the missing mark field is highlighted when a subject is selected", as
   await expect(page.locator("#subject-0")).not.toHaveCSS("border-color", "rgb(181, 82, 55)");
 });
 
+test("eligibility filters show a recoverable empty state and clear filters restores UNKNOWN draft results", async ({ page }) => {
+  await page.goto("/");
+  await page.locator("#stage").selectOption("GRADE_12");
+  await page.locator("#subject-0").selectOption("Mathematics");
+  await page.locator("#mark-0").fill("84");
+  await page.getByRole("button", { name: /Explore pathways/ }).click();
+
+  await expect(page.locator(".result-card")).toHaveCount(30);
+  await expect(page.locator(".eligibility-state")).toHaveText(Array(30).fill("Unknown"));
+
+  await page.locator("#eligibility-filter").selectOption("ELIGIBLE");
+  await expect(page.locator(".filter-empty")).toHaveAttribute("role", "status");
+  await expect(page.getByRole("heading", { name: "No pathways match these filters" })).toBeVisible();
+  await expect(page.locator(".result-card")).toHaveCount(0);
+  await expect(page.locator(".candidate-count")).toContainText("30 total catalogue candidates");
+  await expect(page.locator(".candidate-count")).toContainText("0 currently shown");
+
+  await page.locator(".filter-empty .clear-filters-button").click();
+  await expect(page.locator("#eligibility-filter")).toHaveValue("ALL");
+  await expect(page.locator(".result-card")).toHaveCount(30);
+  await expect(page.locator(".eligibility-state")).toHaveText(Array(30).fill("Unknown"));
+});
+
+test("pathway details can be opened using the keyboard", async ({ page }) => {
+  await page.goto("/");
+  await page.locator("#stage").selectOption("GRADE_12");
+  await page.locator("#subject-0").selectOption("Mathematics");
+  await page.locator("#mark-0").fill("84");
+  await page.getByRole("button", { name: /Explore pathways/ }).click();
+
+  const summary = page.locator(".pathway-details").first().locator("summary");
+  await summary.focus();
+  await expect(summary).toBeFocused();
+  await page.keyboard.press("Enter");
+  await expect(page.locator(".pathway-details").first()).toHaveAttribute("open", "");
+  await expect(page.locator(".pathway-details-content").first()).toBeVisible();
+});
+
 test("only the subject field is highlighted when a mark is entered without a subject", async ({ page }) => {
   await page.goto("/");
   await page.locator("#stage").selectOption("GRADE_12");
