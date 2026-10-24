@@ -28,7 +28,7 @@ The project owner has approved the 30-record catalogue as the source of truth fo
 | Life Orientation exclusion | Excluded and shown to the learner | Retain unit/browser coverage |
 | APS separated from programme eligibility | Programme outcomes remain `UNKNOWN` while catalogue gate is closed | Do not infer eligibility from an APS total |
 | Governing UJ source version, scale, footnotes and selection semantics | **Blocked** | Verify official source files, version, printed pages, footnotes and relevant programme rules |
-| Hackathon demo catalogue approval | **Approved for bounded demo only** in `uj-2027-pilot-v0.3-hackathon-demo`; 30 records remain individually `DRAFT`, with zero institutional curator sign-offs | Keep definitive-screening gate closed; unresolved programme rules return `UNKNOWN` |
+| Hackathon demo catalogue approval | **Approved for bounded demo only** in `uj-2027-pilot-v0.3-hackathon-demo`; all 30 records are `APPROVED_FOR_HACKATHON_DEMO_ONLY`, with zero institutional curator sign-offs | Keep definitive-screening gate closed; unresolved programme rules return `UNKNOWN` |
 | Manual accessibility and broader privacy review | **Open** under [issue #185](https://github.com/s1xte3n/studypath-sa/issues/185) | Manual keyboard/screen-reader, device/browser matrix, hosting/provider logs and external telemetry review remain unverified |
 | Overall synthetic demo gate | **G-SYN-001: OPEN / NOT PASSED** | Complete criterion-by-criterion evidence review |
 
@@ -47,4 +47,4 @@ Use synthetic data only. The APS figure is indicative and must not be represente
 
 ## Owner-approved demo scope (2026-10-24)
 
-The project owner has approved the 30-record UJ 2027 pilot catalogue as the source of truth for the FNB AOTY Hackathon 2026 demo. This does not mean UJ has endorsed the catalogue or that every record has institutional curator sign-off. The records retain their unresolved notes and record-level draft status. The APS calculator continues to fail closed for unresolved subject selection; APS does not independently establish programme eligibility. The definitive-screening gate remains closed.
+The project owner has approved the 30-record UJ 2027 pilot catalogue as the source of truth for the FNB AOTY Hackathon 2026 demo. This does not mean UJ has endorsed the catalogue or that every record has institutional curator sign-off. All 30 records now carry explicit project-owner demo approval and retain their unresolved notes. This does not mean UJ endorsement, institutional curator sign-off, or approval for definitive screening. The APS calculator continues to fail closed for unresolved subject selection; APS does not independently establish programme eligibility. The definitive-screening gate remains closed.
