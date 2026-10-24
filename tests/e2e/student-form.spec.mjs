@@ -627,3 +627,39 @@ test("desktop results layout has no horizontal overflow", async ({ page }) => {
     expect(card.right).toBeLessThanOrEqual(layout.viewportWidth);
   }
 });
+
+
+test("provisional APS is explainable and refuses unresolved selection of more than six subjects", async ({ page }) => {
+  await page.goto("/");
+  await page.locator("#stage").selectOption("GRADE_12");
+  const rows = [
+    ["Mathematics", "29"],
+    ["Physical Sciences", "30"],
+    ["Life Sciences", "40"],
+    ["Geography", "50"],
+    ["History", "60"],
+    ["Accounting", "80"],
+    ["Life Orientation", "100"]
+  ];
+  for (let index = 0; index < rows.length; index += 1) {
+    if (index > 0) await page.getByRole("button", { name: /Add another subject/ }).click();
+    await page.locator(`#subject-${index}`).selectOption(rows[index][0]);
+    await page.locator(`#mark-${index}`).fill(rows[index][1]);
+  }
+  await page.getByRole("button", { name: /Explore pathways/ }).click();
+  const aps = page.getByRole("region", { name: /Provisional APS estimate/ });
+  await expect(aps).toBeVisible();
+  await expect(aps.getByText("Indicative total")).toBeVisible();
+  await expect(aps.locator(".aps-total strong")).toHaveText("22");
+  await expect(aps.getByText("Life Orientation.", { exact: false })).toBeVisible();
+  await expect(aps.getByRole("link", { name: /UJ 2027 Undergraduate Prospectus/ })).toHaveAttribute("href", /uj_undergrad_prospectus2027/);
+  await expect(page.locator(".result-card .eligibility-state").first()).toHaveText("Unknown");
+
+  await page.getByRole("button", { name: /Add another subject/ }).click();
+  await page.locator("#subject-7").selectOption("Business Studies");
+  await page.locator("#mark-7").fill("100");
+  await page.getByRole("button", { name: /Explore pathways/ }).click();
+  await expect(aps.getByRole("status")).toContainText("does not resolve which six to count");
+  await expect(aps.locator(".aps-total")).toHaveCount(0);
+  await expect(page.locator(".result-card .eligibility-state").first()).toHaveText("Unknown");
+});
