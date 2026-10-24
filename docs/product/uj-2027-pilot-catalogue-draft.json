@@ -1,5 +1,5 @@
 {
-  "catalogueVersion": "uj-2027-pilot-v0.1-draft",
+  "catalogueVersion": "uj-2027-pilot-v0.2-draft",
   "institution": "University of Johannesburg",
   "admissionCycle": "2027",
   "applicantRoute": "NSC",
@@ -7,12 +7,12 @@
   "sourcePolicy": {
     "primarySource": "Applicable UJ 2027 Undergraduate Prospectus",
     "additionalSourceForCbeProgrammes": "UJ College of Business and Economics Undergraduate 2027 Intake Brochure",
-    "currentProgrammePagesAreCorroborativeOnly": true,
+    "currentProgrammePagesAreCorroborativeOnly": false,
     "prospectusContentMayChange": true,
     "eligibilityRule": "A record may only support ELIGIBLE after source completeness, applicable cycle, currentness, interpretation and curator sign-off are verified.",
     "aps": {
       "sourceText": "APS is the sum of the achievement ratings of six school subjects; Life Orientation is not counted.",
-      "source": "UJ 2027 Undergraduate Prospectus, printed page 16; UJ official FAQ on APS calculation (six best subjects excluding Life Orientation; required programme subjects must be included)",
+      "source": "UJ 2027 Undergraduate Prospectus, printed p. 16",
       "markToLevel": [
         {
           "minPercent": 0,
@@ -50,7 +50,7 @@
           "level": 7
         }
       ],
-      "moreThanSixSubjectSelection": "Use six best eligible school subjects excluding Life Orientation; selected subjects must include required programme subjects, per official UJ FAQ; return UNKNOWN only if a valid required-subject-constrained selection cannot be determined from the supplied data",
+      "moreThanSixSubjectSelection": "UNRESOLVED_FROM_RETAINED_SOURCES; do not infer which six subjects to select when more than six are supplied or how required programme subjects constrain selection. Any calculated APS must be labelled provisional unless the applicant supplies six eligible subjects under a curator-approved rule.",
       "missingOrDuplicateSubjects": "Never fabricate marks or double-count. Missing required input or duplicate canonical subjects blocks confident eligibility; return UNKNOWN unless a verified mandatory failure independently determines NOT_ELIGIBLE"
     },
     "englishMapping": {
@@ -66,10 +66,8 @@
       ],
       "status": "DRAFT_INTERPRETATION_REQUIRES_FINAL_SCOPE_CONFIRMATION"
     },
-    "governingSourceVersionStatus": "UNRESOLVED_THREE_PROSPECTUS_URLS",
+    "governingSourceVersionStatus": "ONE_RETAINED_PROSPECTUS_URL_SELECTED; FINAL_CURATOR_SIGN_OFF_PENDING",
     "sourceVersionCandidates": [
-      "https://www.uj.ac.za/wp-content/uploads/2026/03/uj_prospectus2027_24-march-2027-final.pdf",
-      "https://www.uj.ac.za/wp-content/uploads/2026/06/uj_undergrad_prospectus2027.pdf",
       "https://www.uj.ac.za/wp-content/uploads/2026/07/uj_undergrad_prospectus2027_online_25jun2026.pdf"
     ]
   },
@@ -80,7 +78,7 @@
       "url": "https://www.uj.ac.za/wp-content/uploads/2026/07/uj_undergrad_prospectus2027_online_25jun2026.pdf",
       "sourceVersion": "Online 25 June 2026 version (path includes July 2026 upload)",
       "verificationDate": "2026-10-14",
-      "limitation": "Existing project documents also reference the June 2026 upload URL. Compare the official PDF versions and record checksums before sign-off; do not assume the versions are identical.",
+      "limitation": "Selected retained prospectus source for this draft. Final curator sign-off, review of applicable footnotes, and confirmation of source version remain outstanding.",
       "localEvidence": {
         "filename": "uj_undergrad_prospectus2027_online_25jun2026.pdf",
         "inspectedLocally": true,
@@ -108,14 +106,6 @@
         "inspectionMethod": "pdftotext -layout; candidate programme rows reviewed",
         "limitation": "Complete visual review of all applicable footnotes and final curator approval remain outstanding."
       }
-    },
-    {
-      "id": "SRC-UJ-2027-PROS-MARCH-CANDIDATE",
-      "title": "UJ 2027 Undergraduate Prospectus — March-named PDF",
-      "url": "https://www.uj.ac.za/wp-content/uploads/2026/03/uj_prospectus2027_24-march-2027-final.pdf",
-      "sourceVersion": "Candidate source version discovered in official UJ search indexing; governing status unconfirmed",
-      "verificationDate": "2026-10-14",
-      "limitation": "Search-indexed excerpts only. Direct PDF retrieval and byte-level comparison were not completed. Do not treat this as governing source until compared with June- and July-named versions."
     }
   ],
   "programmes": [
@@ -156,17 +146,12 @@
         {
           "sourceId": "SRC-UJ-2027-PROS",
           "location": "printed p. 86"
-        },
-        {
-          "title": "BSc in Information Technology",
-          "url": "https://www.uj.ac.za/university-courses/bsc-in-information-technology/",
-          "role": "corroborative current page"
         }
       ],
       "unresolved": [
         "English stream mapping",
         "complete conditions/selection exceptions",
-        "exact governing prospectus version"
+        "Source and programme rules remain draft pending curator sign-off; minimum requirements do not guarantee admission."
       ],
       "curatorSignoff": null,
       "status": "DRAFT"
@@ -208,17 +193,12 @@
         {
           "sourceId": "SRC-UJ-2027-PROS",
           "location": "printed p. 86"
-        },
-        {
-          "title": "BSc in Computer Science and Informatics",
-          "url": "https://www.uj.ac.za/university-courses/bsc-in-computer-science-and-informatics",
-          "role": "corroborative current page"
         }
       ],
       "unresolved": [
         "English stream mapping",
         "complete conditions/selection exceptions",
-        "exact governing prospectus version"
+        "Source and programme rules remain draft pending curator sign-off; minimum requirements do not guarantee admission."
       ],
       "curatorSignoff": null,
       "status": "DRAFT"
@@ -260,18 +240,13 @@
         {
           "sourceId": "SRC-UJ-2027-PROS",
           "location": "printed p. 91"
-        },
-        {
-          "title": "BSc in Computer Science and Informatics Extended",
-          "url": "https://www.uj.ac.za/university-courses/bsc-in-computer-science-and-informatics-extended/",
-          "role": "corroborative current page"
         }
       ],
       "unresolved": [
         "English stream mapping",
         "complete conditions/selection exceptions",
         "exact scope of Science faculty restriction",
-        "exact governing prospectus version"
+        "Source and programme rules remain draft pending curator sign-off; minimum requirements do not guarantee admission."
       ],
       "curatorSignoff": null,
       "status": "DRAFT"
@@ -313,18 +288,13 @@
         {
           "sourceId": "SRC-UJ-2027-PROS",
           "location": "printed p. 86"
-        },
-        {
-          "title": "BSc in Computer Science and Informatics Specialising in AI",
-          "url": "https://www.uj.ac.za/university-courses/bsc-in-computer-science-and-informatics-specialising-in-ai-artificial-intelligence/",
-          "role": "corroborative current page"
         }
       ],
       "unresolved": [
         "English stream mapping",
         "complete conditions/selection exceptions",
         "exact scope of Science faculty restriction",
-        "exact governing prospectus version"
+        "Source and programme rules remain draft pending curator sign-off; minimum requirements do not guarantee admission."
       ],
       "curatorSignoff": null,
       "status": "DRAFT"
@@ -368,18 +338,13 @@
         {
           "sourceId": "SRC-UJ-CBE-2027",
           "location": "printed p. 10"
-        },
-        {
-          "title": "BCom in Information Systems",
-          "url": "https://www.uj.ac.za/university-courses/bcom-in-information-systems/",
-          "role": "corroborative current page"
         }
       ],
       "unresolved": [
         "English stream mapping",
         "full conditions/selection exceptions",
-        "exact governing prospectus version",
-        "Whether Mathematics and Technical Mathematics are alternatives or both independently required is not explicit in the extracted table; do not encode an OR branch until the original table/official rule confirms it."
+        "Whether Mathematics and Technical Mathematics are alternatives or both independently required is not explicit in the extracted table; do not encode an OR branch until the original table/official rule confirms it.",
+        "Source and programme rules remain draft pending curator sign-off; minimum requirements do not guarantee admission."
       ],
       "curatorSignoff": null,
       "status": "DRAFT"
@@ -432,18 +397,13 @@
         {
           "sourceId": "SRC-UJ-CBE-2027",
           "location": "printed p. 12"
-        },
-        {
-          "title": "Diploma in Business Information Technology",
-          "url": "https://www.uj.ac.za/university-courses/diploma-in-business-information-technology/",
-          "role": "corroborative current page"
         }
       ],
       "unresolved": [
         "English stream mapping",
         "exact AND/OR branch interpretation",
         "complete conditions/selection exceptions",
-        "exact governing prospectus version"
+        "Source and programme rules remain draft pending curator sign-off; minimum requirements do not guarantee admission."
       ],
       "curatorSignoff": null,
       "status": "DRAFT"
@@ -492,20 +452,1209 @@
         {
           "sourceId": "SRC-UJ-CBE-2027",
           "location": "printed p. 10"
-        },
-        {
-          "title": "BCom in Information Management",
-          "url": "https://www.uj.ac.za/university-courses/bcom-in-information-management/",
-          "role": "current page; less-specific APS wording than 2027 CBE brochure"
         }
       ],
       "unresolved": [
         "English stream mapping",
         "conflicting level of specificity between current page and 2027 CBE brochure",
         "complete conditions/selection exceptions",
-        "exact governing prospectus version"
+        "Source and programme rules remain draft pending curator sign-off; minimum requirements do not guarantee admission."
       ],
       "curatorSignoff": null,
+      "status": "DRAFT"
+    },
+    {
+      "id": "UJ-2027-FADA-BARCH",
+      "name": "B Arch (Architecture)",
+      "code": "B8BA3Q",
+      "faculty": "Faculty of Art, Design and Architecture",
+      "campus": "Auckland Park Bunting Road",
+      "durationYears": 3,
+      "requirements": {
+        "aps": {
+          "min": 30
+        },
+        "english": {
+          "minLevel": 5,
+          "minPercent": 60,
+          "mappingStatus": "UNRESOLVED"
+        },
+        "subjectRules": [
+          {
+            "subject": "MATHEMATICS",
+            "minLevel": 5,
+            "mandatory": true
+          },
+          {
+            "subject": "MATHEMATICAL_LITERACY",
+            "accepted": false
+          },
+          {
+            "subject": "TECHNICAL_MATHEMATICS",
+            "accepted": false
+          }
+        ]
+      },
+      "sourceEvidence": [
+        {
+          "sourceId": "SRC-UJ-2027-PROS",
+          "location": "printed p. 32"
+        }
+      ],
+      "unresolved": [
+        "English subject-stream mapping is unresolved; do not infer Home Language versus First Additional Language.",
+        "Minimum requirements do not guarantee admission; final selection is subject to UJ rules and available space.",
+        "Draft transcription from retained 2027 prospectus; curator verification required."
+      ],
+      "status": "DRAFT"
+    },
+    {
+      "id": "UJ-2027-FADA-BA-COMDES",
+      "name": "BA (Communication Design)",
+      "code": "B8CD2Q",
+      "faculty": "Faculty of Art, Design and Architecture",
+      "campus": "Auckland Park Bunting Road",
+      "durationYears": 3,
+      "requirements": {
+        "apsBranches": [
+          {
+            "id": "MATHEMATICS_ROUTE",
+            "min": 25,
+            "subjects": [
+              {
+                "subject": "MATHEMATICS",
+                "minLevel": 3,
+                "mandatory": true
+              }
+            ]
+          },
+          {
+            "id": "MATHEMATICAL_LITERACY_ROUTE",
+            "min": 26,
+            "subjects": [
+              {
+                "subject": "MATHEMATICAL_LITERACY",
+                "minLevel": 4,
+                "mandatory": true
+              }
+            ]
+          }
+        ],
+        "english": {
+          "minLevel": 5,
+          "minPercent": 60,
+          "mappingStatus": "UNRESOLVED"
+        },
+        "subjectRules": [
+          {
+            "subject": "TECHNICAL_MATHEMATICS",
+            "accepted": false
+          }
+        ]
+      },
+      "sourceEvidence": [
+        {
+          "sourceId": "SRC-UJ-2027-PROS",
+          "location": "printed p. 32"
+        }
+      ],
+      "unresolved": [
+        "English subject-stream mapping is unresolved; do not infer Home Language versus First Additional Language.",
+        "Minimum requirements do not guarantee admission; final selection is subject to UJ rules and available space.",
+        "Draft transcription from retained 2027 prospectus; curator verification required."
+      ],
+      "status": "DRAFT"
+    },
+    {
+      "id": "UJ-2027-FADA-BA-DIGMEDIA",
+      "name": "BA (Digital Media Design)",
+      "code": "B8DM3Q",
+      "faculty": "Faculty of Art, Design and Architecture",
+      "campus": "Auckland Park Bunting Road",
+      "durationYears": 3,
+      "requirements": {
+        "apsBranches": [
+          {
+            "id": "MATHEMATICS_ROUTE",
+            "min": 25,
+            "subjects": [
+              {
+                "subject": "MATHEMATICS",
+                "minLevel": 3,
+                "mandatory": true
+              }
+            ]
+          },
+          {
+            "id": "MATHEMATICAL_LITERACY_ROUTE",
+            "min": 26,
+            "subjects": [
+              {
+                "subject": "MATHEMATICAL_LITERACY",
+                "minLevel": 4,
+                "mandatory": true
+              }
+            ]
+          }
+        ],
+        "english": {
+          "minLevel": 5,
+          "minPercent": 60,
+          "mappingStatus": "UNRESOLVED"
+        },
+        "subjectRules": [
+          {
+            "subject": "TECHNICAL_MATHEMATICS",
+            "accepted": false
+          }
+        ]
+      },
+      "sourceEvidence": [
+        {
+          "sourceId": "SRC-UJ-2027-PROS",
+          "location": "printed p. 32"
+        }
+      ],
+      "unresolved": [
+        "English subject-stream mapping is unresolved; do not infer Home Language versus First Additional Language.",
+        "Minimum requirements do not guarantee admission; final selection is subject to UJ rules and available space.",
+        "Draft transcription from retained 2027 prospectus; curator verification required."
+      ],
+      "status": "DRAFT"
+    },
+    {
+      "id": "UJ-2027-FADA-BA-INDDES",
+      "name": "BA (Industrial Design)",
+      "code": "B8ID1Q",
+      "faculty": "Faculty of Art, Design and Architecture",
+      "campus": "Auckland Park Bunting Road",
+      "durationYears": 3,
+      "requirements": {
+        "apsBranches": [
+          {
+            "id": "MATHEMATICS_ROUTE",
+            "min": 25,
+            "subjects": [
+              {
+                "subject": "MATHEMATICS",
+                "minLevel": 4,
+                "mandatory": true
+              }
+            ]
+          },
+          {
+            "id": "MATHEMATICAL_LITERACY_ROUTE",
+            "min": 26,
+            "subjects": [
+              {
+                "subject": "MATHEMATICAL_LITERACY",
+                "minLevel": 5,
+                "mandatory": true
+              }
+            ]
+          }
+        ],
+        "english": {
+          "minLevel": 5,
+          "minPercent": 60,
+          "mappingStatus": "UNRESOLVED"
+        },
+        "subjectRules": [
+          {
+            "subject": "TECHNICAL_MATHEMATICS",
+            "accepted": false
+          }
+        ]
+      },
+      "sourceEvidence": [
+        {
+          "sourceId": "SRC-UJ-2027-PROS",
+          "location": "printed p. 32"
+        }
+      ],
+      "unresolved": [
+        "English subject-stream mapping is unresolved; do not infer Home Language versus First Additional Language.",
+        "Minimum requirements do not guarantee admission; final selection is subject to UJ rules and available space.",
+        "Draft transcription from retained 2027 prospectus; curator verification required."
+      ],
+      "status": "DRAFT"
+    },
+    {
+      "id": "UJ-2027-FADA-BA-FASHION",
+      "name": "BA (Fashion Design)",
+      "code": "B8FD1Q",
+      "faculty": "Faculty of Art, Design and Architecture",
+      "campus": "Auckland Park Bunting Road",
+      "durationYears": 3,
+      "requirements": {
+        "apsBranches": [
+          {
+            "id": "MATHEMATICS_ROUTE",
+            "min": 25,
+            "subjects": [
+              {
+                "subject": "MATHEMATICS",
+                "minLevel": 4,
+                "mandatory": true
+              }
+            ]
+          },
+          {
+            "id": "MATHEMATICAL_LITERACY_ROUTE",
+            "min": 26,
+            "subjects": [
+              {
+                "subject": "MATHEMATICAL_LITERACY",
+                "minLevel": 5,
+                "mandatory": true
+              }
+            ]
+          }
+        ],
+        "english": {
+          "minLevel": 5,
+          "minPercent": 60,
+          "mappingStatus": "UNRESOLVED"
+        },
+        "subjectRules": [
+          {
+            "subject": "TECHNICAL_MATHEMATICS",
+            "accepted": false
+          }
+        ]
+      },
+      "sourceEvidence": [
+        {
+          "sourceId": "SRC-UJ-2027-PROS",
+          "location": "printed p. 33"
+        }
+      ],
+      "unresolved": [
+        "English subject-stream mapping is unresolved; do not infer Home Language versus First Additional Language.",
+        "Minimum requirements do not guarantee admission; final selection is subject to UJ rules and available space.",
+        "Draft transcription from retained 2027 prospectus; curator verification required."
+      ],
+      "status": "DRAFT"
+    },
+    {
+      "id": "UJ-2027-FADA-BA-VISART",
+      "name": "BA (Visual Art)",
+      "code": "B8BA7Q",
+      "faculty": "Faculty of Art, Design and Architecture",
+      "campus": "Auckland Park Bunting Road",
+      "durationYears": 3,
+      "requirements": {
+        "apsBranches": [
+          {
+            "id": "MATHEMATICS_OR_TECH_MATHS_ROUTE",
+            "min": 25,
+            "subjects": [
+              {
+                "subject": "MATHEMATICS",
+                "minLevel": 3,
+                "mandatory": false
+              }
+            ]
+          },
+          {
+            "id": "MATHEMATICAL_LITERACY_ROUTE",
+            "min": 26,
+            "subjects": [
+              {
+                "subject": "MATHEMATICAL_LITERACY",
+                "minLevel": 4,
+                "mandatory": true
+              }
+            ]
+          }
+        ],
+        "english": {
+          "minLevel": 3,
+          "minPercent": 40,
+          "mappingStatus": "UNRESOLVED"
+        },
+        "subjectRules": [
+          {
+            "subject": "TECHNICAL_MATHEMATICS",
+            "minLevel": 3,
+            "mandatory": "UNRESOLVED_ROUTE_SEMANTICS"
+          }
+        ]
+      },
+      "sourceEvidence": [
+        {
+          "sourceId": "SRC-UJ-2027-PROS",
+          "location": "printed p. 33"
+        }
+      ],
+      "unresolved": [
+        "English subject-stream mapping is unresolved; do not infer Home Language versus First Additional Language.",
+        "Minimum requirements do not guarantee admission; final selection is subject to UJ rules and available space.",
+        "Draft transcription from retained 2027 prospectus; curator verification required.",
+        "International-admission exception for Maths/Maths Literacy is specific to this programme and is not encoded as a general rule."
+      ],
+      "status": "DRAFT"
+    },
+    {
+      "id": "UJ-2027-FADA-DIP-ARCH",
+      "name": "Diploma in Architecture",
+      "code": "D8AT1Q",
+      "faculty": "Faculty of Art, Design and Architecture",
+      "campus": "Auckland Park Bunting Road",
+      "durationYears": 3,
+      "requirements": {
+        "apsBranches": [
+          {
+            "id": "MATHEMATICS_ROUTE",
+            "min": 25,
+            "subjects": [
+              {
+                "subject": "MATHEMATICS",
+                "minLevel": 5,
+                "mandatory": true
+              }
+            ]
+          },
+          {
+            "id": "TECHNICAL_MATHEMATICS_ROUTE",
+            "min": 26,
+            "subjects": [
+              {
+                "subject": "TECHNICAL_MATHEMATICS",
+                "minLevel": 4,
+                "mandatory": true
+              }
+            ]
+          }
+        ],
+        "english": {
+          "minLevel": 5,
+          "minPercent": 60,
+          "mappingStatus": "UNRESOLVED"
+        },
+        "subjectRules": [
+          {
+            "subject": "MATHEMATICAL_LITERACY",
+            "accepted": false
+          }
+        ]
+      },
+      "sourceEvidence": [
+        {
+          "sourceId": "SRC-UJ-2027-PROS",
+          "location": "printed p. 34"
+        }
+      ],
+      "unresolved": [
+        "English subject-stream mapping is unresolved; do not infer Home Language versus First Additional Language.",
+        "Minimum requirements do not guarantee admission; final selection is subject to UJ rules and available space.",
+        "Draft transcription from retained 2027 prospectus; curator verification required."
+      ],
+      "status": "DRAFT"
+    },
+    {
+      "id": "UJ-2027-FEBE-BENG-CIVIL",
+      "name": "Civil Engineering (BEng)",
+      "code": "B6CS0Q",
+      "faculty": "Faculty of Engineering and the Built Environment",
+      "campus": "Auckland Park Kingsway",
+      "durationYears": 4,
+      "requirements": {
+        "aps": {
+          "min": 32
+        },
+        "english": {
+          "minLevel": 5,
+          "minPercent": 60,
+          "mappingStatus": "UNRESOLVED"
+        },
+        "subjectRules": [
+          {
+            "subject": "MATHEMATICS",
+            "minLevel": 5,
+            "mandatory": true
+          },
+          {
+            "subject": "PHYSICAL_SCIENCES",
+            "minLevel": 5,
+            "mandatory": true
+          },
+          {
+            "subject": "TECHNICAL_MATHEMATICS",
+            "accepted": false
+          },
+          {
+            "subject": "TECHNICAL_SCIENCES",
+            "accepted": false
+          }
+        ]
+      },
+      "sourceEvidence": [
+        {
+          "sourceId": "SRC-UJ-2027-PROS",
+          "location": "printed p. 60"
+        }
+      ],
+      "unresolved": [
+        "English subject-stream mapping is unresolved; do not infer Home Language versus First Additional Language.",
+        "Minimum requirements do not guarantee admission; final selection is subject to UJ rules and available space.",
+        "Draft transcription from retained 2027 prospectus; curator verification required."
+      ],
+      "status": "DRAFT"
+    },
+    {
+      "id": "UJ-2027-FEBE-BENG-ELECTRICAL",
+      "name": "Electrical and Electronic Engineering (BEng)",
+      "code": "B6ES0Q",
+      "faculty": "Faculty of Engineering and the Built Environment",
+      "campus": "Auckland Park Kingsway",
+      "durationYears": 4,
+      "requirements": {
+        "aps": {
+          "min": 32
+        },
+        "english": {
+          "minLevel": 5,
+          "minPercent": 60,
+          "mappingStatus": "UNRESOLVED"
+        },
+        "subjectRules": [
+          {
+            "subject": "MATHEMATICS",
+            "minLevel": 5,
+            "mandatory": true
+          },
+          {
+            "subject": "PHYSICAL_SCIENCES",
+            "minLevel": 5,
+            "mandatory": true
+          },
+          {
+            "subject": "TECHNICAL_MATHEMATICS",
+            "accepted": false
+          },
+          {
+            "subject": "TECHNICAL_SCIENCES",
+            "accepted": false
+          }
+        ]
+      },
+      "sourceEvidence": [
+        {
+          "sourceId": "SRC-UJ-2027-PROS",
+          "location": "printed p. 60"
+        }
+      ],
+      "unresolved": [
+        "English subject-stream mapping is unresolved; do not infer Home Language versus First Additional Language.",
+        "Minimum requirements do not guarantee admission; final selection is subject to UJ rules and available space.",
+        "Draft transcription from retained 2027 prospectus; curator verification required."
+      ],
+      "status": "DRAFT"
+    },
+    {
+      "id": "UJ-2027-FEBE-BENG-MECHANICAL",
+      "name": "Mechanical Engineering (BEng)",
+      "code": "B6MS0Q",
+      "faculty": "Faculty of Engineering and the Built Environment",
+      "campus": "Auckland Park Kingsway",
+      "durationYears": 4,
+      "requirements": {
+        "aps": {
+          "min": 32
+        },
+        "english": {
+          "minLevel": 5,
+          "minPercent": 60,
+          "mappingStatus": "UNRESOLVED"
+        },
+        "subjectRules": [
+          {
+            "subject": "MATHEMATICS",
+            "minLevel": 5,
+            "mandatory": true
+          },
+          {
+            "subject": "PHYSICAL_SCIENCES",
+            "minLevel": 5,
+            "mandatory": true
+          },
+          {
+            "subject": "TECHNICAL_MATHEMATICS",
+            "accepted": false
+          },
+          {
+            "subject": "TECHNICAL_SCIENCES",
+            "accepted": false
+          }
+        ]
+      },
+      "sourceEvidence": [
+        {
+          "sourceId": "SRC-UJ-2027-PROS",
+          "location": "printed p. 60"
+        }
+      ],
+      "unresolved": [
+        "English subject-stream mapping is unresolved; do not infer Home Language versus First Additional Language.",
+        "Minimum requirements do not guarantee admission; final selection is subject to UJ rules and available space.",
+        "Draft transcription from retained 2027 prospectus; curator verification required."
+      ],
+      "status": "DRAFT"
+    },
+    {
+      "id": "UJ-2027-FEBE-BENGTECH-CHEM",
+      "name": "Chemical Engineering (BEngTech)",
+      "code": "B6CE1Q",
+      "faculty": "Faculty of Engineering and the Built Environment",
+      "campus": "Doornfontein Campus",
+      "durationYears": 3,
+      "requirements": {
+        "aps": {
+          "min": 30
+        },
+        "english": {
+          "minLevel": 4,
+          "minPercent": 50,
+          "mappingStatus": "UNRESOLVED"
+        },
+        "subjectRules": [
+          {
+            "subject": "MATHEMATICS",
+            "minLevel": 5,
+            "mandatory": "MATHEMATICS_OR_TECHNICAL_MATHEMATICS"
+          },
+          {
+            "subject": "TECHNICAL_MATHEMATICS",
+            "minLevel": 5,
+            "mandatory": "MATHEMATICS_OR_TECHNICAL_MATHEMATICS"
+          },
+          {
+            "subject": "PHYSICAL_SCIENCES",
+            "minLevel": 5,
+            "mandatory": true
+          },
+          {
+            "subject": "TECHNICAL_SCIENCES",
+            "accepted": false
+          }
+        ]
+      },
+      "sourceEvidence": [
+        {
+          "sourceId": "SRC-UJ-2027-PROS",
+          "location": "printed p. 60"
+        }
+      ],
+      "unresolved": [
+        "English subject-stream mapping is unresolved; do not infer Home Language versus First Additional Language.",
+        "Minimum requirements do not guarantee admission; final selection is subject to UJ rules and available space.",
+        "Draft transcription from retained 2027 prospectus; curator verification required.",
+        "The printed table labels the column Mathematics / Technical Mathematics; route semantics require curator review."
+      ],
+      "status": "DRAFT"
+    },
+    {
+      "id": "UJ-2027-FEBE-BENGTECH-CIVIL",
+      "name": "Civil Engineering (BEngTech)",
+      "code": "B6CV3Q",
+      "faculty": "Faculty of Engineering and the Built Environment",
+      "campus": "Doornfontein Campus",
+      "durationYears": 3,
+      "requirements": {
+        "aps": {
+          "min": 28
+        },
+        "english": {
+          "minLevel": 4,
+          "minPercent": 50,
+          "mappingStatus": "UNRESOLVED"
+        },
+        "subjectRules": [
+          {
+            "subject": "MATHEMATICS",
+            "minLevel": 5,
+            "mandatory": "MATHEMATICS_OR_TECHNICAL_MATHEMATICS"
+          },
+          {
+            "subject": "TECHNICAL_MATHEMATICS",
+            "minLevel": 5,
+            "mandatory": "MATHEMATICS_OR_TECHNICAL_MATHEMATICS"
+          },
+          {
+            "subject": "PHYSICAL_SCIENCES",
+            "minLevel": 5,
+            "mandatory": "PHYSICAL_OR_TECHNICAL_SCIENCE"
+          },
+          {
+            "subject": "TECHNICAL_SCIENCES",
+            "minLevel": 5,
+            "mandatory": "PHYSICAL_OR_TECHNICAL_SCIENCE"
+          }
+        ]
+      },
+      "sourceEvidence": [
+        {
+          "sourceId": "SRC-UJ-2027-PROS",
+          "location": "printed p. 60"
+        }
+      ],
+      "unresolved": [
+        "English subject-stream mapping is unresolved; do not infer Home Language versus First Additional Language.",
+        "Minimum requirements do not guarantee admission; final selection is subject to UJ rules and available space.",
+        "Draft transcription from retained 2027 prospectus; curator verification required.",
+        "Subject alternatives are transcribed from table headings and require curator confirmation."
+      ],
+      "status": "DRAFT"
+    },
+    {
+      "id": "UJ-2027-FEBE-BENGTECH-MINING",
+      "name": "Mining Engineering (BEngTech)",
+      "code": "B6MINQ",
+      "faculty": "Faculty of Engineering and the Built Environment",
+      "campus": "Doornfontein Campus",
+      "durationYears": 3,
+      "requirements": {
+        "aps": {
+          "min": 23
+        },
+        "english": {
+          "minLevel": 4,
+          "minPercent": 50,
+          "mappingStatus": "UNRESOLVED"
+        },
+        "subjectRules": [
+          {
+            "subject": "MATHEMATICS",
+            "minLevel": 5,
+            "mandatory": "MATHEMATICS_OR_TECHNICAL_MATHEMATICS"
+          },
+          {
+            "subject": "TECHNICAL_MATHEMATICS",
+            "minLevel": 5,
+            "mandatory": "MATHEMATICS_OR_TECHNICAL_MATHEMATICS"
+          },
+          {
+            "subject": "PHYSICAL_SCIENCES",
+            "minLevel": 5,
+            "mandatory": "PHYSICAL_OR_TECHNICAL_SCIENCE"
+          },
+          {
+            "subject": "TECHNICAL_SCIENCES",
+            "minLevel": 5,
+            "mandatory": "PHYSICAL_OR_TECHNICAL_SCIENCE"
+          }
+        ]
+      },
+      "sourceEvidence": [
+        {
+          "sourceId": "SRC-UJ-2027-PROS",
+          "location": "printed p. 60"
+        }
+      ],
+      "unresolved": [
+        "English subject-stream mapping is unresolved; do not infer Home Language versus First Additional Language.",
+        "Minimum requirements do not guarantee admission; final selection is subject to UJ rules and available space.",
+        "Draft transcription from retained 2027 prospectus; curator verification required.",
+        "Subject alternatives are transcribed from table headings and require curator confirmation."
+      ],
+      "status": "DRAFT"
+    },
+    {
+      "id": "UJ-2027-FEBE-MINE-SURVEY",
+      "name": "Mine Surveying",
+      "code": "B6SU0Q",
+      "faculty": "Faculty of Engineering and the Built Environment",
+      "campus": "Doornfontein Campus",
+      "durationYears": 3,
+      "requirements": {
+        "aps": {
+          "min": 23
+        },
+        "english": {
+          "minLevel": 4,
+          "minPercent": 50,
+          "mappingStatus": "UNRESOLVED"
+        },
+        "subjectRules": [
+          {
+            "subject": "MATHEMATICS",
+            "minLevel": 5,
+            "mandatory": "MATHEMATICS_OR_TECHNICAL_MATHEMATICS"
+          },
+          {
+            "subject": "TECHNICAL_MATHEMATICS",
+            "minLevel": 5,
+            "mandatory": "MATHEMATICS_OR_TECHNICAL_MATHEMATICS"
+          },
+          {
+            "subject": "PHYSICAL_SCIENCES",
+            "minLevel": 5,
+            "mandatory": "PHYSICAL_OR_TECHNICAL_SCIENCE"
+          },
+          {
+            "subject": "TECHNICAL_SCIENCES",
+            "minLevel": 5,
+            "mandatory": "PHYSICAL_OR_TECHNICAL_SCIENCE"
+          }
+        ]
+      },
+      "sourceEvidence": [
+        {
+          "sourceId": "SRC-UJ-2027-PROS",
+          "location": "printed p. 61"
+        }
+      ],
+      "unresolved": [
+        "English subject-stream mapping is unresolved; do not infer Home Language versus First Additional Language.",
+        "Minimum requirements do not guarantee admission; final selection is subject to UJ rules and available space.",
+        "Draft transcription from retained 2027 prospectus; curator verification required.",
+        "Subject alternatives are transcribed from table headings and require curator confirmation."
+      ],
+      "status": "DRAFT"
+    },
+    {
+      "id": "UJ-2027-FEBE-BSC-CONSTRUCTION",
+      "name": "Construction (BSc)",
+      "code": "B6CN0Q",
+      "faculty": "Faculty of Engineering and the Built Environment",
+      "campus": "Doornfontein Campus",
+      "durationYears": 3,
+      "requirements": {
+        "aps": {
+          "min": 30
+        },
+        "english": {
+          "minLevel": 4,
+          "minPercent": 50,
+          "mappingStatus": "UNRESOLVED"
+        },
+        "subjectRules": [
+          {
+            "subject": "MATHEMATICS",
+            "minLevel": 5,
+            "mandatory": "MATHEMATICS_OR_TECHNICAL_MATHEMATICS"
+          },
+          {
+            "subject": "TECHNICAL_MATHEMATICS",
+            "minLevel": 5,
+            "mandatory": "MATHEMATICS_OR_TECHNICAL_MATHEMATICS"
+          },
+          {
+            "subject": "PHYSICAL_SCIENCES",
+            "minLevel": 5,
+            "mandatory": "PHYSICAL_OR_TECHNICAL_SCIENCE"
+          },
+          {
+            "subject": "TECHNICAL_SCIENCES",
+            "minLevel": 5,
+            "mandatory": "PHYSICAL_OR_TECHNICAL_SCIENCE"
+          }
+        ]
+      },
+      "sourceEvidence": [
+        {
+          "sourceId": "SRC-UJ-2027-PROS",
+          "location": "printed p. 61"
+        }
+      ],
+      "unresolved": [
+        "English subject-stream mapping is unresolved; do not infer Home Language versus First Additional Language.",
+        "Minimum requirements do not guarantee admission; final selection is subject to UJ rules and available space.",
+        "Draft transcription from retained 2027 prospectus; curator verification required.",
+        "Subject alternatives are transcribed from table headings and require curator confirmation."
+      ],
+      "status": "DRAFT"
+    },
+    {
+      "id": "UJ-2027-FEBE-URBAN-PLANNING",
+      "name": "Urban and Regional Planning",
+      "code": "B6UP0Q",
+      "faculty": "Faculty of Engineering and the Built Environment",
+      "campus": "Doornfontein Campus",
+      "durationYears": 3,
+      "requirements": {
+        "aps": {
+          "min": 27
+        },
+        "english": {
+          "minLevel": 4,
+          "minPercent": 50,
+          "mappingStatus": "UNRESOLVED"
+        },
+        "subjectRules": [
+          {
+            "subject": "MATHEMATICS",
+            "minLevel": 5,
+            "mandatory": true
+          },
+          {
+            "subject": "GEOGRAPHY",
+            "minLevel": 5,
+            "mandatory": true
+          },
+          {
+            "subject": "TECHNICAL_MATHEMATICS",
+            "mandatory": "UNRESOLVED_FROM_TABLE"
+          }
+        ]
+      },
+      "sourceEvidence": [
+        {
+          "sourceId": "SRC-UJ-2027-PROS",
+          "location": "printed p. 61"
+        }
+      ],
+      "unresolved": [
+        "English subject-stream mapping is unresolved; do not infer Home Language versus First Additional Language.",
+        "Minimum requirements do not guarantee admission; final selection is subject to UJ rules and available space.",
+        "Draft transcription from retained 2027 prospectus; curator verification required.",
+        "Table presents a Mathematics / Technical Mathematics column; whether Technical Mathematics satisfies this programme is unresolved."
+      ],
+      "status": "DRAFT"
+    },
+    {
+      "id": "UJ-2027-FEBE-DIP-MGMT-SERVICES",
+      "name": "Management Services (Diploma)",
+      "code": "D6MASQ",
+      "faculty": "Faculty of Engineering and the Built Environment",
+      "campus": "Doornfontein Campus",
+      "durationYears": 3,
+      "requirements": {
+        "apsBranches": [
+          {
+            "id": "MATHEMATICS_ROUTE",
+            "min": 19,
+            "subjects": [
+              {
+                "subject": "MATHEMATICS",
+                "minLevel": 3,
+                "mandatory": true
+              }
+            ]
+          },
+          {
+            "id": "MATHEMATICAL_LITERACY_ROUTE",
+            "min": 21,
+            "subjects": [
+              {
+                "subject": "MATHEMATICAL_LITERACY",
+                "minLevel": 5,
+                "mandatory": true
+              }
+            ]
+          }
+        ],
+        "english": {
+          "minLevel": 4,
+          "minPercent": 50,
+          "mappingStatus": "UNRESOLVED"
+        }
+      },
+      "sourceEvidence": [
+        {
+          "sourceId": "SRC-UJ-2027-PROS",
+          "location": "printed p. 62"
+        }
+      ],
+      "unresolved": [
+        "English subject-stream mapping is unresolved; do not infer Home Language versus First Additional Language.",
+        "Minimum requirements do not guarantee admission; final selection is subject to UJ rules and available space.",
+        "Draft transcription from retained 2027 prospectus; curator verification required."
+      ],
+      "status": "DRAFT"
+    },
+    {
+      "id": "UJ-2027-FEBE-DIP-OPS-MGMT",
+      "name": "Operations Management (Diploma)",
+      "code": "D6OPMQ",
+      "faculty": "Faculty of Engineering and the Built Environment",
+      "campus": "Doornfontein Campus",
+      "durationYears": 3,
+      "requirements": {
+        "apsBranches": [
+          {
+            "id": "MATHEMATICS_ROUTE",
+            "min": 20,
+            "subjects": [
+              {
+                "subject": "MATHEMATICS",
+                "minLevel": 3,
+                "mandatory": true
+              }
+            ]
+          },
+          {
+            "id": "MATHEMATICAL_LITERACY_ROUTE",
+            "min": 22,
+            "subjects": [
+              {
+                "subject": "MATHEMATICAL_LITERACY",
+                "minLevel": 5,
+                "mandatory": true
+              }
+            ]
+          }
+        ],
+        "english": {
+          "minLevel": 4,
+          "minPercent": 50,
+          "mappingStatus": "UNRESOLVED"
+        }
+      },
+      "sourceEvidence": [
+        {
+          "sourceId": "SRC-UJ-2027-PROS",
+          "location": "printed p. 62"
+        }
+      ],
+      "unresolved": [
+        "English subject-stream mapping is unresolved; do not infer Home Language versus First Additional Language.",
+        "Minimum requirements do not guarantee admission; final selection is subject to UJ rules and available space.",
+        "Draft transcription from retained 2027 prospectus; curator verification required."
+      ],
+      "status": "DRAFT"
+    },
+    {
+      "id": "UJ-2027-CBE-BCOM-ACCOUNTING",
+      "name": "BCom Accounting",
+      "code": "B34A5Q",
+      "faculty": "College of Business and Economics",
+      "campus": "Auckland Park Kingsway",
+      "durationYears": 3,
+      "requirements": {
+        "aps": {
+          "min": 28
+        },
+        "english": {
+          "minLevel": 4,
+          "minPercent": 50,
+          "mappingStatus": "UNRESOLVED"
+        },
+        "subjectRules": [
+          {
+            "subject": "MATHEMATICS",
+            "minLevel": 4,
+            "mandatory": true
+          },
+          {
+            "subject": "MATHEMATICAL_LITERACY",
+            "accepted": false
+          },
+          {
+            "subject": "TECHNICAL_MATHEMATICS",
+            "accepted": false
+          }
+        ]
+      },
+      "sourceEvidence": [
+        {
+          "sourceId": "SRC-UJ-2027-PROS",
+          "location": "printed p. 41"
+        },
+        {
+          "sourceId": "SRC-UJ-CBE-2027",
+          "location": "printed p. brochure row; printed page to verify"
+        }
+      ],
+      "unresolved": [
+        "English subject-stream mapping is unresolved; do not infer Home Language versus First Additional Language.",
+        "Minimum requirements do not guarantee admission; final selection is subject to UJ rules and available space.",
+        "Draft transcription from retained 2027 prospectus; curator verification required.",
+        "CBE brochure printed page needs confirmation from the original brochure."
+      ],
+      "status": "DRAFT"
+    },
+    {
+      "id": "UJ-2027-CBE-BCOM-BUSMGMT",
+      "name": "BCom Business Management",
+      "code": "B34BMQ",
+      "faculty": "College of Business and Economics",
+      "campus": "Soweto Campus",
+      "durationYears": 3,
+      "requirements": {
+        "aps": {
+          "min": 26
+        },
+        "english": {
+          "minLevel": 4,
+          "minPercent": 50,
+          "mappingStatus": "UNRESOLVED"
+        },
+        "subjectRules": [
+          {
+            "subject": "MATHEMATICS",
+            "minLevel": 4,
+            "mandatory": true
+          },
+          {
+            "subject": "MATHEMATICAL_LITERACY",
+            "accepted": false
+          },
+          {
+            "subject": "TECHNICAL_MATHEMATICS",
+            "minLevel": 4,
+            "mandatory": true
+          }
+        ]
+      },
+      "sourceEvidence": [
+        {
+          "sourceId": "SRC-UJ-2027-PROS",
+          "location": "printed p. 41"
+        }
+      ],
+      "unresolved": [
+        "English subject-stream mapping is unresolved; do not infer Home Language versus First Additional Language.",
+        "Minimum requirements do not guarantee admission; final selection is subject to UJ rules and available space.",
+        "Draft transcription from retained 2027 prospectus; curator verification required."
+      ],
+      "status": "DRAFT"
+    },
+    {
+      "id": "UJ-2027-CBE-BCOM-FINANCE",
+      "name": "BCom Finance",
+      "code": "B34F5Q",
+      "faculty": "College of Business and Economics",
+      "campus": "Auckland Park Kingsway",
+      "durationYears": 3,
+      "requirements": {
+        "aps": {
+          "min": 28
+        },
+        "english": {
+          "minLevel": 4,
+          "minPercent": 50,
+          "mappingStatus": "UNRESOLVED"
+        },
+        "subjectRules": [
+          {
+            "subject": "MATHEMATICS",
+            "minLevel": 4,
+            "mandatory": true
+          },
+          {
+            "subject": "MATHEMATICAL_LITERACY",
+            "accepted": false
+          },
+          {
+            "subject": "TECHNICAL_MATHEMATICS",
+            "accepted": false
+          }
+        ]
+      },
+      "sourceEvidence": [
+        {
+          "sourceId": "SRC-UJ-2027-PROS",
+          "location": "printed p. 41"
+        }
+      ],
+      "unresolved": [
+        "English subject-stream mapping is unresolved; do not infer Home Language versus First Additional Language.",
+        "Minimum requirements do not guarantee admission; final selection is subject to UJ rules and available space.",
+        "Draft transcription from retained 2027 prospectus; curator verification required."
+      ],
+      "status": "DRAFT"
+    },
+    {
+      "id": "UJ-2027-CBE-BCOM-MARKETING",
+      "name": "BCom Marketing Management",
+      "code": "B1CMMQ",
+      "faculty": "College of Business and Economics",
+      "campus": "Auckland Park Kingsway",
+      "durationYears": 3,
+      "requirements": {
+        "aps": {
+          "min": 26
+        },
+        "english": {
+          "minLevel": 4,
+          "minPercent": 50,
+          "mappingStatus": "UNRESOLVED"
+        },
+        "subjectRules": [
+          {
+            "subject": "MATHEMATICS",
+            "minLevel": 4,
+            "mandatory": true
+          },
+          {
+            "subject": "MATHEMATICAL_LITERACY",
+            "accepted": false
+          },
+          {
+            "subject": "TECHNICAL_MATHEMATICS",
+            "accepted": false
+          }
+        ]
+      },
+      "sourceEvidence": [
+        {
+          "sourceId": "SRC-UJ-2027-PROS",
+          "location": "printed p. 42"
+        }
+      ],
+      "unresolved": [
+        "English subject-stream mapping is unresolved; do not infer Home Language versus First Additional Language.",
+        "Minimum requirements do not guarantee admission; final selection is subject to UJ rules and available space.",
+        "Draft transcription from retained 2027 prospectus; curator verification required."
+      ],
+      "status": "DRAFT"
+    },
+    {
+      "id": "UJ-2027-CBE-BSC-HOSPITALITY",
+      "name": "BCom Hospitality Management",
+      "code": "B34HNQ",
+      "faculty": "College of Business and Economics",
+      "campus": "Auckland Park Bunting Road",
+      "durationYears": 3,
+      "requirements": {
+        "apsBranches": [
+          {
+            "id": "MATHEMATICS_OR_TECH_MATHS_ROUTE",
+            "min": 26,
+            "subjects": [
+              {
+                "subject": "MATHEMATICS",
+                "minLevel": 4,
+                "mandatory": false
+              },
+              {
+                "subject": "TECHNICAL_MATHEMATICS",
+                "minLevel": 4,
+                "mandatory": false
+              }
+            ]
+          },
+          {
+            "id": "MATHEMATICAL_LITERACY_ROUTE",
+            "min": 28,
+            "subjects": [
+              {
+                "subject": "MATHEMATICAL_LITERACY",
+                "minLevel": 5,
+                "mandatory": true
+              }
+            ]
+          }
+        ],
+        "english": {
+          "minLevel": 5,
+          "minPercent": 60,
+          "mappingStatus": "UNRESOLVED"
+        }
+      },
+      "sourceEvidence": [
+        {
+          "sourceId": "SRC-UJ-2027-PROS",
+          "location": "printed p. 40"
+        }
+      ],
+      "unresolved": [
+        "English subject-stream mapping is unresolved; do not infer Home Language versus First Additional Language.",
+        "Minimum requirements do not guarantee admission; final selection is subject to UJ rules and available space.",
+        "Draft transcription from retained 2027 prospectus; curator verification required."
+      ],
       "status": "DRAFT"
     }
   ]

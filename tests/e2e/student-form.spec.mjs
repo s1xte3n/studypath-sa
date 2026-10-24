@@ -21,8 +21,8 @@ test("learner can edit rows, validate entries, and reset the form", async ({ pag
   await expect(page.getByRole("status")).toContainText("Pathway exploration completed");
   await expect(page.getByRole("status")).toContainText("results are UNKNOWN");
   await expect(page.getByRole("heading", { name: "Pathways to investigate" })).toBeVisible();
-  await expect(page.locator(".result-card")).toHaveCount(7);
-  await expect(page.locator(".eligibility-state")).toHaveText(Array(7).fill("Unknown"));
+  await expect(page.locator(".result-card")).toHaveCount(30);
+  await expect(page.locator(".eligibility-state")).toHaveText(Array(30).fill("Unknown"));
   await expect(page.getByRole("heading", { name: "How to read these options" })).toBeVisible();
   await expect(page.getByText("These pathways are shown for exploration, not ranked by suitability.")).toBeVisible();
   await expect(page.getByText("confirm the current rules using the official UJ links")).toBeVisible();
@@ -71,7 +71,7 @@ test("correcting invalid marks clears the error and valid entries still do not i
   await page.getByRole("button", { name: /Explore pathways/ }).click();
   await expect(page.getByRole("status")).toContainText("Pathway exploration completed");
   await expect(page.getByRole("status")).toContainText("results are UNKNOWN");
-  await expect(page.locator(".result-card")).toHaveCount(7);
+  await expect(page.locator(".result-card")).toHaveCount(30);
 });
 
 test("changing the study stage clears a stale validation notice", async ({ page }) => {
@@ -406,7 +406,7 @@ test("populated dark-theme pathway details and shortlist have no color-contrast 
   await page.locator("#mark-1").fill("81");
   await page.getByRole("button", { name: /Explore pathways/ }).click();
 
-  await expect(page.locator(".result-card")).toHaveCount(7);
+  await expect(page.locator(".result-card")).toHaveCount(30);
   const details = page.locator(".pathway-details").first();
   await details.locator("summary").click();
   await expect(details.locator(".pathway-details-content")).toBeVisible();

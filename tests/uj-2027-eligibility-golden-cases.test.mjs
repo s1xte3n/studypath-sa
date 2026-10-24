@@ -108,12 +108,22 @@ test("every golden case has a unique ID, explicit expected outcome and reason co
   }
 });
 
-test("the catalogue contains the seven pilot candidates and none is approved by these tests", () => {
-  assert.equal(catalogue.programmes.length, 7);
+test("the catalogue retains the seven pilot candidates and added records remain unapproved", () => {
+  assert.ok(catalogue.programmes.length >= 7);
   assert.equal(catalogue.status, "DRAFT_NOT_FOR_DEFINITIVE_SCREENING");
+  const requiredPilotIds = [
+    "UJ-2027-BSC-IT",
+    "UJ-2027-BSC-CSI",
+    "UJ-2027-BSC-CSI-EXT",
+    "UJ-2027-BSC-CSI-AI",
+    "UJ-2027-BCOM-IS",
+    "UJ-2027-DIP-BIT",
+    "UJ-2027-BCOM-IM",
+  ];
+  for (const id of requiredPilotIds) assert.ok(programmesById.has(id), `missing original pilot ${id}`);
   for (const programme of catalogue.programmes) {
     assert.equal(programme.status, "DRAFT", `${programme.id} must remain draft until curated`);
-    assert.equal(programme.curatorSignoff, null, `${programme.id} must not imply curator approval`);
+    assert.equal(programme.curatorSignoff ?? null, null, `${programme.id} must not imply curator approval`);
   }
 });
 
