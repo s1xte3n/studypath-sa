@@ -1,3 +1,11 @@
+# Current decision — catalogue approved for hackathon demo only (2026-10-24)
+
+The project owner approved `docs/product/uj-2027-pilot-catalogue-draft.json` version `uj-2027-pilot-v0.3-hackathon-demo` as the source of truth for the bounded hackathon demo. All 30 programme records remain individually `DRAFT`; this does not imply UJ endorsement or institutional curator sign-off. The definitive-screening gate remains closed, and unresolved eligibility must remain `UNKNOWN`.
+
+PR #211 remains open. Its reported checks are green for Browser E2E/privacy/accessibility, Browser MVP build, contract tests, UJ eligibility golden-case verification and GitGuardian; Vercel failed only because its deployment was rate-limited and is no longer a required hosting target. Vercel deployment must be disabled at the Vercel/GitHub integration level; no repository workflow currently manages that external check.
+
+---
+
 # APS issue #189 — fail-closed acceptance update (2026-10-24)
 
 **Reviewed base:** `main` at `a48eb653cabae511c60d9a49043ff6a2532c2457`.  
