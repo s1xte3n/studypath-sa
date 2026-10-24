@@ -420,3 +420,15 @@ Reviewed `main` baseline: `c2d97fa44ac1ccbe7feb9ce7e569a234596d7a1e`.
 | G-SYN-001 | Current gate record explicitly says OPEN / NOT PASSED | Not passed; this tracker does not waive any gate criteria |
 
 **Evidence boundary:** Issue closure and successful CI are evidence for their stated scope only. The assistant did not run local tests, perform a fresh-session rehearsal, export the final deck/video, operate the Sonke portal, or verify submission confirmation during this reconciliation. Synthetic data only; no deployment or provisioning is authorized.
+
+
+## Visual design system — issue #206
+
+| Requirement slice | Contract / implementation | Test evidence | Current disposition |
+|---|---|---|---|
+| Supplied visual tokens and consistent surfaces | `docs/product/VISUAL-DESIGN-IMPLEMENTATION-206.md`; existing CSS system in `src/styles.css` applies near-white ground, dark ink, blue actions, restrained borders and consistent typography/spacing | New issue #206 Playwright test in `tests/e2e/student-form.spec.mjs`; CI pending | Candidate implementation only; screenshot comparison and CI not yet evidenced |
+| Product-context hero illustration | Existing hero content in `src/main.jsx`; CSS illustration describes subjects → study pathways → official sources | New browser assertions check labels and visibility | No domain behaviour or copy change intended; visual review pending |
+| Responsive layout and reduced motion | Existing stylesheet breakpoints plus issue #206 overrides at 1050px, 760px and 480px; reduced-motion disables transitions | Browser test measures horizontal overflow at 320/480/760/1280px and checks reduced-motion computed style | Browser test added, not run by assistant; human responsive/focus/contrast review pending |
+| Theme and interaction regression | Existing theme toggle and form/result behaviours preserved; explicit dark-theme token overrides | New test toggles dark mode; existing form/E2E tests remain required | CI pending; do not claim regression suite passed |
+
+**Evidence chain:** Issue #206 → approved design direction → `docs/product/VISUAL-DESIGN-IMPLEMENTATION-206.md` / UI contract → Playwright test → `src/main.jsx` and `src/styles.css` → PR CI pending → no release evidence. G-SYN-001 remains **OPEN / NOT PASSED**.

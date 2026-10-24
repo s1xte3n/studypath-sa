@@ -251,13 +251,34 @@ function App() {
 
       <main id="home">
         <section className="hero">
-          <p className="eyebrow">YOUR NEXT STEP STARTS HERE</p>
-          <h1>Find a study path<br /><span>that fits your future.</span></h1>
-          <p className="hero-copy">Explore study options using your subjects and marks. See what is known, what still needs checking, and where to find official information.</p>
-          <div className="privacy-note" role="note">
-            <span className="privacy-icon" aria-hidden="true">●</span>
-            <div><strong>Private by design in this demo</strong><p>Your entries and results stay in this page's memory. They are not sent to a server or saved across a reload. Use fictional details only.</p></div>
+          <div className="hero-content">
+            <p className="eyebrow">YOUR NEXT STEP STARTS HERE</p>
+            <h1>Find a study path<br /><span>that fits your future.</span></h1>
+            <p className="hero-copy">Explore study options using your subjects and marks. See what is known, what still needs checking, and where to find official information.</p>
+            <div className="privacy-note" role="note">
+              <span className="privacy-icon" aria-hidden="true">●</span>
+              <div><strong>Private by design in this demo</strong><p>Your entries and results stay in this page's memory. They are not sent to a server or saved across a reload. Use fictional details only.</p></div>
+            </div>
           </div>
+          <aside className="hero-visual" aria-label="How StudyPath works">
+            <div className="visual-card visual-card-input">
+              <span className="visual-step">01</span>
+              <span className="visual-card-title">Your subjects</span>
+              <span className="visual-lines" aria-hidden="true"><i></i><i></i><i></i></span>
+            </div>
+            <span className="visual-connector" aria-hidden="true">↓</span>
+            <div className="visual-card visual-card-pathway">
+              <span className="visual-step">02</span>
+              <span className="visual-card-title">Study pathways</span>
+              <span className="visual-status"><span aria-hidden="true"></span> Check what is known</span>
+            </div>
+            <span className="visual-connector" aria-hidden="true">↓</span>
+            <div className="visual-card visual-card-source">
+              <span className="visual-step">03</span>
+              <span className="visual-card-title">Official sources</span>
+              <span className="visual-status">Your next step</span>
+            </div>
+          </aside>
         </section>
 
         <section className="explorer" aria-labelledby="explorer-title">

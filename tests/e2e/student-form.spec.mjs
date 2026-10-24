@@ -704,3 +704,32 @@ test("provisional APS fails closed when subject-selection rules are unresolved a
   await expect(aps.getByRole("status")).toContainText(/subject-selection and programme-required-subject rules have not been verified/);
   await expect(page.locator(".result-card .eligibility-state").first()).toHaveText("Unknown");
 });
+
+
+test("issue 206 visual system remains readable and overflow-free at target widths", async ({ page }) => {
+  await page.goto("/");
+  await expect(page.getByRole("heading", { name: /Find a study path/ })).toBeVisible();
+  await expect(page.getByRole("complementary", { name: "How StudyPath works" })).toBeVisible();
+  await expect(page.getByText("Your subjects", { exact: true })).toBeVisible();
+  await expect(page.getByText("Study pathways", { exact: true })).toBeVisible();
+  await expect(page.getByText("Official sources", { exact: true })).toBeVisible();
+
+  for (const width of [320, 480, 760, 1280]) {
+    await page.setViewportSize({ width, height: 900 });
+    await expect(page.locator(".hero-visual")).toBeVisible();
+    const dimensions = await page.evaluate(() => ({
+      documentWidth: document.documentElement.scrollWidth,
+      viewportWidth: document.documentElement.clientWidth,
+      bodyWidth: document.body.scrollWidth
+    }));
+    expect(dimensions.documentWidth, `document overflow at ${width}px`).toBeLessThanOrEqual(dimensions.viewportWidth);
+    expect(dimensions.bodyWidth, `body overflow at ${width}px`).toBeLessThanOrEqual(dimensions.viewportWidth);
+  }
+
+  await page.getByRole("button", { name: /Switch to dark mode/ }).click();
+  await expect(page.locator(".app-shell")).toHaveClass(/theme-dark/);
+  await expect(page.getByRole("complementary", { name: "How StudyPath works" })).toBeVisible();
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  const transitionDuration = await page.locator(".primary-button").evaluate(element => getComputedStyle(element).transitionDuration);
+  expect(transitionDuration.split(",").every(value => value.trim() === "0s" || value.trim() === "0ms")).toBeTruthy();
+});
