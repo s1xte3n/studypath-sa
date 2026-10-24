@@ -147,11 +147,17 @@ function App() {
     if (errors.length) {
       const nextFieldErrors = { stage: "", subjects: {} };
       for (const error of errors) {
-        if (error.startsWith("Select your current")) nextFieldErrors.stage = error;
+        if (error.startsWith("Select your current")) {
+          nextFieldErrors.stage = error;
+          continue;
+        }
         const row = error.match(/row (\d+)/)?.[1];
-        if (row) nextFieldErrors.subjects[Number(row) - 1] = [
-          ...(nextFieldErrors.subjects[Number(row) - 1] || []), error
-        ];
+        if (!row) continue;
+        const index = Number(row) - 1;
+        const rowErrors = nextFieldErrors.subjects[index] || { subject: [], mark: [] };
+        if (error.startsWith("Choose a subject")) rowErrors.subject.push(error);
+        else if (error.startsWith("Enter a whole-number mark")) rowErrors.mark.push(error);
+        nextFieldErrors.subjects[index] = rowErrors;
       }
       setFieldErrors(nextFieldErrors);
       setResults([]);
@@ -222,13 +228,14 @@ function App() {
               {subjects.map((item, index) => (
                 <div className="subject-row" key={index}>
                   <label className="visually-hidden" htmlFor={`subject-${index}`}>Subject {index + 1}</label>
-                  <select id={`subject-${index}`} value={item.subject} aria-invalid={Boolean(fieldErrors.subjects[index]?.length)} aria-describedby={fieldErrors.subjects[index]?.length ? `subject-error-${index}` : undefined} onChange={event => updateSubject(index, "subject", event.target.value)} required>
+                  <select id={`subject-${index}`} value={item.subject} aria-invalid={Boolean(fieldErrors.subjects[index]?.subject?.length)} aria-describedby={fieldErrors.subjects[index]?.subject?.length ? `subject-error-${index}` : undefined} onChange={event => updateSubject(index, "subject", event.target.value)} required>
                     <option value="">Choose a subject</option>
                     {SUBJECTS.map(subject => <option key={subject} value={subject}>{subject}</option>)}
                   </select>
                   <label className="visually-hidden" htmlFor={`mark-${index}`}>Mark for subject {index + 1}</label>
-                  <input id={`mark-${index}`} inputMode="numeric" type="number" min="0" max="100" step="1" placeholder="Mark %" value={item.mark} aria-invalid={Boolean(fieldErrors.subjects[index]?.length)} aria-describedby={fieldErrors.subjects[index]?.length ? `subject-error-${index}` : undefined} onChange={event => updateSubject(index, "mark", event.target.value)} required />
-                  {fieldErrors.subjects[index]?.length > 0 && <p className="field-error subject-error" id={`subject-error-${index}`}>{fieldErrors.subjects[index].join(" ")}</p>}
+                  <input id={`mark-${index}`} inputMode="numeric" type="number" min="0" max="100" step="1" placeholder="Mark %" value={item.mark} aria-invalid={Boolean(fieldErrors.subjects[index]?.mark?.length)} aria-describedby={fieldErrors.subjects[index]?.mark?.length ? `mark-error-${index}` : undefined} onChange={event => updateSubject(index, "mark", event.target.value)} required />
+                  {fieldErrors.subjects[index]?.subject?.length > 0 && <p className="field-error subject-error" id={`subject-error-${index}`}>{fieldErrors.subjects[index].subject.join(" ")}</p>}
+                  {fieldErrors.subjects[index]?.mark?.length > 0 && <p className="field-error subject-error" id={`mark-error-${index}`}>{fieldErrors.subjects[index].mark.join(" ")}</p>}
                   <button className="remove-button" type="button" onClick={() => removeSubject(index)} disabled={subjects.length === 1} aria-label={`Remove subject row ${index + 1}`}>×</button>
                 </div>
               ))}
