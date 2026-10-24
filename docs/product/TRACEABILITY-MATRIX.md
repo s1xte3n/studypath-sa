@@ -209,3 +209,11 @@ The merged subject and pathway documents define additional **planned** tests. Th
 
 Automation is not manual accessibility certification. Manual keyboard/screen-reader checks, actual-device review, full privacy/provider review, and candidate-commit verification remain outstanding. The UJ draft catalogue remains fail-closed to UNKNOWN; G-SYN-001 remains NOT PASSED.
 
+
+
+## Core journey state consistency — PR #161 follow-up (2026-10-24)
+
+- **Requirement:** A change to the current learner profile must invalidate prior results and any profile-specific shortlist/tracker state, so saved options and notes cannot silently carry across profiles.
+- **Regression test:** `tests/e2e/student-form.spec.mjs` — `editing a learner profile clears its saved pathways and tracker notes`.
+- **Evidence status:** Test added on branch `fix/161-clear-stale-pathway-state`; awaiting PR CI. This is not yet a passed test or merged implementation.
+- **Privacy boundary:** State remains in React page memory only; no persistence or network feature is introduced.
