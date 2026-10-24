@@ -229,3 +229,17 @@ Automation is not manual accessibility certification. Manual keyboard/screen-rea
 | DISC-004 — accessible empty state and responsive layout | Labelled controls, visible empty-state recovery, clear-filters action, theme-aware styles and 320px E2E check | `tests/e2e/discovery-dashboard.spec.mjs` | Automated CI pending; manual accessibility review remains separate |
 
 The dashboard is a summary of the current in-memory result set only. It adds no persistence, network transmission, account, telemetry, backend or new dependency.
+
+
+## Issue #185 — cross-screen regression pass (2026-10-24)
+
+**Reviewed main SHA:** `b0fb8aa7c046e5317d55fba990a31a4e724bd079` (merge of PR #196).
+
+| Requirement | Implementation / contract | Test ID / evidence | Status |
+|---|---|---|---|
+| UX-185-01 — invalid learner input is field-associated | `src/main.jsx` maps duplicate-subject and supported-subject validation to `aria-invalid` / `aria-describedby` fields | `tests/e2e/student-form.spec.mjs`: duplicate subjects, mark boundaries, missing stage and reset regression cases | Implemented on PR branch; CI pending |
+| UX-185-02 — responsive layout remains usable | Existing 320px check plus desktop result-card overflow regression | `tests/e2e/student-form.spec.mjs` | Implemented on PR branch; CI pending |
+| PRV-185-01 — transient learner state remains page-memory only | Existing privacy instrumentation, URL/storage/reload checks, and reset lifecycle coverage reused | Existing `no learner entries are transmitted or persisted across reload` test and related E2E cases | Existing automated scope retained; external/provider logs and uninstrumented channels not verified |
+| ACC-185-01 — theme and accessibility regressions | Existing axe scans in light/dark themes, keyboard focus and contrast checks reused | Existing E2E suite | Automated CI pending on candidate branch; manual screen-reader review not performed |
+
+Automated coverage is not a complete manual accessibility or privacy audit. Current draft-catalogue results must remain `UNKNOWN`; G-SYN-001 remains OPEN / NOT PASSED.
