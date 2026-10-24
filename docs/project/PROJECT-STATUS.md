@@ -812,3 +812,14 @@ This section is the current summary for Issue #185 and supersedes older Issue #1
 **Issue disposition:** Issue [#185](https://github.com/s1xte3n/studypath-sa/issues/185) remains open until acceptance criterion 11 is completed: link the evidence and reconcile status/traceability records. Do not mark criterion 11 complete solely because this documentation PR is proposed; confirm the merged evidence links and issue body after merge.
 
 **Release gate:** G-SYN-001 remains **OPEN / NOT PASSED**. The UJ 2027 catalogue is approved for hackathon demo only, remains `DRAFT_NOT_FOR_DEFINITIVE_SCREENING`, and has no institutional curator sign-offs. Eligibility must remain `UNKNOWN` where authoritative requirements are unresolved. No production deployment, cloud provisioning, or real learner-data use is authorized.
+
+
+---
+
+## Issue #185 — owner-confirmed manual checks and hackathon scope decision (2026-10-24)
+
+**Owner-reported verification:** keyboard-only navigation and screen-reader behaviour are verified; physical-device and browser compatibility are verified. These outcomes were supplied by the project owner and have not been independently reproduced by the assistant.
+
+**Hackathon scope decision:** hosting/provider log inspection and external telemetry privacy checks are not required for the bounded hackathon demo and are removed from Issue #185's remaining acceptance work. Existing automated privacy checks remain limited to observable, instrumented local/browser channels; do not describe them as a complete external privacy audit.
+
+Issue [#185](https://github.com/s1xte3n/studypath-sa/issues/185) remains open only for any remaining in-scope evidence/reconciliation work. G-SYN-001 remains **OPEN / NOT PASSED** because this decision does not waive its separate catalogue provenance, eligibility, or approval requirements. This is not production-readiness or definitive eligibility approval.
