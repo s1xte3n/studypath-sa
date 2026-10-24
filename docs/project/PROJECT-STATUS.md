@@ -632,3 +632,18 @@ The GitHub combined status endpoint for `d377512d38cf4e93833e1c50984605cac12adbd
 - No change to eligibility evaluation, catalogue contents, storage, networking, dependencies, or deployment.
 
 **Verification:** The assistant inspected the relevant main-branch source and scripts through GitHub. It did not run tests locally. PR CI results are pending; report each workflow result only after it completes. The UJ catalogue remains draft, all current outcomes remain UNKNOWN, and G-SYN-001 remains NOT PASSED. Manual keyboard/screen-reader and external provider/privacy checks are not established by these automated tests.
+
+
+## Issue #185 — implementation candidate (2026-10-24)
+
+**Reviewed main commit:** `b0fb8aa7c046e5317d55fba990a31a4e724bd079` (PR #196 merge). GitHub repository contents and issue #185/#160 were inspected remotely. This environment does not expose a local checkout or working-tree state, so no local git status is asserted.
+
+**Verified defect from source inspection:** the form's error-to-field mapper associated ordinary missing-subject and mark errors, but did not associate duplicate-subject errors or the supported-subject validation branch with their corresponding controls. This left the global error notice visible while affected fields lacked `aria-invalid` / `aria-describedby` feedback. The UI currently uses a fixed subject select, so unsupported-subject selection is not directly reachable through normal browser interaction; duplicate-subject is reproducible through the form.
+
+**Changes on `fix/185-mobile-accessibility-privacy-regressions`:**
+- Associate duplicate-subject errors with every affected subject select.
+- Map supported-subject validation errors to the relevant subject field.
+- Add Playwright regressions for fractional, negative, blank and over-range marks; duplicate-subject field association; missing-stage association/reset; and desktop overflow while displaying results.
+- Reuse existing 320px, light/dark axe, keyboard-focus, privacy instrumentation, reload and reset coverage rather than duplicating it.
+
+**Verification:** no local commands were executed. Candidate branch CI has not yet been observed at the time of this update. Report tests as pending until CI provides exact-commit evidence. Manual keyboard walkthrough, screen-reader review, physical-device/browser matrix, provider/hosting logs, and full external telemetry audit remain unrun/blocked. G-SYN-001 remains OPEN / NOT PASSED; no deployment, provisioning or real learner data is approved.
