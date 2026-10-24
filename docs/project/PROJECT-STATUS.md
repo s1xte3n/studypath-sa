@@ -779,3 +779,15 @@ This is a demo heuristic, not a definitive UJ 2027 rule approval. Programme matc
 **Verification:** GitHub contents writes created the candidate branch changes. Tests/build have not been executed by the assistant, and CI is pending until the PR is opened. Do not claim the candidate passes until exact-head workflows complete.
 
 **Unchanged safeguards:** no NSC pass/access-level calculator; no arbitrary top-six selection; UJ draft-catalogue programme eligibility remains `UNKNOWN`; synthetic data only; no deployment/provisioning. G-SYN-001 remains **OPEN / NOT PASSED**. Issue #185 manual keyboard/screen-reader, device/browser and external hosting/privacy evidence remains open.
+
+---
+
+## Owner-supplied local verification — 2026-10-24
+
+The project owner reported a clean rerun after stopping a separately running dev server. `npm test`: 100 passed, 0 failed (1241.1265 ms); `npm run build`: Vite 7.3.7, 35 modules transformed, success in 2.44 s; `npx playwright test`: 34 passed, 0 failed (default four-worker run, 47.8 s). Earlier serial Playwright reruns also reported 34/34 passing, and eight targeted tests passed serially.
+
+An initial run while the separate dev server was still running reported 30/34 passing and four missing-`#stage`/progressbar failures. After the server was stopped, the full suite passed serially and with the default worker count. The root cause of the initial failures is **not established**. No application changes were reported during the rerun.
+
+Full details and build artifact sizes: [LOCAL-VERIFICATION-2026-10-24.md](LOCAL-VERIFICATION-2026-10-24.md).
+
+**Evidence limits:** these are owner-supplied terminal results; the assistant did not execute them. The exact local tested HEAD SHA and local `git status` were not captured, and these results are not GitHub Actions evidence. Current-commit CI and manual keyboard/screen-reader, physical-device/browser-matrix, hosting/provider-log and external telemetry checks remain outstanding. Issue #185 stays open; G-SYN-001 remains **OPEN / NOT PASSED**. No deployment or production-readiness claim is implied.
