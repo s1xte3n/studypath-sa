@@ -97,7 +97,7 @@ function ProvisionalApsPanel({ subjects }) {
       ) : (
         <p className={estimate.state === "INPUT_REJECTED" ? "aps-error" : "aps-pending"} role="status">{estimate.reason}</p>
       )}
-      <p className="aps-limitation">{estimate.reason}</p>
+      {estimate.state === "PROVISIONAL" && <p className="aps-limitation">{estimate.reason}</p>}
       <p className="aps-source">Source: <a href={APS_SOURCE.url} target="_blank" rel="noopener noreferrer">{APS_SOURCE.title} <span aria-hidden="true">↗</span></a> · printed p. {APS_SOURCE.printedPage} · draft source record.</p>
       <p className="aps-limitation">Life Orientation is excluded. When more than six other subjects are entered, no total is calculated because the retained draft source does not resolve which six to count. This estimate never changes the pathway eligibility state.</p>
     </section>
