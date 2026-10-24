@@ -55,8 +55,8 @@
     },
     "englishMapping": {
       "requirementColumnLabel": "English",
-      "homeLanguageVsFirstAdditionalLanguage": "UNRESOLVED",
-      "policy": "Do not infer which English subject stream satisfies the programme requirement. If learner result cannot be mapped by an approved official rule, return UNKNOWN."
+      "homeLanguageVsFirstAdditionalLanguage": "DEMO_DEFAULT_HOME_LANGUAGE",
+      "policy": "For hackathon demo use only, if a programme's English requirement does not explicitly identify an NSC English stream, provisionally interpret it as English Home Language. Explicit source wording takes precedence. Do not treat English First Additional Language or an unknown stream as equivalent; return UNKNOWN if no Home Language result is supplied and the English requirement affects the outcome. This is a project-owner demo assumption, not verified UJ policy."
     },
     "facultyOfScienceRestriction": {
       "sourceText": "Technical Mathematics and Technical Science are not accepted for degree programmes in the Faculty of Science.",
@@ -124,7 +124,8 @@
         "english": {
           "minLevel": 5,
           "minPercent": 60,
-          "mappingStatus": "UNRESOLVED"
+          "mappingStatus": "DEMO_DEFAULT_HOME_LANGUAGE",
+          "mappingAssumption": "ENGLISH_HOME_LANGUAGE"
         },
         "subjectRules": [
           {
@@ -150,7 +151,7 @@
         }
       ],
       "unresolved": [
-        "English stream mapping",
+        "English stream uses provisional English Home Language demo assumption; verify against authoritative source before definitive screening",
         "complete conditions/selection exceptions",
         "Unresolved source/rule interpretation and selection conditions remain; eligibility must be UNKNOWN where they affect the decision. Minimum requirements do not guarantee admission."
       ],
@@ -177,7 +178,8 @@
         "english": {
           "minLevel": 5,
           "minPercent": 60,
-          "mappingStatus": "UNRESOLVED"
+          "mappingStatus": "DEMO_DEFAULT_HOME_LANGUAGE",
+          "mappingAssumption": "ENGLISH_HOME_LANGUAGE"
         },
         "subjectRules": [
           {
@@ -203,7 +205,7 @@
         }
       ],
       "unresolved": [
-        "English stream mapping",
+        "English stream uses provisional English Home Language demo assumption; verify against authoritative source before definitive screening",
         "complete conditions/selection exceptions",
         "Unresolved source/rule interpretation and selection conditions remain; eligibility must be UNKNOWN where they affect the decision. Minimum requirements do not guarantee admission."
       ],
@@ -230,7 +232,8 @@
         "english": {
           "minLevel": 4,
           "minPercent": 50,
-          "mappingStatus": "UNRESOLVED"
+          "mappingStatus": "DEMO_DEFAULT_HOME_LANGUAGE",
+          "mappingAssumption": "ENGLISH_HOME_LANGUAGE"
         },
         "subjectRules": [
           {
@@ -256,7 +259,7 @@
         }
       ],
       "unresolved": [
-        "English stream mapping",
+        "English stream uses provisional English Home Language demo assumption; verify against authoritative source before definitive screening",
         "complete conditions/selection exceptions",
         "exact scope of Science faculty restriction",
         "Unresolved source/rule interpretation and selection conditions remain; eligibility must be UNKNOWN where they affect the decision. Minimum requirements do not guarantee admission."
@@ -284,7 +287,8 @@
         "english": {
           "minLevel": 5,
           "minPercent": 60,
-          "mappingStatus": "UNRESOLVED"
+          "mappingStatus": "DEMO_DEFAULT_HOME_LANGUAGE",
+          "mappingAssumption": "ENGLISH_HOME_LANGUAGE"
         },
         "subjectRules": [
           {
@@ -310,7 +314,7 @@
         }
       ],
       "unresolved": [
-        "English stream mapping",
+        "English stream uses provisional English Home Language demo assumption; verify against authoritative source before definitive screening",
         "complete conditions/selection exceptions",
         "exact scope of Science faculty restriction",
         "Unresolved source/rule interpretation and selection conditions remain; eligibility must be UNKNOWN where they affect the decision. Minimum requirements do not guarantee admission."
@@ -338,7 +342,8 @@
         "english": {
           "minLevel": 4,
           "minPercent": 50,
-          "mappingStatus": "UNRESOLVED"
+          "mappingStatus": "DEMO_DEFAULT_HOME_LANGUAGE",
+          "mappingAssumption": "ENGLISH_HOME_LANGUAGE"
         },
         "subjectRules": [
           {
@@ -366,7 +371,7 @@
         }
       ],
       "unresolved": [
-        "English stream mapping",
+        "English stream uses provisional English Home Language demo assumption; verify against authoritative source before definitive screening",
         "full conditions/selection exceptions",
         "Whether Mathematics and Technical Mathematics are alternatives or both independently required is not explicit in the extracted table; do not encode an OR branch until the original table/official rule confirms it.",
         "Unresolved source/rule interpretation and selection conditions remain; eligibility must be UNKNOWN where they affect the decision. Minimum requirements do not guarantee admission."
@@ -417,7 +422,8 @@
         "english": {
           "minLevel": 4,
           "minPercent": 50,
-          "mappingStatus": "UNRESOLVED"
+          "mappingStatus": "DEMO_DEFAULT_HOME_LANGUAGE",
+          "mappingAssumption": "ENGLISH_HOME_LANGUAGE"
         }
       },
       "sourceEvidence": [
@@ -431,7 +437,7 @@
         }
       ],
       "unresolved": [
-        "English stream mapping",
+        "English stream uses provisional English Home Language demo assumption; verify against authoritative source before definitive screening",
         "exact AND/OR branch interpretation",
         "complete conditions/selection exceptions",
         "Unresolved source/rule interpretation and selection conditions remain; eligibility must be UNKNOWN where they affect the decision. Minimum requirements do not guarantee admission."
@@ -482,7 +488,8 @@
         "english": {
           "minLevel": 4,
           "minPercent": 50,
-          "mappingStatus": "UNRESOLVED"
+          "mappingStatus": "DEMO_DEFAULT_HOME_LANGUAGE",
+          "mappingAssumption": "ENGLISH_HOME_LANGUAGE"
         }
       },
       "sourceEvidence": [
@@ -492,7 +499,7 @@
         }
       ],
       "unresolved": [
-        "English stream mapping",
+        "English stream uses provisional English Home Language demo assumption; verify against authoritative source before definitive screening",
         "conflicting level of specificity between current page and 2027 CBE brochure",
         "complete conditions/selection exceptions",
         "Unresolved source/rule interpretation and selection conditions remain; eligibility must be UNKNOWN where they affect the decision. Minimum requirements do not guarantee admission."
@@ -520,7 +527,8 @@
         "english": {
           "minLevel": 5,
           "minPercent": 60,
-          "mappingStatus": "UNRESOLVED"
+          "mappingStatus": "DEMO_DEFAULT_HOME_LANGUAGE",
+          "mappingAssumption": "ENGLISH_HOME_LANGUAGE"
         },
         "subjectRules": [
           {
@@ -592,7 +600,8 @@
         "english": {
           "minLevel": 5,
           "minPercent": 60,
-          "mappingStatus": "UNRESOLVED"
+          "mappingStatus": "DEMO_DEFAULT_HOME_LANGUAGE",
+          "mappingAssumption": "ENGLISH_HOME_LANGUAGE"
         },
         "subjectRules": [
           {
@@ -655,7 +664,8 @@
         "english": {
           "minLevel": 5,
           "minPercent": 60,
-          "mappingStatus": "UNRESOLVED"
+          "mappingStatus": "DEMO_DEFAULT_HOME_LANGUAGE",
+          "mappingAssumption": "ENGLISH_HOME_LANGUAGE"
         },
         "subjectRules": [
           {
@@ -718,7 +728,8 @@
         "english": {
           "minLevel": 5,
           "minPercent": 60,
-          "mappingStatus": "UNRESOLVED"
+          "mappingStatus": "DEMO_DEFAULT_HOME_LANGUAGE",
+          "mappingAssumption": "ENGLISH_HOME_LANGUAGE"
         },
         "subjectRules": [
           {
@@ -781,7 +792,8 @@
         "english": {
           "minLevel": 5,
           "minPercent": 60,
-          "mappingStatus": "UNRESOLVED"
+          "mappingStatus": "DEMO_DEFAULT_HOME_LANGUAGE",
+          "mappingAssumption": "ENGLISH_HOME_LANGUAGE"
         },
         "subjectRules": [
           {
@@ -844,7 +856,8 @@
         "english": {
           "minLevel": 3,
           "minPercent": 40,
-          "mappingStatus": "UNRESOLVED"
+          "mappingStatus": "DEMO_DEFAULT_HOME_LANGUAGE",
+          "mappingAssumption": "ENGLISH_HOME_LANGUAGE"
         },
         "subjectRules": [
           {
@@ -909,7 +922,8 @@
         "english": {
           "minLevel": 5,
           "minPercent": 60,
-          "mappingStatus": "UNRESOLVED"
+          "mappingStatus": "DEMO_DEFAULT_HOME_LANGUAGE",
+          "mappingAssumption": "ENGLISH_HOME_LANGUAGE"
         },
         "subjectRules": [
           {
@@ -951,7 +965,8 @@
         "english": {
           "minLevel": 5,
           "minPercent": 60,
-          "mappingStatus": "UNRESOLVED"
+          "mappingStatus": "DEMO_DEFAULT_HOME_LANGUAGE",
+          "mappingAssumption": "ENGLISH_HOME_LANGUAGE"
         },
         "subjectRules": [
           {
@@ -1007,7 +1022,8 @@
         "english": {
           "minLevel": 5,
           "minPercent": 60,
-          "mappingStatus": "UNRESOLVED"
+          "mappingStatus": "DEMO_DEFAULT_HOME_LANGUAGE",
+          "mappingAssumption": "ENGLISH_HOME_LANGUAGE"
         },
         "subjectRules": [
           {
@@ -1063,7 +1079,8 @@
         "english": {
           "minLevel": 5,
           "minPercent": 60,
-          "mappingStatus": "UNRESOLVED"
+          "mappingStatus": "DEMO_DEFAULT_HOME_LANGUAGE",
+          "mappingAssumption": "ENGLISH_HOME_LANGUAGE"
         },
         "subjectRules": [
           {
@@ -1119,7 +1136,8 @@
         "english": {
           "minLevel": 4,
           "minPercent": 50,
-          "mappingStatus": "UNRESOLVED"
+          "mappingStatus": "DEMO_DEFAULT_HOME_LANGUAGE",
+          "mappingAssumption": "ENGLISH_HOME_LANGUAGE"
         },
         "subjectRules": [
           {
@@ -1177,7 +1195,8 @@
         "english": {
           "minLevel": 4,
           "minPercent": 50,
-          "mappingStatus": "UNRESOLVED"
+          "mappingStatus": "DEMO_DEFAULT_HOME_LANGUAGE",
+          "mappingAssumption": "ENGLISH_HOME_LANGUAGE"
         },
         "subjectRules": [
           {
@@ -1236,7 +1255,8 @@
         "english": {
           "minLevel": 4,
           "minPercent": 50,
-          "mappingStatus": "UNRESOLVED"
+          "mappingStatus": "DEMO_DEFAULT_HOME_LANGUAGE",
+          "mappingAssumption": "ENGLISH_HOME_LANGUAGE"
         },
         "subjectRules": [
           {
@@ -1295,7 +1315,8 @@
         "english": {
           "minLevel": 4,
           "minPercent": 50,
-          "mappingStatus": "UNRESOLVED"
+          "mappingStatus": "DEMO_DEFAULT_HOME_LANGUAGE",
+          "mappingAssumption": "ENGLISH_HOME_LANGUAGE"
         },
         "subjectRules": [
           {
@@ -1354,7 +1375,8 @@
         "english": {
           "minLevel": 4,
           "minPercent": 50,
-          "mappingStatus": "UNRESOLVED"
+          "mappingStatus": "DEMO_DEFAULT_HOME_LANGUAGE",
+          "mappingAssumption": "ENGLISH_HOME_LANGUAGE"
         },
         "subjectRules": [
           {
@@ -1413,7 +1435,8 @@
         "english": {
           "minLevel": 4,
           "minPercent": 50,
-          "mappingStatus": "UNRESOLVED"
+          "mappingStatus": "DEMO_DEFAULT_HOME_LANGUAGE",
+          "mappingAssumption": "ENGLISH_HOME_LANGUAGE"
         },
         "subjectRules": [
           {
@@ -1487,7 +1510,8 @@
         "english": {
           "minLevel": 4,
           "minPercent": 50,
-          "mappingStatus": "UNRESOLVED"
+          "mappingStatus": "DEMO_DEFAULT_HOME_LANGUAGE",
+          "mappingAssumption": "ENGLISH_HOME_LANGUAGE"
         }
       },
       "sourceEvidence": [
@@ -1544,7 +1568,8 @@
         "english": {
           "minLevel": 4,
           "minPercent": 50,
-          "mappingStatus": "UNRESOLVED"
+          "mappingStatus": "DEMO_DEFAULT_HOME_LANGUAGE",
+          "mappingAssumption": "ENGLISH_HOME_LANGUAGE"
         }
       },
       "sourceEvidence": [
@@ -1580,7 +1605,8 @@
         "english": {
           "minLevel": 4,
           "minPercent": 50,
-          "mappingStatus": "UNRESOLVED"
+          "mappingStatus": "DEMO_DEFAULT_HOME_LANGUAGE",
+          "mappingAssumption": "ENGLISH_HOME_LANGUAGE"
         },
         "subjectRules": [
           {
@@ -1636,7 +1662,8 @@
         "english": {
           "minLevel": 4,
           "minPercent": 50,
-          "mappingStatus": "UNRESOLVED"
+          "mappingStatus": "DEMO_DEFAULT_HOME_LANGUAGE",
+          "mappingAssumption": "ENGLISH_HOME_LANGUAGE"
         },
         "subjectRules": [
           {
@@ -1688,7 +1715,8 @@
         "english": {
           "minLevel": 4,
           "minPercent": 50,
-          "mappingStatus": "UNRESOLVED"
+          "mappingStatus": "DEMO_DEFAULT_HOME_LANGUAGE",
+          "mappingAssumption": "ENGLISH_HOME_LANGUAGE"
         },
         "subjectRules": [
           {
@@ -1739,7 +1767,8 @@
         "english": {
           "minLevel": 4,
           "minPercent": 50,
-          "mappingStatus": "UNRESOLVED"
+          "mappingStatus": "DEMO_DEFAULT_HOME_LANGUAGE",
+          "mappingAssumption": "ENGLISH_HOME_LANGUAGE"
         },
         "subjectRules": [
           {
@@ -1816,7 +1845,8 @@
         "english": {
           "minLevel": 5,
           "minPercent": 60,
-          "mappingStatus": "UNRESOLVED"
+          "mappingStatus": "DEMO_DEFAULT_HOME_LANGUAGE",
+          "mappingAssumption": "ENGLISH_HOME_LANGUAGE"
         }
       },
       "sourceEvidence": [
