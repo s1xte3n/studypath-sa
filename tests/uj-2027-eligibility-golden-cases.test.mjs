@@ -116,9 +116,9 @@ test("the catalogue retains the seven pilot candidates and added records remain 
     "UJ-2027-BSC-CSI",
     "UJ-2027-BSC-CSI-EXT",
     "UJ-2027-BSC-CSI-AI",
-    "UJ-2027-CBE-IS",
-    "UJ-2027-CBE-DIP-BIT",
-    "UJ-2027-CBE-IM",
+    "UJ-2027-BCOM-IS",
+    "UJ-2027-DIP-BIT",
+    "UJ-2027-BCOM-IM",
   ];
   for (const id of requiredPilotIds) assert.ok(programmesById.has(id), `missing original pilot ${id}`);
   for (const programme of catalogue.programmes) {
