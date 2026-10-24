@@ -1,3 +1,19 @@
+# Cross-screen quality review — PR #193 baseline (2026-10-24)
+
+**Reviewed main commit:** `d027fe6efab3c4c746ad79de03284ddf3d6cca91`. The branch-level review inspected `package.json`, `playwright.config.mjs`, `src/main.jsx`, `src/styles.css`, `src/domain/student-input-validation.mjs`, `tests/e2e/student-form.spec.mjs`, `tests/e2e/shortlist-tracker.spec.mjs`, and the browser E2E workflow.
+
+**Actual scripts:** `npm test` runs `node --test`; `npm run build` runs `vite build`; Playwright is run separately with `npx playwright test`. The browser CI workflow installs Chromium, runs unit/contract tests, Playwright, then a production build.
+
+**Existing automated coverage observed in source:** valid and invalid journey, all-draft-catalogue UNKNOWN disclosure, reset, result detail/source links, field-level mark/subject validation, selected privacy channels and browser storage, reload/fresh-tab behavior, shortlist/tracker reset, keyboard focus, 320px layout, axe critical/serious scans in light/dark themes, and dark-theme contrast checks.
+
+**Targeted gaps added on branch `test/185-cross-screen-regression-coverage`:** browser tests for fractional/negative/blank/over-range marks, duplicate subjects, missing-stage field association, and desktop viewport overflow while rendering results. These are proposed until CI runs on the PR head.
+
+**Not verified by source review:** no local `npm test`, Playwright, or build was executed by this assistant; no physical-device test, manual keyboard walkthrough, screen-reader review, browser-matrix review, provider/hosting log inspection, or full external telemetry audit was performed. The E2E network instrumentation only observes the channels instrumented by the tests. Report those as unrun/blocked, not passed.
+
+**Gate remains OPEN / NOT PASSED.** Catalogue publication and curator sign-off remain blocked. No hosting enablement, deployment, provisioning, or real learner data is approved.
+
+---
+
 # Post-merge reconciliation — PR #192 (2026-10-24)
 
 **Verified main commit:** `8cb0a0c66a326484b4f158e61eadddcb792c2cbb`, merge of [PR #192](https://github.com/s1xte3n/studypath-sa/pull/192). This section supersedes the earlier top-level statements below that describe the catalogue gate as proposed, unmerged, or awaiting CI.

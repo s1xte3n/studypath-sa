@@ -322,6 +322,72 @@ test("no learner entries are transmitted or persisted across reload", async ({ p
   await expect(page.locator("#subject-0")).toHaveValue("");
 });
 
+test("malformed, fractional, negative, missing and over-range marks are rejected in the browser", async ({ page }) => {
+  for (const mark of ["72.5", "-1", "101", ""]) {
+    await page.goto("/");
+    await page.locator("#stage").selectOption("GRADE_12");
+    await page.locator("#subject-0").selectOption("Mathematics");
+    await page.locator("#mark-0").fill(mark);
+    await page.getByRole("button", { name: /Explore pathways/ }).click();
+
+    await expect(page.getByRole("status")).toContainText("whole-number mark from 0 to 100");
+    await expect(page.locator("#mark-0")).toHaveAttribute("aria-invalid", "true");
+    await expect(page.locator(".result-card")).toHaveCount(0);
+  }
+});
+
+test("duplicate subjects are rejected before pathway results are produced", async ({ page }) => {
+  await page.goto("/");
+  await page.locator("#stage").selectOption("GRADE_12");
+  await page.locator("#subject-0").selectOption("Mathematics");
+  await page.locator("#mark-0").fill("75");
+  await page.getByRole("button", { name: /Add another subject/ }).click();
+  await page.locator("#subject-1").selectOption("Mathematics");
+  await page.locator("#mark-1").fill("80");
+  await page.getByRole("button", { name: /Explore pathways/ }).click();
+
+  await expect(page.getByRole("status")).toContainText("Mathematics is listed more than once");
+  await expect(page.locator(".result-card")).toHaveCount(0);
+  await expect(page.getByRole("status")).not.toContainText("Pathway exploration completed");
+});
+
+test("missing study stage is field-associated and blocks evaluation", async ({ page }) => {
+  await page.goto("/");
+  await page.locator("#subject-0").selectOption("Mathematics");
+  await page.locator("#mark-0").fill("75");
+  await page.getByRole("button", { name: /Explore pathways/ }).click();
+
+  await expect(page.getByRole("status")).toContainText("Select your current study stage");
+  await expect(page.locator("#stage")).toHaveAttribute("aria-invalid", "true");
+  await expect(page.locator("#stage")).toHaveAttribute("aria-describedby", "stage-error");
+  await expect(page.locator(".result-card")).toHaveCount(0);
+});
+
+test("desktop viewport keeps the main journey and result cards within the viewport", async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.goto("/");
+  await expect(page.getByRole("heading", { name: "Tell us about your studies" })).toBeVisible();
+
+  await page.locator("#stage").selectOption("GRADE_12");
+  await page.locator("#subject-0").selectOption("Mathematics");
+  await page.locator("#mark-0").fill("80");
+  await page.getByRole("button", { name: /Explore pathways/ }).click();
+  await expect(page.getByRole("heading", { name: "Pathways to investigate" })).toBeVisible();
+  await expect(page.locator(".result-card")).toHaveCount(30);
+
+  const layout = await page.evaluate(() => ({
+    viewportWidth: window.innerWidth,
+    documentWidth: document.documentElement.scrollWidth,
+    shell: (() => {
+      const rect = document.querySelector(".app-shell").getBoundingClientRect();
+      return { left: rect.left, right: rect.right };
+    })()
+  }));
+  expect(layout.documentWidth).toBeLessThanOrEqual(layout.viewportWidth);
+  expect(layout.shell.left).toBeGreaterThanOrEqual(0);
+  expect(layout.shell.right).toBeLessThanOrEqual(layout.viewportWidth);
+});
+
 test("theme toggle works and light/dark surfaces have no critical or serious WCAG violations", async ({ page }) => {
   await page.emulateMedia({ colorScheme: "light" });
   await page.goto("/");
