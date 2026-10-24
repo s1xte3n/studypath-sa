@@ -22,7 +22,7 @@
 | APS conversion | Prospectus printed p. 16; catalogue has seven percentage bands: 0–29→1, 30–39→2, 40–49→3, 50–59→4, 60–69→5, 70–79→6, 80–100→7 | **TRANSCRIBED; source/version review open** | Keep deterministic boundary tests for 29/30, 39/40, 49/50, 59/60, 69/70, 79/80 and invalid marks. |
 | APS subject count | Prospectus printed p. 16 says six school subjects, excluding Life Orientation | **PARTIAL** | Exactly six distinct supported non-LO subjects may produce a labelled provisional total; fewer/more than six, duplicates, missing marks or unsupported subjects must not fabricate a total. |
 | Selection among >6 subjects | Catalogue states unresolved from retained sources | **UNRESOLVED** | Do not select the “best six” or auto-include required programme subjects until the official rule is confirmed and curator-approved. |
-| English subject mapping | Programme rows contain English level/percentage but `mappingStatus: UNRESOLVED`; home-language versus first-additional-language mapping remains open | **UNRESOLVED across affected records** | Do not infer which learner English stream satisfies the column. Return UNKNOWN when the learner’s English result cannot be mapped under a verified rule. |
+| English subject mapping | Programme rows contain English level/percentage; catalogue now records `mappingStatus: DEMO_DEFAULT_HOME_LANGUAGE` for all 30 records where the stream was not explicit | **PROVISIONAL DEMO ASSUMPTION** | For hackathon demo use only, assume English Home Language when the source does not specify a stream. Explicit source wording takes precedence. First Additional Language or an unspecified stream is not equivalent; return UNKNOWN if no Home Language result is available. This is not verified UJ policy and must be source-checked before definitive screening. |
 | Subject alternatives / AND-OR semantics | Several records use route branches or special mandatory values; notes identify ambiguous table headings | **PARTIAL / programme-specific** | Encode an OR route only where the source clearly establishes it. Keep ambiguous branches unresolved and return UNKNOWN if they affect the result. |
 | Technical Mathematics / Technical Sciences | Science faculty restriction is recorded as a draft interpretation; other programme rows have explicit acceptance flags or unresolved alternatives | **PARTIAL** | Apply explicit per-programme rules only after row/footnote confirmation. Do not generalise a faculty restriction beyond the confirmed scope. |
 | Other selection conditions | Many records say complete conditions, exceptions and final selection conditions need review | **UNRESOLVED** | Capture every applicable condition/footnote before claiming a complete match. Minimum thresholds do not guarantee admission or a place. |
@@ -307,7 +307,7 @@ The catalogue values below are **recorded transcriptions**, not newly verified o
 
 - [ ] Retrieve and pin the exact official prospectus and CBE brochure versions; record retrieval date, SHA-256, page count, and version identity.
 - [ ] Visually inspect all 30 programme rows and every applicable footnote; reconcile PDF text extraction with the visual table.
-- [ ] Resolve the English column's accepted NSC language stream(s) from an authoritative rule.
+- [ ] Before definitive screening, verify the English column's accepted NSC language stream(s) from an authoritative rule; the current English Home Language default is a disclosed hackathon-demo assumption only.
 - [ ] Confirm six-subject APS selection semantics, including applicants with more than six eligible subjects and programme-required subjects.
 - [ ] Resolve every route's AND/OR semantics and technical-subject acceptance from the original table.
 - [ ] Capture all other requirements, exceptions, portfolio/audition/selection conditions where applicable, and the distinction between minimum eligibility and selection.
@@ -321,3 +321,8 @@ The catalogue values below are **recorded transcriptions**, not newly verified o
 For each rule: **programme ID → source ID + exact row/page/footnote → normalized catalogue field → deterministic evaluator branch → golden test ID → CI run**. Until the chain is complete, mark the rule as unresolved and ensure it cannot produce a confident eligibility outcome when it could change the result.
 
 **Status:** Evidence-to-rule reconciliation is documented for all 30 records from the currently retained catalogue metadata. Official-source re-verification and curator closure remain outstanding; this document does not claim those activities were completed.
+
+
+## English stream demo decision applied (2026-10-24)
+
+The project-owner decision in `DECISION-ENGLISH-STREAM-DEMO-ASSUMPTION.md` is reflected in the catalogue and evaluator: absent explicit source wording, the demo provisionally assumes English Home Language. The learner-facing pathway response discloses this assumption. First Additional Language and unspecified English are not treated as equivalent and produce `UNKNOWN` when the assumption is material. This change does not close any other source, route, selection-condition, or curator-signoff gaps.
