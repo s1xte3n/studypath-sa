@@ -400,3 +400,23 @@ Detailed rule-by-rule disposition and verification boundary: [ELIGIBILITY-DEMO-R
 **Explicit deferral:** hosting/provider logs and external telemetry privacy checks are outside Issue #185's bounded hackathon acceptance scope. The browser harness does not establish behaviour in channels it does not instrument.
 
 **Separate gate remains open:** G-SYN-001 is **OPEN / NOT PASSED**. This issue closure does not approve definitive eligibility, catalogue publication, institutional endorsement, or production readiness. Keep unresolved programme outcomes UNKNOWN and use synthetic data only.
+
+
+---
+
+## Parent delivery tracker reconciliation — Issue #160 (2026-10-25)
+
+Reviewed `main` baseline: `c2d97fa44ac1ccbe7feb9ce7e569a234596d7a1e`.
+
+| Child issue / requirement | Current evidence | Tracker disposition |
+|---|---|---|
+| #161 — core learner journey | Issue closed; current UI/domain/test files are in the repository | Closed child issue; do not infer full product release readiness |
+| #184 — discovery dashboard and filters | Issue closed; state-derived dashboard/filter regression evidence recorded in prior merge/CI records | Closed child issue; dashboard counts must remain grounded in actual state |
+| #185 — cross-screen regression | Issue closed for bounded hackathon scope; automated workflows and owner-reported manual checks are documented | Closed with explicit evidence limits; not a full external privacy audit or certification |
+| #187 — catalogue evidence/publication gate | Issue closed; demo-mode catalogue approval is distinct from definitive publication | Closed child issue; strict definitive gate remains and unresolved rules remain UNKNOWN |
+| #189 — provisional APS | Issue remains open; exact-six fail-closed policy is documented, but source/rule reconciliation remains unresolved | Open blocker; do not claim definitive or source-verified APS |
+| #164 — demo and submission artefacts | Runbook, deck content and checklist are repository drafts; final exported artefacts, video, rehearsal and portal confirmation are unverified | Highest-priority remaining delivery item |
+| #186 / #199 / #200 / #206 | Additional shortlist, alternatives, tracker and visual redesign scope | Defer until demo/submission critical path is secured |
+| G-SYN-001 | Current gate record explicitly says OPEN / NOT PASSED | Not passed; this tracker does not waive any gate criteria |
+
+**Evidence boundary:** Issue closure and successful CI are evidence for their stated scope only. The assistant did not run local tests, perform a fresh-session rehearsal, export the final deck/video, operate the Sonke portal, or verify submission confirmation during this reconciliation. Synthetic data only; no deployment or provisioning is authorized.
