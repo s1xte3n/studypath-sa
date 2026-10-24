@@ -791,3 +791,24 @@ An initial run while the separate dev server was still running reported 30/34 pa
 Full details and build artifact sizes: [LOCAL-VERIFICATION-2026-10-24.md](LOCAL-VERIFICATION-2026-10-24.md).
 
 **Evidence limits:** these are owner-supplied terminal results; the assistant did not execute them. The exact local tested HEAD SHA and local `git status` were not captured, and these results are not GitHub Actions evidence. Current-commit CI and manual keyboard/screen-reader, physical-device/browser-matrix, hosting/provider-log and external telemetry checks remain outstanding. Issue #185 stays open; G-SYN-001 remains **OPEN / NOT PASSED**. No deployment or production-readiness claim is implied.
+
+
+---
+
+## Canonical Issue #185 evidence reconciliation — 2026-10-24
+
+This section is the current summary for Issue #185 and supersedes older Issue #185 summaries in this file where they conflict. It does not delete historical notes.
+
+**Current reviewed implementation baseline:** `88e74031b221dbd68e132ff9d7ff340db9864d8e` (merge of PR #213, as recorded in the project conversation). Do not attribute the owner-supplied local run to this SHA: the local test HEAD was not captured.
+
+**Owner-confirmed acceptance criteria:** the project owner reports that Issue #185 criteria 1–10 have been tested and approved. This is owner-reported evidence, not independent reproduction by the assistant. The approved scope includes the main learner journey and validation cases, field associations/keyboard focus, automated light/dark accessibility scans, 320 CSS-pixel and desktop layout, reset/reload/fresh-session behaviour, checks across observable privacy channels, synthetic-only data and truthful `UNKNOWN` disclosures, and recording the manual/device/browser/hosting-log/telemetry items that remain unverified. Recording an outstanding manual check does not mean that check passed.
+
+**Local automated results (owner-supplied; exact local HEAD unknown):** `npm test` — 100 passed, 0 failed; `npm run build` — Vite 7.3.7 build succeeded; `npx playwright test` — 34 passed, 0 failed. See [LOCAL-VERIFICATION-2026-10-24.md](LOCAL-VERIFICATION-2026-10-24.md). These are not GitHub Actions results and cannot be tied to a specific commit from the supplied terminal output.
+
+**Remote CI evidence reported for the current main work:** [Browser MVP build #252](https://github.com/s1xte3n/studypath-sa/actions/runs/40130511587), [Contract tests #349](https://github.com/s1xte3n/studypath-sa/actions/runs/40130511577), [Browser E2E/privacy/accessibility #246](https://github.com/s1xte3n/studypath-sa/actions/runs/40130511614), and [GitHub Pages preview workflow #27](https://github.com/s1xte3n/studypath-sa/actions/runs/40130511684). These links are recorded as reported successful workflow evidence; the preview workflow alone does not establish production release approval. Vercel remains a non-required external check and its rate-limited deployment is not treated as a product failure or release target.
+
+**Still not independently evidenced:** manual keyboard walkthrough and screen-reader review; physical-device and browser-matrix checks; host/provider request logs; external telemetry/analytics review; clean local reproduction tied to an exact SHA. The browser harness observes only the channels it instruments. Keep these as blocked/not run until evidence is supplied or a bounded demo-only disposition is explicitly approved.
+
+**Issue disposition:** Issue [#185](https://github.com/s1xte3n/studypath-sa/issues/185) remains open until acceptance criterion 11 is completed: link the evidence and reconcile status/traceability records. Do not mark criterion 11 complete solely because this documentation PR is proposed; confirm the merged evidence links and issue body after merge.
+
+**Release gate:** G-SYN-001 remains **OPEN / NOT PASSED**. The UJ 2027 catalogue is approved for hackathon demo only, remains `DRAFT_NOT_FOR_DEFINITIVE_SCREENING`, and has no institutional curator sign-offs. Eligibility must remain `UNKNOWN` where authoritative requirements are unresolved. No production deployment, cloud provisioning, or real learner-data use is authorized.
