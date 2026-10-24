@@ -368,3 +368,15 @@ This section supersedes earlier Issue #185 rows in this matrix that label the sa
 | D-HACK-ELIG-003 — production governance deferred | Additional institutional verification and production-grade source governance are post-hackathon activities | Does not waive remaining G-SYN-001 implementation, test, privacy, accessibility, reproducibility, or documentation criteria. |
 
 This owner decision supersedes older wording in this matrix that treats absent institutional curator sign-off alone as a reason to block every hackathon eligibility outcome. Source-backed uncertainty remains `UNKNOWN` where evidence is genuinely insufficient.
+
+
+
+## Hackathon demo eligibility rule evaluation — 2026-10-24
+
+| Requirement / decision | Implementation / contract | Regression evidence | Status |
+|---|---|---|---|
+| D-HACK-ELIG-001 — bounded demo evaluation | `src/domain/pathway-matching.mjs` selects explicit demo evaluation only for `APPROVED_FOR_HACKATHON_DEMO_ONLY`; `src/domain/eligibility/uj-2027-evaluator.mjs` allows rule-level evaluation without institutional sign-off being a blanket blocker | `tests/pathway-matching.test.mjs` covers demo evaluation and deterministic subject/minimum failures | Candidate branch; CI pending |
+| D-HACK-ELIG-002 — preserve uncertainty | Explicit verified negative rules can return `NOT_ELIGIBLE`; material unresolved rules prevent positive `ELIGIBLE` and return `UNKNOWN` | Strong marks + unresolved rules; explicit Mathematics minimum failure; English-stream assumption; wrong cycle | Candidate branch; CI pending |
+| Definitive publication | `src/domain/eligibility/catalogue-publication-gate.mjs` remains unchanged and mandatory outside demo mode | Regression asserts failed publication gate still forces `UNKNOWN` | Candidate branch; CI pending |
+
+Detailed rule-by-rule disposition and verification boundary: [ELIGIBILITY-DEMO-RULE-EVALUATION.md](../project/ELIGIBILITY-DEMO-RULE-EVALUATION.md). G-SYN-001 remains OPEN / NOT PASSED; no local execution or CI result is claimed before candidate workflows complete.
