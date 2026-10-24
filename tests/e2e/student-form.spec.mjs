@@ -71,7 +71,7 @@ test("correcting invalid marks clears the error and valid entries still do not i
   await page.getByRole("button", { name: /Explore pathways/ }).click();
   await expect(page.getByRole("status")).toContainText("Pathway exploration completed");
   await expect(page.getByRole("status")).toContainText("results are UNKNOWN");
-  await expect(page.locator(".result-card")).toHaveCount(7);
+  await expect(page.locator(".result-card")).toHaveCount(30);
 });
 
 test("changing the study stage clears a stale validation notice", async ({ page }) => {
