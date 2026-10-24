@@ -63,9 +63,9 @@ test("explicit subject rejection is evaluated before unresolved positive-outcome
     ]
   }, catalogue);
 
-  const informationTechnology = results.find(item => item.id === "UJ-2027-BSC-IT");
-  assert.equal(informationTechnology.state, "NOT_ELIGIBLE");
-  assert.ok(informationTechnology.reasonCodes.includes("MATHEMATICAL_LITERACY_NOT_ACCEPTED"));
+  const accounting = results.find(item => item.id === "UJ-2027-CBE-BCOM-ACCOUNTING");
+  assert.equal(accounting.state, "NOT_ELIGIBLE");
+  assert.ok(accounting.reasonCodes.includes("MATHEMATICAL_LITERACY_NOT_ACCEPTED"));
 });
 
 test("English stream assumption remains explicit and unresolved streams stay UNKNOWN", () => {
