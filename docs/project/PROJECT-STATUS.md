@@ -693,3 +693,27 @@ The GitHub combined status endpoint for `d377512d38cf4e93833e1c50984605cac12adbd
 **Existing-scope reconciliation:** Pillar 1 is partly present in the existing local journey; source-backed APS is already tracked in #189 and still depends on official rule confirmation. Pillar 2 is already represented by REQ-ALT-001 but approved relationships and a complete alternatives flow are not evidenced. Pillar 3 is present in target UX / REQ-APP-001 and REQ-FUND-001 but the tracker and funding flow are explicitly not implemented in the current local demo. This documentation does not claim uniqueness, learner validation or feature completion.
 
 **Guardrails:** no invented alternatives, progression rules, costs, deadlines or funding; keep draft-catalogue results UNKNOWN; no application submission, cloud provisioning, persistent learner data or production deployment. G-SYN-001 remains OPEN / NOT PASSED. Implementation must follow existing P0 stability and evidence prerequisites.
+
+
+---
+
+## Issue #185 evidence reconciliation — 2026-10-24
+
+**Reviewed main commit:** 4204f0b8bf350e4d7d7b7d890c47038415c5aabc (merge of PR #202). This section supersedes earlier Issue #185 notes in this file that describe the targeted regression tests or CI evidence as pending.
+
+**Repository scripts verified from package.json:**
+- npm test — node --test
+- npm run build — vite build
+- npx playwright test — browser E2E suite (separate command; Playwright config starts the Vite dev server on localhost).
+
+**GitHub Actions completed successfully on the exact reviewed SHA:**
+- [Browser E2E, privacy and accessibility — run 40107386820](https://github.com/s1xte3n/studypath-sa/actions/runs/40107386820)
+- [Browser MVP build — run 40107386703](https://github.com/s1xte3n/studypath-sa/actions/runs/40107386703)
+- [Contract tests — run 40107386834](https://github.com/s1xte3n/studypath-sa/actions/runs/40107386834)
+- [UJ eligibility golden-case verification — run 40107386706](https://github.com/s1xte3n/studypath-sa/actions/runs/40107386706)
+
+**Source-reviewed automated coverage:** valid/corrected and invalid learner journeys; field-associated missing-stage, mark and duplicate-subject errors; malformed, fractional, negative, blank and out-of-range marks; draft-catalogue outcomes remaining UNKNOWN; provisional APS guardrails; result details; recoverable empty filter results; reset of form/results/shortlist/tracker state; reload and fresh-tab non-restoration; URL/storage/cookie and instrumented request/console/error-channel privacy checks; keyboard focus; 320px mobile and desktop result overflow; axe checks in light and dark themes; dark-theme contrast checks.
+
+**Evidence limits / outstanding manual work:** the assistant did not execute a local clean install, npm test, Playwright or build. The linked CI runs are remote CI evidence, not local reproduction. A human manual keyboard walkthrough, screen-reader review, physical-device/browser-matrix checks, and hosting/provider log plus external telemetry review have not been evidenced. Browser instrumentation only observes the channels and scenarios explicitly exercised; it is not proof of zero leakage across all platform/hosting channels.
+
+**Disposition:** the implementation-level regression coverage and exact-SHA CI are evidenced. Issue #185 must remain open until the remaining manual/privacy evidence is recorded or explicitly marked blocked with an owner and accepted scope. G-SYN-001 remains **OPEN / NOT PASSED**; the UJ 2027 catalogue remains DRAFT_NOT_FOR_DEFINITIVE_SCREENING, and all draft-catalogue eligibility results must remain UNKNOWN. No deployment, cloud provisioning, real learner data, or production-readiness claim is approved.
