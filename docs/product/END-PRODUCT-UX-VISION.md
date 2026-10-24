@@ -117,6 +117,10 @@ Suggested implementation order:
 5. Add/adjust browser tests and accessibility checks for each change.
 6. Review data provenance, security/privacy boundaries and demo disclosures before presentation sign-off.
 
-## 10. Explicitly out of scope for the current visual target
+## 10. Differentiation follow-up
+
+The proposed three-pillar product direction is documented in [THREE-PILLAR-DIFFERENTIATION.md](THREE-PILLAR-DIFFERENTIATION.md): (1) explain what the learner's actual marks support, (2) show evidence-backed alternative routes when a preferred route is blocked or uncertain, and (3) organise manual application-preparation next steps. This direction must be validated with learners and mentor feedback; it does not imply that all three pillars are implemented. Existing requirements and issue references are mapped in that document. Maintain all source, eligibility, privacy and synthetic-data safeguards.
+
+## 11. Explicitly out of scope for the current visual target
 
 This design document does not authorise public deployment, Azure provisioning, real learner data, definitive admission screening from the draft catalogue, fabricated fees/deadlines/funding, automatic applications, or a change to approved API/security contracts. Production hardening remains a separate gate.
