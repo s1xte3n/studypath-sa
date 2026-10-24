@@ -255,3 +255,22 @@ These four workflow records confirm successful completion for the listed workflo
 **Evidence status:** implementation and test files are committed on the issue branch; CI evidence is pending. No local test/build run is claimed. Manual keyboard/screen-reader review, physical-device testing, host/provider logs, external telemetry and full privacy/legal review remain unverified. The browser suite only observes instrumented channels.
 
 **Gate decision: OPEN / NOT PASSED.** This targeted fix does not satisfy all G-SYN-001 exit criteria and does not approve catalogue publication, public deployment, or real learner data.
+
+
+---
+
+## Issue #185 current main-commit evidence reconciliation — 2026-10-24
+
+**Reviewed main:** 4204f0b8bf350e4d7d7b7d890c47038415c5aabc. This section supersedes the earlier Issue #185 candidate-branch note above that says CI is pending.
+
+**Successful exact-SHA GitHub Actions:**
+- [Browser E2E, privacy and accessibility — 40107386820](https://github.com/s1xte3n/studypath-sa/actions/runs/40107386820)
+- [Browser MVP build — 40107386703](https://github.com/s1xte3n/studypath-sa/actions/runs/40107386703)
+- [Contract tests — 40107386834](https://github.com/s1xte3n/studypath-sa/actions/runs/40107386834)
+- [UJ eligibility golden-case verification — 40107386706](https://github.com/s1xte3n/studypath-sa/actions/runs/40107386706)
+
+Source review confirms current automated coverage for malformed and boundary marks, duplicate-subject field association, missing-stage field association, result details, all-UNKNOWN draft results, recoverable empty filter state, reset and reload/fresh-tab lifecycle, shortlist/tracker reset, selected browser privacy channels, 320px and desktop overflow, keyboard-focus assertions, axe scans in light/dark themes and dark-theme contrast. This is code/test inspection plus remote CI evidence, not an independent local test run or a manual audit.
+
+**Still outstanding:** clean local install/test/build reproduction by the project owner; manual keyboard and screen-reader review; physical-device and browser-matrix checks; host/provider request-log inspection; external telemetry/analytics review; and a broader criterion-by-criterion G-SYN-001 evidence decision. The browser privacy harness cannot prove behavior outside the channels it instruments.
+
+**Gate decision remains OPEN / NOT PASSED.** Draft catalogue status remains DRAFT_NOT_FOR_DEFINITIVE_SCREENING; every draft-catalogue eligibility result must remain UNKNOWN. No public production release, cloud provisioning, or real learner-data use is authorized by these test results.
