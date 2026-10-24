@@ -323,3 +323,27 @@ footer span:first-child{color:#542583}
   .discovery-counts span{font-size:11px}
 }
 @media(prefers-reduced-motion:reduce){.completeness-track span{transition:none}}
+
+
+/* Issue #189 — guarded, explainable provisional APS panel. */
+.aps-panel{margin:22px 0;padding:22px;border:1px solid #d9cde8;border-radius:13px;background:#faf7fd}
+.aps-panel h3{font-size:20px;margin:0 0 10px;color:#34204b;letter-spacing:-.4px}
+.aps-panel h4{font-size:14px;margin:18px 0 8px;letter-spacing:-.2px}
+.aps-caveat,.aps-limitation,.aps-source,.aps-pending,.aps-error,.aps-excluded{font-size:12px;line-height:1.65;color:#575363}
+.aps-caveat{max-width:760px}
+.aps-total{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:18px 0;padding:13px 15px;border-radius:9px;background:#eee7f6;color:#34204b}
+.aps-total span{font-size:13px;font-weight:700}.aps-total strong{font-size:28px}
+.aps-subject-list{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.aps-subject-list li{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px;border:1px solid #e0d8e9;border-radius:8px;background:#fff;font-size:12px;color:#34204b}
+.aps-subject-list strong{white-space:nowrap}.aps-excluded{margin-top:12px}
+.aps-source a{color:#005b91;font-weight:700;text-underline-offset:3px}
+.aps-pending,.aps-error{padding:12px;border:1px solid #d8d0e2;border-radius:8px;background:#fff}
+.aps-error{color:#8b3022;border-color:#e4b7ae;background:#fff7f4}
+.theme-dark .aps-panel{background:#211b28;border-color:#71617f}
+.theme-dark .aps-panel h3,.theme-dark .aps-panel h4,.theme-dark .aps-total,.theme-dark .aps-subject-list li{color:#f4eaff}
+.theme-dark .aps-caveat,.theme-dark .aps-limitation,.theme-dark .aps-source,.theme-dark .aps-pending,.theme-dark .aps-error,.theme-dark .aps-excluded{color:#e0d6e9}
+.theme-dark .aps-total{background:#382c45}
+.theme-dark .aps-subject-list li,.theme-dark .aps-pending{background:#2b2630;border-color:#51445d}
+.theme-dark .aps-source a{color:#9bd8ff}
+.theme-dark .aps-error{background:#33221f;border-color:#805044;color:#ffd4c9}
+@media(max-width:600px){.aps-panel{padding:16px}.aps-subject-list{grid-template-columns:minmax(0,1fr)}.aps-total strong{font-size:24px}}

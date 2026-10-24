@@ -18,8 +18,8 @@ test("learner can edit rows, validate entries, and reset the form", async ({ pag
 
   await page.locator("#stage").selectOption("GRADE_12");
   await page.getByRole("button", { name: /Explore pathways/ }).click();
-  await expect(page.getByRole("status")).toContainText("Pathway exploration completed");
-  await expect(page.getByRole("status")).toContainText("results are UNKNOWN");
+  await expect(page.locator(".form-notice")).toContainText("Pathway exploration completed");
+  await expect(page.locator(".form-notice")).toContainText("results are UNKNOWN");
   await expect(page.getByRole("heading", { name: "Pathways to investigate" })).toBeVisible();
   await expect(page.locator(".result-card")).toHaveCount(30);
   await expect(page.locator(".eligibility-state")).toHaveText(Array(30).fill("Unknown"));
@@ -43,7 +43,7 @@ test("learner can edit rows, validate entries, and reset the form", async ({ pag
   await expect(page.locator("#stage option:checked")).toHaveText("Choose current stage");
   await expect(page.locator("#subject-0")).toHaveValue("");
   await expect(page.locator("#mark-0")).toHaveValue("");
-  await expect(page.getByRole("status")).toHaveCount(0);
+  await expect(page.locator(".form-notice")).toHaveCount(0);
 });
 
 test("invalid learner input is announced and does not produce an eligibility result", async ({ page }) => {
@@ -52,9 +52,9 @@ test("invalid learner input is announced and does not produce an eligibility res
   await page.locator("#mark-0").fill("101");
   await page.getByRole("button", { name: /Explore pathways/ }).click();
 
-  await expect(page.getByRole("status")).toContainText("whole-number mark from 0 to 100");
-  await expect(page.getByRole("status")).toHaveAttribute("aria-live", "polite");
-  await expect(page.getByRole("status")).not.toContainText("ELIGIBLE");
+  await expect(page.locator(".form-notice")).toContainText("whole-number mark from 0 to 100");
+  await expect(page.locator(".form-notice")).toHaveAttribute("aria-live", "polite");
+  await expect(page.locator(".form-notice")).not.toContainText("ELIGIBLE");
 });
 
 
@@ -63,14 +63,14 @@ test("correcting invalid marks clears the error and valid entries still do not i
   await page.locator("#subject-0").selectOption("Mathematics");
   await page.locator("#mark-0").fill("101");
   await page.getByRole("button", { name: /Explore pathways/ }).click();
-  await expect(page.getByRole("status")).toContainText("whole-number mark from 0 to 100");
+  await expect(page.locator(".form-notice")).toContainText("whole-number mark from 0 to 100");
 
   await page.locator("#mark-0").fill("90");
   await page.locator("#stage").selectOption("GRADE_12");
-  await expect(page.getByRole("status")).toHaveCount(0);
+  await expect(page.locator(".form-notice")).toHaveCount(0);
   await page.getByRole("button", { name: /Explore pathways/ }).click();
-  await expect(page.getByRole("status")).toContainText("Pathway exploration completed");
-  await expect(page.getByRole("status")).toContainText("results are UNKNOWN");
+  await expect(page.locator(".form-notice")).toContainText("Pathway exploration completed");
+  await expect(page.locator(".form-notice")).toContainText("results are UNKNOWN");
   await expect(page.locator(".result-card")).toHaveCount(30);
 });
 
@@ -78,10 +78,10 @@ test("changing the study stage clears a stale validation notice", async ({ page 
   await page.goto("/");
   await page.locator("#subject-0").selectOption("");
   await page.getByRole("button", { name: /Explore pathways/ }).click();
-  await expect(page.getByRole("status")).toContainText("Choose a subject");
+  await expect(page.locator(".form-notice")).toContainText("Choose a subject");
 
   await page.getByLabel("Your current stage").selectOption("GRADE_11");
-  await expect(page.getByRole("status")).toHaveCount(0);
+  await expect(page.locator(".form-notice")).toHaveCount(0);
 });
 
 test("reset from an error state restores the default form and removes the notice", async ({ page }) => {
@@ -89,13 +89,13 @@ test("reset from an error state restores the default form and removes the notice
   await page.locator("#subject-0").selectOption("");
   await page.locator("#mark-0").fill("101");
   await page.getByRole("button", { name: /Explore pathways/ }).click();
-  await expect(page.getByRole("status")).toBeVisible();
+  await expect(page.locator(".form-notice")).toBeVisible();
 
   await page.getByRole("button", { name: "Reset" }).click();
   await expect(page.locator("#stage")).toHaveValue("");
   await expect(page.locator("#subject-0")).toHaveValue("");
   await expect(page.locator("#mark-0")).toHaveValue("");
-  await expect(page.getByRole("status")).toHaveCount(0);
+  await expect(page.locator(".form-notice")).toHaveCount(0);
 });
 
 test("home-anchor back and forward navigation keeps transient form data out of the URL", async ({ page }) => {
@@ -271,7 +271,7 @@ test("no learner entries are transmitted or persisted across reload", async ({ p
   await page.locator("#subject-0").selectOption(subjectMarker);
   await page.locator("#mark-0").fill(mark);
   await page.getByRole("button", { name: /Explore pathways/ }).click();
-  await expect(page.getByRole("status")).toContainText("Pathway exploration completed");
+  await expect(page.locator(".form-notice")).toContainText("Pathway exploration completed");
 
   const currentUrl = new URL(page.url());
   expect(currentUrl.href).not.toContain(subjectMarker);
@@ -330,7 +330,7 @@ test("malformed, fractional, negative, missing and over-range marks are rejected
     await page.locator("#mark-0").fill(mark);
     await page.getByRole("button", { name: /Explore pathways/ }).click();
 
-    await expect(page.getByRole("status")).toContainText("whole-number mark from 0 to 100");
+    await expect(page.locator(".form-notice")).toContainText("whole-number mark from 0 to 100");
     await expect(page.locator("#mark-0")).toHaveAttribute("aria-invalid", "true");
     await expect(page.locator(".result-card")).toHaveCount(0);
   }
@@ -346,9 +346,9 @@ test("duplicate subjects are rejected before pathway results are produced", asyn
   await page.locator("#mark-1").fill("80");
   await page.getByRole("button", { name: /Explore pathways/ }).click();
 
-  await expect(page.getByRole("status")).toContainText("Mathematics is listed more than once");
+  await expect(page.locator(".form-notice")).toContainText("Mathematics is listed more than once");
   await expect(page.locator(".result-card")).toHaveCount(0);
-  await expect(page.getByRole("status")).not.toContainText("Pathway exploration completed");
+  await expect(page.locator(".form-notice")).not.toContainText("Pathway exploration completed");
 });
 
 test("missing study stage is field-associated and blocks evaluation", async ({ page }) => {
@@ -357,7 +357,7 @@ test("missing study stage is field-associated and blocks evaluation", async ({ p
   await page.locator("#mark-0").fill("75");
   await page.getByRole("button", { name: /Explore pathways/ }).click();
 
-  await expect(page.getByRole("status")).toContainText("Select your current study stage");
+  await expect(page.locator(".form-notice")).toContainText("Select your current study stage");
   await expect(page.locator("#stage")).toHaveAttribute("aria-invalid", "true");
   await expect(page.locator("#stage")).toHaveAttribute("aria-describedby", "stage-error");
   await expect(page.locator(".result-card")).toHaveCount(0);
@@ -499,7 +499,7 @@ test("only the missing mark field is highlighted when a subject is selected", as
   await page.locator("#mark-0").fill("");
   await page.getByRole("button", { name: /Explore pathways/ }).click();
 
-  await expect(page.getByRole("status")).toContainText("whole-number mark from 0 to 100");
+  await expect(page.locator(".form-notice")).toContainText("whole-number mark from 0 to 100");
   await expect(page.locator("#subject-0")).toHaveAttribute("aria-invalid", "false");
   await expect(page.locator("#mark-0")).toHaveAttribute("aria-invalid", "true");
   await expect(page.locator("#subject-0")).not.toHaveCSS("border-color", "rgb(181, 82, 55)");
@@ -512,7 +512,7 @@ test("only the subject field is highlighted when a mark is entered without a sub
   await page.locator("#mark-0").fill("75");
   await page.getByRole("button", { name: /Explore pathways/ }).click();
 
-  await expect(page.getByRole("status")).toContainText("Choose a subject");
+  await expect(page.locator(".form-notice")).toContainText("Choose a subject");
   await expect(page.locator("#subject-0")).toHaveAttribute("aria-invalid", "true");
   await expect(page.locator("#mark-0")).toHaveAttribute("aria-invalid", "false");
 });
@@ -554,7 +554,7 @@ test("whole-number mark boundaries reject fractional, negative, blank, and over-
   for (const value of ["75.5", "-1", "", "101"]) {
     await page.locator("#mark-0").fill(value);
     await page.getByRole("button", { name: /Explore pathways/ }).click();
-    await expect(page.getByRole("status")).toContainText("whole-number mark from 0 to 100");
+    await expect(page.locator(".form-notice")).toContainText("whole-number mark from 0 to 100");
     await expect(page.locator("#mark-0")).toHaveAttribute("aria-invalid", "true");
     const describedBy = await page.locator("#mark-0").getAttribute("aria-describedby");
     expect(describedBy).toBeTruthy();
@@ -563,7 +563,7 @@ test("whole-number mark boundaries reject fractional, negative, blank, and over-
 
   await page.locator("#mark-0").fill("0");
   await page.getByRole("button", { name: /Explore pathways/ }).click();
-  await expect(page.getByRole("status")).toContainText("Pathway exploration completed");
+  await expect(page.locator(".form-notice")).toContainText("Pathway exploration completed");
   await expect(page.locator(".eligibility-state")).toHaveText(Array(30).fill("Unknown"));
 });
 
@@ -577,7 +577,7 @@ test("duplicate subjects associate validation with each affected subject field",
   await page.locator("#mark-1").fill("80");
 
   await page.getByRole("button", { name: /Explore pathways/ }).click();
-  await expect(page.getByRole("status")).toContainText("Mathematics is listed more than once");
+  await expect(page.locator(".form-notice")).toContainText("Mathematics is listed more than once");
   for (const selector of ["#subject-0", "#subject-1"]) {
     await expect(page.locator(selector)).toHaveAttribute("aria-invalid", "true");
     const describedBy = await page.locator(selector).getAttribute("aria-describedby");
@@ -593,7 +593,7 @@ test("missing stage is associated with its field and reset clears validation", a
   await page.locator("#mark-0").fill("75");
   await page.getByRole("button", { name: /Explore pathways/ }).click();
 
-  await expect(page.getByRole("status")).toContainText("Select your current study stage");
+  await expect(page.locator(".form-notice")).toContainText("Select your current study stage");
   await expect(page.locator("#stage")).toHaveAttribute("aria-invalid", "true");
   await expect(page.locator("#stage")).toHaveAttribute("aria-describedby", "stage-error");
   await expect(page.locator("#stage-error")).toBeVisible();
@@ -601,7 +601,7 @@ test("missing stage is associated with its field and reset clears validation", a
   await page.getByRole("button", { name: "Reset" }).click();
   await expect(page.locator("#stage")).toHaveAttribute("aria-invalid", "false");
   await expect(page.locator("#stage")).not.toHaveAttribute("aria-describedby", "stage-error");
-  await expect(page.getByRole("status")).toHaveCount(0);
+  await expect(page.locator(".form-notice")).toHaveCount(0);
 });
 
 test("desktop results layout has no horizontal overflow", async ({ page }) => {
@@ -626,4 +626,40 @@ test("desktop results layout has no horizontal overflow", async ({ page }) => {
     expect(card.left).toBeGreaterThanOrEqual(0);
     expect(card.right).toBeLessThanOrEqual(layout.viewportWidth);
   }
+});
+
+
+test("provisional APS is explainable and refuses unresolved selection of more than six subjects", async ({ page }) => {
+  await page.goto("/");
+  await page.locator("#stage").selectOption("GRADE_12");
+  const rows = [
+    ["Mathematics", "29"],
+    ["Physical Sciences", "30"],
+    ["Life Sciences", "40"],
+    ["Geography", "50"],
+    ["History", "60"],
+    ["Accounting", "80"],
+    ["Life Orientation", "100"]
+  ];
+  for (let index = 0; index < rows.length; index += 1) {
+    if (index > 0) await page.getByRole("button", { name: /Add another subject/ }).click();
+    await page.locator(`#subject-${index}`).selectOption(rows[index][0]);
+    await page.locator(`#mark-${index}`).fill(rows[index][1]);
+  }
+  await page.getByRole("button", { name: /Explore pathways/ }).click();
+  const aps = page.getByRole("region", { name: /Provisional APS estimate/ });
+  await expect(aps).toBeVisible();
+  await expect(aps.getByText("Indicative total", { exact: true })).toBeVisible();
+  await expect(aps.locator(".aps-total strong")).toHaveText("22");
+  await expect(aps.getByText("Life Orientation.", { exact: false })).toBeVisible();
+  await expect(aps.getByRole("link", { name: /UJ 2027 Undergraduate Prospectus/ })).toHaveAttribute("href", /uj_undergrad_prospectus2027/);
+  await expect(page.locator(".result-card .eligibility-state").first()).toHaveText("Unknown");
+
+  await page.getByRole("button", { name: /Add another subject/ }).click();
+  await page.locator("#subject-7").selectOption("Business Studies");
+  await page.locator("#mark-7").fill("100");
+  await page.getByRole("button", { name: /Explore pathways/ }).click();
+  await expect(aps.getByRole("status")).toContainText("does not resolve which six to count");
+  await expect(aps.locator(".aps-total")).toHaveCount(0);
+  await expect(page.locator(".result-card .eligibility-state").first()).toHaveText("Unknown");
 });

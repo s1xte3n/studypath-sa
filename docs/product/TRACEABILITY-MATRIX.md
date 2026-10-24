@@ -1,3 +1,11 @@
+## APS calculator traceability — issue #189 (2026-10-24)
+
+| Requirement slice | Contract / implementation | Tests | Evidence and remaining gate |
+|---|---|---|---|
+| Explainable provisional UJ 2027 APS | `src/domain/eligibility/provisional-aps.mjs`; learner panel in `src/main.jsx`; responsive/theme styles in `src/styles.css`; source link/version and printed page disclosed | `tests/provisional-aps.test.mjs`; `tests/e2e/student-form.spec.mjs` APS scenario | Implemented on branch `feat/189-provisional-aps-calculator`; CI not yet run. Draft source and curator review remain open. |
+| Six-subject selection safety | Exactly six distinct non-LO subjects may produce a provisional total; <6 returns UNKNOWN; >6 returns UNKNOWN and does not select subjects automatically | Unit tests for exact-six, <6, >6, Life Orientation, duplicates and invalid marks; browser test verifies >6 state | This intentionally deviates from the issue's original “six highest” wording because `docs/product/uj-2027-pilot-catalogue-draft.json` marks the applicable selection rule unresolved. Do not resolve by inference. |
+| Eligibility separation | APS panel explicitly says it does not determine programme eligibility; existing draft catalogue publication gate remains unchanged | Browser test asserts pathway cards remain UNKNOWN when an APS estimate is visible | Requires CI evidence on PR head; G-SYN-001 remains OPEN / NOT PASSED. |
+
 ## Current implementation reconciliation — 2026-10-22
 
 This section supplements the broader requirements traceability plan below. The historical matrix includes requirements for the intended API-first product and future authenticated scope; its planned test IDs are not proof that those features exist. For current local-demo status, use the latest gate and status records.

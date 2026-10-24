@@ -4,6 +4,7 @@ import "./styles.css";
 import { validateStudentEntries } from "./domain/student-input-validation.mjs";
 import { buildPathwayResults } from "./domain/pathway-matching.mjs";
 import { getDiscoverySummary } from "./domain/discovery-summary.mjs";
+import { calculateProvisionalAps, APS_SOURCE } from "./domain/eligibility/provisional-aps.mjs";
 import catalogue from "../docs/product/uj-2027-pilot-catalogue-draft.json";
 
 const STAGES = [
@@ -74,6 +75,32 @@ function PathwayDetails({ item }) {
         </div>
       </div>
     </details>
+  );
+}
+
+function ProvisionalApsPanel({ subjects }) {
+  const estimate = calculateProvisionalAps(subjects);
+  return (
+    <section className="aps-panel" aria-labelledby="aps-title">
+      <p className="eyebrow">YOUR MARKS · INDICATIVE ONLY</p>
+      <h3 id="aps-title">Provisional APS estimate</h3>
+      <p className="aps-caveat">Based on the mark-to-level bands recorded in the UJ 2027 Undergraduate Prospectus (printed p. 16). This retained source and its interpretation are still under review; this is not an official or verified APS result.</p>
+      {estimate.state === "PROVISIONAL" ? (
+        <>
+          <p className="aps-total"><span>Indicative total</span><strong>{estimate.aps}</strong></p>
+          <h4>Subjects counted</h4>
+          <ul className="aps-subject-list">
+            {estimate.includedSubjects.map(row => <li key={row.subject}><span>{row.subject} · {row.mark}%</span><strong>Level {row.level}</strong></li>)}
+          </ul>
+          {estimate.excludedSubjects.length > 0 && <p className="aps-excluded">Excluded: {estimate.excludedSubjects.map(row => row.subject).join(", ")}.</p>}
+        </>
+      ) : (
+        <p className={estimate.state === "INPUT_REJECTED" ? "aps-error" : "aps-pending"} role="status">{estimate.reason}</p>
+      )}
+      {estimate.state === "PROVISIONAL" && <p className="aps-limitation">{estimate.reason}</p>}
+      <p className="aps-source">Source: <a href={APS_SOURCE.url} target="_blank" rel="noopener noreferrer">{APS_SOURCE.title} <span aria-hidden="true">↗</span></a> · printed p. {APS_SOURCE.printedPage} · draft source record.</p>
+      <p className="aps-limitation">Life Orientation is excluded. When more than six other subjects are entered, no total is calculated because the retained draft source does not resolve which six to count. This estimate never changes the pathway eligibility state.</p>
+    </section>
   );
 }
 
@@ -291,6 +318,7 @@ function App() {
               <div><p className="eyebrow">STEP 2 · YOUR EXPLORATION</p><h2 id="results-title">Pathways to investigate</h2></div>
               <span className="step-count">{discovery.totalCandidates} CANDIDATES</span>
             </div>
+            <ProvisionalApsPanel subjects={subjects.map(item => ({ subject: item.subject, mark: item.mark }))} />
             <div className="catalogue-warning" role="note">
               <strong>Exploration results · 2027 pilot</strong>
               <p>This catalogue is still being reviewed, so eligibility remains UNKNOWN. Use these matches to decide which official requirements to investigate next.</p>

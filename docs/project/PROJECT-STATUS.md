@@ -1,3 +1,20 @@
+# Provisional APS calculator update — PR #189 implementation branch (2026-10-24)
+
+**Candidate branch:** `feat/189-provisional-aps-calculator`, based on `main` commit `896a52d97bdfe14fdda0e20f14a51b276a594fb8`.
+
+**Implemented on this branch; awaiting CI review:**
+- `src/domain/eligibility/provisional-aps.mjs` adds a pure mark-to-level calculator using the bands retained in the draft UJ 2027 catalogue.
+- The calculator returns a provisional total only for exactly six distinct non-Life-Orientation subjects; fewer subjects return UNKNOWN, and more than six eligible subjects return UNKNOWN without silently selecting a subset.
+- `src/main.jsx` and `src/styles.css` show the included subject marks/levels, excluded Life Orientation, the official prospectus link, and source-review limitations.
+- `tests/provisional-aps.test.mjs` covers mark boundaries, exact-six calculation, Life Orientation exclusion, insufficient/excess subjects, duplicates, invalid marks and draft-source disclosure.
+- `tests/e2e/student-form.spec.mjs` adds browser coverage for visible explanation, source link, more-than-six guardrail and continued UNKNOWN eligibility.
+
+**Source and rule limitation:** this is a *provisional* calculation based on the draft record, not a verified or official admission score. The retained catalogue explicitly says the more-than-six selection rule and programme-specific required-subject selection need resolution. The calculator therefore deliberately does not implement issue #189's original “select the six highest” acceptance wording until the official rule is reconciled and curator-approved. It does not change programme eligibility.
+
+**Verification:** no local tests or build have been run by the assistant for this branch. GitHub Actions results are pending PR creation. Do not mark the issue complete until CI, accessibility/privacy regression and traceability evidence are reviewed. G-SYN-001 remains OPEN / NOT PASSED; no deployment, provisioning or real learner data is authorised.
+
+---
+
 # Local verification update — PR #197 merge (2026-10-24)
 
 **Reviewed commit:** `2a424b1ab085f59384ad3d2a593d5af67fb4fe08`, merge of [PR #197](https://github.com/s1xte3n/studypath-sa/pull/197).
