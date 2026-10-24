@@ -277,3 +277,49 @@ footer span:first-child{color:#542583}
 .theme-dark .shortlist-card .manual-tracking-note {
   color: #d8cde2 !important;
 }
+
+
+/* State-derived discovery dashboard (issue #184). */
+.profile-completeness,.discovery-summary{margin-top:20px;padding:18px 20px;border:1px solid #ddd9e6;border-radius:12px;background:#fff}
+.profile-completeness-heading,.discovery-summary-heading{display:flex;justify-content:space-between;align-items:flex-start;gap:16px}
+.profile-completeness h3,.discovery-summary h3{font-size:16px;letter-spacing:-.3px;margin:0 0 7px}
+.profile-completeness-heading strong{font-size:18px;color:#542583;white-space:nowrap}
+.profile-completeness p,.discovery-summary p{font-size:12px;line-height:1.6;color:#5f6470;margin:8px 0 0}
+.completeness-track{height:8px;margin-top:10px;overflow:hidden;background:#ebe7f0;border-radius:999px}
+.completeness-track span{display:block;height:100%;background:#542583;border-radius:999px;transition:width .15s ease}
+.discovery-summary{margin:24px 0 18px}
+.discovery-summary-heading{align-items:center}
+.discovery-summary-heading p{margin:0}
+.candidate-count{text-align:right}
+.discovery-counts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:16px 0}
+.discovery-counts div{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:12px;border:1px solid #ddd9e6;border-radius:9px;background:#fbfaf7}
+.discovery-counts span{font-size:12px;color:#5f6470}
+.discovery-counts strong{font-size:18px;color:#21152f}
+.discovery-filters{display:flex;align-items:flex-end;flex-wrap:wrap;gap:14px}
+.discovery-filters>div{flex:1 1 180px;min-width:0}
+.discovery-filters .field-label{margin-bottom:6px}
+.clear-filters-button{min-height:42px;padding:9px 13px;border:1px solid #0065A8;border-radius:8px;background:#fff;color:#0065A8;font-weight:700;font-size:12px;cursor:pointer}
+.clear-filters-button:hover{background:#edf6fd}
+.filter-empty{margin:18px 0;padding:22px;border:1px dashed #c9c4d3;border-radius:12px;background:#f7f4fa}
+.filter-empty h3{font-size:17px;margin-bottom:8px}
+.filter-empty p{font-size:13px;line-height:1.65;color:#5f6470}
+.filter-empty a{color:#0065A8;font-size:13px;font-weight:700;text-underline-offset:3px}
+.theme-dark .profile-completeness,.theme-dark .discovery-summary{background:#211b28;border-color:#41374a}
+.theme-dark .profile-completeness h3,.theme-dark .discovery-summary h3,.theme-dark .discovery-counts strong{color:#f7f1fb}
+.theme-dark .profile-completeness p,.theme-dark .discovery-summary p,.theme-dark .discovery-counts span,.theme-dark .filter-empty p{color:#d8cde2}
+.theme-dark .profile-completeness-heading strong{color:#7ac8ff}
+.theme-dark .completeness-track{background:#41374a}
+.theme-dark .completeness-track span{background:#7ac8ff}
+.theme-dark .discovery-counts div{background:#2b2630;border-color:#41374a}
+.theme-dark .clear-filters-button{background:#211b28;color:#7ac8ff;border-color:#7ac8ff}
+.theme-dark .clear-filters-button:hover{background:#263847}
+.theme-dark .filter-empty{background:#2a2035;border-color:#71657d}
+@media(max-width:600px){
+  .profile-completeness,.discovery-summary{padding:15px}
+  .discovery-summary-heading{display:block}
+  .candidate-count{text-align:left;margin-top:10px!important}
+  .discovery-counts{gap:6px}
+  .discovery-counts div{display:grid;align-content:space-between;gap:8px;padding:10px 8px}
+  .discovery-counts span{font-size:11px}
+}
+@media(prefers-reduced-motion:reduce){.completeness-track span{transition:none}}

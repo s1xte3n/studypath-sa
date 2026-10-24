@@ -217,3 +217,15 @@ Automation is not manual accessibility certification. Manual keyboard/screen-rea
 - **Regression test:** `tests/e2e/student-form.spec.mjs` — `editing a learner profile clears its saved pathways and tracker notes`.
 - **Evidence status:** Test added on branch `fix/161-clear-stale-pathway-state`; awaiting PR CI. This is not yet a passed test or merged implementation.
 - **Privacy boundary:** State remains in React page memory only; no persistence or network feature is introduced.
+
+
+## Discovery dashboard requirement — issue #184
+
+| Requirement | UI/domain contract | Test/evidence | Status |
+|---|---|---|---|
+| DISC-001 — profile completeness | `src/domain/discovery-summary.mjs`; two required sections: selected stage (50%) and at least one unique subject with whole-number mark 0–100 (50%); optional extra rows do not reduce completeness | `tests/discovery-summary.test.mjs`; `tests/e2e/discovery-dashboard.spec.mjs` | Implemented on PR branch; CI evidence pending |
+| DISC-002 — state-derived candidate counts and filters | Counts derive from current `results`; total catalogue candidates remain separate from visible filtered count; state counts describe only visible results; eligibility and available campus filters | Same unit and E2E test files | Implemented on PR branch; CI evidence pending |
+| DISC-003 — draft catalogue uncertainty | No matching rule changed; status filter uses the result's existing state and the draft catalogue remains UNKNOWN | Existing pathway-matching golden cases plus new dashboard tests | Must remain UNKNOWN until catalogue approval gate passes |
+| DISC-004 — accessible empty state and responsive layout | Labelled controls, visible empty-state recovery, clear-filters action, theme-aware styles and 320px E2E check | `tests/e2e/discovery-dashboard.spec.mjs` | Automated CI pending; manual accessibility review remains separate |
+
+The dashboard is a summary of the current in-memory result set only. It adds no persistence, network transmission, account, telemetry, backend or new dependency.

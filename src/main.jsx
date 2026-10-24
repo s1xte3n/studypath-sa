@@ -3,6 +3,7 @@ import { createRoot } from "react-dom/client";
 import "./styles.css";
 import { validateStudentEntries } from "./domain/student-input-validation.mjs";
 import { buildPathwayResults } from "./domain/pathway-matching.mjs";
+import { getDiscoverySummary } from "./domain/discovery-summary.mjs";
 import catalogue from "../docs/product/uj-2027-pilot-catalogue-draft.json";
 
 const STAGES = [
@@ -86,6 +87,8 @@ function App() {
   const [results, setResults] = useState([]);
   const [savedPathways, setSavedPathways] = useState([]);
   const [tracking, setTracking] = useState({});
+  const [eligibilityFilter, setEligibilityFilter] = useState("ALL");
+  const [campusFilter, setCampusFilter] = useState("ALL");
   const TRACKING_STATUSES = [
     { value: "NOT_STARTED", label: "Not started" },
     { value: "RESEARCHING", label: "Researching requirements" },
@@ -112,6 +115,8 @@ function App() {
     setResults([]);
     setSavedPathways([]);
     setTracking({});
+    setEligibilityFilter("ALL");
+    setCampusFilter("ALL");
     setSubmitted(false);
     setNotice("");
     setFieldErrors({ stage: "", subjects: {} });
@@ -138,6 +143,8 @@ function App() {
     setResults([]);
     setSavedPathways([]);
     setTracking({});
+    setEligibilityFilter("ALL");
+    setCampusFilter("ALL");
     setNotice("");
     setFieldErrors({ stage: "", subjects: {} });
     setSubmitted(false);
@@ -186,6 +193,8 @@ function App() {
       setSubmitted(false);
     }
   }
+
+  const discovery = getDiscoverySummary({ stage, subjects, results, eligibilityFilter, campusFilter });
 
   return (
     <div className={`app-shell ${darkMode ? "theme-dark" : "theme-light"}`}>
@@ -248,6 +257,16 @@ function App() {
               <button className="primary-button" type="submit">Explore pathways <span aria-hidden="true">→</span></button>
               <button className="text-button" type="button" onClick={resetForm}>Reset</button>
             </div>
+            <section className="profile-completeness" aria-labelledby="profile-completeness-title">
+              <div className="profile-completeness-heading">
+                <h3 id="profile-completeness-title">Profile completeness</h3>
+                <strong>{discovery.profile.percentage}%</strong>
+              </div>
+              <div className="completeness-track" role="progressbar" aria-label="Profile completeness" aria-valuemin={0} aria-valuemax={100} aria-valuenow={discovery.profile.percentage} aria-valuetext={`${discovery.profile.completedSections} of ${discovery.profile.requiredSections} required sections complete`}>
+                <span style={{ width: `${discovery.profile.percentage}%` }} />
+              </div>
+              <p>{discovery.profile.completedSections} of {discovery.profile.requiredSections} required sections complete: select your current stage and enter at least one unique subject with a whole-number mark from 0 to 100. Extra subject rows are optional.</p>
+            </section>
             {notice && <p className={`form-notice ${submitted ? "notice-info" : "notice-error"}`} role="status" aria-live="polite">{notice}</p>}
           </form>
         </section>
@@ -256,7 +275,7 @@ function App() {
           <section className="results-section" aria-labelledby="results-title">
             <div className="section-heading">
               <div><p className="eyebrow">STEP 2 · YOUR EXPLORATION</p><h2 id="results-title">Pathways to investigate</h2></div>
-              <span className="step-count">{results.length} OPTIONS</span>
+              <span className="step-count">{discovery.totalCandidates} CANDIDATES</span>
             </div>
             <div className="catalogue-warning" role="note">
               <strong>Exploration results · 2027 pilot</strong>
@@ -267,8 +286,44 @@ function App() {
               <p>These pathways are shown for exploration, not ranked by suitability. Because the catalogue is still a draft, StudyPath cannot confirm that you meet admission requirements or compare your chances of admission.</p>
               <p><strong>Your next step:</strong> open pathway details, review the unresolved items, and confirm the current rules using the official UJ links before deciding where to apply.</p>
             </aside>
-            <div className="results-grid">
-              {results.map(item => (
+            <section className="discovery-summary" aria-labelledby="discovery-summary-title">
+              <div className="discovery-summary-heading">
+                <div><h3 id="discovery-summary-title">Explore the catalogue</h3><p>Counts below describe the currently visible results after filters.</p></div>
+                <p className="candidate-count"><strong>{discovery.totalCandidates}</strong> total catalogue candidates · <strong>{discovery.visibleCount}</strong> currently shown</p>
+              </div>
+              <div className="discovery-counts" aria-live="polite" aria-atomic="true">
+                <div><span>Unknown</span><strong>{discovery.stateCounts.UNKNOWN}</strong></div>
+                <div><span>Eligible</span><strong>{discovery.stateCounts.ELIGIBLE}</strong></div>
+                <div><span>Not eligible</span><strong>{discovery.stateCounts.NOT_ELIGIBLE}</strong></div>
+              </div>
+              <div className="discovery-filters">
+                <div>
+                  <label className="field-label" htmlFor="eligibility-filter">Eligibility state</label>
+                  <select id="eligibility-filter" value={eligibilityFilter} onChange={event => setEligibilityFilter(event.target.value)}>
+                    <option value="ALL">All states</option>
+                    <option value="UNKNOWN">Unknown</option>
+                    <option value="ELIGIBLE">Eligible</option>
+                    <option value="NOT_ELIGIBLE">Not eligible</option>
+                  </select>
+                </div>
+                {discovery.campuses.length > 0 && <div>
+                  <label className="field-label" htmlFor="campus-filter">Campus</label>
+                  <select id="campus-filter" value={campusFilter} onChange={event => setCampusFilter(event.target.value)}>
+                    <option value="ALL">All campuses</option>
+                    {discovery.campuses.map(campus => <option key={campus} value={campus}>{campus}</option>)}
+                  </select>
+                </div>}
+                {(eligibilityFilter !== "ALL" || campusFilter !== "ALL") && <button className="clear-filters-button" type="button" onClick={() => { setEligibilityFilter("ALL"); setCampusFilter("ALL"); }}>Clear filters</button>}
+              </div>
+            </section>
+            {discovery.visibleCount === 0 ? (
+              <div className="filter-empty" role="status">
+                <h3>No pathways match these filters</h3>
+                <p>The catalogue still has {discovery.totalCandidates} candidates, but none match the current filter selection. Remove filters or revise your learner inputs.</p>
+                <div><button className="clear-filters-button" type="button" onClick={() => { setEligibilityFilter("ALL"); setCampusFilter("ALL"); }}>Clear filters</button> <a href="#explorer-title">Revise learner inputs</a></div>
+              </div>
+            ) : <div className="results-grid">
+              {discovery.visibleResults.map(item => (
                 <article className="result-card" key={item.id}>
                   <div className="result-card-top"><span className={`eligibility-state ${getStateClass(item.state)}`}>{STATE_LABELS[item.state]}</span><span className="result-cycle">2027 pilot</span></div>
                   <h3>{item.name}</h3>
@@ -286,7 +341,7 @@ function App() {
                   </button>
                 </article>
               ))}
-            </div>
+            </div>}
             <section className="shortlist-section" aria-labelledby="shortlist-title">
               <div className="section-heading">
                 <div><p className="eyebrow">STEP 3 · YOUR NEXT STEPS</p><h2 id="shortlist-title">Saved pathways and application tracker</h2></div>
