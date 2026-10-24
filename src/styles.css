@@ -347,3 +347,13 @@ footer span:first-child{color:#542583}
 .theme-dark .aps-source a{color:#9bd8ff}
 .theme-dark .aps-error{background:#33221f;border-color:#805044;color:#ffd4c9}
 @media(max-width:600px){.aps-panel{padding:16px}.aps-subject-list{grid-template-columns:minmax(0,1fr)}.aps-total strong{font-size:24px}}
+
+/* Issue #203 — keep the new DBE guidance link readable in both themes. */
+.aps-caveat a {
+  color: #005b91;
+  font-weight: 700;
+  text-underline-offset: 3px;
+}
+.theme-dark .aps-caveat a {
+  color: #9bd8ff;
+}
