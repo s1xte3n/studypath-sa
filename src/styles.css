@@ -206,7 +206,8 @@ footer span:first-child{color:#542583}
 .theme-dark .pathway-facts dt,.theme-dark .detail-note li,.theme-dark .official-links li,.theme-dark .official-links .source-role,.theme-dark .source-meta,.theme-dark .application-note,.theme-dark .manual-tracking-note{color:#c7bdd0}
 .theme-dark .result-card .result-institution,.theme-dark .add-button,.theme-dark .text-button,.theme-dark .pathway-details summary,.theme-dark .result-card a,.theme-dark .next-action a,.theme-dark .step-number,.theme-dark .eyebrow,.theme-dark .country{color:#7ac8ff}
 .theme-dark h1 span{color:#f7f1fb}
-.theme-dark .footer span:first-child,.theme-dark .wordmark .country{color:#7ac8ff}
+.theme-dark footer span:first-child{color:#f7f1fb}
+.theme-dark .wordmark .country{color:#7ac8ff}
 .theme-dark .topbar-note{color:#d8cde2}
 .theme-dark .result-card .result-institution{color:#d8cde2}
 .theme-dark .primary-button{background:#542583;color:#fff}
