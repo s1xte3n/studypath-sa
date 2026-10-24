@@ -823,3 +823,14 @@ This section is the current summary for Issue #185 and supersedes older Issue #1
 **Hackathon scope decision:** hosting/provider log inspection and external telemetry privacy checks are not required for the bounded hackathon demo and are removed from Issue #185's remaining acceptance work. Existing automated privacy checks remain limited to observable, instrumented local/browser channels; do not describe them as a complete external privacy audit.
 
 Issue [#185](https://github.com/s1xte3n/studypath-sa/issues/185) remains open only for any remaining in-scope evidence/reconciliation work. G-SYN-001 remains **OPEN / NOT PASSED** because this decision does not waive its separate catalogue provenance, eligibility, or approval requirements. This is not production-readiness or definitive eligibility approval.
+
+
+---
+
+## Hackathon eligibility source-of-truth decision (2026-10-24)
+
+The project owner has approved the sources already maintained in the repository as the evidence set for the bounded FNB AOTY Hackathon 2026 MVP. Do not require separate institutional curator sign-off solely to use those sources for hackathon eligibility results.
+
+Eligibility is not forced to `UNKNOWN` merely because external sign-off is absent. The deterministic evaluator may return `ELIGIBLE` or `NOT_ELIGIBLE` where repository-backed requirements and learner inputs are sufficient to establish the result. It must return `UNKNOWN` when relevant data/rules are missing, ambiguous, conflicting, or insufficient. Preserve source links, disclose known limitations, and state that results are indicative and do not guarantee admission.
+
+This is an owner-approved hackathon evidence boundary, not institutional endorsement or production approval. It does not resolve source conflicts or missing rule details that actually exist in the repository. Evaluate remaining G-SYN-001 criteria separately; production-grade source governance and additional institutional verification are post-hackathon work.
