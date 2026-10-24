@@ -2,7 +2,7 @@
 
 **Purpose:** evidence-based draft for transfer into Sonke. This document does not mean any portal field has been completed.
 
-**Baseline inspected:** `main` commit `d377512d38cf4e93833e1c50984605cac12adbdb` (2026-10-24). The supplied programme (pp. 3–4) requires a deck of no more than 10 slides (PDF preferred), a demo video no longer than 90 seconds with its link on the slides, SSDLC, Lean Business Canvas, and submission through Sonke after team profiling.
+**Baseline inspected:** `main` commit `268e4f55ccfce55874f6621a0b491acf93c6432f` (2026-10-24). The supplied programme (pp. 3–4) requires a deck of no more than 10 slides (PDF preferred), a demo video no longer than 90 seconds with its link on the slides, SSDLC, Lean Business Canvas, and submission through Sonke after team profiling.
 
 ## 1. SSDLC — suggested evidence-led entries
 
@@ -75,3 +75,12 @@ Use Sonke's actual fields; adapt wording to the available form without making st
 - [ ] Capture the confirmation/receipt and verify the submission is marked received.
 
 Do not report portal steps as complete until the owner supplies confirmation evidence.
+
+
+---
+
+## Current implementation baseline update — 2026-10-24
+
+Reviewed `main` SHA: `268e4f55ccfce55874f6621a0b491acf93c6432f` (PR #204 merged). Current browser E2E coverage verifies 30 draft-catalogue candidates and all 30 learner-facing eligibility states as `UNKNOWN`. Do not reuse earlier seven-card wording in a live demo or deck. The separate APS calculator remains provisional and does not determine programme eligibility.
+
+Exact-SHA merge checks reported successful: [Browser E2E/privacy/accessibility](https://github.com/s1xte3n/studypath-sa/actions/runs/40109136651), [contract tests](https://github.com/s1xte3n/studypath-sa/actions/runs/40109136649), and [browser MVP build](https://github.com/s1xte3n/studypath-sa/actions/runs/40109136652). Preview deployment job [40109136711](https://github.com/s1xte3n/studypath-sa/actions/runs/40109136711) was skipped. These CI results do not mean Sonke portal fields, final deck/video, rehearsal, or submission are complete.
