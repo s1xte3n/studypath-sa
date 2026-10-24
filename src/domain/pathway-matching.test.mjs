@@ -34,7 +34,7 @@ test("pathway results expose programme facts and retained official UJ source URL
 });
 
 test("demo mode evaluates verified negative rules but unresolved positive outcomes stay UNKNOWN", () => {
-  const results = buildPathwayResults(learner, catalogue);
+  const results = buildPathwayResults({ ...learner, stage: "MATRIC_GRADUATE" }, catalogue);
   assert.ok(results.every(item => item.state !== "ELIGIBLE"));
   assert.ok(results.some(item => item.state === "NOT_ELIGIBLE"));
   assert.ok(results.some(item => item.state === "UNKNOWN"));
