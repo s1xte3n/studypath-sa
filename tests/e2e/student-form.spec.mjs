@@ -390,3 +390,37 @@ test("transient learner entries are not persisted in browser storage or restored
   await expect(page.locator("#mark-0")).toHaveValue("");
   await expect(page.locator("#subject-0")).toHaveValue("");
 });
+
+
+test("populated dark-theme pathway details and shortlist have no color-contrast violations", async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto("/");
+  await page.getByRole("button", { name: "Switch to dark mode" }).click();
+  await expect(page.locator(".app-shell")).toHaveClass(/theme-dark/);
+
+  await page.locator("#stage").selectOption("GRADE_12");
+  await page.locator("#subject-0").selectOption("Mathematics");
+  await page.locator("#mark-0").fill("75");
+  await page.getByRole("button", { name: /Add another subject/ }).click();
+  await page.locator("#subject-1").selectOption("Physical Sciences");
+  await page.locator("#mark-1").fill("81");
+  await page.getByRole("button", { name: /Explore pathways/ }).click();
+
+  await expect(page.locator(".result-card")).toHaveCount(7);
+  const details = page.locator(".pathway-details").first();
+  await details.locator("summary").click();
+  await expect(details.locator(".pathway-details-content")).toBeVisible();
+  await page.locator(".save-pathway-button").first().click();
+  await expect(page.locator(".shortlist-card")).toHaveCount(1);
+
+  const contrast = await new AxeBuilder({ page })
+    .withRules(["color-contrast"])
+    .analyze();
+  expect(contrast.violations, JSON.stringify(contrast.violations.map(item => ({
+    id: item.id,
+    nodes: item.nodes.map(node => ({
+      target: node.target,
+      summary: node.failureSummary
+    }))
+  })), null, 2)).toEqual([]);
+});
