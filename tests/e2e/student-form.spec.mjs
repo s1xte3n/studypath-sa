@@ -516,3 +516,31 @@ test("only the subject field is highlighted when a mark is entered without a sub
   await expect(page.locator("#subject-0")).toHaveAttribute("aria-invalid", "true");
   await expect(page.locator("#mark-0")).toHaveAttribute("aria-invalid", "false");
 });
+
+
+test("editing a learner profile clears its saved pathways and tracker notes", async ({ page }) => {
+  await page.goto("/");
+  await page.locator("#stage").selectOption("GRADE_12");
+  await page.locator("#subject-0").selectOption("Mathematics");
+  await page.locator("#mark-0").fill("75");
+  await page.getByRole("button", { name: /Explore pathways/ }).click();
+  await expect(page.locator(".result-card")).toHaveCount(30);
+
+  const firstResult = page.locator(".result-card").first();
+  const pathwayName = await firstResult.locator("h3").innerText();
+  await firstResult.getByRole("button", { name: "Save to shortlist" }).click();
+  await expect(page.getByRole("heading", { name: "Saved pathways and application tracker" })).toBeVisible();
+  await expect(page.getByText(pathwayName, { exact: true }).last()).toBeVisible();
+
+  const nextAction = page.getByLabel("My next action (optional)");
+  await nextAction.fill("Confirm the requirements for my original profile");
+  await expect(page.getByText("Confirm the requirements for my original profile")).toBeVisible();
+
+  await page.locator("#mark-0").fill("76");
+  await expect(page.locator(".result-card")).toHaveCount(0);
+  await page.getByRole("button", { name: /Explore pathways/ }).click();
+  await expect(page.locator(".result-card")).toHaveCount(30);
+  await expect(page.getByText("0 / 3 SAVED")).toBeVisible();
+  await expect(page.getByText("Confirm the requirements for my original profile")).toHaveCount(0);
+  await expect(page.getByRole("button", { name: "Save to shortlist" }).first()).toBeVisible();
+});
