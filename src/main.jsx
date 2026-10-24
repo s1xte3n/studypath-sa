@@ -84,7 +84,7 @@ function ProvisionalApsPanel({ subjects }) {
     <section className="aps-panel" aria-labelledby="aps-title">
       <p className="eyebrow">YOUR MARKS · INDICATIVE ONLY</p>
       <h3 id="aps-title">Provisional APS estimate</h3>
-      <p className="aps-caveat">Based on the mark-to-level bands recorded in the UJ 2027 Undergraduate Prospectus (printed p. 16). This retained source and its interpretation are still under review; this is not an official or verified APS result.</p>
+      <p className="aps-caveat">Based on the mark-to-level bands recorded in the UJ 2027 Undergraduate Prospectus (printed p. 16). This is a hackathon estimate using UJ’s public APS FAQ for the selection heuristic and the recorded prospectus bands for points. Source review and curator approval remain outstanding; this is not an official or verified APS result.</p>
       {estimate.state === "PROVISIONAL" ? (
         <>
           <p className="aps-total"><span>Indicative total</span><strong>{estimate.aps}</strong></p>
@@ -98,8 +98,8 @@ function ProvisionalApsPanel({ subjects }) {
         <p className={estimate.state === "INPUT_REJECTED" ? "aps-error" : "aps-pending"} role="status">{estimate.reason}</p>
       )}
       {estimate.state === "PROVISIONAL" && <p className="aps-limitation">{estimate.reason}</p>}
-      <p className="aps-source">Source: <a href={APS_SOURCE.url} target="_blank" rel="noopener noreferrer">{APS_SOURCE.title} <span aria-hidden="true">↗</span></a> · printed p. {APS_SOURCE.printedPage} · draft source record.</p>
-      <p className="aps-limitation">Life Orientation is excluded. When more than six other subjects are entered, no total is calculated because the retained draft source does not resolve which six to count. This estimate never changes the pathway eligibility state.</p>
+      <p className="aps-source">Sources: <a href={APS_SOURCE.url} target="_blank" rel="noopener noreferrer">{APS_SOURCE.title} <span aria-hidden="true">↗</span></a> · printed p. {APS_SOURCE.printedPage}; <a href={APS_SOURCE.policyUrl} target="_blank" rel="noopener noreferrer">{APS_SOURCE.policyTitle} <span aria-hidden="true">↗</span></a>. Provisional demo rule.</p>
+      <p className="aps-limitation">Life Orientation is excluded. When more than six other subjects are entered, the demo counts the six highest achievement levels and excludes Life Orientation. Programme-required subjects can change which six count, so this general estimate is not programme-specific and never changes pathway eligibility. This estimate never changes the pathway eligibility state.</p>
     </section>
   );
 }
