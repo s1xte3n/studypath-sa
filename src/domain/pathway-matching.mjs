@@ -1,4 +1,5 @@
 import { evaluateEligibility } from "./eligibility/uj-2027-evaluator.mjs";
+import { validateCatalogueForPublication } from "./eligibility/catalogue-publication-gate.mjs";
 
 const SUBJECT_IDS = new Map([
   ["English Home Language", "ENGLISH_HOME_LANGUAGE"],
@@ -72,13 +73,21 @@ export function buildPathwayResults({ stage, subjects }, catalogue) {
     })
   };
 
+  const publicationGate = validateCatalogueForPublication(catalogue);
+
   return catalogue.programmes.map((programme) => {
-    const outcome = evaluateEligibility({
-      programme,
-      learnerInput,
-      admissionCycle: catalogue.admissionCycle,
-      catalogueStatus: catalogue.status
-    });
+    const outcome = publicationGate.publishable
+      ? evaluateEligibility({
+          programme,
+          learnerInput,
+          admissionCycle: catalogue.admissionCycle,
+          catalogueStatus: catalogue.status
+        })
+      : {
+          state: "UNKNOWN",
+          reasonCodes: ["CATALOGUE_PUBLICATION_GATE_FAILED"],
+          explanation: "Catalogue evidence has not passed the publication gate; eligibility cannot be determined."
+        };
 
     return {
       id: programme.id,
@@ -97,7 +106,9 @@ export function buildPathwayResults({ stage, subjects }, catalogue) {
       reasonCodes: outcome.reasonCodes,
       catalogueStatus: catalogue.status,
       sourceUrl: catalogue.sources?.[0]?.url ?? null,
-      limitation: "This 2027 pilot catalogue is a draft and is not approved for definitive eligibility screening."
+      limitation: publicationGate.publishable
+        ? "Minimum requirements do not guarantee admission; consult the official institution for current requirements."
+        : "This catalogue has not passed the evidence publication gate and is not approved for definitive eligibility screening."
     };
   });
 }
