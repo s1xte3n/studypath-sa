@@ -421,3 +421,16 @@ Branch: `feat/hackathon-pathway-results-phases-5-7` (not yet merged; CI pending)
 | `docs/project/PROJECT-STATUS.md` | Updated with current remote inspection, commit-specific evidence limits and release blockers |
 
 **Baseline:** `main` `d377512d38cf4e93833e1c50984605cac12adbdb`. New files are preparation artifacts on branch `docs/hackathon-demo-readiness`; they do not establish that the final deck/video exists, portal fields are complete, or submission was received. `G-SYN-001` remains OPEN / NOT PASSED.
+
+
+---
+
+## Issue #185 evidence update — 2026-10-24
+
+Reviewed main SHA: 4204f0b8bf350e4d7d7b7d890c47038415c5aabc.
+
+- Cross-screen automated regression evidence: [Browser E2E/privacy/accessibility run 40107386820](https://github.com/s1xte3n/studypath-sa/actions/runs/40107386820).
+- Related exact-SHA evidence: [Browser MVP build 40107386703](https://github.com/s1xte3n/studypath-sa/actions/runs/40107386703), [contract tests 40107386834](https://github.com/s1xte3n/studypath-sa/actions/runs/40107386834), [UJ eligibility golden-case verification 40107386706](https://github.com/s1xte3n/studypath-sa/actions/runs/40107386706).
+- Source-of-truth evidence summaries updated in docs/project/PROJECT-STATUS.md, docs/product/TRACEABILITY-MATRIX.md, and docs/project/G-SYN-001-SYNTHETIC-ONLY-MVP-GATE.md.
+- Not evidenced: assistant-run local clean install/tests/build, manual screen-reader/keyboard review, physical-device/browser-matrix checks, hosting/provider logs and external telemetry review.
+- Disposition: automated regression/CI evidence present; Issue #185 remains open for manual and broader privacy evidence. G-SYN-001 remains OPEN / NOT PASSED.

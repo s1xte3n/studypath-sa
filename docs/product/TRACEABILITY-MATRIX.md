@@ -264,3 +264,24 @@ Product direction and scope mapping: [THREE-PILLAR-DIFFERENTIATION.md](THREE-PIL
 | 3. What do I do next? | `REQ-APP-001`, `REQ-FUND-001`; target UX includes manual tracking | Traceability states the current local demo has no learner-facing tracker or funding flow | Manual tracker is deferred from the current balanced sprint; funding discovery is not implemented. Define and test a page-memory-only tracker; add deadlines/funding only from authoritative, dated sources. |
 
 All three pillars must preserve synthetic-only demo data, no application submission, no admission/funding guarantees, and no unverified facts. Add implementation paths, test IDs, exact commit/CI links and release evidence only after work is actually completed and verified. G-SYN-001 remains OPEN / NOT PASSED.
+
+
+---
+
+## Issue #185 — current evidence reconciliation (2026-10-24)
+
+This section supersedes the earlier Issue #185 row statuses below that say candidate-branch CI is pending.
+
+**Reviewed main SHA:** 4204f0b8bf350e4d7d7b7d890c47038415c5aabc.
+
+| Requirement | Current implementation / test evidence | Status |
+|---|---|---|
+| UX-185-01 — field-associated validation | src/main.jsx; tests/e2e/student-form.spec.mjs covers invalid mark boundaries, duplicate subjects, missing stage and clearing validation on reset | Automated regression coverage present; exact-SHA CI passed |
+| UX-185-02 — responsive layouts | Student form checks 320px; discovery dashboard checks 320px in both themes; desktop result-card overflow test in student-form.spec.mjs | Automated regression coverage present; physical-device/manual responsive review not evidenced |
+| PRV-185-01 — transient learner state | Student-form and shortlist/tracker E2E tests check URLs, selected request/history channels, browser storage/cookies, reload/fresh-tab behavior and reset; test instrumentation observes selected fetch/XHR/beacon/WebSocket/history/error/console channels | Partial; hosting/provider logs and unexercised/external telemetry channels not verified |
+| ACC-185-01 — accessibility | Axe scans in light/dark themes, dark-theme contrast check, field associations, keyboard-focus assertions and labelled shortlist controls | Automated coverage present; manual keyboard walkthrough and screen-reader review not evidenced |
+| UX-185-03 — empty/draft states | Discovery dashboard E2E verifies recoverable empty filter state and 30 draft-catalogue candidates remain UNKNOWN | Automated regression coverage present; catalogue approval remains blocked |
+
+**Exact-SHA CI:** [Browser E2E/privacy/accessibility](https://github.com/s1xte3n/studypath-sa/actions/runs/40107386820), [Browser MVP build](https://github.com/s1xte3n/studypath-sa/actions/runs/40107386703), [Contract tests](https://github.com/s1xte3n/studypath-sa/actions/runs/40107386834), and [UJ eligibility golden cases](https://github.com/s1xte3n/studypath-sa/actions/runs/40107386706) all completed successfully on the reviewed SHA. The assistant did not run these commands locally.
+
+**Remaining gate evidence:** manual screen-reader/keyboard review, physical-device/browser-matrix review, hosting/provider logs, external telemetry and a clean local reproduction are unverified. Keep Issue #185 open until these are recorded or the project owner explicitly accepts a bounded demo-only disposition. G-SYN-001 remains OPEN / NOT PASSED.
