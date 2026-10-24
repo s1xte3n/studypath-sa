@@ -99,6 +99,9 @@ export function buildPathwayResults({ stage, subjects }, catalogue) {
       durationYears: Number.isInteger(programme.durationYears) ? programme.durationYears : null,
       requirements: programme.requirements ?? null,
       requirementNotes: Array.isArray(programme.unresolved) ? programme.unresolved : [],
+      englishRequirementNote: programme.requirements?.english?.mappingStatus === "DEMO_DEFAULT_HOME_LANGUAGE"
+        ? "Demo assumption: where the programme source does not specify an English stream, this demo assumes English Home Language. English First Additional Language is not treated as equivalent. Verify the official requirement; this is not confirmed UJ policy."
+        : null,
       sourceLinks: buildSourceLinks(programme, catalogue),
       state: outcome.state === "NOT_ELIGIBLE" ? "NOT_ELIGIBLE" :
         outcome.state === "ELIGIBLE" ? "ELIGIBLE" : "UNKNOWN",

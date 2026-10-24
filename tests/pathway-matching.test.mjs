@@ -5,7 +5,7 @@ import { buildPathwayResults } from "../src/domain/pathway-matching.mjs";
 
 const catalogue = JSON.parse(await readFile(new URL("../docs/product/uj-2027-pilot-catalogue-draft.json", import.meta.url), "utf8"));
 
-test("draft catalogue results remain UNKNOWN regardless of strong marks", () => {
+test("demo-approved catalogue results remain UNKNOWN regardless of strong marks", () => {
   const results = buildPathwayResults({
     stage: "MATRIC_GRADUATE",
     subjects: [
@@ -20,7 +20,7 @@ test("draft catalogue results remain UNKNOWN regardless of strong marks", () => 
 
   assert.equal(results.length, catalogue.programmes.length);
   assert.ok(results.every((item) => item.state === "UNKNOWN"));
-  assert.ok(results.every((item) => item.catalogueStatus === "DRAFT_NOT_FOR_DEFINITIVE_SCREENING"));
+  assert.ok(results.every((item) => item.catalogueStatus === "APPROVED_FOR_HACKATHON_DEMO_ONLY"));
   assert.ok(results.every((item) => item.sourceUrl?.startsWith("https://")));
 
   const informationTechnology = results.find(item => item.id === "UJ-2027-BSC-IT");

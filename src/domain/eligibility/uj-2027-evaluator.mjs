@@ -18,9 +18,18 @@ export function evaluateEligibility({programme,learnerInput,admissionCycle,catal
  if(programme.unresolved?.length&&!testOnlyAssumptions)return R("UNKNOWN","MANDATORY_RULE_UNRESOLVED","Material programme rules are unresolved.");
  const parsed=subjectsOf(learnerInput);if(parsed.error)return parsed.error;const a=parsed.a;
  if(a.some(s=>s.id==="ENGLISH_UNMAPPED_STREAM"))return R("UNKNOWN","SUBJECT_MAPPING_UNRESOLVED","English stream cannot be mapped.");
- const req=programme.requirements??{},rules=req.subjectRules??[],english=a.find(s=>EN.includes(s.id));
- if(!english)return R("UNKNOWN","REQUIRED_INPUT_MISSING","English result is missing.");
- if(req.english?.mappingStatus==="UNRESOLVED"&&!testOnlyAssumptions)return R("UNKNOWN","SUBJECT_MAPPING_UNRESOLVED","English stream mapping is unresolved.");
+ const req=programme.requirements??{},rules=req.subjectRules??[];
+ const englishMappingStatus=req.english?.mappingStatus;
+ const usesHomeLanguageDemoAssumption=englishMappingStatus==="DEMO_DEFAULT_HOME_LANGUAGE";
+ const english=usesHomeLanguageDemoAssumption
+   ? a.find(s=>s.id==="ENGLISH_HOME_LANGUAGE")
+   : a.find(s=>EN.includes(s.id));
+ if(!english){
+   if(usesHomeLanguageDemoAssumption&&a.some(s=>["ENGLISH_FIRST_ADDITIONAL_LANGUAGE","ENGLISH_SECOND_ADDITIONAL_LANGUAGE","ENGLISH"].includes(s.id)))
+     return R("UNKNOWN","ENGLISH_STREAM_ASSUMPTION_UNMET","This demo assumes English Home Language when the programme source does not specify a stream; First Additional Language or an unspecified stream is not treated as equivalent.");
+   return R("UNKNOWN","REQUIRED_INPUT_MISSING","English Home Language result is required under the provisional demo assumption.");
+ }
+ if(englishMappingStatus==="UNRESOLVED"&&!testOnlyAssumptions)return R("UNKNOWN","SUBJECT_MAPPING_UNRESOLVED","English stream mapping is unresolved.");
  for(const r of rules)if(r.accepted===false&&a.some(s=>s.id===r.subject))return R("NOT_ELIGIBLE",r.subject==="MATHEMATICAL_LITERACY"?"MATHEMATICAL_LITERACY_NOT_ACCEPTED":"REQUIRED_SUBJECT_NOT_ACCEPTED",r.subject+" is not accepted.");
  if(programme.faculty==="Faculty of Science"&&a.some(s=>["TECHNICAL_MATHEMATICS","TECHNICAL_SCIENCES"].includes(s.id)))return R("NOT_ELIGIBLE","REQUIRED_SUBJECT_NOT_ACCEPTED","Technical Mathematics and Technical Science are not accepted for Faculty of Science degrees.");
  let aps=null,minAps=req.aps?.min;

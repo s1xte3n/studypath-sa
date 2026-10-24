@@ -1,3 +1,25 @@
+# Current decision — catalogue approved for hackathon demo only (2026-10-24)
+
+The project owner approved `docs/product/uj-2027-pilot-catalogue-draft.json` version `uj-2027-pilot-v0.3-hackathon-demo` as the source of truth for the bounded hackathon demo. All 30 programme records are individually `APPROVED_FOR_HACKATHON_DEMO_ONLY` by the project owner; this does not imply UJ endorsement or institutional curator sign-off. The definitive-screening gate remains closed, and unresolved eligibility must remain `UNKNOWN`.
+
+PR #211 remains open. Its reported checks are green for Browser E2E/privacy/accessibility, Browser MVP build, contract tests, UJ eligibility golden-case verification and GitGuardian; Vercel failed only because its deployment was rate-limited and is no longer a required hosting target. Vercel deployment must be disabled at the Vercel/GitHub integration level; no repository workflow currently manages that external check.
+
+---
+
+# APS issue #189 — fail-closed acceptance update (2026-10-24)
+
+**Reviewed base:** `main` at `a48eb653cabae511c60d9a49043ff6a2532c2457`.  
+**Candidate branch:** `fix/189-aps-fail-closed-selection`.  
+**Decision:** the current issue acceptance contract requires exactly six supported non-Life-Orientation subjects for a provisional total. Fewer or more than six must return `UNKNOWN`; no automatic subset selection or programme-required-subject inclusion is allowed until the applicable official rule is verified, versioned and curator-reviewed.
+
+**Candidate changes:** calculator and tests updated; learner-facing limitation text updated; browser regression changed to expect `UNKNOWN` for more than six eligible subjects. Relevant paths: `src/domain/eligibility/provisional-aps.mjs`, `src/main.jsx`, `tests/provisional-aps.test.mjs`, `tests/e2e/student-form.spec.mjs`.
+
+**Verification:** files have been committed to the candidate branch through GitHub contents operations. The assistant has not run tests or a build locally. Candidate CI has not yet been verified. Do not mark issue #189 complete or claim these changes pass until workflows run on the exact PR head.
+
+**Source/curator gate:** `docs/project/UJ-2027-CATALOGUE-EVIDENCE-AUDIT.md` now reports 30 records approved for hackathon demo and zero institutional curator sign-offs; governing source-version confirmation, complete rule/footnote verification and curator sign-off remain outstanding. Programme eligibility must remain `UNKNOWN`; G-SYN-001 remains **OPEN / NOT PASSED**. No deployment, provisioning or real learner data is authorized.
+
+---
+
 # Cross-screen regression update — issue #185 (2026-10-24)
 
 **Reviewed `main` baseline:** `82b60fac1476192c66082aa8b1ff2b1fd25a34be` ([commit](https://github.com/s1xte3n/studypath-sa/commit/82b60fac1476192c66082aa8b1ff2b1fd25a34be)). This is the repository's latest commit confirmed before this branch was created.
@@ -14,7 +36,7 @@
 
 **Verification state:** the changes are committed to this branch but no local test/build has been run by the assistant. CI for this branch is pending until a PR is opened. Do not mark either new test passed before CI reports its result.
 
-**Still blocked/unverified:** manual keyboard walkthrough, screen-reader review, physical-device and browser-matrix checks, host/provider logs and external telemetry review. Automated instrumentation observes only the channels it instruments. The catalogue remains `DRAFT_NOT_FOR_DEFINITIVE_SCREENING`; G-SYN-001 remains **OPEN / NOT PASSED**. No deployment, provisioning or real learner data is authorized.
+**Still blocked/unverified:** manual keyboard walkthrough, screen-reader review, physical-device and browser-matrix checks, host/provider logs and external telemetry review. Automated instrumentation observes only the channels it instruments. The catalogue is approved for hackathon demo only and remains `DRAFT_NOT_FOR_DEFINITIVE_SCREENING` for definitive screening; G-SYN-001 remains **OPEN / NOT PASSED**. No deployment, provisioning or real learner data is authorized.
 
 ---
 
@@ -195,7 +217,7 @@ These results establish that the three listed workflows passed for this commit. 
 
 **Still open / not passed**
 1. G-SYN-001 and the overall release gate remain **OPEN / NOT PASSED** pending full requirement-to-test traceability and review of all required evidence.
-2. The UJ 2027 catalogue remains `DRAFT_NOT_FOR_DEFINITIVE_SCREENING`; all learner-facing eligibility results must remain `UNKNOWN` until source rules, catalogue version/provenance and curator approval support stronger conclusions.
+2. The UJ 2027 catalogue is approved for bounded hackathon demo display but remains `DRAFT_NOT_FOR_DEFINITIVE_SCREENING`; all learner-facing eligibility results must remain `UNKNOWN` until source rules, catalogue version/provenance and curator approval support stronger conclusions.
 3. The initial parallel Playwright timeout has no established root cause and should be monitored in CI; serial success is recorded without increasing timeouts or changing application behavior merely to mask it.
 4. Local `test-results/` was reported as an untracked generated directory. The owner must remove generated artifacts if present and verify a clean working tree.
 5. This update does not independently verify GitHub Actions on the exact current merge SHA, complete all Phase 0 inventory files, certify costs, pass hosted API/runtime controls, or verify cloud configuration.

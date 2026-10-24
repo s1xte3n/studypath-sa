@@ -13,13 +13,13 @@
 
 ---
 
-## APS calculator traceability — issue #189 (2026-10-24)
+## APS calculator traceability — issue #189 (updated 2026-10-24)
 
 | Requirement slice | Contract / implementation | Tests | Evidence and remaining gate |
 |---|---|---|---|
-| Explainable provisional UJ 2027 APS | `src/domain/eligibility/provisional-aps.mjs`; learner panel in `src/main.jsx`; responsive/theme styles in `src/styles.css`; source link/version and printed page disclosed | `tests/provisional-aps.test.mjs`; `tests/e2e/student-form.spec.mjs` APS scenario | Implemented on branch `feat/189-provisional-aps-calculator`; CI not yet run. Draft source and curator review remain open. |
-| Six-subject selection safety | Exactly six distinct non-LO subjects may produce a provisional total; <6 returns UNKNOWN; >6 returns UNKNOWN and does not select subjects automatically | Unit tests for exact-six, <6, >6, Life Orientation, duplicates and invalid marks; browser test verifies >6 state | This intentionally deviates from the issue's original “six highest” wording because `docs/product/uj-2027-pilot-catalogue-draft.json` marks the applicable selection rule unresolved. Do not resolve by inference. |
-| Eligibility separation | APS panel explicitly says it does not determine programme eligibility; existing draft catalogue publication gate remains unchanged | Browser test asserts pathway cards remain UNKNOWN when an APS estimate is visible | Requires CI evidence on PR head; G-SYN-001 remains OPEN / NOT PASSED. |
+| Explainable provisional UJ 2027 APS | `src/domain/eligibility/provisional-aps.mjs`; learner panel in `src/main.jsx`; source link and printed page disclosed | `tests/provisional-aps.test.mjs`; APS scenario in `tests/e2e/student-form.spec.mjs` | Candidate branch `fix/189-aps-fail-closed-selection`; CI not yet verified. Source and curator review remain open. |
+| Six-subject selection safety | Exactly six distinct supported non-LO subjects may produce a provisional total; fewer or more than six returns `UNKNOWN` without a total or automatic subset selection | Unit tests cover exact-six, fewer-than-six, more-than-six, Life Orientation, duplicates and invalid marks; browser test expects `UNKNOWN` for >6 | Candidate aligns to current issue acceptance contract; programme-required-subject inclusion remains deferred pending verified, versioned official rules and curator review. |
+| Eligibility separation | APS estimate never determines programme eligibility; catalogue publication gate remains closed | Browser test asserts pathway cards remain `UNKNOWN` when APS estimate is visible | Candidate CI still required; G-SYN-001 remains OPEN / NOT PASSED. |
 
 ## Current implementation reconciliation — 2026-10-22
 
@@ -302,12 +302,14 @@ This section supersedes the earlier Issue #185 row statuses below that say candi
 **Remaining gate evidence:** manual screen-reader/keyboard review, physical-device/browser-matrix review, hosting/provider logs, external telemetry and a clean local reproduction are unverified. Keep Issue #185 open until these are recorded or the project owner explicitly accepts a bounded demo-only disposition. G-SYN-001 remains OPEN / NOT PASSED.
 
 
-## APS six-subject selection — hackathon heuristic proposal (2026-10-24)
+## APS six-subject selection — historical PR #209 behavior and current disposition (2026-10-24)
 
-| Requirement | Implementation proposal | Test coverage added in PR #209 | Limitations |
+PR #209 introduced a best-six demo heuristic. The current issue #189 acceptance contract supersedes that behavior while authoritative selection rules remain unresolved. Candidate branch `fix/189-aps-fail-closed-selection` removes automatic selection and programme-required-subject inclusion.
+
+| Requirement | Current contract | Test coverage | Limitation / evidence status |
 |---|---|---|---|
-| APS-189-01 — count six non-LO subjects | Select six highest achievement levels for a general indicative score; Life Orientation excluded | More-than-six selection and LO exclusion | General score may not match a particular programme |
-| APS-189-02 — include required programme subjects | Optional `requiredSubjects` input forces all declared required subjects into the six, then fills remaining places by highest levels | Required-subject inclusion and missing/invalid required-subject cases | Only valid when the programme's required-subject list is verified; current draft catalogue does not supply approved rules |
-| APS-189-03 — fail safely with incomplete data | Fewer than six subjects or missing required subjects yields `UNKNOWN`; invalid marks/duplicates rejected | Unit tests in `tests/provisional-aps.test.mjs` | Does not upgrade programme eligibility from UNKNOWN |
+| APS-189-01 — count six non-LO subjects | Exactly six distinct supported non-LO subjects may produce a provisional total; fewer or more than six returns `UNKNOWN` without a total | Unit and browser tests cover exact-six, fewer-than-six, more-than-six and Life Orientation exclusion | Candidate CI not yet verified; source/curator gate remains open |
+| APS-189-02 — programme-required subjects | Do not apply programme-specific selection until applicable official rules are verified, versioned and curator-reviewed | Prior required-subject selection tests are removed from the calculator contract | Add this behavior only in a separate evidence-backed change |
+| APS-189-03 — invalid data | Reject invalid marks, unsupported subjects and duplicate canonical subjects | Unit tests in `tests/provisional-aps.test.mjs` | APS output never upgrades programme eligibility from `UNKNOWN` |
 
-**Evidence status:** public online research informs a hackathon-only provisional heuristic; this is not source-curator approval. CI and test results for PR #209 must be checked against its exact head SHA. Keep UJ catalogue `DRAFT_NOT_FOR_DEFINITIVE_SCREENING` and G-SYN-001 OPEN / NOT PASSED.
+**Evidence status:** candidate branch only; do not claim merged or passed. Keep UJ catalogue `DRAFT_NOT_FOR_DEFINITIVE_SCREENING` and G-SYN-001 OPEN / NOT PASSED.

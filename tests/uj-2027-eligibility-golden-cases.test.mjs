@@ -108,9 +108,12 @@ test("every golden case has a unique ID, explicit expected outcome and reason co
   }
 });
 
-test("the catalogue retains the seven pilot candidates and added records remain unapproved", () => {
+test("all 30 catalogue programme records are approved for the bounded hackathon demo only", () => {
   assert.ok(catalogue.programmes.length >= 7);
-  assert.equal(catalogue.status, "DRAFT_NOT_FOR_DEFINITIVE_SCREENING");
+  assert.equal(catalogue.status, "APPROVED_FOR_HACKATHON_DEMO_ONLY");
+  assert.equal(catalogue.catalogueVersion, "uj-2027-pilot-v0.3-hackathon-demo");
+  assert.equal(catalogue.demoApproval.approvalScope, "FNB AOTY Hackathon 2026 demonstration only");
+  assert.equal(catalogue.programmes.length, 30);
   const requiredPilotIds = [
     "UJ-2027-BSC-IT",
     "UJ-2027-BSC-CSI",
@@ -122,8 +125,10 @@ test("the catalogue retains the seven pilot candidates and added records remain 
   ];
   for (const id of requiredPilotIds) assert.ok(programmesById.has(id), `missing original pilot ${id}`);
   for (const programme of catalogue.programmes) {
-    assert.equal(programme.status, "DRAFT", `${programme.id} must remain draft until curated`);
-    assert.equal(programme.curatorSignoff ?? null, null, `${programme.id} must not imply curator approval`);
+    assert.equal(programme.status, "APPROVED_FOR_HACKATHON_DEMO_ONLY", `${programme.id} must be approved for demo scope`);
+    assert.equal(programme.demoApproval?.scope, "FNB AOTY Hackathon 2026 demonstration only");
+    assert.equal(programme.demoApproval?.approver, "StudyPath SA project owner");
+    assert.equal(programme.curatorSignoff ?? null, null, `${programme.id} must not imply institutional curator sign-off`);
   }
 });
 

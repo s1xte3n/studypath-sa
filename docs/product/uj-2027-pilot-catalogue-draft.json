@@ -1,15 +1,15 @@
 {
-  "catalogueVersion": "uj-2027-pilot-v0.2-draft",
+  "catalogueVersion": "uj-2027-pilot-v0.3-hackathon-demo",
   "institution": "University of Johannesburg",
   "admissionCycle": "2027",
   "applicantRoute": "NSC",
-  "status": "DRAFT_NOT_FOR_DEFINITIVE_SCREENING",
+  "status": "APPROVED_FOR_HACKATHON_DEMO_ONLY",
   "sourcePolicy": {
     "primarySource": "Applicable UJ 2027 Undergraduate Prospectus",
     "additionalSourceForCbeProgrammes": "UJ College of Business and Economics Undergraduate 2027 Intake Brochure",
     "currentProgrammePagesAreCorroborativeOnly": false,
     "prospectusContentMayChange": true,
-    "eligibilityRule": "A record may only support ELIGIBLE after source completeness, applicable cycle, currentness, interpretation and curator sign-off are verified.",
+    "eligibilityRule": "For hackathon demo use, display the 30 catalogue records as the project source of truth. A record may support ELIGIBLE or NOT_ELIGIBLE only when the deterministic evaluator has sufficient explicit rule evidence; unresolved required rules must return UNKNOWN. Demo approval does not authorize definitive screening.",
     "aps": {
       "sourceText": "APS is the sum of the achievement ratings of six school subjects; Life Orientation is not counted.",
       "source": "UJ 2027 Undergraduate Prospectus, printed p. 16",
@@ -55,8 +55,8 @@
     },
     "englishMapping": {
       "requirementColumnLabel": "English",
-      "homeLanguageVsFirstAdditionalLanguage": "UNRESOLVED",
-      "policy": "Do not infer which English subject stream satisfies the programme requirement. If learner result cannot be mapped by an approved official rule, return UNKNOWN."
+      "homeLanguageVsFirstAdditionalLanguage": "DEMO_DEFAULT_HOME_LANGUAGE",
+      "policy": "For hackathon demo use only, if a programme's English requirement does not explicitly identify an NSC English stream, provisionally interpret it as English Home Language. Explicit source wording takes precedence. Do not treat English First Additional Language or an unknown stream as equivalent; return UNKNOWN if no Home Language result is supplied and the English requirement affects the outcome. This is a project-owner demo assumption, not verified UJ policy."
     },
     "facultyOfScienceRestriction": {
       "sourceText": "Technical Mathematics and Technical Science are not accepted for degree programmes in the Faculty of Science.",
@@ -69,7 +69,8 @@
     "governingSourceVersionStatus": "ONE_RETAINED_PROSPECTUS_URL_SELECTED; FINAL_CURATOR_SIGN_OFF_PENDING",
     "sourceVersionCandidates": [
       "https://www.uj.ac.za/wp-content/uploads/2026/07/uj_undergrad_prospectus2027_online_25jun2026.pdf"
-    ]
+    ],
+    "demoUse": "All 30 programme records are approved by the StudyPath SA project owner as the source of truth for the bounded hackathon demo; unresolved record-level rules still require UNKNOWN eligibility."
   },
   "sources": [
     {
@@ -123,7 +124,8 @@
         "english": {
           "minLevel": 5,
           "minPercent": 60,
-          "mappingStatus": "UNRESOLVED"
+          "mappingStatus": "DEMO_DEFAULT_HOME_LANGUAGE",
+          "mappingAssumption": "ENGLISH_HOME_LANGUAGE"
         },
         "subjectRules": [
           {
@@ -149,12 +151,18 @@
         }
       ],
       "unresolved": [
-        "English stream mapping",
+        "English stream uses provisional English Home Language demo assumption; verify against authoritative source before definitive screening",
         "complete conditions/selection exceptions",
-        "Source and programme rules remain draft pending curator sign-off; minimum requirements do not guarantee admission."
+        "Unresolved source/rule interpretation and selection conditions remain; eligibility must be UNKNOWN where they affect the decision. Minimum requirements do not guarantee admission."
       ],
       "curatorSignoff": null,
-      "status": "DRAFT"
+      "status": "APPROVED_FOR_HACKATHON_DEMO_ONLY",
+      "demoApproval": {
+        "approvedAt": "2026-10-24",
+        "scope": "FNB AOTY Hackathon 2026 demonstration only",
+        "approver": "StudyPath SA project owner",
+        "decision": "Approved for inclusion and display in the bounded hackathon demo catalogue only; not institutional endorsement or approval for definitive admission screening."
+      }
     },
     {
       "id": "UJ-2027-BSC-CSI",
@@ -170,7 +178,8 @@
         "english": {
           "minLevel": 5,
           "minPercent": 60,
-          "mappingStatus": "UNRESOLVED"
+          "mappingStatus": "DEMO_DEFAULT_HOME_LANGUAGE",
+          "mappingAssumption": "ENGLISH_HOME_LANGUAGE"
         },
         "subjectRules": [
           {
@@ -196,12 +205,18 @@
         }
       ],
       "unresolved": [
-        "English stream mapping",
+        "English stream uses provisional English Home Language demo assumption; verify against authoritative source before definitive screening",
         "complete conditions/selection exceptions",
-        "Source and programme rules remain draft pending curator sign-off; minimum requirements do not guarantee admission."
+        "Unresolved source/rule interpretation and selection conditions remain; eligibility must be UNKNOWN where they affect the decision. Minimum requirements do not guarantee admission."
       ],
       "curatorSignoff": null,
-      "status": "DRAFT"
+      "status": "APPROVED_FOR_HACKATHON_DEMO_ONLY",
+      "demoApproval": {
+        "approvedAt": "2026-10-24",
+        "scope": "FNB AOTY Hackathon 2026 demonstration only",
+        "approver": "StudyPath SA project owner",
+        "decision": "Approved for inclusion and display in the bounded hackathon demo catalogue only; not institutional endorsement or approval for definitive admission screening."
+      }
     },
     {
       "id": "UJ-2027-BSC-CSI-EXT",
@@ -217,7 +232,8 @@
         "english": {
           "minLevel": 4,
           "minPercent": 50,
-          "mappingStatus": "UNRESOLVED"
+          "mappingStatus": "DEMO_DEFAULT_HOME_LANGUAGE",
+          "mappingAssumption": "ENGLISH_HOME_LANGUAGE"
         },
         "subjectRules": [
           {
@@ -243,13 +259,19 @@
         }
       ],
       "unresolved": [
-        "English stream mapping",
+        "English stream uses provisional English Home Language demo assumption; verify against authoritative source before definitive screening",
         "complete conditions/selection exceptions",
         "exact scope of Science faculty restriction",
-        "Source and programme rules remain draft pending curator sign-off; minimum requirements do not guarantee admission."
+        "Unresolved source/rule interpretation and selection conditions remain; eligibility must be UNKNOWN where they affect the decision. Minimum requirements do not guarantee admission."
       ],
       "curatorSignoff": null,
-      "status": "DRAFT"
+      "status": "APPROVED_FOR_HACKATHON_DEMO_ONLY",
+      "demoApproval": {
+        "approvedAt": "2026-10-24",
+        "scope": "FNB AOTY Hackathon 2026 demonstration only",
+        "approver": "StudyPath SA project owner",
+        "decision": "Approved for inclusion and display in the bounded hackathon demo catalogue only; not institutional endorsement or approval for definitive admission screening."
+      }
     },
     {
       "id": "UJ-2027-BSC-CSI-AI",
@@ -265,7 +287,8 @@
         "english": {
           "minLevel": 5,
           "minPercent": 60,
-          "mappingStatus": "UNRESOLVED"
+          "mappingStatus": "DEMO_DEFAULT_HOME_LANGUAGE",
+          "mappingAssumption": "ENGLISH_HOME_LANGUAGE"
         },
         "subjectRules": [
           {
@@ -291,13 +314,19 @@
         }
       ],
       "unresolved": [
-        "English stream mapping",
+        "English stream uses provisional English Home Language demo assumption; verify against authoritative source before definitive screening",
         "complete conditions/selection exceptions",
         "exact scope of Science faculty restriction",
-        "Source and programme rules remain draft pending curator sign-off; minimum requirements do not guarantee admission."
+        "Unresolved source/rule interpretation and selection conditions remain; eligibility must be UNKNOWN where they affect the decision. Minimum requirements do not guarantee admission."
       ],
       "curatorSignoff": null,
-      "status": "DRAFT"
+      "status": "APPROVED_FOR_HACKATHON_DEMO_ONLY",
+      "demoApproval": {
+        "approvedAt": "2026-10-24",
+        "scope": "FNB AOTY Hackathon 2026 demonstration only",
+        "approver": "StudyPath SA project owner",
+        "decision": "Approved for inclusion and display in the bounded hackathon demo catalogue only; not institutional endorsement or approval for definitive admission screening."
+      }
     },
     {
       "id": "UJ-2027-BCOM-IS",
@@ -313,7 +342,8 @@
         "english": {
           "minLevel": 4,
           "minPercent": 50,
-          "mappingStatus": "UNRESOLVED"
+          "mappingStatus": "DEMO_DEFAULT_HOME_LANGUAGE",
+          "mappingAssumption": "ENGLISH_HOME_LANGUAGE"
         },
         "subjectRules": [
           {
@@ -341,13 +371,19 @@
         }
       ],
       "unresolved": [
-        "English stream mapping",
+        "English stream uses provisional English Home Language demo assumption; verify against authoritative source before definitive screening",
         "full conditions/selection exceptions",
         "Whether Mathematics and Technical Mathematics are alternatives or both independently required is not explicit in the extracted table; do not encode an OR branch until the original table/official rule confirms it.",
-        "Source and programme rules remain draft pending curator sign-off; minimum requirements do not guarantee admission."
+        "Unresolved source/rule interpretation and selection conditions remain; eligibility must be UNKNOWN where they affect the decision. Minimum requirements do not guarantee admission."
       ],
       "curatorSignoff": null,
-      "status": "DRAFT"
+      "status": "APPROVED_FOR_HACKATHON_DEMO_ONLY",
+      "demoApproval": {
+        "approvedAt": "2026-10-24",
+        "scope": "FNB AOTY Hackathon 2026 demonstration only",
+        "approver": "StudyPath SA project owner",
+        "decision": "Approved for inclusion and display in the bounded hackathon demo catalogue only; not institutional endorsement or approval for definitive admission screening."
+      }
     },
     {
       "id": "UJ-2027-DIP-BIT",
@@ -386,7 +422,8 @@
         "english": {
           "minLevel": 4,
           "minPercent": 50,
-          "mappingStatus": "UNRESOLVED"
+          "mappingStatus": "DEMO_DEFAULT_HOME_LANGUAGE",
+          "mappingAssumption": "ENGLISH_HOME_LANGUAGE"
         }
       },
       "sourceEvidence": [
@@ -400,13 +437,19 @@
         }
       ],
       "unresolved": [
-        "English stream mapping",
+        "English stream uses provisional English Home Language demo assumption; verify against authoritative source before definitive screening",
         "exact AND/OR branch interpretation",
         "complete conditions/selection exceptions",
-        "Source and programme rules remain draft pending curator sign-off; minimum requirements do not guarantee admission."
+        "Unresolved source/rule interpretation and selection conditions remain; eligibility must be UNKNOWN where they affect the decision. Minimum requirements do not guarantee admission."
       ],
       "curatorSignoff": null,
-      "status": "DRAFT"
+      "status": "APPROVED_FOR_HACKATHON_DEMO_ONLY",
+      "demoApproval": {
+        "approvedAt": "2026-10-24",
+        "scope": "FNB AOTY Hackathon 2026 demonstration only",
+        "approver": "StudyPath SA project owner",
+        "decision": "Approved for inclusion and display in the bounded hackathon demo catalogue only; not institutional endorsement or approval for definitive admission screening."
+      }
     },
     {
       "id": "UJ-2027-BCOM-IM",
@@ -445,7 +488,8 @@
         "english": {
           "minLevel": 4,
           "minPercent": 50,
-          "mappingStatus": "UNRESOLVED"
+          "mappingStatus": "DEMO_DEFAULT_HOME_LANGUAGE",
+          "mappingAssumption": "ENGLISH_HOME_LANGUAGE"
         }
       },
       "sourceEvidence": [
@@ -455,13 +499,19 @@
         }
       ],
       "unresolved": [
-        "English stream mapping",
+        "English stream uses provisional English Home Language demo assumption; verify against authoritative source before definitive screening",
         "conflicting level of specificity between current page and 2027 CBE brochure",
         "complete conditions/selection exceptions",
-        "Source and programme rules remain draft pending curator sign-off; minimum requirements do not guarantee admission."
+        "Unresolved source/rule interpretation and selection conditions remain; eligibility must be UNKNOWN where they affect the decision. Minimum requirements do not guarantee admission."
       ],
       "curatorSignoff": null,
-      "status": "DRAFT"
+      "status": "APPROVED_FOR_HACKATHON_DEMO_ONLY",
+      "demoApproval": {
+        "approvedAt": "2026-10-24",
+        "scope": "FNB AOTY Hackathon 2026 demonstration only",
+        "approver": "StudyPath SA project owner",
+        "decision": "Approved for inclusion and display in the bounded hackathon demo catalogue only; not institutional endorsement or approval for definitive admission screening."
+      }
     },
     {
       "id": "UJ-2027-FADA-BARCH",
@@ -477,7 +527,8 @@
         "english": {
           "minLevel": 5,
           "minPercent": 60,
-          "mappingStatus": "UNRESOLVED"
+          "mappingStatus": "DEMO_DEFAULT_HOME_LANGUAGE",
+          "mappingAssumption": "ENGLISH_HOME_LANGUAGE"
         },
         "subjectRules": [
           {
@@ -506,7 +557,13 @@
         "Minimum requirements do not guarantee admission; final selection is subject to UJ rules and available space.",
         "Draft transcription from retained 2027 prospectus; curator verification required."
       ],
-      "status": "DRAFT"
+      "status": "APPROVED_FOR_HACKATHON_DEMO_ONLY",
+      "demoApproval": {
+        "approvedAt": "2026-10-24",
+        "scope": "FNB AOTY Hackathon 2026 demonstration only",
+        "approver": "StudyPath SA project owner",
+        "decision": "Approved for inclusion and display in the bounded hackathon demo catalogue only; not institutional endorsement or approval for definitive admission screening."
+      }
     },
     {
       "id": "UJ-2027-FADA-BA-COMDES",
@@ -543,7 +600,8 @@
         "english": {
           "minLevel": 5,
           "minPercent": 60,
-          "mappingStatus": "UNRESOLVED"
+          "mappingStatus": "DEMO_DEFAULT_HOME_LANGUAGE",
+          "mappingAssumption": "ENGLISH_HOME_LANGUAGE"
         },
         "subjectRules": [
           {
@@ -563,7 +621,13 @@
         "Minimum requirements do not guarantee admission; final selection is subject to UJ rules and available space.",
         "Draft transcription from retained 2027 prospectus; curator verification required."
       ],
-      "status": "DRAFT"
+      "status": "APPROVED_FOR_HACKATHON_DEMO_ONLY",
+      "demoApproval": {
+        "approvedAt": "2026-10-24",
+        "scope": "FNB AOTY Hackathon 2026 demonstration only",
+        "approver": "StudyPath SA project owner",
+        "decision": "Approved for inclusion and display in the bounded hackathon demo catalogue only; not institutional endorsement or approval for definitive admission screening."
+      }
     },
     {
       "id": "UJ-2027-FADA-BA-DIGMEDIA",
@@ -600,7 +664,8 @@
         "english": {
           "minLevel": 5,
           "minPercent": 60,
-          "mappingStatus": "UNRESOLVED"
+          "mappingStatus": "DEMO_DEFAULT_HOME_LANGUAGE",
+          "mappingAssumption": "ENGLISH_HOME_LANGUAGE"
         },
         "subjectRules": [
           {
@@ -620,7 +685,13 @@
         "Minimum requirements do not guarantee admission; final selection is subject to UJ rules and available space.",
         "Draft transcription from retained 2027 prospectus; curator verification required."
       ],
-      "status": "DRAFT"
+      "status": "APPROVED_FOR_HACKATHON_DEMO_ONLY",
+      "demoApproval": {
+        "approvedAt": "2026-10-24",
+        "scope": "FNB AOTY Hackathon 2026 demonstration only",
+        "approver": "StudyPath SA project owner",
+        "decision": "Approved for inclusion and display in the bounded hackathon demo catalogue only; not institutional endorsement or approval for definitive admission screening."
+      }
     },
     {
       "id": "UJ-2027-FADA-BA-INDDES",
@@ -657,7 +728,8 @@
         "english": {
           "minLevel": 5,
           "minPercent": 60,
-          "mappingStatus": "UNRESOLVED"
+          "mappingStatus": "DEMO_DEFAULT_HOME_LANGUAGE",
+          "mappingAssumption": "ENGLISH_HOME_LANGUAGE"
         },
         "subjectRules": [
           {
@@ -677,7 +749,13 @@
         "Minimum requirements do not guarantee admission; final selection is subject to UJ rules and available space.",
         "Draft transcription from retained 2027 prospectus; curator verification required."
       ],
-      "status": "DRAFT"
+      "status": "APPROVED_FOR_HACKATHON_DEMO_ONLY",
+      "demoApproval": {
+        "approvedAt": "2026-10-24",
+        "scope": "FNB AOTY Hackathon 2026 demonstration only",
+        "approver": "StudyPath SA project owner",
+        "decision": "Approved for inclusion and display in the bounded hackathon demo catalogue only; not institutional endorsement or approval for definitive admission screening."
+      }
     },
     {
       "id": "UJ-2027-FADA-BA-FASHION",
@@ -714,7 +792,8 @@
         "english": {
           "minLevel": 5,
           "minPercent": 60,
-          "mappingStatus": "UNRESOLVED"
+          "mappingStatus": "DEMO_DEFAULT_HOME_LANGUAGE",
+          "mappingAssumption": "ENGLISH_HOME_LANGUAGE"
         },
         "subjectRules": [
           {
@@ -734,7 +813,13 @@
         "Minimum requirements do not guarantee admission; final selection is subject to UJ rules and available space.",
         "Draft transcription from retained 2027 prospectus; curator verification required."
       ],
-      "status": "DRAFT"
+      "status": "APPROVED_FOR_HACKATHON_DEMO_ONLY",
+      "demoApproval": {
+        "approvedAt": "2026-10-24",
+        "scope": "FNB AOTY Hackathon 2026 demonstration only",
+        "approver": "StudyPath SA project owner",
+        "decision": "Approved for inclusion and display in the bounded hackathon demo catalogue only; not institutional endorsement or approval for definitive admission screening."
+      }
     },
     {
       "id": "UJ-2027-FADA-BA-VISART",
@@ -771,7 +856,8 @@
         "english": {
           "minLevel": 3,
           "minPercent": 40,
-          "mappingStatus": "UNRESOLVED"
+          "mappingStatus": "DEMO_DEFAULT_HOME_LANGUAGE",
+          "mappingAssumption": "ENGLISH_HOME_LANGUAGE"
         },
         "subjectRules": [
           {
@@ -793,7 +879,13 @@
         "Draft transcription from retained 2027 prospectus; curator verification required.",
         "International-admission exception for Maths/Maths Literacy is specific to this programme and is not encoded as a general rule."
       ],
-      "status": "DRAFT"
+      "status": "APPROVED_FOR_HACKATHON_DEMO_ONLY",
+      "demoApproval": {
+        "approvedAt": "2026-10-24",
+        "scope": "FNB AOTY Hackathon 2026 demonstration only",
+        "approver": "StudyPath SA project owner",
+        "decision": "Approved for inclusion and display in the bounded hackathon demo catalogue only; not institutional endorsement or approval for definitive admission screening."
+      }
     },
     {
       "id": "UJ-2027-FADA-DIP-ARCH",
@@ -830,7 +922,8 @@
         "english": {
           "minLevel": 5,
           "minPercent": 60,
-          "mappingStatus": "UNRESOLVED"
+          "mappingStatus": "DEMO_DEFAULT_HOME_LANGUAGE",
+          "mappingAssumption": "ENGLISH_HOME_LANGUAGE"
         },
         "subjectRules": [
           {
@@ -850,7 +943,13 @@
         "Minimum requirements do not guarantee admission; final selection is subject to UJ rules and available space.",
         "Draft transcription from retained 2027 prospectus; curator verification required."
       ],
-      "status": "DRAFT"
+      "status": "APPROVED_FOR_HACKATHON_DEMO_ONLY",
+      "demoApproval": {
+        "approvedAt": "2026-10-24",
+        "scope": "FNB AOTY Hackathon 2026 demonstration only",
+        "approver": "StudyPath SA project owner",
+        "decision": "Approved for inclusion and display in the bounded hackathon demo catalogue only; not institutional endorsement or approval for definitive admission screening."
+      }
     },
     {
       "id": "UJ-2027-FEBE-BENG-CIVIL",
@@ -866,7 +965,8 @@
         "english": {
           "minLevel": 5,
           "minPercent": 60,
-          "mappingStatus": "UNRESOLVED"
+          "mappingStatus": "DEMO_DEFAULT_HOME_LANGUAGE",
+          "mappingAssumption": "ENGLISH_HOME_LANGUAGE"
         },
         "subjectRules": [
           {
@@ -900,7 +1000,13 @@
         "Minimum requirements do not guarantee admission; final selection is subject to UJ rules and available space.",
         "Draft transcription from retained 2027 prospectus; curator verification required."
       ],
-      "status": "DRAFT"
+      "status": "APPROVED_FOR_HACKATHON_DEMO_ONLY",
+      "demoApproval": {
+        "approvedAt": "2026-10-24",
+        "scope": "FNB AOTY Hackathon 2026 demonstration only",
+        "approver": "StudyPath SA project owner",
+        "decision": "Approved for inclusion and display in the bounded hackathon demo catalogue only; not institutional endorsement or approval for definitive admission screening."
+      }
     },
     {
       "id": "UJ-2027-FEBE-BENG-ELECTRICAL",
@@ -916,7 +1022,8 @@
         "english": {
           "minLevel": 5,
           "minPercent": 60,
-          "mappingStatus": "UNRESOLVED"
+          "mappingStatus": "DEMO_DEFAULT_HOME_LANGUAGE",
+          "mappingAssumption": "ENGLISH_HOME_LANGUAGE"
         },
         "subjectRules": [
           {
@@ -950,7 +1057,13 @@
         "Minimum requirements do not guarantee admission; final selection is subject to UJ rules and available space.",
         "Draft transcription from retained 2027 prospectus; curator verification required."
       ],
-      "status": "DRAFT"
+      "status": "APPROVED_FOR_HACKATHON_DEMO_ONLY",
+      "demoApproval": {
+        "approvedAt": "2026-10-24",
+        "scope": "FNB AOTY Hackathon 2026 demonstration only",
+        "approver": "StudyPath SA project owner",
+        "decision": "Approved for inclusion and display in the bounded hackathon demo catalogue only; not institutional endorsement or approval for definitive admission screening."
+      }
     },
     {
       "id": "UJ-2027-FEBE-BENG-MECHANICAL",
@@ -966,7 +1079,8 @@
         "english": {
           "minLevel": 5,
           "minPercent": 60,
-          "mappingStatus": "UNRESOLVED"
+          "mappingStatus": "DEMO_DEFAULT_HOME_LANGUAGE",
+          "mappingAssumption": "ENGLISH_HOME_LANGUAGE"
         },
         "subjectRules": [
           {
@@ -1000,7 +1114,13 @@
         "Minimum requirements do not guarantee admission; final selection is subject to UJ rules and available space.",
         "Draft transcription from retained 2027 prospectus; curator verification required."
       ],
-      "status": "DRAFT"
+      "status": "APPROVED_FOR_HACKATHON_DEMO_ONLY",
+      "demoApproval": {
+        "approvedAt": "2026-10-24",
+        "scope": "FNB AOTY Hackathon 2026 demonstration only",
+        "approver": "StudyPath SA project owner",
+        "decision": "Approved for inclusion and display in the bounded hackathon demo catalogue only; not institutional endorsement or approval for definitive admission screening."
+      }
     },
     {
       "id": "UJ-2027-FEBE-BENGTECH-CHEM",
@@ -1016,7 +1136,8 @@
         "english": {
           "minLevel": 4,
           "minPercent": 50,
-          "mappingStatus": "UNRESOLVED"
+          "mappingStatus": "DEMO_DEFAULT_HOME_LANGUAGE",
+          "mappingAssumption": "ENGLISH_HOME_LANGUAGE"
         },
         "subjectRules": [
           {
@@ -1052,7 +1173,13 @@
         "Draft transcription from retained 2027 prospectus; curator verification required.",
         "The printed table labels the column Mathematics / Technical Mathematics; route semantics require curator review."
       ],
-      "status": "DRAFT"
+      "status": "APPROVED_FOR_HACKATHON_DEMO_ONLY",
+      "demoApproval": {
+        "approvedAt": "2026-10-24",
+        "scope": "FNB AOTY Hackathon 2026 demonstration only",
+        "approver": "StudyPath SA project owner",
+        "decision": "Approved for inclusion and display in the bounded hackathon demo catalogue only; not institutional endorsement or approval for definitive admission screening."
+      }
     },
     {
       "id": "UJ-2027-FEBE-BENGTECH-CIVIL",
@@ -1068,7 +1195,8 @@
         "english": {
           "minLevel": 4,
           "minPercent": 50,
-          "mappingStatus": "UNRESOLVED"
+          "mappingStatus": "DEMO_DEFAULT_HOME_LANGUAGE",
+          "mappingAssumption": "ENGLISH_HOME_LANGUAGE"
         },
         "subjectRules": [
           {
@@ -1105,7 +1233,13 @@
         "Draft transcription from retained 2027 prospectus; curator verification required.",
         "Subject alternatives are transcribed from table headings and require curator confirmation."
       ],
-      "status": "DRAFT"
+      "status": "APPROVED_FOR_HACKATHON_DEMO_ONLY",
+      "demoApproval": {
+        "approvedAt": "2026-10-24",
+        "scope": "FNB AOTY Hackathon 2026 demonstration only",
+        "approver": "StudyPath SA project owner",
+        "decision": "Approved for inclusion and display in the bounded hackathon demo catalogue only; not institutional endorsement or approval for definitive admission screening."
+      }
     },
     {
       "id": "UJ-2027-FEBE-BENGTECH-MINING",
@@ -1121,7 +1255,8 @@
         "english": {
           "minLevel": 4,
           "minPercent": 50,
-          "mappingStatus": "UNRESOLVED"
+          "mappingStatus": "DEMO_DEFAULT_HOME_LANGUAGE",
+          "mappingAssumption": "ENGLISH_HOME_LANGUAGE"
         },
         "subjectRules": [
           {
@@ -1158,7 +1293,13 @@
         "Draft transcription from retained 2027 prospectus; curator verification required.",
         "Subject alternatives are transcribed from table headings and require curator confirmation."
       ],
-      "status": "DRAFT"
+      "status": "APPROVED_FOR_HACKATHON_DEMO_ONLY",
+      "demoApproval": {
+        "approvedAt": "2026-10-24",
+        "scope": "FNB AOTY Hackathon 2026 demonstration only",
+        "approver": "StudyPath SA project owner",
+        "decision": "Approved for inclusion and display in the bounded hackathon demo catalogue only; not institutional endorsement or approval for definitive admission screening."
+      }
     },
     {
       "id": "UJ-2027-FEBE-MINE-SURVEY",
@@ -1174,7 +1315,8 @@
         "english": {
           "minLevel": 4,
           "minPercent": 50,
-          "mappingStatus": "UNRESOLVED"
+          "mappingStatus": "DEMO_DEFAULT_HOME_LANGUAGE",
+          "mappingAssumption": "ENGLISH_HOME_LANGUAGE"
         },
         "subjectRules": [
           {
@@ -1211,7 +1353,13 @@
         "Draft transcription from retained 2027 prospectus; curator verification required.",
         "Subject alternatives are transcribed from table headings and require curator confirmation."
       ],
-      "status": "DRAFT"
+      "status": "APPROVED_FOR_HACKATHON_DEMO_ONLY",
+      "demoApproval": {
+        "approvedAt": "2026-10-24",
+        "scope": "FNB AOTY Hackathon 2026 demonstration only",
+        "approver": "StudyPath SA project owner",
+        "decision": "Approved for inclusion and display in the bounded hackathon demo catalogue only; not institutional endorsement or approval for definitive admission screening."
+      }
     },
     {
       "id": "UJ-2027-FEBE-BSC-CONSTRUCTION",
@@ -1227,7 +1375,8 @@
         "english": {
           "minLevel": 4,
           "minPercent": 50,
-          "mappingStatus": "UNRESOLVED"
+          "mappingStatus": "DEMO_DEFAULT_HOME_LANGUAGE",
+          "mappingAssumption": "ENGLISH_HOME_LANGUAGE"
         },
         "subjectRules": [
           {
@@ -1264,7 +1413,13 @@
         "Draft transcription from retained 2027 prospectus; curator verification required.",
         "Subject alternatives are transcribed from table headings and require curator confirmation."
       ],
-      "status": "DRAFT"
+      "status": "APPROVED_FOR_HACKATHON_DEMO_ONLY",
+      "demoApproval": {
+        "approvedAt": "2026-10-24",
+        "scope": "FNB AOTY Hackathon 2026 demonstration only",
+        "approver": "StudyPath SA project owner",
+        "decision": "Approved for inclusion and display in the bounded hackathon demo catalogue only; not institutional endorsement or approval for definitive admission screening."
+      }
     },
     {
       "id": "UJ-2027-FEBE-URBAN-PLANNING",
@@ -1280,7 +1435,8 @@
         "english": {
           "minLevel": 4,
           "minPercent": 50,
-          "mappingStatus": "UNRESOLVED"
+          "mappingStatus": "DEMO_DEFAULT_HOME_LANGUAGE",
+          "mappingAssumption": "ENGLISH_HOME_LANGUAGE"
         },
         "subjectRules": [
           {
@@ -1311,7 +1467,13 @@
         "Draft transcription from retained 2027 prospectus; curator verification required.",
         "Table presents a Mathematics / Technical Mathematics column; whether Technical Mathematics satisfies this programme is unresolved."
       ],
-      "status": "DRAFT"
+      "status": "APPROVED_FOR_HACKATHON_DEMO_ONLY",
+      "demoApproval": {
+        "approvedAt": "2026-10-24",
+        "scope": "FNB AOTY Hackathon 2026 demonstration only",
+        "approver": "StudyPath SA project owner",
+        "decision": "Approved for inclusion and display in the bounded hackathon demo catalogue only; not institutional endorsement or approval for definitive admission screening."
+      }
     },
     {
       "id": "UJ-2027-FEBE-DIP-MGMT-SERVICES",
@@ -1348,7 +1510,8 @@
         "english": {
           "minLevel": 4,
           "minPercent": 50,
-          "mappingStatus": "UNRESOLVED"
+          "mappingStatus": "DEMO_DEFAULT_HOME_LANGUAGE",
+          "mappingAssumption": "ENGLISH_HOME_LANGUAGE"
         }
       },
       "sourceEvidence": [
@@ -1362,7 +1525,13 @@
         "Minimum requirements do not guarantee admission; final selection is subject to UJ rules and available space.",
         "Draft transcription from retained 2027 prospectus; curator verification required."
       ],
-      "status": "DRAFT"
+      "status": "APPROVED_FOR_HACKATHON_DEMO_ONLY",
+      "demoApproval": {
+        "approvedAt": "2026-10-24",
+        "scope": "FNB AOTY Hackathon 2026 demonstration only",
+        "approver": "StudyPath SA project owner",
+        "decision": "Approved for inclusion and display in the bounded hackathon demo catalogue only; not institutional endorsement or approval for definitive admission screening."
+      }
     },
     {
       "id": "UJ-2027-FEBE-DIP-OPS-MGMT",
@@ -1399,7 +1568,8 @@
         "english": {
           "minLevel": 4,
           "minPercent": 50,
-          "mappingStatus": "UNRESOLVED"
+          "mappingStatus": "DEMO_DEFAULT_HOME_LANGUAGE",
+          "mappingAssumption": "ENGLISH_HOME_LANGUAGE"
         }
       },
       "sourceEvidence": [
@@ -1413,7 +1583,13 @@
         "Minimum requirements do not guarantee admission; final selection is subject to UJ rules and available space.",
         "Draft transcription from retained 2027 prospectus; curator verification required."
       ],
-      "status": "DRAFT"
+      "status": "APPROVED_FOR_HACKATHON_DEMO_ONLY",
+      "demoApproval": {
+        "approvedAt": "2026-10-24",
+        "scope": "FNB AOTY Hackathon 2026 demonstration only",
+        "approver": "StudyPath SA project owner",
+        "decision": "Approved for inclusion and display in the bounded hackathon demo catalogue only; not institutional endorsement or approval for definitive admission screening."
+      }
     },
     {
       "id": "UJ-2027-CBE-BCOM-ACCOUNTING",
@@ -1429,7 +1605,8 @@
         "english": {
           "minLevel": 4,
           "minPercent": 50,
-          "mappingStatus": "UNRESOLVED"
+          "mappingStatus": "DEMO_DEFAULT_HOME_LANGUAGE",
+          "mappingAssumption": "ENGLISH_HOME_LANGUAGE"
         },
         "subjectRules": [
           {
@@ -1463,7 +1640,13 @@
         "Draft transcription from retained 2027 prospectus; curator verification required.",
         "CBE brochure printed page needs confirmation from the original brochure."
       ],
-      "status": "DRAFT"
+      "status": "APPROVED_FOR_HACKATHON_DEMO_ONLY",
+      "demoApproval": {
+        "approvedAt": "2026-10-24",
+        "scope": "FNB AOTY Hackathon 2026 demonstration only",
+        "approver": "StudyPath SA project owner",
+        "decision": "Approved for inclusion and display in the bounded hackathon demo catalogue only; not institutional endorsement or approval for definitive admission screening."
+      }
     },
     {
       "id": "UJ-2027-CBE-BCOM-BUSMGMT",
@@ -1479,7 +1662,8 @@
         "english": {
           "minLevel": 4,
           "minPercent": 50,
-          "mappingStatus": "UNRESOLVED"
+          "mappingStatus": "DEMO_DEFAULT_HOME_LANGUAGE",
+          "mappingAssumption": "ENGLISH_HOME_LANGUAGE"
         },
         "subjectRules": [
           {
@@ -1509,7 +1693,13 @@
         "Minimum requirements do not guarantee admission; final selection is subject to UJ rules and available space.",
         "Draft transcription from retained 2027 prospectus; curator verification required."
       ],
-      "status": "DRAFT"
+      "status": "APPROVED_FOR_HACKATHON_DEMO_ONLY",
+      "demoApproval": {
+        "approvedAt": "2026-10-24",
+        "scope": "FNB AOTY Hackathon 2026 demonstration only",
+        "approver": "StudyPath SA project owner",
+        "decision": "Approved for inclusion and display in the bounded hackathon demo catalogue only; not institutional endorsement or approval for definitive admission screening."
+      }
     },
     {
       "id": "UJ-2027-CBE-BCOM-FINANCE",
@@ -1525,7 +1715,8 @@
         "english": {
           "minLevel": 4,
           "minPercent": 50,
-          "mappingStatus": "UNRESOLVED"
+          "mappingStatus": "DEMO_DEFAULT_HOME_LANGUAGE",
+          "mappingAssumption": "ENGLISH_HOME_LANGUAGE"
         },
         "subjectRules": [
           {
@@ -1554,7 +1745,13 @@
         "Minimum requirements do not guarantee admission; final selection is subject to UJ rules and available space.",
         "Draft transcription from retained 2027 prospectus; curator verification required."
       ],
-      "status": "DRAFT"
+      "status": "APPROVED_FOR_HACKATHON_DEMO_ONLY",
+      "demoApproval": {
+        "approvedAt": "2026-10-24",
+        "scope": "FNB AOTY Hackathon 2026 demonstration only",
+        "approver": "StudyPath SA project owner",
+        "decision": "Approved for inclusion and display in the bounded hackathon demo catalogue only; not institutional endorsement or approval for definitive admission screening."
+      }
     },
     {
       "id": "UJ-2027-CBE-BCOM-MARKETING",
@@ -1570,7 +1767,8 @@
         "english": {
           "minLevel": 4,
           "minPercent": 50,
-          "mappingStatus": "UNRESOLVED"
+          "mappingStatus": "DEMO_DEFAULT_HOME_LANGUAGE",
+          "mappingAssumption": "ENGLISH_HOME_LANGUAGE"
         },
         "subjectRules": [
           {
@@ -1599,7 +1797,13 @@
         "Minimum requirements do not guarantee admission; final selection is subject to UJ rules and available space.",
         "Draft transcription from retained 2027 prospectus; curator verification required."
       ],
-      "status": "DRAFT"
+      "status": "APPROVED_FOR_HACKATHON_DEMO_ONLY",
+      "demoApproval": {
+        "approvedAt": "2026-10-24",
+        "scope": "FNB AOTY Hackathon 2026 demonstration only",
+        "approver": "StudyPath SA project owner",
+        "decision": "Approved for inclusion and display in the bounded hackathon demo catalogue only; not institutional endorsement or approval for definitive admission screening."
+      }
     },
     {
       "id": "UJ-2027-CBE-BSC-HOSPITALITY",
@@ -1641,7 +1845,8 @@
         "english": {
           "minLevel": 5,
           "minPercent": 60,
-          "mappingStatus": "UNRESOLVED"
+          "mappingStatus": "DEMO_DEFAULT_HOME_LANGUAGE",
+          "mappingAssumption": "ENGLISH_HOME_LANGUAGE"
         }
       },
       "sourceEvidence": [
@@ -1655,7 +1860,27 @@
         "Minimum requirements do not guarantee admission; final selection is subject to UJ rules and available space.",
         "Draft transcription from retained 2027 prospectus; curator verification required."
       ],
-      "status": "DRAFT"
+      "status": "APPROVED_FOR_HACKATHON_DEMO_ONLY",
+      "demoApproval": {
+        "approvedAt": "2026-10-24",
+        "scope": "FNB AOTY Hackathon 2026 demonstration only",
+        "approver": "StudyPath SA project owner",
+        "decision": "Approved for inclusion and display in the bounded hackathon demo catalogue only; not institutional endorsement or approval for definitive admission screening."
+      }
     }
-  ]
+  ],
+  "demoApproval": {
+    "approvedAt": "2026-10-24",
+    "approvalScope": "FNB AOTY Hackathon 2026 demonstration only",
+    "approver": "StudyPath SA project owner",
+    "decision": "The 30-programme catalogue is the source of truth for the bounded hackathon demo.",
+    "limitations": [
+      "This approval is not approval for definitive admissions screening or publication as an authoritative UJ catalogue.",
+      "Programme records retain their existing per-record statuses and unresolved notes; catalogue approval does not resolve missing requirements or source interpretation.",
+      "Eligibility must remain UNKNOWN wherever required evidence or rule interpretation is unresolved.",
+      "Minimum requirements do not guarantee admission or selection."
+    ],
+    "approvalDecision": "All 30 programme records are explicitly approved by the StudyPath SA project owner for the bounded hackathon demo catalogue. This is not University of Johannesburg endorsement, institutional curator sign-off, publication approval, or authorization for definitive admission screening.",
+    "programmeRecordScope": "All 30 programme records in this catalogue"
+  }
 }
