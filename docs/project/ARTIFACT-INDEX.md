@@ -1,3 +1,17 @@
+# Current main UI regression repair and target UX — 2026-10-24
+
+| Artifact | Purpose | Current status |
+|---|---|---|
+| `docs/product/END-PRODUCT-UX-VISION.md` | Owner-requested target experience: discovery dashboard, profile completeness, dynamic pathway counts, explainable eligibility, demo-data safeguards, visual palette, dark mode, accessibility and acceptance criteria | Documented target; implementation gap analysis pending |
+| `src/main.jsx` | Restored light/dark theme toggle and accessible state label | Implemented on `fix/restore-theme-accessible-blue`; CI pending |
+| `src/styles.css` | Accessible interaction blue and explicit dark theme surfaces | Implemented on `fix/restore-theme-accessible-blue`; contrast math checked, browser audit pending |
+| `tests/e2e/student-form.spec.mjs` | Theme toggle behavior and Axe scans in both themes | Updated on `fix/restore-theme-accessible-blue`; CI pending |
+
+**Main regression evidence:** merge commit `268d6f03322f82b7c47a3ddf0598e067880a73a1` (PR #175) removed the toggle and dark-mode CSS from PR #174. The prior accessibility failure identified 4.07:1 contrast for `#0876c9` on `#f1ecf8`; replacement `#0065A8` calculates to 5.28:1 on that lavender background and 6.13:1 on white.
+
+**Release boundary:** the repair branch has not yet passed CI or been merged at the time of this note. No local test execution, deployment, production readiness or full target-UX implementation is claimed.
+
+---
 # Current implementation and gate index — 2026-10-22
 
 **Reviewed main baseline:** `aa43b783ecb97aa3dac8f1ed18ebe727e5231e41`, based on owner-supplied local Git output and repository inspection. Three named GitHub Actions workflows were reported successful on that exact commit: [browser E2E/privacy/accessibility](https://github.com/s1xte3n/studypath-sa/actions/runs/39681570939), [contract tests](https://github.com/s1xte3n/studypath-sa/actions/runs/39681570917), [browser MVP build](https://github.com/s1xte3n/studypath-sa/actions/runs/39681571109). The assistant has not independently rerun these workflows.
