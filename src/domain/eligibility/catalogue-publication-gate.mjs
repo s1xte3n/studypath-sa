@@ -1,4 +1,4 @@
-const ISO_DATE = /^\\d{4}-\\d{2}-\\d{2}$/;
+const ISO_DATE = /^\d{4}-\d{2}-\d{2}$/;
 const APPROVED_CATALOGUE_STATUS = "APPROVED_FOR_DEFINITIVE_SCREENING";
 const APPROVED_SOURCE_STATUS = "VERIFIED_AND_APPROVED";
 
@@ -93,7 +93,7 @@ export function validateCatalogueForPublication(catalogue) {
       if (!sourceById.has(item?.sourceId)) {
         add("PROGRAMME_SOURCE_UNKNOWN", `${evidencePath}.sourceId`, "Evidence must reference a declared source.");
       }
-      if (!isNonEmpty(item?.location) || !/printed\\s+p(?:age)?\\.?\\s*\\d+/i.test(item.location)) {
+      if (!isNonEmpty(item?.location) || !/printed\s+p(?:age)?\\.?\s*\d+/i.test(item.location)) {
         add("SOURCE_LOCATION_INVALID", `${evidencePath}.location`, "Exact printed page location is required; generic or unresolved page references fail closed.");
       }
     }
