@@ -1,3 +1,15 @@
+# Post-merge reconciliation — PR #192 (2026-10-24)
+
+**Verified main commit:** `8cb0a0c66a326484b4f158e61eadddcb792c2cbb`, merge of [PR #192](https://github.com/s1xte3n/studypath-sa/pull/192). This section supersedes the earlier top-level statements below that describe the catalogue gate as proposed, unmerged, or awaiting CI.
+
+**Merged implementation:** `src/domain/eligibility/catalogue-publication-gate.mjs`, adapter integration in `src/domain/pathway-matching.mjs`, gate tests, and `docs/project/UJ-2027-CATALOGUE-EVIDENCE-AUDIT.md`.
+
+**Owner-supplied exact-commit CI evidence:** Contract tests [#287](https://github.com/s1xte3n/studypath-sa/actions/runs/40095802263), UJ eligibility golden-case verification [#125](https://github.com/s1xte3n/studypath-sa/actions/runs/40095802269), Browser E2E/privacy/accessibility [#184](https://github.com/s1xte3n/studypath-sa/actions/runs/40095802279), and Browser MVP build [#190](https://github.com/s1xte3n/studypath-sa/actions/runs/40095802289) completed successfully on `8cb0a0c`. The preview workflow [#10](https://github.com/s1xte3n/studypath-sa/actions/runs/40095802294) completed; this alone does not prove its deployment step ran or that a public release is approved.
+
+**Still blocking:** the 2027 UJ catalogue remains `DRAFT_NOT_FOR_DEFINITIVE_SCREENING` with zero curator-approved programme records in the audited draft. Official PDF hashes/visual inspection, competing source reconciliation, rule interpretation, and human curator sign-off have not been evidenced. The fail-closed gate's structural synthetic fixture is not real catalogue approval. G-SYN-001 remains **NOT PASSED** pending the full criterion-by-criterion evidence review and outstanding privacy/accessibility/reproducibility checks. No Azure provisioning or production deployment is implied.
+
+---
+
 # Current catalogue-gate work — 2026-10-24
 
 **Base commit inspected:** `91ed42b4ca451ab0d9a12ccf63b73d541585b45d` on `main`. Work is proposed on branch `feat/187-fail-closed-catalogue-gate`; it has not been merged or deployed.
