@@ -266,7 +266,7 @@ function App() {
             <span className="step-count">01 / 03</span>
           </div>
           <p className="section-copy">No account is needed. Add the subjects and marks you want to explore. Use whole-number marks from 0 to 100.</p>
-          <p className="aps-caveat" role="note">An NSC subject profile commonly contains seven subjects. You can enter all seven here. This demo does not determine whether you have passed the NSC or achieved a Bachelor\u2019s, Diploma or Higher Certificate access level. The separate provisional UJ APS estimate uses exactly six supported non-Life-Orientation subjects only when exactly six are entered; it does not choose the top six automatically. <a href="https://www.education.gov.za/Informationfor/Learners/SubjectChoiceandCareerPathing.aspx" target="_blank" rel="noopener noreferrer">Read the Department of Basic Education\u2019s subject guidance</a>.</p>
+          <p className="aps-caveat" role="note">An NSC subject profile commonly contains seven subjects. You can enter all seven here. This demo does not determine whether you have passed the NSC or achieved a Bachelor’s, Diploma or Higher Certificate access level. The separate provisional UJ APS estimate uses exactly six supported non-Life-Orientation subjects only when exactly six are entered; it does not choose the top six automatically. <a href="https://www.education.gov.za/Informationfor/Learners/SubjectChoiceandCareerPathing.aspx" target="_blank" rel="noopener noreferrer">Read the Department of Basic Education’s subject guidance</a>.</p>
 
           <form onSubmit={submitForm} noValidate>
             <label className="field-label" htmlFor="stage">Your current stage <span aria-hidden="true">*</span></label>
