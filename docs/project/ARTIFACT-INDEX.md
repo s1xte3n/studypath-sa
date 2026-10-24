@@ -1,4 +1,19 @@
-# Current main UI regression repair and target UX — 2026-10-24
+# PR #176 merge verification — 2026-10-24
+
+| Artifact | Current status |
+|---|---|
+| `src/main.jsx` | Theme toggle merged to `main` in commit `0eafef65f42c10255ba6e307e6648ee822761a30` |
+| `src/styles.css` | Accessible interaction blue, dark surfaces, and dark footer wordmark contrast override merged |
+| `tests/e2e/student-form.spec.mjs` | Theme toggle and Axe checks in both themes merged; Browser E2E/privacy/accessibility workflow reported successful on merge commit |
+| `docs/product/END-PRODUCT-UX-VISION.md` | Target experience documented; implementation gap analysis still needed |
+
+**CI evidence supplied by the project owner:** Contract tests #258, Browser MVP build #161, UJ eligibility golden-case #108, Browser E2E/privacy/accessibility #155 all completed successfully on merge commit `0eafef65f42c10255ba6e307e6648ee822761a30`.
+
+**Scope boundary:** successful CI does not mean the full target UX is implemented or that the product is production-ready. No local test run or deployment is claimed.
+
+---
+
+# Historical implementation and gate index — 2026-10-24
 
 | Artifact | Purpose | Current status |
 |---|---|---|
