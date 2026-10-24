@@ -242,3 +242,12 @@ Evidence and implementation implications: [docs/api/RATE-LIMITING-DECISION.md](.
 - Production runtime/provider, cost, retention, abuse-control, catalogue publication and release gates remain mandatory after the hackathon and before any hosted/public deployment.
 
 **Evidence/traceability:** Owner direction in the project conversation dated 2026-10-21; implementation scope and acceptance checks in [HACKATHON-IMPLEMENTATION-BASELINE.md](HACKATHON-IMPLEMENTATION-BASELINE.md); official event dates and submission requirements in the supplied FNB AOTY Hackathon 2026 programme PDF.
+
+
+## D-051 — Approve the 30-programme catalogue for hackathon demo scope only (2026-10-24)
+
+The project owner explicitly approved `docs/product/uj-2027-pilot-catalogue-draft.json` version `uj-2027-pilot-v0.3-hackathon-demo` as the source of truth for the bounded FNB AOTY Hackathon 2026 demo. This approval is limited to demo use. It is not UJ endorsement, external curator sign-off, or approval for definitive admissions screening. All 30 programme records retain their individual `DRAFT` status and unresolved notes. The deterministic evaluator must return `UNKNOWN` when required evidence/rule interpretation is insufficient. The definitive catalogue-publication gate and G-SYN-001 remain closed / not passed until their independent criteria are met.
+
+## D-052 — Vercel is not a required deployment target (2026-10-24)
+
+Vercel deployment is no longer required for StudyPath SA. Keep GitHub Actions build, contract, browser privacy/accessibility and UJ golden-case checks as the required verification path. Disable the Vercel Git integration/deployment checks at the provider/repository integration level; there is no Vercel deployment workflow in `.github/workflows` to remove. No Vercel deployment should be treated as release evidence.
