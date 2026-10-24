@@ -1,3 +1,13 @@
+## APS issue #189 — fail-closed candidate status (2026-10-24)
+
+The current issue acceptance contract requires exactly six distinct supported non-Life-Orientation subjects for a provisional APS total. Fewer or more than six returns `UNKNOWN`; no automatic subset selection or programme-required-subject selection is allowed while the applicable rules remain unresolved.
+
+Candidate branch: `fix/189-aps-fail-closed-selection`. The calculator, unit tests, UI disclosure and browser regression have been updated on that branch. The assistant did not execute local tests/build, and candidate CI has not yet been verified. This is not a passed gate.
+
+The catalogue remains `DRAFT_NOT_FOR_DEFINITIVE_SCREENING`; source-version confirmation, full source/footnote and rule verification, and curator sign-off remain outstanding. Programme eligibility remains `UNKNOWN`. G-SYN-001 remains **OPEN / NOT PASSED**.
+
+---
+
 ## Issue #185 regression evidence update — 2026-10-24
 
 **Reviewed `main` baseline:** `82b60fac1476192c66082aa8b1ff2b1fd25a34be`. Branch `test/185-filter-empty-state-regression` adds automated coverage for the filter empty state/recovery and keyboard opening of pathway details.
