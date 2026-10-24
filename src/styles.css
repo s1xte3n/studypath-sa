@@ -270,3 +270,10 @@ footer span:first-child{color:#542583}
 .theme-dark button:disabled {
   color: #c7bdd0;
 }
+
+
+/* Override the legacy !important muted-note colors in dark mode. */
+.theme-dark .result-card .application-note,
+.theme-dark .shortlist-card .manual-tracking-note {
+  color: #d8cde2 !important;
+}
