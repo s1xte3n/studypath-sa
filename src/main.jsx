@@ -84,7 +84,7 @@ function ProvisionalApsPanel({ subjects }) {
     <section className="aps-panel" aria-labelledby="aps-title">
       <p className="eyebrow">YOUR MARKS · INDICATIVE ONLY</p>
       <h3 id="aps-title">Provisional APS estimate</h3>
-      <p className="aps-caveat">Based on mark-to-level bands recorded in the UJ 2027 Undergraduate Prospectus (printed p. 16). This hackathon estimate is not an official or verified APS result. Source version, selection rules and curator approval remain outstanding.</p>
+      <p className="aps-caveat">Based on mark-to-level bands recorded in the UJ 2027 Undergraduate Prospectus (printed p. 16). This hackathon estimate uses the project-owner-approved catalogue for demo scope only; it is not an official or verified APS result. Source-version and subject-selection rules are not approved for definitive screening.</p>
       {estimate.state === "PROVISIONAL" ? (
         <>
           <p className="aps-total"><span>Indicative total</span><strong>{estimate.aps}</strong></p>
