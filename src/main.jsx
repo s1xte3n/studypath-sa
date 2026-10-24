@@ -77,7 +77,7 @@ function PathwayDetails({ item }) {
 }
 
 function App() {
-  const [darkMode, setDarkMode] = useState(() => window.matchMedia?.("(prefers-color-scheme: dark)").matches ?? false);
+  const [darkMode, setDarkMode] = useState(false);
   const [stage, setStage] = useState("");
   const [subjects, setSubjects] = useState([{ subject: "", mark: "" }]);
   const [notice, setNotice] = useState("");
