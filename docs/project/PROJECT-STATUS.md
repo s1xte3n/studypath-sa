@@ -1,3 +1,23 @@
+# Cross-screen regression update — issue #185 (2026-10-24)
+
+**Reviewed `main` baseline:** `82b60fac1476192c66082aa8b1ff2b1fd25a34be` ([commit](https://github.com/s1xte3n/studypath-sa/commit/82b60fac1476192c66082aa8b1ff2b1fd25a34be)). This is the repository's latest commit confirmed before this branch was created.
+
+**Scripts confirmed from `package.json`:**
+- `npm test` → `node --test`
+- `npm run build` → `vite build`
+- `npx playwright test` runs the Playwright browser suite separately; `playwright.config.mjs` starts the Vite dev server at `127.0.0.1:4173`.
+
+**Targeted changes on branch `test/185-filter-empty-state-regression`:**
+- Added a Playwright scenario for the all-`UNKNOWN` draft catalogue: selecting `ELIGIBLE` must show the recoverable no-match state, preserve the total candidate count, and show zero visible results; clearing filters must restore all 30 records as `UNKNOWN`.
+- Added a keyboard test that opens pathway details with Enter and verifies the disclosure content is visible.
+- Existing automated coverage already includes malformed/fractional/negative/blank/out-of-range marks, duplicate subjects, missing-stage association, 320px and desktop layout, light/dark axe scans, selected privacy channels, storage/reload/fresh-tab behavior, and shortlist/tracker reset.
+
+**Verification state:** the changes are committed to this branch but no local test/build has been run by the assistant. CI for this branch is pending until a PR is opened. Do not mark either new test passed before CI reports its result.
+
+**Still blocked/unverified:** manual keyboard walkthrough, screen-reader review, physical-device and browser-matrix checks, host/provider logs and external telemetry review. Automated instrumentation observes only the channels it instruments. The catalogue remains `DRAFT_NOT_FOR_DEFINITIVE_SCREENING`; G-SYN-001 remains **OPEN / NOT PASSED**. No deployment, provisioning or real learner data is authorized.
+
+---
+
 # Provisional APS calculator update — PR #189 implementation branch (2026-10-24)
 
 **Candidate branch:** `feat/189-provisional-aps-calculator`, based on `main` commit `896a52d97bdfe14fdda0e20f14a51b276a594fb8`.
