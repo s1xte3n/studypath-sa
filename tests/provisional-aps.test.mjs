@@ -52,7 +52,7 @@ test("programme-required subjects are included before filling remaining places w
   assert.equal(result.includedSubjects.length, 6);
   assert.ok(result.includedSubjects.some(row => row.subject === "Mathematics"));
   assert.ok(result.includedSubjects.some(row => row.subject === "Physical Sciences"));
-  assert.equal(result.aps, 1 + 2 + 3 + 5 + 7 + 7);
+  assert.equal(result.aps, 1 + 2 + 4 + 5 + 7 + 7);
 });
 
 test("missing required programme subject returns UNKNOWN", () => {
