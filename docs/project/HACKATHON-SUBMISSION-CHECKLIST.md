@@ -87,9 +87,9 @@ The supplied programme states no presentations are scheduled; submission is thro
 
 ---
 
-## Demo-readiness assessment — 2026-10-24 (review branch; not submission approval)
+## Initial demo-readiness assessment — historical baseline d377512 (superseded by current-baseline review below)
 
-**Reviewed main SHA:** `d377512d38cf4e93833e1c50984605cac12adbdb`. The supplied programme confirms: team profile required for judging; PDF preferred; maximum 10 slides; demo video maximum 90 seconds; video link on slides; SSDLC and Lean Business Canvas; upload through Sonke by Monday 26 October 2026 at 23:59. **Timezone and portal-specific restrictions remain unverified and must be checked in Sonke.**
+**Historical reviewed main SHA:** `d377512d38cf4e93833e1c50984605cac12adbdb` (superseded; see current baseline below). The supplied programme confirms: team profile required for judging; PDF preferred; maximum 10 slides; demo video maximum 90 seconds; video link on slides; SSDLC and Lean Business Canvas; upload through Sonke by Monday 26 October 2026 at 23:59. **Timezone and portal-specific restrictions remain unverified and must be checked in Sonke.**
 
 ### Added preparation artifacts on `docs/hackathon-demo-readiness`
 - `docs/project/DEMO-RUNBOOK.md` — timed live journey, synthetic profile, reset/restart and fallback.
@@ -109,3 +109,14 @@ The supplied programme states no presentations are scheduled; submission is thro
 - [ ] Upload files via Submit Files and capture submission receipt.
 
 No portal interaction, PDF export, screenshots, video recording, rehearsal, or submission was performed by this assistant. The supplied programme does not specify portal form field names, file-size limits, video-hosting rules, or timezone; verify them in Sonke rather than guessing.
+
+
+---
+
+## Current demo/submission baseline — 2026-10-24
+
+**Reviewed main SHA:** `268e4f55ccfce55874f6621a0b491acf93c6432f` (merged PR #204). The browser E2E/privacy/accessibility suite, contract tests and browser MVP build passed on this commit according to the recorded merge checks. The preview deployment job was skipped; no new deployment is claimed.
+
+**Current journey fact-check:** the discovery-dashboard E2E test asserts 30 catalogue candidates, 30 shown after a valid synthetic profile, and all 30 eligibility states are `Unknown`. Older runbook references to seven cards/results are stale and must not be used. The demo APS panel is provisional, source/limitations-disclosed, and must not be presented as admission eligibility.
+
+**Still not completed/evidenced by repository inspection:** final PDF export, fresh screenshots from the frozen candidate, recording a video of at most 90 seconds, inserting and private-session testing its link, two manual rehearsals, team-profile confirmation, actual Sonke SSDLC/Lean Canvas completion, upload and receipt. The supplied programme gives a Monday 26 October 2026 23:59 deadline; confirm timezone and portal constraints directly in Sonke. Issue #164 remains open until these owner-controlled steps are evidenced.
