@@ -341,3 +341,30 @@ This section supersedes earlier Issue #185 rows in this matrix that label the sa
 **Issue-level status:** project owner confirms Issue #185 acceptance criteria 1–10 have been tested and approved. Criterion 11 remains open until the documentation/evidence links are reviewed and reconciled in the issue. Remaining manual keyboard/screen-reader, physical-device/browser-matrix, hosting/provider-log and external-telemetry checks are explicitly not evidenced and must not be labelled passed.
 
 **Gate-level status:** G-SYN-001 remains **OPEN / NOT PASSED**. This issue's regression evidence does not close institutional source verification/curator sign-off or the wider gate's privacy, accessibility and reproducibility criteria. Continue synthetic-only; preserve `UNKNOWN` for unverified programme eligibility. No deployment or production-readiness claim follows from these results.
+
+
+---
+
+## Issue #185 — owner-confirmed checks and hackathon scope decision (2026-10-24)
+
+| Requirement | Evidence / source | Current disposition |
+|---|---|---|
+| ACC-185-01 — keyboard and screen-reader behaviour | Project-owner confirmation dated 2026-10-24 | Manual keyboard-only navigation and screen-reader behaviour recorded as verified; owner-reported, not independently reproduced by the assistant. |
+| UX-185-02 — device/browser compatibility | Project-owner confirmation dated 2026-10-24 | Physical-device and browser compatibility recorded as verified; owner-reported, not independently reproduced by the assistant. |
+| PRV-185-01 — external hosting logs / third-party telemetry | Project-owner scope decision dated 2026-10-24 | Not required for the bounded hackathon demo; deferred from Issue #185 acceptance scope. Existing automated privacy evidence remains limited to instrumented local/browser channels and must not be represented as a full external audit. |
+| DOC-185-01 — status and traceability reconciliation | Issue [#185](https://github.com/s1xte3n/studypath-sa/issues/185), this addendum and project status/gate addenda | Recorded for review; update is proposed in this documentation PR. |
+
+**Gate boundary:** G-SYN-001 remains **OPEN / NOT PASSED** for separate catalogue provenance, unresolved rules, institutional curator sign-off and any other applicable gate evidence. The hackathon scope decision does not approve definitive eligibility or production readiness.
+
+
+---
+
+## Hackathon eligibility evidence boundary — owner decision (2026-10-24)
+
+| Requirement / decision | Contract / implementation rule | Evidence boundary and status |
+|---|---|---|
+| D-HACK-ELIG-001 — repository sources are the approved evidence set for the hackathon MVP | Deterministic eligibility may return `ELIGIBLE` or `NOT_ELIGIBLE` only where repository-backed requirements and learner inputs establish the outcome; otherwise return `UNKNOWN` | Owner decision dated 2026-10-24. Separate institutional curator sign-off is not a prerequisite solely for hackathon use. This does not imply institutional endorsement or production approval. |
+| D-HACK-ELIG-002 — preserve uncertainty and explainability | Missing, ambiguous, contradictory, or insufficient requirements/data produce `UNKNOWN`; disclose source limitations and link the source evidence; no admission guarantee | Must be enforced by implementation and tests. Do not treat the owner decision as resolving actual gaps or conflicts in repository sources. |
+| D-HACK-ELIG-003 — production governance deferred | Additional institutional verification and production-grade source governance are post-hackathon activities | Does not waive remaining G-SYN-001 implementation, test, privacy, accessibility, reproducibility, or documentation criteria. |
+
+This owner decision supersedes older wording in this matrix that treats absent institutional curator sign-off alone as a reason to block every hackathon eligibility outcome. Source-backed uncertainty remains `UNKNOWN` where evidence is genuinely insufficient.

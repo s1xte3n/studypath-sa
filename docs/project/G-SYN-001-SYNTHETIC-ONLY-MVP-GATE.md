@@ -321,3 +321,25 @@ This is the current reconciliation for Issue #185; it supersedes older Issue #18
 **Issue #185:** criteria 1–10 are owner-confirmed; criterion 11 (link evidence and reconcile status/traceability documents) remains open pending review/merge and a final issue update. Manual keyboard/screen-reader review, physical-device/browser-matrix checks, host/provider logs and external telemetry review remain not evidenced. The privacy harness cannot prove behaviour outside its instrumented channels.
 
 **G-SYN-001 remains OPEN / NOT PASSED.** Separate gate blockers remain, including authoritative source-version verification, full catalogue rule reconciliation and institutional curator sign-off; broader privacy/accessibility/reproducibility evidence must be evaluated against the gate criteria. The catalogue remains `DRAFT_NOT_FOR_DEFINITIVE_SCREENING`, and programme eligibility must remain `UNKNOWN` when source-backed rules are unresolved. Synthetic data only; no production deployment, cloud provisioning, or real learner-data use is authorized.
+
+
+---
+
+## Issue #185 — manual verification recorded; external checks deferred for hackathon (2026-10-24)
+
+The project owner confirms **keyboard-only navigation and screen-reader behaviour verified**, and **physical-device and browser compatibility verified**. This is owner-reported evidence; it is not an independent assistant reproduction.
+
+For the bounded hackathon demo, **hosting/provider log inspection and external telemetry privacy checks are not required** and are deferred from Issue #185's remaining work. Keep the existing browser privacy-test boundary explicit: automated tests cover only the channels instrumented by the harness and do not constitute a full external privacy audit.
+
+This scope decision does not pass the overall G-SYN-001 gate. The gate remains **OPEN / NOT PASSED** pending its other required evidence and approvals, including authoritative catalogue/source verification and institutional curator sign-off. Eligibility remains UNKNOWN where requirements are unresolved. No production-readiness claim follows.
+
+
+---
+
+## Hackathon source-of-truth decision — eligibility evidence boundary (2026-10-24)
+
+**Owner decision:** For the FNB AOTY Hackathon 2026 MVP, use the sources already maintained in this repository as the approved evidence set for the demo catalogue and deterministic eligibility rules. Do not block hackathon results solely because a separate institutional curator sign-off has not been obtained. This decision approves use of the repository evidence for the bounded demo; it does not claim institutional endorsement or production readiness.
+
+**Eligibility contract:** The evaluator may return `ELIGIBLE` or `NOT_ELIGIBLE` only when implemented deterministic rules and the learner's supplied data are sufficient to establish that outcome from the repository evidence. Return `UNKNOWN` when relevant requirements or learner data are missing, ambiguous, contradictory, or insufficient to determine the outcome. Record source limitations and provide source links; results are indicative and do not guarantee admission.
+
+**Gate interpretation:** Absence of additional institutional sign-off is not, by itself, a hackathon blocker under this owner decision. Remaining G-SYN-001 criteria must still be assessed independently, including implementation correctness, regression evidence, privacy boundaries, accessibility, reproducibility, and documentation. Do not infer that this decision resolves any actual source conflict or missing rule; disclose such gaps and return `UNKNOWN` for affected outcomes. Production-grade institutional verification and source governance are post-hackathon work.
