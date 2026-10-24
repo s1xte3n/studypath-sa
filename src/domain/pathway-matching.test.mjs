@@ -33,7 +33,7 @@ test("pathway results expose programme facts and retained official UJ source URL
   assert.ok(it.sourceLinks.every(link => link.url.startsWith("https://www.uj.ac.za/")));
 });
 
-test("draft catalogue results remain UNKNOWN and unresolved evidence is surfaced", () => {
+test("demo-approved catalogue results remain UNKNOWN and unresolved evidence is surfaced", () => {
   const results = buildPathwayResults(learner, catalogue);
   assert.ok(results.every(item => item.state === "UNKNOWN"));
   const it = results.find(item => item.id === "UJ-2027-BSC-IT");
