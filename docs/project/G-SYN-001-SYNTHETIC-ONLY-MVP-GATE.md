@@ -1,3 +1,16 @@
+## Issue #185 regression evidence update — 2026-10-24
+
+**Reviewed `main` baseline:** `82b60fac1476192c66082aa8b1ff2b1fd25a34be`. Branch `test/185-filter-empty-state-regression` adds automated coverage for the filter empty state/recovery and keyboard opening of pathway details.
+
+- **Implemented on branch:** two Playwright scenarios in `tests/e2e/student-form.spec.mjs`.
+- **Not yet verified:** local tests/build and PR CI; no passing status is claimed for these new scenarios.
+- **Still outstanding:** manual keyboard walkthrough, screen-reader review, physical-device/browser-matrix checks, provider/hosting logs and external telemetry review. Browser instrumentation covers only the instrumented channels.
+- **Catalogue gate:** catalogue status remains `DRAFT_NOT_FOR_DEFINITIVE_SCREENING`; do not promote records or infer definitive eligibility.
+
+**Gate decision remains OPEN / NOT PASSED.** This branch does not authorize deployment, cloud provisioning, paid services or real learner data. Do not close issue #185 until automated CI evidence and manual/owner-controlled evidence are recorded, or an explicit bounded demo-only disposition is approved.
+
+---
+
 ## Local verification update — PR #197 merge (2026-10-24)
 
 **Reviewed commit:** `2a424b1ab085f59384ad3d2a593d5af67fb4fe08`, merge of [PR #197](https://github.com/s1xte3n/studypath-sa/pull/197).
