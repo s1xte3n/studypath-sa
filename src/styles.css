@@ -224,3 +224,49 @@ footer span:first-child{color:#542583}
 .theme-dark [aria-invalid="true"]{border-color:#d77d66;background:#2c1d1b}
 .theme-dark .remove-button{background:#302b35;color:#e2d9e9}
 @media(max-width:600px){.theme-toggle{padding:7px 9px;font-size:11px}}
+
+
+/* Dark-theme contrast repairs for the complete learner journey (issue #180). */
+.theme-dark .field-label span,
+.theme-dark .privacy-icon,
+.theme-dark .remove-saved-button {
+  color: #7ac8ff;
+}
+.theme-dark .pathway-facts dt,
+.theme-dark .shortlist-facts dt {
+  color: #d8cde2;
+}
+.theme-dark .pathway-facts dd {
+  color: #f0e8f5;
+}
+.theme-dark .detail-note li,
+.theme-dark .official-links li,
+.theme-dark .official-links .source-role,
+.theme-dark .official-links .source-meta,
+.theme-dark .application-note,
+.theme-dark .manual-tracking-note {
+  color: #d8cde2;
+}
+.theme-dark .result-cycle,
+.theme-dark .hint,
+.theme-dark .section-copy,
+.theme-dark .topbar-note {
+  color: #d8cde2;
+}
+.theme-dark .remove-saved-button:hover {
+  color: #b9e4ff;
+}
+.theme-dark .remove-button:disabled {
+  color: #b6a9c2;
+  opacity: .7;
+}
+.theme-dark .field-error {
+  color: #ffb9a8;
+}
+.theme-dark .subject-error {
+  color: #ffb9a8;
+}
+.theme-dark .theme-toggle:disabled,
+.theme-dark button:disabled {
+  color: #c7bdd0;
+}
