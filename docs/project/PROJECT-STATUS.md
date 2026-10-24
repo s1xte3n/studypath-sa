@@ -768,3 +768,14 @@ The GitHub combined status endpoint for `d377512d38cf4e93833e1c50984605cac12adbd
 Online research found UJ's public FAQ says APS uses the six best school subjects excluding Life Orientation, while including required programme subjects. UKZN and UCT publish similar but institution-specific variants. The hackathon implementation therefore proposes a provisional general estimate using the six highest supported non-LO achievement levels, plus an optional `requiredSubjects` input that forces programme-required subjects into the six before filling remaining places with the highest levels. The UI explicitly warns that the general score is not programme-specific.
 
 This is a demo heuristic, not a definitive UJ 2027 rule approval. Programme matching remains `UNKNOWN` because the catalogue has no curator-approved programme records. The prospectus/source audit and production verification remain open. G-SYN-001 remains OPEN / NOT PASSED. See [PR #208](https://github.com/s1xte3n/studypath-sa/pull/208) for acceptance reconciliation and [PR #209](https://github.com/s1xte3n/studypath-sa/pull/209) for the hackathon implementation proposal.
+\n\n## Issue #203 — NSC and APS distinction implementation candidate (2026-10-24)
+
+**Reviewed `main` baseline:** `0a5809816e43ce67c371e89ed6e6a22e9d4ee71e` (PR #211 merge). The GitHub remote repository was inspected; no local checkout or local working-tree state was available.
+
+**Source review:** the Department of Basic Education subject-choice page states that the NSC requires seven subjects and identifies four compulsory subject categories. The DBE NSC examination FAQ describes NSC minimum requirements and distinguishes Higher Certificate, Diploma and Bachelor admission requirements. These sources are recorded in `docs/product/NSC-AND-APS-DISTINCTION.md`. This research does not authorize an NSC pass calculator or encode thresholds without policy/version and reviewer approval.
+
+**Candidate changes on `feat/203-nsc-aps-distinction`:** learner-facing copy distinguishes the seven-subject NSC profile from the six-subject provisional UJ APS input; official DBE subject guidance is linked; unit and browser assertions verify that a seven-subject input does not trigger automatic subset selection and that the APS estimate is not an NSC pass decision.
+
+**Verification:** GitHub contents writes created the candidate branch changes. Tests/build have not been executed by the assistant, and CI is pending until the PR is opened. Do not claim the candidate passes until exact-head workflows complete.
+
+**Unchanged safeguards:** no NSC pass/access-level calculator; no arbitrary top-six selection; UJ draft-catalogue programme eligibility remains `UNKNOWN`; synthetic data only; no deployment/provisioning. G-SYN-001 remains **OPEN / NOT PASSED**. Issue #185 manual keyboard/screen-reader, device/browser and external hosting/privacy evidence remains open.

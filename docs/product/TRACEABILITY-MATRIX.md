@@ -313,3 +313,10 @@ PR #209 introduced a best-six demo heuristic. The current issue #189 acceptance 
 | APS-189-03 — invalid data | Reject invalid marks, unsupported subjects and duplicate canonical subjects | Unit tests in `tests/provisional-aps.test.mjs` | APS output never upgrades programme eligibility from `UNKNOWN` |
 
 **Evidence status:** candidate branch only; do not claim merged or passed. Keep UJ catalogue `DRAFT_NOT_FOR_DEFINITIVE_SCREENING` and G-SYN-001 OPEN / NOT PASSED.
+\n\n## Issue #203 — NSC seven-subject profile versus institution-specific APS (2026-10-24)
+
+| Requirement | Contract / implementation | Test evidence | Status / limitation |
+|---|---|---|---|
+| REQ-EXP-001 / REQ-MAT-001 — distinguish NSC profile from APS | `src/main.jsx` explains that learners may enter a seven-subject NSC profile while the separate provisional UJ APS estimate requires exactly six supported non-Life-Orientation subjects; links DBE subject guidance | `tests/e2e/student-form.spec.mjs` asserts the explanation/source link and distinction; `tests/provisional-aps.test.mjs` asserts seven subjects return `UNKNOWN` without subset selection | Implemented on `feat/203-nsc-aps-distinction`; CI pending. No NSC pass/access-level calculation is implemented. Official rules are recorded as research evidence only; no thresholds are encoded. |
+| APS rule isolation | `src/domain/eligibility/provisional-aps.mjs` remains fail-closed for more than six eligible non-LO subjects | Existing and added unit/browser coverage | No automatic top-six selection; programme eligibility remains independently `UNKNOWN` for the draft catalogue. |
+| Source provenance | `docs/product/NSC-AND-APS-DISTINCTION.md` records official DBE source URLs, what each source supports, verification date and limits | Documentation review; automated tests do not verify source content | DBE subject structure guidance is authoritative context; pass-level rule details require policy/version review before any future calculator. |

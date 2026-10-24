@@ -669,6 +669,8 @@ test("desktop results layout has no horizontal overflow", async ({ page }) => {
 
 test("provisional APS fails closed when subject-selection rules are unresolved and keeps pathway eligibility UNKNOWN", async ({ page }) => {
   await page.goto("/");
+  await expect(page.getByRole("note").filter({ hasText: "An NSC subject profile commonly contains seven subjects." })).toBeVisible();
+  await expect(page.getByRole("link", { name: "Read the Department of Basic Education’s subject guidance" })).toHaveAttribute("href", /SubjectChoiceandCareerPathing/);
   await page.locator("#stage").selectOption("GRADE_12");
   const rows = [
     ["Mathematics", "29"],
@@ -690,6 +692,7 @@ test("provisional APS fails closed when subject-selection rules are unresolved a
   await expect(aps.getByText("Indicative total", { exact: true })).toBeVisible();
   await expect(aps.locator(".aps-total strong")).toHaveText("22");
   await expect(aps.locator(".aps-excluded")).toContainText("Life Orientation.");
+  await expect(aps).toContainText("separate from NSC pass or achievement status");
   await expect(aps.getByRole("link", { name: /UJ 2027 Undergraduate Prospectus/ })).toHaveAttribute("href", /uj_undergrad_prospectus2027/);
   await expect(page.locator(".result-card .eligibility-state").first()).toHaveText("Unknown");
 

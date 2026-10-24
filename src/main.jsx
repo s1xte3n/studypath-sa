@@ -99,7 +99,7 @@ function ProvisionalApsPanel({ subjects }) {
       )}
       {estimate.state === "PROVISIONAL" && <p className="aps-limitation">{estimate.reason}</p>}
       <p className="aps-source">Sources: <a href={APS_SOURCE.url} target="_blank" rel="noopener noreferrer">{APS_SOURCE.title} <span aria-hidden="true">↗</span></a> · printed p. {APS_SOURCE.printedPage}; <a href={APS_SOURCE.policyUrl} target="_blank" rel="noopener noreferrer">{APS_SOURCE.policyTitle} <span aria-hidden="true">↗</span></a>. Provisional demo rule.</p>
-      <p className="aps-limitation">Life Orientation is excluded. A provisional total is shown only when exactly six supported non-Life-Orientation subjects are supplied. Fewer or more than six returns UNKNOWN: the applicable selection and programme-required-subject rules have not been verified, so the demo does not choose a subset. This estimate never changes pathway eligibility.</p>
+      <p className="aps-limitation">This is separate from NSC pass or achievement status. Life Orientation is excluded from this provisional UJ APS input. A total is shown only when exactly six supported non-Life-Orientation subjects are supplied. Fewer or more than six returns UNKNOWN: the applicable selection and programme-required-subject rules have not been verified, so the demo does not choose a subset. This estimate never changes pathway eligibility.</p>
     </section>
   );
 }
@@ -266,6 +266,7 @@ function App() {
             <span className="step-count">01 / 03</span>
           </div>
           <p className="section-copy">No account is needed. Add the subjects and marks you want to explore. Use whole-number marks from 0 to 100.</p>
+          <p className="aps-caveat" role="note">An NSC subject profile commonly contains seven subjects. You can enter all seven here. This demo does not determine whether you have passed the NSC or achieved a Bachelor’s, Diploma or Higher Certificate access level. The separate provisional UJ APS estimate uses exactly six supported non-Life-Orientation subjects only when exactly six are entered; it does not choose the top six automatically. <a href="https://www.education.gov.za/Informationfor/Learners/SubjectChoiceandCareerPathing.aspx" target="_blank" rel="noopener noreferrer">Read the Department of Basic Education’s subject guidance</a>.</p>
 
           <form onSubmit={submitForm} noValidate>
             <label className="field-label" htmlFor="stage">Your current stage <span aria-hidden="true">*</span></label>

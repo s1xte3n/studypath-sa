@@ -22,6 +22,15 @@ test("calculates a provisional total from exactly six distinct non-LO subjects",
   assert.match(result.reason, /does not determine programme eligibility/);
 });
 
+test("a seven-subject profile does not trigger automatic top-six selection or an NSC pass decision", () => {
+  const sevenSubjectProfile = [...six, { subject: "Business Studies", mark: 95 }];
+  const result = calculateProvisionalAps(sevenSubjectProfile);
+  assert.equal(result.state, "UNKNOWN");
+  assert.equal(result.aps, null);
+  assert.deepEqual(result.includedSubjects, []);
+  assert.match(result.reason, /subject-selection and programme-required-subject rules have not been verified/);
+});
+
 test("more than six eligible subjects returns UNKNOWN without selecting a subset", () => {
   const result = calculateProvisionalAps([...six, { subject: "Business Studies", mark: 100 }]);
   assert.equal(result.state, "UNKNOWN");
