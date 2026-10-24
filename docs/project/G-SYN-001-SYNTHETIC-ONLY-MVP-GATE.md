@@ -230,3 +230,16 @@ These four workflow records confirm successful completion for the listed workflo
 **Change scope in PR #170:** unsupported learner subjects are rejected at the form-validation boundary, with regression coverage; the empty evaluator-result state now presents an explanatory message. The canonical evaluator remains the eligibility authority.
 
 **Gate disposition: OPEN / NOT PASSED.** The UJ 2027 catalogue remains `DRAFT_NOT_FOR_DEFINITIVE_SCREENING`; all draft-catalogue outcomes must remain `UNKNOWN`. Source-version/rule reconciliation and curator sign-off, full privacy/hosting/provider review, manual accessibility evidence and the requirement-level evidence audit remain outstanding. Green CI does not approve the catalogue or authorize deployment, real learner data, or production-readiness claims.
+
+
+## Issue #185 cross-screen regression evidence — candidate branch (2026-10-24)
+
+**Reviewed main SHA:** `b0fb8aa7c046e5317d55fba990a31a4e724bd079`.
+
+**Source-backed finding:** duplicate-subject validation was only presented in the global notice; the affected subject fields did not receive `aria-invalid` and `aria-describedby`. The form mapper also did not associate the validator's supported-subject error with the subject control. A fixed select prevents ordinary users from choosing an unsupported value, so that branch is not claimed as browser-reproduced.
+
+**Candidate changes:** `src/main.jsx` now associates duplicate-subject errors with each matching subject row and maps supported-subject errors to the field. New Playwright cases exercise mark boundaries, duplicate subjects, missing-stage field association and reset, and desktop result overflow. Existing privacy instrumentation, 320px coverage, light/dark axe checks and keyboard-focus tests are reused.
+
+**Evidence status:** implementation and test files are committed on the issue branch; CI evidence is pending. No local test/build run is claimed. Manual keyboard/screen-reader review, physical-device testing, host/provider logs, external telemetry and full privacy/legal review remain unverified. The browser suite only observes instrumented channels.
+
+**Gate decision: OPEN / NOT PASSED.** This targeted fix does not satisfy all G-SYN-001 exit criteria and does not approve catalogue publication, public deployment, or real learner data.

@@ -544,3 +544,86 @@ test("editing a learner profile clears its saved pathways and tracker notes", as
   await expect(page.getByText("Confirm the requirements for my original profile")).toHaveCount(0);
   await expect(page.getByRole("button", { name: "Save to shortlist" }).first()).toBeVisible();
 });
+
+
+test("whole-number mark boundaries reject fractional, negative, blank, and over-range values", async ({ page }) => {
+  await page.goto("/");
+  await page.locator("#stage").selectOption("GRADE_12");
+  await page.locator("#subject-0").selectOption("Mathematics");
+
+  for (const value of ["75.5", "-1", "", "101"]) {
+    await page.locator("#mark-0").fill(value);
+    await page.getByRole("button", { name: /Explore pathways/ }).click();
+    await expect(page.getByRole("status")).toContainText("whole-number mark from 0 to 100");
+    await expect(page.locator("#mark-0")).toHaveAttribute("aria-invalid", "true");
+    const describedBy = await page.locator("#mark-0").getAttribute("aria-describedby");
+    expect(describedBy).toBeTruthy();
+    await expect(page.locator(`#${describedBy}`)).toBeVisible();
+  }
+
+  await page.locator("#mark-0").fill("0");
+  await page.getByRole("button", { name: /Explore pathways/ }).click();
+  await expect(page.getByRole("status")).toContainText("Pathway exploration completed");
+  await expect(page.locator(".eligibility-state")).toHaveText(Array(30).fill("Unknown"));
+});
+
+test("duplicate subjects associate validation with each affected subject field", async ({ page }) => {
+  await page.goto("/");
+  await page.locator("#stage").selectOption("GRADE_12");
+  await page.locator("#subject-0").selectOption("Mathematics");
+  await page.locator("#mark-0").fill("75");
+  await page.getByRole("button", { name: /Add another subject/ }).click();
+  await page.locator("#subject-1").selectOption("Mathematics");
+  await page.locator("#mark-1").fill("80");
+
+  await page.getByRole("button", { name: /Explore pathways/ }).click();
+  await expect(page.getByRole("status")).toContainText("Mathematics is listed more than once");
+  for (const selector of ["#subject-0", "#subject-1"]) {
+    await expect(page.locator(selector)).toHaveAttribute("aria-invalid", "true");
+    const describedBy = await page.locator(selector).getAttribute("aria-describedby");
+    expect(describedBy).toBeTruthy();
+    await expect(page.locator(`#${describedBy}`)).toBeVisible();
+  }
+  await expect(page.locator(".result-card")).toHaveCount(0);
+});
+
+test("missing stage is associated with its field and reset clears validation", async ({ page }) => {
+  await page.goto("/");
+  await page.locator("#subject-0").selectOption("Mathematics");
+  await page.locator("#mark-0").fill("75");
+  await page.getByRole("button", { name: /Explore pathways/ }).click();
+
+  await expect(page.getByRole("status")).toContainText("Select your current study stage");
+  await expect(page.locator("#stage")).toHaveAttribute("aria-invalid", "true");
+  await expect(page.locator("#stage")).toHaveAttribute("aria-describedby", "stage-error");
+  await expect(page.locator("#stage-error")).toBeVisible();
+
+  await page.getByRole("button", { name: "Reset" }).click();
+  await expect(page.locator("#stage")).toHaveAttribute("aria-invalid", "false");
+  await expect(page.locator("#stage")).not.toHaveAttribute("aria-describedby", "stage-error");
+  await expect(page.getByRole("status")).toHaveCount(0);
+});
+
+test("desktop results layout has no horizontal overflow", async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 1000 });
+  await page.goto("/");
+  await page.locator("#stage").selectOption("GRADE_12");
+  await page.locator("#subject-0").selectOption("Mathematics");
+  await page.locator("#mark-0").fill("85");
+  await page.getByRole("button", { name: /Explore pathways/ }).click();
+  await expect(page.locator(".result-card")).toHaveCount(30);
+
+  const layout = await page.evaluate(() => ({
+    viewportWidth: window.innerWidth,
+    documentWidth: document.documentElement.scrollWidth,
+    resultCards: [...document.querySelectorAll(".result-card")].map(card => {
+      const rect = card.getBoundingClientRect();
+      return { left: rect.left, right: rect.right };
+    })
+  }));
+  expect(layout.documentWidth).toBeLessThanOrEqual(layout.viewportWidth);
+  for (const card of layout.resultCards) {
+    expect(card.left).toBeGreaterThanOrEqual(0);
+    expect(card.right).toBeLessThanOrEqual(layout.viewportWidth);
+  }
+});
