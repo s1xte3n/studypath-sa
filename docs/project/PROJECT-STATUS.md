@@ -845,3 +845,29 @@ This is an owner-approved hackathon evidence boundary, not institutional endorse
 **Merged documentation reconciliation:** [PR #214](https://github.com/s1xte3n/studypath-sa/pull/214), merge commit [795bb9b7fe9c1d3976e5a3a2a927a0aa65101b17](https://github.com/s1xte3n/studypath-sa/commit/795bb9b7fe9c1d3976e5a3a2a927a0aa65101b17). Reported successful workflows for that merge: [Browser E2E, privacy and accessibility](https://github.com/s1xte3n/studypath-sa/actions/runs/40131646027), [GitHub Pages preview](https://github.com/s1xte3n/studypath-sa/actions/runs/40131645958), [Browser MVP build](https://github.com/s1xte3n/studypath-sa/actions/runs/40131645912), and [Contract tests](https://github.com/s1xte3n/studypath-sa/actions/runs/40131645884). Owner-supplied local results remain separately identified in [LOCAL-VERIFICATION-2026-10-24.md](LOCAL-VERIFICATION-2026-10-24.md); exact local HEAD was not captured and the assistant did not run those commands.
 
 **Scope boundary:** privacy automation covers only instrumented local/browser channels. Deferring external logs/telemetry from Issue #185 is not a claim that those channels were audited. This closure does not pass G-SYN-001, approve definitive eligibility, establish institutional endorsement, or imply production readiness. Preserve UNKNOWN wherever requirements remain unresolved; synthetic data only.
+
+
+---
+
+# Canonical delivery tracker reconciliation — 2026-10-25
+
+**Reviewed `main` baseline:** `c2d97fa44ac1ccbe7feb9ce7e569a234596d7a1e`. This section is the current tracker snapshot and supersedes older issue-status statements elsewhere in this historical log where they conflict.
+
+## Implemented / closed child work
+
+- [#161 — core student-to-pathway journey](https://github.com/s1xte3n/studypath-sa/issues/161): closed.
+- [#184 — state-derived discovery dashboard and filters](https://github.com/s1xte3n/studypath-sa/issues/184): closed.
+- [#185 — mobile, accessibility and privacy regression pass](https://github.com/s1xte3n/studypath-sa/issues/185): closed for the bounded hackathon-demo scope. Manual checks are owner-reported; external hosting/provider logs and telemetry review are explicitly out of that issue's accepted scope.
+- [#187 — UJ catalogue evidence/publication gate](https://github.com/s1xte3n/studypath-sa/issues/187): closed as a demo-scope outcome. The catalogue may be evaluated only under the explicit hackathon-demo status; the definitive publication gate remains strict.
+- [PR #216](https://github.com/s1xte3n/studypath-sa/pull/216), merge commit `7ea1d23b62e2e7b9f496b98154f7cbecd5366aec`: merged bounded demo-mode evaluation. Reported post-merge workflows passed, but no local execution is claimed here.
+
+## Remaining blockers and delivery work
+
+1. **[Issue #189 — provisional APS](https://github.com/s1xte3n/studypath-sa/issues/189) remains OPEN.** The implementation is provisional. Exactly six supported, distinct non-Life-Orientation subjects are required for a total; fewer or more return `UNKNOWN`. No top-six selection or programme-required-subject selection is permitted without sufficient approved source evidence. Source/rule reconciliation remains unresolved.
+2. **[Issue #164 — demo and submission artefacts](https://github.com/s1xte3n/studypath-sa/issues/164) remains OPEN.** `DEMO-RUNBOOK.md`, `PRESENTATION-DECK-CONTENT.md`, and `HACKATHON-SUBMISSION-CHECKLIST.md` exist in `main`, but are preparation artefacts. Final frozen-build screenshots, exported deck, <=90-second video and link, live rehearsal, completed Sonke fields/uploads, and submission confirmation are not verified by repository presence alone.
+3. **G-SYN-001 remains OPEN / NOT PASSED.** Closed child issues do not establish a full release-gate pass. Keep unresolved programme outcomes `UNKNOWN`, use synthetic learner data only, and make no admission guarantee, institutional endorsement, production-readiness, or deployment claim.
+4. **Features #186, #199, #200 and #206 remain lower priority** than a coherent demo and required submission artefacts. Do not start scope-expanding work until the demo/submission critical path is secure.
+
+## Next action
+
+Prioritise Issue #164: freeze the candidate commit, verify the runbook against the current UI, capture screenshots from that exact candidate, export the deck within the official 10-slide limit, produce a <=90-second demo video and add its link, rehearse reset/fallback from a fresh session, and verify the portal deadline/submission confirmation. Report each item as done only with evidence. Issue #160 remains open until its acceptance criteria and submission-critical work are evidenced; this tracker update does not close it.
