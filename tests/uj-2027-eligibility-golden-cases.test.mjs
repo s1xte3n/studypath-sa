@@ -108,9 +108,12 @@ test("every golden case has a unique ID, explicit expected outcome and reason co
   }
 });
 
-test("the catalogue retains the seven pilot candidates and added records remain unapproved", () => {
+test("the catalogue retains 30 demo-source records while programme records remain individually unapproved", () => {
   assert.ok(catalogue.programmes.length >= 7);
-  assert.equal(catalogue.status, "DRAFT_NOT_FOR_DEFINITIVE_SCREENING");
+  assert.equal(catalogue.status, "APPROVED_FOR_HACKATHON_DEMO_ONLY");
+  assert.equal(catalogue.catalogueVersion, "uj-2027-pilot-v0.3-hackathon-demo");
+  assert.equal(catalogue.demoApproval.approvalScope, "FNB AOTY Hackathon 2026 demonstration only");
+  assert.equal(catalogue.programmes.length, 30);
   const requiredPilotIds = [
     "UJ-2027-BSC-IT",
     "UJ-2027-BSC-CSI",
