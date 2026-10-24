@@ -38,7 +38,8 @@ test("demo-approved catalogue results remain UNKNOWN and unresolved evidence is 
   assert.ok(results.every(item => item.state === "UNKNOWN"));
   const it = results.find(item => item.id === "UJ-2027-BSC-IT");
   assert.ok(it.requirementNotes.includes("English stream mapping"));
-  assert.equal(it.catalogueStatus, "DRAFT_NOT_FOR_DEFINITIVE_SCREENING");
+  assert.equal(it.catalogueStatus, "APPROVED_FOR_HACKATHON_DEMO_ONLY");
+  assert.match(it.limitation, /not approved for definitive eligibility screening/i);
 });
 
 test("missing detail data uses empty notes and source links rather than invented values", () => {
