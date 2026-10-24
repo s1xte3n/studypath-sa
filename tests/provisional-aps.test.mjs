@@ -22,6 +22,16 @@ test("calculates a provisional total from exactly six distinct non-LO subjects",
   assert.match(result.reason, /does not determine programme eligibility/);
 });
 
+test("selects the six highest achievement levels when more than six subjects are supplied", () => {
+  const rows = [...six, { subject: "Business Studies", mark: 100 }];
+  const result = calculateProvisionalAps(rows);
+  assert.equal(result.state, "PROVISIONAL");
+  assert.equal(result.aps, 2 + 3 + 4 + 5 + 7 + 7);
+  assert.equal(result.includedSubjects.length, 6);
+  assert.ok(!result.includedSubjects.some(row => row.subject === "Mathematics"));
+  assert.match(result.reason, /Programme-required subjects can change/);
+});
+
 test("Life Orientation is excluded and reported", () => {
   const result = calculateProvisionalAps([...six, { subject: "Life Orientation", mark: 100 }]);
   assert.equal(result.state, "PROVISIONAL");
@@ -35,11 +45,27 @@ test("fewer than six eligible subjects returns UNKNOWN without a total", () => {
   assert.equal(result.aps, null);
 });
 
-test("more than six eligible subjects returns UNKNOWN instead of selecting automatically", () => {
-  const result = calculateProvisionalAps([...six, { subject: "Business Studies", mark: 100 }]);
+test("programme-required subjects are included before filling remaining places with highest levels", () => {
+  const rows = [...six, { subject: "Business Studies", mark: 100 }];
+  const result = calculateProvisionalAps(rows, { requiredSubjects: ["Mathematics", "Physical Sciences"] });
+  assert.equal(result.state, "PROVISIONAL");
+  assert.equal(result.includedSubjects.length, 6);
+  assert.ok(result.includedSubjects.some(row => row.subject === "Mathematics"));
+  assert.ok(result.includedSubjects.some(row => row.subject === "Physical Sciences"));
+  assert.equal(result.aps, 1 + 2 + 4 + 5 + 7 + 7);
+});
+
+test("missing required programme subject returns UNKNOWN", () => {
+  const result = calculateProvisionalAps(six, { requiredSubjects: ["English Home Language"] });
   assert.equal(result.state, "UNKNOWN");
   assert.equal(result.aps, null);
-  assert.match(result.reason, /will not choose them automatically/);
+  assert.match(result.reason, /Add the programme-required subject/);
+});
+
+test("unresolved or invalid required-subject rules return UNKNOWN", () => {
+  assert.equal(calculateProvisionalAps(six, { requiredSubjects: ["Life Orientation"] }).state, "UNKNOWN");
+  assert.equal(calculateProvisionalAps(six, { requiredSubjects: ["Computer Science"] }).state, "UNKNOWN");
+  assert.equal(calculateProvisionalAps(six, { requiredSubjects: ["Mathematics", "Mathematics"] }).state, "UNKNOWN");
 });
 
 test("duplicate canonical subjects are rejected", () => {
@@ -61,8 +87,9 @@ test("unsupported subjects and non-string/non-number marks are rejected", () => 
   assert.equal(calculateProvisionalAps(six.map((row, index) => index === 0 ? { ...row, mark: true } : row)).state, "INPUT_REJECTED");
 });
 
-test("source disclosure remains a draft and identifies the official prospectus", () => {
+test("source disclosure links the prospectus and policy FAQ but retains draft status", () => {
   assert.equal(APS_SOURCE.status, "DRAFT_NOT_FOR_DEFINITIVE_SCREENING");
   assert.equal(APS_SOURCE.printedPage, 16);
   assert.match(APS_SOURCE.url, /uj_undergrad_prospectus2027/);
+  assert.match(APS_SOURCE.policyUrl, /frequently-asked-questions/);
 });
