@@ -618,3 +618,17 @@ The GitHub combined status endpoint for `d377512d38cf4e93833e1c50984605cac12adbd
 - **Affected files:** `src/main.jsx`, `tests/e2e/student-form.spec.mjs`, `docs/product/TRACEABILITY-MATRIX.md`.
 - **Verification status:** source inspected through GitHub; no local checkout or local tests were run by this assistant. Branch created from the reviewed baseline; PR CI is required before treating the regression as verified.
 - **Unchanged safeguards:** synthetic inputs only; UJ catalogue remains draft and learner-facing eligibility remains UNKNOWN; G-SYN-001 remains **NOT PASSED**. No deployment, provisioning, or submission-artefact work is included.
+
+
+## Issue #184 — discovery dashboard implementation on PR branch
+
+**Inspected baseline:** `60945363fa1542cc39bde3dd9b77f1a8da026f50` on `main`. The learner journey rendered the full result array directly; there was no profile-completeness summary, candidate/visible count distinction, or filter state. Result records include an eligibility state and optional campus, which are the only discovery filters introduced.
+
+**Implemented on branch `feat/184-discovery-dashboard-filters` (pending PR review/CI):**
+- A deterministic profile-completeness score based on two required sections only: stage selected (50%) and at least one unique subject with a valid whole-number mark from 0 to 100 (50%). Blank optional extra rows do not lower the score.
+- Total catalogue candidates, currently visible count, and eligibility-state counts derived from the active filtered result set.
+- Eligibility-state and available-campus filters, with a clear-filter action and accessible empty state.
+- Focused domain unit tests and Playwright coverage for completeness, count/filter consistency, UNKNOWN-only draft results, empty-state recovery, and 320px layout in light/dark themes.
+- No change to eligibility evaluation, catalogue contents, storage, networking, dependencies, or deployment.
+
+**Verification:** The assistant inspected the relevant main-branch source and scripts through GitHub. It did not run tests locally. PR CI results are pending; report each workflow result only after it completes. The UJ catalogue remains draft, all current outcomes remain UNKNOWN, and G-SYN-001 remains NOT PASSED. Manual keyboard/screen-reader and external provider/privacy checks are not established by these automated tests.
