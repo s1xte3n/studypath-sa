@@ -1,15 +1,15 @@
 {
-  "catalogueVersion": "uj-2027-pilot-v0.2-draft",
+  "catalogueVersion": "uj-2027-pilot-v0.3-hackathon-demo",
   "institution": "University of Johannesburg",
   "admissionCycle": "2027",
   "applicantRoute": "NSC",
-  "status": "DRAFT_NOT_FOR_DEFINITIVE_SCREENING",
+  "status": "APPROVED_FOR_HACKATHON_DEMO_ONLY",
   "sourcePolicy": {
     "primarySource": "Applicable UJ 2027 Undergraduate Prospectus",
     "additionalSourceForCbeProgrammes": "UJ College of Business and Economics Undergraduate 2027 Intake Brochure",
     "currentProgrammePagesAreCorroborativeOnly": false,
     "prospectusContentMayChange": true,
-    "eligibilityRule": "A record may only support ELIGIBLE after source completeness, applicable cycle, currentness, interpretation and curator sign-off are verified.",
+    "eligibilityRule": "For hackathon demo use, display the 30 catalogue records as the project source of truth. A record may support ELIGIBLE or NOT_ELIGIBLE only when the deterministic evaluator has sufficient explicit rule evidence; unresolved required rules must return UNKNOWN. Demo approval does not authorize definitive screening.",
     "aps": {
       "sourceText": "APS is the sum of the achievement ratings of six school subjects; Life Orientation is not counted.",
       "source": "UJ 2027 Undergraduate Prospectus, printed p. 16",
@@ -69,7 +69,8 @@
     "governingSourceVersionStatus": "ONE_RETAINED_PROSPECTUS_URL_SELECTED; FINAL_CURATOR_SIGN_OFF_PENDING",
     "sourceVersionCandidates": [
       "https://www.uj.ac.za/wp-content/uploads/2026/07/uj_undergrad_prospectus2027_online_25jun2026.pdf"
-    ]
+    ],
+    "demoUse": "The 30 programme records are the approved source of truth for the bounded hackathon demo; unresolved record-level rules still require UNKNOWN eligibility."
   },
   "sources": [
     {
@@ -1657,5 +1658,17 @@
       ],
       "status": "DRAFT"
     }
-  ]
+  ],
+  "demoApproval": {
+    "approvedAt": "2026-10-24",
+    "approvalScope": "FNB AOTY Hackathon 2026 demonstration only",
+    "approver": "StudyPath SA project owner",
+    "decision": "The 30-programme catalogue is the source of truth for the bounded hackathon demo.",
+    "limitations": [
+      "This approval is not approval for definitive admissions screening or publication as an authoritative UJ catalogue.",
+      "Programme records retain their existing per-record statuses and unresolved notes; catalogue approval does not resolve missing requirements or source interpretation.",
+      "Eligibility must remain UNKNOWN wherever required evidence or rule interpretation is unresolved.",
+      "Minimum requirements do not guarantee admission or selection."
+    ]
+  }
 }
