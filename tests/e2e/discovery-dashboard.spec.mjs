@@ -235,7 +235,6 @@ test("pilot limitations are available on demand instead of displayed as a warnin
   await page.locator("#mark-0").fill("75");
   await page.getByRole("button", { name: /Explore pathways/ }).click();
 
-  const disclosure = page.getByRole("group").filter({ has: page.getByText("About the 2027 pilot and result limitations") });
   const summary = page.locator(".pilot-disclosure > summary");
   await expect(summary).toBeVisible();
   await expect(page.locator(".pilot-disclosure")).not.toHaveAttribute("open", "");
