@@ -541,3 +541,28 @@ footer span:first-child { color: var(--ink); }
 .theme-dark .comparison-table caption,.theme-dark .comparison-table thead th { background: var(--muted-ground); color: var(--ink); }
 .theme-dark .comparison-table th,.theme-dark .comparison-table td { border-color: var(--rule); }
 .theme-dark .comparison-table a,.theme-dark .comparison-notes summary { color: #9db8ff; }
+
+/* Issue #234: requirement-level explanation and evidence */
+.requirement-evidence { margin-top: 1.25rem; padding-top: 1rem; border-top: 1px solid var(--border, #d7deea); }
+.requirement-evidence h4 { margin-bottom: .45rem; }
+.requirement-evidence-intro, .requirement-evidence-caveat { font-size: .88rem; line-height: 1.5; color: var(--muted, #596579); }
+.requirement-evidence-list { list-style: none; margin: .9rem 0; padding: 0; display: grid; gap: .75rem; }
+.requirement-evidence-item { border: 1px solid var(--border, #d7deea); border-radius: .75rem; padding: .8rem; min-width: 0; }
+.requirement-evidence-heading { display: flex; align-items: flex-start; justify-content: space-between; gap: .75rem; flex-wrap: wrap; }
+.requirement-check-state { font-size: .76rem; font-weight: 700; border-radius: 999px; padding: .22rem .5rem; }
+.evidence-state-met { background: #e2f5e9; color: #155b35; }
+.evidence-state-not-met { background: #fde8e7; color: #8c2424; }
+.evidence-state-unknown { background: #fff2d4; color: #704b00; }
+.requirement-evidence-facts { margin: .6rem 0; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: .5rem; }
+.requirement-evidence-facts div { min-width: 0; }
+.requirement-evidence-facts dt { font-size: .75rem; color: var(--muted, #596579); }
+.requirement-evidence-facts dd { margin: .15rem 0 0; overflow-wrap: anywhere; font-size: .9rem; }
+.requirement-evidence-item > p { margin: .45rem 0; font-size: .88rem; line-height: 1.45; }
+.requirement-source-links { margin: .45rem 0 0; padding-left: 1.15rem; font-size: .82rem; overflow-wrap: anywhere; }
+.requirement-source-links li + li { margin-top: .25rem; }
+.requirement-evidence a { text-underline-offset: .15em; }
+.theme-dark .requirement-evidence-item { border-color: #3d485b; }
+.theme-dark .evidence-state-met { background: #173e2a; color: #a8ebc1; }
+.theme-dark .evidence-state-not-met { background: #4b2428; color: #ffc0c0; }
+.theme-dark .evidence-state-unknown { background: #4b3a1a; color: #ffe0a0; }
+@media (max-width: 420px) { .requirement-evidence-facts { grid-template-columns: minmax(0, 1fr); } .requirement-evidence-item { padding: .65rem; } }
