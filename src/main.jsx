@@ -714,7 +714,6 @@ function App() {
                 <p><strong>Your next step:</strong> open pathway details, review the unresolved items, and confirm the current rules using the official UJ links before deciding where to apply.</p>
               </div>
             </details>
-            <WhatIfMarkPlanner stage={stage} actualSubjects={subjects.map(item => ({ subject: item.subject, mark: item.mark }))} activeCatalogue={catalogue} />
             <section className="discovery-summary" aria-labelledby="discovery-summary-title">
               <div className="discovery-summary-heading">
                 <div><h3 id="discovery-summary-title">Explore the catalogue</h3><p>Counts below describe the currently visible results after filters.</p></div>
@@ -772,6 +771,7 @@ function App() {
               ))}
             </div>}
             {savedPathways.length >= 3 && <p className="shortlist-capacity-note" role="status">Three pathways are saved. Remove one from the shortlist before saving another.</p>}
+            <WhatIfMarkPlanner stage={stage} actualSubjects={subjects.map(item => ({ subject: item.subject, mark: item.mark }))} activeCatalogue={catalogue} />
             <PathwayComparison items={savedPathways} />
             <section className="shortlist-section" aria-labelledby="shortlist-title">
               <div className="section-heading">
