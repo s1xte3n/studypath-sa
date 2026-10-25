@@ -7,7 +7,7 @@ test("discovery dashboard reflects current profile completeness and draft UNKNOW
 
   await page.locator("#stage").selectOption("GRADE_12");
   await expect(completeness).toHaveAttribute("aria-valuenow", "33");
-  await expect(completeness).toHaveAttribute("aria-valuetext", "1 of 3 required sections complete");
+  await expect(completeness).toHaveAttribute("aria-valuetext", "1 of 3 required sections complete; 0 of 6 unique subjects selected; 0 of 6 valid marks entered");
 
   await page.locator("#subject-0").selectOption("Mathematics");
   await expect(completeness).toHaveAttribute("aria-valuenow", "39");
