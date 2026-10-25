@@ -450,6 +450,19 @@ function App() {
     setFieldErrors({ stage: "", subjects: {} });
   }
 
+  function updateStage(value) {
+    setStage(value);
+    setCompletenessReset(false);
+    setResults([]);
+    setSavedPathways([]);
+    setTracking({});
+    setEligibilityFilter("ALL");
+    setCampusFilter("ALL");
+    setSubmitted(false);
+    setNotice("");
+    setFieldErrors({ stage: "", subjects: {} });
+  }
+
   function updateSubject(index, field, value) {
     setSubjects(current => current.map((item, i) => i === index ? { ...item, [field]: value } : item));
     clearResults();
@@ -651,7 +664,7 @@ function App() {
 
           <form onSubmit={submitForm} noValidate>
             <label className="field-label" htmlFor="stage">Your current stage <span aria-hidden="true">*</span></label>
-            <select id="stage" value={stage} aria-invalid={Boolean(fieldErrors.stage)} aria-describedby={fieldErrors.stage ? "stage-error" : undefined} onChange={event => { setStage(event.target.value); setCompletenessReset(false); clearResults(); setNotice(""); setFieldErrors({ stage: "", subjects: {} }); }} required>
+            <select id="stage" value={stage} aria-invalid={Boolean(fieldErrors.stage)} aria-describedby={fieldErrors.stage ? "stage-error" : undefined} onChange={event => updateStage(event.target.value)} required>
               <option value="">Choose current stage</option>
               {STAGES.map(item => <option key={item.value} value={item.value}>{item.label}</option>)}
             </select>
