@@ -14,7 +14,7 @@ Explain recorded requirement shortfalls and the actual missing input or unresolv
 | R235-02: Explain `UNKNOWN` from missing input | Maps known evaluator reason codes and exposes only evidence rows marked `UNKNOWN`; next steps request input only when evidence supports it | `tests/why-not-yet.test.mjs`: incomplete subject input | `src/domain/why-not-yet.mjs` |
 | R235-03: Explain unresolved rules/source uncertainty | Uses explicit reason-code copy for alternative semantics, material ambiguity, source conflicts/currentness and publication-gate failures | `tests/why-not-yet.test.mjs`: unresolved alternative and unrecognised reason | `src/domain/why-not-yet.mjs` |
 | R235-04: Never render UNKNOWN as rejection | UI uses the evaluator state, a separate unknown heading and explicit non-rejection caveat | `tests/why-not-yet.test.mjs`; browser E2E to be verified by CI | `src/main.jsx`; `src/styles.css` |
-| R235-05: Accessible and mobile-readable | Semantic headings/lists, recorded-value labels, existing details disclosure, responsive padding | Existing issue #234 keyboard/mobile test plus issue-specific test to be added/verified | `src/main.jsx`; `src/styles.css` |
+| R235-05: Accessible and mobile-readable | Semantic headings/lists, recorded-value labels, existing details disclosure, responsive padding | `tests/e2e/discovery-dashboard.spec.mjs`: issue-specific 320px test verifies UNKNOWN versus NOT_ELIGIBLE copy and no overflow; existing issue #234 keyboard/mobile test remains in place | `src/main.jsx`; `src/styles.css` |
 
 ## Boundaries
 
