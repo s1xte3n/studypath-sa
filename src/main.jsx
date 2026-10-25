@@ -452,7 +452,6 @@ function App() {
 
   function updateStage(value) {
     setStage(value);
-    setCompletenessReset(false);
     setResults([]);
     setSavedPathways([]);
     setTracking({});
@@ -474,7 +473,6 @@ function App() {
       if (value === "OTHER") return { ...item, subject: "", customSubject: true };
       return { ...item, subject: value, customSubject: false };
     }));
-    setCompletenessReset(false);
     clearResults();
   }
 
@@ -485,7 +483,6 @@ function App() {
 
   function removeSubject(index) {
     setSubjects(current => current.filter((_, i) => i !== index));
-    setCompletenessReset(false);
     clearResults();
   }
 
