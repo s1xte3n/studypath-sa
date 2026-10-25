@@ -580,3 +580,18 @@ footer span:first-child { color: var(--ink); }
 .why-not-yet-unknown { border-style: dashed; }
 .theme-dark .why-not-yet { background: var(--paper); color: inherit; }
 @media (max-width: 480px) { .why-not-yet { padding: .75rem; } .why-not-yet-blockers { padding-left: 1rem; } }
+
+
+/* Issue #236 — catalogue-backed alternative pathway suggestions. */
+.alternative-pathways { margin: 1rem 0; padding: 1rem; border: 1px solid var(--line); border-radius: .75rem; background: var(--paper); }
+.alternative-pathways > p { font-size: .9rem; line-height: 1.5; }
+.alternative-pathway-list { list-style: none; display: grid; gap: .75rem; margin: .85rem 0 0; padding: 0; }
+.alternative-pathway-item { min-width: 0; padding: .85rem; border: 1px solid var(--line); border-radius: .65rem; }
+.alternative-pathway-heading { display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: space-between; gap: .5rem; }
+.alternative-pathway-heading strong { min-width: 0; overflow-wrap: anywhere; }
+.alternative-pathway-item p { margin: .5rem 0; line-height: 1.45; font-size: .88rem; }
+.alternative-pathway-result { color: var(--muted); }
+.alternative-pathway-caveat, .alternative-pathways-empty { font-size: .82rem !important; color: var(--muted); }
+.alternative-pathway-item a { display: inline-block; margin-top: .25rem; font-weight: 700; text-underline-offset: .15em; }
+.theme-dark .alternative-pathways, .theme-dark .alternative-pathway-item { background: var(--paper); border-color: var(--line); }
+@media (max-width: 480px) { .alternative-pathways { padding: .75rem; } .alternative-pathway-item { padding: .65rem; } }
