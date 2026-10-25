@@ -765,7 +765,9 @@ function App() {
           <div className="hero-content">
             <p className="eyebrow">YOUR NEXT STEP STARTS HERE</p>
             <h1>Find a study path<br /><span>that fits your future.</span></h1>
-            <p className="hero-copy">Explore study options using your subjects and marks. See what is known, what still needs checking, and where to find official information.</p>
+            <p className="hero-copy">Turn your school marks into clearer next steps. Explore study pathways, understand how your results compare with recorded requirements, and keep the questions you still need to answer in one place.</p>
+            <div className="hero-actions"><a className="primary-button hero-cta" href="#explorer-title">Explore my pathways <span aria-hidden="true">→</span></a><a className="hero-secondary-link" href="#capabilities-title">See what you can do</a></div>
+            <ul className="hero-proof-points" aria-label="StudyPath benefits"><li>No account needed</li><li>Understand the “unknowns”</li><li>Keep your next steps together</li></ul>
             <details className="privacy-disclosure">
               <summary>Privacy in this demo</summary>
               <div className="privacy-disclosure-content">
@@ -792,6 +794,23 @@ function App() {
               <span className="visual-status">Your next step</span>
             </div>
           </aside>
+        </section>
+
+        <section className="capabilities-section" aria-labelledby="capabilities-title">
+          <div className="capabilities-intro">
+            <p className="eyebrow">MORE THAN A LIST OF COURSES</p>
+            <h2 id="capabilities-title">From marks to a plan you can act on.</h2>
+            <p>StudyPath SA helps you explore your options step by step—with explanations, source links and a clear view of what still needs checking.</p>
+          </div>
+          <div className="capabilities-grid">
+            <article className="capability-card"><span className="capability-number">01</span><h3>Explore with your marks</h3><p>Enter your school stage, subjects and marks to compare your profile with requirements recorded in the current pilot catalogue.</p></article>
+            <article className="capability-card"><span className="capability-number">02</span><h3>Understand each result</h3><p>See provisional matches, results marked not eligible, and unknowns when information is missing. Review requirement-by-requirement explanations instead of guessing.</p></article>
+            <article className="capability-card"><span className="capability-number">03</span><h3>Check the evidence</h3><p>Open linked institution sources, see what is recorded and identify details you still need to confirm with the institution.</p></article>
+            <article className="capability-card"><span className="capability-number">04</span><h3>Compare your shortlist</h3><p>Save up to three pathways, compare the available details and manually track your own application progress.</p></article>
+            <article className="capability-card"><span className="capability-number">05</span><h3>Explore hypothetical marks</h3><p>Try a hypothetical marks scenario to see how recorded requirement comparisons might change—without editing your actual profile.</p></article>
+            <article className="capability-card"><span className="capability-number">06</span><h3>Turn options into next steps</h3><p>Create a personal checklist, review source links, add your own tasks and mark progress as you go.</p></article>
+          </div>
+          <p className="capabilities-scope"><strong>Clear about the limits:</strong> this demo currently uses a draft UJ 2027 pilot catalogue. Results are provisional, not an admission decision. Missing or unverified information stays uncertain; current fees, deadlines, funding and requirements must be confirmed through official sources. StudyPath does not submit applications or guarantee admission or funding.</p>
         </section>
 
         <section className="explorer" aria-labelledby="explorer-title">
