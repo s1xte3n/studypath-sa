@@ -164,6 +164,10 @@ test("blocked pathway offers catalogue-backed alternatives and links to the sele
   const alternatives = preferredCard.locator(".alternative-pathways");
   await expect(alternatives).toBeVisible();
   await expect(alternatives.getByRole("heading", { name: "Other pathways to explore" })).toBeVisible();
+  const evidenceToggle = alternatives.getByText("View eligibility evidence").first();
+  await expect(evidenceToggle).toBeVisible();
+  await evidenceToggle.click();
+  await expect(alternatives.locator(".alternative-evidence-list").first()).toBeVisible();
 
   const alternativeLink = alternatives.getByRole("link", { name: "View this pathway in results" }).first();
   await expect(alternativeLink).toBeVisible();
