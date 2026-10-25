@@ -127,6 +127,22 @@ function PathwayDetails({ item, allResults, activeCatalogue, onNavigateToAlterna
                     </div>
                     <p>{alternative.relevanceReason}</p>
                     <p className="alternative-pathway-result">{alternative.reason}</p>
+                    <details className="alternative-evidence-details">
+                      <summary>View eligibility evidence</summary>
+                      {alternative.requirementEvidence?.length ? (
+                        <ul className="alternative-evidence-list">
+                          {alternative.requirementEvidence.map(check => (
+                            <li key={check.id}>
+                              <strong>{check.label}: {check.status === "MET" ? "Meets recorded rule" : check.status === "NOT_MET" ? "Does not meet recorded rule" : check.status === "NOT_APPLICABLE" ? "Not applicable" : "Unknown"}</strong>
+                              <p><span className="why-not-yet-label">Recorded rule:</span> {check.rule}</p>
+                              <p><span className="why-not-yet-label">Learner input:</span> {check.learnerValue}</p>
+                              <p>{check.explanation}</p>
+                              {check.sourceLinks?.map(source => <p key={source.url}><a href={source.url} target="_blank" rel="noopener noreferrer">{source.title}</a>{source.location ? ` · ${source.location}` : ""}{source.verificationDate ? ` · Checked ${source.verificationDate}` : ""}</p>)}
+                            </li>
+                          ))}
+                        </ul>
+                      ) : <p>No requirement-level evidence is available for this result.</p>}
+                    </details>
                     <p className="alternative-pathway-caveat">{alternative.relationshipDisclaimer}</p>
                     <a href={`#pathway-${alternative.id}`} onClick={() => onNavigateToAlternative(alternative.id)}>View this pathway in results</a>
                   </li>
