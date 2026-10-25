@@ -651,7 +651,7 @@ function App() {
 
           <form onSubmit={submitForm} noValidate>
             <label className="field-label" htmlFor="stage">Your current stage <span aria-hidden="true">*</span></label>
-            <select id="stage" value={stage} aria-invalid={Boolean(fieldErrors.stage)} aria-describedby={fieldErrors.stage ? "stage-error" : undefined} onChange={event => { setStage(event.target.value); setCompletenessReset(false); clearResults(); }} required>
+            <select id="stage" value={stage} aria-invalid={Boolean(fieldErrors.stage)} aria-describedby={fieldErrors.stage ? "stage-error" : undefined} onChange={event => { setStage(event.target.value); setCompletenessReset(false); clearResults(); setNotice(""); setFieldErrors({ stage: "", subjects: {} }); }} required>
               <option value="">Choose current stage</option>
               {STAGES.map(item => <option key={item.value} value={item.value}>{item.label}</option>)}
             </select>
