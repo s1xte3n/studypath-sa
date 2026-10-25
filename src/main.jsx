@@ -60,16 +60,19 @@ function PathwayDetails({ item, allResults, activeCatalogue, onNavigateToAlterna
           <h4 id={`why-not-yet-${item.id}`}>{whyNotYet.title}</h4>
           <p>{whyNotYet.explanation}</p>
           {whyNotYet.blockers.length > 0 && (
-            <ul className="why-not-yet-blockers">
-              {whyNotYet.blockers.map(blocker => (
-                <li key={blocker.id}>
-                  <strong>{blocker.label}</strong>
-                  {blocker.rule && <p><span className="why-not-yet-label">Recorded rule:</span> {blocker.rule}</p>}
-                  {blocker.learnerValue && <p><span className="why-not-yet-label">Your input:</span> {blocker.learnerValue}</p>}
-                  <p>{blocker.explanation}</p>
-                </li>
-              ))}
-            </ul>
+            <details className="compact-evidence-disclosure">
+              <summary>View key gaps ({whyNotYet.blockers.length})</summary>
+              <ul className="why-not-yet-blockers">
+                {whyNotYet.blockers.map(blocker => (
+                  <li key={blocker.id}>
+                    <strong>{blocker.label}</strong>
+                    {blocker.rule && <p><span className="why-not-yet-label">Recorded rule:</span> {blocker.rule}</p>}
+                    {blocker.learnerValue && <p><span className="why-not-yet-label">Your input:</span> {blocker.learnerValue}</p>}
+                    <p>{blocker.explanation}</p>
+                  </li>
+                ))}
+              </ul>
+            </details>
           )}
           {whyNotYet.nextSteps.length > 0 && (
             <div>
@@ -79,8 +82,10 @@ function PathwayDetails({ item, allResults, activeCatalogue, onNavigateToAlterna
           )}
           {item.state === "UNKNOWN" && <p className="why-not-yet-caveat">Unknown is not a rejection. No conclusion is drawn where an input or material rule is missing.</p>}
         </section>
-        <section className="requirement-evidence" aria-labelledby={`requirement-evidence-${item.id}`}>
-          <h4 id={`requirement-evidence-${item.id}`}>Requirement-by-requirement check</h4>
+        <details className="requirement-evidence compact-evidence-disclosure">
+          <summary>View requirement-by-requirement evidence ({item.requirementEvidence?.length || 0})</summary>
+          <div className="requirement-evidence-content">
+            <h4 id={`requirement-evidence-${item.id}`}>Requirement-by-requirement check</h4>
           <p className="requirement-evidence-intro">These comparisons use the rules and source records currently stored in the demo catalogue. “Unknown” means the available information is insufficient; it is not a rejection.</p>
           {item.requirementEvidence?.length ? (
             <ul className="requirement-evidence-list">
@@ -106,17 +111,18 @@ function PathwayDetails({ item, allResults, activeCatalogue, onNavigateToAlterna
               ))}
             </ul>
           ) : <p>No requirement-level evidence is available for this pathway result.</p>}
-          <p className="requirement-evidence-caveat">This is a provisional comparison, not an admission decision. Source links show evidence recorded by StudyPath and do not by themselves prove that a rule is current or complete.</p>
-        </section>
-        {item.requirementNotes.length > 0 && (
-          <div className="detail-note">
-            <h4>Items still requiring confirmation</h4>
-            <ul>{item.requirementNotes.map(note => <li key={note}>{note}</li>)}</ul>
+            <p className="requirement-evidence-caveat">Provisional comparison only—not an admission decision. Source links do not prove a rule is current or complete.</p>
+            {item.requirementNotes.length > 0 && (
+              <div className="detail-note">
+                <h4>Still to confirm</h4>
+                <ul>{item.requirementNotes.map(note => <li key={note}>{note}</li>)}</ul>
+              </div>
+            )}
           </div>
-        )}
+        </details>
         {item.state !== "ELIGIBLE" && (
-          <section className="alternative-pathways" aria-labelledby={`alternative-pathways-${item.id}`}>
-            <h4 id={`alternative-pathways-${item.id}`}>Other pathways to explore</h4>
+          <details className="alternative-pathways compact-evidence-disclosure">
+            <summary id={`alternative-pathways-${item.id}`}>Other pathways to explore ({alternatives.length})</summary>
             <p>These options share recorded catalogue attributes with this pathway. This is an exploration aid, not evidence of progression or articulation. Each option has its own eligibility result.</p>
             {alternatives.length > 0 ? (
               <ul className="alternative-pathway-list">
@@ -152,7 +158,7 @@ function PathwayDetails({ item, allResults, activeCatalogue, onNavigateToAlterna
             ) : (
               <p className="alternative-pathways-empty" role="status">No supported alternatives can be suggested from the current catalogue attributes. No progression route has been inferred.</p>
             )}
-          </section>
+          </details>
         )}
         <div className="official-links">
           <h4>Official information</h4>
