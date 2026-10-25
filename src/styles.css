@@ -1062,3 +1062,45 @@ a { color: var(--link); }
     transition-duration: .01ms !important;
   }
 }
+
+
+/* Desktop canvas expansion: use the full available viewport width. */
+@media (min-width: 1024px) {
+  .app-shell {
+    width: 100%;
+    max-width: none;
+    min-height: 100vh;
+    margin: 0;
+    overflow: visible;
+  }
+
+  .app-shell main {
+    width: 100%;
+    max-width: none;
+    margin-inline: 0;
+    padding-inline: clamp(32px, 4vw, 80px);
+  }
+
+  .app-shell .hero {
+    max-width: 100%;
+  }
+
+  .app-shell .hero-copy {
+    max-width: 760px;
+  }
+
+  .app-shell .topbar {
+    margin-inline: clamp(20px, 2vw, 36px);
+  }
+}
+
+/* Honour reduced-motion preferences with zero-duration transitions. */
+@media (prefers-reduced-motion: reduce) {
+  .app-shell *,
+  .app-shell *::before,
+  .app-shell *::after {
+    animation-duration: 0s !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0s !important;
+  }
+}
