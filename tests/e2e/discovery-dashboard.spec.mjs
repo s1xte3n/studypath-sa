@@ -92,3 +92,48 @@ test("pathway details expose requirement evidence by keyboard at mobile width", 
   }));
   expect(layout.documentWidth).toBeLessThanOrEqual(layout.viewportWidth);
 });
+
+
+test("Why Not Yet distinguishes missing information from a recorded shortfall on mobile", async ({ page }) => {
+  await page.setViewportSize({ width: 320, height: 820 });
+  await page.goto("/");
+  await page.locator("#stage").selectOption("GRADE_12");
+  await page.locator("#subject-0").selectOption("Mathematics");
+  await page.locator("#mark-0").fill("75");
+  await page.getByRole("button", { name: /Explore pathways/ }).click();
+
+  const unknownCard = page.locator(".result-card").filter({ has: page.getByText("Unknown", { exact: true }) }).first();
+  await unknownCard.locator("summary").focus();
+  await page.keyboard.press("Enter");
+  await expect(unknownCard.getByRole("heading", { name: "More information is needed" })).toBeVisible();
+  await expect(unknownCard.locator(".why-not-yet-caveat")).toContainText("Unknown is not a rejection");
+  await expect(unknownCard.locator(".why-not-yet")).not.toContainText("Not eligible");
+
+  await page.getByRole("button", { name: "Reset" }).click();
+  await page.locator("#stage").selectOption("MATRIC_GRADUATE");
+  const profile = [
+    ["English Home Language", "90"],
+    ["Mathematical Literacy", "90"],
+    ["Physical Sciences", "90"],
+    ["Life Sciences", "90"],
+    ["Geography", "90"],
+    ["Accounting", "90"]
+  ];
+  for (let index = 0; index < profile.length; index += 1) {
+    if (index > 0) await page.getByRole("button", { name: /Add another subject/ }).click();
+    await page.locator(`#subject-${index}`).selectOption(profile[index][0]);
+    await page.locator(`#mark-${index}`).fill(profile[index][1]);
+  }
+  await page.getByRole("button", { name: /Explore pathways/ }).click();
+  const rejectedCard = page.locator(".result-card").filter({ has: page.getByText("Not eligible", { exact: true }) }).first();
+  await expect(rejectedCard).toBeVisible();
+  await rejectedCard.locator("summary").click();
+  await expect(rejectedCard.getByRole("heading", { name: "Recorded requirement not met" })).toBeVisible();
+  await expect(rejectedCard.locator(".why-not-yet-blockers li").first()).toBeVisible();
+
+  const layout = await page.evaluate(() => ({
+    viewportWidth: window.innerWidth,
+    documentWidth: document.documentElement.scrollWidth
+  }));
+  expect(layout.documentWidth).toBeLessThanOrEqual(layout.viewportWidth);
+});
