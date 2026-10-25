@@ -244,3 +244,16 @@ test("pilot limitations are available on demand instead of displayed as a warnin
   await expect(page.getByText(/Some programme rules still need interpretation/)).toBeVisible();
   await expect(page.getByText(/do not guarantee admission/i)).toBeVisible();
 });
+
+
+test("demo privacy guidance is available on demand instead of shown as a warning banner", async ({ page }) => {
+  await page.goto("/");
+  const disclosure = page.locator(".privacy-disclosure");
+  await expect(disclosure.getByRole("summary")).toBeVisible();
+  await expect(disclosure).not.toHaveAttribute("open", "");
+  await expect(disclosure.getByText(/Your entries and results stay in this page's memory/)).toBeHidden();
+
+  await disclosure.locator("summary").click();
+  await expect(disclosure.getByText(/Your entries and results stay in this page's memory/)).toBeVisible();
+  await expect(disclosure.getByText(/Use fictional details only/)).toBeVisible();
+});
