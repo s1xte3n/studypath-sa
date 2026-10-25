@@ -62,7 +62,7 @@ test("adding another subject preserves existing profile entries and recalculates
   await page.locator("#custom-subject-2").fill("Computer Applications Technology");
   await page.locator("#mark-2").fill("82");
   await expect(completeness).toHaveAttribute("aria-valuenow", "100");
-  await expect(page.locator("#subject-0 option")).not.toContainText("Mathematics");
+  await expect(page.locator("#subject-1 option")).not.toContainText("Mathematics");
 });
 
 test("eligibility filters update visible counts and provide a recoverable empty state", async ({ page }) => {
