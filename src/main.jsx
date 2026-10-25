@@ -181,7 +181,6 @@ function ProvisionalApsPanel({ subjects }) {
     <section className="aps-panel" aria-labelledby="aps-title">
       <p className="eyebrow">YOUR MARKS · INDICATIVE ONLY</p>
       <h3 id="aps-title">Provisional APS estimate</h3>
-      <p className="aps-caveat">Based on mark-to-level bands recorded in the UJ 2027 Undergraduate Prospectus (printed p. 16). This hackathon estimate uses the project-owner-approved catalogue for demo scope only; it is not an official or verified APS result. Source-version and subject-selection rules are not approved for definitive screening.</p>
       {estimate.state === "PROVISIONAL" ? (
         <>
           <p className="aps-total"><span>Indicative total</span><strong>{estimate.aps}</strong></p>
@@ -194,9 +193,15 @@ function ProvisionalApsPanel({ subjects }) {
       ) : (
         <p className={estimate.state === "INPUT_REJECTED" ? "aps-error" : "aps-pending"} role="status">{estimate.reason}</p>
       )}
-      {estimate.state === "PROVISIONAL" && <p className="aps-limitation">{estimate.reason}</p>}
-      <p className="aps-source">Sources: <a href={APS_SOURCE.url} target="_blank" rel="noopener noreferrer">{APS_SOURCE.title} <span aria-hidden="true">↗</span></a> · printed p. {APS_SOURCE.printedPage}; <a href={APS_SOURCE.policyUrl} target="_blank" rel="noopener noreferrer">{APS_SOURCE.policyTitle} <span aria-hidden="true">↗</span></a>. Provisional demo rule.</p>
-      <p className="aps-limitation">This is separate from NSC pass or achievement status. Life Orientation is excluded from this provisional UJ APS input. A total is shown only when exactly six supported non-Life-Orientation subjects are supplied. Fewer or more than six returns UNKNOWN: the applicable selection and programme-required-subject rules have not been verified, so the demo does not choose a subset. This estimate never changes pathway eligibility.</p>
+      <details className="aps-disclosure">
+        <summary>How the provisional APS estimate works</summary>
+        <div className="aps-disclosure-content">
+          <p>Based on mark-to-level bands recorded in the UJ 2027 Undergraduate Prospectus (printed p. 16). This hackathon estimate uses the project-owner-approved catalogue for demo scope only; it is not an official or verified APS result. Source-version and subject-selection rules are not approved for definitive screening.</p>
+          {estimate.state === "PROVISIONAL" && <p>{estimate.reason}</p>}
+          <p>Sources: <a href={APS_SOURCE.url} target="_blank" rel="noopener noreferrer">{APS_SOURCE.title} <span aria-hidden="true">↗</span></a> · printed p. {APS_SOURCE.printedPage}; <a href={APS_SOURCE.policyUrl} target="_blank" rel="noopener noreferrer">{APS_SOURCE.policyTitle} <span aria-hidden="true">↗</span></a>. Provisional demo rule.</p>
+          <p>This is separate from NSC pass or achievement status. Life Orientation is excluded from this provisional UJ APS input. A total is shown only when exactly six supported non-Life-Orientation subjects are supplied. Fewer or more than six returns UNKNOWN: the applicable selection and programme-required-subject rules have not been verified, so the demo does not choose a subset. This estimate never changes pathway eligibility.</p>
+        </div>
+      </details>
     </section>
   );
 }
