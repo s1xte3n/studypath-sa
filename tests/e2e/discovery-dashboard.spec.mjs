@@ -249,7 +249,7 @@ test("pilot limitations are available on demand instead of displayed as a warnin
 test("demo privacy guidance is available on demand instead of shown as a warning banner", async ({ page }) => {
   await page.goto("/");
   const disclosure = page.locator(".privacy-disclosure");
-  await expect(disclosure.getByRole("summary")).toBeVisible();
+  await expect(disclosure.locator("summary")).toBeVisible();
   await expect(disclosure).not.toHaveAttribute("open", "");
   await expect(disclosure.getByText(/Your entries and results stay in this page's memory/)).toBeHidden();
 
