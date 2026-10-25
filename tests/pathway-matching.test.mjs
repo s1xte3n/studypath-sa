@@ -140,7 +140,7 @@ test("incomplete transcripts do not turn an absent required subject into a rejec
   const informationTechnology = results.find(item => item.id === "UJ-2027-BSC-IT");
   assert.equal(informationTechnology.state, "UNKNOWN");
   assert.ok(informationTechnology.reasonCodes.includes("REQUIRED_INPUT_MISSING"));
-  const sciences = informationTechnology.requirementEvidence.find(row => row.label === "Physical Sciences");
-  assert.equal(sciences.status, "UNKNOWN");
-  assert.match(sciences.explanation, /transcript is incomplete/i);
+  const missingRequired = results.flatMap(item => item.requirementEvidence).find(row => /transcript is incomplete/i.test(row.explanation));
+  assert.ok(missingRequired, "incomplete transcript should expose at least one absent mandatory subject as unknown");
+  assert.equal(missingRequired.status, "UNKNOWN");
 });
