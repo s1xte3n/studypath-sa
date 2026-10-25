@@ -1237,3 +1237,49 @@ body,
 .app-shell.theme-light [data-status="UNKNOWN"] {
   color: #8a641e;
 }
+
+
+/* Keep pilot limitations available without making them a warning banner in the results flow. */
+.pilot-disclosure {
+  margin: 0 0 22px;
+  padding: 14px 16px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--paper);
+  color: var(--deep);
+}
+.pilot-disclosure summary {
+  color: var(--green);
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.5;
+  cursor: pointer;
+}
+.pilot-disclosure summary:focus-visible {
+  outline: 3px solid #d49a35;
+  outline-offset: 4px;
+}
+.pilot-disclosure-content {
+  max-width: 900px;
+  padding-top: 12px;
+}
+.pilot-disclosure-content p {
+  margin: 0 0 8px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.65;
+}
+.pilot-disclosure-content p:last-child {
+  margin-bottom: 0;
+}
+.theme-dark .pilot-disclosure {
+  background: var(--paper);
+  border-color: var(--line);
+  color: var(--deep);
+}
+.theme-dark .pilot-disclosure summary {
+  color: #9db8ff;
+}
+.theme-dark .pilot-disclosure-content p {
+  color: var(--muted);
+}
