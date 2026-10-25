@@ -6,7 +6,7 @@
 
 - Tracking issue: [#219 — Finalise the source-backed student discovery demo and acceptance run](https://github.com/s1xte3n/studypath-sa/issues/219)
 - Parent delivery tracker: [#160](https://github.com/s1xte3n/studypath-sa/issues/160)
-- Candidate main commit after PR #228: `2b89ac280b93c038914600c66c72f82aff65def9` (documentation-only source-link scope correction; not an application-code change)
+- Latest candidate main commit after PR #229: `de1910e0d04c01a85119fca4ef5d72bc4bd357bb` (documentation-only acceptance evidence update; not an application-code change). The application behaviour was last changed earlier; this commit reran the required CI workflows against the latest main commit.
 - Synthetic profile: Grade 12; Mathematics 75; Physical Sciences 81.
 - Catalogue expectation in the current browser tests: 30 candidate cards, all `UNKNOWN`.
 - Product boundary: draft 2027 pilot catalogue; no definitive admissions screening, guaranteed admission/funding, application submission, persistent learner records, or production deployment.
@@ -45,6 +45,9 @@ The repository's Browser E2E, privacy and accessibility workflow also installs C
 | Browser MVP build / tests on PR #228 merge | [GitHub Actions run 40188274276](https://github.com/s1x6te3n/studypath-sa/actions/runs/40188274276) — completed successfully, per owner-provided result |
 | Browser E2E, privacy and accessibility on PR #228 merge | [GitHub Actions run 40188274290](https://github.com/s1x6te3n/studypath-sa/actions/runs/40188274290) — completed successfully, per owner-provided result |
 | Contract tests on PR #228 merge | [GitHub Actions run 40188274295](https://github.com/s1x6te3n/studypath-sa/actions/runs/40188274295) — completed successfully, per owner-provided result |
+| Browser MVP build / tests on latest main commit `de1910e0d04c01a85119fca4ef5d72bc4bd357bb` | [GitHub Actions run 40188765506](https://github.com/s1x6te3n/studypath-sa/actions/runs/40188765506) — completed successfully, per owner-provided result |
+| Browser E2E, privacy and accessibility on latest main commit `de1910e0d04c01a85119fca4ef5d72bc4bd357bb` | [GitHub Actions run 40188765456](https://github.com/s1x6te3n/studypath-sa/actions/runs/40188765456) — completed successfully, per owner-provided result |
+| Contract tests on latest main commit `de1910e0d04c01a85119fca4ef5d72bc4bd357bb` | [GitHub Actions run 40188765461](https://github.com/s1x6te3n/studypath-sa/actions/runs/40188765461) — completed successfully, per owner-provided result |
 | Exact PR-head SHA / URL used for the owner-attested manual run | Not recorded; deferred and not required for the current hackathon acceptance run |
 
 **Evidence boundary:** these are GitHub Actions results reported in the issue evidence comment, not commands run in this session. Successful automation does not count as a manual rehearsal or prove production deployment. The source-link checks are excluded from remaining acceptance work by explicit project-owner decision.
