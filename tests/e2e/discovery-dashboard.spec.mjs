@@ -226,3 +226,22 @@ test("what-if planner recalculates hypothetically and keeps actual marks/results
   const layout = await page.evaluate(() => ({ viewportWidth: window.innerWidth, documentWidth: document.documentElement.scrollWidth }));
   expect(layout.documentWidth).toBeLessThanOrEqual(layout.viewportWidth);
 });
+
+
+test("pilot limitations are available on demand instead of displayed as a warning banner", async ({ page }) => {
+  await page.goto("/");
+  await page.locator("#stage").selectOption("GRADE_12");
+  await page.locator("#subject-0").selectOption("Mathematics");
+  await page.locator("#mark-0").fill("75");
+  await page.getByRole("button", { name: /Explore pathways/ }).click();
+
+  const disclosure = page.getByRole("group").filter({ has: page.getByText("About the 2027 pilot and result limitations") });
+  const summary = page.locator(".pilot-disclosure > summary");
+  await expect(summary).toBeVisible();
+  await expect(page.locator(".pilot-disclosure")).not.toHaveAttribute("open", "");
+  await expect(page.getByText(/Some programme rules still need interpretation/)).toBeHidden();
+
+  await summary.click();
+  await expect(page.getByText(/Some programme rules still need interpretation/)).toBeVisible();
+  await expect(page.getByText(/do not guarantee admission/i)).toBeVisible();
+});
