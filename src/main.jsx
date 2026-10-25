@@ -657,7 +657,7 @@ function App() {
               <div className="completeness-track" role="progressbar" aria-label="Profile completeness" aria-valuemin={0} aria-valuemax={100} aria-valuenow={discovery.profile.percentage} aria-valuetext={`${discovery.profile.completedSections} of ${discovery.profile.requiredSections} required sections complete`}>
                 <span style={{ width: `${discovery.profile.percentage}%` }} />
               </div>
-              <p>{discovery.profile.completedSections} of {discovery.profile.requiredSections} required sections complete: select your current stage and enter at least one unique subject with a whole-number mark from 0 to 100. Extra subject rows are optional.</p>
+              <p>{discovery.profile.completedSections} of {discovery.profile.requiredSections} required sections complete: choose your current stage, select at least one unique subject, and enter a whole-number mark from 0 to 100 for a unique subject. Extra subject rows are optional.</p>
             </section>
             {notice && <p className={`form-notice ${submitted ? "notice-info" : "notice-error"}`} role="status" aria-live="polite">{notice}</p>}
           </form>
