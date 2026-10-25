@@ -20,6 +20,8 @@ test("learner can save, compare, and unsave pathways with a three-item limit", a
   await cards.nth(2).getByRole("button", { name: "Save to shortlist" }).click();
   await expect(page.locator(".shortlist-card")).toHaveCount(3);
   await expect(page.locator(".shortlist-section .step-count")).toHaveText("3 / 3 SAVED");
+  await expect(page.locator(".comparison-table tbody tr")).toHaveCount(3);
+  await expect(page.getByRole("status").filter({ hasText: "Three pathways are saved" })).toBeVisible();
   await expect(cards.nth(3).getByRole("button", { name: "Save to shortlist" })).toBeDisabled();
 
   await page.locator(".shortlist-card").first().getByRole("button", { name: "Remove" }).click();
@@ -83,4 +85,51 @@ test("shortlist controls are labelled and work with keyboard interaction", async
   await expect(page.locator(".shortlist-card")).toHaveCount(1);
   await expect(page.getByLabel("My application progress")).toBeVisible();
   await expect(page.getByLabel("My next action (optional)")).toBeVisible();
+});
+
+
+test("comparison reflects saved pathway facts, eligibility uncertainty, and recorded source links", async ({ page }) => {
+  await createResults(page);
+
+  const cards = page.locator(".result-card");
+  const sourceCard = cards.filter({ has: page.locator(".pathway-details .official-links a") }).first();
+  const targetCard = await sourceCard.count() ? sourceCard : cards.first();
+  const pathwayName = await targetCard.locator("h3").innerText();
+  const sourceLinks = await targetCard.locator(".pathway-details .official-links a").evaluateAll(links =>
+    links.map(link => link.href)
+  );
+
+  await targetCard.getByRole("button", { name: "Save to shortlist" }).click();
+
+  const comparison = page.locator(".comparison-table");
+  await expect(comparison).toBeVisible();
+  await expect(comparison.locator("tbody tr")).toHaveCount(1);
+  const row = comparison.locator("tbody tr").first();
+  await expect(row.getByRole("rowheader")).toHaveText(pathwayName);
+  await expect(row).toContainText("Unknown");
+  await expect(row.locator(".comparison-explanation")).not.toBeEmpty();
+
+  const comparisonLinks = await row.locator(".comparison-sources a").evaluateAll(links =>
+    links.map(link => ({ name: link.innerText.trim(), href: link.href }))
+  );
+  expect(comparisonLinks.map(link => link.href)).toEqual(sourceLinks);
+  expect(comparisonLinks.every(link => link.name.length > 0)).toBe(true);
+
+  await expect(comparison.locator("caption")).toContainText(/not recorded/i);
+  await expect(comparison).toContainText("Comparison of saved pathways");
+});
+
+test("saved pathways remain available in comparison when filters hide their result cards", async ({ page }) => {
+  await createResults(page);
+  const firstCard = page.locator(".result-card").first();
+  const pathwayName = await firstCard.locator("h3").innerText();
+  await firstCard.getByRole("button", { name: "Save to shortlist" }).click();
+
+  await page.locator("#eligibility-filter").selectOption("ELIGIBLE");
+
+  await expect(page.locator(".result-card")).toHaveCount(0);
+  await expect(page.getByRole("heading", { name: "No pathways match these filters" })).toBeVisible();
+  await expect(page.locator(".shortlist-card")).toHaveCount(1);
+  await expect(page.locator(".comparison-table tbody tr")).toHaveCount(1);
+  await expect(page.locator(".comparison-table tbody tr").first()).toContainText(pathwayName);
 });
