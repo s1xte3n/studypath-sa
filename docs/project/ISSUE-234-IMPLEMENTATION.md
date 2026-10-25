@@ -14,7 +14,7 @@ Expose the deterministic eligibility outcome with requirement-level comparisons,
 | R234-02: Preserve unknown for missing/incomplete inputs | Missing mandatory subject in an incomplete transcript returns `UNKNOWN`, not a failure | `tests/pathway-matching.test.mjs`: incomplete transcript case | `src/domain/eligibility/uj-2027-evaluator.mjs` |
 | R234-03: Display provenance only when recorded | Evidence links reuse catalogue source URLs, title, location and verification date already stored | Existing pathway-matching source assertions plus new source-link assertion | `src/domain/pathway-matching.mjs`; `src/main.jsx` |
 | R234-04: Disclose unresolved conditions and limitations | Unresolved catalogue notes become `UNKNOWN` evidence rows; UI explains that unknown is not rejection and matches are not admission guarantees | New evidence test checks unresolved rows and provisional limitation | `src/domain/pathway-matching.mjs`; `src/main.jsx` |
-| R234-05: Accessible responsive breakdown | Native headings, lists, definition lists and links; content appears in the existing native `details/summary` expansion | Existing Playwright mobile discovery coverage; issue-specific browser coverage still needs to be added/run | `src/main.jsx`; `src/styles.css` |
+| R234-05: Accessible responsive breakdown | Native headings, lists, definition lists and links; content appears in the existing native `details/summary` expansion | Existing Playwright mobile discovery coverage; issue-specific keyboard/mobile browser test added; execution result pending CI | `src/main.jsx`; `src/styles.css` |
 
 ## Changed files
 
