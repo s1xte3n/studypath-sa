@@ -1318,3 +1318,38 @@ body,
   background: var(--paper, #17231e);
   color: var(--ink, #f7f8f4);
 }
+
+
+/* Keep detailed NSC and APS caveats available without a prominent warning panel. */
+.profile-guidance-disclosure {
+  margin: 0 0 1.25rem;
+  border: 1px solid var(--line, #dce4de);
+  border-radius: 0.75rem;
+  background: var(--paper, #fff);
+  color: var(--ink, #123b32);
+}
+
+.profile-guidance-disclosure summary {
+  padding: 0.85rem 1rem;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.profile-guidance-disclosure summary:focus-visible {
+  outline: 3px solid var(--green, #155c45);
+  outline-offset: 3px;
+  border-radius: 0.5rem;
+}
+
+.profile-guidance-content {
+  padding: 0 1rem 1rem;
+}
+
+.profile-guidance-content p {
+  margin: 0;
+}
+
+[data-theme="dark"] .profile-guidance-disclosure {
+  background: var(--paper, #17231e);
+  color: var(--ink, #f7f8f4);
+}
