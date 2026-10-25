@@ -577,10 +577,12 @@ function App() {
             <p className="eyebrow">YOUR NEXT STEP STARTS HERE</p>
             <h1>Find a study path<br /><span>that fits your future.</span></h1>
             <p className="hero-copy">Explore study options using your subjects and marks. See what is known, what still needs checking, and where to find official information.</p>
-            <div className="privacy-note" role="note">
-              <span className="privacy-icon" aria-hidden="true">●</span>
-              <div><strong>Private by design in this demo</strong><p>Your entries and results stay in this page's memory. They are not sent to a server or saved across a reload. Use fictional details only.</p></div>
-            </div>
+            <details className="privacy-disclosure">
+              <summary>Privacy in this demo</summary>
+              <div className="privacy-disclosure-content">
+                <p><strong>Private by design in this demo.</strong> Your entries and results stay in this page's memory. They are not sent to a server or saved across a reload. Use fictional details only.</p>
+              </div>
+            </details>
           </div>
           <aside className="hero-visual" aria-label="How StudyPath works">
             <div className="visual-card visual-card-input">
