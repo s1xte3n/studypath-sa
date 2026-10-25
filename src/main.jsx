@@ -306,6 +306,7 @@ function PathwayActionPlan({ item, plan, onStart, onAddTask, onUpdateTask }) {
       <div className="action-plan-heading">
         <div>
           <h4 id={`action-plan-title-${item.id}`}>Pathway action plan</h4>
+          <p className="action-plan-pathway-name">{item.name}</p>
           <p>Turn this saved option into manageable next steps.</p>
         </div>
         {started && <span className="action-plan-progress">{completed} of {tasks.length} done</span>}
