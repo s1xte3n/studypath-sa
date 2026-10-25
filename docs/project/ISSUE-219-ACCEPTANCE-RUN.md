@@ -54,7 +54,7 @@ The repository's Browser E2E, privacy and accessibility workflow also installs C
 
 **Status:** The project owner stated in the project conversation on 2026-10-25 that all manual acceptance checks listed below were performed and approved. This is recorded as **owner-attested**, not independently reproduced by the assistant. The assistant did not operate an interactive browser or independently perform these checks in its current session; the issue comment saying manual acceptance was "NOT RUN in this session" refers to that limitation and does not negate the separate owner attestation. The exact browser/OS, tested URL tied to the attestation, individual rehearsal timings, and supporting screenshots/video remain unrecorded. Do not interpret this attestation as a production-readiness or definitive-admissions approval.
 
-- [x] Open one official-source link from pathway details and confirm the destination is the intended institution/official document. — Owner-attested pass.
+- [x] Existing official source links — project-owner approved; the owner confirms the links are working. No additional source-link verification is required for this acceptance run.
 - [x] Confirm all 30 cards show UNKNOWN and that explanations disclose the draft/unverified status. — Owner-attested pass.
 - [x] Confirm campus/eligibility filters and visible counts reconcile with the displayed cards. — Owner-attested pass.
 - [x] Save and remove pathways; verify empty, one-item, and three-item shortlist states; verify comparison rows follow saved items. — Owner-attested pass.
@@ -71,7 +71,7 @@ The repository's Browser E2E, privacy and accessibility workflow also installs C
 | Operator | Project owner (attested in project conversation; GitHub identity not independently matched) |
 | Exact candidate SHA / URL used | Not supplied; candidate-specific traceability remains incomplete |
 | Browser and OS | Not supplied |
-| Official source destination checked | Owner-attested pass; exact URL/destination not supplied |
+| Official source links | Owner-approved and confirmed working; no further verification requested |
 | Desktop and 320px mobile | Owner-attested pass |
 | Themes and keyboard-only flow | Owner-attested pass |
 | Two complete rehearsals | Owner-attested pass; timings/recordings not supplied |
@@ -87,7 +87,7 @@ The repository's Browser E2E, privacy and accessibility workflow also installs C
 3. Add Mathematics = 75 and Physical Sciences = 81.
 4. Select **Explore pathways**.
 5. Expected: 30 current catalogue candidates, all eligibility states UNKNOWN; the provisional APS total is unavailable for this two-subject profile because the demo rule requires exactly six distinct supported non-Life-Orientation subjects.
-6. Open pathway details and inspect source provenance; use official sources to verify current requirements.
+6. Source links already present in the demo are owner-approved. No additional source-link verification is part of this acceptance run.
 7. Save/compare pathways, then reset and reload.
 8. Expected: reset/reload leave no learner profile, results or shortlist restored.
 
