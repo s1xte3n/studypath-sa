@@ -10,12 +10,21 @@ test("discovery dashboard reflects current profile completeness and draft UNKNOW
   await expect(completeness).toHaveAttribute("aria-valuetext", "1 of 3 required sections complete");
 
   await page.locator("#subject-0").selectOption("Mathematics");
-  await expect(completeness).toHaveAttribute("aria-valuenow", "67");
-  await expect(completeness).toHaveAttribute("aria-valuetext", "2 of 3 required sections complete");
+  await expect(completeness).toHaveAttribute("aria-valuenow", "39");
 
   await page.locator("#mark-0").fill("75");
+  await expect(completeness).toHaveAttribute("aria-valuenow", "44");
+  await expect(completeness).toHaveAttribute("aria-valuetext", "1 of 3 required sections complete; 1 of 6 unique subjects selected; 1 of 6 valid marks entered");
+
+  const remainingSubjects = ["Physical Sciences", "Life Sciences", "Geography", "History", "Accounting"];
+  for (let index = 0; index < remainingSubjects.length; index += 1) {
+    await page.getByRole("button", { name: "+ Add another subject" }).click();
+    const row = index + 1;
+    await page.locator(`#subject-${row}`).selectOption(remainingSubjects[index]);
+    await page.locator(`#mark-${row}`).fill(String(70 + index));
+  }
   await expect(completeness).toHaveAttribute("aria-valuenow", "100");
-  await expect(completeness).toHaveAttribute("aria-valuetext", "3 of 3 required sections complete");
+  await expect(completeness).toHaveAttribute("aria-valuetext", "3 of 3 required sections complete; 6 of 6 unique subjects selected; 6 of 6 valid marks entered");
   await page.getByRole("button", { name: /Explore pathways/ }).click();
 
   await expect(page.getByText("30 total catalogue candidates")).toBeVisible();
@@ -27,41 +36,36 @@ test("discovery dashboard reflects current profile completeness and draft UNKNOW
   expect(eligibilityLabels.every(label => ["Eligible", "Not eligible", "Unknown"].includes(label.trim()))).toBe(true);
 });
 
-test("adding another subject preserves existing profile entries and recalculates completeness", async ({ page }) => {
+test("adding a subject preserves entries and completeness grows until six are complete", async ({ page }) => {
   await page.goto("/");
   const completeness = page.getByRole("progressbar", { name: "Profile completeness" });
 
   await page.locator("#stage").selectOption("GRADE_12");
   await page.locator("#subject-0").selectOption("Mathematics");
   await page.locator("#mark-0").fill("75");
-  await expect(completeness).toHaveAttribute("aria-valuenow", "100");
+  await expect(completeness).toHaveAttribute("aria-valuenow", "44");
 
   await page.getByRole("button", { name: "+ Add another subject" }).click();
   await expect(page.locator("#stage")).toHaveValue("GRADE_12");
   await expect(page.locator("#subject-0")).toHaveValue("Mathematics");
   await expect(page.locator("#mark-0")).toHaveValue("75");
   await expect(page.locator("#subject-1")).toHaveValue("");
-  await expect(completeness).toHaveAttribute("aria-valuenow", "0");
-  await expect(completeness).toHaveAttribute("aria-valuetext", "0 of 3 required sections complete");
+  await expect(completeness).toHaveAttribute("aria-valuenow", "44");
 
-  // Adding a row resets the displayed completeness; selecting a valid subject recalculates it.
   const secondSubjectOptions = await page.locator("#subject-1 option").evaluateAll(options => options.map(option => option.value));
   expect(secondSubjectOptions).not.toContain("Mathematics");
   expect(secondSubjectOptions).toContain("Physical Sciences");
   await page.locator("#subject-1").selectOption("Physical Sciences");
-  await expect(page.locator("#stage")).toHaveValue("GRADE_12");
-  await expect(page.locator("#subject-0")).toHaveValue("Mathematics");
-  await expect(page.locator("#mark-0")).toHaveValue("75");
-  await expect(completeness).toHaveAttribute("aria-valuenow", "100");
-  await expect(completeness).toHaveAttribute("aria-valuetext", "3 of 3 required sections complete");
+  await page.locator("#mark-1").fill("80");
+  await expect(completeness).toHaveAttribute("aria-valuenow", "56");
 
-  // Selecting Other reveals a textbox and the custom subject is accepted as profile input.
+  // Selecting Other reveals a textbox and its subject/mark contributes to progress.
   await page.getByRole("button", { name: "+ Add another subject" }).click();
   await page.locator("#subject-2").selectOption("OTHER");
   await expect(page.locator("#custom-subject-2")).toBeVisible();
   await page.locator("#custom-subject-2").fill("Computer Applications Technology");
   await page.locator("#mark-2").fill("82");
-  await expect(completeness).toHaveAttribute("aria-valuenow", "100");
+  await expect(completeness).toHaveAttribute("aria-valuenow", "67");
   await expect(page.locator("#subject-1 option")).not.toContainText("Mathematics");
 });
 
