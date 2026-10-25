@@ -326,3 +326,20 @@ test("NSC subject and APS guidance is available on demand instead of shown as a 
   await expect(disclosure.getByRole("link", { name: "Read the Department of Basic Education’s subject guidance" }))
     .toHaveAttribute("href", "https://www.education.gov.za/Informationfor/Learners/SubjectChoiceandCareerPathing.aspx");
 });
+
+
+test("provisional APS methodology and limitations are available on demand", async ({ page }) => {
+  await page.goto("/");
+  const disclosure = page.locator(".aps-disclosure");
+  await expect(disclosure.locator("summary")).toHaveText("How the provisional APS estimate works");
+  await expect(disclosure).not.toHaveAttribute("open", "");
+  await expect(disclosure.getByText(/not an official or verified APS result/i)).toBeHidden();
+
+  await disclosure.locator("summary").click();
+  await expect(disclosure.getByText(/not an official or verified APS result/i)).toBeVisible();
+  await expect(disclosure.getByRole("link", { name: /UJ 2027 Undergraduate Prospectus/ }))
+    .toHaveAttribute("href", "https://www.uj.ac.za/wp-content/uploads/2026/07/uj_undergrad_prospectus2027_online_25jun2026.pdf");
+  await expect(disclosure.getByRole("link", { name: /UJ frequently asked questions/ }))
+    .toHaveAttribute("href", "https://www.uj.ac.za/frequently-asked-questions");
+  await expect(disclosure.getByText(/This estimate never changes pathway eligibility/i)).toBeVisible();
+});
