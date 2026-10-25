@@ -57,7 +57,7 @@ export function evaluateEligibility({programme,learnerInput,admissionCycle,catal
  if(english.level<(req.english?.minLevel??1))return R("NOT_ELIGIBLE","ENGLISH_BELOW_MINIMUM","English level is below minimum.",aps);
  if(aps===null)return R("UNKNOWN","REQUIRED_INPUT_MISSING","Cannot select six valid APS subjects.");
  if(Number.isInteger(minAps)&&aps<minAps)return R("NOT_ELIGIBLE","APS_BELOW_MINIMUM","APS is below minimum.",aps);
- if(!learnerInput.transcriptComplete)return R("UNKNOWN","REQUIRED_INPUT_MISSING","Transcript is incomplete.",aps);
+ if(!learnerInput.transcriptComplete&&!(demoMode&&learnerInput.studyStage==="GRADE_12"))return R("UNKNOWN","REQUIRED_INPUT_MISSING","Transcript is incomplete.",aps);
  if((demoMode&&hasDemoBlockingAmbiguity(programme,learnerInput))||(!demoMode&&programme.unresolved?.length&&!testOnlyAssumptions))return R("UNKNOWN","MATERIAL_RULES_UNRESOLVED","A material programme-rule ambiguity could change this outcome; the current source notes do not support a reliable result.",aps);
  return {state:"ELIGIBLE",reasonCodes:[demoMode?"RECORDED_MINIMUMS_MET_PROVISIONALLY":"ALL_VERIFIED_REQUIREMENTS_MET"],explanation:demoMode?"Meets the minimum requirements currently recorded for this pathway (provisional); admission is not guaranteed.":"Minimum requirements met; admission is not guaranteed.",aps};
 }
