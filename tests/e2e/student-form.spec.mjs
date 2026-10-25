@@ -1,6 +1,64 @@
 import { test, expect } from "@playwright/test";
 import AxeBuilder from "@axe-core/playwright";
 
+
+test("saved pathways compare supported fields, enforce the three-item limit, and clear on reset/reload", async ({ page }) => {
+  await page.setViewportSize({ width: 320, height: 900 });
+  await page.goto("/");
+  await page.locator("#stage").selectOption("GRADE_12");
+  const profile = [
+    ["English Home Language", "70"],
+    ["Mathematics", "75"],
+    ["Physical Sciences", "72"],
+    ["Life Sciences", "68"],
+    ["Geography", "71"],
+    ["Business Studies", "74"]
+  ];
+  for (const [index, [subject, mark]] of profile.entries()) {
+    if (index > 0) await page.getByRole("button", { name: /Add another subject/ }).click();
+    await page.locator(`#subject-${index}`).selectOption(subject);
+    await page.locator(`#mark-${index}`).fill(mark);
+  }
+  await page.getByRole("button", { name: /Explore pathways/ }).click();
+  await expect(page.locator(".result-card")).toHaveCount(30);
+  await expect(page.getByRole("heading", { name: "Compare saved pathways" })).toBeVisible();
+  await expect(page.locator(".comparison-empty")).toBeVisible();
+
+  for (let index = 0; index < 3; index += 1) {
+    await page.locator(".result-card").nth(index).getByRole("button", { name: "Save to shortlist" }).click();
+  }
+  await expect(page.locator(".comparison-table tbody tr")).toHaveCount(3);
+  await expect(page.locator(".comparison-table thead th")).toHaveCount(7);
+  await expect(page.locator(".comparison-table")).toContainText("Eligibility state and explanation");
+  await expect(page.locator(".comparison-table")).toContainText("Official source links");
+  await expect(page.getByRole("status").filter({ hasText: "Three pathways are saved" })).toBeVisible();
+  await expect(page.locator(".result-card").nth(3).getByRole("button", { name: "Save to shortlist" })).toBeDisabled();
+
+  await page.locator(".shortlist-card").first().getByRole("button", { name: /^Remove / }).click();
+  await expect(page.locator(".comparison-table tbody tr")).toHaveCount(2);
+  await page.locator(".result-card").nth(3).getByRole("button", { name: "Save to shortlist" }).click();
+  await expect(page.locator(".comparison-table tbody tr")).toHaveCount(3);
+
+  const viewport = await page.evaluate(() => ({
+    viewportWidth: window.innerWidth,
+    documentWidth: document.documentElement.scrollWidth,
+    comparisonWidth: document.querySelector(".comparison-table-wrap").clientWidth,
+    tableWidth: document.querySelector(".comparison-table").scrollWidth
+  }));
+  expect(viewport.documentWidth).toBeLessThanOrEqual(viewport.viewportWidth);
+  expect(viewport.tableWidth).toBeGreaterThan(viewport.comparisonWidth);
+
+  await page.getByRole("button", { name: "Reset" }).click();
+  await expect(page.locator(".result-card")).toHaveCount(0);
+  await expect(page.locator(".comparison-table")).toHaveCount(0);
+  await expect(page.locator(".comparison-empty")).toHaveCount(0);
+  await expect(page.locator("#stage")).toHaveValue("");
+
+  await page.reload();
+  await expect(page.locator("#stage")).toHaveValue("");
+  await expect(page.locator(".result-card")).toHaveCount(0);
+});
+
 test("learner can edit rows, validate entries, and reset the form", async ({ page }) => {
   await page.goto("/");
   await expect(page.getByRole("heading", { name: "Tell us about your studies" })).toBeVisible();
