@@ -61,7 +61,7 @@ function PathwayDetails({ item }) {
                   <div className="requirement-evidence-heading">
                     <strong>{check.label}</strong>
                     <span className={`requirement-check-state evidence-state-${check.status.toLowerCase().replaceAll("_", "-")}`}>
-                      {check.status === "MET" ? "Meets recorded rule" : check.status === "NOT_MET" ? "Does not meet recorded rule" : "Unknown"}
+                      {check.status === "MET" ? "Meets recorded rule" : check.status === "NOT_MET" ? "Does not meet recorded rule" : check.status === "NOT_APPLICABLE" ? "Not applicable" : "Unknown"}
                     </span>
                   </div>
                   <dl className="requirement-evidence-facts">
