@@ -40,18 +40,19 @@ The repository's Browser E2E, privacy and accessibility workflow also installs C
 
 | Evidence | Result |
 |---|---|
-| PR number / URL | Pending |
-| Exact PR-head SHA | Pending |
-| Unit and contract tests | Pending candidate CI |
-| Playwright E2E | Pending candidate CI |
-| Production build | Pending candidate CI |
-| CI workflow run URLs | Pending candidate CI |
+| Candidate commit recorded in the issue | `6ea58b91b2f771d34d0f0b9781de3dd4dc2b6488` (reported as the main merge commit; a separate PR-head SHA/URL was not recorded) |
+| Browser MVP build / tests | [GitHub Actions run 40181318168](https://github.com/s1xte3n/studypath-sa/actions/runs/40181318168) — completed successfully, per the issue evidence comment |
+| Browser E2E, privacy and accessibility | [GitHub Actions run 40181318141](https://github.com/s1xte3n/studypath-sa/actions/runs/40181318141) — completed successfully, per the issue evidence comment |
+| Contract tests | [GitHub Actions run 40181318136](https://github.com/s1xte3n/studypath-sa/actions/runs/40181318136) — reported successful |
+| UJ eligibility golden-case verification | [GitHub Actions run 40181318135](https://github.com/s1xte3n/studypath-sa/actions/runs/40181318135) — reported successful |
+| GitHub Pages preview | [GitHub Actions run 40181318137](https://github.com/s1xte3n/studypath-sa/actions/runs/40181318137) — reported successful; this workflow was subsequently removed |
+| PR number / URL and exact PR-head SHA | Not separately established by the evidence currently recorded |
 
-A successful workflow is automated evidence only; it does not count as a manual rehearsal or prove that an external website was reachable during a human demo.
+**Evidence boundary:** these are GitHub Actions results reported in the issue evidence comment, not commands run in this session. Successful automation does not count as a manual rehearsal or prove that an external website was reachable during a human demo.
 
 ## Manual acceptance checklist — owner attestation (2026-10-25)
 
-**Status:** The project owner has stated in the project conversation on 2026-10-25 that all manual acceptance checks listed below were performed and approved. This is recorded as **owner-attested**, not independently reproduced by the assistant. The owner did not provide the exact candidate SHA/URL, browser/OS, exact run times, or supporting screenshots/video in that statement; those traceability details remain unrecorded and should be attached if available. Do not interpret this attestation as a production-readiness or definitive-admissions approval.
+**Status:** The project owner stated in the project conversation on 2026-10-25 that all manual acceptance checks listed below were performed and approved. This is recorded as **owner-attested**, not independently reproduced by the assistant. The assistant did not operate an interactive browser or independently perform these checks in its current session; the issue comment saying manual acceptance was "NOT RUN in this session" refers to that limitation and does not negate the separate owner attestation. The exact browser/OS, tested URL tied to the attestation, individual rehearsal timings, and supporting screenshots/video remain unrecorded. Do not interpret this attestation as a production-readiness or definitive-admissions approval.
 
 - [x] Open one official-source link from pathway details and confirm the destination is the intended institution/official document. — Owner-attested pass.
 - [x] Confirm all 30 cards show UNKNOWN and that explanations disclose the draft/unverified status. — Owner-attested pass.
@@ -77,7 +78,7 @@ A successful workflow is automated evidence only; it does not count as a manual 
 | Defects / deviations | None reported by owner; no separate defect log supplied |
 | Supporting evidence | Not supplied with the attestation |
 
-**Disposition note:** this updates the manual status based on the owner's explicit attestation. It does not independently validate the checks or fill missing run metadata. The candidate SHA and CI evidence must still be reconciled before Issue #219 is closed.
+**Disposition note:** the owner-attested manual checklist and the assistant-session limitation are distinct evidence statements. The candidate merge SHA and reported CI run links are now recorded above, but the PR-head identity and manual run metadata (browser/OS, exact URL, rehearsal timings, and supporting artefacts) remain incomplete. Keep Issue #219 open until the missing traceability is supplied or the project owner explicitly records which details are unavailable and accepts that limitation.
 
 ## Demo profile and expected outcomes
 
