@@ -140,11 +140,19 @@ test("issue 219 fresh-session discovery journey reconciles counts, sources, shor
   await expect(page.locator(".result-card")).toHaveCount(0);
 
   await page.locator("#stage").selectOption("GRADE_12");
-  await page.locator("#subject-0").selectOption("Mathematics");
-  await page.locator("#mark-0").fill("75");
-  await page.getByRole("button", { name: /Add another subject/ }).click();
-  await page.locator("#subject-1").selectOption("Physical Sciences");
-  await page.locator("#mark-1").fill("81");
+  const demoProfile = [
+    ["English Home Language", "65"],
+    ["Mathematics", "75"],
+    ["Physical Sciences", "68"],
+    ["Life Sciences", "62"],
+    ["Geography", "71"],
+    ["Business Studies", "66"]
+  ];
+  for (const [index, [subject, mark]] of demoProfile.entries()) {
+    if (index > 0) await page.getByRole("button", { name: /Add another subject/ }).click();
+    await page.locator(`#subject-${index}`).selectOption(subject);
+    await page.locator(`#mark-${index}`).fill(mark);
+  }
   await expect(page.getByRole("progressbar", { name: "Profile completeness" })).toHaveAttribute("aria-valuenow", "100");
 
   await page.getByRole("button", { name: /Explore pathways/ }).click();
@@ -152,12 +160,18 @@ test("issue 219 fresh-session discovery journey reconciles counts, sources, shor
   await expect(cards).toHaveCount(30);
   await expect(page.getByText("30 total catalogue candidates")).toBeVisible();
   await expect(page.getByText("30 currently shown")).toBeVisible();
-  await expect(page.locator(".eligibility-state")).toHaveText(Array(30).fill("Unknown"));
-  await expect(page.locator(".discovery-counts")).toContainText("30");
+  const eligibleCount = Number(await page.locator(".discovery-counts div").filter({ hasText: /^Eligible/ }).locator("strong").innerText());
+  const notEligibleCount = Number(await page.locator(".discovery-counts div").filter({ hasText: /^Not eligible/ }).locator("strong").innerText());
+  const unknownCount = Number(await page.locator(".discovery-counts div").filter({ hasText: /^Unknown/ }).locator("strong").innerText());
+  expect(eligibleCount).toBeGreaterThan(0);
+  expect(notEligibleCount).toBeGreaterThan(0);
+  expect(unknownCount).toBeGreaterThan(0);
+  expect(eligibleCount + notEligibleCount + unknownCount).toBe(30);
+  await expect(cards.filter({ hasText: "Provisional match" }).first()).toBeVisible();
 
   await page.locator("#eligibility-filter").selectOption("UNKNOWN");
-  await expect(cards).toHaveCount(30);
-  await expect(page.getByText("30 currently shown")).toBeVisible();
+  await expect(cards).toHaveCount(unknownCount);
+  await expect(page.getByText(`${unknownCount} currently shown`)).toBeVisible();
 
   const sourceCard = cards.filter({ has: page.locator(".pathway-details .official-links a") }).first();
   await sourceCard.locator(".pathway-details summary").click();
