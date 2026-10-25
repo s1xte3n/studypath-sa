@@ -27,6 +27,36 @@ test("discovery dashboard reflects current profile completeness and draft UNKNOW
   expect(eligibilityLabels.every(label => ["Eligible", "Not eligible", "Unknown"].includes(label.trim()))).toBe(true);
 });
 
+test("adding another subject preserves existing profile entries and recalculates completeness", async ({ page }) => {
+  await page.goto("/");
+  const completeness = page.getByRole("progressbar", { name: "Profile completeness" });
+
+  await page.locator("#stage").selectOption("GRADE_12");
+  await page.locator("#subject-0").selectOption("Mathematics");
+  await page.locator("#mark-0").fill("75");
+  await expect(completeness).toHaveAttribute("aria-valuenow", "100");
+
+  await page.getByRole("button", { name: "+ Add another subject" }).click();
+  await expect(page.locator("#stage")).toHaveValue("GRADE_12");
+  await expect(page.locator("#subject-0")).toHaveValue("Mathematics");
+  await expect(page.locator("#mark-0")).toHaveValue("75");
+  await expect(page.locator("#subject-1")).toHaveValue("");
+  await expect(completeness).toHaveAttribute("aria-valuenow", "100");
+
+  // A duplicate makes the subject selection non-unique, so completeness is recalculated.
+  await page.locator("#subject-1").selectOption("Mathematics");
+  await expect(completeness).toHaveAttribute("aria-valuenow", "33");
+  await expect(completeness).toHaveAttribute("aria-valuetext", "1 of 3 required sections complete");
+
+  // Choosing a different subject restores uniqueness without clearing the earlier mark.
+  await page.locator("#subject-1").selectOption("Physical Sciences");
+  await expect(page.locator("#stage")).toHaveValue("GRADE_12");
+  await expect(page.locator("#subject-0")).toHaveValue("Mathematics");
+  await expect(page.locator("#mark-0")).toHaveValue("75");
+  await expect(completeness).toHaveAttribute("aria-valuenow", "100");
+  await expect(completeness).toHaveAttribute("aria-valuetext", "3 of 3 required sections complete");
+});
+
 test("eligibility filters update visible counts and provide a recoverable empty state", async ({ page }) => {
   await page.goto("/");
   await page.locator("#stage").selectOption("GRADE_12");
