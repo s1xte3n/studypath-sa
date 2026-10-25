@@ -636,7 +636,7 @@ test("editing a learner profile clears its saved pathways and tracker notes", as
   await expect(page.locator(".result-card")).toHaveCount(0);
   await page.getByRole("button", { name: /Explore pathways/ }).click();
   await expect(page.locator(".result-card")).toHaveCount(30);
-  await expect(page.getByText("0 / 3 SAVED")).toBeVisible();
+  await expect(page.locator(".shortlist-section .step-count")).toHaveText("0 / 3 SAVED");
   await expect(page.getByText("Confirm the requirements for my original profile")).toHaveCount(0);
   await expect(page.getByRole("button", { name: "Save to shortlist" }).first()).toBeVisible();
 });
