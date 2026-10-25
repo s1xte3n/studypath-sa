@@ -95,8 +95,8 @@ test("learner can edit rows, validate entries, and reset the form", async ({ pag
     .first();
 
   await sourceDetails.locator(":scope > summary").click();
-  const evidenceDisclosure = sourceDetails.locator(".compact-evidence-disclosure").first();
-  await evidenceDisclosure.locator(":scope > summary").click();
+  const evidenceDisclosure = sourceDetails.locator(".requirement-evidence > summary");
+  await evidenceDisclosure.click();
 
   // Requirement-level evidence now repeats source metadata for each rule, so
   // assert a visible occurrence rather than requiring a unique match.
