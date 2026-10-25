@@ -1,10 +1,11 @@
 const VALID_STATES = ["ELIGIBLE", "NOT_ELIGIBLE", "UNKNOWN"];
 
 /**
- * Completeness uses two required sections from the current form:
- * 1. a selected study stage (50%);
- * 2. at least one unique subject with a whole-number mark from 0 to 100 (50%).
- * Additional rows are optional and do not reduce the score when blank.
+ * Completeness tracks three required sections:
+ * 1. a selected study stage;
+ * 2. at least one subject selected exactly once;
+ * 3. a whole-number mark from 0 to 100 for a uniquely selected subject.
+ * Each section contributes one third. Additional blank rows are optional.
  */
 export function getProfileCompleteness({ stage, subjects }) {
   const hasStage = typeof stage === "string" && stage.trim().length > 0;
@@ -17,6 +18,7 @@ export function getProfileCompleteness({ stage, subjects }) {
     }
   }
 
+  const hasUniqueSubject = [...subjectCounts.values()].some(count => count === 1);
   const hasUniqueValidSubjectMark = rows.some((row) => {
     if (typeof row?.subject !== "string" || !row.subject.trim()) return false;
     if (subjectCounts.get(row.subject) !== 1) return false;
@@ -25,11 +27,12 @@ export function getProfileCompleteness({ stage, subjects }) {
     return Number.isInteger(mark) && mark >= 0 && mark <= 100;
   });
 
-  const completedSections = Number(hasStage) + Number(hasUniqueValidSubjectMark);
+  const completedSections = Number(hasStage) + Number(hasUniqueSubject) + Number(hasUniqueValidSubjectMark);
+  const requiredSections = 3;
   return {
     completedSections,
-    requiredSections: 2,
-    percentage: completedSections * 50
+    requiredSections,
+    percentage: Math.round((completedSections / requiredSections) * 100)
   };
 }
 
