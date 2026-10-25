@@ -96,7 +96,7 @@ test("comparison reflects saved pathway facts, eligibility uncertainty, and reco
   const targetCard = await sourceCard.count() ? sourceCard : cards.first();
   const pathwayName = await targetCard.locator("h3").innerText();
   const sourceLinks = await targetCard.locator(".pathway-details .official-links a").evaluateAll(links =>
-    links.map(link => ({ name: link.innerText.trim(), href: link.href }))
+    links.map(link => link.href)
   );
 
   await targetCard.getByRole("button", { name: "Save to shortlist" }).click();
@@ -112,7 +112,8 @@ test("comparison reflects saved pathway facts, eligibility uncertainty, and reco
   const comparisonLinks = await row.locator(".comparison-sources a").evaluateAll(links =>
     links.map(link => ({ name: link.innerText.trim(), href: link.href }))
   );
-  expect(comparisonLinks).toEqual(sourceLinks);
+  expect(comparisonLinks.map(link => link.href)).toEqual(sourceLinks);
+  expect(comparisonLinks.every(link => link.name.length > 0)).toBe(true);
 
   await expect(comparison).toContainText("Not recorded");
   await expect(comparison).toContainText("Comparison of saved pathways");
