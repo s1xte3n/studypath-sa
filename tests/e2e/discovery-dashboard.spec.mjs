@@ -138,6 +138,10 @@ test("pathway details expose requirement evidence by keyboard at mobile width", 
   await summary.focus();
   await page.keyboard.press("Enter");
 
+  const evidenceDisclosure = firstCard.locator(".requirement-evidence");
+  await expect(evidenceDisclosure.locator("summary")).toContainText("View requirement-by-requirement evidence");
+  await expect(evidenceDisclosure).not.toHaveAttribute("open", "");
+  await evidenceDisclosure.locator("summary").click();
   await expect(firstCard.getByRole("heading", { name: "Requirement-by-requirement check" })).toBeVisible();
   await expect(firstCard.getByText("Recorded rule", { exact: true }).first()).toBeVisible();
   await expect(firstCard.getByText("Your input", { exact: true }).first()).toBeVisible();
@@ -220,7 +224,9 @@ test("blocked pathway offers catalogue-backed alternatives and links to the sele
   await preferredCard.locator("summary").first().click();
   const alternatives = preferredCard.locator(".alternative-pathways");
   await expect(alternatives).toBeVisible();
-  await expect(alternatives.getByRole("heading", { name: "Other pathways to explore" })).toBeVisible();
+  await expect(alternatives.locator("summary")).toContainText("Other pathways to explore");
+  await expect(alternatives).not.toHaveAttribute("open", "");
+  await alternatives.locator("summary").click();
   const evidenceToggle = alternatives.getByText("View eligibility evidence").first();
   await expect(evidenceToggle).toBeVisible();
   await evidenceToggle.click();
