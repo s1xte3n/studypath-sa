@@ -181,3 +181,48 @@ test("blocked pathway offers catalogue-backed alternatives and links to the sele
   const layout = await page.evaluate(() => ({ viewportWidth: window.innerWidth, documentWidth: document.documentElement.scrollWidth }));
   expect(layout.documentWidth).toBeLessThanOrEqual(layout.viewportWidth);
 });
+
+
+test("what-if planner recalculates hypothetically and keeps actual marks/results isolated on mobile", async ({ page }) => {
+  await page.setViewportSize({ width: 320, height: 850 });
+  await page.goto("/");
+  await page.locator("#stage").selectOption("MATRIC_GRADUATE");
+  const subjects = [
+    ["English Home Language", "80"],
+    ["Mathematics", "69"],
+    ["Physical Sciences", "75"],
+    ["Life Sciences", "75"],
+    ["Geography", "75"],
+    ["Accounting", "75"]
+  ];
+  for (let index = 0; index < subjects.length; index += 1) {
+    if (index > 0) await page.getByRole("button", { name: "+ Add another subject" }).click();
+    await page.locator(`#subject-${index}`).selectOption(subjects[index][0]);
+    await page.locator(`#mark-${index}`).fill(subjects[index][1]);
+  }
+  await page.getByRole("button", { name: /Explore pathways/ }).click();
+  const actualResultCount = await page.locator(".result-card").count();
+  const actualMath = page.locator("#mark-1");
+
+  await page.getByRole("button", { name: "Try hypothetical marks" }).click();
+  await expect(page.getByText("Hypothetical scenario.", { exact: false })).toBeVisible();
+  const hypotheticalMath = page.getByRole("spinbutton", { name: "Hypothetical mark for Mathematics" });
+  await expect(hypotheticalMath).toHaveValue("69");
+  await hypotheticalMath.fill("70");
+  await expect(actualMath).toHaveValue("69");
+  await page.getByRole("button", { name: "Simulate marks" }).click();
+  await expect(page.getByRole("heading", { name: "Hypothetical comparison" })).toBeVisible();
+  await expect(page.locator(".what-if-results")).toContainText("Before and after states");
+  await expect(page.locator(".what-if-change-list")).toBeVisible();
+  await expect(actualMath).toHaveValue("69");
+  await expect(page.locator(".result-card")).toHaveCount(actualResultCount);
+
+  await page.getByRole("button", { name: "Exit what-if" }).click();
+  await expect(page.getByRole("heading", { name: "Hypothetical comparison" })).toHaveCount(0);
+  await expect(page.getByRole("button", { name: "Try hypothetical marks" })).toBeVisible();
+  await expect(actualMath).toHaveValue("69");
+  await expect(page.locator(".result-card")).toHaveCount(actualResultCount);
+
+  const layout = await page.evaluate(() => ({ viewportWidth: window.innerWidth, documentWidth: document.documentElement.scrollWidth }));
+  expect(layout.documentWidth).toBeLessThanOrEqual(layout.viewportWidth);
+});
