@@ -45,13 +45,13 @@ The repository's Browser E2E, privacy and accessibility workflow also installs C
 | Browser MVP build / tests on PR #228 merge | [GitHub Actions run 40188274276](https://github.com/s1x6te3n/studypath-sa/actions/runs/40188274276) — completed successfully, per owner-provided result |
 | Browser E2E, privacy and accessibility on PR #228 merge | [GitHub Actions run 40188274290](https://github.com/s1x6te3n/studypath-sa/actions/runs/40188274290) — completed successfully, per owner-provided result |
 | Contract tests on PR #228 merge | [GitHub Actions run 40188274295](https://github.com/s1x6te3n/studypath-sa/actions/runs/40188274295) — completed successfully, per owner-provided result |
-| Exact PR-head SHA / URL used for the owner-attested manual run | Not supplied; manual-run traceability remains incomplete |
+| Exact PR-head SHA / URL used for the owner-attested manual run | Not recorded; deferred and not required for the current hackathon acceptance run |
 
 **Evidence boundary:** these are GitHub Actions results reported in the issue evidence comment, not commands run in this session. Successful automation does not count as a manual rehearsal or prove production deployment. The source-link checks are excluded from remaining acceptance work by explicit project-owner decision.
 
 ## Manual acceptance checklist — owner attestation (2026-10-25)
 
-**Status:** The project owner stated in the project conversation on 2026-10-25 that all manual acceptance checks listed below were performed and approved. This is recorded as **owner-attested**, not independently reproduced by the assistant. The assistant did not operate an interactive browser or independently perform these checks in its current session; the issue comment saying manual acceptance was "NOT RUN in this session" refers to that limitation and does not negate the separate owner attestation. The exact browser/OS, tested URL tied to the attestation, individual rehearsal timings, and supporting screenshots/video remain unrecorded. Do not interpret this attestation as a production-readiness or definitive-admissions approval.
+**Status:** The project owner stated in the project conversation on 2026-10-25 that all manual acceptance checks listed below were performed and approved. This is recorded as **owner-attested**, not independently reproduced by the assistant. The assistant did not operate an interactive browser or independently perform these checks in its current session; the issue comment saying manual acceptance was "NOT RUN in this session" refers to that limitation and does not negate the separate owner attestation. Additional traceability details (browser/OS, exact tested URL, individual rehearsal timings, and supporting screenshots/video) are not recorded and are deferred; they are not blockers for the current hackathon acceptance run. Do not interpret this attestation as a production-readiness or definitive-admissions approval.
 
 - [x] Existing official source links — project-owner approved; the owner confirms the links are working. No additional source-link verification is required for this acceptance run.
 - [x] Confirm all 30 cards show UNKNOWN and that explanations disclose the draft/unverified status. — Owner-attested pass.
@@ -68,16 +68,16 @@ The repository's Browser E2E, privacy and accessibility workflow also installs C
 |---|---|
 | Date of owner attestation | 2026-10-25 |
 | Operator | Project owner (attested in project conversation; GitHub identity not independently matched) |
-| Exact candidate SHA / URL used | Not supplied; candidate-specific traceability remains incomplete |
-| Browser and OS | Not supplied |
+| Exact candidate SHA / URL used | Not recorded; deferred for the current hackathon acceptance run |
+| Browser and OS | Not recorded; deferred |
 | Official source links | Owner-approved and confirmed working; no further verification requested |
 | Desktop and 320px mobile | Owner-attested pass |
 | Themes and keyboard-only flow | Owner-attested pass |
-| Two complete rehearsals | Owner-attested pass; timings/recordings not supplied |
+| Two complete rehearsals | Owner-attested pass; timings/recordings deferred |
 | Defects / deviations | None reported by owner; no separate defect log supplied |
-| Supporting evidence | Not supplied with the attestation |
+| Supporting evidence | Not supplied with the attestation; deferred |
 
-**Disposition note:** the owner-attested manual checklist and the assistant-session limitation are distinct evidence statements. The candidate merge SHA and reported CI run links are now recorded above, but the PR-head identity and manual run metadata (browser/OS, exact URL, rehearsal timings, and supporting artefacts) remain incomplete. Keep Issue #219 open until the missing traceability is supplied or the project owner explicitly records which details are unavailable and accepts that limitation.
+**Disposition note:** the owner-attested manual checklist and the assistant-session limitation are distinct evidence statements. The candidate merge SHA and reported CI run links are recorded above. The additional manual-run metadata (browser/OS, exact tested URL, individual rehearsal timings, and supporting artefacts) is explicitly deferred and is not a blocker for the current hackathon acceptance run. Do not claim these details were captured.
 
 ## Demo profile and expected outcomes
 
