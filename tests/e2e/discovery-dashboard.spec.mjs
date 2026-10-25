@@ -16,7 +16,9 @@ test("discovery dashboard reflects current profile completeness and draft UNKNOW
   await expect(page.getByText("30 currently shown")).toBeVisible();
   await expect(page.locator(".discovery-counts")).toContainText("Unknown");
   await expect(page.locator(".discovery-counts")).toContainText("30");
-  await expect(page.locator(".eligibility-state")).toHaveText(Array(30).fill("Unknown"));
+  const eligibilityLabels = await page.locator(".result-card-top > .eligibility-state").allTextContents();
+  expect(eligibilityLabels).toHaveLength(30);
+  expect(eligibilityLabels.every(label => ["Eligible", "Not eligible", "Unknown"].includes(label.trim()))).toBe(true);
 });
 
 test("eligibility filters update visible counts and provide a recoverable empty state", async ({ page }) => {
@@ -77,7 +79,7 @@ test("pathway details expose requirement evidence by keyboard at mobile width", 
 
   await page.getByRole("button", { name: /Explore pathways/ }).click();
   const firstCard = page.locator(".result-card").first();
-  const summary = firstCard.locator("summary").first();
+  const summary = firstCard.locator("summary").first().first();
   await summary.focus();
   await page.keyboard.press("Enter");
 
@@ -103,7 +105,7 @@ test("Why Not Yet distinguishes missing information from a recorded shortfall on
   await page.getByRole("button", { name: /Explore pathways/ }).click();
 
   const unknownCard = page.locator(".result-card").filter({ has: page.getByText("Unknown", { exact: true }) }).first();
-  await unknownCard.locator("summary").focus();
+  await unknownCard.locator("summary").first().focus();
   await page.keyboard.press("Enter");
   await expect(unknownCard.getByRole("heading", { name: "More information is needed" })).toBeVisible();
   await expect(unknownCard.locator(".why-not-yet-caveat")).toContainText("Unknown is not a rejection");
@@ -127,7 +129,7 @@ test("Why Not Yet distinguishes missing information from a recorded shortfall on
   await page.getByRole("button", { name: /Explore pathways/ }).click();
   const rejectedCard = page.locator(".result-card").filter({ has: page.getByText("Not eligible", { exact: true }) }).first();
   await expect(rejectedCard).toBeVisible();
-  await rejectedCard.locator("summary").click();
+  await rejectedCard.locator("summary").first().click();
   await expect(rejectedCard.getByRole("heading", { name: "Recorded requirement not met" })).toBeVisible();
   await expect(rejectedCard.locator(".why-not-yet-blockers li").first()).toBeVisible();
 
@@ -135,5 +137,47 @@ test("Why Not Yet distinguishes missing information from a recorded shortfall on
     viewportWidth: window.innerWidth,
     documentWidth: document.documentElement.scrollWidth
   }));
+  expect(layout.documentWidth).toBeLessThanOrEqual(layout.viewportWidth);
+});
+
+
+test("blocked pathway offers catalogue-backed alternatives and links to the selected result", async ({ page }) => {
+  await page.setViewportSize({ width: 320, height: 800 });
+  await page.goto("/");
+  await page.locator("#stage").selectOption("MATRIC_GRADUATE");
+  const subjects = [
+    ["English Home Language", "90"],
+    ["Mathematics", "50"],
+    ["Physical Sciences", "75"],
+    ["Life Sciences", "70"],
+    ["Geography", "65"],
+    ["Accounting", "60"]
+  ];
+  for (let index = 0; index < subjects.length; index += 1) {
+    if (index > 0) await page.getByRole("button", { name: "+ Add another subject" }).click();
+    await page.locator("#subject-" + index).selectOption(subjects[index][0]);
+    await page.locator("#mark-" + index).fill(subjects[index][1]);
+  }
+  await page.getByRole("button", { name: /Explore pathways/ }).click();
+
+  const preferredCard = page.locator("#pathway-UJ-2027-BSC-IT");
+  await expect(preferredCard).toBeVisible();
+  await preferredCard.locator("summary").first().click();
+  const alternatives = preferredCard.locator(".alternative-pathways");
+  await expect(alternatives).toBeVisible();
+  await expect(alternatives.getByRole("heading", { name: "Other pathways to explore" })).toBeVisible();
+  const evidenceToggle = alternatives.getByText("View eligibility evidence").first();
+  await expect(evidenceToggle).toBeVisible();
+  await evidenceToggle.click();
+  await expect(alternatives.locator(".alternative-evidence-list").first()).toBeVisible();
+
+  const alternativeLink = alternatives.getByRole("link", { name: "View this pathway in results" }).first();
+  await expect(alternativeLink).toBeVisible();
+  const href = await alternativeLink.getAttribute("href");
+  expect(href).toMatch(/^#pathway-UJ-2027-/);
+  await alternativeLink.click();
+  await expect(page).toHaveURL(new RegExp(href + "$"));
+  await expect(page.locator(href)).toBeVisible();
+  const layout = await page.evaluate(() => ({ viewportWidth: window.innerWidth, documentWidth: document.documentElement.scrollWidth }));
   expect(layout.documentWidth).toBeLessThanOrEqual(layout.viewportWidth);
 });

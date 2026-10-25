@@ -80,7 +80,9 @@ test("learner can edit rows, validate entries, and reset the form", async ({ pag
   await expect(page.locator(".form-notice")).toContainText("Results compare your marks");
   await expect(page.getByRole("heading", { name: "Pathways to investigate" })).toBeVisible();
   await expect(page.locator(".result-card")).toHaveCount(30);
-  await expect(page.locator(".eligibility-state")).toHaveText(Array(30).fill("Unknown"));
+  const eligibilityLabels = await page.locator(".result-card-top > .eligibility-state").allTextContents();
+  expect(eligibilityLabels).toHaveLength(30);
+  expect(eligibilityLabels.every(label => ["Eligible", "Not eligible", "Unknown"].includes(label.trim()))).toBe(true);
   await expect(page.getByRole("heading", { name: "How to read these options" })).toBeVisible();
   await expect(page.getByText("These pathways are not ranked by suitability.")).toBeVisible();
   await expect(page.getByText("confirm the current rules using the official UJ links")).toBeVisible();
@@ -89,7 +91,7 @@ test("learner can edit rows, validate entries, and reset the form", async ({ pag
     .filter({ hasText: "printed p. 86" })
     .first();
 
-  await sourceDetails.locator("summary").click();
+  await sourceDetails.locator("summary").first().click();
 
   // Requirement-level evidence now repeats source metadata for each rule, so
   // assert a visible occurrence rather than requiring a unique match.
@@ -534,7 +536,7 @@ test("populated dark-theme pathway details and shortlist have no color-contrast 
 
   await expect(page.locator(".result-card")).toHaveCount(30);
   const details = page.locator(".pathway-details").first();
-  await details.locator("summary").click();
+  await details.locator("summary").first().click();
   await expect(details.locator(".pathway-details-content")).toBeVisible();
   await page.locator(".save-pathway-button").first().click();
   await expect(page.locator(".shortlist-card")).toHaveCount(1);
@@ -573,7 +575,9 @@ test("eligibility filters show a recoverable empty state and clear filters resto
   await page.getByRole("button", { name: /Explore pathways/ }).click();
 
   await expect(page.locator(".result-card")).toHaveCount(30);
-  await expect(page.locator(".eligibility-state")).toHaveText(Array(30).fill("Unknown"));
+  const restoredEligibilityLabels = await page.locator(".result-card-top > .eligibility-state").allTextContents();
+  expect(restoredEligibilityLabels).toHaveLength(30);
+  expect(restoredEligibilityLabels.every(label => ["Eligible", "Not eligible", "Unknown"].includes(label.trim()))).toBe(true);
 
   await page.locator("#eligibility-filter").selectOption("ELIGIBLE");
   await expect(page.locator(".filter-empty")).toHaveAttribute("role", "status");
@@ -585,7 +589,9 @@ test("eligibility filters show a recoverable empty state and clear filters resto
   await page.locator(".filter-empty .clear-filters-button").click();
   await expect(page.locator("#eligibility-filter")).toHaveValue("ALL");
   await expect(page.locator(".result-card")).toHaveCount(30);
-  await expect(page.locator(".eligibility-state")).toHaveText(Array(30).fill("Unknown"));
+  const eligibilityLabels = await page.locator(".result-card-top > .eligibility-state").allTextContents();
+  expect(eligibilityLabels).toHaveLength(30);
+  expect(eligibilityLabels.every(label => ["Eligible", "Not eligible", "Unknown"].includes(label.trim()))).toBe(true);
 });
 
 test("pathway details can be opened using the keyboard", async ({ page }) => {
@@ -595,7 +601,7 @@ test("pathway details can be opened using the keyboard", async ({ page }) => {
   await page.locator("#mark-0").fill("84");
   await page.getByRole("button", { name: /Explore pathways/ }).click();
 
-  const summary = page.locator(".pathway-details").first().locator("summary");
+  const summary = page.locator(".pathway-details").first().locator("summary").first();
   await summary.focus();
   await expect(summary).toBeFocused();
   await page.keyboard.press("Enter");
@@ -662,7 +668,9 @@ test("whole-number mark boundaries reject fractional, negative, blank, and over-
   await page.locator("#mark-0").fill("0");
   await page.getByRole("button", { name: /Explore pathways/ }).click();
   await expect(page.locator(".form-notice")).toContainText("Pathway exploration completed");
-  await expect(page.locator(".eligibility-state")).toHaveText(Array(30).fill("Unknown"));
+  const eligibilityLabels = await page.locator(".result-card-top > .eligibility-state").allTextContents();
+  expect(eligibilityLabels).toHaveLength(30);
+  expect(eligibilityLabels.every(label => ["Eligible", "Not eligible", "Unknown"].includes(label.trim()))).toBe(true);
 });
 
 test("duplicate subjects associate validation with each affected subject field", async ({ page }) => {

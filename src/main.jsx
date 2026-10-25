@@ -4,6 +4,7 @@ import "./styles.css";
 import { validateStudentEntries } from "./domain/student-input-validation.mjs";
 import { buildPathwayResults } from "./domain/pathway-matching.mjs";
 import { buildWhyNotYet } from "./domain/why-not-yet.mjs";
+import { suggestAlternativePathways } from "./domain/alternative-pathways.mjs";
 import { getDiscoverySummary } from "./domain/discovery-summary.mjs";
 import { calculateProvisionalAps, APS_SOURCE } from "./domain/eligibility/provisional-aps.mjs";
 import catalogue from "../docs/product/uj-2027-pilot-catalogue-draft.json";
@@ -39,8 +40,9 @@ function getStateClass(state) {
   return `state-${state.toLowerCase().replaceAll("_", "-")}`;
 }
 
-function PathwayDetails({ item }) {
+function PathwayDetails({ item, allResults, activeCatalogue, onNavigateToAlternative }) {
   const whyNotYet = buildWhyNotYet(item);
+  const alternatives = suggestAlternativePathways({ preferred: item, results: allResults, catalogue: activeCatalogue });
   return (
     <details className="pathway-details">
       <summary>View pathway details and next steps</summary>
@@ -110,6 +112,46 @@ function PathwayDetails({ item }) {
             <h4>Items still requiring confirmation</h4>
             <ul>{item.requirementNotes.map(note => <li key={note}>{note}</li>)}</ul>
           </div>
+        )}
+        {item.state !== "ELIGIBLE" && (
+          <section className="alternative-pathways" aria-labelledby={`alternative-pathways-${item.id}`}>
+            <h4 id={`alternative-pathways-${item.id}`}>Other pathways to explore</h4>
+            <p>These options share recorded catalogue attributes with this pathway. This is an exploration aid, not evidence of progression or articulation. Each option has its own eligibility result.</p>
+            {alternatives.length > 0 ? (
+              <ul className="alternative-pathway-list">
+                {alternatives.map(alternative => (
+                  <li className="alternative-pathway-item" key={alternative.id}>
+                    <div className="alternative-pathway-heading">
+                      <strong>{alternative.name}</strong>
+                      <span className={`eligibility-state ${getStateClass(alternative.state)}`}>{STATE_LABELS[alternative.state]}</span>
+                    </div>
+                    <p>{alternative.relevanceReason}</p>
+                    <p className="alternative-pathway-result">{alternative.reason}</p>
+                    <details className="alternative-evidence-details">
+                      <summary>View eligibility evidence</summary>
+                      {alternative.requirementEvidence?.length ? (
+                        <ul className="alternative-evidence-list">
+                          {alternative.requirementEvidence.map(check => (
+                            <li key={check.id}>
+                              <strong>{check.label}: {check.status === "MET" ? "Meets recorded rule" : check.status === "NOT_MET" ? "Does not meet recorded rule" : check.status === "NOT_APPLICABLE" ? "Not applicable" : "Unknown"}</strong>
+                              <p><span className="why-not-yet-label">Recorded rule:</span> {check.rule}</p>
+                              <p><span className="why-not-yet-label">Learner input:</span> {check.learnerValue}</p>
+                              <p>{check.explanation}</p>
+                              {check.sourceLinks?.map(source => <p key={source.url}><a href={source.url} target="_blank" rel="noopener noreferrer">{source.title}</a>{source.location ? ` · ${source.location}` : ""}{source.verificationDate ? ` · Checked ${source.verificationDate}` : ""}</p>)}
+                            </li>
+                          ))}
+                        </ul>
+                      ) : <p>No requirement-level evidence is available for this result.</p>}
+                    </details>
+                    <p className="alternative-pathway-caveat">{alternative.relationshipDisclaimer}</p>
+                    <a href={`#pathway-${alternative.id}`} onClick={() => onNavigateToAlternative(alternative.id)}>View this pathway in results</a>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p className="alternative-pathways-empty" role="status">No supported alternatives can be suggested from the current catalogue attributes. No progression route has been inferred.</p>
+            )}
+          </section>
         )}
         <div className="official-links">
           <h4>Official information</h4>
@@ -246,6 +288,11 @@ function App() {
     { value: "FOLLOW_UP", label: "Follow-up needed" },
     { value: "OUTCOME_RECEIVED", label: "Outcome received" }
   ];
+
+  function navigateToAlternative() {
+    setEligibilityFilter("ALL");
+    setCampusFilter("ALL");
+  }
 
   function toggleSavedPathway(item) {
     setSavedPathways(current => current.some(saved => saved.id === item.id)
@@ -510,12 +557,12 @@ function App() {
               </div>
             ) : <div className="results-grid">
               {discovery.visibleResults.map(item => (
-                <article className="result-card" key={item.id}>
+                <article className="result-card" id={`pathway-${item.id}`} key={item.id}>
                   <div className="result-card-top"><span className={`eligibility-state ${getStateClass(item.state)}`}>{STATE_LABELS[item.state]}</span><span className="result-cycle">2027 pilot</span></div>
                   <h3>{item.name}</h3>
                   <p className="result-institution">{item.institution}{item.campus ? ` · ${item.campus}` : ""}</p>
                   <p className="result-reason">{item.reason}</p>
-                  <PathwayDetails item={item} />
+                  <PathwayDetails item={item} allResults={results} activeCatalogue={catalogue} onNavigateToAlternative={navigateToAlternative} />
                   <button
                     className={`save-pathway-button ${savedPathways.some(saved => saved.id === item.id) ? "is-saved" : ""}`}
                     type="button"
