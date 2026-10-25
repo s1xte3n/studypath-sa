@@ -137,3 +137,41 @@ test("Why Not Yet distinguishes missing information from a recorded shortfall on
   }));
   expect(layout.documentWidth).toBeLessThanOrEqual(layout.viewportWidth);
 });
+
+
+test("blocked pathway offers catalogue-backed alternatives and links to the selected result", async ({ page }) => {
+  await page.setViewportSize({ width: 320, height: 800 });
+  await page.goto("/");
+  await page.locator("#stage").selectOption("MATRIC_GRADUATE");
+  const subjects = [
+    ["English Home Language", "90"],
+    ["Mathematics", "50"],
+    ["Physical Sciences", "75"],
+    ["Life Sciences", "70"],
+    ["Geography", "65"],
+    ["Accounting", "60"]
+  ];
+  for (let index = 0; index < subjects.length; index += 1) {
+    if (index > 0) await page.getByRole("button", { name: "+ Add another subject" }).click();
+    await page.locator("#subject-" + index).selectOption(subjects[index][0]);
+    await page.locator("#mark-" + index).fill(subjects[index][1]);
+  }
+  await page.getByRole("button", { name: /Explore pathways/ }).click();
+
+  const preferredCard = page.locator("#pathway-UJ-2027-BSC-IT");
+  await expect(preferredCard).toBeVisible();
+  await preferredCard.locator("summary").click();
+  const alternatives = preferredCard.locator(".alternative-pathways");
+  await expect(alternatives).toBeVisible();
+  await expect(alternatives.getByRole("heading", { name: "Other pathways to explore" })).toBeVisible();
+
+  const alternativeLink = alternatives.getByRole("link", { name: "View this pathway in results" }).first();
+  await expect(alternativeLink).toBeVisible();
+  const href = await alternativeLink.getAttribute("href");
+  expect(href).toMatch(/^#pathway-UJ-2027-/);
+  await alternativeLink.click();
+  await expect(page).toHaveURL(new RegExp(href + "$"));
+  await expect(page.locator(href)).toBeVisible();
+  const layout = await page.evaluate(() => ({ viewportWidth: window.innerWidth, documentWidth: document.documentElement.scrollWidth }));
+  expect(layout.documentWidth).toBeLessThanOrEqual(layout.viewportWidth);
+});
