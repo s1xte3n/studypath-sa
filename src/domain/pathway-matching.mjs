@@ -1,4 +1,4 @@
-import { evaluateEligibility } from "./eligibility/uj-2027-evaluator.mjs";
+import { evaluateEligibility, levelForPercent } from "./eligibility/uj-2027-evaluator.mjs";
 import { validateCatalogueForPublication } from "./eligibility/catalogue-publication-gate.mjs";
 
 const SUBJECT_IDS = new Map([
@@ -47,6 +47,86 @@ function buildSourceLinks(programme, catalogue) {
   }
 
   return [...new Map(links.map(link => [link.url, link])).values()];
+}
+
+
+const SUBJECT_LABELS = Object.fromEntries([...SUBJECT_IDS.entries()].map(([label, id]) => [id, label]));
+
+function buildRequirementEvidence(programme, learnerInput, outcome, sourceLinks) {
+  const requirements = programme.requirements ?? {};
+  const marks = new Map(learnerInput.subjects.map(subject => [subject.subjectId, subject]));
+  const sourceForRule = sourceLinks;
+  const rows = [];
+  const apsMin = requirements.aps?.min;
+  if (Number.isInteger(apsMin)) {
+    const value = Number.isInteger(outcome.aps) ? outcome.aps : null;
+    rows.push({
+      id: "aps", label: "Admission Point Score (APS)", rule: `At least ${apsMin}`,
+      learnerValue: value === null ? "Not calculated from available inputs" : `Provisional APS ${value}`,
+      status: value === null ? "UNKNOWN" : value >= apsMin ? "MET" : "NOT_MET",
+      explanation: value === null ? "The evaluator could not calculate a supported APS from the available subject inputs."
+        : value >= apsMin ? `Recorded APS minimum met (${value} ≥ ${apsMin}).` : `Recorded APS minimum not met (${value} < ${apsMin}).`,
+      sourceLinks: sourceForRule
+    });
+  }
+  const englishRule = requirements.english;
+  if (englishRule) {
+    const englishId = englishRule.mappingStatus === "DEMO_DEFAULT_HOME_LANGUAGE"
+      ? "ENGLISH_HOME_LANGUAGE"
+      : ["ENGLISH_HOME_LANGUAGE", "ENGLISH_FIRST_ADDITIONAL_LANGUAGE", "ENGLISH_SECOND_ADDITIONAL_LANGUAGE"].find(id => marks.has(id));
+    const english = englishId ? marks.get(englishId) : null;
+    const rule = [Number.isInteger(englishRule.minPercent) ? `${englishRule.minPercent}%` : null,
+      Number.isInteger(englishRule.minLevel) ? `Level ${englishRule.minLevel}` : null].filter(Boolean).join(" / ") || "Minimum not recorded";
+    const passes = english && (englishRule.minPercent == null || english.percent >= englishRule.minPercent)
+      && (englishRule.minLevel == null || levelForPercent(english.percent) >= englishRule.minLevel);
+    rows.push({
+      id: "english", label: "English", rule,
+      learnerValue: english ? `${SUBJECT_LABELS[english.subjectId] ?? english.subjectId}: ${english.percent}% (Level ${levelForPercent(english.percent)})` : "Required English result not provided",
+      status: !english ? "UNKNOWN" : passes ? "MET" : "NOT_MET",
+      explanation: !english
+        ? englishRule.mappingStatus === "DEMO_DEFAULT_HOME_LANGUAGE" ? "English Home Language is not present. This demo assumption is not verified institutional policy." : "No supported English result is available to compare."
+        : passes ? "The available English result meets the recorded minimum." : "The available English result is below the recorded minimum.",
+      sourceLinks: sourceForRule
+    });
+  }
+  for (const [index, rule] of (requirements.subjectRules ?? []).entries()) {
+    const subject = marks.get(rule.subject);
+    const label = SUBJECT_LABELS[rule.subject] ?? rule.subject;
+    let status = "UNKNOWN";
+    let learnerValue = subject ? `${subject.percent}% (Level ${levelForPercent(subject.percent)})` : "Not provided";
+    let explanation = "The recorded rule cannot be conclusively compared with available inputs.";
+    const ruleText = rule.accepted === false ? "Not accepted for this pathway"
+      : [Number.isInteger(rule.minPercent) ? `${rule.minPercent}%` : null, Number.isInteger(rule.minLevel) ? `Level ${rule.minLevel}` : null].filter(Boolean).join(" / ")
+      || (rule.mandatory === true ? "Required subject; minimum not recorded" : "No explicit minimum recorded");
+    if (rule.accepted === false) {
+      status = subject ? "NOT_MET" : "NOT_APPLICABLE";
+      learnerValue = subject ? `${subject.percent}% entered` : "No mark entered for this subject";
+      explanation = subject ? "The catalogue records this subject as not accepted for this pathway." : "No mark was entered for this subject; the recorded exclusion is not triggered.";
+    } else if (rule.mandatory === "UNRESOLVED_ALTERNATIVE_SEMANTICS") {
+      status = "UNKNOWN";
+      explanation = "The catalogue does not establish whether this subject is an alternative or an additional requirement.";
+    } else if (!subject) {
+      if (rule.mandatory === true && learnerInput.transcriptComplete) {
+        status = "NOT_MET";
+        explanation = "The learner profile is marked complete, but this required subject is absent.";
+      } else {
+        status = "UNKNOWN";
+        explanation = rule.mandatory === true ? "This subject is not present. Because the transcript is incomplete, absence is not treated as failure." : "No mark is available; no conclusion is drawn.";
+      }
+    } else if (Number.isInteger(rule.minPercent) && subject.percent < rule.minPercent) {
+      status = "NOT_MET"; explanation = `The mark is below the recorded minimum of ${rule.minPercent}%.`;
+    } else if (Number.isInteger(rule.minLevel) && levelForPercent(subject.percent) < rule.minLevel) {
+      status = "NOT_MET"; explanation = `The achievement level is below the recorded minimum of Level ${rule.minLevel}.`;
+    } else if (Number.isInteger(rule.minPercent) || Number.isInteger(rule.minLevel)) {
+      status = "MET"; explanation = "The available subject result meets the recorded minimum.";
+    }
+    rows.push({ id: `subject-${index + 1}`, label, rule: ruleText, learnerValue, status, explanation, sourceLinks: sourceForRule });
+  }
+  for (const [index, note] of (programme.unresolved ?? []).entries()) {
+    rows.push({ id: `unresolved-${index + 1}`, label: "Unresolved catalogue condition", rule: "Not fully verified or encoded",
+      learnerValue: "Cannot be evaluated reliably", status: "UNKNOWN", explanation: note, sourceLinks: sourceForRule });
+  }
+  return rows;
 }
 
 /**
@@ -106,6 +186,7 @@ export function buildPathwayResults({ stage, subjects }, catalogue) {
         ? "Demo assumption: where the programme source does not specify an English stream, this demo assumes English Home Language. English First Additional Language is not treated as equivalent. Verify the official requirement; this is not confirmed UJ policy."
         : null,
       sourceLinks: buildSourceLinks(programme, catalogue),
+      requirementEvidence: buildRequirementEvidence(programme, learnerInput, outcome, buildSourceLinks(programme, catalogue)),
       state: outcome.state === "NOT_ELIGIBLE" ? "NOT_ELIGIBLE" :
         outcome.state === "ELIGIBLE" ? "ELIGIBLE" : "UNKNOWN",
       reason: outcome.explanation,

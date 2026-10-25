@@ -91,9 +91,11 @@ test("learner can edit rows, validate entries, and reset the form", async ({ pag
 
   await sourceDetails.locator("summary").click();
 
-  await expect(sourceDetails.getByText("printed p. 86")).toBeVisible();
+  // Requirement-level evidence now repeats source metadata for each rule, so
+  // assert a visible occurrence rather than requiring a unique match.
+  await expect(sourceDetails.getByText("printed p. 86").first()).toBeVisible();
   await expect(
-    sourceDetails.getByText("Source checked 2026-10-14")
+    sourceDetails.getByText("Source checked 2026-10-14").first()
   ).toBeVisible();
 
   await page.getByRole("button", { name: "Reset" }).click();

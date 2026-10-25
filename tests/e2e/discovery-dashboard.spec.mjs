@@ -55,3 +55,40 @@ test("discovery filters and summary remain usable at 320px in both themes", asyn
     await page.getByRole("button", { name: themeButton }).click();
   }
 });
+
+test("pathway details expose requirement evidence by keyboard at mobile width", async ({ page }) => {
+  await page.setViewportSize({ width: 320, height: 800 });
+  await page.goto("/");
+  await page.locator("#stage").selectOption("MATRIC_GRADUATE");
+
+  const subjects = [
+    "English Home Language",
+    "Mathematics",
+    "Physical Sciences",
+    "Life Sciences",
+    "Geography",
+    "Accounting"
+  ];
+  for (let index = 0; index < subjects.length; index += 1) {
+    if (index > 0) await page.getByRole("button", { name: "+ Add another subject" }).click();
+    await page.locator(`#subject-${index}`).selectOption(subjects[index]);
+    await page.locator(`#mark-${index}`).fill("90");
+  }
+
+  await page.getByRole("button", { name: /Explore pathways/ }).click();
+  const firstCard = page.locator(".result-card").first();
+  const summary = firstCard.locator("summary").first();
+  await summary.focus();
+  await page.keyboard.press("Enter");
+
+  await expect(firstCard.getByRole("heading", { name: "Requirement-by-requirement check" })).toBeVisible();
+  await expect(firstCard.getByText("Recorded rule", { exact: true }).first()).toBeVisible();
+  await expect(firstCard.getByText("Your input", { exact: true }).first()).toBeVisible();
+  await expect(firstCard.getByText(/not an admission decision/i)).toBeVisible();
+
+  const layout = await page.evaluate(() => ({
+    viewportWidth: window.innerWidth,
+    documentWidth: document.documentElement.scrollWidth
+  }));
+  expect(layout.documentWidth).toBeLessThanOrEqual(layout.viewportWidth);
+});
