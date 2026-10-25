@@ -437,7 +437,7 @@ select:focus,input:focus,.shortlist-card textarea:focus { border-color: var(--ac
 .primary-button:active { transform: translateY(1px); }
 .add-button,.text-button,.pathway-details summary,.result-card a,.next-action a,.aps-source a,.aps-caveat a { color: var(--accent); }
 .text-button,.add-button { font-size: var(--interface-size); }
-.theme-toggle,.clear-filters-button { border-color: var(--rule); color: var(--accent); background: var(--panel); transition: background-color var(--interaction-duration) var(--interaction-easing), border-color var(--interaction-duration) var(--interaction-easing); }
+.theme-toggle,.clear-filters-button { border-color: var(--rule); color: #4b5565; background: var(--panel); transition: background-color var(--interaction-duration) var(--interaction-easing), border-color var(--interaction-duration) var(--interaction-easing); }
 .theme-toggle:hover,.clear-filters-button:hover { background: var(--muted-ground); }
 .results-section { border-color: var(--rule); }
 .catalogue-warning { border-color: #e8d69b; border-left-color: #a77b00; background: #fff9e7; color: #4e3e12; }
