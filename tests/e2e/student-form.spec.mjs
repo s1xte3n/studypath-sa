@@ -575,9 +575,9 @@ test("eligibility filters show a recoverable empty state and clear filters resto
   await page.getByRole("button", { name: /Explore pathways/ }).click();
 
   await expect(page.locator(".result-card")).toHaveCount(30);
-  const eligibilityLabels = await page.locator(".eligibility-state").allTextContents();
-  expect(eligibilityLabels).toHaveLength(30);
-  expect(eligibilityLabels.every(label => ["Eligible", "Not eligible", "Unknown"].includes(label.trim()))).toBe(true);
+  const restoredEligibilityLabels = await page.locator(".eligibility-state").allTextContents();
+  expect(restoredEligibilityLabels).toHaveLength(30);
+  expect(restoredEligibilityLabels.every(label => ["Eligible", "Not eligible", "Unknown"].includes(label.trim()))).toBe(true);
 
   await page.locator("#eligibility-filter").selectOption("ELIGIBLE");
   await expect(page.locator(".filter-empty")).toHaveAttribute("role", "status");
