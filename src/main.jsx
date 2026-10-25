@@ -3,6 +3,7 @@ import { createRoot } from "react-dom/client";
 import "./styles.css";
 import { validateStudentEntries } from "./domain/student-input-validation.mjs";
 import { buildPathwayResults } from "./domain/pathway-matching.mjs";
+import { buildWhyNotYet } from "./domain/why-not-yet.mjs";
 import { getDiscoverySummary } from "./domain/discovery-summary.mjs";
 import { calculateProvisionalAps, APS_SOURCE } from "./domain/eligibility/provisional-aps.mjs";
 import catalogue from "../docs/product/uj-2027-pilot-catalogue-draft.json";
@@ -39,6 +40,7 @@ function getStateClass(state) {
 }
 
 function PathwayDetails({ item }) {
+  const whyNotYet = buildWhyNotYet(item);
   return (
     <details className="pathway-details">
       <summary>View pathway details and next steps</summary>
@@ -51,6 +53,29 @@ function PathwayDetails({ item }) {
           <div><dt>Eligibility</dt><dd>{STATE_LABELS[item.state]} — {item.limitation}</dd></div>
           <div><dt>Costs, deadlines and funding</dt><dd>Not provided in this catalogue. Check current official UJ information; no estimate is shown.</dd></div>
         </dl>
+        <section className={`why-not-yet why-not-yet-${item.state.toLowerCase().replaceAll("_", "-")}`} aria-labelledby={`why-not-yet-${item.id}`}>
+          <h4 id={`why-not-yet-${item.id}`}>{whyNotYet.title}</h4>
+          <p>{whyNotYet.explanation}</p>
+          {whyNotYet.blockers.length > 0 && (
+            <ul className="why-not-yet-blockers">
+              {whyNotYet.blockers.map(blocker => (
+                <li key={blocker.id}>
+                  <strong>{blocker.label}</strong>
+                  {blocker.rule && <p><span className="why-not-yet-label">Recorded rule:</span> {blocker.rule}</p>}
+                  {blocker.learnerValue && <p><span className="why-not-yet-label">Your input:</span> {blocker.learnerValue}</p>}
+                  <p>{blocker.explanation}</p>
+                </li>
+              ))}
+            </ul>
+          )}
+          {whyNotYet.nextSteps.length > 0 && (
+            <div>
+              <h5>Suggested next step</h5>
+              <ul>{whyNotYet.nextSteps.map(step => <li key={step}>{step}</li>)}</ul>
+            </div>
+          )}
+          {item.state === "UNKNOWN" && <p className="why-not-yet-caveat">Unknown is not a rejection. No conclusion is drawn where an input or material rule is missing.</p>}
+        </section>
         <section className="requirement-evidence" aria-labelledby={`requirement-evidence-${item.id}`}>
           <h4 id={`requirement-evidence-${item.id}`}>Requirement-by-requirement check</h4>
           <p className="requirement-evidence-intro">These comparisons use the rules and source records currently stored in the demo catalogue. “Unknown” means the available information is insufficient; it is not a rejection.</p>

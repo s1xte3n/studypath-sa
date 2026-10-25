@@ -566,3 +566,17 @@ footer span:first-child { color: var(--ink); }
 .theme-dark .evidence-state-not-met { background: #4b2428; color: #ffc0c0; }
 .theme-dark .evidence-state-unknown { background: #4b3a1a; color: #ffe0a0; }
 @media (max-width: 420px) { .requirement-evidence-facts { grid-template-columns: minmax(0, 1fr); } .requirement-evidence-item { padding: .65rem; } }
+
+
+/* Issue #235 — learner-facing blocker and uncertainty explanations. */
+.why-not-yet { margin: 1rem 0; padding: 1rem; border: 1px solid var(--line); border-radius: .75rem; background: var(--paper); }
+.why-not-yet h4 { margin: 0 0 .5rem; }
+.why-not-yet h5 { margin: .85rem 0 .35rem; }
+.why-not-yet p { margin: .45rem 0; }
+.why-not-yet-blockers { display: grid; gap: .65rem; padding-left: 1.25rem; }
+.why-not-yet-blockers li { padding-left: .15rem; }
+.why-not-yet-label { font-weight: 700; }
+.why-not-yet-caveat { font-weight: 600; }
+.why-not-yet-unknown { border-style: dashed; }
+.theme-dark .why-not-yet { background: var(--paper); color: inherit; }
+@media (max-width: 480px) { .why-not-yet { padding: .75rem; } .why-not-yet-blockers { padding-left: 1rem; } }
