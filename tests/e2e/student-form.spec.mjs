@@ -128,7 +128,7 @@ test("correcting invalid marks clears the error and valid entries still do not i
   await expect(page.locator(".form-notice")).toHaveCount(0);
   await page.getByRole("button", { name: /Explore pathways/ }).click();
   await expect(page.locator(".form-notice")).toContainText("Pathway exploration completed");
-  await expect(page.locator(".form-notice")).toContainText("results are UNKNOWN");
+  await expect(page.locator(".form-notice")).toContainText("Results compare your marks");
   await expect(page.locator(".result-card")).toHaveCount(30);
 });
 
