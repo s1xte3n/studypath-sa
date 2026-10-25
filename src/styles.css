@@ -595,3 +595,10 @@ footer span:first-child { color: var(--ink); }
 .alternative-pathway-item a { display: inline-block; margin-top: .25rem; font-weight: 700; text-underline-offset: .15em; }
 .theme-dark .alternative-pathways, .theme-dark .alternative-pathway-item { background: var(--paper); border-color: var(--line); }
 @media (max-width: 480px) { .alternative-pathways { padding: .75rem; } .alternative-pathway-item { padding: .65rem; } }
+
+.alternative-evidence-details { margin: .65rem 0; padding-top: .45rem; border-top: 1px solid var(--line); }
+.alternative-evidence-details summary { cursor: pointer; font-weight: 700; font-size: .86rem; text-underline-offset: .15em; }
+.alternative-evidence-list { display: grid; gap: .65rem; margin: .65rem 0; padding-left: 1.1rem; }
+.alternative-evidence-list li { min-width: 0; overflow-wrap: anywhere; }
+.alternative-evidence-list p { margin: .35rem 0; }
+.alternative-evidence-list a { overflow-wrap: anywhere; }
