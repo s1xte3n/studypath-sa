@@ -66,7 +66,8 @@ test("adding a subject preserves entries and completeness grows until six are co
   await page.locator("#custom-subject-2").fill("Computer Applications Technology");
   await page.locator("#mark-2").fill("82");
   await expect(completeness).toHaveAttribute("aria-valuenow", "67");
-  await expect(page.locator("#subject-1 option")).not.toContainText("Mathematics");
+  const remainingSubjectOptions = await page.locator("#subject-1 option").evaluateAll(options => options.map(option => option.value));
+  expect(remainingSubjectOptions).not.toContain("Mathematics");
 
   // Custom entries remain in the profile but are not supported by catalogue matching.
   await page.getByRole("button", { name: /Explore pathways/ }).click();
@@ -190,6 +191,8 @@ test("Why Not Yet distinguishes missing information from a recorded shortfall on
   await expect(rejectedCard).toBeVisible();
   await rejectedCard.locator("summary").first().click();
   await expect(rejectedCard.getByRole("heading", { name: "Recorded requirement not met" })).toBeVisible();
+  const keyGaps = rejectedCard.locator(".compact-evidence-disclosure").first();
+  await keyGaps.locator(":scope > summary").click();
   await expect(rejectedCard.locator(".why-not-yet-blockers li").first()).toBeVisible();
 
   const layout = await page.evaluate(() => ({
@@ -224,7 +227,7 @@ test("blocked pathway offers catalogue-backed alternatives and links to the sele
   await preferredCard.locator("summary").first().click();
   const alternatives = preferredCard.locator(".alternative-pathways");
   await expect(alternatives).toBeVisible();
-  await expect(alternatives.locator("summary")).toContainText("Other pathways to explore");
+  await expect(alternatives.locator(":scope > summary")).toContainText("Other pathways to explore");
   await expect(alternatives).not.toHaveAttribute("open", "");
   await alternatives.locator("summary").click();
   const evidenceToggle = alternatives.getByText("View eligibility evidence").first();
@@ -303,7 +306,7 @@ test("pilot limitations are available on demand instead of displayed as a warnin
 
   await summary.click();
   await expect(page.getByText(/Some programme rules still need interpretation/)).toBeVisible();
-  await expect(page.getByText(/do not guarantee admission/i)).toBeVisible();
+  await expect(page.locator(".pilot-disclosure").getByText(/do not guarantee admission/i).first()).toBeVisible();
 });
 
 
@@ -336,7 +339,7 @@ test("NSC subject and APS guidance is available on demand instead of shown as a 
 
 test("provisional APS methodology and limitations are available on demand", async ({ page }) => {
   await page.goto("/");
-  const disclosure = page.locator(".aps-disclosure");
+  const disclosure = page.locator(".aps-panel .aps-disclosure");
   await expect(disclosure.locator("summary")).toHaveText("How the provisional APS estimate works");
   await expect(disclosure).not.toHaveAttribute("open", "");
   await expect(disclosure.getByText(/not an official or verified APS result/i)).toBeHidden();
