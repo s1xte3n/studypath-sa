@@ -229,7 +229,7 @@ test("blocked pathway offers catalogue-backed alternatives and links to the sele
   await expect(alternatives).toBeVisible();
   await expect(alternatives.locator(":scope > summary")).toContainText("Other pathways to explore");
   await expect(alternatives).not.toHaveAttribute("open", "");
-  await alternatives.locator("summary").click();
+  await alternatives.locator(":scope > summary").click();
   const evidenceToggle = alternatives.getByText("View eligibility evidence").first();
   await expect(evidenceToggle).toBeVisible();
   await evidenceToggle.click();
@@ -339,6 +339,10 @@ test("NSC subject and APS guidance is available on demand instead of shown as a 
 
 test("provisional APS methodology and limitations are available on demand", async ({ page }) => {
   await page.goto("/");
+  await page.locator("#stage").selectOption("GRADE_12");
+  await page.locator("#subject-0").selectOption("Mathematics");
+  await page.locator("#mark-0").fill("75");
+  await page.getByRole("button", { name: /Explore pathways/ }).click();
   const disclosure = page.locator(".aps-panel .aps-disclosure");
   await expect(disclosure.locator("summary")).toHaveText("How the provisional APS estimate works");
   await expect(disclosure).not.toHaveAttribute("open", "");
