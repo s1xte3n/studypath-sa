@@ -77,12 +77,12 @@ test("learner can edit rows, validate entries, and reset the form", async ({ pag
   await page.locator("#stage").selectOption("GRADE_12");
   await page.getByRole("button", { name: /Explore pathways/ }).click();
   await expect(page.locator(".form-notice")).toContainText("Pathway exploration completed");
-  await expect(page.locator(".form-notice")).toContainText("results are UNKNOWN");
+  await expect(page.locator(".form-notice")).toContainText("Results compare your marks");
   await expect(page.getByRole("heading", { name: "Pathways to investigate" })).toBeVisible();
   await expect(page.locator(".result-card")).toHaveCount(30);
   await expect(page.locator(".eligibility-state")).toHaveText(Array(30).fill("Unknown"));
   await expect(page.getByRole("heading", { name: "How to read these options" })).toBeVisible();
-  await expect(page.getByText("These pathways are shown for exploration, not ranked by suitability.")).toBeVisible();
+  await expect(page.getByText("These pathways are not ranked by suitability.")).toBeVisible();
   await expect(page.getByText("confirm the current rules using the official UJ links")).toBeVisible();
   const sourceDetails = page
     .locator(".pathway-details")
@@ -128,7 +128,7 @@ test("correcting invalid marks clears the error and valid entries still do not i
   await expect(page.locator(".form-notice")).toHaveCount(0);
   await page.getByRole("button", { name: /Explore pathways/ }).click();
   await expect(page.locator(".form-notice")).toContainText("Pathway exploration completed");
-  await expect(page.locator(".form-notice")).toContainText("results are UNKNOWN");
+  await expect(page.locator(".form-notice")).toContainText("Results compare your marks");
   await expect(page.locator(".result-card")).toHaveCount(30);
 });
 

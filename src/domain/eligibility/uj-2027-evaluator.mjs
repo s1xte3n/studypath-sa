@@ -3,6 +3,24 @@ export function levelForPercent(mark){if(!Number.isInteger(mark)||mark<0||mark>1
 const R=(state,reason,explanation,aps=null)=>({state,reasonCodes:[reason],explanation,aps});
 const norm=x=>typeof x==="string"?x.trim().toUpperCase():"";
 const EN=["ENGLISH","ENGLISH_HOME_LANGUAGE","ENGLISH_FIRST_ADDITIONAL_LANGUAGE","ENGLISH_SECOND_ADDITIONAL_LANGUAGE"];
+const DEMO_BLOCKING_UNRESOLVED_PATTERNS = [
+ /whether Mathematics and Technical Mathematics are alternatives or both independently required/i,
+ /exact AND.?OR branch interpretation/i,
+ /conflicting level of specificity between current page and 2027 CBE brochure/i,
+ /route semantics require curator review/i,
+ /subject alternatives are transcribed from table headings and require curator confirmation/i,
+ /whether Technical Mathematics satisfies this programme is unresolved/i,
+ /international-admission exception .*not encoded/i,
+ /Table presents a Mathematics .*Technical Mathematics column/i
+];
+function hasDemoBlockingAmbiguity(programme,learnerInput){
+ const notes=Array.isArray(programme?.unresolved)?programme.unresolved:[];
+ const hasTechnicalSubject=(learnerInput?.subjects??[]).some(s=>["TECHNICAL_MATHEMATICS","TECHNICAL_SCIENCES"].includes(norm(s?.subjectId)));
+ return notes.some(note=>{
+  if(/exact scope of Science faculty restriction/i.test(note)) return hasTechnicalSubject;
+  return DEMO_BLOCKING_UNRESOLVED_PATTERNS.some(pattern=>pattern.test(note));
+ });
+}
 function subjectsOf(input){if(!input||!Array.isArray(input.subjects))return {error:R("INPUT_REJECTED","INVALID_INPUT_SHAPE","Subjects are required.")};const a=[],seen=new Set();for(const x of input.subjects){const id=norm(x?.subjectId);if(!id)return {error:R("INPUT_REJECTED","INVALID_SUBJECT_INPUT","A subject ID is invalid.")};if(seen.has(id))return {error:R("INPUT_REJECTED","DUPLICATE_SUBJECT_INPUT","Duplicate canonical subject.")};seen.add(id);if(!Number.isInteger(x.percent)||x.percent<0||x.percent>100)return {error:R("INPUT_REJECTED","INVALID_MARK_INPUT","Marks must be integers from 0 to 100.")};a.push({id,percent:x.percent,level:levelForPercent(x.percent)});}return {a};}
 function apsFor(a,required){const chosen=new Map();const eligible=a.filter(s=>s.id!=="LIFE_ORIENTATION");for(const id of required){const s=eligible.find(x=>x.id===id);if(!s)return null;chosen.set(id,s);}for(const s of [...eligible].sort((x,y)=>y.level-x.level||x.id.localeCompare(y.id))){if(chosen.size===6)break;if(!chosen.has(s.id))chosen.set(s.id,s);}return chosen.size===6?[...chosen.values()].reduce((n,s)=>n+s.level,0):null;}
 export function evaluateEligibility({programme,learnerInput,admissionCycle,catalogueStatus,evaluationMode="DEFINITIVE",testOnlyAssumptions=false}){
@@ -39,7 +57,7 @@ export function evaluateEligibility({programme,learnerInput,admissionCycle,catal
  if(english.level<(req.english?.minLevel??1))return R("NOT_ELIGIBLE","ENGLISH_BELOW_MINIMUM","English level is below minimum.",aps);
  if(aps===null)return R("UNKNOWN","REQUIRED_INPUT_MISSING","Cannot select six valid APS subjects.");
  if(Number.isInteger(minAps)&&aps<minAps)return R("NOT_ELIGIBLE","APS_BELOW_MINIMUM","APS is below minimum.",aps);
- if(!learnerInput.transcriptComplete)return R("UNKNOWN","REQUIRED_INPUT_MISSING","Transcript is incomplete.",aps);
- if(programme.unresolved?.length&&!testOnlyAssumptions)return R("UNKNOWN","MATERIAL_RULES_UNRESOLVED","At least one material programme rule remains unresolved; verified minimums do not establish a confident positive eligibility outcome.",aps);
- return {state:"ELIGIBLE",reasonCodes:["ALL_VERIFIED_REQUIREMENTS_MET"],explanation:"Minimum requirements met; admission is not guaranteed.",aps};
+ if(!learnerInput.transcriptComplete&&!(demoMode&&learnerInput.studyStage==="GRADE_12"))return R("UNKNOWN","REQUIRED_INPUT_MISSING","Transcript is incomplete.",aps);
+ if((demoMode&&hasDemoBlockingAmbiguity(programme,learnerInput))||(!demoMode&&programme.unresolved?.length&&!testOnlyAssumptions))return R("UNKNOWN","MATERIAL_RULES_UNRESOLVED","A material programme-rule ambiguity could change this outcome; the current source notes do not support a reliable result.",aps);
+ return {state:"ELIGIBLE",reasonCodes:[demoMode?"RECORDED_MINIMUMS_MET_PROVISIONALLY":"ALL_VERIFIED_REQUIREMENTS_MET"],explanation:demoMode?"Meets the minimum requirements currently recorded for this pathway (provisional); admission is not guaranteed.":"Minimum requirements met; admission is not guaranteed.",aps};
 }

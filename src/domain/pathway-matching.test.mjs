@@ -33,9 +33,9 @@ test("pathway results expose programme facts and retained official UJ source URL
   assert.ok(it.sourceLinks.every(link => link.url.startsWith("https://www.uj.ac.za/")));
 });
 
-test("demo mode evaluates verified negative rules but unresolved positive outcomes stay UNKNOWN", () => {
+test("demo mode returns provisional positive outcomes where recorded minimums are interpretable", () => {
   const results = buildPathwayResults({ ...learner, stage: "MATRIC_GRADUATE" }, catalogue);
-  assert.ok(results.every(item => item.state !== "ELIGIBLE"));
+  assert.ok(results.some(item => item.state === "ELIGIBLE"));
   assert.ok(results.some(item => item.state === "NOT_ELIGIBLE"));
   assert.ok(results.some(item => item.state === "UNKNOWN"));
 
@@ -45,7 +45,9 @@ test("demo mode evaluates verified negative rules but unresolved positive outcom
   assert.match(it.englishRequirementNote, /not treated as equivalent/i);
   assert.equal(it.catalogueStatus, "APPROVED_FOR_HACKATHON_DEMO_ONLY");
   assert.match(it.limitation, /Hackathon-demo estimate only/i);
-  assert.ok(it.reasonCodes.includes("MATERIAL_RULES_UNRESOLVED"));
+  assert.ok(it.reasonCodes.includes("RECORDED_MINIMUMS_MET_PROVISIONALLY"));
+  assert.match(it.reason, /provisional/i);
+  assert.match(it.reason, /admission is not guaranteed/i);
 });
 
 test("missing detail data uses empty notes and source links rather than invented values", () => {
