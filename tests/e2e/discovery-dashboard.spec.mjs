@@ -67,6 +67,13 @@ test("adding a subject preserves entries and completeness grows until six are co
   await page.locator("#mark-2").fill("82");
   await expect(completeness).toHaveAttribute("aria-valuenow", "67");
   await expect(page.locator("#subject-1 option")).not.toContainText("Mathematics");
+
+  // Custom entries remain in the profile but are not supported by catalogue matching.
+  await page.getByRole("button", { name: /Explore pathways/ }).click();
+  await expect(page.locator(".form-notice")).toContainText("Computer Applications Technology");
+  await expect(page.locator(".form-notice")).toContainText("not included in catalogue matching");
+  await expect(page.locator(".result-card")).toHaveCount(30);
+  await expect(page.locator("#custom-subject-2")).toHaveValue("Computer Applications Technology");
 });
 
 test("eligibility filters update visible counts and provide a recoverable empty state", async ({ page }) => {
