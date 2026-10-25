@@ -281,6 +281,85 @@ function PathwayComparison({ items }) {
 }
 
 
+const ACTION_STATUSES = [
+  { value: "NOT_STARTED", label: "Not started" },
+  { value: "IN_PROGRESS", label: "In progress" },
+  { value: "DONE", label: "Done" }
+];
+
+function PathwayActionPlan({ item, plan, onStart, onAddTask, onUpdateTask }) {
+  const [draftTask, setDraftTask] = useState("");
+  const started = Boolean(plan);
+  const tasks = plan?.tasks || [];
+  const completed = tasks.filter(task => task.status === "DONE").length;
+
+  function addTask(event) {
+    event.preventDefault();
+    const title = draftTask.trim();
+    if (!title) return;
+    onAddTask(item.id, title);
+    setDraftTask("");
+  }
+
+  return (
+    <section className="pathway-action-plan" aria-labelledby={`action-plan-title-${item.id}`}>
+      <div className="action-plan-heading">
+        <div>
+          <h4 id={`action-plan-title-${item.id}`}>Pathway action plan</h4>
+          <p>Turn this saved option into manageable next steps.</p>
+        </div>
+        {started && <span className="action-plan-progress">{completed} of {tasks.length} done</span>}
+      </div>
+      {!started ? (
+        <div>
+          <p>No action plan started for this pathway.</p>
+          <button className="secondary-button" type="button" onClick={() => onStart(item)}>Start action plan</button>
+        </div>
+      ) : (
+        <>
+          <p className="action-plan-manual-note">Manual tracking only. StudyPath SA does not submit applications, contact institutions, or confirm application status. Completing this checklist does not guarantee admission or funding.</p>
+          {tasks.length > 0 ? (
+            <ul className="action-plan-task-list">
+              {tasks.map(task => (
+                <li className="action-plan-task" key={task.id}>
+                  <div className="action-plan-task-copy">
+                    <strong>{task.title}</strong>
+                    {task.kind === "SOURCE" ? (
+                      <p className="action-plan-task-provenance">
+                        Source-backed review task, not an official application requirement.
+                        {task.source?.location ? ` ${task.source.location}.` : ""}
+                        {task.source?.verificationDate ? ` Source checked ${task.source.verificationDate}.` : " Verification date not recorded."}
+                      </p>
+                    ) : (
+                      <p className="action-plan-task-provenance">Generic learner task; not an official institution requirement.</p>
+                    )}
+                    {task.source?.url && <a href={task.source.url} target="_blank" rel="noopener noreferrer">Open source: {task.source.title || task.source.url}</a>}
+                  </div>
+                  <label className="action-plan-status-label" htmlFor={`action-task-status-${item.id}-${task.id}`}>Task status</label>
+                  <select id={`action-task-status-${item.id}-${task.id}`} value={task.status} onChange={event => onUpdateTask(item.id, task.id, event.target.value)}>
+                    {ACTION_STATUSES.map(status => <option key={status.value} value={status.value}>{status.label}</option>)}
+                  </select>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p className="action-plan-empty" role="status">No tasks yet. Add a personal task below.</p>
+          )}
+          <form className="action-plan-add-form" onSubmit={addTask}>
+            <label className="field-label" htmlFor={`action-plan-new-task-${item.id}`}>Add your own task</label>
+            <div className="action-plan-add-controls">
+              <input id={`action-plan-new-task-${item.id}`} value={draftTask} onChange={event => setDraftTask(event.target.value)} maxLength="160" placeholder="e.g. Ask the institution about required documents" />
+              <button className="secondary-button" type="submit" disabled={!draftTask.trim()}>Add task</button>
+            </div>
+          </form>
+          <p className="action-plan-unavailable">Deadlines, required documents, fees and funding: unavailable or unverified unless shown in the source linked above. No missing values are estimated.</p>
+        </>
+      )}
+    </section>
+  );
+}
+
+
 function WhatIfMarkPlanner({ stage, actualSubjects, activeCatalogue }) {
   const [open, setOpen] = useState(false);
   const [draftSubjects, setDraftSubjects] = useState([]);
@@ -410,6 +489,7 @@ function App() {
   const [results, setResults] = useState([]);
   const [savedPathways, setSavedPathways] = useState([]);
   const [tracking, setTracking] = useState({});
+  const [actionPlans, setActionPlans] = useState({});
   const [eligibilityFilter, setEligibilityFilter] = useState("ALL");
   const [campusFilter, setCampusFilter] = useState("ALL");
   const TRACKING_STATUSES = [
@@ -427,9 +507,73 @@ function App() {
   }
 
   function toggleSavedPathway(item) {
-    setSavedPathways(current => current.some(saved => saved.id === item.id)
+    const alreadySaved = savedPathways.some(saved => saved.id === item.id);
+    if (alreadySaved) {
+      setActionPlans(current => {
+        const next = { ...current };
+        delete next[item.id];
+        return next;
+      });
+      setTracking(current => {
+        const next = { ...current };
+        delete next[item.id];
+        return next;
+      });
+    }
+    setSavedPathways(current => alreadySaved
       ? current.filter(saved => saved.id !== item.id)
       : current.length < 3 ? [...current, item] : current);
+  }
+
+  function startActionPlan(item) {
+    setActionPlans(current => {
+      if (current[item.id]) return current;
+      const sourceTasks = (item.sourceLinks || []).map((source, index) => ({
+        id: `source-${index}`,
+        title: `Review official information: ${source.title || "source link"}`,
+        kind: "SOURCE",
+        source,
+        status: "NOT_STARTED"
+      }));
+      const genericTasks = [
+        { id: "confirm-requirements", title: "Confirm current admission requirements directly with the institution", kind: "GENERIC", source: null, status: "NOT_STARTED" },
+        { id: "check-application-details", title: "Find and review the current official application instructions", kind: "GENERIC", source: null, status: "NOT_STARTED" }
+      ];
+      if (sourceTasks.length === 0) {
+        genericTasks.unshift({ id: "find-official-source", title: "Find an official source for this programme", kind: "GENERIC", source: null, status: "NOT_STARTED" });
+      }
+      return { ...current, [item.id]: { pathwayId: item.id, tasks: [...sourceTasks, ...genericTasks] } };
+    });
+  }
+
+  function addActionTask(pathwayId, title) {
+    setActionPlans(current => {
+      const plan = current[pathwayId];
+      if (!plan) return current;
+      const nextIndex = plan.tasks.filter(task => task.kind === "MANUAL").length + 1;
+      return {
+        ...current,
+        [pathwayId]: {
+          ...plan,
+          tasks: [...plan.tasks, { id: `manual-${nextIndex}`, title, kind: "MANUAL", source: null, status: "NOT_STARTED" }]
+        }
+      };
+    });
+  }
+
+  function updateActionTask(pathwayId, taskId, status) {
+    if (!ACTION_STATUSES.some(item => item.value === status)) return;
+    setActionPlans(current => {
+      const plan = current[pathwayId];
+      if (!plan) return current;
+      return {
+        ...current,
+        [pathwayId]: {
+          ...plan,
+          tasks: plan.tasks.map(task => task.id === taskId ? { ...task, status } : task)
+        }
+      };
+    });
   }
 
   function updateTracking(id, field, value) {
@@ -443,6 +587,7 @@ function App() {
     setResults([]);
     setSavedPathways([]);
     setTracking({});
+    setActionPlans({});
     setEligibilityFilter("ALL");
     setCampusFilter("ALL");
     setSubmitted(false);
@@ -455,6 +600,7 @@ function App() {
     setResults([]);
     setSavedPathways([]);
     setTracking({});
+    setActionPlans({});
     setEligibilityFilter("ALL");
     setCampusFilter("ALL");
     setSubmitted(false);
@@ -492,6 +638,7 @@ function App() {
     setResults([]);
     setSavedPathways([]);
     setTracking({});
+    setActionPlans({});
     setEligibilityFilter("ALL");
     setCampusFilter("ALL");
     setNotice("");
@@ -818,6 +965,13 @@ function App() {
                         <label className="field-label next-action-label" htmlFor={`tracking-action-${item.id}`}>My next action (optional)</label>
                         <textarea id={`tracking-action-${item.id}`} rows="3" maxLength="240" placeholder="e.g. Confirm 2027 subject requirements with UJ" value={progress.nextAction} onChange={event => updateTracking(item.id, "nextAction", event.target.value)} />
                         <p className="manual-tracking-note">Manual note only. This tracker is temporary and clears when you reset or reload the page.</p>
+                        <PathwayActionPlan
+                          item={item}
+                          plan={actionPlans[item.id]}
+                          onStart={startActionPlan}
+                          onAddTask={addActionTask}
+                          onUpdateTask={updateActionTask}
+                        />
                       </article>
                     );
                   })}
