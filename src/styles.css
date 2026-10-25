@@ -1356,3 +1356,45 @@ body,
   background: var(--paper, #17231e);
   color: var(--ink, #f7f8f4);
 }
+
+ 
+/* Keep the provisional APS methodology and source caveats available on demand. */
+.aps-disclosure {
+  margin-top: 1rem;
+  border: 1px solid var(--line, #dce4de);
+  border-radius: 0.75rem;
+  background: var(--paper, #fff);
+  color: var(--ink, #123b32);
+}
+.aps-disclosure summary {
+  padding: 0.85rem 1rem;
+  cursor: pointer;
+  font-weight: 600;
+  line-height: 1.5;
+}
+.aps-disclosure summary:focus-visible {
+  outline: 3px solid var(--green, #155c45);
+  outline-offset: 3px;
+  border-radius: 0.5rem;
+}
+.aps-disclosure-content {
+  padding: 0 1rem 1rem;
+}
+.aps-disclosure-content p {
+  margin: 0 0 0.75rem;
+  font-size: 13px;
+  line-height: 1.65;
+}
+.aps-disclosure-content p:last-child {
+  margin-bottom: 0;
+}
+.aps-disclosure-content a {
+  color: var(--link, #155c45);
+  text-underline-offset: 3px;
+  overflow-wrap: anywhere;
+}
+[data-theme="dark"] .aps-disclosure,
+.theme-dark .aps-disclosure {
+  background: var(--paper, #17231e);
+  color: var(--ink, #f7f8f4);
+}
