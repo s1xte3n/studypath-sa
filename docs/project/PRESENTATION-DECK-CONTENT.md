@@ -2,7 +2,7 @@
 
 **Draft only — not a final exported deck.** The supplied programme (p. 3) allows **no more than 10 slides**, prefers PDF, requires the demo video link on the slides, and asks for product/features, screenshots, demo details, security, user journey and architecture. This draft contains exactly 10 slide sections.
 
-**Baseline inspected:** `main` commit `268e4f55ccfce55874f6621a0b491acf93c6432f`. Capture screenshots from the exact frozen candidate before export.
+**Source baseline reviewed:** `main` commit `d1378dc61b7dd742c422e5431d93985abd3f45c0` (2026-10-25). Live UI validation and fresh screenshots from the exact frozen candidate remain pending.
 
 ## Slide 1 — StudyPath SA
 **Explore study pathways with more clarity.**  
@@ -29,6 +29,7 @@ Insert fresh screenshots from the frozen candidate of:
 - Pathway results with **Unknown** states.
 - Expanded details with official UJ links.
 - Provisional APS panel showing its source and limitations.
+- Saved-pathway comparison (including a removal/update interaction).
 - Reset and theme toggle.
 
 **Do not use screenshots from a different commit than the submitted build.**
@@ -55,7 +56,7 @@ Use a two-part diagram labelled “Implemented local demo” vs “Planned futur
 **Sustainability hypotheses:** education/career-guidance partnerships or grant/impact support, subject to validation. No traction, revenue, or partnerships are claimed.
 
 ## Slide 9 — Judge demo and video
-**Live demo:** follow `docs/project/DEMO-RUNBOOK.md`; use fictional Grade 12 / Mathematics 75 / Physical Sciences 81. No account is needed for the local demo.  
+**Live demo:** follow `docs/project/DEMO-RUNBOOK.md`; use fictional Grade 12 / Mathematics 75 / Physical Sciences 81. Demonstrate saving, comparing and removing pathways only after rehearsing those interactions on the frozen candidate. No account is needed for the local demo.  
 **Demo video (<=90 seconds): LINK PENDING — insert tested final URL after recording.**  
 This slide is not ready for submission until the final URL and private-session playback are verified.
 

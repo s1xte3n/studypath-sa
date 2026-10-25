@@ -1,7 +1,7 @@
 # StudyPath SA — Hackathon Demo Runbook
 
 **Status:** rehearsal-ready draft; the owner must rehearse against the frozen candidate before recording/submission.  
-**Application baseline inspected:** `main` commit `268e4f55ccfce55874f6621a0b491acf93c6432f` (2026-10-24).  
+**Source baseline reviewed:** `main` commit `d1378dc61b7dd742c422e5431d93985abd3f45c0` (2026-10-25). The live UI and full rehearsal on the frozen submission candidate remain owner tasks.  
 **Data boundary:** fictional learner inputs only. No real learner records.
 
 ## Chosen synthetic profile
@@ -21,20 +21,21 @@ Expected result: the current draft UJ 2027 catalogue displays **30 pathway cards
 | 0:20–0:45 | Select **Grade 12**. Select **Mathematics**, enter **75**. Click **Add another subject**; choose **Physical Sciences**, enter **81**. | Inputs remain in the page; no account or name field is requested. |
 | 0:45–1:00 | Change one mark to **101**, click **Explore pathways**, then restore it to **75**. | Clear validation says marks must be whole numbers from 0–100. Invalid input must not produce results. Correcting the mark should clear the stale error. |
 | 1:00–1:35 | Click **Explore pathways** with valid values. | “Pathway exploration completed”; 30 cards; every eligibility state is **Unknown**. Explain the catalogue is draft and not approved for definitive screening. |
-| 1:35–2:10 | On one card, open **View pathway details and next steps**. Point to eligibility limitation, requirement notes, official UJ source links, and source checked date where shown. | Links are for independent verification. Costs, deadlines and funding are not supplied by this catalogue. StudyPath SA does not submit applications. |
-| 2:10–2:30 | Toggle theme and switch back. | Light and dark themes are available. Do not claim full manual accessibility certification. |
-| 2:30–2:45 | Click **Reset**. | Stage, subjects, marks, results, validation and session-only shortlist/tracker state clear. |
+| 1:35–2:00 | On one card, open **View pathway details and next steps**. Point to eligibility limitation, requirement notes, official UJ source links, and source checked date where shown. | Links are for independent verification. Costs, deadlines and funding are not supplied by this catalogue. StudyPath SA does not submit applications. |
+| 2:00–2:30 | Save up to three cards using **Save to shortlist**. Show **Compare saved pathways** and its rows/count; remove one pathway and confirm the comparison updates. | The comparison uses recorded fields only; missing values are labelled “Not recorded”. Saved selections are in page memory only. Do not imply the tracker submits applications. |
+| 2:30–2:45 | Toggle theme and switch back, then click **Reset**. | Light and dark themes are available. Reset clears profile, results, shortlist, comparison and tracker state. Do not claim full manual accessibility certification. |
 | 2:45–3:00 | Reload the page. | Learner inputs/results are not restored. Close by stating catalogue curation and verification remain open. |
 
 ## Recording version (maximum 90 seconds)
 
-- **0–8s:** Problem and product name.
-- **8–22s:** Enter Grade 12, Mathematics 75, Physical Sciences 81.
-- **22–32s:** Show invalid mark 101, validation, and correction.
-- **32–48s:** Explore pathways; show 30 cards and **Unknown** states.
-- **48–64s:** Expand details and show official UJ source information.
-- **64–76s:** Switch theme and press Reset.
-- **76–90s:** State the catalogue is a draft, results are not admission decisions, and no application is submitted.
+- **0–8s:** State the learner problem and introduce StudyPath SA.
+- **8–20s:** Enter Grade 12, Mathematics 75, Physical Sciences 81.
+- **20–28s:** Show invalid mark 101, validation, and correction.
+- **28–42s:** Explore pathways; show 30 cards and **Unknown** states.
+- **42–54s:** Expand details and show an official UJ source link.
+- **54–69s:** Save up to three pathways; show comparison rows/count, then remove one and show the comparison update.
+- **69–78s:** Toggle theme and press **Reset**.
+- **78–90s:** State that the catalogue is a draft, results are not admission decisions, and no application is submitted.
 
 The supplied programme limits the video to 90 seconds. After recording, verify actual duration and test the link in a private/incognito session. Insert the final working URL into the deck and checklist; until then, video and final deck-link criteria remain **OPEN**.
 
@@ -62,7 +63,8 @@ The supplied programme limits the video to 90 seconds. After recording, verify a
 - [ ] Verify 30 results all show **Unknown**.
 - [ ] Open at least one official-source link and confirm the destination.
 - [ ] Verify both themes.
-- [ ] Verify Reset and reload behavior.
+- [ ] Save up to three pathways; verify comparison rows/count update after saving and removal.
+- [ ] Verify Reset clears shortlist/comparison/tracker as well as profile/results; reload must not restore learner state.
 - [ ] Verify 320px layout and keyboard-only completion.
 - [ ] Record screen-reader/manual accessibility findings separately.
 - [ ] Record candidate SHA, browser/OS, exact command, pass/fail, and deviations.
