@@ -51,6 +51,35 @@ function PathwayDetails({ item }) {
           <div><dt>Eligibility</dt><dd>{STATE_LABELS[item.state]} — {item.limitation}</dd></div>
           <div><dt>Costs, deadlines and funding</dt><dd>Not provided in this catalogue. Check current official UJ information; no estimate is shown.</dd></div>
         </dl>
+        <section className="requirement-evidence" aria-labelledby={`requirement-evidence-${item.id}`}>
+          <h4 id={`requirement-evidence-${item.id}`}>Requirement-by-requirement check</h4>
+          <p className="requirement-evidence-intro">These comparisons use the rules and source records currently stored in the demo catalogue. “Unknown” means the available information is insufficient; it is not a rejection.</p>
+          {item.requirementEvidence?.length ? (
+            <ul className="requirement-evidence-list">
+              {item.requirementEvidence.map(check => (
+                <li className="requirement-evidence-item" key={check.id}>
+                  <div className="requirement-evidence-heading">
+                    <strong>{check.label}</strong>
+                    <span className={`requirement-check-state evidence-state-${check.status.toLowerCase().replaceAll("_", "-")}`}>
+                      {check.status === "MET" ? "Meets recorded rule" : check.status === "NOT_MET" ? "Does not meet recorded rule" : "Unknown"}
+                    </span>
+                  </div>
+                  <dl className="requirement-evidence-facts">
+                    <div><dt>Recorded rule</dt><dd>{check.rule}</dd></div>
+                    <div><dt>Your input</dt><dd>{check.learnerValue}</dd></div>
+                  </dl>
+                  <p>{check.explanation}</p>
+                  {check.sourceLinks?.length > 0 ? (
+                    <ul className="requirement-source-links">
+                      {check.sourceLinks.map(source => <li key={source.url}><a href={source.url} target="_blank" rel="noopener noreferrer">{source.title}</a>{source.location && <span className="source-meta"> · {source.location}</span>}{source.verificationDate && <span className="source-meta"> · Source checked {source.verificationDate}</span>}</li>)}
+                    </ul>
+                  ) : <p className="source-meta">No source link is attached to this recorded rule.</p>}
+                </li>
+              ))}
+            </ul>
+          ) : <p>No requirement-level evidence is available for this pathway result.</p>}
+          <p className="requirement-evidence-caveat">This is a provisional comparison, not an admission decision. Source links show evidence recorded by StudyPath and do not by themselves prove that a rule is current or complete.</p>
+        </section>
         {item.requirementNotes.length > 0 && (
           <div className="detail-note">
             <h4>Items still requiring confirmation</h4>
