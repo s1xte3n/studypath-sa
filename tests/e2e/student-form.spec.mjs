@@ -145,8 +145,10 @@ test("changing the study stage clears a stale validation notice", async ({ page 
   await page.getByRole("button", { name: /Explore pathways/ }).click();
   await expect(page.locator(".form-notice")).toContainText("Choose a subject");
 
-  await page.getByLabel("Your current stage").selectOption("GRADE_11");
+  await page.locator("#stage").selectOption("GRADE_11");
+  await expect(page.locator("#stage")).toHaveValue("GRADE_11");
   await expect(page.locator(".form-notice")).toHaveCount(0);
+  await expect(page.locator("#subject-0")).toHaveAttribute("aria-invalid", "false");
 });
 
 test("reset from an error state restores the default form and removes the notice", async ({ page }) => {
@@ -743,8 +745,10 @@ test("desktop results layout has no horizontal overflow", async ({ page }) => {
 
 test("provisional APS fails closed when subject-selection rules are unresolved and keeps pathway eligibility UNKNOWN", async ({ page }) => {
   await page.goto("/");
-  await expect(page.getByRole("note").filter({ hasText: "An NSC subject profile commonly contains seven subjects." })).toBeVisible();
-  await expect(page.getByRole("link", { name: "Read the Department of Basic Education’s subject guidance" })).toHaveAttribute("href", /SubjectChoiceandCareerPathing/);
+  const nscGuidance = page.locator(".profile-guidance-disclosure");
+  await nscGuidance.locator(":scope > summary").click();
+  await expect(nscGuidance.getByText("An NSC subject profile commonly contains seven subjects.")).toBeVisible();
+  await expect(nscGuidance.getByRole("link", { name: "Read the Department of Basic Education’s subject guidance" })).toHaveAttribute("href", /SubjectChoiceandCareerPathing/);
   await page.locator("#stage").selectOption("GRADE_12");
   const rows = [
     ["Mathematics", "29"],
