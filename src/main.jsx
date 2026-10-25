@@ -519,7 +519,12 @@ function App() {
     setFieldErrors({ stage: "", subjects: {} });
 
     try {
-      const nextResults = buildPathwayResults({ stage, subjects }, catalogue);
+      // Custom "Other" entries are valid learner input, but the catalogue evaluator
+      // only understands explicitly mapped subjects. Keep custom entries in the
+      // profile while excluding them from deterministic catalogue matching.
+      const customSubjects = subjects.filter(item => item.customSubject);
+      const catalogueSubjects = subjects.filter(item => !item.customSubject);
+      const nextResults = buildPathwayResults({ stage, subjects: catalogueSubjects }, catalogue);
       if (nextResults.length === 0) {
         setResults([]);
         setNotice("No pathways are available from the current draft catalogue. Check the official UJ sources or try again later; this is not an admission decision.");
@@ -527,7 +532,11 @@ function App() {
         return;
       }
       setResults(nextResults);
-      setNotice("Pathway exploration completed. Results compare your marks with minimum requirements currently recorded in the UJ 2027 pilot catalogue. Outcomes are provisional, and meeting listed minimums does not guarantee admission.");
+      const standardNotice = "Pathway exploration completed. Results compare your marks with minimum requirements currently recorded in the UJ 2027 pilot catalogue. Outcomes are provisional, and meeting listed minimums does not guarantee admission.";
+      const customNotice = customSubjects.length
+        ? ` Custom subject names (${customSubjects.map(item => item.subject.trim()).filter(Boolean).join(", ")}) are not included in catalogue matching; the results use only supported subjects. The provisional APS panel cannot calculate a total from unsupported custom subjects.`
+        : "";
+      setNotice(standardNotice + customNotice);
       setSubmitted(true);
     } catch {
       setResults([]);
