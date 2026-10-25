@@ -16,7 +16,7 @@ test("discovery dashboard reflects current profile completeness and draft UNKNOW
   await expect(page.getByText("30 currently shown")).toBeVisible();
   await expect(page.locator(".discovery-counts")).toContainText("Unknown");
   await expect(page.locator(".discovery-counts")).toContainText("30");
-  const eligibilityLabels = await page.locator(".eligibility-state").allTextContents();
+  const eligibilityLabels = await page.locator(".result-card > .eligibility-state").allTextContents();
   expect(eligibilityLabels).toHaveLength(30);
   expect(eligibilityLabels.every(label => ["Eligible", "Not eligible", "Unknown"].includes(label.trim()))).toBe(true);
 });
