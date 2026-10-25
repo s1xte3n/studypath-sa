@@ -115,7 +115,7 @@ test("comparison reflects saved pathway facts, eligibility uncertainty, and reco
   expect(comparisonLinks.map(link => link.href)).toEqual(sourceLinks);
   expect(comparisonLinks.every(link => link.name.length > 0)).toBe(true);
 
-  await expect(comparison).toContainText("Not recorded");
+  await expect(comparison.locator("caption")).toContainText(/not recorded/i);
   await expect(comparison).toContainText("Comparison of saved pathways");
 });
 
