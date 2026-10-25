@@ -1484,3 +1484,32 @@ body,
   .action-plan-add-controls { grid-template-columns: minmax(0, 1fr) auto; align-items: center; }
   .action-plan-add-controls .secondary-button { justify-self: stretch; }
 }
+
+
+/* Homepage value proposition: make the benefits visible before asking learners to enter marks. */
+.hero-actions{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin:0 0 18px}
+.hero-cta{display:inline-flex;align-items:center;justify-content:center;gap:12px;text-decoration:none;min-height:48px}
+.hero-secondary-link{font-size:13px;font-weight:700;color:#0065A8;text-underline-offset:4px}
+.hero-proof-points{display:flex;flex-wrap:wrap;gap:9px 18px;padding:0;margin:0;list-style:none;color:#514c5c;font-size:12px}
+.hero-proof-points li:before{content:"✓";font-weight:800;color:#0065A8;margin-right:7px}
+.capabilities-section{padding:54px 0 18px}
+.capabilities-intro{max-width:660px;margin-bottom:26px}
+.capabilities-intro h2{max-width:560px;margin-bottom:12px}
+.capabilities-intro>p:last-child{max-width:610px;color:#5f6470;font-size:15px;line-height:1.7;margin-bottom:0}
+.capabilities-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.capability-card{min-width:0;padding:22px;border:1px solid #ddd9e6;border-radius:13px;background:#fff}
+.capability-number{display:grid;place-items:center;width:32px;height:32px;border-radius:9px;background:#f1ecf8;color:#542583;font-size:12px;font-weight:800}
+.capability-card h3{font-size:17px;line-height:1.3;letter-spacing:-.35px;margin:16px 0 8px}
+.capability-card p{font-size:13px;line-height:1.7;color:#5f6470;margin:0}
+.capabilities-scope{margin:18px 0 0;padding:16px 18px;border-left:4px solid #f5c400;border-radius:8px;background:#fffbea;color:#5f4f00;font-size:12px;line-height:1.7}
+.capabilities-scope strong{color:#493d00}
+.theme-dark .hero-proof-points{color:#e2d9e9}
+.theme-dark .hero-secondary-link{color:#8bcfff}
+.theme-dark .capability-card{background:#211b28;border-color:#41374a}
+.theme-dark .capability-card h3{color:#f7f1fb}
+.theme-dark .capability-card p,.theme-dark .capabilities-intro>p:last-child{color:#c7bdd0}
+.theme-dark .capability-number{background:#2a2035;color:#eadcff}
+.theme-dark .capabilities-scope{background:#332d18;border-color:#665a25;color:#f4e9a5}
+.theme-dark .capabilities-scope strong{color:#fff0a8}
+@media(max-width:850px){.capabilities-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){.hero-actions{align-items:stretch;flex-direction:column;gap:12px}.hero-cta{width:100%}.hero-secondary-link{text-align:center;padding:5px}.hero-proof-points{display:grid;gap:8px}.capabilities-section{padding:38px 0 12px}.capabilities-grid{grid-template-columns:1fr}.capability-card{padding:19px}.capabilities-scope{padding:14px}}
