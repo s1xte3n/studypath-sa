@@ -49,31 +49,35 @@ The repository's Browser E2E, privacy and accessibility workflow also installs C
 
 A successful workflow is automated evidence only; it does not count as a manual rehearsal or prove that an external website was reachable during a human demo.
 
-## Manual acceptance checklist — owner to complete
+## Manual acceptance checklist — owner attestation (2026-10-25)
 
-Perform on the exact candidate build, using a fresh private/incognito session and synthetic data only.
+**Status:** The project owner has stated in the project conversation on 2026-10-25 that all manual acceptance checks listed below were performed and approved. This is recorded as **owner-attested**, not independently reproduced by the assistant. The owner did not provide the exact candidate SHA/URL, browser/OS, exact run times, or supporting screenshots/video in that statement; those traceability details remain unrecorded and should be attached if available. Do not interpret this attestation as a production-readiness or definitive-admissions approval.
 
-- [ ] Open one official-source link from pathway details and confirm the destination is the intended institution/official document.
-- [ ] Confirm all 30 cards show UNKNOWN and that explanations disclose the draft/unverified status.
-- [ ] Confirm campus/eligibility filters and visible counts reconcile with the displayed cards.
-- [ ] Save and remove pathways; verify empty, one-item, and three-item shortlist states; verify comparison rows follow saved items.
-- [ ] Confirm reset clears the profile, results, filters, shortlist and tracker.
-- [ ] Reload and confirm no learner-specific state is restored.
-- [ ] At 320px, verify no page-level horizontal overflow; confirm comparison remains usable by scrolling within its own container.
-- [ ] Verify light/dark theme and keyboard-only operation through profile, discovery, source links and shortlist.
-- [ ] Record any manual accessibility findings separately; do not infer screen-reader certification from automated axe checks.
-- [ ] Run the timed demo twice and record browser/OS, candidate SHA, outcome and deviations.
+- [x] Open one official-source link from pathway details and confirm the destination is the intended institution/official document. — Owner-attested pass.
+- [x] Confirm all 30 cards show UNKNOWN and that explanations disclose the draft/unverified status. — Owner-attested pass.
+- [x] Confirm campus/eligibility filters and visible counts reconcile with the displayed cards. — Owner-attested pass.
+- [x] Save and remove pathways; verify empty, one-item, and three-item shortlist states; verify comparison rows follow saved items. — Owner-attested pass.
+- [x] Confirm reset clears the profile, results, filters, shortlist and tracker. — Owner-attested pass.
+- [x] Reload and confirm no learner-specific state is restored. — Owner-attested pass.
+- [x] At 320px, verify no page-level horizontal overflow; confirm comparison remains usable by scrolling within its own container. — Owner-attested pass.
+- [x] Verify light/dark theme and keyboard-only operation through profile, discovery, source links and shortlist. — Owner-attested pass.
+- [x] Review manual accessibility behaviour and record findings separately; automated axe checks are not treated as screen-reader certification. — Owner-attested pass; detailed findings not supplied.
+- [x] Run the timed demo twice. — Owner-attested pass; individual timings and rehearsal artefacts not supplied.
 
 | Manual evidence | Result |
 |---|---|
-| Date/time and operator | Pending |
-| Exact candidate SHA / URL used | Pending |
-| Browser and OS | Pending |
-| Official source destination checked | Pending |
-| Desktop and 320px mobile | Pending |
-| Themes and keyboard-only flow | Pending |
-| Two complete rehearsals | Pending |
-| Defects / deviations | Pending |
+| Date of owner attestation | 2026-10-25 |
+| Operator | Project owner (attested in project conversation; GitHub identity not independently matched) |
+| Exact candidate SHA / URL used | Not supplied; candidate-specific traceability remains incomplete |
+| Browser and OS | Not supplied |
+| Official source destination checked | Owner-attested pass; exact URL/destination not supplied |
+| Desktop and 320px mobile | Owner-attested pass |
+| Themes and keyboard-only flow | Owner-attested pass |
+| Two complete rehearsals | Owner-attested pass; timings/recordings not supplied |
+| Defects / deviations | None reported by owner; no separate defect log supplied |
+| Supporting evidence | Not supplied with the attestation |
+
+**Disposition note:** this updates the manual status based on the owner's explicit attestation. It does not independently validate the checks or fill missing run metadata. The candidate SHA and CI evidence must still be reconciled before Issue #219 is closed.
 
 ## Demo profile and expected outcomes
 
