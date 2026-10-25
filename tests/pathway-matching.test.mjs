@@ -13,18 +13,20 @@ const strongMarks = [
   { subject: "Accounting", mark: "90" }
 ];
 
-test("hackathon demo evaluates verified rules without bypassing unresolved-rule UNKNOWN", () => {
+test("hackathon demo returns provisional outcomes for interpretable source-backed minimums", () => {
   const results = buildPathwayResults({ stage: "MATRIC_GRADUATE", subjects: strongMarks }, catalogue);
 
   assert.equal(results.length, catalogue.programmes.length);
   assert.ok(results.every(item => item.catalogueStatus === "APPROVED_FOR_HACKATHON_DEMO_ONLY"));
   assert.ok(results.some(item => item.state === "UNKNOWN"));
-  assert.ok(results.every(item => item.state !== "ELIGIBLE"), "current programme records retain material unresolved rules");
+  assert.ok(results.some(item => item.state === "ELIGIBLE"), "interpretable source-backed minimums should produce useful positive outcomes");
   assert.ok(results.every(item => item.sourceUrl?.startsWith("https://")));
 
   const informationTechnology = results.find(item => item.id === "UJ-2027-BSC-IT");
-  assert.equal(informationTechnology.state, "UNKNOWN");
-  assert.ok(informationTechnology.reasonCodes.includes("MATERIAL_RULES_UNRESOLVED"));
+  assert.equal(informationTechnology.state, "ELIGIBLE");
+  assert.ok(informationTechnology.reasonCodes.includes("RECORDED_MINIMUMS_MET_PROVISIONALLY"));
+  assert.match(informationTechnology.reason, /provisional/i);
+  assert.match(informationTechnology.reason, /admission is not guaranteed/i);
   const prospectus = informationTechnology.sourceLinks.find(item =>
     item.url.includes("uj_undergrad_prospectus2027_online_25jun2026.pdf")
   );
