@@ -390,6 +390,7 @@ function WhatIfMarkPlanner({ stage, actualSubjects, activeCatalogue }) {
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   const [stage, setStage] = useState("");
   const [subjects, setSubjects] = useState([{ subject: "", mark: "" }]);
   const [notice, setNotice] = useState("");
@@ -529,13 +530,45 @@ function App() {
   return (
     <div className={`app-shell ${darkMode ? "theme-dark" : "theme-light"}`}>
       <header className="topbar">
-        <a className="wordmark" href="#home"><span className="mark">S</span> StudyPath <span className="country">SA</span></a>
+        <a className="wordmark" href="#home" onClick={() => setMenuOpen(false)}>
+          <span className="mark">S</span> StudyPath <span className="country">SA</span>
+        </a>
+
+        <nav className="topbar-nav" aria-label="Main">
+          <a href="#explorer-title" onClick={() => setMenuOpen(false)}>Start</a>
+          {results.length > 0 && <a href="#results-title" onClick={() => setMenuOpen(false)}>Results</a>}
+          {results.length > 0 && <a href="#shortlist-title" onClick={() => setMenuOpen(false)}>Shortlist</a>}
+          <a href="#next-title" onClick={() => setMenuOpen(false)}>How it works</a>
+        </nav>
+
         <div className="topbar-actions">
           <span className="topbar-note">Study options, made clearer</span>
           <button className="theme-toggle" type="button" onClick={() => setDarkMode(current => !current)} aria-pressed={darkMode} aria-label={darkMode ? "Switch to light mode" : "Switch to dark mode"}>
-            <span aria-hidden="true">{darkMode ? "☀" : "◐"}</span> {darkMode ? "Light mode" : "Dark mode"}
+            <span aria-hidden="true">{darkMode ? "☀" : "◐"}</span>
+            <span className="theme-toggle-text">{darkMode ? "Light mode" : "Dark mode"}</span>
+          </button>
+
+          <button
+            className="menu-button"
+            type="button"
+            aria-expanded={menuOpen}
+            aria-controls="mobile-menu"
+            aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
+            onClick={() => setMenuOpen(open => !open)}
+          >
+            <span className="menu-icon" aria-hidden="true"><i></i><i></i></span>
+            {menuOpen ? "Close" : "Menu"}
           </button>
         </div>
+
+        {menuOpen && (
+          <nav id="mobile-menu" className="mobile-menu" aria-label="Mobile">
+            <a href="#explorer-title" onClick={() => setMenuOpen(false)}>Enter my marks <span aria-hidden="true">→</span></a>
+            {results.length > 0 && <a href="#results-title" onClick={() => setMenuOpen(false)}>My results <span aria-hidden="true">→</span></a>}
+            {results.length > 0 && <a href="#shortlist-title" onClick={() => setMenuOpen(false)}>My shortlist <span aria-hidden="true">→</span></a>}
+            <a href="#next-title" onClick={() => setMenuOpen(false)}>How it works <span aria-hidden="true">→</span></a>
+          </nav>
+        )}
       </header>
 
       <main id="home">
