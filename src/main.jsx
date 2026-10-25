@@ -331,7 +331,7 @@ function PathwayActionPlan({ item, plan, onStart, onAddTask, onUpdateTask }) {
                         {task.source?.verificationDate ? ` Source checked ${task.source.verificationDate}.` : " Verification date not recorded."}
                       </p>
                     ) : (
-                      <p className="action-plan-task-provenance">Generic learner task; not an official institution requirement.</p>
+                      <p className="action-plan-task-provenance">{task.kind === "MANUAL" ? "Learner-created task; not an official institution requirement." : "Generic learner task; not an official institution requirement."}</p>
                     )}
                     {task.source?.url && <a href={task.source.url} target="_blank" rel="noopener noreferrer">Open source: {task.source.title || task.source.url}</a>}
                   </div>
