@@ -1,10 +1,15 @@
 const VALID_STATES = ["ELIGIBLE", "NOT_ELIGIBLE", "UNKNOWN"];
 
+const REQUIRED_SUBJECT_COUNT = 6;
+
 /**
- * Completeness uses two required sections from the current form:
- * 1. a selected study stage (50%);
- * 2. at least one unique subject with a whole-number mark from 0 to 100 (50%).
- * Additional rows are optional and do not reduce the score when blank.
+ * Profile completeness has three required sections:
+ * 1. current study stage;
+ * 2. six distinct subjects, earned progressively;
+ * 3. valid whole-number marks for those subjects, earned progressively.
+ * Each section contributes one third of the score. Subject and mark progress
+ * increases row-by-row until six valid, distinct subject/mark pairs are entered.
+ * Additional subjects do not increase completeness beyond 100%.
  */
 export function getProfileCompleteness({ stage, subjects }) {
   const hasStage = typeof stage === "string" && stage.trim().length > 0;
@@ -12,24 +17,41 @@ export function getProfileCompleteness({ stage, subjects }) {
   const subjectCounts = new Map();
 
   for (const row of rows) {
-    if (typeof row?.subject === "string" && row.subject.trim()) {
-      subjectCounts.set(row.subject, (subjectCounts.get(row.subject) || 0) + 1);
-    }
+    const subject = typeof row?.subject === "string" ? row.subject.trim() : "";
+    if (subject) subjectCounts.set(subject, (subjectCounts.get(subject) || 0) + 1);
   }
 
-  const hasUniqueValidSubjectMark = rows.some((row) => {
-    if (typeof row?.subject !== "string" || !row.subject.trim()) return false;
-    if (subjectCounts.get(row.subject) !== 1) return false;
-    if (row.mark === "" || row.mark === null || row.mark === undefined) return false;
-    const mark = Number(row.mark);
-    return Number.isInteger(mark) && mark >= 0 && mark <= 100;
-  });
+  const uniqueSubjects = new Set(
+    [...subjectCounts.entries()].filter(([, count]) => count === 1).map(([subject]) => subject)
+  );
+  const validMarkedSubjects = new Set();
 
-  const completedSections = Number(hasStage) + Number(hasUniqueValidSubjectMark);
+  for (const row of rows) {
+    const subject = typeof row?.subject === "string" ? row.subject.trim() : "";
+    if (!subject || !uniqueSubjects.has(subject)) continue;
+    if (row.mark === "" || row.mark === null || row.mark === undefined) continue;
+    const mark = Number(row.mark);
+    if (Number.isInteger(mark) && mark >= 0 && mark <= 100) validMarkedSubjects.add(subject);
+  }
+
+  const subjectCount = Math.min(uniqueSubjects.size, REQUIRED_SUBJECT_COUNT);
+  const markedSubjectCount = Math.min(validMarkedSubjects.size, REQUIRED_SUBJECT_COUNT);
+  const subjectSectionComplete = subjectCount === REQUIRED_SUBJECT_COUNT;
+  const marksSectionComplete = markedSubjectCount === REQUIRED_SUBJECT_COUNT;
+  const completedSections = Number(hasStage) + Number(subjectSectionComplete) + Number(marksSectionComplete);
+  const requiredSections = 3;
+  const percentage = Math.round(
+    (Number(hasStage) / 3 + subjectCount / REQUIRED_SUBJECT_COUNT / 3 + markedSubjectCount / REQUIRED_SUBJECT_COUNT / 3) * 100
+  );
+
   return {
     completedSections,
-    requiredSections: 2,
-    percentage: completedSections * 50
+    requiredSections,
+    percentage,
+    subjectCount,
+    requiredSubjectCount: REQUIRED_SUBJECT_COUNT,
+    markedSubjectCount,
+    hasStage
   };
 }
 

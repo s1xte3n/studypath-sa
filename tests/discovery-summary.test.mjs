@@ -2,37 +2,69 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import { getDiscoverySummary, getProfileCompleteness } from "../src/domain/discovery-summary.mjs";
 
-test("profile completeness follows the documented two-section formula", () => {
-  assert.deepEqual(getProfileCompleteness({ stage: "", subjects: [{ subject: "", mark: "" }] }), {
-    completedSections: 0, requiredSections: 2, percentage: 0
+test("profile completeness progresses across three required sections and six subjects", () => {
+  assert.deepEqual(getProfileCompleteness({ stage: "", subjects: [] }), {
+    completedSections: 0, requiredSections: 3, percentage: 0,
+    subjectCount: 0, requiredSubjectCount: 6, markedSubjectCount: 0, hasStage: false
   });
-  assert.equal(getProfileCompleteness({ stage: "GRADE_12", subjects: [] }).percentage, 50);
-  assert.equal(getProfileCompleteness({
-    stage: "",
-    subjects: [{ subject: "Mathematics", mark: "75" }]
-  }).percentage, 50);
+  assert.equal(getProfileCompleteness({ stage: "GRADE_12", subjects: [] }).percentage, 33);
   assert.equal(getProfileCompleteness({
     stage: "GRADE_12",
-    subjects: [{ subject: "Mathematics", mark: "75" }, { subject: "", mark: "" }]
-  }).percentage, 100);
+    subjects: [{ subject: "Mathematics", mark: "" }]
+  }).percentage, 39);
+  assert.equal(getProfileCompleteness({
+    stage: "GRADE_12",
+    subjects: [{ subject: "Mathematics", mark: "75" }]
+  }).percentage, 44);
+  assert.deepEqual(getProfileCompleteness({
+    stage: "GRADE_12",
+    subjects: [
+      { subject: "Mathematics", mark: "75" },
+      { subject: "Physical Sciences", mark: "80" },
+      { subject: "Life Sciences", mark: "70" },
+      { subject: "Geography", mark: "65" },
+      { subject: "History", mark: "60" },
+      { subject: "Accounting", mark: "90" }
+    ]
+  }), {
+    completedSections: 3, requiredSections: 3, percentage: 100,
+    subjectCount: 6, requiredSubjectCount: 6, markedSubjectCount: 6, hasStage: true
+  });
+  assert.equal(getProfileCompleteness({
+    stage: "GRADE_12",
+    subjects: [
+      { subject: "Mathematics", mark: "75" },
+      { subject: "Physical Sciences", mark: "80" },
+      { subject: "Life Sciences", mark: "70" },
+      { subject: "Geography", mark: "65" },
+      { subject: "History", mark: "60" },
+      { subject: "Accounting", mark: "90" },
+      { subject: "Business Studies", mark: "99" }
+    ]
+  }).percentage, 100, "extra subjects do not increase completeness beyond 100%");
 });
 
-test("invalid marks and duplicate subjects do not complete the subject section", () => {
+test("invalid marks contribute no mark progress and duplicate subjects do not count", () => {
   for (const mark of ["", "-1", "101", "75.5", "abc"]) {
-    assert.equal(getProfileCompleteness({
+    const profile = getProfileCompleteness({
       stage: "GRADE_12",
       subjects: [{ subject: "Mathematics", mark }]
-    }).percentage, 50);
+    });
+    assert.equal(profile.percentage, 39);
+    assert.equal(profile.subjectCount, 1);
+    assert.equal(profile.markedSubjectCount, 0);
   }
-  assert.equal(getProfileCompleteness({
+  const duplicateProfile = getProfileCompleteness({
     stage: "GRADE_12",
     subjects: [
       { subject: "Mathematics", mark: "75" },
       { subject: "Mathematics", mark: "80" }
     ]
-  }).percentage, 50);
+  });
+  assert.equal(duplicateProfile.percentage, 33);
+  assert.equal(duplicateProfile.subjectCount, 0);
+  assert.equal(duplicateProfile.markedSubjectCount, 0);
 });
-
 const results = [
   { id: "a", state: "UNKNOWN", campus: "Auckland Park" },
   { id: "b", state: "UNKNOWN", campus: "Doornfontein" },

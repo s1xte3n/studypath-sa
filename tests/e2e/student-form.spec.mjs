@@ -83,15 +83,20 @@ test("learner can edit rows, validate entries, and reset the form", async ({ pag
   const eligibilityLabels = await page.locator(".result-card-top > .eligibility-state").allTextContents();
   expect(eligibilityLabels).toHaveLength(30);
   expect(eligibilityLabels.every(label => ["Eligible", "Not eligible", "Unknown"].includes(label.trim()))).toBe(true);
-  await expect(page.getByRole("heading", { name: "How to read these options" })).toBeVisible();
-  await expect(page.getByText("These pathways are not ranked by suitability.")).toBeVisible();
-  await expect(page.getByText("confirm the current rules using the official UJ links")).toBeVisible();
+  const resultsGuidance = page.locator(".results-guidance-disclosure");
+  await expect(resultsGuidance.locator(":scope > summary")).toHaveText("How to read these options");
+  await expect(resultsGuidance).not.toHaveAttribute("open", "");
+  await resultsGuidance.locator(":scope > summary").click();
+  await expect(resultsGuidance.getByText("These pathways are not ranked by suitability.")).toBeVisible();
+  await expect(resultsGuidance.getByText("confirm the current rules using the official UJ links")).toBeVisible();
   const sourceDetails = page
     .locator(".pathway-details")
     .filter({ hasText: "printed p. 86" })
     .first();
 
-  await sourceDetails.locator("summary").first().click();
+  await sourceDetails.locator(":scope > summary").click();
+  const evidenceDisclosure = sourceDetails.locator(".requirement-evidence > summary");
+  await evidenceDisclosure.click();
 
   // Requirement-level evidence now repeats source metadata for each rule, so
   // assert a visible occurrence rather than requiring a unique match.
@@ -142,8 +147,10 @@ test("changing the study stage clears a stale validation notice", async ({ page 
   await page.getByRole("button", { name: /Explore pathways/ }).click();
   await expect(page.locator(".form-notice")).toContainText("Choose a subject");
 
-  await page.getByLabel("Your current stage").selectOption("GRADE_11");
+  await page.locator("#stage").selectOption("GRADE_11");
+  await expect(page.locator("#stage")).toHaveValue("GRADE_11");
   await expect(page.locator(".form-notice")).toHaveCount(0);
+  await expect(page.locator("#subject-0")).toHaveAttribute("aria-invalid", "false");
 });
 
 test("reset from an error state restores the default form and removes the notice", async ({ page }) => {
@@ -398,19 +405,23 @@ test("malformed, fractional, negative, missing and over-range marks are rejected
   }
 });
 
-test("duplicate subjects are rejected before pathway results are produced", async ({ page }) => {
+test("already-selected subjects cannot be selected twice", async ({ page }) => {
   await page.goto("/");
   await page.locator("#stage").selectOption("GRADE_12");
   await page.locator("#subject-0").selectOption("Mathematics");
   await page.locator("#mark-0").fill("75");
   await page.getByRole("button", { name: /Add another subject/ }).click();
-  await page.locator("#subject-1").selectOption("Mathematics");
+
+  const secondSubject = page.locator("#subject-1");
+  const optionValues = await secondSubject.locator("option").evaluateAll(options => options.map(option => option.value));
+  expect(optionValues).not.toContain("Mathematics");
+  await expect(secondSubject.locator('option[value="Mathematics"]')).toHaveCount(0);
+  await secondSubject.selectOption("Physical Sciences");
   await page.locator("#mark-1").fill("80");
   await page.getByRole("button", { name: /Explore pathways/ }).click();
 
-  await expect(page.locator(".form-notice")).toContainText("Mathematics is listed more than once");
-  await expect(page.locator(".result-card")).toHaveCount(0);
-  await expect(page.locator(".form-notice")).not.toContainText("Pathway exploration completed");
+  await expect(page.locator(".form-notice")).toContainText("Pathway exploration completed");
+  await expect(page.locator(".result-card")).toHaveCount(30);
 });
 
 test("missing study stage is field-associated and blocks evaluation", async ({ page }) => {
@@ -673,24 +684,23 @@ test("whole-number mark boundaries reject fractional, negative, blank, and over-
   expect(eligibilityLabels.every(label => ["Eligible", "Not eligible", "Unknown"].includes(label.trim()))).toBe(true);
 });
 
-test("duplicate subjects associate validation with each affected subject field", async ({ page }) => {
+test("subject dropdowns prevent duplicates without invalidating either field", async ({ page }) => {
   await page.goto("/");
   await page.locator("#stage").selectOption("GRADE_12");
   await page.locator("#subject-0").selectOption("Mathematics");
   await page.locator("#mark-0").fill("75");
   await page.getByRole("button", { name: /Add another subject/ }).click();
-  await page.locator("#subject-1").selectOption("Mathematics");
-  await page.locator("#mark-1").fill("80");
 
+  const secondSubject = page.locator("#subject-1");
+  await expect(secondSubject.locator('option[value="Mathematics"]')).toHaveCount(0);
+  await secondSubject.selectOption("Physical Sciences");
+  await page.locator("#mark-1").fill("80");
   await page.getByRole("button", { name: /Explore pathways/ }).click();
-  await expect(page.locator(".form-notice")).toContainText("Mathematics is listed more than once");
-  for (const selector of ["#subject-0", "#subject-1"]) {
-    await expect(page.locator(selector)).toHaveAttribute("aria-invalid", "true");
-    const describedBy = await page.locator(selector).getAttribute("aria-describedby");
-    expect(describedBy).toBeTruthy();
-    await expect(page.locator(`#${describedBy}`)).toBeVisible();
-  }
-  await expect(page.locator(".result-card")).toHaveCount(0);
+
+  await expect(page.locator(".form-notice")).toContainText("Pathway exploration completed");
+  await expect(page.locator("#subject-0")).toHaveAttribute("aria-invalid", "false");
+  await expect(page.locator("#subject-1")).toHaveAttribute("aria-invalid", "false");
+  await expect(page.locator(".result-card")).toHaveCount(30);
 });
 
 test("missing stage is associated with its field and reset clears validation", async ({ page }) => {
@@ -737,8 +747,10 @@ test("desktop results layout has no horizontal overflow", async ({ page }) => {
 
 test("provisional APS fails closed when subject-selection rules are unresolved and keeps pathway eligibility UNKNOWN", async ({ page }) => {
   await page.goto("/");
-  await expect(page.getByRole("note").filter({ hasText: "An NSC subject profile commonly contains seven subjects." })).toBeVisible();
-  await expect(page.getByRole("link", { name: "Read the Department of Basic Education’s subject guidance" })).toHaveAttribute("href", /SubjectChoiceandCareerPathing/);
+  const nscGuidance = page.locator(".profile-guidance-disclosure");
+  await nscGuidance.locator(":scope > summary").click();
+  await expect(nscGuidance.getByText("An NSC subject profile commonly contains seven subjects.")).toBeVisible();
+  await expect(nscGuidance.getByRole("link", { name: "Read the Department of Basic Education’s subject guidance" })).toHaveAttribute("href", /SubjectChoiceandCareerPathing/);
   await page.locator("#stage").selectOption("GRADE_12");
   const rows = [
     ["Mathematics", "29"],
@@ -757,6 +769,7 @@ test("provisional APS fails closed when subject-selection rules are unresolved a
   await page.getByRole("button", { name: /Explore pathways/ }).click();
   const aps = page.getByRole("region", { name: /Provisional APS estimate/ });
   await expect(aps).toBeVisible();
+  await aps.locator(".aps-disclosure > summary").click();
   await expect(aps.getByText("Indicative total", { exact: true })).toBeVisible();
   await expect(aps.locator(".aps-total strong")).toHaveText("22");
   await expect(aps.locator(".aps-excluded")).toContainText("Life Orientation.");

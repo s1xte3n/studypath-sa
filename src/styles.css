@@ -37,6 +37,9 @@ select:focus,input:focus{border-color:var(--green)}
 .hint{font-size:11px;color:#53645a}
 .subject-list{display:grid;gap:10px}
 .subject-row{display:grid;grid-template-columns:minmax(0,1fr) 112px 34px;gap:9px;align-items:center}
+.subject-row:has(.custom-subject-field){grid-template-columns:minmax(0,1fr) minmax(0,1fr) 112px 34px}
+.custom-subject-field{min-width:0}
+.custom-subject-field input{width:100%;min-width:0}
 .remove-button{height:36px;width:34px;border:0;border-radius:7px;background:#f4f6f2;color:#64756b;font-size:24px;cursor:pointer}
 .remove-button:disabled{opacity:.35;cursor:not-allowed}
 .add-button,.text-button{border:0;background:transparent;color:var(--green);font-weight:700;font-size:13px;padding:13px 0;cursor:pointer}
@@ -839,6 +842,11 @@ a { color: var(--link); }
   cursor: pointer;
 }
 
+.app-shell.theme-dark .theme-toggle {
+  background: #25202b;
+  color: #f7f1fb;
+}
+
 .app-shell .menu-button {
   display: none;
   align-items: center;
@@ -1143,3 +1151,271 @@ body,
     padding-inline: clamp(32px, 4vw, 80px);
   }
 }
+
+
+/* Palette experiment: retain the PR redesign while restoring the original main-branch colours. */
+:root {
+  --bg: #f7f8f4;
+  --surface: #ffffff;
+  --surface-2: #eaf2ec;
+  --line: #dce4de;
+  --ink: #123b32;
+  --ink-soft: #52665d;
+  --lime: #eaf2ec;
+  --coral: #ba7b1d;
+  --sky: #eaf2ec;
+  --sun: #f3e3bd;
+  --accent: #155c45;
+  --accent-ink: #ffffff;
+  --link: #155c45;
+  --shadow: 4px 4px 0 #123b3214;
+  --shadow-sm: 2px 2px 0 #123b3214;
+  --focus-ring: #8a641e;
+  --green: #155c45;
+  --blue: #285f78;
+  --yellow: #8a641e;
+  --ground: var(--bg);
+  --panel: var(--surface);
+  --paper: var(--surface);
+  --canvas: var(--bg);
+  --muted-ground: var(--surface-2);
+  --rule: var(--line);
+  --ink-secondary: var(--ink-soft);
+  --muted: var(--ink-soft);
+  --deep: var(--ink);
+  --button-background: var(--accent);
+  --button-background-hover: #123b32;
+  --apple-shadow: var(--shadow);
+  --apple-shadow-lift: 6px 6px 0 #123b3214;
+}
+
+.app-shell.theme-light {
+  --bg: #f7f8f4;
+  --surface: #ffffff;
+  --surface-2: #eaf2ec;
+  --line: #dce4de;
+  --ink: #123b32;
+  --ink-soft: #52665d;
+  --accent: #155c45;
+  --accent-ink: #ffffff;
+  --link: #155c45;
+  --green: #155c45;
+  --blue: #285f78;
+  --yellow: #8a641e;
+  --focus-ring: #8a641e;
+  background: var(--bg);
+  color: var(--ink);
+}
+
+.app-shell.theme-light .primary-button {
+  background: #155c45;
+  color: #ffffff;
+}
+
+.app-shell.theme-light .primary-button:hover {
+  background: #123b32;
+}
+
+.app-shell.theme-light .mark {
+  background: #155c45;
+  color: #ffffff;
+}
+
+.app-shell.theme-light .step-count {
+  background: #eaf2ec;
+  color: #123b32;
+}
+
+.app-shell.theme-light .menu-button {
+  background: #eaf2ec;
+  color: #123b32;
+}
+
+.app-shell.theme-light .status-eligible,
+.app-shell.theme-light [data-status="ELIGIBLE"] {
+  color: #155c45;
+}
+
+.app-shell.theme-light .status-not-eligible,
+.app-shell.theme-light [data-status="NOT_ELIGIBLE"] {
+  color: #8a641e;
+}
+
+.app-shell.theme-light .status-unknown,
+.app-shell.theme-light [data-status="UNKNOWN"] {
+  color: #8a641e;
+}
+
+
+/* Keep pilot limitations available without making them a warning banner in the results flow. */
+.pilot-disclosure {
+  margin: 0 0 22px;
+  padding: 14px 16px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--paper);
+  color: var(--deep);
+}
+.pilot-disclosure summary {
+  color: var(--green);
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.5;
+  cursor: pointer;
+}
+.pilot-disclosure summary:focus-visible {
+  outline: 3px solid #d49a35;
+  outline-offset: 4px;
+}
+.pilot-disclosure-content {
+  max-width: 900px;
+  padding-top: 12px;
+}
+.pilot-disclosure-content p {
+  margin: 0 0 8px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.65;
+}
+.pilot-disclosure-content p:last-child {
+  margin-bottom: 0;
+}
+.theme-dark .pilot-disclosure {
+  background: var(--paper);
+  border-color: var(--line);
+  color: var(--deep);
+}
+.theme-dark .pilot-disclosure summary {
+  color: #9db8ff;
+}
+.theme-dark .pilot-disclosure-content p {
+  color: var(--muted);
+}
+
+
+/* Keep demo privacy guidance available without presenting it as a warning banner. */
+.privacy-disclosure {
+  margin-top: 1.25rem;
+  border: 1px solid var(--line, #dce4de);
+  border-radius: 0.75rem;
+  background: var(--paper, #fff);
+  color: var(--ink, #123b32);
+}
+
+.privacy-disclosure summary {
+  padding: 0.85rem 1rem;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.privacy-disclosure summary:focus-visible {
+  outline: 3px solid var(--green, #155c45);
+  outline-offset: 3px;
+  border-radius: 0.5rem;
+}
+
+.privacy-disclosure-content {
+  padding: 0 1rem 1rem;
+}
+
+.privacy-disclosure-content p {
+  margin: 0;
+}
+
+[data-theme="dark"] .privacy-disclosure {
+  background: var(--paper, #17231e);
+  color: var(--ink, #f7f8f4);
+}
+
+
+/* Keep detailed NSC and APS caveats available without a prominent warning panel. */
+.profile-guidance-disclosure {
+  margin: 0 0 1.25rem;
+  border: 1px solid var(--line, #dce4de);
+  border-radius: 0.75rem;
+  background: var(--paper, #fff);
+  color: var(--ink, #123b32);
+}
+
+.profile-guidance-disclosure summary {
+  padding: 0.85rem 1rem;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.profile-guidance-disclosure summary:focus-visible {
+  outline: 3px solid var(--green, #155c45);
+  outline-offset: 3px;
+  border-radius: 0.5rem;
+}
+
+.profile-guidance-content {
+  padding: 0 1rem 1rem;
+}
+
+.profile-guidance-content p {
+  margin: 0;
+}
+
+[data-theme="dark"] .profile-guidance-disclosure {
+  background: var(--paper, #17231e);
+  color: var(--ink, #f7f8f4);
+}
+
+ 
+/* Keep the provisional APS methodology and source caveats available on demand. */
+.aps-disclosure {
+  margin-top: 1rem;
+  border: 1px solid var(--line, #dce4de);
+  border-radius: 0.75rem;
+  background: var(--paper, #fff);
+  color: var(--ink, #123b32);
+}
+.aps-disclosure summary {
+  padding: 0.85rem 1rem;
+  cursor: pointer;
+  font-weight: 600;
+  line-height: 1.5;
+}
+.aps-disclosure summary:focus-visible {
+  outline: 3px solid var(--green, #155c45);
+  outline-offset: 3px;
+  border-radius: 0.5rem;
+}
+.aps-disclosure-content {
+  padding: 0 1rem 1rem;
+}
+.aps-disclosure-content p {
+  margin: 0 0 0.75rem;
+  font-size: 13px;
+  line-height: 1.65;
+}
+.aps-disclosure-content p:last-child {
+  margin-bottom: 0;
+}
+.aps-disclosure-content a {
+  color: var(--link, #155c45);
+  text-underline-offset: 3px;
+  overflow-wrap: anywhere;
+}
+[data-theme="dark"] .aps-disclosure,
+.theme-dark .aps-disclosure {
+  background: var(--paper, #17231e);
+  color: var(--ink, #f7f8f4);
+}
+
+
+/* Keep detailed pathway evidence available without dominating the initial view. */
+.compact-evidence-disclosure > summary {
+  cursor: pointer;
+  color: var(--accent, #245c45);
+  font-size: .9rem;
+  font-weight: 650;
+  line-height: 1.45;
+  padding: .35rem 0;
+  text-underline-offset: .15em;
+}
+.compact-evidence-disclosure[open] > summary { margin-bottom: .65rem; }
+.requirement-evidence-content { padding-top: .15rem; }
+.why-not-yet .compact-evidence-disclosure { margin-top: .5rem; }
+.theme-dark .compact-evidence-disclosure > summary { color: var(--accent, #b6e2c7); }

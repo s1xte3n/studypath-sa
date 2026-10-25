@@ -6,10 +6,25 @@ test("discovery dashboard reflects current profile completeness and draft UNKNOW
   await expect(completeness).toHaveAttribute("aria-valuenow", "0");
 
   await page.locator("#stage").selectOption("GRADE_12");
-  await expect(completeness).toHaveAttribute("aria-valuenow", "50");
+  await expect(completeness).toHaveAttribute("aria-valuenow", "33");
+  await expect(completeness).toHaveAttribute("aria-valuetext", "1 of 3 required sections complete; 0 of 6 unique subjects selected; 0 of 6 valid marks entered");
+
   await page.locator("#subject-0").selectOption("Mathematics");
+  await expect(completeness).toHaveAttribute("aria-valuenow", "39");
+
   await page.locator("#mark-0").fill("75");
+  await expect(completeness).toHaveAttribute("aria-valuenow", "44");
+  await expect(completeness).toHaveAttribute("aria-valuetext", "1 of 3 required sections complete; 1 of 6 unique subjects selected; 1 of 6 valid marks entered");
+
+  const remainingSubjects = ["Physical Sciences", "Life Sciences", "Geography", "History", "Accounting"];
+  for (let index = 0; index < remainingSubjects.length; index += 1) {
+    await page.getByRole("button", { name: "+ Add another subject" }).click();
+    const row = index + 1;
+    await page.locator(`#subject-${row}`).selectOption(remainingSubjects[index]);
+    await page.locator(`#mark-${row}`).fill(String(70 + index));
+  }
   await expect(completeness).toHaveAttribute("aria-valuenow", "100");
+  await expect(completeness).toHaveAttribute("aria-valuetext", "3 of 3 required sections complete; 6 of 6 unique subjects selected; 6 of 6 valid marks entered");
   await page.getByRole("button", { name: /Explore pathways/ }).click();
 
   await expect(page.getByText("30 total catalogue candidates")).toBeVisible();
@@ -19,6 +34,47 @@ test("discovery dashboard reflects current profile completeness and draft UNKNOW
   const eligibilityLabels = await page.locator(".result-card-top > .eligibility-state").allTextContents();
   expect(eligibilityLabels).toHaveLength(30);
   expect(eligibilityLabels.every(label => ["Eligible", "Not eligible", "Unknown"].includes(label.trim()))).toBe(true);
+});
+
+test("adding a subject preserves entries and completeness grows until six are complete", async ({ page }) => {
+  await page.goto("/");
+  const completeness = page.getByRole("progressbar", { name: "Profile completeness" });
+
+  await page.locator("#stage").selectOption("GRADE_12");
+  await page.locator("#subject-0").selectOption("Mathematics");
+  await page.locator("#mark-0").fill("75");
+  await expect(completeness).toHaveAttribute("aria-valuenow", "44");
+
+  await page.getByRole("button", { name: "+ Add another subject" }).click();
+  await expect(page.locator("#stage")).toHaveValue("GRADE_12");
+  await expect(page.locator("#subject-0")).toHaveValue("Mathematics");
+  await expect(page.locator("#mark-0")).toHaveValue("75");
+  await expect(page.locator("#subject-1")).toHaveValue("");
+  await expect(completeness).toHaveAttribute("aria-valuenow", "44");
+
+  const secondSubjectOptions = await page.locator("#subject-1 option").evaluateAll(options => options.map(option => option.value));
+  expect(secondSubjectOptions).not.toContain("Mathematics");
+  expect(secondSubjectOptions).toContain("Physical Sciences");
+  await page.locator("#subject-1").selectOption("Physical Sciences");
+  await page.locator("#mark-1").fill("80");
+  await expect(completeness).toHaveAttribute("aria-valuenow", "56");
+
+  // Selecting Other reveals a textbox and its subject/mark contributes to progress.
+  await page.getByRole("button", { name: "+ Add another subject" }).click();
+  await page.locator("#subject-2").selectOption("OTHER");
+  await expect(page.locator("#custom-subject-2")).toBeVisible();
+  await page.locator("#custom-subject-2").fill("Computer Applications Technology");
+  await page.locator("#mark-2").fill("82");
+  await expect(completeness).toHaveAttribute("aria-valuenow", "67");
+  const remainingSubjectOptions = await page.locator("#subject-1 option").evaluateAll(options => options.map(option => option.value));
+  expect(remainingSubjectOptions).not.toContain("Mathematics");
+
+  // Custom entries remain in the profile but are not supported by catalogue matching.
+  await page.getByRole("button", { name: /Explore pathways/ }).click();
+  await expect(page.locator(".form-notice")).toContainText("Computer Applications Technology");
+  await expect(page.locator(".form-notice")).toContainText("not included in catalogue matching");
+  await expect(page.locator(".result-card")).toHaveCount(30);
+  await expect(page.locator("#custom-subject-2")).toHaveValue("Computer Applications Technology");
 });
 
 test("eligibility filters update visible counts and provide a recoverable empty state", async ({ page }) => {
@@ -83,6 +139,10 @@ test("pathway details expose requirement evidence by keyboard at mobile width", 
   await summary.focus();
   await page.keyboard.press("Enter");
 
+  const evidenceDisclosure = firstCard.locator(".requirement-evidence");
+  await expect(evidenceDisclosure.locator("summary")).toContainText("View requirement-by-requirement evidence");
+  await expect(evidenceDisclosure).not.toHaveAttribute("open", "");
+  await evidenceDisclosure.locator("summary").click();
   await expect(firstCard.getByRole("heading", { name: "Requirement-by-requirement check" })).toBeVisible();
   await expect(firstCard.getByText("Recorded rule", { exact: true }).first()).toBeVisible();
   await expect(firstCard.getByText("Your input", { exact: true }).first()).toBeVisible();
@@ -131,6 +191,8 @@ test("Why Not Yet distinguishes missing information from a recorded shortfall on
   await expect(rejectedCard).toBeVisible();
   await rejectedCard.locator("summary").first().click();
   await expect(rejectedCard.getByRole("heading", { name: "Recorded requirement not met" })).toBeVisible();
+  const keyGaps = rejectedCard.locator(".compact-evidence-disclosure").first();
+  await keyGaps.locator(":scope > summary").click();
   await expect(rejectedCard.locator(".why-not-yet-blockers li").first()).toBeVisible();
 
   const layout = await page.evaluate(() => ({
@@ -165,7 +227,9 @@ test("blocked pathway offers catalogue-backed alternatives and links to the sele
   await preferredCard.locator("summary").first().click();
   const alternatives = preferredCard.locator(".alternative-pathways");
   await expect(alternatives).toBeVisible();
-  await expect(alternatives.getByRole("heading", { name: "Other pathways to explore" })).toBeVisible();
+  await expect(alternatives.locator(":scope > summary")).toContainText("Other pathways to explore");
+  await expect(alternatives).not.toHaveAttribute("open", "");
+  await alternatives.locator(":scope > summary").click();
   const evidenceToggle = alternatives.getByText("View eligibility evidence").first();
   await expect(evidenceToggle).toBeVisible();
   await evidenceToggle.click();
@@ -225,4 +289,101 @@ test("what-if planner recalculates hypothetically and keeps actual marks/results
 
   const layout = await page.evaluate(() => ({ viewportWidth: window.innerWidth, documentWidth: document.documentElement.scrollWidth }));
   expect(layout.documentWidth).toBeLessThanOrEqual(layout.viewportWidth);
+});
+
+
+test("pilot limitations are available on demand instead of displayed as a warning banner", async ({ page }) => {
+  await page.goto("/");
+  await page.locator("#stage").selectOption("GRADE_12");
+  await page.locator("#subject-0").selectOption("Mathematics");
+  await page.locator("#mark-0").fill("75");
+  await page.getByRole("button", { name: /Explore pathways/ }).click();
+
+  const summary = page.locator(".pilot-disclosure > summary");
+  await expect(summary).toBeVisible();
+  await expect(page.locator(".pilot-disclosure")).not.toHaveAttribute("open", "");
+  await expect(page.getByText(/Some programme rules still need interpretation/)).toBeHidden();
+
+  await summary.click();
+  await expect(page.getByText(/Some programme rules still need interpretation/)).toBeVisible();
+  await expect(page.locator(".pilot-disclosure").getByText(/do not guarantee admission/i).first()).toBeVisible();
+});
+
+
+test("demo privacy guidance is available on demand instead of shown as a warning banner", async ({ page }) => {
+  await page.goto("/");
+  const disclosure = page.locator(".privacy-disclosure");
+  await expect(disclosure.locator("summary")).toBeVisible();
+  await expect(disclosure).not.toHaveAttribute("open", "");
+  await expect(disclosure.getByText(/Your entries and results stay in this page's memory/)).toBeHidden();
+
+  await disclosure.locator("summary").click();
+  await expect(disclosure.getByText(/Your entries and results stay in this page's memory/)).toBeVisible();
+  await expect(disclosure.getByText(/Use fictional details only/)).toBeVisible();
+});
+
+
+test("NSC subject and APS guidance is available on demand instead of shown as a warning", async ({ page }) => {
+  await page.goto("/");
+  const disclosure = page.locator(".profile-guidance-disclosure");
+  await expect(disclosure.locator("summary")).toBeVisible();
+  await expect(disclosure).not.toHaveAttribute("open", "");
+  await expect(disclosure.getByText(/An NSC subject profile commonly contains seven subjects/)).toBeHidden();
+
+  await disclosure.locator("summary").click();
+  await expect(disclosure.getByText(/An NSC subject profile commonly contains seven subjects/)).toBeVisible();
+  await expect(disclosure.getByRole("link", { name: "Read the Department of Basic Education’s subject guidance" }))
+    .toHaveAttribute("href", "https://www.education.gov.za/Informationfor/Learners/SubjectChoiceandCareerPathing.aspx");
+});
+
+
+test("provisional APS methodology and limitations are available on demand", async ({ page }) => {
+  await page.goto("/");
+  await page.locator("#stage").selectOption("GRADE_12");
+  await page.locator("#subject-0").selectOption("Mathematics");
+  await page.locator("#mark-0").fill("75");
+  await page.getByRole("button", { name: /Explore pathways/ }).click();
+  const disclosure = page.locator(".aps-panel .aps-disclosure");
+  await expect(disclosure.locator("summary")).toHaveText("How the provisional APS estimate works");
+  await expect(disclosure).not.toHaveAttribute("open", "");
+  await expect(disclosure.getByText(/not an official or verified APS result/i)).toBeHidden();
+
+  await disclosure.locator("summary").click();
+  await expect(disclosure.getByText(/not an official or verified APS result/i)).toBeVisible();
+  await expect(disclosure.getByRole("link", { name: /UJ 2027 Undergraduate Prospectus/ }))
+    .toHaveAttribute("href", "https://www.uj.ac.za/wp-content/uploads/2026/07/uj_undergrad_prospectus2027_online_25jun2026.pdf");
+  await expect(disclosure.getByRole("link", { name: /UJ frequently asked questions/ }))
+    .toHaveAttribute("href", "https://www.uj.ac.za/frequently-asked-questions");
+  await expect(disclosure.getByText(/This estimate never changes pathway eligibility/i)).toBeVisible();
+});
+
+test("pathway interpretation guidance is available on demand", async ({ page }) => {
+  await page.goto("/");
+  await page.locator("#stage").selectOption("GRADE_12");
+  await page.locator("#subject-0").selectOption("Mathematics");
+  await page.locator("#mark-0").fill("75");
+  await page.getByRole("button", { name: /Explore pathways/ }).click();
+
+  const disclosure = page.locator(".results-guidance-disclosure");
+  await expect(disclosure.locator("summary")).toHaveText("How to read these options");
+  await expect(disclosure).not.toHaveAttribute("open", "");
+  await expect(disclosure.getByText(/not ranked by suitability/i)).toBeHidden();
+  await expect(disclosure.getByText(/Your next step:/i)).toBeHidden();
+
+  await disclosure.locator("summary").click();
+  await expect(disclosure.getByText(/not ranked by suitability/i)).toBeVisible();
+  await expect(disclosure.getByText(/does not compare your chances of admission/i)).toBeVisible();
+  await expect(disclosure.getByText(/confirm the current rules using the official UJ links/i)).toBeVisible();
+});
+
+test("what-if planner appears immediately above compare saved pathways", async ({ page }) => {
+  await page.goto("/");
+  await page.locator("#stage").selectOption("GRADE_12");
+  await page.locator("#subject-0").selectOption("Mathematics");
+  await page.locator("#mark-0").fill("75");
+  await page.getByRole("button", { name: /Explore pathways/ }).click();
+
+  await expect(page.locator(".what-if-planner + .comparison-section")).toHaveCount(1);
+  await expect(page.locator(".what-if-planner")).toContainText("What-if mark planner");
+  await expect(page.locator(".comparison-section")).toContainText("Compare saved pathways");
 });

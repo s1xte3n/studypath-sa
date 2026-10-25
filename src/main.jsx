@@ -60,16 +60,19 @@ function PathwayDetails({ item, allResults, activeCatalogue, onNavigateToAlterna
           <h4 id={`why-not-yet-${item.id}`}>{whyNotYet.title}</h4>
           <p>{whyNotYet.explanation}</p>
           {whyNotYet.blockers.length > 0 && (
-            <ul className="why-not-yet-blockers">
-              {whyNotYet.blockers.map(blocker => (
-                <li key={blocker.id}>
-                  <strong>{blocker.label}</strong>
-                  {blocker.rule && <p><span className="why-not-yet-label">Recorded rule:</span> {blocker.rule}</p>}
-                  {blocker.learnerValue && <p><span className="why-not-yet-label">Your input:</span> {blocker.learnerValue}</p>}
-                  <p>{blocker.explanation}</p>
-                </li>
-              ))}
-            </ul>
+            <details className="compact-evidence-disclosure">
+              <summary>View key gaps ({whyNotYet.blockers.length})</summary>
+              <ul className="why-not-yet-blockers">
+                {whyNotYet.blockers.map(blocker => (
+                  <li key={blocker.id}>
+                    <strong>{blocker.label}</strong>
+                    {blocker.rule && <p><span className="why-not-yet-label">Recorded rule:</span> {blocker.rule}</p>}
+                    {blocker.learnerValue && <p><span className="why-not-yet-label">Your input:</span> {blocker.learnerValue}</p>}
+                    <p>{blocker.explanation}</p>
+                  </li>
+                ))}
+              </ul>
+            </details>
           )}
           {whyNotYet.nextSteps.length > 0 && (
             <div>
@@ -79,8 +82,10 @@ function PathwayDetails({ item, allResults, activeCatalogue, onNavigateToAlterna
           )}
           {item.state === "UNKNOWN" && <p className="why-not-yet-caveat">Unknown is not a rejection. No conclusion is drawn where an input or material rule is missing.</p>}
         </section>
-        <section className="requirement-evidence" aria-labelledby={`requirement-evidence-${item.id}`}>
-          <h4 id={`requirement-evidence-${item.id}`}>Requirement-by-requirement check</h4>
+        <details className="requirement-evidence compact-evidence-disclosure">
+          <summary>View requirement-by-requirement evidence ({item.requirementEvidence?.length || 0})</summary>
+          <div className="requirement-evidence-content">
+            <h4 id={`requirement-evidence-${item.id}`}>Requirement-by-requirement check</h4>
           <p className="requirement-evidence-intro">These comparisons use the rules and source records currently stored in the demo catalogue. “Unknown” means the available information is insufficient; it is not a rejection.</p>
           {item.requirementEvidence?.length ? (
             <ul className="requirement-evidence-list">
@@ -106,17 +111,18 @@ function PathwayDetails({ item, allResults, activeCatalogue, onNavigateToAlterna
               ))}
             </ul>
           ) : <p>No requirement-level evidence is available for this pathway result.</p>}
-          <p className="requirement-evidence-caveat">This is a provisional comparison, not an admission decision. Source links show evidence recorded by StudyPath and do not by themselves prove that a rule is current or complete.</p>
-        </section>
-        {item.requirementNotes.length > 0 && (
-          <div className="detail-note">
-            <h4>Items still requiring confirmation</h4>
-            <ul>{item.requirementNotes.map(note => <li key={note}>{note}</li>)}</ul>
+            <p className="requirement-evidence-caveat">Provisional comparison only—not an admission decision. Source links do not prove a rule is current or complete.</p>
+            {item.requirementNotes.length > 0 && (
+              <div className="detail-note">
+                <h4>Still to confirm</h4>
+                <ul>{item.requirementNotes.map(note => <li key={note}>{note}</li>)}</ul>
+              </div>
+            )}
           </div>
-        )}
+        </details>
         {item.state !== "ELIGIBLE" && (
-          <section className="alternative-pathways" aria-labelledby={`alternative-pathways-${item.id}`}>
-            <h4 id={`alternative-pathways-${item.id}`}>Other pathways to explore</h4>
+          <details className="alternative-pathways compact-evidence-disclosure">
+            <summary id={`alternative-pathways-${item.id}`}>Other pathways to explore ({alternatives.length})</summary>
             <p>These options share recorded catalogue attributes with this pathway. This is an exploration aid, not evidence of progression or articulation. Each option has its own eligibility result.</p>
             {alternatives.length > 0 ? (
               <ul className="alternative-pathway-list">
@@ -152,7 +158,7 @@ function PathwayDetails({ item, allResults, activeCatalogue, onNavigateToAlterna
             ) : (
               <p className="alternative-pathways-empty" role="status">No supported alternatives can be suggested from the current catalogue attributes. No progression route has been inferred.</p>
             )}
-          </section>
+          </details>
         )}
         <div className="official-links">
           <h4>Official information</h4>
@@ -181,7 +187,6 @@ function ProvisionalApsPanel({ subjects }) {
     <section className="aps-panel" aria-labelledby="aps-title">
       <p className="eyebrow">YOUR MARKS · INDICATIVE ONLY</p>
       <h3 id="aps-title">Provisional APS estimate</h3>
-      <p className="aps-caveat">Based on mark-to-level bands recorded in the UJ 2027 Undergraduate Prospectus (printed p. 16). This hackathon estimate uses the project-owner-approved catalogue for demo scope only; it is not an official or verified APS result. Source-version and subject-selection rules are not approved for definitive screening.</p>
       {estimate.state === "PROVISIONAL" ? (
         <>
           <p className="aps-total"><span>Indicative total</span><strong>{estimate.aps}</strong></p>
@@ -194,9 +199,15 @@ function ProvisionalApsPanel({ subjects }) {
       ) : (
         <p className={estimate.state === "INPUT_REJECTED" ? "aps-error" : "aps-pending"} role="status">{estimate.reason}</p>
       )}
-      {estimate.state === "PROVISIONAL" && <p className="aps-limitation">{estimate.reason}</p>}
-      <p className="aps-source">Sources: <a href={APS_SOURCE.url} target="_blank" rel="noopener noreferrer">{APS_SOURCE.title} <span aria-hidden="true">↗</span></a> · printed p. {APS_SOURCE.printedPage}; <a href={APS_SOURCE.policyUrl} target="_blank" rel="noopener noreferrer">{APS_SOURCE.policyTitle} <span aria-hidden="true">↗</span></a>. Provisional demo rule.</p>
-      <p className="aps-limitation">This is separate from NSC pass or achievement status. Life Orientation is excluded from this provisional UJ APS input. A total is shown only when exactly six supported non-Life-Orientation subjects are supplied. Fewer or more than six returns UNKNOWN: the applicable selection and programme-required-subject rules have not been verified, so the demo does not choose a subset. This estimate never changes pathway eligibility.</p>
+      <details className="aps-disclosure">
+        <summary>How the provisional APS estimate works</summary>
+        <div className="aps-disclosure-content">
+          <p>Based on mark-to-level bands recorded in the UJ 2027 Undergraduate Prospectus (printed p. 16). This hackathon estimate uses the project-owner-approved catalogue for demo scope only; it is not an official or verified APS result. Source-version and subject-selection rules are not approved for definitive screening.</p>
+          {estimate.state === "PROVISIONAL" && <p>{estimate.reason}</p>}
+          <p>Sources: <a href={APS_SOURCE.url} target="_blank" rel="noopener noreferrer">{APS_SOURCE.title} <span aria-hidden="true">↗</span></a> · printed p. {APS_SOURCE.printedPage}; <a href={APS_SOURCE.policyUrl} target="_blank" rel="noopener noreferrer">{APS_SOURCE.policyTitle} <span aria-hidden="true">↗</span></a>. Provisional demo rule.</p>
+          <p>This is separate from NSC pass or achievement status. Life Orientation is excluded from this provisional UJ APS input. A total is shown only when exactly six supported non-Life-Orientation subjects are supplied. Fewer or more than six returns UNKNOWN: the applicable selection and programme-required-subject rules have not been verified, so the demo does not choose a subset. This estimate never changes pathway eligibility.</p>
+        </div>
+      </details>
     </section>
   );
 }
@@ -392,7 +403,7 @@ function App() {
   const [darkMode, setDarkMode] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [stage, setStage] = useState("");
-  const [subjects, setSubjects] = useState([{ subject: "", mark: "" }]);
+  const [subjects, setSubjects] = useState([{ subject: "", mark: "", customSubject: false }]);
   const [notice, setNotice] = useState("");
   const [fieldErrors, setFieldErrors] = useState({ stage: "", subjects: {} });
   const [submitted, setSubmitted] = useState(false);
@@ -439,13 +450,34 @@ function App() {
     setFieldErrors({ stage: "", subjects: {} });
   }
 
+  function updateStage(value) {
+    setStage(value);
+    setResults([]);
+    setSavedPathways([]);
+    setTracking({});
+    setEligibilityFilter("ALL");
+    setCampusFilter("ALL");
+    setSubmitted(false);
+    setNotice("");
+    setFieldErrors({ stage: "", subjects: {} });
+  }
+
   function updateSubject(index, field, value) {
     setSubjects(current => current.map((item, i) => i === index ? { ...item, [field]: value } : item));
     clearResults();
   }
 
+  function chooseSubject(index, value) {
+    setSubjects(current => current.map((item, i) => {
+      if (i !== index) return item;
+      if (value === "OTHER") return { ...item, subject: "", customSubject: true };
+      return { ...item, subject: value, customSubject: false };
+    }));
+    clearResults();
+  }
+
   function addSubject() {
-    setSubjects(current => [...current, { subject: "", mark: "" }]);
+    setSubjects(current => [...current, { subject: "", mark: "", customSubject: false }]);
     clearResults();
   }
 
@@ -456,7 +488,7 @@ function App() {
 
   function resetForm() {
     setStage("");
-    setSubjects([{ subject: "", mark: "" }]);
+    setSubjects([{ subject: "", mark: "", customSubject: false }]);
     setResults([]);
     setSavedPathways([]);
     setTracking({});
@@ -508,7 +540,12 @@ function App() {
     setFieldErrors({ stage: "", subjects: {} });
 
     try {
-      const nextResults = buildPathwayResults({ stage, subjects }, catalogue);
+      // Custom "Other" entries are valid learner input, but the catalogue evaluator
+      // only understands explicitly mapped subjects. Keep custom entries in the
+      // profile while excluding them from deterministic catalogue matching.
+      const customSubjects = subjects.filter(item => item.customSubject);
+      const catalogueSubjects = subjects.filter(item => !item.customSubject);
+      const nextResults = buildPathwayResults({ stage, subjects: catalogueSubjects }, catalogue);
       if (nextResults.length === 0) {
         setResults([]);
         setNotice("No pathways are available from the current draft catalogue. Check the official UJ sources or try again later; this is not an admission decision.");
@@ -516,7 +553,11 @@ function App() {
         return;
       }
       setResults(nextResults);
-      setNotice("Pathway exploration completed. Results compare your marks with minimum requirements currently recorded in the UJ 2027 pilot catalogue. Outcomes are provisional, and meeting listed minimums does not guarantee admission.");
+      const standardNotice = "Pathway exploration completed. Results compare your marks with minimum requirements currently recorded in the UJ 2027 pilot catalogue. Outcomes are provisional, and meeting listed minimums does not guarantee admission.";
+      const customNotice = customSubjects.length
+        ? ` Custom subject names (${customSubjects.map(item => item.subject.trim()).filter(Boolean).join(", ")}) are not included in catalogue matching; the results use only supported subjects. The provisional APS panel cannot calculate a total from unsupported custom subjects.`
+        : "";
+      setNotice(standardNotice + customNotice);
       setSubmitted(true);
     } catch {
       setResults([]);
@@ -577,10 +618,12 @@ function App() {
             <p className="eyebrow">YOUR NEXT STEP STARTS HERE</p>
             <h1>Find a study path<br /><span>that fits your future.</span></h1>
             <p className="hero-copy">Explore study options using your subjects and marks. See what is known, what still needs checking, and where to find official information.</p>
-            <div className="privacy-note" role="note">
-              <span className="privacy-icon" aria-hidden="true">●</span>
-              <div><strong>Private by design in this demo</strong><p>Your entries and results stay in this page's memory. They are not sent to a server or saved across a reload. Use fictional details only.</p></div>
-            </div>
+            <details className="privacy-disclosure">
+              <summary>Privacy in this demo</summary>
+              <div className="privacy-disclosure-content">
+                <p><strong>Private by design in this demo.</strong> Your entries and results stay in this page's memory. They are not sent to a server or saved across a reload. Use fictional details only.</p>
+              </div>
+            </details>
           </div>
           <aside className="hero-visual" aria-label="How StudyPath works">
             <div className="visual-card visual-card-input">
@@ -609,11 +652,16 @@ function App() {
             <span className="step-count">01 / 03</span>
           </div>
           <p className="section-copy">No account is needed. Add the subjects and marks you want to explore. Use whole-number marks from 0 to 100.</p>
-          <p className="aps-caveat" role="note">An NSC subject profile commonly contains seven subjects. You can enter all seven here. This demo does not determine whether you have passed the NSC or achieved a Bachelor’s, Diploma or Higher Certificate access level. The separate provisional UJ APS estimate uses exactly six supported non-Life-Orientation subjects only when exactly six are entered; it does not choose the top six automatically. <a href="https://www.education.gov.za/Informationfor/Learners/SubjectChoiceandCareerPathing.aspx" target="_blank" rel="noopener noreferrer">Read the Department of Basic Education’s subject guidance</a>.</p>
+          <details className="profile-guidance-disclosure">
+            <summary>About NSC subjects and the provisional APS estimate</summary>
+            <div className="profile-guidance-content">
+              <p>An NSC subject profile commonly contains seven subjects. You can enter all seven here. This demo does not determine whether you have passed the NSC or achieved a Bachelor’s, Diploma or Higher Certificate access level. The separate provisional UJ APS estimate uses exactly six supported non-Life-Orientation subjects only when exactly six are entered; it does not choose the top six automatically. <a href="https://www.education.gov.za/Informationfor/Learners/SubjectChoiceandCareerPathing.aspx" target="_blank" rel="noopener noreferrer">Read the Department of Basic Education’s subject guidance</a>.</p>
+            </div>
+          </details>
 
           <form onSubmit={submitForm} noValidate>
             <label className="field-label" htmlFor="stage">Your current stage <span aria-hidden="true">*</span></label>
-            <select id="stage" value={stage} aria-invalid={Boolean(fieldErrors.stage)} aria-describedby={fieldErrors.stage ? "stage-error" : undefined} onChange={event => { setStage(event.target.value); clearResults(); }} required>
+            <select id="stage" value={stage} aria-invalid={Boolean(fieldErrors.stage)} aria-describedby={fieldErrors.stage ? "stage-error" : undefined} onChange={event => updateStage(event.target.value)} required>
               <option value="">Choose current stage</option>
               {STAGES.map(item => <option key={item.value} value={item.value}>{item.label}</option>)}
             </select>
@@ -624,10 +672,15 @@ function App() {
               {subjects.map((item, index) => (
                 <div className="subject-row" key={index}>
                   <label className="visually-hidden" htmlFor={`subject-${index}`}>Subject {index + 1}</label>
-                  <select id={`subject-${index}`} value={item.subject} aria-invalid={Boolean(fieldErrors.subjects[index]?.subject?.length)} aria-describedby={fieldErrors.subjects[index]?.subject?.length ? `subject-error-${index}` : undefined} onChange={event => updateSubject(index, "subject", event.target.value)} required>
+                  <select id={`subject-${index}`} value={item.customSubject ? "OTHER" : item.subject} aria-invalid={Boolean(fieldErrors.subjects[index]?.subject?.length)} aria-describedby={fieldErrors.subjects[index]?.subject?.length ? `subject-error-${index}` : undefined} onChange={event => chooseSubject(index, event.target.value)} required>
                     <option value="">Choose a subject</option>
-                    {SUBJECTS.map(subject => <option key={subject} value={subject}>{subject}</option>)}
+                    {SUBJECTS.filter(subject => subject === item.subject || !subjects.some((selected, selectedIndex) => selectedIndex !== index && !selected.customSubject && selected.subject === subject)).map(subject => <option key={subject} value={subject}>{subject}</option>)}
+                    <option value="OTHER">Other (enter subject name)</option>
                   </select>
+                  {item.customSubject && <div className="custom-subject-field">
+                    <label className="visually-hidden" htmlFor={`custom-subject-${index}`}>Custom subject name for row {index + 1}</label>
+                    <input id={`custom-subject-${index}`} type="text" value={item.subject} placeholder="Enter subject name" maxLength="100" onChange={event => updateSubject(index, "subject", event.target.value)} required />
+                  </div>}
                   <label className="visually-hidden" htmlFor={`mark-${index}`}>Mark for subject {index + 1}</label>
                   <input id={`mark-${index}`} inputMode="numeric" type="number" min="0" max="100" step="1" placeholder="Mark %" value={item.mark} aria-invalid={Boolean(fieldErrors.subjects[index]?.mark?.length)} aria-describedby={fieldErrors.subjects[index]?.mark?.length ? `mark-error-${index}` : undefined} onChange={event => updateSubject(index, "mark", event.target.value)} required />
                   {fieldErrors.subjects[index]?.subject?.length > 0 && <p className="field-error subject-error" id={`subject-error-${index}`}>{fieldErrors.subjects[index].subject.join(" ")}</p>}
@@ -647,10 +700,10 @@ function App() {
                 <h3 id="profile-completeness-title">Profile completeness</h3>
                 <strong>{discovery.profile.percentage}%</strong>
               </div>
-              <div className="completeness-track" role="progressbar" aria-label="Profile completeness" aria-valuemin={0} aria-valuemax={100} aria-valuenow={discovery.profile.percentage} aria-valuetext={`${discovery.profile.completedSections} of ${discovery.profile.requiredSections} required sections complete`}>
+              <div className="completeness-track" role="progressbar" aria-label="Profile completeness" aria-valuemin={0} aria-valuemax={100} aria-valuenow={discovery.profile.percentage} aria-valuetext={`${discovery.profile.completedSections} of ${discovery.profile.requiredSections} required sections complete; ${discovery.profile.subjectCount} of 6 unique subjects selected; ${discovery.profile.markedSubjectCount} of 6 valid marks entered`}>
                 <span style={{ width: `${discovery.profile.percentage}%` }} />
               </div>
-              <p>{discovery.profile.completedSections} of {discovery.profile.requiredSections} required sections complete: select your current stage and enter at least one unique subject with a whole-number mark from 0 to 100. Extra subject rows are optional.</p>
+              <p>{discovery.profile.completedSections} of {discovery.profile.requiredSections} required sections complete. Subject progress: {discovery.profile.subjectCount} of 6 distinct subjects; valid marks: {discovery.profile.markedSubjectCount} of 6. Complete all six subject-and-mark entries to reach 100%; additional subjects are optional.</p>
             </section>
             {notice && <p className={`form-notice ${submitted ? "notice-info" : "notice-error"}`} role="status" aria-live="polite">{notice}</p>}
           </form>
@@ -663,16 +716,20 @@ function App() {
               <span className="step-count">{discovery.totalCandidates} CANDIDATES</span>
             </div>
             <ProvisionalApsPanel subjects={subjects.map(item => ({ subject: item.subject, mark: item.mark }))} />
-            <div className="catalogue-warning" role="note">
-              <strong>Exploration results · 2027 pilot</strong>
-              <p>Results are based on the minimum requirements currently recorded in source-backed catalogue entries. Some programme rules still need interpretation; UNKNOWN is retained where a material rule or required input prevents a result. Positive results are provisional and do not guarantee admission.</p>
-            </div>
-            <aside className="results-guidance" aria-labelledby="results-guidance-title">
-              <h3 id="results-guidance-title">How to read these options</h3>
-              <p>These pathways are not ranked by suitability. A provisional match means your marks meet the minimum requirements currently recorded for that pathway; it is not an admission decision and does not compare your chances of admission.</p>
-              <p><strong>Your next step:</strong> open pathway details, review the unresolved items, and confirm the current rules using the official UJ links before deciding where to apply.</p>
-            </aside>
-            <WhatIfMarkPlanner stage={stage} actualSubjects={subjects.map(item => ({ subject: item.subject, mark: item.mark }))} activeCatalogue={catalogue} />
+            <details className="pilot-disclosure">
+              <summary>About the 2027 pilot and result limitations</summary>
+              <div className="pilot-disclosure-content">
+                <p>These exploration results use the minimum requirements currently recorded in source-backed catalogue entries for the 2027 pilot. Some programme rules still need interpretation; UNKNOWN is retained where a material rule or required input prevents a result.</p>
+                <p>Positive results are provisional and do not guarantee admission. Confirm current requirements with the institution using the official source links on each pathway.</p>
+              </div>
+            </details>
+            <details className="results-guidance-disclosure aps-disclosure">
+              <summary>How to read these options</summary>
+              <div className="aps-disclosure-content">
+                <p>These pathways are not ranked by suitability. A provisional match means your marks meet the minimum requirements currently recorded for that pathway; it is not an admission decision and does not compare your chances of admission.</p>
+                <p><strong>Your next step:</strong> open pathway details, review the unresolved items, and confirm the current rules using the official UJ links before deciding where to apply.</p>
+              </div>
+            </details>
             <section className="discovery-summary" aria-labelledby="discovery-summary-title">
               <div className="discovery-summary-heading">
                 <div><h3 id="discovery-summary-title">Explore the catalogue</h3><p>Counts below describe the currently visible results after filters.</p></div>
@@ -730,6 +787,7 @@ function App() {
               ))}
             </div>}
             {savedPathways.length >= 3 && <p className="shortlist-capacity-note" role="status">Three pathways are saved. Remove one from the shortlist before saving another.</p>}
+            <WhatIfMarkPlanner stage={stage} actualSubjects={subjects.map(item => ({ subject: item.subject, mark: item.mark }))} activeCatalogue={catalogue} />
             <PathwayComparison items={savedPathways} />
             <section className="shortlist-section" aria-labelledby="shortlist-title">
               <div className="section-heading">
