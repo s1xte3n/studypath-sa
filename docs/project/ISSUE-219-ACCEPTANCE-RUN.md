@@ -6,7 +6,7 @@
 
 - Tracking issue: [#219 — Finalise the source-backed student discovery demo and acceptance run](https://github.com/s1xte3n/studypath-sa/issues/219)
 - Parent delivery tracker: [#160](https://github.com/s1xte3n/studypath-sa/issues/160)
-- Current base observed before this change: `8b6bfbb4f66ef1f054a16bbbafa9648279a3d15a` (main)
+- Candidate main commit after PR #228: `2b89ac280b93c038914600c66c72f82aff65def9` (documentation-only source-link scope correction; not an application-code change)
 - Synthetic profile: Grade 12; Mathematics 75; Physical Sciences 81.
 - Catalogue expectation in the current browser tests: 30 candidate cards, all `UNKNOWN`.
 - Product boundary: draft 2027 pilot catalogue; no definitive admissions screening, guaranteed admission/funding, application submission, persistent learner records, or production deployment.
@@ -40,19 +40,18 @@ The repository's Browser E2E, privacy and accessibility workflow also installs C
 
 | Evidence | Result |
 |---|---|
-| Candidate commit recorded in the issue | `6ea58b91b2f771d34d0f0b9781de3dd4dc2b6488` (reported as the main merge commit; a separate PR-head SHA/URL was not recorded) |
-| Browser MVP build / tests | [GitHub Actions run 40181318168](https://github.com/s1xte3n/studypath-sa/actions/runs/40181318168) — completed successfully, per the issue evidence comment |
-| Browser E2E, privacy and accessibility | [GitHub Actions run 40181318141](https://github.com/s1xte3n/studypath-sa/actions/runs/40181318141) — completed successfully, per the issue evidence comment |
-| Contract tests | [GitHub Actions run 40181318136](https://github.com/s1xte3n/studypath-sa/actions/runs/40181318136) — reported successful |
-| UJ eligibility golden-case verification | [GitHub Actions run 40181318135](https://github.com/s1xte3n/studypath-sa/actions/runs/40181318135) — reported successful |
-| GitHub Pages preview | [GitHub Actions run 40181318137](https://github.com/s1xte3n/studypath-sa/actions/runs/40181318137) — reported successful; this workflow was subsequently removed |
-| PR number / URL and exact PR-head SHA | Not separately established by the evidence currently recorded |
+| Earlier candidate commit | `6ea58b91b2f771d34d0f0b9781de3dd4dc2b6488` (previously reported; not the current evidence target) |
+| PR #228 merge commit | `2b89ac280b93c038914600c66c72f82aff65def9` — documentation-only scope correction |
+| Browser MVP build / tests on PR #228 merge | [GitHub Actions run 40188274276](https://github.com/s1x6te3n/studypath-sa/actions/runs/40188274276) — completed successfully, per owner-provided result |
+| Browser E2E, privacy and accessibility on PR #228 merge | [GitHub Actions run 40188274290](https://github.com/s1x6te3n/studypath-sa/actions/runs/40188274290) — completed successfully, per owner-provided result |
+| Contract tests on PR #228 merge | [GitHub Actions run 40188274295](https://github.com/s1x6te3n/studypath-sa/actions/runs/40188274295) — completed successfully, per owner-provided result |
+| Exact PR-head SHA / URL used for the owner-attested manual run | Not recorded; deferred and not required for the current hackathon acceptance run |
 
-**Evidence boundary:** these are GitHub Actions results reported in the issue evidence comment, not commands run in this session. Successful automation does not count as a manual rehearsal or prove that an external website was reachable during a human demo.
+**Evidence boundary:** these are GitHub Actions results reported in the issue evidence comment, not commands run in this session. Successful automation does not count as a manual rehearsal or prove production deployment. The source-link checks are excluded from remaining acceptance work by explicit project-owner decision.
 
 ## Manual acceptance checklist — owner attestation (2026-10-25)
 
-**Status:** The project owner stated in the project conversation on 2026-10-25 that all manual acceptance checks listed below were performed and approved. This is recorded as **owner-attested**, not independently reproduced by the assistant. The assistant did not operate an interactive browser or independently perform these checks in its current session; the issue comment saying manual acceptance was "NOT RUN in this session" refers to that limitation and does not negate the separate owner attestation. The exact browser/OS, tested URL tied to the attestation, individual rehearsal timings, and supporting screenshots/video remain unrecorded. Do not interpret this attestation as a production-readiness or definitive-admissions approval.
+**Status:** The project owner stated in the project conversation on 2026-10-25 that all manual acceptance checks listed below were performed and approved. This is recorded as **owner-attested**, not independently reproduced by the assistant. The assistant did not operate an interactive browser or independently perform these checks in its current session; the issue comment saying manual acceptance was "NOT RUN in this session" refers to that limitation and does not negate the separate owner attestation. Additional traceability details (browser/OS, exact tested URL, individual rehearsal timings, and supporting screenshots/video) are not recorded and are deferred; they are not blockers for the current hackathon acceptance run. Do not interpret this attestation as a production-readiness or definitive-admissions approval.
 
 - [x] Existing official source links — project-owner approved; the owner confirms the links are working. No additional source-link verification is required for this acceptance run.
 - [x] Confirm all 30 cards show UNKNOWN and that explanations disclose the draft/unverified status. — Owner-attested pass.
@@ -69,16 +68,16 @@ The repository's Browser E2E, privacy and accessibility workflow also installs C
 |---|---|
 | Date of owner attestation | 2026-10-25 |
 | Operator | Project owner (attested in project conversation; GitHub identity not independently matched) |
-| Exact candidate SHA / URL used | Not supplied; candidate-specific traceability remains incomplete |
-| Browser and OS | Not supplied |
+| Exact candidate SHA / URL used | Not recorded; deferred for the current hackathon acceptance run |
+| Browser and OS | Not recorded; deferred |
 | Official source links | Owner-approved and confirmed working; no further verification requested |
 | Desktop and 320px mobile | Owner-attested pass |
 | Themes and keyboard-only flow | Owner-attested pass |
-| Two complete rehearsals | Owner-attested pass; timings/recordings not supplied |
+| Two complete rehearsals | Owner-attested pass; timings/recordings deferred |
 | Defects / deviations | None reported by owner; no separate defect log supplied |
-| Supporting evidence | Not supplied with the attestation |
+| Supporting evidence | Not supplied with the attestation; deferred |
 
-**Disposition note:** the owner-attested manual checklist and the assistant-session limitation are distinct evidence statements. The candidate merge SHA and reported CI run links are now recorded above, but the PR-head identity and manual run metadata (browser/OS, exact URL, rehearsal timings, and supporting artefacts) remain incomplete. Keep Issue #219 open until the missing traceability is supplied or the project owner explicitly records which details are unavailable and accepts that limitation.
+**Disposition note:** the owner-attested manual checklist and the assistant-session limitation are distinct evidence statements. The candidate merge SHA and reported CI run links are recorded above. The additional manual-run metadata (browser/OS, exact tested URL, individual rehearsal timings, and supporting artefacts) is explicitly deferred and is not a blocker for the current hackathon acceptance run. Do not claim these details were captured.
 
 ## Demo profile and expected outcomes
 
