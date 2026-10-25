@@ -5,6 +5,7 @@ import { validateStudentEntries } from "./domain/student-input-validation.mjs";
 import { buildPathwayResults } from "./domain/pathway-matching.mjs";
 import { buildWhyNotYet } from "./domain/why-not-yet.mjs";
 import { suggestAlternativePathways } from "./domain/alternative-pathways.mjs";
+import { simulateWhatIfMarks } from "./domain/what-if-mark-planner.mjs";
 import { getDiscoverySummary } from "./domain/discovery-summary.mjs";
 import { calculateProvisionalAps, APS_SOURCE } from "./domain/eligibility/provisional-aps.mjs";
 import catalogue from "../docs/product/uj-2027-pilot-catalogue-draft.json";
@@ -268,6 +269,125 @@ function PathwayComparison({ items }) {
   );
 }
 
+
+function WhatIfMarkPlanner({ stage, actualSubjects, activeCatalogue }) {
+  const [open, setOpen] = useState(false);
+  const [draftSubjects, setDraftSubjects] = useState([]);
+  const [comparison, setComparison] = useState(null);
+  const [message, setMessage] = useState("");
+
+  function startSimulation() {
+    setDraftSubjects(actualSubjects.map(item => ({ subject: item.subject, mark: item.mark })));
+    setComparison(null);
+    setMessage("");
+    setOpen(true);
+  }
+
+  function updateDraftMark(index, mark) {
+    setDraftSubjects(current => current.map((item, itemIndex) => itemIndex === index ? { ...item, mark } : item));
+    setComparison(null);
+    setMessage("");
+  }
+
+  function runSimulation(event) {
+    event.preventDefault();
+    const result = simulateWhatIfMarks({ stage, actualSubjects, simulatedSubjects: draftSubjects, catalogue: activeCatalogue });
+    setComparison(result);
+    setMessage(result.valid
+      ? "Hypothetical comparison recalculated using the existing deterministic evaluator."
+      : result.errors.join(" "));
+  }
+
+  function exitSimulation() {
+    setOpen(false);
+    setDraftSubjects([]);
+    setComparison(null);
+    setMessage("");
+  }
+
+  return (
+    <section className="what-if-planner" aria-labelledby="what-if-title">
+      <div className="what-if-heading">
+        <div>
+          <p className="eyebrow">OPTIONAL · HYPOTHETICAL ONLY</p>
+          <h3 id="what-if-title">What-if mark planner</h3>
+        </div>
+        <span className="what-if-label">Does not edit your profile</span>
+      </div>
+      <p>Explore how different marks would compare with requirements currently recorded in the pilot catalogue. This is a hypothetical scenario, not an admission prediction or guarantee. Your actual marks and results stay unchanged.</p>
+      {!open ? (
+        <button className="primary-button what-if-open" type="button" onClick={startSimulation}>Try hypothetical marks</button>
+      ) : (
+        <div className="what-if-workspace">
+          <p className="what-if-banner" role="note"><strong>Hypothetical scenario.</strong> These draft marks are separate from the actual learner profile. Only supported subjects already in your profile can be simulated.</p>
+          <form onSubmit={runSimulation} noValidate>
+            <div className="what-if-mark-list">
+              {draftSubjects.map((item, index) => (
+                <div className="what-if-mark-row" key={item.subject}>
+                  <label htmlFor={`what-if-mark-${index}`}>{item.subject}</label>
+                  <div>
+                    <input
+                      id={`what-if-mark-${index}`}
+                      aria-label={`Hypothetical mark for ${item.subject}`}
+                      type="number"
+                      inputMode="numeric"
+                      min="0"
+                      max="100"
+                      step="1"
+                      value={item.mark}
+                      onChange={event => updateDraftMark(index, event.target.value)}
+                      required
+                    />
+                    <span>%</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div className="what-if-actions">
+              <button className="primary-button" type="submit">Simulate marks</button>
+              <button className="text-button" type="button" onClick={startSimulation}>Reset draft to actual marks</button>
+              <button className="text-button" type="button" onClick={exitSimulation}>Exit what-if</button>
+            </div>
+          </form>
+          {message && <p className={comparison?.valid ? "what-if-status" : "what-if-error"} role="status" aria-live="polite">{message}</p>}
+          {comparison?.valid && (
+            <section className="what-if-results" aria-labelledby="what-if-results-title">
+              <h4 id="what-if-results-title">Hypothetical comparison</h4>
+              <p>Before and after states are produced by the existing deterministic evaluator. UNKNOWN remains unknown when required information or rule interpretation is unresolved. Meeting recorded minimums does not guarantee admission.</p>
+              {comparison.changes.length === 0 ? (
+                <p className="what-if-empty" role="status">No pathway requirement comparisons changed for these marks.</p>
+              ) : (
+                <ul className="what-if-change-list">
+                  {comparison.changes.map(item => (
+                    <li key={item.id} className="what-if-change-item">
+                      <h5>{item.name}</h5>
+                      <p><strong>Eligibility state:</strong> {item.beforeState} → {item.afterState}{item.stateChanged ? " (changed)" : " (unchanged)"}</p>
+                      {item.requirements.length > 0 && (
+                        <div>
+                          <strong>Requirement comparisons that changed</strong>
+                          <ul>
+                            {item.requirements.map(requirement => (
+                              <li key={requirement.id}>
+                                <strong>{requirement.label}</strong>
+                                <p><span>Before:</span> {requirement.before ? `${requirement.before.status} — ${requirement.before.learnerValue}` : "Not recorded"}</p>
+                                <p><span>After:</span> {requirement.after ? `${requirement.after.status} — ${requirement.after.learnerValue}` : "Not recorded"}</p>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </section>
+          )}
+        </div>
+      )}
+    </section>
+  );
+}
+
 function App() {
   const [darkMode, setDarkMode] = useState(false);
   const [stage, setStage] = useState("");
@@ -519,6 +639,7 @@ function App() {
               <p>These pathways are not ranked by suitability. A provisional match means your marks meet the minimum requirements currently recorded for that pathway; it is not an admission decision and does not compare your chances of admission.</p>
               <p><strong>Your next step:</strong> open pathway details, review the unresolved items, and confirm the current rules using the official UJ links before deciding where to apply.</p>
             </aside>
+            <WhatIfMarkPlanner stage={stage} actualSubjects={subjects.map(item => ({ subject: item.subject, mark: item.mark }))} activeCatalogue={catalogue} />
             <section className="discovery-summary" aria-labelledby="discovery-summary-title">
               <div className="discovery-summary-heading">
                 <div><h3 id="discovery-summary-title">Explore the catalogue</h3><p>Counts below describe the currently visible results after filters.</p></div>
