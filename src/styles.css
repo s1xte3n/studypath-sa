@@ -1143,3 +1143,97 @@ body,
     padding-inline: clamp(32px, 4vw, 80px);
   }
 }
+
+
+/* Palette experiment: retain the PR redesign while restoring the original main-branch colours. */
+:root {
+  --bg: #f7f8f4;
+  --surface: #ffffff;
+  --surface-2: #eaf2ec;
+  --line: #dce4de;
+  --ink: #123b32;
+  --ink-soft: #52665d;
+  --lime: #eaf2ec;
+  --coral: #ba7b1d;
+  --sky: #eaf2ec;
+  --sun: #f3e3bd;
+  --accent: #155c45;
+  --accent-ink: #ffffff;
+  --link: #155c45;
+  --shadow: 4px 4px 0 #123b3214;
+  --shadow-sm: 2px 2px 0 #123b3214;
+  --focus-ring: #8a641e;
+  --green: #155c45;
+  --blue: #285f78;
+  --yellow: #8a641e;
+  --ground: var(--bg);
+  --panel: var(--surface);
+  --paper: var(--surface);
+  --canvas: var(--bg);
+  --muted-ground: var(--surface-2);
+  --rule: var(--line);
+  --ink-secondary: var(--ink-soft);
+  --muted: var(--ink-soft);
+  --deep: var(--ink);
+  --button-background: var(--accent);
+  --button-background-hover: #123b32;
+  --apple-shadow: var(--shadow);
+  --apple-shadow-lift: 6px 6px 0 #123b3214;
+}
+
+.app-shell.theme-light {
+  --bg: #f7f8f4;
+  --surface: #ffffff;
+  --surface-2: #eaf2ec;
+  --line: #dce4de;
+  --ink: #123b32;
+  --ink-soft: #52665d;
+  --accent: #155c45;
+  --accent-ink: #ffffff;
+  --link: #155c45;
+  --green: #155c45;
+  --blue: #285f78;
+  --yellow: #8a641e;
+  --focus-ring: #8a641e;
+  background: var(--bg);
+  color: var(--ink);
+}
+
+.app-shell.theme-light .primary-button {
+  background: #155c45;
+  color: #ffffff;
+}
+
+.app-shell.theme-light .primary-button:hover {
+  background: #123b32;
+}
+
+.app-shell.theme-light .mark {
+  background: #155c45;
+  color: #ffffff;
+}
+
+.app-shell.theme-light .step-count {
+  background: #eaf2ec;
+  color: #123b32;
+}
+
+.app-shell.theme-light .menu-button {
+  background: #eaf2ec;
+  color: #123b32;
+}
+
+.app-shell.theme-light .status-eligible,
+.app-shell.theme-light [data-status="ELIGIBLE"] {
+  color: #155c45;
+}
+
+.app-shell.theme-light .status-not-eligible,
+.app-shell.theme-light [data-status="NOT_ELIGIBLE"] {
+  color: #8a641e;
+}
+
+.app-shell.theme-light .status-unknown,
+.app-shell.theme-light [data-status="UNKNOWN"] {
+  color: #8a641e;
+}
