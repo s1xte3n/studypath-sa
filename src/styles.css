@@ -842,6 +842,11 @@ a { color: var(--link); }
   cursor: pointer;
 }
 
+.app-shell.theme-dark .theme-toggle {
+  background: #25202b;
+  color: #f7f1fb;
+}
+
 .app-shell .menu-button {
   display: none;
   align-items: center;
