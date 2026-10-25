@@ -392,7 +392,8 @@ function App() {
   const [darkMode, setDarkMode] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [stage, setStage] = useState("");
-  const [subjects, setSubjects] = useState([{ subject: "", mark: "" }]);
+  const [subjects, setSubjects] = useState([{ subject: "", mark: "", customSubject: false }]);
+  const [completenessReset, setCompletenessReset] = useState(false);
   const [notice, setNotice] = useState("");
   const [fieldErrors, setFieldErrors] = useState({ stage: "", subjects: {} });
   const [submitted, setSubmitted] = useState(false);
@@ -441,22 +442,36 @@ function App() {
 
   function updateSubject(index, field, value) {
     setSubjects(current => current.map((item, i) => i === index ? { ...item, [field]: value } : item));
+    setCompletenessReset(false);
+    clearResults();
+  }
+
+  function chooseSubject(index, value) {
+    setSubjects(current => current.map((item, i) => {
+      if (i !== index) return item;
+      if (value === "OTHER") return { ...item, subject: "", customSubject: true };
+      return { ...item, subject: value, customSubject: false };
+    }));
+    setCompletenessReset(false);
     clearResults();
   }
 
   function addSubject() {
-    setSubjects(current => [...current, { subject: "", mark: "" }]);
+    setSubjects(current => [...current, { subject: "", mark: "", customSubject: false }]);
+    setCompletenessReset(true);
     clearResults();
   }
 
   function removeSubject(index) {
     setSubjects(current => current.filter((_, i) => i !== index));
+    setCompletenessReset(false);
     clearResults();
   }
 
   function resetForm() {
     setStage("");
-    setSubjects([{ subject: "", mark: "" }]);
+    setSubjects([{ subject: "", mark: "", customSubject: false }]);
+    setCompletenessReset(false);
     setResults([]);
     setSavedPathways([]);
     setTracking({});
@@ -525,7 +540,10 @@ function App() {
     }
   }
 
-  const discovery = getDiscoverySummary({ stage, subjects, results, eligibilityFilter, campusFilter });
+  const discoverySummary = getDiscoverySummary({ stage, subjects, results, eligibilityFilter, campusFilter });
+  const discovery = completenessReset
+    ? { ...discoverySummary, profile: { completedSections: 0, requiredSections: 3, percentage: 0 } }
+    : discoverySummary;
 
   return (
     <div className={`app-shell ${darkMode ? "theme-dark" : "theme-light"}`}>
@@ -620,7 +638,7 @@ function App() {
 
           <form onSubmit={submitForm} noValidate>
             <label className="field-label" htmlFor="stage">Your current stage <span aria-hidden="true">*</span></label>
-            <select id="stage" value={stage} aria-invalid={Boolean(fieldErrors.stage)} aria-describedby={fieldErrors.stage ? "stage-error" : undefined} onChange={event => { setStage(event.target.value); clearResults(); }} required>
+            <select id="stage" value={stage} aria-invalid={Boolean(fieldErrors.stage)} aria-describedby={fieldErrors.stage ? "stage-error" : undefined} onChange={event => { setStage(event.target.value); setCompletenessReset(false); clearResults(); }} required>
               <option value="">Choose current stage</option>
               {STAGES.map(item => <option key={item.value} value={item.value}>{item.label}</option>)}
             </select>
@@ -631,10 +649,15 @@ function App() {
               {subjects.map((item, index) => (
                 <div className="subject-row" key={index}>
                   <label className="visually-hidden" htmlFor={`subject-${index}`}>Subject {index + 1}</label>
-                  <select id={`subject-${index}`} value={item.subject} aria-invalid={Boolean(fieldErrors.subjects[index]?.subject?.length)} aria-describedby={fieldErrors.subjects[index]?.subject?.length ? `subject-error-${index}` : undefined} onChange={event => updateSubject(index, "subject", event.target.value)} required>
+                  <select id={`subject-${index}`} value={item.customSubject ? "OTHER" : item.subject} aria-invalid={Boolean(fieldErrors.subjects[index]?.subject?.length)} aria-describedby={fieldErrors.subjects[index]?.subject?.length ? `subject-error-${index}` : undefined} onChange={event => chooseSubject(index, event.target.value)} required>
                     <option value="">Choose a subject</option>
-                    {SUBJECTS.map(subject => <option key={subject} value={subject}>{subject}</option>)}
+                    {SUBJECTS.filter(subject => subject === item.subject || !subjects.some((selected, selectedIndex) => selectedIndex !== index && !selected.customSubject && selected.subject === subject)).map(subject => <option key={subject} value={subject}>{subject}</option>)}
+                    <option value="OTHER">Other (enter subject name)</option>
                   </select>
+                  {item.customSubject && <div className="custom-subject-field">
+                    <label className="visually-hidden" htmlFor={`custom-subject-${index}`}>Custom subject name for row {index + 1}</label>
+                    <input id={`custom-subject-${index}`} type="text" value={item.subject} placeholder="Enter subject name" maxLength="100" onChange={event => updateSubject(index, "subject", event.target.value)} required />
+                  </div>}
                   <label className="visually-hidden" htmlFor={`mark-${index}`}>Mark for subject {index + 1}</label>
                   <input id={`mark-${index}`} inputMode="numeric" type="number" min="0" max="100" step="1" placeholder="Mark %" value={item.mark} aria-invalid={Boolean(fieldErrors.subjects[index]?.mark?.length)} aria-describedby={fieldErrors.subjects[index]?.mark?.length ? `mark-error-${index}` : undefined} onChange={event => updateSubject(index, "mark", event.target.value)} required />
                   {fieldErrors.subjects[index]?.subject?.length > 0 && <p className="field-error subject-error" id={`subject-error-${index}`}>{fieldErrors.subjects[index].subject.join(" ")}</p>}
