@@ -6,10 +6,16 @@ test("discovery dashboard reflects current profile completeness and draft UNKNOW
   await expect(completeness).toHaveAttribute("aria-valuenow", "0");
 
   await page.locator("#stage").selectOption("GRADE_12");
-  await expect(completeness).toHaveAttribute("aria-valuenow", "50");
+  await expect(completeness).toHaveAttribute("aria-valuenow", "33");
+  await expect(completeness).toHaveAttribute("aria-valuetext", "1 of 3 required sections complete");
+
   await page.locator("#subject-0").selectOption("Mathematics");
+  await expect(completeness).toHaveAttribute("aria-valuenow", "67");
+  await expect(completeness).toHaveAttribute("aria-valuetext", "2 of 3 required sections complete");
+
   await page.locator("#mark-0").fill("75");
   await expect(completeness).toHaveAttribute("aria-valuenow", "100");
+  await expect(completeness).toHaveAttribute("aria-valuetext", "3 of 3 required sections complete");
   await page.getByRole("button", { name: /Explore pathways/ }).click();
 
   await expect(page.getByText("30 total catalogue candidates")).toBeVisible();
