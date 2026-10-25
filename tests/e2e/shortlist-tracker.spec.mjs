@@ -19,7 +19,7 @@ test("learner can save, compare, and unsave pathways with a three-item limit", a
   await cards.nth(1).getByRole("button", { name: "Save to shortlist" }).click();
   await cards.nth(2).getByRole("button", { name: "Save to shortlist" }).click();
   await expect(page.locator(".shortlist-card")).toHaveCount(3);
-  await expect(page.getByText("3 / 3 SAVED")).toBeVisible();
+  await expect(page.locator(".shortlist-section .step-count")).toHaveText("3 / 3 SAVED");
   await expect(cards.nth(3).getByRole("button", { name: "Save to shortlist" })).toBeDisabled();
 
   await page.locator(".shortlist-card").first().getByRole("button", { name: "Remove" }).click();

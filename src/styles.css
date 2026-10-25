@@ -514,3 +514,30 @@ footer span:first-child { color: var(--ink); }
   *,*::before,*::after { scroll-behavior: auto !important; animation: none !important; transition: none !important; }
   .primary-button:active { transform: none; }
 }
+
+
+/* Issue #219 — compare only the fields currently supported by saved catalogue records. */
+.comparison-section { margin: 28px 0 34px; padding: 24px 0; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+.comparison-empty,.shortlist-capacity-note { padding: 14px 16px; border: 1px solid var(--rule); border-radius: 9px; background: var(--muted-ground); color: var(--ink-secondary); font-size: 14px; line-height: 1.6; }
+.shortlist-capacity-note { margin: 18px 0; }
+.comparison-table-wrap { max-width: 100%; overflow-x: auto; border: 1px solid var(--rule); border-radius: 10px; background: var(--panel); }
+.comparison-table { width: 100%; min-width: 900px; border-collapse: collapse; color: var(--ink); font-size: 13px; line-height: 1.55; }
+.comparison-table caption { padding: 12px 14px; text-align: left; color: var(--ink-secondary); background: var(--muted-ground); }
+.comparison-table th,.comparison-table td { padding: 14px; border-bottom: 1px solid var(--rule); border-right: 1px solid var(--rule); text-align: left; vertical-align: top; overflow-wrap: anywhere; }
+.comparison-table thead th { background: var(--muted-ground); color: var(--ink); font-size: 12px; font-weight: 750; }
+.comparison-table tbody th { min-width: 170px; font-weight: 750; }
+.comparison-table tbody tr:last-child th,.comparison-table tbody tr:last-child td { border-bottom: 0; }
+.comparison-table th:last-child,.comparison-table td:last-child { border-right: 0; }
+.comparison-table a { color: var(--accent); text-underline-offset: 3px; overflow-wrap: anywhere; }
+.comparison-explanation { margin: 10px 0 0; min-width: 180px; color: var(--ink-secondary); }
+.comparison-notes { margin-top: 10px; }
+.comparison-notes summary { cursor: pointer; color: var(--accent); font-weight: 700; }
+.comparison-notes ul,.comparison-sources { padding-left: 18px; margin: 8px 0 0; }
+.comparison-sources li { margin: 0 0 8px; }
+.comparison-sources li:last-child { margin-bottom: 0; }
+.comparison-sources .source-meta { color: var(--ink-secondary); }
+.theme-dark .comparison-table-wrap { background: var(--panel); }
+.theme-dark .comparison-empty,.theme-dark .shortlist-capacity-note { background: var(--muted-ground); border-color: var(--rule); color: var(--ink-secondary); }
+.theme-dark .comparison-table caption,.theme-dark .comparison-table thead th { background: var(--muted-ground); color: var(--ink); }
+.theme-dark .comparison-table th,.theme-dark .comparison-table td { border-color: var(--rule); }
+.theme-dark .comparison-table a,.theme-dark .comparison-notes summary { color: #9db8ff; }

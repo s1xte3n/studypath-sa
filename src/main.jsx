@@ -104,6 +104,74 @@ function ProvisionalApsPanel({ subjects }) {
   );
 }
 
+
+function PathwayComparison({ items }) {
+  return (
+    <section className="comparison-section" aria-labelledby="comparison-title">
+      <div className="section-heading">
+        <div>
+          <p className="eyebrow">COMPARE YOUR OPTIONS</p>
+          <h2 id="comparison-title">Compare saved pathways</h2>
+        </div>
+        <span className="step-count">{items.length} / 3 SAVED</span>
+      </div>
+      {items.length === 0 ? (
+        <p className="comparison-empty">Save up to three pathways from the results above to compare the details the current catalogue actually provides.</p>
+      ) : (
+        <div className="comparison-table-wrap" role="region" aria-label="Saved pathway comparison table" tabIndex="0">
+          <table className="comparison-table">
+            <caption>Comparison of saved pathways. Missing catalogue fields are labelled as not recorded.</caption>
+            <thead>
+              <tr>
+                <th scope="col">Pathway</th>
+                <th scope="col">Institution</th>
+                <th scope="col">Campus</th>
+                <th scope="col">Programme code</th>
+                <th scope="col">Duration</th>
+                <th scope="col">Eligibility state and explanation</th>
+                <th scope="col">Official source links</th>
+              </tr>
+            </thead>
+            <tbody>
+              {items.map(item => (
+                <tr key={item.id}>
+                  <th scope="row">{item.name}</th>
+                  <td>{item.institution || "Not recorded"}</td>
+                  <td>{item.campus || "Not recorded"}</td>
+                  <td>{item.code || "Not recorded"}</td>
+                  <td>{item.durationYears ? `${item.durationYears} years (confirm with UJ)` : "Not recorded"}</td>
+                  <td>
+                    <span className={`eligibility-state ${getStateClass(item.state)}`}>{STATE_LABELS[item.state] || "Unknown"}</span>
+                    <p className="comparison-explanation">{item.reason || "No explanation is recorded for this result."}</p>
+                    {item.requirementNotes?.length > 0 && (
+                      <details className="comparison-notes">
+                        <summary>Unresolved requirements ({item.requirementNotes.length})</summary>
+                        <ul>{item.requirementNotes.map(note => <li key={note}>{note}</li>)}</ul>
+                      </details>
+                    )}
+                  </td>
+                  <td>
+                    {item.sourceLinks?.length > 0 ? (
+                      <ul className="comparison-sources">
+                        {item.sourceLinks.map(source => (
+                          <li key={source.url}>
+                            <a href={source.url} target="_blank" rel="noopener noreferrer">{source.title} <span aria-hidden="true">↗</span></a>
+                            {source.location && <span className="source-meta"> · {source.location}</span>}
+                          </li>
+                        ))}
+                      </ul>
+                    ) : "No programme-specific source link recorded."}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
+    </section>
+  );
+}
+
 function App() {
   const [darkMode, setDarkMode] = useState(false);
   const [stage, setStage] = useState("");
@@ -406,6 +474,8 @@ function App() {
                 </article>
               ))}
             </div>}
+            {savedPathways.length >= 3 && <p className="shortlist-capacity-note" role="status">Three pathways are saved. Remove one from the shortlist before saving another.</p>}
+            <PathwayComparison items={savedPathways} />
             <section className="shortlist-section" aria-labelledby="shortlist-title">
               <div className="section-heading">
                 <div><p className="eyebrow">STEP 3 · YOUR NEXT STEPS</p><h2 id="shortlist-title">Saved pathways and application tracker</h2></div>
