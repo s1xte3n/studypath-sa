@@ -160,6 +160,7 @@ test("issue 219 fresh-session discovery journey reconciles counts, sources, shor
   await expect(page.getByText("30 currently shown")).toBeVisible();
 
   const sourceCard = cards.filter({ has: page.locator(".pathway-details .official-links a") }).first();
+  await sourceCard.locator(".pathway-details summary").click();
   const sourceLink = sourceCard.locator(".pathway-details .official-links a").first();
   const expectedSourceUrl = await sourceLink.getAttribute("href");
   expect(expectedSourceUrl).toMatch(/^https:\/\//);
