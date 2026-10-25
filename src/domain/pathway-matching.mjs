@@ -1,4 +1,4 @@
-import { evaluateEligibility } from "./eligibility/uj-2027-evaluator.mjs";
+import { evaluateEligibility, levelForPercent } from "./eligibility/uj-2027-evaluator.mjs";
 import { validateCatalogueForPublication } from "./eligibility/catalogue-publication-gate.mjs";
 
 const SUBJECT_IDS = new Map([
