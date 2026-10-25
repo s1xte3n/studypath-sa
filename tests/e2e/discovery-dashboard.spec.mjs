@@ -41,20 +41,28 @@ test("adding another subject preserves existing profile entries and recalculates
   await expect(page.locator("#subject-0")).toHaveValue("Mathematics");
   await expect(page.locator("#mark-0")).toHaveValue("75");
   await expect(page.locator("#subject-1")).toHaveValue("");
-  await expect(completeness).toHaveAttribute("aria-valuenow", "100");
+  await expect(completeness).toHaveAttribute("aria-valuenow", "0");
+  await expect(completeness).toHaveAttribute("aria-valuetext", "0 of 3 required sections complete");
 
-  // A duplicate makes the subject selection non-unique, so completeness is recalculated.
-  await page.locator("#subject-1").selectOption("Mathematics");
-  await expect(completeness).toHaveAttribute("aria-valuenow", "33");
-  await expect(completeness).toHaveAttribute("aria-valuetext", "1 of 3 required sections complete");
-
-  // Choosing a different subject restores uniqueness without clearing the earlier mark.
+  // Adding a row resets the displayed completeness; selecting a valid subject recalculates it.
+  const secondSubjectOptions = await page.locator("#subject-1 option").evaluateAll(options => options.map(option => option.value));
+  expect(secondSubjectOptions).not.toContain("Mathematics");
+  expect(secondSubjectOptions).toContain("Physical Sciences");
   await page.locator("#subject-1").selectOption("Physical Sciences");
   await expect(page.locator("#stage")).toHaveValue("GRADE_12");
   await expect(page.locator("#subject-0")).toHaveValue("Mathematics");
   await expect(page.locator("#mark-0")).toHaveValue("75");
   await expect(completeness).toHaveAttribute("aria-valuenow", "100");
   await expect(completeness).toHaveAttribute("aria-valuetext", "3 of 3 required sections complete");
+
+  // Selecting Other reveals a textbox and the custom subject is accepted as profile input.
+  await page.getByRole("button", { name: "+ Add another subject" }).click();
+  await page.locator("#subject-2").selectOption("OTHER");
+  await expect(page.locator("#custom-subject-2")).toBeVisible();
+  await page.locator("#custom-subject-2").fill("Computer Applications Technology");
+  await page.locator("#mark-2").fill("82");
+  await expect(completeness).toHaveAttribute("aria-valuenow", "100");
+  await expect(page.locator("#subject-0 option")).not.toContainText("Mathematics");
 });
 
 test("eligibility filters update visible counts and provide a recoverable empty state", async ({ page }) => {
