@@ -22,8 +22,8 @@ test("issue 238 starts a pathway-specific manual action plan, tracks progress, a
   await expect(plan).toContainText("Manual tracking only");
   await expect(plan).toContainText("does not submit applications");
   await expect(plan).toContainText("Generic learner task; not an official institution requirement.");
-  await expect(plan.locator(".action-plan-task").count()).resolves.toBeGreaterThanOrEqual(2);
   const initialTaskCount = await plan.locator(".action-plan-task").count();
+  expect(initialTaskCount).toBeGreaterThanOrEqual(2);
   await expect(plan.locator(".action-plan-progress")).toHaveText(`0 of ${initialTaskCount} done`);
 
   const status = plan.locator("select").first();
