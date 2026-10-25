@@ -2,35 +2,54 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import { getDiscoverySummary, getProfileCompleteness } from "../src/domain/discovery-summary.mjs";
 
-test("profile completeness follows the documented two-section formula", () => {
+test("profile completeness counts three required sections independently", () => {
   assert.deepEqual(getProfileCompleteness({ stage: "", subjects: [{ subject: "", mark: "" }] }), {
-    completedSections: 0, requiredSections: 2, percentage: 0
+    completedSections: 0, requiredSections: 3, percentage: 0
   });
-  assert.equal(getProfileCompleteness({ stage: "GRADE_12", subjects: [] }).percentage, 50);
-  assert.equal(getProfileCompleteness({
+  assert.deepEqual(getProfileCompleteness({ stage: "GRADE_12", subjects: [] }), {
+    completedSections: 1, requiredSections: 3, percentage: 33
+  });
+  assert.deepEqual(getProfileCompleteness({
     stage: "",
-    subjects: [{ subject: "Mathematics", mark: "75" }]
-  }).percentage, 50);
-  assert.equal(getProfileCompleteness({
+    subjects: [{ subject: "Mathematics", mark: "" }]
+  }), {
+    completedSections: 1, requiredSections: 3, percentage: 33
+  });
+  assert.deepEqual(getProfileCompleteness({
+    stage: "GRADE_12",
+    subjects: [{ subject: "Mathematics", mark: "" }, { subject: "", mark: "" }]
+  }), {
+    completedSections: 2, requiredSections: 3, percentage: 67
+  });
+  assert.deepEqual(getProfileCompleteness({
     stage: "GRADE_12",
     subjects: [{ subject: "Mathematics", mark: "75" }, { subject: "", mark: "" }]
-  }).percentage, 100);
+  }), {
+    completedSections: 3, requiredSections: 3, percentage: 100
+  });
 });
 
-test("invalid marks and duplicate subjects do not complete the subject section", () => {
+test("invalid marks do not complete the mark section, while the unique subject section still counts", () => {
   for (const mark of ["", "-1", "101", "75.5", "abc"]) {
-    assert.equal(getProfileCompleteness({
+    assert.deepEqual(getProfileCompleteness({
       stage: "GRADE_12",
       subjects: [{ subject: "Mathematics", mark }]
-    }).percentage, 50);
+    }), {
+      completedSections: 2, requiredSections: 3, percentage: 67
+    });
   }
-  assert.equal(getProfileCompleteness({
+});
+
+test("duplicate subjects do not count as a unique subject or valid unique subject mark", () => {
+  assert.deepEqual(getProfileCompleteness({
     stage: "GRADE_12",
     subjects: [
       { subject: "Mathematics", mark: "75" },
       { subject: "Mathematics", mark: "80" }
     ]
-  }).percentage, 50);
+  }), {
+    completedSections: 1, requiredSections: 3, percentage: 33
+  });
 });
 
 const results = [
