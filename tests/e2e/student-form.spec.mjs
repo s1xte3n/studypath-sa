@@ -80,7 +80,7 @@ test("learner can edit rows, validate entries, and reset the form", async ({ pag
   await expect(page.locator(".form-notice")).toContainText("Results compare your marks");
   await expect(page.getByRole("heading", { name: "Pathways to investigate" })).toBeVisible();
   await expect(page.locator(".result-card")).toHaveCount(30);
-  const eligibilityLabels = await page.locator(".result-card > .eligibility-state").allTextContents();
+  const eligibilityLabels = await page.locator(".result-card-top > .eligibility-state").allTextContents();
   expect(eligibilityLabels).toHaveLength(30);
   expect(eligibilityLabels.every(label => ["Eligible", "Not eligible", "Unknown"].includes(label.trim()))).toBe(true);
   await expect(page.getByRole("heading", { name: "How to read these options" })).toBeVisible();
@@ -575,7 +575,7 @@ test("eligibility filters show a recoverable empty state and clear filters resto
   await page.getByRole("button", { name: /Explore pathways/ }).click();
 
   await expect(page.locator(".result-card")).toHaveCount(30);
-  const restoredEligibilityLabels = await page.locator(".result-card > .eligibility-state").allTextContents();
+  const restoredEligibilityLabels = await page.locator(".result-card-top > .eligibility-state").allTextContents();
   expect(restoredEligibilityLabels).toHaveLength(30);
   expect(restoredEligibilityLabels.every(label => ["Eligible", "Not eligible", "Unknown"].includes(label.trim()))).toBe(true);
 
@@ -589,7 +589,7 @@ test("eligibility filters show a recoverable empty state and clear filters resto
   await page.locator(".filter-empty .clear-filters-button").click();
   await expect(page.locator("#eligibility-filter")).toHaveValue("ALL");
   await expect(page.locator(".result-card")).toHaveCount(30);
-  const eligibilityLabels = await page.locator(".result-card > .eligibility-state").allTextContents();
+  const eligibilityLabels = await page.locator(".result-card-top > .eligibility-state").allTextContents();
   expect(eligibilityLabels).toHaveLength(30);
   expect(eligibilityLabels.every(label => ["Eligible", "Not eligible", "Unknown"].includes(label.trim()))).toBe(true);
 });
@@ -668,7 +668,7 @@ test("whole-number mark boundaries reject fractional, negative, blank, and over-
   await page.locator("#mark-0").fill("0");
   await page.getByRole("button", { name: /Explore pathways/ }).click();
   await expect(page.locator(".form-notice")).toContainText("Pathway exploration completed");
-  const eligibilityLabels = await page.locator(".result-card > .eligibility-state").allTextContents();
+  const eligibilityLabels = await page.locator(".result-card-top > .eligibility-state").allTextContents();
   expect(eligibilityLabels).toHaveLength(30);
   expect(eligibilityLabels.every(label => ["Eligible", "Not eligible", "Unknown"].includes(label.trim()))).toBe(true);
 });
