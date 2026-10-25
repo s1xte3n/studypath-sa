@@ -362,3 +362,15 @@ test("pathway interpretation guidance is available on demand", async ({ page }) 
   await expect(disclosure.getByText(/does not compare your chances of admission/i)).toBeVisible();
   await expect(disclosure.getByText(/confirm the current rules using the official UJ links/i)).toBeVisible();
 });
+
+test("what-if planner appears immediately above compare saved pathways", async ({ page }) => {
+  await page.goto("/");
+  await page.locator("#stage").selectOption("GRADE_12");
+  await page.locator("#subject-0").selectOption("Mathematics");
+  await page.locator("#mark-0").fill("75");
+  await page.getByRole("button", { name: /Explore pathways/ }).click();
+
+  await expect(page.locator(".what-if-planner + .comparison-section")).toHaveCount(1);
+  await expect(page.locator(".what-if-planner")).toContainText("What-if mark planner");
+  await expect(page.locator(".comparison-section")).toContainText("Compare saved pathways");
+});
