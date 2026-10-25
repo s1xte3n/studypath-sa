@@ -663,10 +663,13 @@ function App() {
               <span className="step-count">{discovery.totalCandidates} CANDIDATES</span>
             </div>
             <ProvisionalApsPanel subjects={subjects.map(item => ({ subject: item.subject, mark: item.mark }))} />
-            <div className="catalogue-warning" role="note">
-              <strong>Exploration results · 2027 pilot</strong>
-              <p>Results are based on the minimum requirements currently recorded in source-backed catalogue entries. Some programme rules still need interpretation; UNKNOWN is retained where a material rule or required input prevents a result. Positive results are provisional and do not guarantee admission.</p>
-            </div>
+            <details className="pilot-disclosure">
+              <summary>About the 2027 pilot and result limitations</summary>
+              <div className="pilot-disclosure-content">
+                <p>These exploration results use the minimum requirements currently recorded in source-backed catalogue entries for the 2027 pilot. Some programme rules still need interpretation; UNKNOWN is retained where a material rule or required input prevents a result.</p>
+                <p>Positive results are provisional and do not guarantee admission. Confirm current requirements with the institution using the official source links on each pathway.</p>
+              </div>
+            </details>
             <aside className="results-guidance" aria-labelledby="results-guidance-title">
               <h3 id="results-guidance-title">How to read these options</h3>
               <p>These pathways are not ranked by suitability. A provisional match means your marks meet the minimum requirements currently recorded for that pathway; it is not an admission decision and does not compare your chances of admission.</p>
