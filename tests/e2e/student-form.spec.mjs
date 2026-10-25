@@ -94,7 +94,9 @@ test("learner can edit rows, validate entries, and reset the form", async ({ pag
     .filter({ hasText: "printed p. 86" })
     .first();
 
-  await sourceDetails.locator("summary").first().click();
+  await sourceDetails.locator(":scope > summary").click();
+  const evidenceDisclosure = sourceDetails.locator(".compact-evidence-disclosure").first();
+  await evidenceDisclosure.locator(":scope > summary").click();
 
   // Requirement-level evidence now repeats source metadata for each rule, so
   // assert a visible occurrence rather than requiring a unique match.
@@ -767,6 +769,7 @@ test("provisional APS fails closed when subject-selection rules are unresolved a
   await page.getByRole("button", { name: /Explore pathways/ }).click();
   const aps = page.getByRole("region", { name: /Provisional APS estimate/ });
   await expect(aps).toBeVisible();
+  await aps.locator(".aps-disclosure > summary").click();
   await expect(aps.getByText("Indicative total", { exact: true })).toBeVisible();
   await expect(aps.locator(".aps-total strong")).toHaveText("22");
   await expect(aps.locator(".aps-excluded")).toContainText("Life Orientation.");
