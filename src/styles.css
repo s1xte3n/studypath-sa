@@ -37,6 +37,9 @@ select:focus,input:focus{border-color:var(--green)}
 .hint{font-size:11px;color:#53645a}
 .subject-list{display:grid;gap:10px}
 .subject-row{display:grid;grid-template-columns:minmax(0,1fr) 112px 34px;gap:9px;align-items:center}
+.subject-row:has(.custom-subject-field){grid-template-columns:minmax(0,1fr) minmax(0,1fr) 112px 34px}
+.custom-subject-field{min-width:0}
+.custom-subject-field input{width:100%;min-width:0}
 .remove-button{height:36px;width:34px;border:0;border-radius:7px;background:#f4f6f2;color:#64756b;font-size:24px;cursor:pointer}
 .remove-button:disabled{opacity:.35;cursor:not-allowed}
 .add-button,.text-button{border:0;background:transparent;color:var(--green);font-weight:700;font-size:13px;padding:13px 0;cursor:pointer}
