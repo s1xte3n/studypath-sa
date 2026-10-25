@@ -257,3 +257,17 @@ test("demo privacy guidance is available on demand instead of shown as a warning
   await expect(disclosure.getByText(/Your entries and results stay in this page's memory/)).toBeVisible();
   await expect(disclosure.getByText(/Use fictional details only/)).toBeVisible();
 });
+
+
+test("NSC subject and APS guidance is available on demand instead of shown as a warning", async ({ page }) => {
+  await page.goto("/");
+  const disclosure = page.locator(".profile-guidance-disclosure");
+  await expect(disclosure.locator("summary")).toBeVisible();
+  await expect(disclosure).not.toHaveAttribute("open", "");
+  await expect(disclosure.getByText(/An NSC subject profile commonly contains seven subjects/)).toBeHidden();
+
+  await disclosure.locator("summary").click();
+  await expect(disclosure.getByText(/An NSC subject profile commonly contains seven subjects/)).toBeVisible();
+  await expect(disclosure.getByRole("link", { name: "Read the Department of Basic Education’s subject guidance" }))
+    .toHaveAttribute("href", "https://www.education.gov.za/Informationfor/Learners/SubjectChoiceandCareerPathing.aspx");
+});
