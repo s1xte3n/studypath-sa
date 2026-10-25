@@ -35,15 +35,32 @@ test("suggestions only use unique active catalogue records and preserve each eva
 });
 
 test("eligible preferred pathways do not trigger recovery suggestions", () => {
-  const results = buildPathwayResults({
-    ...learner,
-    subjects: learner.subjects.map(item => item.subject === "Mathematics" ? { ...item, mark: "90" } : item)
-  }, catalogue);
-  const preferred = results.find(item => item.id === "UJ-2027-BSC-IT");
-  if (preferred.state === "ELIGIBLE") {
-    assert.deepEqual(suggestAlternativePathways({ preferred, results, catalogue }), []);
-  } else {
-    assert.ok(["NOT_ELIGIBLE", "UNKNOWN"].includes(preferred.state));
+  const results = buildPathwayResults(learner, catalogue);
+  const preferred = { ...results.find(item => item.id === "UJ-2027-BSC-IT"), state: "ELIGIBLE" };
+  assert.deepEqual(suggestAlternativePathways({ preferred, results, catalogue }), []);
+});
+
+test("mixed candidate states are preserved without promotion or demotion", () => {
+  const syntheticCatalogue = {
+    catalogueVersion: "test-v1",
+    programmes: [
+      { id: "preferred", faculty: "Test Faculty", requirements: { subjectRules: [{ subject: "MATHEMATICS" }] } },
+      { id: "candidate-eligible", faculty: "Test Faculty", requirements: { subjectRules: [{ subject: "MATHEMATICS" }] } },
+      { id: "candidate-not-eligible", faculty: "Test Faculty", requirements: { subjectRules: [{ subject: "MATHEMATICS" }] } },
+      { id: "candidate-unknown", faculty: "Test Faculty", requirements: { subjectRules: [{ subject: "MATHEMATICS" }] } }
+    ]
+  };
+  const results = [
+    { id: "preferred", state: "UNKNOWN", name: "Preferred", reason: "Uncertain", requirementEvidence: [] },
+    { id: "candidate-eligible", state: "ELIGIBLE", name: "Eligible candidate", reason: "Recorded minimums met", requirementEvidence: [{ status: "MET" }] },
+    { id: "candidate-not-eligible", state: "NOT_ELIGIBLE", name: "Not eligible candidate", reason: "Recorded minimum not met", requirementEvidence: [{ status: "NOT_MET" }] },
+    { id: "candidate-unknown", state: "UNKNOWN", name: "Unknown candidate", reason: "Evidence missing", requirementEvidence: [{ status: "UNKNOWN" }] }
+  ];
+  const suggestions = suggestAlternativePathways({ preferred: results[0], results, catalogue: syntheticCatalogue, limit: 3 });
+  assert.deepEqual(suggestions.map(item => item.state).sort(), ["ELIGIBLE", "NOT_ELIGIBLE", "UNKNOWN"]);
+  for (const suggestion of suggestions) {
+    assert.equal(suggestion.reason, results.find(item => item.id === suggestion.id).reason);
+    assert.deepEqual(suggestion.requirementEvidence, results.find(item => item.id === suggestion.id).requirementEvidence);
   }
 });
 
