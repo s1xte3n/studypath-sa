@@ -740,3 +740,49 @@ footer { color: var(--ink-secondary); font-size: 12px; border-top: 1px solid var
   .visual-card:hover, .result-card:hover, .shortlist-card:hover, .primary-button:active { transform: none; }
 }
 .hero-visual .visual-card > * { grid-column: 1 !important; grid-row: auto !important; margin-left: 0 !important; justify-self: start; }
+
+
+/* PR #243 follow-up: preserve semantic states and pass keyboard/contrast checks. */
+:root {
+  /* Keep the established product/status palette distinct from the interaction accent. */
+  --green: #542583;
+  --blue: #0065a8;
+  --yellow: #f5c400;
+  --button-background: #0071e3;
+  --button-background-hover: #0066cc;
+  --focus-ring: #0065a8;
+}
+
+/* Do not force native checkbox, radio, range, or button inputs to text-field sizing. */
+select,
+input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="button"]):not([type="submit"]):not([type="reset"]),
+textarea {
+  height: 48px;
+}
+textarea {
+  height: auto;
+}
+
+/* The earlier :focus rule resets outline; give keyboard focus an explicit, stronger rule. */
+select:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+button:focus-visible,
+a:focus-visible,
+summary:focus-visible {
+  outline: 3px solid var(--focus-ring, var(--accent)) !important;
+  outline-offset: 3px;
+}
+
+/* Use a separate darker button fill in dark mode; keep bright blue for links and focus. */
+.primary-button {
+  background: var(--button-background, var(--accent));
+}
+.primary-button:hover {
+  background: var(--button-background-hover, var(--accent-hover));
+}
+.app-shell.theme-dark {
+  --button-background: #0066b3;
+  --button-background-hover: #005a9e;
+  --focus-ring: #7ac8ff;
+}
