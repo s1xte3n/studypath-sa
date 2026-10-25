@@ -343,3 +343,22 @@ test("provisional APS methodology and limitations are available on demand", asyn
     .toHaveAttribute("href", "https://www.uj.ac.za/frequently-asked-questions");
   await expect(disclosure.getByText(/This estimate never changes pathway eligibility/i)).toBeVisible();
 });
+
+test("pathway interpretation guidance is available on demand", async ({ page }) => {
+  await page.goto("/");
+  await page.locator("#stage").selectOption("GRADE_12");
+  await page.locator("#subject-0").selectOption("Mathematics");
+  await page.locator("#mark-0").fill("75");
+  await page.getByRole("button", { name: /Explore pathways/ }).click();
+
+  const disclosure = page.locator(".results-guidance-disclosure");
+  await expect(disclosure.locator("summary")).toHaveText("How to read these options");
+  await expect(disclosure).not.toHaveAttribute("open", "");
+  await expect(disclosure.getByText(/not ranked by suitability/i)).toBeHidden();
+  await expect(disclosure.getByText(/Your next step:/i)).toBeHidden();
+
+  await disclosure.locator("summary").click();
+  await expect(disclosure.getByText(/not ranked by suitability/i)).toBeVisible();
+  await expect(disclosure.getByText(/does not compare your chances of admission/i)).toBeVisible();
+  await expect(disclosure.getByText(/confirm the current rules using the official UJ links/i)).toBeVisible();
+});
