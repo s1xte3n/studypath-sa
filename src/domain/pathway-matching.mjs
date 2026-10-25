@@ -99,7 +99,7 @@ function buildRequirementEvidence(programme, learnerInput, outcome, sourceLinks)
       : [Number.isInteger(rule.minPercent) ? `${rule.minPercent}%` : null, Number.isInteger(rule.minLevel) ? `Level ${rule.minLevel}` : null].filter(Boolean).join(" / ")
       || (rule.mandatory === true ? "Required subject; minimum not recorded" : "No explicit minimum recorded");
     if (rule.accepted === false) {
-      status = subject ? "NOT_MET" : "MET";
+      status = subject ? "NOT_MET" : "NOT_APPLICABLE";
       learnerValue = subject ? `${subject.percent}% entered` : "No mark entered for this subject";
       explanation = subject ? "The catalogue records this subject as not accepted for this pathway." : "No mark was entered for this subject; the recorded exclusion is not triggered.";
     } else if (rule.mandatory === "UNRESOLVED_ALTERNATIVE_SEMANTICS") {
