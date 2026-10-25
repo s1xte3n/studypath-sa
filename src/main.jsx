@@ -393,7 +393,6 @@ function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [stage, setStage] = useState("");
   const [subjects, setSubjects] = useState([{ subject: "", mark: "", customSubject: false }]);
-  const [completenessReset, setCompletenessReset] = useState(false);
   const [notice, setNotice] = useState("");
   const [fieldErrors, setFieldErrors] = useState({ stage: "", subjects: {} });
   const [submitted, setSubmitted] = useState(false);
@@ -442,7 +441,6 @@ function App() {
 
   function updateSubject(index, field, value) {
     setSubjects(current => current.map((item, i) => i === index ? { ...item, [field]: value } : item));
-    setCompletenessReset(false);
     clearResults();
   }
 
@@ -458,7 +456,6 @@ function App() {
 
   function addSubject() {
     setSubjects(current => [...current, { subject: "", mark: "", customSubject: false }]);
-    setCompletenessReset(true);
     clearResults();
   }
 
@@ -471,7 +468,6 @@ function App() {
   function resetForm() {
     setStage("");
     setSubjects([{ subject: "", mark: "", customSubject: false }]);
-    setCompletenessReset(false);
     setResults([]);
     setSavedPathways([]);
     setTracking({});
@@ -540,10 +536,7 @@ function App() {
     }
   }
 
-  const discoverySummary = getDiscoverySummary({ stage, subjects, results, eligibilityFilter, campusFilter });
-  const discovery = completenessReset
-    ? { ...discoverySummary, profile: { completedSections: 0, requiredSections: 3, percentage: 0 } }
-    : discoverySummary;
+  const discovery = getDiscoverySummary({ stage, subjects, results, eligibilityFilter, campusFilter });
 
   return (
     <div className={`app-shell ${darkMode ? "theme-dark" : "theme-light"}`}>
@@ -677,10 +670,10 @@ function App() {
                 <h3 id="profile-completeness-title">Profile completeness</h3>
                 <strong>{discovery.profile.percentage}%</strong>
               </div>
-              <div className="completeness-track" role="progressbar" aria-label="Profile completeness" aria-valuemin={0} aria-valuemax={100} aria-valuenow={discovery.profile.percentage} aria-valuetext={`${discovery.profile.completedSections} of ${discovery.profile.requiredSections} required sections complete`}>
+              <div className="completeness-track" role="progressbar" aria-label="Profile completeness" aria-valuemin={0} aria-valuemax={100} aria-valuenow={discovery.profile.percentage} aria-valuetext={`${discovery.profile.completedSections} of ${discovery.profile.requiredSections} required sections complete; ${discovery.profile.subjectCount} of 6 unique subjects selected; ${discovery.profile.markedSubjectCount} of 6 valid marks entered`}>
                 <span style={{ width: `${discovery.profile.percentage}%` }} />
               </div>
-              <p>{discovery.profile.completedSections} of {discovery.profile.requiredSections} required sections complete: choose your current stage, select at least one unique subject, and enter a whole-number mark from 0 to 100 for a unique subject. Extra subject rows are optional.</p>
+              <p>{discovery.profile.completedSections} of {discovery.profile.requiredSections} required sections complete. Subject progress: {discovery.profile.subjectCount} of 6 distinct subjects; valid marks: {discovery.profile.markedSubjectCount} of 6. Complete all six subject-and-mark entries to reach 100%; additional subjects are optional.</p>
             </section>
             {notice && <p className={`form-notice ${submitted ? "notice-info" : "notice-error"}`} role="status" aria-live="polite">{notice}</p>}
           </form>
