@@ -81,10 +81,6 @@ const UNKNOWN_REASONS = new Set([
   "CATALOGUE_PUBLICATION_GATE_FAILED", "CATALOGUE_RECORD_NOT_APPROVED"
 ]);
 
-function unique(items) {
-  return [...new Set(items.filter(Boolean))];
-}
-
 /**
  * Turns deterministic evaluator states, reason codes and requirement evidence
  * into learner-facing blockers. It does not evaluate eligibility or infer rules.
@@ -149,7 +145,7 @@ export function buildWhyNotYet(item) {
     if (unknown.some(row => /english/i.test(row.label) || /english/i.test(row.learnerValue))) {
       nextSteps.push("Add the English result and stream that appear on your results statement, if available.");
     }
-    if (unknown.some(row => row.status === "UNKNOWN" && /subject/i.test(row.label))) {
+    if (unknown.some(row => row.status === "UNKNOWN" && (/subject/i.test(row.label) || /required subject/i.test(row.rule)))) {
       nextSteps.push("Add the missing subject result if it is available on your results statement.");
     }
     if (nextSteps.length === 0) nextSteps.push("Complete the relevant subject results in your profile, then explore again.");
