@@ -114,3 +114,33 @@ test("wrong admission cycle remains UNKNOWN in demo mode", () => {
   assert.ok(results.every(item => item.state === "UNKNOWN"));
   assert.ok(results.every(item => item.reasonCodes.includes("ADMISSION_CYCLE_UNVERIFIED")));
 });
+
+test("requirement evidence exposes recorded rules, learner comparisons, provenance and unresolved uncertainty", () => {
+  const results = buildPathwayResults({ stage: "MATRIC_GRADUATE", subjects: strongMarks }, catalogue);
+  const informationTechnology = results.find(item => item.id === "UJ-2027-BSC-IT");
+
+  assert.ok(Array.isArray(informationTechnology.requirementEvidence));
+  const english = informationTechnology.requirementEvidence.find(row => row.id === "english");
+  assert.equal(english.rule, "60% / Level 5");
+  assert.match(english.learnerValue, /90%/);
+  assert.equal(english.status, "MET");
+  assert.ok(english.sourceLinks.some(source => source.url.startsWith("https://www.uj.ac.za/")));
+  assert.ok(informationTechnology.requirementEvidence.some(row => row.status === "UNKNOWN" && /unresolved|assumption|conditions/i.test(row.explanation)));
+  assert.match(informationTechnology.limitation, /does not guarantee admission/i);
+});
+
+test("incomplete transcripts do not turn an absent required subject into a rejection", () => {
+  const results = buildPathwayResults({
+    stage: "GRADE_12",
+    subjects: [
+      { subject: "English Home Language", mark: "75" },
+      { subject: "Mathematics", mark: "75" }
+    ]
+  }, catalogue);
+  const informationTechnology = results.find(item => item.id === "UJ-2027-BSC-IT");
+  assert.equal(informationTechnology.state, "UNKNOWN");
+  assert.ok(informationTechnology.reasonCodes.includes("REQUIRED_INPUT_MISSING"));
+  const sciences = informationTechnology.requirementEvidence.find(row => row.label === "Physical Sciences");
+  assert.equal(sciences.status, "UNKNOWN");
+  assert.match(sciences.explanation, /transcript is incomplete/i);
+});
