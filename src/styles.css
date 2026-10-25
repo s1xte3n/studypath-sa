@@ -1398,3 +1398,19 @@ body,
   background: var(--paper, #17231e);
   color: var(--ink, #f7f8f4);
 }
+
+
+/* Keep detailed pathway evidence available without dominating the initial view. */
+.compact-evidence-disclosure > summary {
+  cursor: pointer;
+  color: var(--accent, #245c45);
+  font-size: .9rem;
+  font-weight: 650;
+  line-height: 1.45;
+  padding: .35rem 0;
+  text-underline-offset: .15em;
+}
+.compact-evidence-disclosure[open] > summary { margin-bottom: .65rem; }
+.requirement-evidence-content { padding-top: .15rem; }
+.why-not-yet .compact-evidence-disclosure { margin-top: .5rem; }
+.theme-dark .compact-evidence-disclosure > summary { color: var(--accent, #b6e2c7); }
