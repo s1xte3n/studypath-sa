@@ -602,3 +602,41 @@ footer span:first-child { color: var(--ink); }
 .alternative-evidence-list li { min-width: 0; overflow-wrap: anywhere; }
 .alternative-evidence-list p { margin: .35rem 0; }
 .alternative-evidence-list a { overflow-wrap: anywhere; }
+
+
+/* Issue #237 — isolated hypothetical mark simulation. */
+.what-if-planner { margin: 1.25rem 0 1.75rem; padding: 1rem; border: 2px dashed var(--accent); border-radius: .85rem; background: var(--muted-ground); color: var(--ink); }
+.what-if-heading { display: flex; align-items: flex-start; justify-content: space-between; gap: .75rem; flex-wrap: wrap; }
+.what-if-heading h3 { margin: 0; }
+.what-if-label { display: inline-block; border: 1px solid var(--rule); border-radius: 999px; padding: .3rem .6rem; font-size: .78rem; font-weight: 700; }
+.what-if-planner > p, .what-if-workspace > p, .what-if-results > p { color: var(--ink-secondary); line-height: 1.55; }
+.what-if-open { margin-top: .25rem; }
+.what-if-workspace { margin-top: 1rem; }
+.what-if-banner { padding: .8rem; border-left: 4px solid var(--accent); border-radius: .4rem; background: var(--panel); }
+.what-if-mark-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .6rem; }
+.what-if-mark-row { min-width: 0; display: flex; align-items: center; justify-content: space-between; gap: .5rem; padding: .65rem; border: 1px solid var(--rule); border-radius: .6rem; background: var(--panel); }
+.what-if-mark-row label { overflow-wrap: anywhere; font-size: .9rem; font-weight: 650; }
+.what-if-mark-row > div { display: flex; align-items: center; gap: .3rem; flex: 0 0 92px; }
+.what-if-mark-row input { width: 100%; min-width: 0; }
+.what-if-actions { display: flex; flex-wrap: wrap; align-items: center; gap: .65rem; margin-top: .9rem; }
+.what-if-status, .what-if-error, .what-if-empty { padding: .75rem; border: 1px solid var(--rule); border-radius: .55rem; background: var(--panel); }
+.what-if-error { border-color: #b84242; color: #8c2424; }
+.what-if-results { margin-top: 1rem; padding-top: .8rem; border-top: 1px solid var(--rule); }
+.what-if-results h4 { margin: 0 0 .4rem; }
+.what-if-change-list { display: grid; gap: .75rem; list-style: none; padding: 0; }
+.what-if-change-item { min-width: 0; padding: .85rem; border: 1px solid var(--rule); border-radius: .65rem; background: var(--panel); }
+.what-if-change-item h5 { margin: 0 0 .5rem; font-size: 1rem; }
+.what-if-change-item p { margin: .4rem 0; overflow-wrap: anywhere; }
+.what-if-change-item ul { padding-left: 1.2rem; }
+.what-if-change-item li + li { margin-top: .55rem; }
+.what-if-change-item li p { font-size: .88rem; color: var(--ink-secondary); }
+.theme-dark .what-if-planner { background: var(--muted-ground); border-color: #9db8ff; }
+.theme-dark .what-if-banner, .theme-dark .what-if-mark-row, .theme-dark .what-if-change-item, .theme-dark .what-if-status, .theme-dark .what-if-empty { background: var(--panel); border-color: var(--rule); }
+.theme-dark .what-if-error { background: #3a2522; color: #ffc5b8; border-color: #805044; }
+@media (max-width: 540px) {
+  .what-if-planner { padding: .75rem; }
+  .what-if-mark-list { grid-template-columns: minmax(0, 1fr); }
+  .what-if-mark-row { align-items: center; }
+  .what-if-actions { align-items: stretch; flex-direction: column; }
+  .what-if-actions button { width: 100%; }
+}
