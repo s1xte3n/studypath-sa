@@ -1,5 +1,7 @@
 # Issue #219 — Student discovery acceptance run
 
+> **Scope update:** Issue [#187](https://github.com/s1xte3n/studypath-sa/issues/187) changes the old blanket-UNKNOWN demo expectation. The earlier CI/manual evidence below describes the prior behaviour only and does not verify the provisional eligibility change. Rerun checks against the #187 PR head before accepting the updated behaviour.
+
 **Purpose:** Record repeatable automated and manual acceptance evidence for the source-backed hackathon demo. This file is a run plan until candidate-commit CI and owner-performed manual checks are recorded below.
 
 ## Candidate and scope
@@ -7,17 +9,18 @@
 - Tracking issue: [#219 — Finalise the source-backed student discovery demo and acceptance run](https://github.com/s1xte3n/studypath-sa/issues/219)
 - Parent delivery tracker: [#160](https://github.com/s1xte3n/studypath-sa/issues/160)
 - Latest candidate main commit after PR #231: `c064b98d6c58649e529cdb43a5a1beac6624e612` (documentation-only acceptance evidence update; not an application-code change). The application behaviour was last changed earlier; required CI workflows were rerun against this latest main commit.
-- Synthetic profile: Grade 12; Mathematics 75; Physical Sciences 81.
-- Catalogue expectation in the current browser tests: 30 candidate cards, all `UNKNOWN`.
+- Updated synthetic profile for positive/negative/unknown coverage: Grade 12; English Home Language 65; Mathematics 75; Physical Sciences 68; Life Sciences 62; Geography 71; Business Studies 66.
+- Updated catalogue expectation: 30 candidate cards; show `ELIGIBLE` for records whose currently recorded minimums are met, `NOT_ELIGIBLE` when an explicit applicable minimum is failed, and `UNKNOWN` only when required inputs or material rule interpretations prevent evaluation. Counts must reconcile with the visible cards.
 - Product boundary: draft 2027 pilot catalogue; no definitive admissions screening, guaranteed admission/funding, application submission, persistent learner records, or production deployment.
 
 ## Automated coverage added for this issue
 
 The new Playwright case in `tests/e2e/shortlist-tracker.spec.mjs` covers one fresh-session journey:
 
-1. Empty profile, enter the synthetic profile and confirm completeness reaches 100%.
-2. Explore pathways and reconcile the 30 visible cards, catalogue total, visible count and all-UNKNOWN state.
-3. Apply the UNKNOWN filter and confirm counts/results remain consistent.
+1. Empty profile, enter the six-subject synthetic profile and confirm completeness reaches 100%.
+2. Explore pathways and reconcile the 30 visible cards, catalogue total, visible count, and the ELIGIBLE / NOT_ELIGIBLE / UNKNOWN state counts.
+3. Confirm at least one provisional match, one explicit negative result, and one UNKNOWN result; inspect the explanation and source evidence for each.
+4. Apply the UNKNOWN filter and confirm counts/results remain consistent.
 4. Open a recorded official-source link in a new tab and assert the opened URL equals the recorded HTTPS URL.
 5. Save a pathway, verify a single shortlist/comparison row, toggle it off and verify no duplicate remains.
 6. Save again, reset, and confirm profile/results/shortlist clear.
@@ -58,12 +61,14 @@ The repository's Browser E2E, privacy and accessibility workflow also installs C
 
 **Evidence boundary:** these are GitHub Actions results reported in the issue evidence comment, not commands run in this session. Successful automation does not count as a manual rehearsal or prove production deployment. The source-link checks are excluded from remaining acceptance work by explicit project-owner decision.
 
-## Manual acceptance checklist — owner attestation (2026-10-25)
+## Historical manual acceptance checklist — owner attestation (2026-10-25)
+
+The checklist below attests to the **previous** all-UNKNOWN behaviour. It is retained as historical evidence and must not be used to claim the new provisional eligibility behaviour has passed manual acceptance.
 
 **Status:** The project owner stated in the project conversation on 2026-10-25 that all manual acceptance checks listed below were performed and approved. This is recorded as **owner-attested**, not independently reproduced by the assistant. The assistant did not operate an interactive browser or independently perform these checks in its current session; the issue comment saying manual acceptance was "NOT RUN in this session" refers to that limitation and does not negate the separate owner attestation. Additional traceability details (browser/OS, exact tested URL, individual rehearsal timings, and supporting screenshots/video) are not recorded and are deferred; they are not blockers for the current hackathon acceptance run. Do not interpret this attestation as a production-readiness or definitive-admissions approval.
 
 - [x] Existing official source links — project-owner approved; the owner confirms the links are working. No additional source-link verification is required for this acceptance run.
-- [x] Confirm all 30 cards show UNKNOWN and that explanations disclose the draft/unverified status. — Owner-attested pass.
+- [x] Confirm the previous build showed all 30 cards as UNKNOWN and disclosed draft/unverified status. — Owner-attested pass for the previous build only.
 - [x] Confirm campus/eligibility filters and visible counts reconcile with the displayed cards. — Owner-attested pass.
 - [x] Save and remove pathways; verify empty, one-item, and three-item shortlist states; verify comparison rows follow saved items. — Owner-attested pass.
 - [x] Confirm reset clears the profile, results, filters, shortlist and tracker. — Owner-attested pass.
@@ -88,20 +93,20 @@ The repository's Browser E2E, privacy and accessibility workflow also installs C
 
 **Disposition note:** the owner-attested manual checklist and the assistant-session limitation are distinct evidence statements. The candidate merge SHA and reported CI run links are recorded above. The additional manual-run metadata (browser/OS, exact tested URL, individual rehearsal timings, and supporting artefacts) is explicitly deferred and is not a blocker for the current hackathon acceptance run. Do not claim these details were captured.
 
-## Demo profile and expected outcomes
+## Updated demo profile and expected outcomes (pending #187 verification)
 
-1. Start from an empty page.
-2. Choose Grade 12.
-3. Add Mathematics = 75 and Physical Sciences = 81.
-4. Select **Explore pathways**.
-5. Expected: 30 current catalogue candidates, all eligibility states UNKNOWN; the provisional APS total is unavailable for this two-subject profile because the demo rule requires exactly six distinct supported non-Life-Orientation subjects.
-6. Source links already present in the demo are owner-approved. No additional source-link verification is part of this acceptance run.
-7. Save/compare pathways, then reset and reload.
-8. Expected: reset/reload leave no learner profile, results or shortlist restored.
+1. Start from an empty page and choose Grade 12.
+2. Enter English Home Language = 65, Mathematics = 75, Physical Sciences = 68, Life Sciences = 62, Geography = 71, and Business Studies = 66.
+3. Select **Explore pathways**.
+4. Expected: 30 candidates; the state counts reconcile to 30 and include useful provisional positive and negative outcomes plus UNKNOWN for genuinely unresolved cases. The provisional APS panel remains separately labelled and does not determine eligibility.
+5. Open at least one source-backed provisional match, one NOT_ELIGIBLE result, and one UNKNOWN result. Read the recorded requirement, reason, source page and caveat.
+6. Save/compare pathways, then reset and reload.
+7. Expected: reset/reload leave no learner profile, results or shortlist restored.
+8. **Not yet verified:** rerun the browser journey and record new CI/manual evidence for the #187 branch before calling this accepted.
 
 ## Known limitations and stop conditions
 
-- Catalogue records remain draft/unverified; do not treat UNKNOWN as eligible or not eligible.
+- Catalogue records remain approved for hackathon-demo use only, not definitive screening. Provisional ELIGIBLE means the learner meets the minimum requirements currently recorded; it is not a university decision or guarantee. UNKNOWN remains appropriate where a material rule or required input prevents evaluation.
 - Do not invent a source URL if a link is absent. If an available source fails to open during manual rehearsal, record it as a defect and use the documented fallback with disclosure.
-- If any draft result displays a definitive eligibility state, stop the demo and investigate.
+- If a provisional state is displayed without the provisional explanation and source/limitation disclosure, stop the demo and investigate. Do not describe demo outcomes as institutionally verified or guaranteed admission.
 - Final deck export, fresh candidate screenshots, video recording (maximum 90 seconds), final video link, portal completion and submission receipt remain separate deliverables tracked under [#164](https://github.com/s1xte3n/studypath-sa/issues/164). This acceptance run does not mark them complete.
