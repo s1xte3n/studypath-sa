@@ -707,11 +707,13 @@ function App() {
                 <p>Positive results are provisional and do not guarantee admission. Confirm current requirements with the institution using the official source links on each pathway.</p>
               </div>
             </details>
-            <aside className="results-guidance" aria-labelledby="results-guidance-title">
-              <h3 id="results-guidance-title">How to read these options</h3>
-              <p>These pathways are not ranked by suitability. A provisional match means your marks meet the minimum requirements currently recorded for that pathway; it is not an admission decision and does not compare your chances of admission.</p>
-              <p><strong>Your next step:</strong> open pathway details, review the unresolved items, and confirm the current rules using the official UJ links before deciding where to apply.</p>
-            </aside>
+            <details className="results-guidance-disclosure aps-disclosure">
+              <summary>How to read these options</summary>
+              <div className="aps-disclosure-content">
+                <p>These pathways are not ranked by suitability. A provisional match means your marks meet the minimum requirements currently recorded for that pathway; it is not an admission decision and does not compare your chances of admission.</p>
+                <p><strong>Your next step:</strong> open pathway details, review the unresolved items, and confirm the current rules using the official UJ links before deciding where to apply.</p>
+              </div>
+            </details>
             <WhatIfMarkPlanner stage={stage} actualSubjects={subjects.map(item => ({ subject: item.subject, mark: item.mark }))} activeCatalogue={catalogue} />
             <section className="discovery-summary" aria-labelledby="discovery-summary-title">
               <div className="discovery-summary-heading">
