@@ -29,7 +29,7 @@ const SUBJECTS = [
 ];
 
 const STATE_LABELS = {
-  ELIGIBLE: "Eligible",
+  ELIGIBLE: "Provisional match",
   NOT_ELIGIBLE: "Not eligible",
   UNKNOWN: "Unknown"
 };
@@ -294,7 +294,7 @@ function App() {
         return;
       }
       setResults(nextResults);
-      setNotice("Pathway exploration completed. The current UJ 2027 catalogue is still a draft, so these results are UNKNOWN—not admission decisions.");
+      setNotice("Pathway exploration completed. Results compare your marks with minimum requirements currently recorded in the UJ 2027 pilot catalogue. Outcomes are provisional, and meeting listed minimums does not guarantee admission.");
       setSubmitted(true);
     } catch {
       setResults([]);
@@ -411,11 +411,11 @@ function App() {
             <ProvisionalApsPanel subjects={subjects.map(item => ({ subject: item.subject, mark: item.mark }))} />
             <div className="catalogue-warning" role="note">
               <strong>Exploration results · 2027 pilot</strong>
-              <p>This catalogue is still being reviewed, so eligibility remains UNKNOWN. Use these matches to decide which official requirements to investigate next.</p>
+              <p>Results are based on the minimum requirements currently recorded in source-backed catalogue entries. Some programme rules still need interpretation; UNKNOWN is retained where a material rule or required input prevents a result. Positive results are provisional and do not guarantee admission.</p>
             </div>
             <aside className="results-guidance" aria-labelledby="results-guidance-title">
               <h3 id="results-guidance-title">How to read these options</h3>
-              <p>These pathways are shown for exploration, not ranked by suitability. Because the catalogue is still a draft, StudyPath cannot confirm that you meet admission requirements or compare your chances of admission.</p>
+              <p>These pathways are not ranked by suitability. A provisional match means your marks meet the minimum requirements currently recorded for that pathway; it is not an admission decision and does not compare your chances of admission.</p>
               <p><strong>Your next step:</strong> open pathway details, review the unresolved items, and confirm the current rules using the official UJ links before deciding where to apply.</p>
             </aside>
             <section className="discovery-summary" aria-labelledby="discovery-summary-title">
@@ -496,7 +496,7 @@ function App() {
                         <dl className="shortlist-facts">
                           <div><dt>Programme code</dt><dd>{item.code || "Not recorded"}</dd></div>
                           <div><dt>Duration</dt><dd>{item.durationYears ? `${item.durationYears} years (confirm with UJ)` : "Not recorded"}</dd></div>
-                          <div><dt>Eligibility</dt><dd>UNKNOWN — confirm current official requirements.</dd></div>
+                          <div><dt>Eligibility</dt><dd>{STATE_LABELS[item.state]} — {item.reason} Confirm current official requirements before applying.</dd></div>
                         </dl>
                         <label className="field-label" htmlFor={`tracking-status-${item.id}`}>My application progress</label>
                         <select id={`tracking-status-${item.id}`} value={progress.status} onChange={event => updateTracking(item.id, "status", event.target.value)}>
