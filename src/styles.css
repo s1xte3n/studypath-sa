@@ -1104,3 +1104,42 @@ a { color: var(--link); }
     transition-duration: 0s !important;
   }
 }
+
+
+/* Full-viewport desktop canvas: remove the remaining centered-page constraints. */
+html,
+body,
+#root {
+  width: 100%;
+  min-height: 100%;
+  margin: 0;
+}
+
+.app-shell {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: none;
+  min-height: 100vh;
+  min-height: 100dvh;
+  margin: 0;
+}
+
+.app-shell main {
+  box-sizing: border-box;
+  flex: 1 0 auto;
+  width: 100%;
+  max-width: none;
+  margin-inline: 0;
+}
+
+.app-shell footer {
+  width: 100%;
+  margin-top: auto;
+}
+
+@media (min-width: 1024px) {
+  .app-shell main {
+    padding-inline: clamp(32px, 4vw, 80px);
+  }
+}
