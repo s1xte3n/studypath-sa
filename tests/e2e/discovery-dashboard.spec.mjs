@@ -84,7 +84,7 @@ test("pathway details expose requirement evidence by keyboard at mobile width", 
   await expect(firstCard.getByRole("heading", { name: "Requirement-by-requirement check" })).toBeVisible();
   await expect(firstCard.getByText("Recorded rule", { exact: true }).first()).toBeVisible();
   await expect(firstCard.getByText("Your input", { exact: true }).first()).toBeVisible();
-  await expect(firstCard.getByText(/not an admission decision/i)).toBeVisible();
+  await expect(firstCard.locator(".requirement-evidence-caveat")).toContainText(/not an admission decision/i);
 
   const layout = await page.evaluate(() => ({
     viewportWidth: window.innerWidth,
