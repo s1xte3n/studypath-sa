@@ -37,6 +37,10 @@ const STATE_LABELS = {
   UNKNOWN: "Unknown"
 };
 
+function createEmptySubjectRows() {
+  return Array.from({ length: 6 }, () => ({ subject: "", mark: "", customSubject: false }));
+}
+
 function getStateClass(state) {
   return `state-${state.toLowerCase().replaceAll("_", "-")}`;
 }
@@ -483,7 +487,7 @@ function App() {
   const [darkMode, setDarkMode] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [stage, setStage] = useState("");
-  const [subjects, setSubjects] = useState([{ subject: "", mark: "", customSubject: false }]);
+  const [subjects, setSubjects] = useState(createEmptySubjectRows);
   const [notice, setNotice] = useState("");
   const [fieldErrors, setFieldErrors] = useState({ stage: "", subjects: {} });
   const [submitted, setSubmitted] = useState(false);
@@ -635,7 +639,7 @@ function App() {
 
   function resetForm() {
     setStage("");
-    setSubjects([{ subject: "", mark: "", customSubject: false }]);
+    setSubjects(createEmptySubjectRows());
     setResults([]);
     setSavedPathways([]);
     setTracking({});
@@ -692,7 +696,7 @@ function App() {
       // only understands explicitly mapped subjects. Keep custom entries in the
       // profile while excluding them from deterministic catalogue matching.
       const customSubjects = subjects.filter(item => item.customSubject);
-      const catalogueSubjects = subjects.filter(item => !item.customSubject);
+      const catalogueSubjects = subjects.filter(item => !item.customSubject && (item.subject.trim() !== "" || String(item.mark ?? "").trim() !== ""));
       const nextResults = buildPathwayResults({ stage, subjects: catalogueSubjects }, catalogue);
       if (nextResults.length === 0) {
         setResults([]);
@@ -839,17 +843,17 @@ function App() {
               {subjects.map((item, index) => (
                 <div className="subject-row" key={index}>
                   <label className="visually-hidden" htmlFor={`subject-${index}`}>Subject {index + 1}</label>
-                  <select id={`subject-${index}`} value={item.customSubject ? "OTHER" : item.subject} aria-invalid={Boolean(fieldErrors.subjects[index]?.subject?.length)} aria-describedby={fieldErrors.subjects[index]?.subject?.length ? `subject-error-${index}` : undefined} onChange={event => chooseSubject(index, event.target.value)} required>
+                  <select id={`subject-${index}`} value={item.customSubject ? "OTHER" : item.subject} aria-invalid={Boolean(fieldErrors.subjects[index]?.subject?.length)} aria-describedby={fieldErrors.subjects[index]?.subject?.length ? `subject-error-${index}` : undefined} onChange={event => chooseSubject(index, event.target.value)} required={Boolean(item.subject || item.mark || item.customSubject)}>
                     <option value="">Choose a subject</option>
                     {SUBJECTS.filter(subject => subject === item.subject || !subjects.some((selected, selectedIndex) => selectedIndex !== index && !selected.customSubject && selected.subject === subject)).map(subject => <option key={subject} value={subject}>{subject}</option>)}
                     <option value="OTHER">Other (enter subject name)</option>
                   </select>
                   {item.customSubject && <div className="custom-subject-field">
                     <label className="visually-hidden" htmlFor={`custom-subject-${index}`}>Custom subject name for row {index + 1}</label>
-                    <input id={`custom-subject-${index}`} type="text" value={item.subject} placeholder="Enter subject name" maxLength="100" onChange={event => updateSubject(index, "subject", event.target.value)} required />
+                    <input id={`custom-subject-${index}`} type="text" value={item.subject} placeholder="Enter subject name" maxLength="100" onChange={event => updateSubject(index, "subject", event.target.value)} required={item.customSubject} />
                   </div>}
                   <label className="visually-hidden" htmlFor={`mark-${index}`}>Mark for subject {index + 1}</label>
-                  <input id={`mark-${index}`} inputMode="numeric" type="number" min="0" max="100" step="1" placeholder="Mark %" value={item.mark} aria-invalid={Boolean(fieldErrors.subjects[index]?.mark?.length)} aria-describedby={fieldErrors.subjects[index]?.mark?.length ? `mark-error-${index}` : undefined} onChange={event => updateSubject(index, "mark", event.target.value)} required />
+                  <input id={`mark-${index}`} inputMode="numeric" type="number" min="0" max="100" step="1" placeholder="Mark %" value={item.mark} aria-invalid={Boolean(fieldErrors.subjects[index]?.mark?.length)} aria-describedby={fieldErrors.subjects[index]?.mark?.length ? `mark-error-${index}` : undefined} onChange={event => updateSubject(index, "mark", event.target.value)} required={Boolean(item.subject || item.mark || item.customSubject)} />
                   {fieldErrors.subjects[index]?.subject?.length > 0 && <p className="field-error subject-error" id={`subject-error-${index}`}>{fieldErrors.subjects[index].subject.join(" ")}</p>}
                   {fieldErrors.subjects[index]?.mark?.length > 0 && <p className="field-error subject-error" id={`mark-error-${index}`}>{fieldErrors.subjects[index].mark.join(" ")}</p>}
                   <button className="remove-button" type="button" onClick={() => removeSubject(index)} disabled={subjects.length === 1} aria-label={`Remove subject row ${index + 1}`}>×</button>

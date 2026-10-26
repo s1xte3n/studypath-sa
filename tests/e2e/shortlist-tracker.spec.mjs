@@ -149,7 +149,7 @@ test("issue 219 fresh-session discovery journey reconciles counts, sources, shor
     ["Business Studies", "66"]
   ];
   for (const [index, [subject, mark]] of demoProfile.entries()) {
-    if (index > 0) await page.getByRole("button", { name: /Add another subject/ }).click();
+    if (index >= 6) await page.getByRole("button", { name: /Add another subject/ }).click();
     await page.locator(`#subject-${index}`).selectOption(subject);
     await page.locator(`#mark-${index}`).fill(mark);
   }
