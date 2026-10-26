@@ -15,7 +15,7 @@ test("saved pathways compare supported fields, enforce the three-item limit, and
     ["Business Studies", "74"]
   ];
   for (const [index, [subject, mark]] of profile.entries()) {
-    if (index > 0) await page.getByRole("button", { name: /Add another subject/ }).click();
+    if (index >= 6) await page.getByRole("button", { name: /Add another subject/ }).click();
     await page.locator(`#subject-${index}`).selectOption(subject);
     await page.locator(`#mark-${index}`).fill(mark);
   }
@@ -63,16 +63,18 @@ test("learner can edit rows, validate entries, and reset the form", async ({ pag
   await page.goto("/");
   await expect(page.getByRole("heading", { name: "Tell us about your studies" })).toBeVisible();
   await expect(page.locator("#stage option:checked")).toHaveText("Choose current stage");
+  await expect(page.locator(".subject-row")).toHaveCount(6);
   await expect(page.locator("#subject-0 option:checked")).toHaveText("Choose a subject");
 
   await page.locator("#subject-0").selectOption("Mathematics");
   await page.locator("#mark-0").fill("75");
   await page.getByRole("button", { name: /Add another subject/ }).click();
-  await expect(page.locator("#subject-1")).toBeVisible();
-  await page.locator("#subject-1").selectOption("Physical Sciences");
-  await page.locator("#mark-1").fill("81");
-  await page.getByRole("button", { name: /Remove subject row 2/ }).click();
-  await expect(page.locator("#subject-1")).toHaveCount(0);
+  await expect(page.locator("#subject-6")).toBeVisible();
+  await page.locator("#subject-6").selectOption("Physical Sciences");
+  await page.locator("#mark-6").fill("81");
+  await page.getByRole("button", { name: /Remove subject row 7/ }).click();
+  await expect(page.locator("#subject-6")).toHaveCount(0);
+  await expect(page.locator(".subject-row")).toHaveCount(6);
 
   await page.locator("#stage").selectOption("GRADE_12");
   await page.getByRole("button", { name: /Explore pathways/ }).click();
@@ -110,6 +112,7 @@ test("learner can edit rows, validate entries, and reset the form", async ({ pag
   await expect(page.locator("#stage option:checked")).toHaveText("Choose current stage");
   await expect(page.locator("#subject-0")).toHaveValue("");
   await expect(page.locator("#mark-0")).toHaveValue("");
+  await expect(page.locator(".subject-row")).toHaveCount(6);
   await expect(page.locator(".form-notice")).toHaveCount(0);
 });
 
@@ -412,7 +415,7 @@ test("already-selected subjects cannot be selected twice", async ({ page }) => {
   await page.locator("#mark-0").fill("75");
   await page.getByRole("button", { name: /Add another subject/ }).click();
 
-  const secondSubject = page.locator("#subject-1");
+  const secondSubject = page.locator("#subject-6");
   const optionValues = await secondSubject.locator("option").evaluateAll(options => options.map(option => option.value));
   expect(optionValues).not.toContain("Mathematics");
   await expect(secondSubject.locator('option[value="Mathematics"]')).toHaveCount(0);
@@ -541,8 +544,8 @@ test("populated dark-theme pathway details and shortlist have no color-contrast 
   await page.locator("#subject-0").selectOption("Mathematics");
   await page.locator("#mark-0").fill("75");
   await page.getByRole("button", { name: /Add another subject/ }).click();
-  await page.locator("#subject-1").selectOption("Physical Sciences");
-  await page.locator("#mark-1").fill("81");
+  await page.locator("#subject-6").selectOption("Physical Sciences");
+  await page.locator("#mark-6").fill("81");
   await page.getByRole("button", { name: /Explore pathways/ }).click();
 
   await expect(page.locator(".result-card")).toHaveCount(30);
@@ -691,7 +694,7 @@ test("subject dropdowns prevent duplicates without invalidating either field", a
   await page.locator("#mark-0").fill("75");
   await page.getByRole("button", { name: /Add another subject/ }).click();
 
-  const secondSubject = page.locator("#subject-1");
+  const secondSubject = page.locator("#subject-6");
   await expect(secondSubject.locator('option[value="Mathematics"]')).toHaveCount(0);
   await secondSubject.selectOption("Physical Sciences");
   await page.locator("#mark-1").fill("80");
@@ -699,7 +702,7 @@ test("subject dropdowns prevent duplicates without invalidating either field", a
 
   await expect(page.locator(".form-notice")).toContainText("Pathway exploration completed");
   await expect(page.locator("#subject-0")).toHaveAttribute("aria-invalid", "false");
-  await expect(page.locator("#subject-1")).toHaveAttribute("aria-invalid", "false");
+  await expect(page.locator("#subject-6")).toHaveAttribute("aria-invalid", "false");
   await expect(page.locator(".result-card")).toHaveCount(30);
 });
 
@@ -762,7 +765,7 @@ test("provisional APS fails closed when subject-selection rules are unresolved a
     ["Life Orientation", "100"]
   ];
   for (let index = 0; index < rows.length; index += 1) {
-    if (index > 0) await page.getByRole("button", { name: /Add another subject/ }).click();
+    if (index >= 6) await page.getByRole("button", { name: /Add another subject/ }).click();
     await page.locator(`#subject-${index}`).selectOption(rows[index][0]);
     await page.locator(`#mark-${index}`).fill(rows[index][1]);
   }

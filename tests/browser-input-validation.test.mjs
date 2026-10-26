@@ -20,8 +20,24 @@ test("rejects missing subject rows", () => {
   assert.deepEqual(validateStudentEntries({ stage: "GRADE_12" }), ["Add at least one subject and mark."]);
 });
 
-test("rejects blank subject and blank mark", () => {
-  assert.deepEqual(validateStudentEntries({ stage: "GRADE_12", subjects: [{ subject: "", mark: "" }] }), [
+test("ignores completely blank optional rows but validates partially completed rows", () => {
+  const blankRows = Array.from({ length: 6 }, () => ({ subject: "", mark: "", customSubject: false }));
+  assert.deepEqual(validateStudentEntries({ stage: "GRADE_12", subjects: blankRows }), [
+    "Add at least one subject and mark."
+  ]);
+  assert.deepEqual(validateStudentEntries({ stage: "GRADE_12", subjects: [
+    { subject: "Mathematics", mark: "75" },
+    ...blankRows.slice(1)
+  ] }), []);
+  assert.deepEqual(validateStudentEntries({ stage: "GRADE_12", subjects: [
+    { subject: "", mark: "75" }
+  ] }), ["Choose a subject for row 1."]);
+  assert.deepEqual(validateStudentEntries({ stage: "GRADE_12", subjects: [
+    { subject: "Mathematics", mark: "" }
+  ] }), ["Enter a whole-number mark from 0 to 100 for row 1."]);
+  assert.deepEqual(validateStudentEntries({ stage: "GRADE_12", subjects: [
+    { subject: "", mark: "", customSubject: true }
+  ] }), [
     "Choose a subject for row 1.",
     "Enter a whole-number mark from 0 to 100 for row 1."
   ]);

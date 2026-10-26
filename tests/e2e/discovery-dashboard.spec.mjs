@@ -18,7 +18,6 @@ test("discovery dashboard reflects current profile completeness and draft UNKNOW
 
   const remainingSubjects = ["Physical Sciences", "Life Sciences", "Geography", "History", "Accounting"];
   for (let index = 0; index < remainingSubjects.length; index += 1) {
-    await page.getByRole("button", { name: "+ Add another subject" }).click();
     const row = index + 1;
     await page.locator(`#subject-${row}`).selectOption(remainingSubjects[index]);
     await page.locator(`#mark-${row}`).fill(String(70 + index));
@@ -49,22 +48,23 @@ test("adding a subject preserves entries and completeness grows until six are co
   await expect(page.locator("#stage")).toHaveValue("GRADE_12");
   await expect(page.locator("#subject-0")).toHaveValue("Mathematics");
   await expect(page.locator("#mark-0")).toHaveValue("75");
-  await expect(page.locator("#subject-1")).toHaveValue("");
+  await expect(page.locator(".subject-row")).toHaveCount(7);
+  await expect(page.locator("#subject-6")).toHaveValue("");
   await expect(completeness).toHaveAttribute("aria-valuenow", "44");
 
-  const secondSubjectOptions = await page.locator("#subject-1 option").evaluateAll(options => options.map(option => option.value));
+  const secondSubjectOptions = await page.locator("#subject-6 option").evaluateAll(options => options.map(option => option.value));
   expect(secondSubjectOptions).not.toContain("Mathematics");
   expect(secondSubjectOptions).toContain("Physical Sciences");
-  await page.locator("#subject-1").selectOption("Physical Sciences");
-  await page.locator("#mark-1").fill("80");
+  await page.locator("#subject-6").selectOption("Physical Sciences");
+  await page.locator("#mark-6").fill("80");
   await expect(completeness).toHaveAttribute("aria-valuenow", "56");
 
   // Selecting Other reveals a textbox and its subject/mark contributes to progress.
   await page.getByRole("button", { name: "+ Add another subject" }).click();
-  await page.locator("#subject-2").selectOption("OTHER");
-  await expect(page.locator("#custom-subject-2")).toBeVisible();
-  await page.locator("#custom-subject-2").fill("Computer Applications Technology");
-  await page.locator("#mark-2").fill("82");
+  await page.locator("#subject-7").selectOption("OTHER");
+  await expect(page.locator("#custom-subject-7")).toBeVisible();
+  await page.locator("#custom-subject-7").fill("Computer Applications Technology");
+  await page.locator("#mark-7").fill("82");
   await expect(completeness).toHaveAttribute("aria-valuenow", "67");
   const remainingSubjectOptions = await page.locator("#subject-1 option").evaluateAll(options => options.map(option => option.value));
   expect(remainingSubjectOptions).not.toContain("Mathematics");
@@ -74,7 +74,7 @@ test("adding a subject preserves entries and completeness grows until six are co
   await expect(page.locator(".form-notice")).toContainText("Computer Applications Technology");
   await expect(page.locator(".form-notice")).toContainText("not included in catalogue matching");
   await expect(page.locator(".result-card")).toHaveCount(30);
-  await expect(page.locator("#custom-subject-2")).toHaveValue("Computer Applications Technology");
+  await expect(page.locator("#custom-subject-7")).toHaveValue("Computer Applications Technology");
 });
 
 test("eligibility filters update visible counts and provide a recoverable empty state", async ({ page }) => {
@@ -128,7 +128,7 @@ test("pathway details expose requirement evidence by keyboard at mobile width", 
     "Accounting"
   ];
   for (let index = 0; index < subjects.length; index += 1) {
-    if (index > 0) await page.getByRole("button", { name: "+ Add another subject" }).click();
+    if (index >= 6) await page.getByRole("button", { name: "+ Add another subject" }).click();
     await page.locator(`#subject-${index}`).selectOption(subjects[index]);
     await page.locator(`#mark-${index}`).fill("90");
   }
@@ -182,7 +182,7 @@ test("Why Not Yet distinguishes missing information from a recorded shortfall on
     ["Accounting", "90"]
   ];
   for (let index = 0; index < profile.length; index += 1) {
-    if (index > 0) await page.getByRole("button", { name: /Add another subject/ }).click();
+    if (index >= 6) await page.getByRole("button", { name: /Add another subject/ }).click();
     await page.locator(`#subject-${index}`).selectOption(profile[index][0]);
     await page.locator(`#mark-${index}`).fill(profile[index][1]);
   }
@@ -216,7 +216,7 @@ test("blocked pathway offers catalogue-backed alternatives and links to the sele
     ["Accounting", "60"]
   ];
   for (let index = 0; index < subjects.length; index += 1) {
-    if (index > 0) await page.getByRole("button", { name: "+ Add another subject" }).click();
+    if (index >= 6) await page.getByRole("button", { name: "+ Add another subject" }).click();
     await page.locator("#subject-" + index).selectOption(subjects[index][0]);
     await page.locator("#mark-" + index).fill(subjects[index][1]);
   }
@@ -260,7 +260,7 @@ test("what-if planner recalculates hypothetically and keeps actual marks/results
     ["Accounting", "75"]
   ];
   for (let index = 0; index < subjects.length; index += 1) {
-    if (index > 0) await page.getByRole("button", { name: "+ Add another subject" }).click();
+    if (index >= 6) await page.getByRole("button", { name: "+ Add another subject" }).click();
     await page.locator(`#subject-${index}`).selectOption(subjects[index][0]);
     await page.locator(`#mark-${index}`).fill(subjects[index][1]);
   }
