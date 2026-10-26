@@ -815,6 +815,6 @@ test("issue 206 visual system remains readable and overflow-free at target width
   await expect(page.locator(".app-shell")).toHaveClass(/theme-dark/);
   await expect(page.getByRole("complementary", { name: "How StudyPath works" })).toBeVisible();
   await page.emulateMedia({ reducedMotion: "reduce" });
-  const transitionDuration = await page.locator(".primary-button").evaluate(element => getComputedStyle(element).transitionDuration);
+  const transitionDuration = await page.locator("button.primary-button").evaluate(element => getComputedStyle(element).transitionDuration);
   expect(transitionDuration.split(",").every(value => value.trim() === "0s" || value.trim() === "0ms")).toBeTruthy();
 });
