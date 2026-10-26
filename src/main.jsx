@@ -696,7 +696,7 @@ function App() {
       // only understands explicitly mapped subjects. Keep custom entries in the
       // profile while excluding them from deterministic catalogue matching.
       const customSubjects = subjects.filter(item => item.customSubject);
-      const catalogueSubjects = subjects.filter(item => !item.customSubject);
+      const catalogueSubjects = subjects.filter(item => !item.customSubject && (item.subject.trim() !== "" || String(item.mark ?? "").trim() !== ""));
       const nextResults = buildPathwayResults({ stage, subjects: catalogueSubjects }, catalogue);
       if (nextResults.length === 0) {
         setResults([]);
