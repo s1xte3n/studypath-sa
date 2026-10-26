@@ -147,6 +147,7 @@ test("correcting invalid marks clears the error and valid entries still do not i
 test("changing the study stage clears a stale validation notice", async ({ page }) => {
   await page.goto("/");
   await page.locator("#subject-0").selectOption("");
+  await page.locator("#mark-0").fill("75");
   await page.getByRole("button", { name: /Explore pathways/ }).click();
   await expect(page.locator(".form-notice")).toContainText("Choose a subject");
 
@@ -420,7 +421,7 @@ test("already-selected subjects cannot be selected twice", async ({ page }) => {
   expect(optionValues).not.toContain("Mathematics");
   await expect(secondSubject.locator('option[value="Mathematics"]')).toHaveCount(0);
   await secondSubject.selectOption("Physical Sciences");
-  await page.locator("#mark-1").fill("80");
+  await page.locator("#mark-6").fill("80");
   await page.getByRole("button", { name: /Explore pathways/ }).click();
 
   await expect(page.locator(".form-notice")).toContainText("Pathway exploration completed");
@@ -697,7 +698,7 @@ test("subject dropdowns prevent duplicates without invalidating either field", a
   const secondSubject = page.locator("#subject-6");
   await expect(secondSubject.locator('option[value="Mathematics"]')).toHaveCount(0);
   await secondSubject.selectOption("Physical Sciences");
-  await page.locator("#mark-1").fill("80");
+  await page.locator("#mark-6").fill("80");
   await page.getByRole("button", { name: /Explore pathways/ }).click();
 
   await expect(page.locator(".form-notice")).toContainText("Pathway exploration completed");
